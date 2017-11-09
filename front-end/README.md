@@ -1,10 +1,6 @@
 # Kayak
 
-### Getting Started
-
-There are two methods for getting started with this repo.
-
-#### Install the project
+#### Steps for installing the project
 Checkout this repo, install dependencies, then start the gulp process with the following:
 
 ```
