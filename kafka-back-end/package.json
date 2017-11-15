@@ -1,0 +1,16 @@
+{
+  "name": "kafka-back-end",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "kafka-node": "^2.2.3",
+    "mongoose": "4.10.8",
+    "bcrypt": "^1.0.3"
+  }
+}
