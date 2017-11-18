@@ -37,4 +37,40 @@ function login(msg, callback){
             }
         });
 }
+
+
+
+//****************************************************************************************************************************
+
+function register(msg,callback){
+
+    var res={};
+    var user = User();
+
+    user.firstname = msg.firstname;
+    user.lastname = msg.lastname;
+    user.email = msg.email;
+    user.password = msg.password;
+
+    user.save(function (err) {
+        if (err){
+            console.log("Error while saving the data to the database");
+            res.code = "401";
+            res.value = "Failed registration";
+        }
+
+        else{
+            console.log("User logged in succesully ");
+            res.code = "200";
+            res.value = "Success Registration";
+            callback(null,res);
+        }
+    })
+
+
+}
+
+//****************************************************************************************************************************
+
+exports.register = register ;
 exports.login = login;

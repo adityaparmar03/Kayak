@@ -59,8 +59,8 @@ app.use('/users', users);
 app.use('/cars', cars);
 app.use('/hotels', hotels);
 app.use('/flights', flights);
+//app.use('/admin',admin);
 
-app.use('./public/uploads', express.static(path.join(__dirname, 'uploads')));
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {

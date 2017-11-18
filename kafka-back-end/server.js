@@ -15,15 +15,35 @@ consumer.on('message', function (message) {
     console.log(JSON.stringify(message.value));
 
     var data = JSON.parse(message.value);
+    var body = data.data;
+//************************************************************************************************************************
+
+  switch(message.topic){
 
 
-    if(message.topic=='login') {
-        users.login(data.data, function (err, res) {
+      case 'login':
+       if(body.action==='user') {
+           users.login(body, function (err, res) {
 
-            response(data, res);
-            return;
-        });
-    }
+               response(data, res);
+               return;
+           });
+       }
+
+       else if(body.action==='register'){
+
+           users.register(body,function (err,res) {
+               response(data,res);
+               return;
+           })
+
+       }
+        break;
+
+      default:
+          console.log("Topic not found");
+          return
+
 /*
     else if(message.topic=='getuser'){
         user.getUserDetails(data.data, function(err,res){
@@ -32,8 +52,16 @@ consumer.on('message', function (message) {
             return;
         });
     }*/
+
+
+
+
+  }
 });
 
+
+
+//************************************************************************************************************************
 function response(data, res) {
     var payloads = [
         { topic: data.replyTo,
@@ -44,6 +72,10 @@ function response(data, res) {
             partition : 0
         }
     ];
+    console.log("***************************");
+    console.log(payloads);
+    console.log("***************************");
+
     producer.send(payloads, function(err, data){
         console.log(data);
     });

@@ -4,7 +4,7 @@ var mysql = require('kafka-front-end/models/mysql');
 var pool  = mysql.createPool({
     host     : 'localhost',
     user     : 'root',
-    password : '', //Enter password
+    password : 'root', //Enter password
     database : 'cmpe273_kayak',
     port	 : 3306
 });
