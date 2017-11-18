@@ -7,10 +7,10 @@ var cors = require('cors');
 
 
 var index = require('./routes/index');
-var hotels = require('./routes/hotels');
-var users = require('./routes/users');
-var cars = require('./routes/cars');
-var flights = require('./routes/flights');
+var hotel = require('./routes/hotel');
+var user = require('./routes/user');
+var car = require('./routes/car');
+var flight = require('./routes/flight');
 
 var mongoSessionURL = "mongodb://localhost:27017/sessions";
 var expressSessions = require("express-session");
@@ -55,10 +55,10 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', index);
-app.use('/users', users);
-app.use('/cars', cars);
-app.use('/hotels', hotels);
-app.use('/flights', flights);
+app.use('/user', user);
+app.use('/car', car);
+app.use('/hotel', hotel);
+app.use('/flight', flight);
 //app.use('/admin',admin);
 
 

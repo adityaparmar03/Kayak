@@ -1,8 +1,8 @@
 var connection =  new require('./kafka/Connection');
-var users = require('./services/users');
-var cars = require('./services/cars');
-var hotels = require('./services/hotels');
-var flights = require('./services/flights');
+var users = require('./services/user');
+var cars = require('./services/car');
+var hotels = require('./services/hotel');
+var flights = require('./services/flight');
 
 var consumer = connection.getConsumer();
 var producer = connection.getProducer();
