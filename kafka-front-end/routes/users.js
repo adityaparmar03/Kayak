@@ -70,8 +70,9 @@ router.post('/register',function (req,res) {
                 var mailOptions = {
                     from: 'kayak.cmpe273@gmail.com',
                     to: req.body.email,
-                    subject: 'Sending Email using Node.js',
-                    html: '<h1>Welcome :</h1><p>you have registered to the kayak application : CMPE273 rocks!</p>'
+                    subject: 'You have registered for Kayak',
+                    html: '<h1>Welcome :</h1><p>you have registered to the kayak application : CMPE273 rocks!</p>' +
+                    '<button type="button">Click to activate your account!</button>'
                 };
 
                 transporter.sendMail(mailOptions, function(error, info){
