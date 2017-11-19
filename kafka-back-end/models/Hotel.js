@@ -26,9 +26,15 @@ var HotelSchema   = new Schema({
     country: String,
     zipcode: String,
     stars: Number,
+    reviews : Array,
     rating: Number,
-    rooms : Array, //{'type':'suite', 'price':'$120', 'availability':'booked'}
-    reviews : Array
+    rooms : Object
+    //{
+    // roomtype: 'delux', 'price':'$120', 'rooomcount':100},
+    // roomtype:'premium','price':'$220', 'rooomcount':100},
+    // roomtype:'suite','price':'$320', 'rooomcount':100}
+    // }
+
 });
 
 module.exports = mongoose.model('Hotel', HotelSchema);

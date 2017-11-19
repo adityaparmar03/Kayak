@@ -1,8 +1,8 @@
 import { combineReducers } from 'redux'
-//import filesreducer from './filesreducer'
+import test from './test'
 
 export default combineReducers({
-
+    test
     //Sample
     //filesreducer
 })
