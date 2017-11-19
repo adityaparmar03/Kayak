@@ -1,23 +1,11 @@
 var express = require('express');
+var kafka = require('./kafka/client');
 var router = express.Router();
 
-/* GET home page. */
-router.get('/', function(req, res, next) {
-    res.render('index', { title: 'Express' });
-});
+/* GET hotel list */
+router.get('/hotels', function (req, res) {
 
-module.exports = router;
-/*
-
-
-
-var express = require('express');
-var kafka = require('./kafka/client');
-
-/!* GET users listing. *!/
-router.get('/', function (req, res) {
-
-    kafka.make_request('gethotels',{"searchcriteria":req.body}, function(err,results){
+    kafka.make_request('searchhotels',{"searchcriteria":req.query}, function(err,results){
 
         console.log('in result');
         console.log(results);
@@ -27,8 +15,8 @@ router.get('/', function (req, res) {
         else
         {
             if(results.code == 200){
-                console.log(results.value.hotels)
-                res.send({'hotels': results.value.hotels, 'status': 201});
+                console.log(results.value)
+                res.send({'hotels': results.value, 'status': 201});
             }
             else {
                 res.send({'status': 401});
@@ -38,4 +26,4 @@ router.get('/', function (req, res) {
 
 });
 
-*/
+module.exports = router;

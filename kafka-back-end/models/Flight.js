@@ -7,19 +7,19 @@ var FlightSchema   = new Schema({
 
     flightId:String,
     operator: String,
-    flightdetails: Array
+    flights: Array
 //Sample
-    /*flightdetails:[
+    /*flights:[
         {
             'arrival': '16:00'
-            'departure': '00:00'
-            'origin': 'San Jose'
-            'destination': 'New Delhi'
-            'classes':{
+            'departure': '00:00',
+            'origin': {'city':'San Jose', 'state':'CA', 'country':'USA'}
+            'destination': {'city':'Delhi', 'state':'Delhi', 'country':'India'}
+            'class':{
 
-                'economy':{'price':'$1000', 'capacity':100},
-                'first':{'price':'$2000' , 'capacity':100},
-                'business':{'price':'$3000' , 'capacity':100}
+                'type':'economy','price':'$1000', 'capacity':100},
+                'type':''first','price':'$2000' , 'capacity':100},
+                'type':''business','price':'$3000' , 'capacity':100}
             }
         }
     ]*/
