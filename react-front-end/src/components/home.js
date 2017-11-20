@@ -8,17 +8,27 @@ import {red500,deepOrange500} from 'material-ui/styles/colors'
 import FlatButton from 'material-ui/FlatButton';
 import AutoComplete from 'material-ui/AutoComplete';
 import DatePicker from 'material-ui/DatePicker';
-
-import {Card, CardActions, CardHeader, CardMedia, CardTitle, CardText} from 'material-ui/Card';
-
-import {flight,flighticon,hotel,hotelicon,car,caricon} from '../constant_UI'
+import TextField from 'material-ui/TextField';
 
 import '../css/home.css'
 //Compnents
 import Hotelsearch from './hotelsearch'
 class Home extends Component {
 
- 
+    state = {
+        dataSource: [],
+      };
+    
+      handleUpdateInput = (value) => {
+        this.setState({
+          dataSource: [
+            value,
+            value + value,
+            value + value + value,
+          ],
+        });
+      };
+
     componentWillMount(){
         //injectTapEventPlugin()
     }
@@ -60,9 +70,9 @@ class Home extends Component {
         <form className="form-inline">
                     <ul className="navbar-nav mr-auto">
                     <li className="nav-item">
-                        <a className="nav-link" href="#">My Account</a>
+                        <a className="nav-link" href="#" data-toggle="modal" data-target="#modalLRForm">My Account</a>
                     </li>
-
+                    
                 </ul>
         </form>
     </div>
@@ -76,11 +86,12 @@ class Home extends Component {
 
                 <div style={{marginLeft:'25%',marginRight:'25%',marginTop:"5%"}}>        
                 <ul className="nav nav-tabs nav-justified" role="tablist">
+   
                     <li className="nav-item">
-                        <a className="nav-link active" data-toggle="tab" href="#hotel" role="tab"><i className="fa fa-hotel"></i><b>  HOTELS</b></a>
+                        <a className="nav-link active" data-toggle="tab" href="#flight" role="tab"><i className="fa fa-plane"></i> <b> FLIGHTS</b></a>
                     </li>
                     <li className="nav-item">
-                        <a className="nav-link" data-toggle="tab" href="#flight" role="tab"><i className="fa fa-plane"></i> <b> FLIGHTS</b></a>
+                        <a className="nav-link" data-toggle="tab" href="#hotel" role="tab"><i className="fa fa-hotel"></i><b>  HOTELS</b></a>
                     </li>
                     <li className="nav-item">
                         <a className="nav-link" data-toggle="tab" href="#car" role="tab"><i className="fa fa-car"></i><b> CARS</b></a>
@@ -89,9 +100,50 @@ class Home extends Component {
                 </div>
 <div className="tab-content">
 
-    <div className="tab-pane fade in show active" id="flight" role="tabpanel">
-       
-        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nihil odit magnam minima, soluta doloribus reiciendis molestiae placeat unde eos molestias. Quisquam aperiam, pariatur. Tempora, placeat ratione porro voluptate odit minima.</p>
+    <div className="tab-pane fade in show active" id="flight" role="tabpanel" 
+    style={{padding:"8%",marginTop:'-9%'}}>
+        <div className="card" style={{backgroundColor:'grey',padding:'5%'}}>
+
+            <div className="card-body">
+            <div className="row">
+            
+            <div className="col-sm-2" style={{backgroundColor:'white',padding:'1px'}}>
+            <AutoComplete
+                    hintText="From"
+                    dataSource={this.state.dataSource}
+                    onUpdateInput={this.handleUpdateInput}
+                    floatingLabelText="From"
+            />
+            </div>
+            <div className="col-sm-2" style={{backgroundColor:'green'}}>
+                <AutoComplete
+                    hintText="To"
+                    dataSource={this.state.dataSource}
+                    onUpdateInput={this.handleUpdateInput}
+                    floatingLabelText="To"
+            />
+
+            </div>
+            <div className="col-sm-2" style={{backgroundColor:'red',padding:'1px'}}>
+            <DatePicker hintText="Start Date" mode="landscape"  floatingLabelText="Start Date"/>
+            </div>
+            <div className="col-sm-2">
+            <DatePicker hintText="Return Date" mode="landscape" floatingLabelText="Return Date"/>
+            </div>
+            <div className="col-sm-2">
+            <TextField
+                 hintText="Travelers"
+                 floatingLabelText="Travelers"
+            />
+            </div>
+            <div className="col-sm-2">
+            <button type="button" className="btn btn-deep-orange">
+                <i className="fa fa-arrow-right" aria-hidden="true"></i></button>
+            </div>
+          </div>
+            </div>
+
+        </div>
     </div>
 
     <div className="tab-pane fade" id="hotel" role="tabpanel">
@@ -139,7 +191,7 @@ class Home extends Component {
                                 <input type="email" id="form22" className="form-control validate"/>
                                 <label data-error="wrong" data-success="right" htmlFor="form22">Your email</label>
                             </div>
-
+                            
                             <div className="md-form form-sm">
                                 <i className="fa fa-lock prefix"></i>
                                 <input type="password" id="form23" className="form-control validate"/>
@@ -207,9 +259,7 @@ class Home extends Component {
 </div>
 
 
-<div className="text-center">
-    <a href="" className="btn btn-default btn-rounded my-3" data-toggle="modal" data-target="#modalLRForm">Launch Modal LogIn/Register</a>
-</div>
+
 
             </div>
 
