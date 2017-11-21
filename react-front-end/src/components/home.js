@@ -20,13 +20,22 @@ class Home extends Component {
       };
     
       handleUpdateInput = (value) => {
-        this.setState({
-          dataSource: [
-            value,
-            value + value,
-            value + value + value,
-          ],
-        });
+        var term = value.toUpperCase();
+        var API = "https://api.sandbox.amadeus.com/v1.2/airports/autocomplete?apikey=NKHaRIuzMxh8bfMSPnKPt3UGrHjDx9AV&term="+term+"&country=US";
+        console.log("API"+API)
+        fetch(API, {method: 'GET', headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
+            },
+           })
+            .then((response) => response.json())
+		    .then((json) => {
+                var airportlist = json.map((item,index)=>item.label)
+                this.setState({
+                    dataSource: airportlist
+                  });
+		});
+        
       };
 
     componentWillMount(){
