@@ -1,0 +1,16 @@
+{
+  "name": "kayak-kafka-backend",
+  "version": "1.0.0",
+  "description": "",
+  "main": "databaseAPI.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "kafka-node": "^2.3.0",
+    "mysql": "^2.15.0"
+  }
+}

@@ -4,7 +4,7 @@ var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var cors = require('cors');
-
+var passport_google = require('./routes/passport/passport'); //this is the passport for google login
 
 var index = require('./routes/index');
 var hotel = require('./routes/hotel');
@@ -59,6 +59,13 @@ app.use('/user', user);
 app.use('/car', car);
 app.use('/hotel', hotel);
 app.use('/flight', flight);
+
+app.get('/auth/google', passport_google.authenticate('google', { scope : ['profile', 'email'] }));
+app.get('/auth/google/callback',
+    passport.authenticate('google', {
+        successRedirect : '/user/', //technically the daashboard page that is the status 201
+        failureRedirect : '/'      // status 401 redirect to register page. status 401
+    }));
 //app.use('/admin',admin);
 
 

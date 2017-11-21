@@ -52,8 +52,10 @@ module.exports = function(passport) {
 
                     var body = {
                         email : profile.emails[0].value,
-                        action : "google_login"
+                        action : "google_login",
+                        name : profile.displayName
                     }
+                    console.log(profile.displayName);
                 kafka.make_request('login',body, function(err,results){
 
                     if(err){

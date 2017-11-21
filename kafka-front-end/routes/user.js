@@ -40,16 +40,9 @@ router.post('/login', function (req, res) {
 
 router.post('/register',function (req,res) {
 
-    var body = {
-       "reqEmail" : req.body.email,
-       "reqPassword" : req.body.password,
-       "reqFirstName": req.body.firstname,
-       "reqLastName":req.body.lastname,
-       "action": "register"
+    
 
-    }
-
-    kafka.make_request('login', body ,function(err,results){
+    kafka.make_request('login', req.body ,function(err,results){
 
         if(err){
             console.log("After kafka response");
