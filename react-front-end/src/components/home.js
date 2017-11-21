@@ -16,10 +16,14 @@ import Hotelsearch from './hotelsearch'
 class Home extends Component {
 
     state = {
-        dataSource: [],
+        airportlist: [],
       };
     
-      handleUpdateInput = (value) => {
+     
+    componentWillMount(){
+        //injectTapEventPlugin()
+    }
+    handleUpdateInput = (value) => {
         var term = value.toUpperCase();
         var API = "https://api.sandbox.amadeus.com/v1.2/airports/autocomplete?apikey=NKHaRIuzMxh8bfMSPnKPt3UGrHjDx9AV&term="+term+"&country=US";
         console.log("API"+API)
@@ -32,16 +36,14 @@ class Home extends Component {
 		    .then((json) => {
                 var airportlist = json.map((item,index)=>item.label)
                 this.setState({
-                    dataSource: airportlist
+                    airportlist: airportlist
                   });
 		});
         
       };
-
-    componentWillMount(){
-        //injectTapEventPlugin()
+    handleSearch(){
+    
     }
-     
      
     render(){
         return(
@@ -120,7 +122,7 @@ class Home extends Component {
             
             <AutoComplete
                     hintText="From"
-                    dataSource={this.state.dataSource}
+                    dataSource={this.state.airportlist}
                     onUpdateInput={this.handleUpdateInput}
                     floatingLabelText="From"
                     maxSearchResults={5}
@@ -131,7 +133,7 @@ class Home extends Component {
             <div style={{backgroundColor:'white'}}>
             <AutoComplete
                     hintText="To"
-                    dataSource={this.state.dataSource}
+                    dataSource={this.state.airportlist}
                     onUpdateInput={this.handleUpdateInput}
                     floatingLabelText="To"
                     maxSearchResults={5}
