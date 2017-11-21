@@ -101,45 +101,55 @@ class Home extends Component {
 <div className="tab-content">
 
     <div className="tab-pane fade in show active" id="flight" role="tabpanel" 
-    style={{padding:"8%",marginTop:'-9%'}}>
-        <div className="card" style={{backgroundColor:'grey',padding:'5%'}}>
+    style={{paddingTop:"8%",marginTop:'-9%'}}>
+        <div className="card" style={{backgroundColor:'#E4E5EA', borderRadius: '0px',paddingTop:'3%',paddingBottom:'3%'}}>
 
             <div className="card-body">
             <div className="row">
             
-            <div className="col-sm-2" style={{backgroundColor:'white',padding:'1px'}}>
+            <div className="col-sm-3" style={{backgroundColor:'white'}} >
+            
             <AutoComplete
                     hintText="From"
                     dataSource={this.state.dataSource}
                     onUpdateInput={this.handleUpdateInput}
                     floatingLabelText="From"
+                    maxSearchResults={5}
             />
+       
             </div>
-            <div className="col-sm-2" style={{backgroundColor:'green'}}>
-                <AutoComplete
+            <div className="col-sm-3">
+            <div style={{backgroundColor:'white'}}>
+            <AutoComplete
                     hintText="To"
                     dataSource={this.state.dataSource}
                     onUpdateInput={this.handleUpdateInput}
                     floatingLabelText="To"
+                    maxSearchResults={5}
             />
+            </div>
 
             </div>
-            <div className="col-sm-2" style={{backgroundColor:'red',padding:'1px'}}>
+            <div className="col-sm-1" style={{backgroundColor:'white'}}>
             <DatePicker hintText="Start Date" mode="landscape"  floatingLabelText="Start Date"/>
             </div>
-            <div className="col-sm-2">
+            <div className="col-sm-1" style={{backgroundColor:'white'}}>
             <DatePicker hintText="Return Date" mode="landscape" floatingLabelText="Return Date"/>
             </div>
-            <div className="col-sm-2">
+            <div className="col-sm-3">
+            <div style={{backgroundColor:'white'}}>    
             <TextField
                  hintText="Travelers"
                  floatingLabelText="Travelers"
             />
             </div>
-            <div className="col-sm-2">
-            <button type="button" className="btn btn-deep-orange">
-                <i className="fa fa-arrow-right" aria-hidden="true"></i></button>
             </div>
+            <div className="col-sm-1" >
+
+            <button type="button" className="btn btn-deep-orange" style={{marginLeft:"-10%",height:'60px'}}>
+                 <i className="fa fa-arrow-right" aria-hidden="true"></i></button>
+            </div>
+           
           </div>
             </div>
 
