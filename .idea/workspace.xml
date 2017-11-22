@@ -1,29 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="38bb411a-1218-418b-87b7-afc28b7a9352" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/kafka-back-end/models/hotel/TripAdvisorHotels.js" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/kafka-back-end/models/Car.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/kafka-back-end/models/Hotel.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/kafka-back-end/models/MMT.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/kafka-back-end/models/alamo.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/kafka-back-end/models/cleartrip.js" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/kafka-back-end/kafka/Connection.js" afterPath="$PROJECT_DIR$/kafka-back-end/kafka/Connection.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/kafka-back-end/models/Flight.js" afterPath="$PROJECT_DIR$/kafka-back-end/models/Flight.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/kafka-back-end/models/User.js" afterPath="$PROJECT_DIR$/kafka-back-end/models/User.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/kafka-back-end/models/mysql.js" afterPath="$PROJECT_DIR$/kafka-back-end/models/mysql.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/kafka-back-end/server.js" afterPath="$PROJECT_DIR$/kafka-back-end/server.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/kafka-back-end/services/admin.js" afterPath="$PROJECT_DIR$/kafka-back-end/services/admin.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/kafka-back-end/services/car.js" afterPath="$PROJECT_DIR$/kafka-back-end/services/car.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/kafka-back-end/services/hotel.js" afterPath="$PROJECT_DIR$/kafka-back-end/services/hotel.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/kafka-back-end/services/user.js" afterPath="$PROJECT_DIR$/kafka-back-end/services/user.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/kafka-front-end/package-lock.json" afterPath="$PROJECT_DIR$/kafka-front-end/package-lock.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/kafka-front-end/package.json" afterPath="$PROJECT_DIR$/kafka-front-end/package.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/kafka-front-end/routes/car.js" afterPath="$PROJECT_DIR$/kafka-front-end/routes/car.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/kafka-front-end/routes/hotel.js" afterPath="$PROJECT_DIR$/kafka-front-end/routes/hotel.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/kafka-front-end/routes/kafka/client.js" afterPath="$PROJECT_DIR$/kafka-front-end/routes/kafka/client.js" />
-    </list>
+    <list default="true" id="38bb411a-1218-418b-87b7-afc28b7a9352" name="Default" comment="" />
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
     <ignored path="$PROJECT_DIR$/tmp/" />
@@ -322,13 +300,12 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="25792000" />
+    <option name="totallyTimeSpent" value="26288000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="75" y="34" width="1281" height="732" extended-state="0" />
-    <editor active="true" />
     <layout>
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.24980484" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.24980484" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
