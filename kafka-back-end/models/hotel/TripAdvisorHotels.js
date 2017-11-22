@@ -19,14 +19,22 @@ var Schema       = mongoose.Schema;
 */
 // End of Redis Config
 
-mongoose.connect('mongodb://localhost:27017/cmpe273_kayak');
 
+var HotelSchema   = new Schema({
 
-var UserSchema   = new Schema({
-    firstname: String,
-    lastname: String,
-    password: Object,
-    email: String
+    hotelId:String,
+    name:String,
+    address: Object, //{'street':'101 E San Fernando St.','city':'San Jose', 'state': 'CA', 'country':'USA', 'zip':'95112'}
+    stars: Number,
+    reviews : Array,
+    rating: Number,
+    rooms : Array
+    //[
+    // {roomtype: 'delux', 'price':'$120', 'rooomcount':100},
+    // {roomtype:'premium','price':'$220', 'rooomcount':100},
+    // {roomtype:'suite','price':'$320', 'rooomcount':100}
+    // ]
+
 });
 
-module.exports = mongoose.model('User', UserSchema);
+module.exports = mongoose.model('TripAdvisorHotels', HotelSchema, 'TripAdvisorHotels');

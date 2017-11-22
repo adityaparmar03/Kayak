@@ -19,14 +19,16 @@ var Schema       = mongoose.Schema;
 */
 // End of Redis Config
 
-mongoose.connect('mongodb://localhost:27017/cmpe273_kayak');
+var CarSchema = new Schema({
 
+    carId:String,
+    cartype: String,
+    pickupdate: Date,
+    dropoffdate: Date,
+    pickupaddress: Object,  //{'street':'101 E San Fernando St.','city':'San Jose', 'state': 'CA', 'country':'USA'}
+    dropoffaddress: Object,
+    dailyrent: String
 
-var UserSchema   = new Schema({
-    firstname: String,
-    lastname: String,
-    password: Object,
-    email: String
 });
 
-module.exports = mongoose.model('User', UserSchema);
+module.exports = mongoose.model('CleartripCars', CarSchema, 'CleartripCars');

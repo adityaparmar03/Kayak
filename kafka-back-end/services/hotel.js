@@ -1,16 +1,17 @@
 
-var Hotel = require('../models/Hotel');
 
 // Search for all hotels on the basis of city, state and room type
 function searchHotels(msg, callback){
+
+
+    var hotel = require('../models/hotel/'+msg.vendor);
 
     var res = {};
     var city = msg.searchcriteria.city;
     var state = msg.searchcriteria.state;
     var roomtype = msg.searchcriteria.roomtype;
 
-
-    Hotel.find({'city': city, 'state': state, 'rooms.roomtype': roomtype }, function (err, hotels) {
+    hotel.find({'address.city': city, 'address.state': state, 'rooms.roomtype': roomtype }, function (err, hotels) {
 
         if (err) {
             throw err;
@@ -28,3 +29,4 @@ function searchHotels(msg, callback){
     });
 }
 
+exports.searchHotels=searchHotels;

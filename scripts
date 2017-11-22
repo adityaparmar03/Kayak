@@ -1,0 +1,94 @@
+
+bin/kafka-topics.sh --create --zookeeper localhost:2181 --replication-factor 1 --partitions 1 --topic MmtCars
+bin/kafka-topics.sh --create --zookeeper localhost:2181 --replication-factor 1 --partitions 1 --topic AlamoCars
+bin/kafka-topics.sh --create --zookeeper localhost:2181 --replication-factor 1 --partitions 1 --topic CleartripCars
+
+bin/kafka-topics.sh --create --zookeeper localhost:2181 --replication-factor 1 --partitions 1 --topic MmtHotels
+bin/kafka-topics.sh --create --zookeeper localhost:2181 --replication-factor 1 --partitions 1 --topic TripAdvisorHotels
+bin/kafka-topics.sh --create --zookeeper localhost:2181 --replication-factor 1 --partitions 1 --topic CleartripHotels
+
+
+create table vendors (vendorId int AUTO_INCREMENT primary key, vendorname varchar(50), servicetype varchar(50), vendorapi varchar(255));
+
+insert into vendors (vendorname, servicetype, vendorapi)  values ('MMT', 'car', 'http://localhost:3001/car/getcars?vendor=MmtCars');
+insert into vendors (vendorname, servicetype, vendorapi) values ('Cleartrip', 'car', 'http://localhost:3001/car/getcars?vendor=CleartripCars');
+insert into vendors (vendorname, servicetype, vendorapi) values ('Alamo', 'car', 'http://localhost:3001/car/getcars?vendor=AlamoCars');
+
+
+insert into vendors (vendorname, servicetype, vendorapi)  values ('MMT', 'hotel', 'http://localhost:3001/hotel/gethotels?vendor=MmtHotels');
+insert into vendors (vendorname, servicetype, vendorapi) values ('Cleartrip', 'hotel', 'http://localhost:3001/hotel/gethotels?vendor=CleartripHotels');
+insert into vendors (vendorname, servicetype, vendorapi) values ('TripAdvisor', 'hotel', 'http://localhost:3001/hotel/gethotels?vendor=TripAdvisorHotels');
+
+
+
+use cmpe273_kayak;
+
+db.MmtCars.insert({
+'carId':'MMT101', 
+'cartype':'BMW', 
+'pickupdate':new Date(2017,11,25),
+'dropoffdate': new Date(2017,11,27),
+'pickupaddress': {'street':'101 E San Fernando St.','city':'San Jose', 'state': 'CA', 'country':'USA'},
+'dropoffaddress': {'street':'101 E San Fernando St.','city':'San Jose', 'state': 'CA', 'country':'USA'},
+'dailyrent':'$10'})
+
+
+db.CleartripCars.insert({
+'carId':'CT101', 
+'cartype':'AUDI', 
+'pickupdate':new Date(2017,11,25),
+'dropoffdate': new Date(2017,11,27),
+'pickupaddress': {'street':'Colonnade Apt','city':'San Jose', 'state': 'CA', 'country':'USA'},
+'dropoffaddress': {'street':'Colonnade Apt','city':'San Jose', 'state': 'CA', 'country':'USA'},
+'dailyrent':'$15'})
+
+
+db.AlamoCars.insert({
+'carId':'CT101', 
+'cartype':'Mercedes', 
+'pickupdate':new Date(2017,11,25),
+'dropoffdate': new Date(2017,11,27),
+'pickupaddress': {'street':'33 south st','city':'San Jose', 'state': 'CA', 'country':'USA'},
+'dropoffaddress': {'street':'33 south st','city':'San Jose', 'state': 'CA', 'country':'USA'},
+'dailyrent':'$15'})
+
+db.MmtHotels.insert({
+'hotelId': 'MMT111',
+'name': 'HolidayInn',
+'address': {'street':'101 E San Fernando St.','city':'San Jose', 'state': 'CA', 'country':'USA', 'zip':'95112'},
+'reviews':['Good', 'Bad'],
+'rating':4,
+'rooms':[
+     {'roomtype': 'delux', 'price':'$120', 'rooomcount':100},
+     {'roomtype':'premium','price':'$220', 'rooomcount':100},
+     {'roomtype':'suite','price':'$320', 'rooomcount':100}
+    ]
+    })
+
+
+db.CleartripHotels.insert({
+'hotelId': 'MMT111',
+'name': 'HolidayInn',
+'address': {'street':'Colonnade','city':'San Jose', 'state': 'CA', 'country':'USA', 'zip':'95112'},
+'reviews':['Good', 'Bad'],
+'rating':4,
+'rooms':[
+     {'roomtype': 'delux', 'price':'$120', 'rooomcount':100},
+     {'roomtype':'premium','price':'$220', 'rooomcount':100},
+     {'roomtype':'suite','price':'$320', 'rooomcount':100}
+    ]
+    })
+
+
+db.TripAdvisorHotels.insert({
+'hotelId': 'MMT111',
+'name': 'HolidayInn',
+'address': {'street':'33 South St','city':'San Jose', 'state': 'CA', 'country':'USA', 'zip':'95112'},
+'reviews':['Good', 'Bad'],
+'rating':4,
+'rooms':[
+     {'roomtype': 'delux', 'price':'$120', 'rooomcount':100},
+     {'roomtype':'premium','price':'$220', 'rooomcount':100},
+     {'roomtype':'suite','price':'$320', 'rooomcount':100}
+    ]
+    })

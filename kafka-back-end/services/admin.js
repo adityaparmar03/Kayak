@@ -5,7 +5,7 @@ var mysql = require('../models/mysql');
 function fetchUrl(msg, callback){
 
     var res={};
-    var getURL="select * from vendors";
+    var getURL="select vendorapi from vendors where servicetype='"+msg+"'";
 
     mysql.fetchData(function(err,results){
         if(err){

@@ -30,6 +30,7 @@
     "passport-google-oauth": "^1.0.0",
     "passport-local": "^1.0.0",
     "request": "*",
-    "serve-favicon": "~2.4.2"
+    "serve-favicon": "~2.4.2",
+    "node-async-loop": "^1.2.2"
   }
 }

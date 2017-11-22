@@ -1,13 +1,13 @@
 
 var User = require('../models/User');
-var bcrypt = require('bcrypt');
-var MMT = require('../models/MMT');
-var cleartrip = require('../models/cleartrip');
-var alamo = require('../models/alamo');
+//var bcrypt = require('bcrypt');
+var MMT = require('../models/car/MmtCars');
+var cleartrip = require('../models/car/CleartripCars');
+var alamo = require('../models/car/AlamoCars');
 function login(msg, callback){
 
     var res = {};
-    var email=msg.email;
+    /*var email=msg.email;
     var password=msg.password;
 
 
@@ -36,7 +36,9 @@ function login(msg, callback){
                     }
                 });
             }
-        });
+        });*/
+    res.code = "200";
+    res.value = "Success Login";
 }
 
 
