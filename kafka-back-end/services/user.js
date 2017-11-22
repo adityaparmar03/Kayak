@@ -3,6 +3,7 @@ var User = require('../models/User');
 var bcrypt = require('bcrypt');
 var MMT = require('../models/MMT');
 var cleartrip = require('../models/cleartrip');
+var alamo = require('../models/alamo');
 function login(msg, callback){
 
     var res = {};
@@ -72,39 +73,39 @@ function register(msg,callback){
 
 //****************************************************************************************************************************
 
-// function registercar(msg,callback){
-//
-//     var res={};
-//     var user = User();
-//     var mmt = cleartrip();
-//
-//     mmt.cartype = "messarati";
-//         mmt.dailyrent = "30";
-//
-//     mmt.save(function (err) {
-//         if (err){
-//             console.log("Error while saving the data to the database");
-//             res.code = "401";
-//             res.value = "Failed registration";
-//             callback(null,res);
-//         }
-//
-//         else{
-//             console.log("User logged in succesully ");
-//             res.code = "200";
-//             res.value = "Success Registration";
-//             callback(null,res);
-//         }
-//     })
-//
-//
-// }
+function registercar(msg,callback){
+
+    var res={};
+    var user = User();
+    var mmt = alamo();
+
+    mmt.cartype = "";
+        mmt.dailyrent = "30";
+
+    mmt.save(function (err) {
+        if (err){
+            console.log("Error while saving the data to the database");
+            res.code = "401";
+            res.value = "Failed registration";
+            callback(null,res);
+        }
+
+        else{
+            console.log("User logged in succesully ");
+            res.code = "200";
+            res.value = "Success Registration";
+            callback(null,res);
+        }
+    })
+
+
+}
 
 //the above function is used to add cars in their respective collections ... that is create a new collection
 
 
 //****************************************************************************************************************************
 
-//exports.registercar=registercar;
+exports.registercar=registercar;
 exports.register = register ;
 exports.login = login;

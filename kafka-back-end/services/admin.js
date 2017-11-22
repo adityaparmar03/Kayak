@@ -18,7 +18,9 @@ function fetchUrl(msg, callback){
                 res.code = "200";
 
                 res.value = results;
-                //res.value = "asdf";
+                console.log("++++++++++++++++++++++++++++++++");
+                console.log(results)
+                console.log("++++++++++++++++++++++++++++++++");
                 callback(null, res);
             }
             else {
