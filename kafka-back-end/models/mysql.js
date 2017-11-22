@@ -1,5 +1,5 @@
 
-var mysql = require('kafka-front-end/models/mysql');
+var mysql = require('mysql');
 
 var pool  = mysql.createPool({
     host     : 'localhost',

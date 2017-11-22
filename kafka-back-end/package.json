@@ -9,8 +9,9 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "bcrypt": "^1.0.3",
     "kafka-node": "^2.2.3",
     "mongoose": "4.10.8",
-    "bcrypt": "^1.0.3"
+    "mysql": "^2.15.0"
   }
 }

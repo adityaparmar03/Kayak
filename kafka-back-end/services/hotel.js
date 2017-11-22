@@ -9,6 +9,7 @@ function searchHotels(msg, callback){
     var state = msg.searchcriteria.state;
     var roomtype = msg.searchcriteria.roomtype;
 
+
     Hotel.find({'city': city, 'state': state, 'rooms.roomtype': roomtype }, function (err, hotels) {
 
         if (err) {

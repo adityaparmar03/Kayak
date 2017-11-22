@@ -11,8 +11,8 @@ var mail = require('./mail');
 
 router.post('/login', function (req, res) {
 
-     var reqEmail = req.body.email;
-      var reqPassword = req.body.password;
+     // var reqEmail = req.body.email;
+     //  var reqPassword = req.body.password;
 
    passport.authenticate('login', function(err, user) {
 
@@ -40,7 +40,8 @@ router.post('/login', function (req, res) {
 
 router.post('/register',function (req,res) {
 
-    
+
+    console.log(req.body);
 
     kafka.make_request('login', req.body ,function(err,results){
 
@@ -60,7 +61,7 @@ router.post('/register',function (req,res) {
                 res.send({"status":401})
             }
         }
-    });
+    })
 
 
 })

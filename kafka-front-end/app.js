@@ -4,8 +4,8 @@ var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var cors = require('cors');
-var passport_google = require('./routes/passport/passport'); //this is the passport for google login
-
+//var passport_google = require('./routes/passport/passport'); //this is the passport for google login
+var admin = require('./routes/admin');
 var index = require('./routes/index');
 var hotel = require('./routes/hotel');
 var user = require('./routes/user');
@@ -27,6 +27,8 @@ app.use(expressSessions({
     secret: 'cmpe273_kayak',
     duration: 30 * 60 * 1000,    //setting the time for active session
     activeDuration: 5 * 60 * 1000,
+    resave : true,
+    saveUninitialized : false,
     store: new mongoStore({
         url: mongoSessionURL
     })
@@ -60,13 +62,16 @@ app.use('/car', car);
 app.use('/hotel', hotel);
 app.use('/flight', flight);
 
-app.get('/auth/google', passport_google.authenticate('google', { scope : ['profile', 'email'] }));
-app.get('/auth/google/callback',
-    passport.authenticate('google', {
-        successRedirect : '/user/', //technically the daashboard page that is the status 201
-        failureRedirect : '/'      // status 401 redirect to register page. status 401
-    }));
-//app.use('/admin',admin);
+// app.get('/auth/google', passport_google.authenticate('google', { scope : ['profile', 'email'] }));
+// app.get('/auth/google/callback',
+//     passport.authenticate('google', {
+//         successRedirect : '/user/', //technically the daashboard page that is the status 201
+//         failureRedirect : '/'      // status 401 redirect to register page. status 401
+//     }));
+
+app.use('/admin',admin);
+
+
 
 
 // catch 404 and forward to error handler
