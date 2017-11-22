@@ -15,7 +15,9 @@ class Flightsearch extends Component {
 
         // UI State
         airportlist: [],
-        travellerpopup:false
+        travelerpopup:false,
+        traveler:1,
+        class:"Economy"
       };
       handleUpdateInput = (value) => {
         var term = value.toUpperCase();
@@ -35,11 +37,27 @@ class Flightsearch extends Component {
 		});
         
       }; 
-      
+    
+    
+    getTraveler(){
+
+    }  
       
     handlepopup(){
         this.setState({travellerpopup:!this.state.travellerpopup})
     } 
+    changetraveler(op){
+        if(op=="+"){
+            this.setState({traveler:this.state.traveler+1})
+        }else{
+            if(this.state.traveler != 1){
+                this.setState({traveler:this.state.traveler-1})
+            }
+        }
+    }
+    changeclass(cl){
+        this.setState({class:cl})
+    }
     displaypopup(){
         if(this.state.travellerpopup){
             return <div style={{marginTop:"-6%",minWidth:"300px",
@@ -48,11 +66,26 @@ class Flightsearch extends Component {
                     <button type="button" className="close" aria-label="Close" onClick={()=>this.handlepopup()}>
                         <span aria-hidden="true">&times;</span>
                     </button>
-                    <h5>Cabin Class</h5>
-                    <button type="button" className="btn btn-outline-primary waves-effect">Economy</button>
-                    <button type="button" className="btn btn-outline-primary waves-effect">Business</button>
-                    <button type="button" className="btn btn-outline-primary waves-effect">Premium</button>
-                    <button type="button" className="btn btn-outline-primary waves-effect">First</button>
+                    <h6><b>Cabin Class</b></h6>
+                    <button type="button" className="btn btn-outline-primary waves-effect" onClick={()=>this.changeclass("Economy")}>Economy</button>
+                    <button type="button" className="btn btn-outline-primary waves-effect" onClick={()=>this.changeclass("Business")}>Business</button>
+                    <button type="button" className="btn btn-outline-primary waves-effect" onClick={()=>this.changeclass("Premium")}>Premium</button>
+                    <button type="button" className="btn btn-outline-primary waves-effect" onClick={()=>this.changeclass("First")}>First</button>
+                    <hr/>
+                    <h6><b>Travelers</b></h6>
+                    <div className="row">
+
+                        <div className="col-sm-4">
+                            <button type="button" onClick={()=>this.changetraveler("-")}
+                            className="btn btn-outline-primary waves-effect">&minus;</button>
+                        </div>
+                        <div className="col-sm-4"><p style={{textAlign:"center",marginTop:"18px"}}>{this.state.traveler}</p></div>
+                        <div className="col-sm-4">
+                            <button type="button" onClick={()=>this.changetraveler("+")}
+                            className="btn btn-outline-primary waves-effect">+</button>
+                        </div>
+                   
+                     </div>
                 </div>
              
             </div>
@@ -103,6 +136,7 @@ class Flightsearch extends Component {
                  hintText="Travelers"
                  floatingLabelText="Travelers"
                  underlineShow='false'
+                 value={this.state.traveler+" Travelers, "+this.state.class}
             />
             </div>
             </div>
