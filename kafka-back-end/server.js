@@ -41,7 +41,7 @@ consumer.on('message', function (message) {
           break;
 
 
-      case 'MMT':
+      case body :
           console.log("inside get MMT topic");
           car.searchCars(body,function (err , res) {
               response(data,res);
@@ -49,18 +49,6 @@ consumer.on('message', function (message) {
           })
 
           break;
-
-
-      case 'cleartrip':
-          console.log("inside get cleartrip topic");
-          car.searchCars(body,function (err , res) {
-              response(data,res);
-              return;
-          })
-
-          break;
-
-
 
       default:
           console.log("Topic not found");

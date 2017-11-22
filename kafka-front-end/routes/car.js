@@ -52,7 +52,7 @@ router.get('/getcars', function (req, res) {
     var vendor = req.query.vendor ;
     console.log(vendor);
     kafka.make_request(vendor,vendor, function(err,results){
-        
+
         if(err){
             res.send({'status': 401});
         }
