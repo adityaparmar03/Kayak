@@ -1,4 +1,4 @@
-import React from 'react'
+/*import React from 'react'
 import {createStore} from 'redux'
 import * as Actions from './actions/action'
 import store from './store/store'
@@ -140,7 +140,8 @@ var password = "Sunil28";
 store.dispatch(Actions.signIn(isLoggedIn, isAdmin, firstName, lastName, email, password, card,[carBooking],
     [hotelBooking],[flightBooking],[car],[hotel],[flight],[booking]));
 
-/*
+*/
+
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
@@ -180,4 +181,3 @@ ReactDOM.render(
     ,
     document.getElementById('root')
 );
-*/
