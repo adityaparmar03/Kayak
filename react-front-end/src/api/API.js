@@ -60,3 +60,34 @@ export const doRegister = (payload) =>
         });
 
 //************************************************************************************************
+
+/*
+payload=
+{
+userId:"userId",
+sessionId:"sessionId",
+eventTime:this.timeConverter(date.getTime()),
+eventName:"eventName",
+pageId:"pageId",
+buttonId:"buttonId",
+objectId:"objectId"
+}
+*/
+export const clickTracker = (payload) =>
+    fetch(`${api}/clicktracker`, {
+        method: 'POST',
+        headers: {
+            ...headers,
+            'Content-Type': 'application/json'
+        },
+        credentials:'include',
+        body: JSON.stringify(payload)
+    }).then(res => {
+        console.log(res);
+        return res.json();
+    })
+        .catch(error => {
+            console.log("This is an API error");
+            return error;
+        });
+
