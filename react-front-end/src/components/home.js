@@ -6,41 +6,22 @@ import FontIcon from 'material-ui/FontIcon';
 import {red500,deepOrange500} from 'material-ui/styles/colors'
 
 import FlatButton from 'material-ui/FlatButton';
-import AutoComplete from 'material-ui/AutoComplete';
-import DatePicker from 'material-ui/DatePicker';
-import TextField from 'material-ui/TextField';
+
 
 import '../css/home.css'
 //Compnents
+import Flightsearch from './flightsearch'
 import Hotelsearch from './hotelsearch'
+import Carsearch from './carsearch'
 class Home extends Component {
 
-    state = {
-        airportlist: [],
-      };
+  
     
      
     componentWillMount(){
         //injectTapEventPlugin()
     }
-    handleUpdateInput = (value) => {
-        var term = value.toUpperCase();
-        var API = "https://api.sandbox.amadeus.com/v1.2/airports/autocomplete?apikey=NKHaRIuzMxh8bfMSPnKPt3UGrHjDx9AV&term="+term+"&country=US";
-        console.log("API"+API)
-        fetch(API, {method: 'GET', headers: {
-                'Accept': 'application/json',
-                'Content-Type': 'application/json'
-            },
-           })
-            .then((response) => response.json())
-		    .then((json) => {
-                var airportlist = json.map((item,index)=>item.label)
-                this.setState({
-                    airportlist: airportlist
-                  });
-		});
-        
-      };
+   
     handleSearch(){
     
     }
@@ -49,7 +30,7 @@ class Home extends Component {
         return(
             <div  style={{ backgroundImage: 'url(' + require('../image/flightbg.jpg') + ')', height: '600px'}}>
             
-            <nav className="navbar navbar-expand-lg navbar-dark" >
+        <nav className="navbar navbar-expand-lg navbar-dark" >
 
  
              <a className="navbar-brand" href="#"><img width="120px" src={require('../image/kayaklogo.png')}/></a>
@@ -59,41 +40,44 @@ class Home extends Component {
                     aria-expanded="false" aria-label="Toggle navigation"><span className="navbar-toggler-icon"></span></button>
 
   
-    <div className="collapse navbar-collapse" id="navbarSupportedContent">
+             <div className="collapse navbar-collapse" id="navbarSupportedContent">
 
     
-        <ul className="navbar-nav mr-auto">
-            <li className="nav-item active">
-                <a className="nav-link" href="#">Home</a>
-            </li>
-            <li className="nav-item">
-                <a className="nav-link" href="#">Features</a>
-            </li>
-            <li className="nav-item">
-                <a className="nav-link" href="#">Pricing</a>
-            </li>
+            <ul className="navbar-nav mr-auto">
+                        <li className="nav-item active">
+                            <a className="nav-link" href="#">Flights</a>
+                        </li>
+                        <li className="nav-item">
+                            <a className="nav-link" href="#">Hotels</a>
+                        </li>
+                        <li className="nav-item">
+                            <a className="nav-link" href="#">Cars</a>
+                        </li>
             
 
            
 
-        </ul>
+             </ul>
      
-        <form className="form-inline">
-                    <ul className="navbar-nav mr-auto">
-                    <li className="nav-item">
-                        <a className="nav-link" href="#" data-toggle="modal" data-target="#modalLRForm">My Account</a>
-                    </li>
-                    
-                </ul>
-        </form>
-    </div>
+                <form className="form-inline">
+                            <ul className="navbar-nav mr-auto">
+                            <li className="nav-item">
+                                <a className="nav-link" href="#" data-toggle="modal" data-target="#modalLRForm">My Account</a>
+                            </li>
+                            
+                        </ul>
+                </form>
+            </div>
   
-</nav>
+        </nav>
 
 
-          <br/>
+       
 
-          <p style={{color:'white',fontWeight:'700',fontSize:'25'}}>Search hundreds of travel sites at once.</p>
+                <p style={{color:'white',
+                fontWeight:'700',fontSize:'25',
+                marginTop:'5%',marginLeft:"30%",
+                marginRight:"30%"}}>Search hundreds of travel sites at once.</p>
 
                 <div style={{marginLeft:'25%',marginRight:'25%',marginTop:"5%"}}>        
                 <ul className="nav nav-tabs nav-justified" role="tablist">
@@ -113,69 +97,15 @@ class Home extends Component {
 
     <div className="tab-pane fade in show active" id="flight" role="tabpanel" 
     style={{paddingTop:"8%",marginTop:'-9%'}}>
-        <div className="card" style={{backgroundColor:'#E4E5EA', borderRadius: '0px',paddingTop:'3%',paddingBottom:'3%'}}>
-
-            <div className="card-body">
-            <div className="row">
-            
-            <div className="col-sm-3" style={{backgroundColor:'white'}} >
-            
-            <AutoComplete
-                    hintText="From"
-                    dataSource={this.state.airportlist}
-                    onUpdateInput={this.handleUpdateInput}
-                    floatingLabelText="From"
-                    maxSearchResults={5}
-            />
-       
-            </div>
-            <div className="col-sm-3">
-            <div style={{backgroundColor:'white'}}>
-            <AutoComplete
-                    hintText="To"
-                    dataSource={this.state.airportlist}
-                    onUpdateInput={this.handleUpdateInput}
-                    floatingLabelText="To"
-                    maxSearchResults={5}
-            />
-            </div>
-
-            </div>
-            <div className="col-sm-1" style={{backgroundColor:'white'}}>
-            <DatePicker hintText="Start Date" mode="landscape"  floatingLabelText="Start Date"/>
-            </div>
-            <div className="col-sm-1" style={{backgroundColor:'white'}}>
-            <DatePicker hintText="Return Date" mode="landscape" floatingLabelText="Return Date"/>
-            </div>
-            <div className="col-sm-3">
-            <div style={{backgroundColor:'white'}}>    
-            <TextField
-                 hintText="Travelers"
-                 floatingLabelText="Travelers"
-            />
-            </div>
-            </div>
-            <div className="col-sm-1" >
-
-            <button type="button" className="btn btn-deep-orange" style={{marginLeft:"-10%",height:'60px'}}>
-                 <i className="fa fa-arrow-right" aria-hidden="true"></i></button>
-            </div>
-           
-          </div>
-            </div>
-
-        </div>
+       <Flightsearch/>
     </div>
 
     <div className="tab-pane fade" id="hotel" role="tabpanel">
         
-        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nihil odit magnam minima, soluta doloribus reiciendis molestiae placeat unde eos molestias. Quisquam aperiam, pariatur. Tempora, placeat ratione porro voluptate odit minima.</p>
-        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nihil odit magnam minima, soluta doloribus reiciendis molestiae placeat unde eos molestias. Quisquam aperiam, pariatur. Tempora, placeat ratione porro voluptate odit minima.</p>
-    </div>
+     </div>
   
     <div className="tab-pane fade" id="car" role="tabpanel">
         
-        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nihil odit magnam minima, soluta doloribus reiciendis molestiae placeat unde eos molestias. Quisquam aperiam, pariatur. Tempora, placeat ratione porro voluptate odit minima.</p>
     </div>
 
     
@@ -219,7 +149,7 @@ class Home extends Component {
                                 <label data-error="wrong" data-success="right" htmlFor="form23">Your password</label>
                             </div>
                             <div className="text-center mt-2">
-                                <button className="btn btn-info">Log in <i className="fa fa-sign-in ml-1"></i></button>
+                                <button className="btn btn-info" onClick="">Log in <i className="fa fa-sign-in ml-1"></i></button>
                             </div>
                         </div>
                 
@@ -228,7 +158,9 @@ class Home extends Component {
                                 <p>Not a member? <a href="#" className="blue-text">Sign Up</a></p>
                                 <p>Forgot <a href="#" className="blue-text">Password?</a></p>
                             </div>
-                            <button type="button" className="btn btn-outline-info waves-effect ml-auto" data-dismiss="modal">Close</button>
+                            <button type="button" 
+                            className="btn btn-outline-info waves-effect ml-auto" 
+                            data-dismiss="modal">Close</button>
                         </div>
 
                     </div>
@@ -258,7 +190,7 @@ class Home extends Component {
                             </div>
 
                             <div className="text-center form-sm mt-2">
-                                <button className="btn btn-info">Sign up <i className="fa fa-sign-in ml-1"></i></button>
+                                <button className="btn btn-info" onClick="">Sign up <i className="fa fa-sign-in ml-1"></i></button>
                             </div>
 
                         </div>

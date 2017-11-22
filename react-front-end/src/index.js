@@ -145,7 +145,7 @@ store.dispatch(Actions.signIn(isLoggedIn, isAdmin, firstName, lastName, email, p
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-import App from './App';
+
 import Home from "./components/home";
 import { createStore } from 'redux';
 import reducer from './reducers/index';
