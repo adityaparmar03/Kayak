@@ -19,8 +19,8 @@ function searchFlights(msg, callback){
                         'flights.origin.state': originstate,
                         'flights.destination.city': destinationcity,
                         'flights.destination.state': destinationstate,
-                        'flights.class.type': flightclass,
-                        'flights.class.capacity': capacity
+                        'flights.class.type': flightclass/*,
+                        'flights.class.capacity': capacity*/
                     }, function (err, flights) {
 
             if (err) {
@@ -70,4 +70,6 @@ function searchFlights(msg, callback){
     }
 
 }
+
+exports.searchFlights=searchFlights;
 
