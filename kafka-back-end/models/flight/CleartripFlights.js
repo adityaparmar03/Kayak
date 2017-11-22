@@ -41,4 +41,4 @@ var FlightSchema   = new Schema({
     ]*/
 });
 
-module.exports = mongoose.model('Flight', FlightSchema);
+module.exports = mongoose.model('CleartripFlights', FlightSchema, 'CleartripFlights');

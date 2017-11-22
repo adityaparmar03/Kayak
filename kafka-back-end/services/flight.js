@@ -1,8 +1,8 @@
 
-var Flight = require('../models/Flight');
+// Search for all flightss on the basis of city, state and class
+function searchFlights(msg, callback){
 
-// Search for all flightss on the basis of city, state and room type
-function searchHotels(msg, callback){
+    var flight = require('../models/flight/'+msg.vendor);
 
     var res = {};
     var origincity = msg.searchcriteria.origincity;
@@ -15,7 +15,7 @@ function searchHotels(msg, callback){
 
     if(triptype=='One-Way'){
 
-        Flight.find({'flights.origin.city': origincity,
+        flight.find({'flights.origin.city': origincity,
                         'flights.origin.state': originstate,
                         'flights.destination.city': destinationcity,
                         'flights.destination.state': destinationstate,
@@ -41,7 +41,7 @@ function searchHotels(msg, callback){
 
     else{
 
-        Flight.find({'flights.origin.city': origincity,
+        flight.find({'flights.origin.city': origincity,
                         'flights.origin.state': originstate,
                         'flights.destination.city': destinationcity,
                         'flights.destination.state': destinationstate,

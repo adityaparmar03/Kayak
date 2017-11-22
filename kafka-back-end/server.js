@@ -63,25 +63,22 @@ consumer.on('message', function (message) {
 
           break;
 
+      case 'MmtFlights':
+      case 'ExpediaFlights':
+      case 'CleartripFlights':
+
+          flight.searchFlights(body,function (err , res) {
+              response(data,res);
+              return;
+          })
+
+          break;
+
 
 
       default:
           console.log("Topic not found");
           break;
-
-
-      //case ''
-
-/*
-    else if(message.topic=='getuser'){
-        user.getUserDetails(data.data, function(err,res){
-
-            response(data, res);
-            return;
-        });
-    }*/
-
-
 
 
   }
