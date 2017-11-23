@@ -1,36 +1,18 @@
 import React, {Component} from 'react';
-import AppBar from 'material-ui/AppBar';
-//import injectTapEventPlugin from 'react-tap-event-plugin';
-import {Tabs, Tab} from 'material-ui/Tabs';
-import FontIcon from 'material-ui/FontIcon';
-import {red500,deepOrange500} from 'material-ui/styles/colors'
+import {Link,withRouter} from 'react-router-dom';
+import PropTypes from 'prop-types';
 
-import FlatButton from 'material-ui/FlatButton';
+class Nav extends Component {
 
 
-import '../css/home.css'
-//Compnents
-import Flightsearch from './flightsearch'
-import Hotelsearch from './hotelsearch'
-import Carsearch from './carsearch'
-class Home extends Component {
-
-  
-    
-     
     componentWillMount(){
-        //injectTapEventPlugin()
+       
     }
-   
-    handleSearch(){
-    
-    }
-     
+
     render(){
         return(
-            <div  style={{ backgroundImage: 'url(' + require('../image/flightbg.jpg') + ')', height: '600px'}}>
-            
-        <nav className="navbar navbar-expand-lg navbar-dark" >
+            <div>
+                <nav className="navbar navbar-expand-lg navbar-dark" >
 
  
              <a className="navbar-brand" href="#"><img width="120px" src={require('../image/kayaklogo.png')}/></a>
@@ -44,14 +26,14 @@ class Home extends Component {
 
     
             <ul className="navbar-nav mr-auto">
-                        <li className="nav-item active">
-                            <a className="nav-link" href="#">Flights</a>
+                        <li className="nav-item">
+                            <a className="nav-link" href="/flight">Flights</a>
                         </li>
                         <li className="nav-item">
-                            <a className="nav-link" href="#">Hotels</a>
+                            <a className="nav-link" href="/hotel">Hotels</a>
                         </li>
                         <li className="nav-item">
-                            <a className="nav-link" href="#">Cars</a>
+                            <a className="nav-link" href="/car">Cars</a>
                         </li>
             
 
@@ -70,49 +52,7 @@ class Home extends Component {
             </div>
   
         </nav>
-
-
-       
-
-                <p style={{color:'white',
-                fontWeight:'700',fontSize:'25',
-                marginTop:'5%',marginLeft:"30%",
-                marginRight:"30%"}}>Search hundreds of travel sites at once.</p>
-
-                <div style={{marginLeft:'25%',marginRight:'25%',marginTop:"5%"}}>        
-                <ul className="nav nav-tabs nav-justified" role="tablist">
-   
-                    <li className="nav-item">
-                        <a className="nav-link active" data-toggle="tab" href="#flight" role="tab"><i className="fa fa-plane"></i> <b> FLIGHTS</b></a>
-                    </li>
-                    <li className="nav-item">
-                        <a className="nav-link" data-toggle="tab" href="#hotel" role="tab"><i className="fa fa-hotel"></i><b>  HOTELS</b></a>
-                    </li>
-                    <li className="nav-item">
-                        <a className="nav-link" data-toggle="tab" href="#car" role="tab"><i className="fa fa-car"></i><b> CARS</b></a>
-                    </li>
-                </ul>
-                </div>
-<div className="tab-content">
-
-    <div className="tab-pane fade in show active" id="flight" role="tabpanel" 
-    style={{paddingTop:"8%",marginTop:'-9%'}}>
-       <Flightsearch/>
-    </div>
-
-    <div className="tab-pane fade" id="hotel" role="tabpanel">
-        
-     </div>
-  
-    <div className="tab-pane fade" id="car" role="tabpanel">
-        
-    </div>
-
-    
-   
-</div>
-
-<div className="modal fade" id="modalLRForm" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div className="modal fade" id="modalLRForm" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
     <div className="modal-dialog cascading-modal" role="document">
       
         <div className="modal-content">
@@ -210,14 +150,10 @@ class Home extends Component {
      
     </div>
 </div>
-
-
-
-
+                
             </div>
-
         )
     }
 }
 
-export default Home;
+export default Nav;
