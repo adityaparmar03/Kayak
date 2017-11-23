@@ -11,7 +11,7 @@ class Nav extends Component {
     state = {
         
                 navpopup:false,
-                IsLogged:true
+                IsLogged:false
                
     };
     displaypopup(){
@@ -20,9 +20,10 @@ class Nav extends Component {
                 return <div style={{marginTop:"4.5%",minWidth:"200px",position: 'absolute',
                 top: '0px', left: '0px', marginLeft:"83%",marginRight:"0%",borderRadius:"0",zIndex:"2"}} className="card">
                    <div className="card-body"> 
-                       <button type="button" className="btn btn-deep-orange btn-block" >Profile</button>
+                       <button type="button" className="btn btn-deep-orange btn-block"
+                       onClick={()=>this.handlepopup()} >Profile</button>
                        <button type="button" className="btn btn-outline-deep-orange waves-effect btn-block"
-                       >Sign Out</button>
+                       onClick={()=>this.handlepopup()}>Sign Out</button>
                        
                    </div>
                 
@@ -33,9 +34,9 @@ class Nav extends Component {
                 top: '0px', left: '0px', marginLeft:"83%",marginRight:"0%",borderRadius:"0",zIndex:"2"}} className="card">
                    <div className="card-body"> 
                        <button type="button" className="btn btn-deep-orange btn-block"
-                        data-toggle="modal" data-target="#modalLRForm" >SIGN UP</button>
+                        data-toggle="modal" data-target="#modalLRForm" onClick={()=>this.handlepopup()}>SIGN UP</button>
                        <button type="button" className="btn btn-outline-deep-orange waves-effect btn-block" data-toggle="modal" data-target="#modalLRForm"
-                       >SIGN IN</button>
+                       onClick={()=>this.handlepopup()}>SIGN IN</button>
                        
                    </div>
                 
