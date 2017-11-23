@@ -8,6 +8,46 @@ class Nav extends Component {
     componentWillMount(){
        
     }
+    state = {
+        
+                navpopup:false,
+                IsLogged:true
+               
+    };
+    displaypopup(){
+        if(this.state.navpopup){
+            if(this.state.IsLogged){
+                return <div style={{marginTop:"4.5%",minWidth:"200px",position: 'absolute',
+                top: '0px', left: '0px', marginLeft:"83%",marginRight:"0%",borderRadius:"0",zIndex:"2"}} className="card">
+                   <div className="card-body"> 
+                       <button type="button" className="btn btn-deep-orange btn-block" >Profile</button>
+                       <button type="button" className="btn btn-outline-deep-orange waves-effect btn-block"
+                       >Sign Out</button>
+                       
+                   </div>
+                
+               </div> 
+            }
+            else{
+                return <div style={{marginTop:"4.5%",minWidth:"200px",position: 'absolute',
+                top: '0px', left: '0px', marginLeft:"83%",marginRight:"0%",borderRadius:"0",zIndex:"2"}} className="card">
+                   <div className="card-body"> 
+                       <button type="button" className="btn btn-deep-orange btn-block"
+                        data-toggle="modal" data-target="#modalLRForm" >SIGN UP</button>
+                       <button type="button" className="btn btn-outline-deep-orange waves-effect btn-block" data-toggle="modal" data-target="#modalLRForm"
+                       >SIGN IN</button>
+                       
+                   </div>
+                
+               </div>
+            }
+            
+        }
+        
+    } 
+    handlepopup(){
+        this.setState({navpopup:!this.state.navpopup})
+    } 
 
     render(){
         return(
@@ -43,8 +83,8 @@ class Nav extends Component {
      
                 <form className="form-inline">
                             <ul className="navbar-nav mr-auto">
-                            <li className="nav-item">
-                                <a className="nav-link" href="#" data-toggle="modal" data-target="#modalLRForm">My Account</a>
+                            <li className="nav-item" onClick={()=>this.handlepopup()}>
+                                <a className="nav-link">My Account</a>
                             </li>
                             
                         </ul>
@@ -150,7 +190,7 @@ class Nav extends Component {
      
     </div>
 </div>
-                
+              {this.displaypopup()}  
             </div>
         )
     }
