@@ -15,17 +15,16 @@ class Carsearch extends Component {
     state = {
 
         //textbox values
-        from:"",
-        to:"",
+        city:"",
         startdate:"",
         enddate:"",
         
         // UI State
-        fromsuggestion: [],
-        tosuggestion: [],
+       
+        citysuggestion: [],
         travelerpopup:false,
-        traveler:1,
-        class:"Economy"
+        rooms:1,
+        guests:1
       };
        handleSubmit(){
         
@@ -36,12 +35,11 @@ class Carsearch extends Component {
         moment(this.state.enddate).date()+"/"+
         moment(this.state.enddate).year()
 
-        console.log("From=>"+this.state.from)
-        console.log("To=>"+this.state.to)
+        console.log("From=>"+this.state.city)
         console.log("Stat date=>"+startdate)
         console.log("Return Date=>"+enddate)
-        console.log("Travelers =>"+this.state.traveler)
-        console.log("class =>"+this.state.class)
+        console.log("Rooms =>"+this.state.rooms)
+        console.log("Guests =>"+this.state.guests)
 
         // call Api for search here......
         //API CALL
@@ -49,9 +47,9 @@ class Carsearch extends Component {
       }
 
 
-      handleUpdateFromInput = (value,textbox) => {
+      handleUpdateCityInput = (value,textbox) => {
        
-        this.setState({"from":value})  
+        this.setState({"city":value})  
            
         var term = value.toUpperCase();
         var API = "https://api.sandbox.amadeus.com/v1.2/airports/autocomplete?apikey=NKHaRIuzMxh8bfMSPnKPt3UGrHjDx9AV&term="+term+"&country=US";
@@ -65,39 +63,14 @@ class Carsearch extends Component {
            })
             .then((response) => response.json())
 		    .then((json) => {
-                var fromsuggestion = json.map((item,index)=>item.label)
+                var citysuggestion = json.map((item,index)=>item.label)
                 this.setState({
-                    fromsuggestion: fromsuggestion
+                    citysuggestion: citysuggestion
                   });
 		});
         
       }; 
-      handleUpdateToInput = (value,textbox) => {
-        
-         this.setState({"to":value})  
-            
-         var term = value.toUpperCase();
-        //var API = "https://api.sandbox.amadeus.com/v1.2/airports/autocomplete?apikey=NKHaRIuzMxh8bfMSPnKPt3UGrHjDx9AV&term="+term+"&country=US";
-        var API = "https://maps.googleapis.com/maps/api/place/autocomplete/json?input=san&types=(cities)&key=AIzaSyC6yOY5y7Y8pAehpj8khSIIDcjsulHvuFs";
-         fetch(API, {method: 'GET', headers: {
-                 'Accept': 'application/json',
-                 'Content-Type': 'application/json',
-                 'Access-Control-Allow-Origin': "*",
-                 'Access-Control-Allow-Methods':'GET, POST, OPTIONS, PUT, PATCH, DELETE',
-                 
-                 'Access-Control-Allow-Credentials':true
-             },
-            })
-             .then((response) => response.json())
-             .then((json) => {
-                var tosuggestion = json.map((item,index)=>item.description)
-                console.log(tosuggestion)
-                this.setState({
-                    tosuggestion: tosuggestion
-                  });
-         });
-         
-       };
+      
     
     
     handleStartDate(event, date){
@@ -107,56 +80,8 @@ class Carsearch extends Component {
         this.setState({enddate: date})
     }
       
-    handlepopup(){
-        this.setState({travelerpopup:!this.state.travelerpopup})
-    } 
-    changetraveler(op){
-        console.log(this.state)
-        if(op=="+"){
-            this.setState({traveler:this.state.traveler+1})
-        }else{
-            if(this.state.traveler != 1){
-                this.setState({traveler:this.state.traveler-1})
-            }
-        }
-    }
-    changeclass(cl){
-        this.setState({class:cl})
-    }
-    displaypopup(){
-        if(this.state.travelerpopup){
-            return <div style={{marginTop:"-6%",minWidth:"300px",
-            marginLeft:"60%",marginRight:"10%",borderRadius:"0",zIndex:"2"}} className="card">
-                <div className="card-body"> 
-                    <button type="button" className="close" aria-label="Close" onClick={()=>this.handlepopup()}>
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                    <h6><b>Cabin Class</b></h6>
-                    <button type="button" className="btn btn-outline-primary waves-effect" onClick={()=>this.changeclass("Economy")}>Economy</button>
-                    <button type="button" className="btn btn-outline-primary waves-effect" onClick={()=>this.changeclass("Business")}>Business</button>
-                    <button type="button" className="btn btn-outline-primary waves-effect" onClick={()=>this.changeclass("Premium")}>Premium</button>
-                    <button type="button" className="btn btn-outline-primary waves-effect" onClick={()=>this.changeclass("First")}>First</button>
-                    <hr/>
-                    <h6><b>Travelers</b></h6>
-                    <div className="row">
-
-                        <div className="col-sm-4">
-                            <button type="button" onClick={()=>this.changetraveler("-")}
-                            className="btn btn-outline-primary waves-effect">&minus;</button>
-                        </div>
-                        <div className="col-sm-4"><p style={{textAlign:"center",marginTop:"18px"}}>{this.state.traveler}</p></div>
-                        <div className="col-sm-4">
-                            <button type="button" onClick={()=>this.changetraveler("+")}
-                            className="btn btn-outline-primary waves-effect">+</button>
-                        </div>
-                   
-                     </div>
-                </div>
-             
-            </div>
-        }
-        
-    } 
+   
+   
     render(){
         return(
             <div>
@@ -166,53 +91,32 @@ class Carsearch extends Component {
             <div className="card-body">
             <div className="row">
             
-            <div className="col-sm-3" style={{backgroundColor:'white'}} >
-            
+           
+            <div className="col-sm-5">
+            <div style={{backgroundColor:'white',paddingLeft:"5%",paddingRight:"5%"}}>
             <AutoComplete
-                    hintText="From"
-                    dataSource={this.state.fromsuggestion}
-                    onUpdateInput={this.handleUpdateFromInput}
-                    floatingLabelText="From"
+                    hintText="City"
+                    dataSource={this.state.citysuggestion}
+                    onUpdateInput={this.handleUpdateCityInput}
+                    floatingLabelText="City"
                     maxSearchResults={5}
                     underlineShow={false}
-                    
-            />
-       
-            </div>
-            <div className="col-sm-3">
-            <div style={{backgroundColor:'white'}}>
-            <AutoComplete
-                    hintText="To"
-                    dataSource={this.state.tosuggestion}
-                    onUpdateInput={this.handleUpdateToInput}
-                    floatingLabelText="To"
-                    maxSearchResults={5}
-                    underlineShow={false}
+                    fullWidth={true}
             />
             </div>
 
             </div>
-            <div className="col-sm-1" style={{backgroundColor:'white'}}>
+            <div className="col-sm-3" style={{backgroundColor:'white',paddingLeft:"2%",paddingRight:"5%"}}>
             <DatePicker hintText="Start Date" mode="landscape"  
             onChange={this.handleStartDate.bind(this)}
             floatingLabelText="Start Date"/>
             </div>
-            <div className="col-sm-1" style={{backgroundColor:'white'}}>
+            <div className="col-sm-3" style={{backgroundColor:'white',paddingLeft:"0%",paddingRight:"5%"}}>
             <DatePicker hintText="Return Date" mode="landscape"
             onChange={this.handleEndDate.bind(this)} 
             floatingLabelText="Return Date"/>
             </div>
-            <div className="col-sm-3">
-            <div style={{backgroundColor:'white'}} onClick={()=>this.handlepopup()}>    
-            <TextField
-                 hintText="Travelers"
-                 floatingLabelText="Travelers"
-                 underlineShow={false}
-                 value={this.state.traveler+" Travelers, "+this.state.class}
-
-            />
-            </div>
-            </div>
+            
             <div className="col-sm-1" >
 
             <button type="button" className="btn btn-deep-orange" 
@@ -225,7 +129,7 @@ class Carsearch extends Component {
             </div>
 
         </div>
-         {this.displaypopup()}
+        
         
         </div>
         )
