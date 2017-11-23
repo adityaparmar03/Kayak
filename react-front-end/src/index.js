@@ -146,7 +146,10 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 
-import Home from "./components/home";
+import Flighthome from "./components/flighthome";
+import Hotelhome from "./components/hotelhome";
+import Carhome from "./components/carhome";
+
 import { createStore } from 'redux';
 import reducer from './reducers/index';
 import { Provider } from 'react-redux';
@@ -165,13 +168,13 @@ ReactDOM.render(
          <MuiThemeProvider> 
             <div>
        
-                <Route exact path="/" component={Home}/>
-                <Route exact path="/flight" component={Home}/>
-                <Route exact path="/hotel" component={Home}/>
-                <Route exact path="/car" component={Home}/>
-                <Route exact path="/flightlist" component={Home}/>
-                <Route exact path="/hotellist" component={Home}/>
-                <Route exact path="/carlist" component={Home}/>
+                <Route exact path="/" component={Flighthome}/>
+                <Route exact path="/flight" component={Flighthome}/>
+                <Route exact path="/hotel" component={Hotelhome}/>
+                <Route exact path="/car" component={Carhome}/>
+                <Route exact path="/flightlist" component={Flighthome}/>
+                <Route exact path="/hotellist" component={Flighthome}/>
+                <Route exact path="/carlist" component={Flighthome}/>
        
         
             </div>
