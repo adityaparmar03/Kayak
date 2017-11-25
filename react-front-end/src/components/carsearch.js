@@ -23,8 +23,7 @@ class Carsearch extends Component {
        
         citysuggestion: [],
         travelerpopup:false,
-        rooms:1,
-        guests:1
+        
       };
        handleSubmit(){
         
@@ -38,8 +37,7 @@ class Carsearch extends Component {
         console.log("From=>"+this.state.city)
         console.log("Stat date=>"+startdate)
         console.log("Return Date=>"+enddate)
-        console.log("Rooms =>"+this.state.rooms)
-        console.log("Guests =>"+this.state.guests)
+    
 
         // call Api for search here......
         //API CALL

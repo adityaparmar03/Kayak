@@ -52,7 +52,7 @@ class Nav extends Component {
 
     render(){
         return(
-            <div>
+            <div >
                 <nav className="navbar navbar-expand-lg navbar-dark" >
 
  
