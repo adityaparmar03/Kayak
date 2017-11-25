@@ -1,18 +1,62 @@
 import React, {Component} from 'react';
 import {Link,withRouter} from 'react-router-dom';
 import PropTypes from 'prop-types';
-import Nav from './nav'
+import Nav from './nav';
+
+import MultiSlider from "multi-slider";
 class Flightlist extends Component {
     constructor(props){
         super(props);
         this.state = {
-             test:[1,2,3,4,5]
+             test:[1,2,3,4,5,1,2,3,4,5],
+             low: 0,
+             high:0,
+             valuesPrice:[],
+             valuesArrivalTime:[],
+             valuesDepartureTime:[]
         }
      }
+      maxprice = 0; 
+      minprice = 0;
+      maxtime = 1440;
+      mintime = 0
 
+    getTime(minutes){
+
+        var hour = Math.floor(minutes/60)
+        var minute = minutes%60;
+        return hour+":"+minute
+    }  
     componentWillMount(){
-       
+
+
+        this.maxprice = 234; //get from api
+        this.minprice = 67;
+        var values = [0,this.maxprice-this.minprice,0]
+        this.setState({
+            valuesPrice: values,
+            low:this.minprice,
+            high:this.maxprice
+          });
     }
+    onChangePrice = values =>
+    this.setState({
+      valuesPrice: values,
+      low :  this.minprice + values[0],
+      high: this.maxprice - values[2]
+    });
+    onChangeDepartureTime = values =>
+    this.setState({
+      values: values,
+      low :  this.minprice + values[0],
+      high: this.maxprice - values[2]
+    });
+    onChangeArrival = values =>
+    this.setState({
+      values: values,
+      low :  this.minprice + values[0],
+      high: this.maxprice - values[2]
+    });
     displaystopline(stop){
         if(stop=="nonstop"){
             return <span>&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;</span> 
@@ -69,7 +113,7 @@ class Flightlist extends Component {
                                 <div style={{textAlign:"center"}}>
                                 <b style={{fontSize:"20px",fontWeight:"bold"}}>$251</b><br/>
                                 <b style={{fontSize:"12px",fontWeight:"bold"}}>Class</b><br/>
-                                <button className="btn btn-deep-orange">Book</button>
+                                <button style={{width:"12vw"}}className="btn btn-deep-orange">Book</button>
                                 </div>
 
                         </div>
@@ -79,24 +123,82 @@ class Flightlist extends Component {
             )
      }
     render(){
+        var colors = ["#FCBD7E", "#EB9F71", "#E6817C"];
         return(
             <div>
                 <div style={{backgroundColor:'black'}}>
                 <Nav/>
                 </div>
                 <div className="jumbotron">
-                   
+                  {this.state.values}
                 </div>    
                 <div className="row">
+
                     <div className="col-4">
                         <div className="jumbotron">
-                    
+                                <p style={{fontWeight:"bold"}}>Price</p>
+                                <hr/>    
+                                <MultiSlider
+                                colors={colors}
+                                values={this.state.valuesPrice}
+                                onChange={this.onChangePrice}
+                            />
+                                    <div className="row">
+
+                                        <div className="col-sm-6">
+                                        Low:${this.state.low}
+                                        </div>
+                                        <div className="col-sm-6" style={{textAlign:'right'}}>
+                                        High:${this.state.high}
+                                        </div>
+                                    </div>
+                     
+                        <br/>  <br/>
+                      
+                                    <p style={{fontWeight:"bold"}}>Departure Time</p>
+                                    <hr/>    
+                                    <MultiSlider
+                                    colors={colors}
+                                    values={this.state.valuesPrice}
+                                    onChange={this.onChangePrice}
+                                />
+                                <div className="row">
+
+                                        <div className="col-sm-6">
+                                        Low:${this.getTime(1234)}
+                                        </div>
+                                        <div className="col-sm-6" style={{textAlign:'right'}}>
+                                        High:${this.state.high}
+                                        </div>
+                                </div>
+
+                         <br/>  <br/>
+                      
+                                    <p style={{fontWeight:"bold"}}>Arrival Time</p>
+                                    <hr/>    
+                                    <MultiSlider
+                                    colors={colors}
+                                    values={this.state.valuesPrice}
+                                    onChange={this.onChangePrice}
+                                />
+                                <div className="row">
+
+                                        <div className="col-sm-6">
+                                        Low:${this.state.low}
+                                        </div>
+                                        <div className="col-sm-6" style={{textAlign:'right'}}>
+                                        High:${this.state.high}
+                                        </div>
+                                </div>       
+                     
                         </div>  
+
+                        
                     </div>
-                    <div className="col-8">
+                    <div className="col-8" style={{ overflow: 'scroll', height: '90vh'}}>
                          { this.state.test.map((this.displayflights),this)}     
                     </div>
-                    
+                   
                 </div>
             </div>
         )
