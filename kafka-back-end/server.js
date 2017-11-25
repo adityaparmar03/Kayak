@@ -23,13 +23,23 @@ consumer.on('message', function (message) {
 
       case 'login':
 
-           users.registercar(body,function (err,res) {
+           users.login(body,function (err,res) {
                response(data,res);
                return;
            })
 
 
         break;
+
+      case 'register':
+          users.register(body,function (err,res) {
+              response(data,res);
+              return;
+          })
+          break;
+
+      case'update':
+           users.update()
 
       case 'getapi':
           console.log("inside get cars topic");

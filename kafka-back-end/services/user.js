@@ -1,44 +1,35 @@
 
-var User = require('../models/User');
+
 //var bcrypt = require('bcrypt');
-var MMT = require('../models/car/MmtCars');
-var cleartrip = require('../models/car/CleartripCars');
-var alamo = require('../models/car/AlamoCars');
+var mysql = require('../models/mysql');
+
+
+
+
+
 function login(msg, callback){
 
     var res = {};
-    /*var email=msg.email;
-    var password=msg.password;
+    var selectQuery = "select password from USER where username = "+msg.email ;
+    mysql.fetchData(function (err,password) {
 
-
-        User.findOne({'email': email}, function (err, user) {
-            if(!user || !bcrypt.compareSync(password, user.password)){
-
-                res.code = "401";
-                res.value = "Failed Login";
-                callback(null, res);
+        if (err){
+           res.code = "401" ;
+           res.value = "Username not valid";
+        }
+        else {
+            if (password == msg.password) {
+                res.code = "200";
+                res.value = "User valid";
             }
-            else {
-
-
-                User.update({'email': email},{lastlogintime: new Date()}, function (err) {
-                    if (err) {
-                        throw err;
-                        console.log("Error inserting last login....")
-                    }
-                    else {
-
-                        console.log("last login inserted....")
-                        res.code = "200";
-                        res.value = "Success Login";
-
-                        callback(null, res);
-                    }
-                });
+            else{
+                res.code = "402";
+                res.value = "User password not valid";
             }
-        });*/
-    res.code = "200";
-    res.value = "Success Login";
+        }
+        callback(null,res);
+    } , selectQuery)
+
 }
 
 
@@ -48,66 +39,48 @@ function login(msg, callback){
 function register(msg,callback){
 
     var res={};
-    var user = User();
+    var insertQuery="insert into USER('email','password') values('"+msg.email+"','"+msg.password+"');";
 
-    user.firstname = msg.firstname;
-    user.lastname = msg.lastname;
-    user.email = msg.email;
-    user.password = msg.password;
-
-    user.save(function (err) {
-        if (err){
-            console.log("Error while saving the data to the database");
+    mysql.executeQuery(function(err){
+        if(err){
+            throw err;
             res.code = "401";
-            res.value = "Failed registration";
+            res.value=" Error Occured while registering ";
         }
-
         else{
-            console.log("User logged in succesully ");
-            res.code = "200";
-            res.value = "Success Registration";
-            callback(null,res);
-        }
-    })
 
+               res.code = "200";
+               res.value = "User successfully registered";
+
+        }callback(null,res);
+     },insertQuery);
 
 }
 
 //****************************************************************************************************************************
 
-function registercar(msg,callback){
-
+function update(msg,callback) {
     var res={};
-    var user = User();
-    var mmt = alamo();
-
-    mmt.cartype = "";
-        mmt.dailyrent = "30";
-
-    mmt.save(function (err) {
-        if (err){
-            console.log("Error while saving the data to the database");
+    var updateQuery = "UPDATE USER SET email = ,first_name=\"\",last_name=\"\",street_address=\"\",city=\"\",state=\"\",zip_code=\"\" where email = msg.email";
+    mysql.executeQuery(function(err){
+        if(err){
+            throw err;
             res.code = "401";
-            res.value = "Failed registration";
-            callback(null,res);
+            res.value=" Error Occured while registering ";
         }
-
         else{
-            console.log("User logged in succesully ");
-            res.code = "200";
-            res.value = "Success Registration";
-            callback(null,res);
-        }
-    })
 
+            res.code = "200";
+            res.value = "User successfully registered";
+
+        }callback(null,res);
+    },insertQuery);
 
 }
-
-//the above function is used to add cars in their respective collections ... that is create a new collection
 
 
 //****************************************************************************************************************************
 
-exports.registercar=registercar;
+
 exports.register = register ;
 exports.login = login;

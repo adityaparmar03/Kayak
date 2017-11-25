@@ -22,12 +22,13 @@ router.post('/login', function (req, res) {
         }
 
         if(!user ){
-            console.log('Could not find user')
+            console.log('Could not find user');
             res.send({status: 401});
         }
         else {
 
             req.session.email = user.email;
+            req.session.isloggedin = true;
             res.send({"status": 201, "email": user.email});
 
         }
@@ -54,6 +55,36 @@ router.post('/register',function (req,res) {
         {
             if(results.code == 200){
             mail.sendMail(req,res);
+
+            }
+            else {
+                done(null,false);
+                res.send({"status":401})
+            }
+        }
+    })
+
+
+})
+
+//************************************************************************************************************************
+
+router.put('/update',function (req,res) {
+
+
+    console.log(req.body);
+
+    kafka.make_request('login', req.body ,function(err,results){
+
+        if(err){
+            console.log("After kafka response");
+            done(err,{});
+            res.send({"status":401})
+        }
+        else
+        {
+            if(results.code == 200){
+                mail.sendMail(req,res);
 
             }
             else {

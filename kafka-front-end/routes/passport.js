@@ -13,8 +13,7 @@ module.exports = function(passport) {
 
               var body = {
                   "email" : email,
-                  "password": password,
-                  "action" : "user"
+                  "password": password
               }
             kafka.make_request('login',body, function(err,results){
 
