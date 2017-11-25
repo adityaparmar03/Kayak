@@ -150,6 +150,10 @@ import Flighthome from "./components/flighthome";
 import Hotelhome from "./components/hotelhome";
 import Carhome from "./components/carhome";
 
+import Flightlist from "./components/flightlist";
+import Hotellist from "./components/hotelhome";
+import Carlist from "./components/carhome";
+
 import { createStore } from 'redux';
 import reducer from './reducers/index';
 import { Provider } from 'react-redux';
@@ -172,9 +176,9 @@ ReactDOM.render(
                 <Route exact path="/flight" component={Flighthome}/>
                 <Route exact path="/hotel" component={Hotelhome}/>
                 <Route exact path="/car" component={Carhome}/>
-                <Route exact path="/flightlist" component={Flighthome}/>
-                <Route exact path="/hotellist" component={Flighthome}/>
-                <Route exact path="/carlist" component={Flighthome}/>
+                <Route exact path="/flightlist" component={Flightlist}/>
+                <Route exact path="/hotellist" component={Hotellist}/>
+                <Route exact path="/carlist" component={Carlist}/>
        
         
             </div>
