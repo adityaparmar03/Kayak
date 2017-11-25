@@ -51,3 +51,22 @@ query.exec(function(err, userInfo){
     // Process the Query Results
 });
 ```
+
+### List of Kafka Topics to be created
+> login
+> getapi
+> MmtCars
+> CleartripCars
+> AlamoCars
+> MmtHotels
+> CleartripHotels
+> TripAdvisorHotels
+> MmtFlights
+> CleartripFlights
+> ExpediaFlights
+
+### Use below command to create all the required Topics
+> kafka-topics --create --zookeeper localhost:2181 --replication-factor 1 --partitions 1 -topic <<topic_name>>
+
+### Verify Topic Creation
+> kafka-topics --list --zookeeper localhost:2181
