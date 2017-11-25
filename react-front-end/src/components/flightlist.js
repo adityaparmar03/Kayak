@@ -11,6 +11,10 @@ class Flightlist extends Component {
              test:[1,2,3,4,5,1,2,3,4,5],
              low: 0,
              high:0,
+             departure_start_time:0,
+             departure_end_time:1439,
+             arrival_start_time:0,
+             arrival_end_time:1439,
              valuesPrice:[],
              valuesArrivalTime:[],
              valuesDepartureTime:[]
@@ -18,13 +22,21 @@ class Flightlist extends Component {
      }
       maxprice = 0; 
       minprice = 0;
-      maxtime = 1440;
-      mintime = 0
+      maxarrivaltime = 1439;
+      minarrivaltime = 0
+      maxdepttime = 1439;
+      mindepttime = 0
 
     getTime(minutes){
 
         var hour = Math.floor(minutes/60)
         var minute = minutes%60;
+        if(hour.toString().length<2){
+            hour="0"+hour;
+        }
+        if(minute.toString().length<2){
+            minute="0"+minute;
+        }
         return hour+":"+minute
     }  
     componentWillMount(){
@@ -32,9 +44,12 @@ class Flightlist extends Component {
 
         this.maxprice = 234; //get from api
         this.minprice = 67;
-        var values = [0,this.maxprice-this.minprice,0]
+        var valuesPrice = [0,this.maxprice-this.minprice,0]
+        var valuesTime=[0,1439,0]
         this.setState({
-            valuesPrice: values,
+            valuesPrice: valuesPrice,
+            valuesArrivalTime:valuesTime,
+            valuesDepartureTime:valuesTime,
             low:this.minprice,
             high:this.maxprice
           });
@@ -47,15 +62,15 @@ class Flightlist extends Component {
     });
     onChangeDepartureTime = values =>
     this.setState({
-      values: values,
-      low :  this.minprice + values[0],
-      high: this.maxprice - values[2]
+      valuesDepartureTime: values,
+      departure_start_time :  this.mindepttime + values[0],
+      departure_end_time: this.maxdepttime - values[2]
     });
     onChangeArrival = values =>
     this.setState({
-      values: values,
-      low :  this.minprice + values[0],
-      high: this.maxprice - values[2]
+      valuesArrivalTime: values,
+      arrival_start_time :  this.minarrivaltime + values[0],
+      arrival_end_time: this.maxarrivaltime - values[2]
     });
     displaystopline(stop){
         if(stop=="nonstop"){
@@ -159,16 +174,16 @@ class Flightlist extends Component {
                                     <hr/>    
                                     <MultiSlider
                                     colors={colors}
-                                    values={this.state.valuesPrice}
-                                    onChange={this.onChangePrice}
+                                    values={this.state.valuesDepartureTime}
+                                    onChange={this.onChangeDepartureTime}
                                 />
                                 <div className="row">
 
                                         <div className="col-sm-6">
-                                        Low:${this.getTime(1234)}
+                                        {this.getTime(this.state.departure_start_time)}
                                         </div>
                                         <div className="col-sm-6" style={{textAlign:'right'}}>
-                                        High:${this.state.high}
+                                        {this.getTime(this.state.departure_end_time)}
                                         </div>
                                 </div>
 
@@ -178,16 +193,16 @@ class Flightlist extends Component {
                                     <hr/>    
                                     <MultiSlider
                                     colors={colors}
-                                    values={this.state.valuesPrice}
-                                    onChange={this.onChangePrice}
+                                    values={this.state.valuesArrivalTime}
+                                    onChange={this.onChangeArrival}
                                 />
                                 <div className="row">
 
                                         <div className="col-sm-6">
-                                        Low:${this.state.low}
+                                        {this.getTime(this.state.arrival_start_time)}
                                         </div>
                                         <div className="col-sm-6" style={{textAlign:'right'}}>
-                                        High:${this.state.high}
+                                        {this.getTime(this.state.arrival_end_time)}
                                         </div>
                                 </div>       
                      
