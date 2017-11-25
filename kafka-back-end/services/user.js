@@ -81,6 +81,6 @@ function update(msg,callback) {
 
 //****************************************************************************************************************************
 
-
+exports.update = update ;
 exports.register = register ;
 exports.login = login;
