@@ -13,7 +13,7 @@ router.post('/login', function (req, res) {
 
      // var reqEmail = req.body.email;
      //  var reqPassword = req.body.password;
-
+        console.log("inside the login path with the body"+req.body);
    passport.authenticate('login', function(err, user) {
 
         if (err) {
@@ -44,7 +44,7 @@ router.post('/register',function (req,res) {
 
     console.log(req.body);
 
-    kafka.make_request('login', req.body ,function(err,results){
+    kafka.make_request('register', req.body ,function(err,results){
 
         if(err){
             console.log("After kafka response");
@@ -54,7 +54,7 @@ router.post('/register',function (req,res) {
         else
         {
             if(results.code == 200){
-            mail.sendMail(req,res);
+             mail.sendMail(req,res);
 
             }
             else {
@@ -71,10 +71,10 @@ router.post('/register',function (req,res) {
 
 router.put('/update',function (req,res) {
 
-
+console.log("inside the update path");
     console.log(req.body);
 
-    kafka.make_request('login', req.body ,function(err,results){
+    kafka.make_request('update', req.body ,function(err,results){
 
         if(err){
             console.log("After kafka response");
@@ -84,7 +84,7 @@ router.put('/update',function (req,res) {
         else
         {
             if(results.code == 200){
-                mail.sendMail(req,res);
+               res.send({"status":201})
 
             }
             else {

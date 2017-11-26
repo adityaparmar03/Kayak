@@ -3,6 +3,9 @@ bin/kafka-topics.sh --create --zookeeper localhost:2181 --replication-factor 1 -
 bin/kafka-topics.sh --create --zookeeper localhost:2181 --replication-factor 1 --partitions 1 --topic AlamoCars
 bin/kafka-topics.sh --create --zookeeper localhost:2181 --replication-factor 1 --partitions 1 --topic CleartripCars
 
+
+
+
 bin/kafka-topics.sh --create --zookeeper localhost:2181 --replication-factor 1 --partitions 1 --topic MmtHotels
 bin/kafka-topics.sh --create --zookeeper localhost:2181 --replication-factor 1 --partitions 1 --topic TripAdvisorHotels
 bin/kafka-topics.sh --create --zookeeper localhost:2181 --replication-factor 1 --partitions 1 --topic CleartripHotels
@@ -32,6 +35,12 @@ insert into vendors (vendorname, servicetype, vendorapi) values ('TripAdvisor', 
 insert into vendors (vendorname, servicetype, vendorapi)  values ('MMT', 'flight', 'http://localhost:3001/flight/getflights?vendor=MmtFlights');
 insert into vendors (vendorname, servicetype, vendorapi) values ('Cleartrip', 'flight', 'http://localhost:3001/flight/getflights?vendor=CleartripFlights');
 insert into vendors (vendorname, servicetype, vendorapi) values ('Expedia', 'flight', 'http://localhost:3001/flight/getflights?vendor=ExpediaFlights');
+
+
+bin/kafka-topics.sh --create --zookeeper localhost:2181 --replication-factor 1 --partitions 1 --topic "login"
+bin/kafka-topics.sh --create --zookeeper localhost:2181 --replication-factor 1 --partitions 1 --topic "register"
+
+
 
 
 
