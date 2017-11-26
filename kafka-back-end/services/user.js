@@ -10,15 +10,23 @@ var mysql = require('../models/mysql');
 function login(msg, callback){
 
     var res = {};
-    var selectQuery = "select password from USER where username = "+msg.email ;
-    mysql.fetchData(function (err,password) {
+    console.log("++++++++++++++++++++");
+    console.log(msg);
+    console.log("++++++++++++++++++++");
+    var selectQuery = "select password from USER where email = '"+msg.email+"';" ;
+    console.log(selectQuery);
+
+    mysql.fetchData(function (err,results) {
 
         if (err){
            res.code = "401" ;
            res.value = "Username not valid";
         }
         else {
-            if (password == msg.password) {
+            console.log("++++++++++++++++++++");
+            console.log(results[0].password);
+            console.log("++++++++++++++++++++");
+            if (results[0].password === msg.password) {
                 res.code = "200";
                 res.value = "User valid";
             }
@@ -39,7 +47,11 @@ function login(msg, callback){
 function register(msg,callback){
 
     var res={};
-    var insertQuery="insert into USER('email','password') values('"+msg.email+"','"+msg.password+"');";
+    console.log("------------");
+    console.log(msg)
+    console.log("------------");
+    var insertQuery="insert into USER(email,password) values('"+msg.email+"','"+msg.password+"');";
+    console.log(insertQuery);
 
     mysql.executeQuery(function(err){
         if(err){
@@ -61,7 +73,8 @@ function register(msg,callback){
 
 function update(msg,callback) {
     var res={};
-    var updateQuery = "UPDATE USER SET email = ,first_name=\"\",last_name=\"\",street_address=\"\",city=\"\",state=\"\",zip_code=\"\" where email = msg.email";
+    console.log(msg);
+    var updateQuery = "update user set password='"+msg.password+"' where email='"+msg.email+"';";
     mysql.executeQuery(function(err){
         if(err){
             throw err;
@@ -74,7 +87,7 @@ function update(msg,callback) {
             res.value = "User successfully registered";
 
         }callback(null,res);
-    },insertQuery);
+    },updateQuery);
 
 }
 

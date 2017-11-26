@@ -5,6 +5,36 @@ USE `kayak`;
 -- Table structure for table `BILLING`
 --
 
+DROP TABLE IF EXISTS `USER`;
+
+CREATE TABLE `USER` (
+  `email` varchar(90) NOT NULL,
+  `password` varchar(45) NOT NULL,
+  `first_name` varchar(45) DEFAULT NULL,
+  `last_name` varchar(45) DEFAULT NULL,
+  `user_role` enum('USER','ADMIN') DEFAULT NULL,
+  `street_address` varchar(90) DEFAULT NULL,
+  `city` varchar(45) DEFAULT NULL,
+  `state` varchar(45) DEFAULT NULL,
+  `zip_code` int(11) DEFAULT NULL,
+  `phone` varchar(45) DEFAULT NULL,
+  `profile_image_path` varchar(90) DEFAULT NULL,
+  `credit_card_type` varchar(45) DEFAULT NULL,
+  `credit_card_number` int(11) DEFAULT NULL,
+  `credit_card_holder_name` varchar(45) DEFAULT NULL,
+  `credit_card_valid_from` date DEFAULT NULL,
+  `credit_card_valid_till` date DEFAULT NULL,
+  PRIMARY KEY (`email`),
+  UNIQUE KEY `email_UNIQUE` (`email`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+LOCK TABLES `USER` WRITE;
+
+UNLOCK TABLES;
+
+
+
+
 DROP TABLE IF EXISTS `BILLING`;
 
 CREATE TABLE `BILLING` (
@@ -66,32 +96,7 @@ UNLOCK TABLES;
 -- Table structure for table `USER`
 --
 
-DROP TABLE IF EXISTS `USER`;
 
-CREATE TABLE `USER` (
-  `email` varchar(90) NOT NULL,
-  `password` varchar(45) NOT NULL,
-  `first_name` varchar(45) DEFAULT NULL,
-  `last_name` varchar(45) DEFAULT NULL,
-  `user_role` enum('USER','ADMIN') DEFAULT NULL,
-  `street_address` varchar(90) DEFAULT NULL,
-  `city` varchar(45) DEFAULT NULL,
-  `state` varchar(45) DEFAULT NULL,
-  `zip_code` int(11) DEFAULT NULL,
-  `phone` varchar(45) DEFAULT NULL,
-  `profile_image_path` varchar(90) DEFAULT NULL,
-  `credit_card_type` varchar(45) DEFAULT NULL,
-  `credit_card_number` int(11) DEFAULT NULL,
-  `credit_card_holder_name` varchar(45) DEFAULT NULL,
-  `credit_card_valid_from` date DEFAULT NULL,
-  `credit_card_valid_till` date DEFAULT NULL,
-  PRIMARY KEY (`email`),
-  UNIQUE KEY `email_UNIQUE` (`email`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
-LOCK TABLES `USER` WRITE;
-
-UNLOCK TABLES;
 
 --
 -- Table structure for table `USER_ACTIVITY`

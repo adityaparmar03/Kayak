@@ -35,11 +35,8 @@ export const doLogin = (payload) =>
 
 //************************************************************************************************
 //payload = {
-//firstname
-//lastname
 //email
 //password
-//type - (this should be user or admin)
 //}
 export const doRegister = (payload) =>
  fetch(`${api}/users/register`, {
@@ -60,6 +57,37 @@ export const doRegister = (payload) =>
         });
 
 //************************************************************************************************
+
+//payload = {
+//email
+//password
+//firstname
+//lastname
+//streetaddress
+//city
+//zzip code etc
+//}
+export const doUpdate = (payload) =>
+ fetch(`${api}/users/update`, {
+        method: 'POST',
+        headers: {
+            ...headers,
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(payload),
+        credentials:'include'
+    }).then(res => {
+
+        return res.json();
+    })
+        .catch(error => {
+            console.log("This is error");
+            return error;
+        });
+
+//************************************************************************************************
+
+
 
 /*
 payload=

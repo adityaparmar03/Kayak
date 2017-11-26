@@ -1,5 +1,5 @@
 var connection =  new require('./kafka/Connection');
-var users = require('./services/user');
+var user = require('./services/user');
 var car = require('./services/car');
 var hotel = require('./services/hotel');
 var flight = require('./services/flight');
@@ -22,7 +22,7 @@ consumer.on('message', function (message) {
 
       case 'login':
 
-           users.login(body,function (err,res) {
+           user.login(body,function (err,res) {
                response(data,res);
                return;
            })
@@ -31,14 +31,20 @@ consumer.on('message', function (message) {
         break;
 
       case 'register':
-          users.register(body,function (err,res) {
+          console.log("inside the switch case");
+          user.register(body,function (err,res) {
               response(data,res);
               return;
           })
           break;
 
       case'update':
-           users.update()
+          console.log("Inside the update switch case");
+           user.update(body,function (err,res) {
+               response(data,res);
+               return;
+           })
+          break;
 
       case 'getapi':
           console.log("inside get api topic");
