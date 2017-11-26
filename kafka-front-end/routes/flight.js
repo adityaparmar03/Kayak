@@ -46,7 +46,12 @@ router.post('/book', function (req, res) {
     console.log(req.body);
     var vendor = req.body.vendor;
     var queueName = req.body.vendor + "Book";
-    kafka.make_request(queueName,req.body.booking, function(err,results){
+    
+    var reqObject = {
+      email : req.session.email,
+      booking : req.body.booking
+    }
+    kafka.make_request(queueName, reqObject, function(err,results){
 
         if(err){
             console.log('Returning Error ----' + err);

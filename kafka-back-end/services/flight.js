@@ -1,5 +1,5 @@
 var _ = require("underscore");
-
+var mysql = require('../models/mysql');
 
 // Search for all flightss on the basis of city, state and class
 function searchFlights(msg, callback){
@@ -78,7 +78,8 @@ function searchFlights(msg, callback){
 
 // Book the flights of different vendors
 function bookFlight(msg, callback){
-      var booking = msg;
+      var booking = msg.booking;
+      var email = "meenakshi.paryani@gmail.com"; //msg.email - TODO : uncomment this after stable
       var tripType = booking.triptype;
 
       console.log('-------booking is-------' + tripType);
@@ -88,6 +89,25 @@ function bookFlight(msg, callback){
             var isAvailable = checkFlightAvailable(booking, function(isAvailable){
                   var res = {};
                   if(isAvailable){
+                      // Proceed to Booking
+                      var res={}; // TODO : Add credit card fields
+                      var bookingSql="insert into BILLING(`user_email`,`target_id`,`booking_type`,`vendor`,`billing_amount`,`person_count`,`source_city`,`source_state`,`destination_city`,`destination_state`,`trip_type`,`booking_class`,`booking_start_date`,`booking_end_date`) values('"+email+"','"+booking.flightid+"','"+'FLIGHT'+"','"+booking.vendor+"','"+booking.price+"','"+booking.passengers+"','"+booking.origincity+"','"+booking.originstate+"','"+booking.destinationcity+"','"+booking.destinationstate+"','"+booking.triptype+"','"
+                      +booking.flightclass+"','"+booking.bookingstartdate+"','"+booking.bookingenddate+"');";
+
+                      mysql.executeQuery(function(err){
+                          if(err){
+                                console.log(err);
+                                res.code = "401";
+                                res.value=" Error booking the flight";
+                          }
+                          else{
+                                 res.code = "200";
+                                 res.value = "Flight booked Successfully";
+
+                          }
+                          callback(null,res);
+                       },bookingSql);
+
                       res.code = 200;
                       res.value = [{'flight' : 'test'}];
                   }else{
@@ -116,9 +136,9 @@ function getReturnBooking(booking){
           booking.destinationstate = booking.originstate;
           booking.triptype = booking.triptype;
           booking.flightclass = booking.flightclass;
-          booking.bookingstartdate = booking.returnstartdate
+          booking.bookingstartdate = booking.returnstartdate;
           booking.bookingenddate = booking.returnenddate;
-          booking.passengercount = booking.passengers;
+          booking.passengers = booking.passengers;
           booking.price = booking.price;
           booking.flightid = booking.returnflightid;
           booking.vendor = booking.vendor;
@@ -139,12 +159,18 @@ function checkFlightAvailable(booking, callback){
                     if(flights != undefined){
                       var capacity = getFlightCapacity(flights, booking);
                       console.log("capacity is " + capacity);
-                      if(capacity - booking.passengercount > 0)
-                            callback(true);
-                      else
-                            callback(false);
+                      getCurrentFlightBookingCount(booking, function(bookedCount){
+                            var isAvailable = capacity - bookedCount >= booking.passengers;
+                            if(isAvailable)
+                                  callback(true);
+                            else{
+                                  console.log(' Flight Booking Capacity reached for flight ' + booking.flightid);
+                                  callback(false);
+                            }
+
+                      })
                     }else{
-                      callback(false);
+                          callback(false);
                     }
                 }
             });
@@ -154,9 +180,37 @@ function checkFlightAvailable(booking, callback){
 
 }
 
+// Get the Selected Flight Capacity
 function getFlightCapacity(flights, booking){
       var classType = _.where(flights[0].flights[0].class, {type: booking.flightclass});
       return classType[0].capacity;
+}
+
+// Get the Flight Booking Count
+function getCurrentFlightBookingCount(booking, callback){
+      var res = {};
+      var bookingCountQuery = "select * from BILLING where target_id='" + booking.flightid + "'";
+      mysql.fetchData(function (err,dbBookings) {
+
+          if (err){
+             callback(0);
+          }
+          else {
+             console.log('----Bookings are -----');
+             callback(getBookedCountHelper(dbBookings));
+          }
+
+      } , bookingCountQuery);
+}
+
+// Get Flight booking Helper
+function getBookedCountHelper(dbBookings){
+      var count = 0;
+          for(booking in dbBookings){
+              count = count + dbBookings[booking].person_count;
+          }
+      console.log(" Total Seats Booked in the Current Flight are - " + count);
+      return count;
 }
 
 exports.searchFlights=searchFlights;
