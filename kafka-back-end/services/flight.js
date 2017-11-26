@@ -1,3 +1,5 @@
+var _ = require("underscore");
+
 
 // Search for all flightss on the basis of city, state and class
 function searchFlights(msg, callback){
@@ -78,21 +80,23 @@ function searchFlights(msg, callback){
 function bookFlight(msg, callback){
       var booking = msg;
       var tripType = booking.triptype;
-      console.log('-------booking is------- ' + booking);
+
+      console.log('-------booking is-------' + tripType);
       if(tripType=='One-Way'){
             // Save the one way booking
             console.log("is one way trip");
-            var isAvailable = checkFlightAvailable(booking);
-            var res = {};
-            var err = {};
-            if(isAvailable){
-                res.code = 200;
-                res.value = [{'flight' : 'test'}];
-            }else{
-                err.code = 402;
-                err.message = "Flight is not available to book for current selections!";
-            }
-            callback(err, res);
+            var isAvailable = checkFlightAvailable(booking, function(isAvailable){
+                  var res = {};
+                  if(isAvailable){
+                      res.code = 200;
+                      res.value = [{'flight' : 'test'}];
+                  }else{
+                      res.code = 402;
+                      res.value = "Flight is not available to book for current selections!";
+                  }
+                  callback(null, res);
+            });
+
       }
 
       else{
@@ -106,24 +110,53 @@ function bookFlight(msg, callback){
 function getReturnBooking(booking){
       var booking = {};
       if(booking != undefined){
-          booking.originCity = booking.destinationcity;
-          booking.originState = booking.destinationstate;
-          booking.destinationCity = booking.origincity;
-          booking.destinationState = booking.originstate;
-          booking.tripType = booking.triptype;
-          booking.flightClass = booking.flightclass;
-          booking.bookingStartDate = booking.returnstartdate
-          booking.bookingEndDate = booking.returnenddate;
-          booking.passengerCount = booking.passengers;
+          booking.origincity = booking.destinationcity;
+          booking.originstate = booking.destinationstate;
+          booking.destinationcity = booking.origincity;
+          booking.destinationstate = booking.originstate;
+          booking.triptype = booking.triptype;
+          booking.flightclass = booking.flightclass;
+          booking.bookingstartdate = booking.returnstartdate
+          booking.bookingenddate = booking.returnenddate;
+          booking.passengercount = booking.passengers;
           booking.price = booking.price;
-          booking.flightId = booking.return_target_id;
+          booking.flightid = booking.returnflightid;
           booking.vendor = booking.vendor;
       }
       return booking;
 }
 
-function checkFlightAvailable(booking){
-      return true; // TODO : add the availability logic
+function checkFlightAvailable(booking, callback){
+      var flight = require('../models/flight/'+booking.vendor);
+      console.log(booking.triptype);
+      if(booking.triptype == 'One-Way'){
+            flight.find({'flightId': booking.flightid}, function (err, flights) {
+                if (err) {
+                    console.log("Error in searching for flight" + err);
+                    callback(false);
+                }
+                else {
+                    if(flights != undefined){
+                      var capacity = getFlightCapacity(flights, booking);
+                      console.log("capacity is " + capacity);
+                      if(capacity - booking.passengercount > 0)
+                            callback(true);
+                      else
+                            callback(false);
+                    }else{
+                      callback(false);
+                    }
+                }
+            });
+      }else{
+
+      }
+
+}
+
+function getFlightCapacity(flights, booking){
+      var classType = _.where(flights[0].flights[0].class, {type: booking.flightclass});
+      return classType[0].capacity;
 }
 
 exports.searchFlights=searchFlights;
