@@ -13,7 +13,6 @@ consumer.on('message', function (message) {
     console.log('message received');
     console.log(message);
     console.log(JSON.stringify(message.value));
-
     var data = JSON.parse(message.value);
     var body = data.data;
 //************************************************************************************************************************
@@ -42,7 +41,7 @@ consumer.on('message', function (message) {
            users.update()
 
       case 'getapi':
-          console.log("inside get cars topic");
+          console.log("inside get api topic");
             admin.fetchUrl(body,function (err , res) {
                 response(data,res);
                 return;
@@ -80,11 +79,21 @@ consumer.on('message', function (message) {
           flight.searchFlights(body,function (err , res) {
               response(data,res);
               return;
-          })
+          });
 
           break;
 
-
+      case 'MmtFlightsBook':
+      case 'ExpediaFlightsBook':
+      case 'CleartripFlightsBook':
+          console.log("Topic Found!!!!!!!!!!!!!!!!!");
+          console.log(message);
+          flight.bookFlight(body,function (err , res) {
+              console.log("In Final Response!!!;");
+              response(data,res);
+              return;
+          });
+          break;
 
       default:
           console.log("Topic not found");
@@ -116,5 +125,3 @@ function response(data, res) {
     });
 }
 //************************************************************************************************************************
-
-

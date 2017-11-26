@@ -8,7 +8,6 @@ console.log(data)
     kafka.make_request('getapi', data.searchtype, function(err,results){
 
         if(err){
-
             callback(err, null);
         }
         else

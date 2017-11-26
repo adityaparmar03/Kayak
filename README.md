@@ -64,6 +64,9 @@ query.exec(function(err, userInfo){
 > MmtFlights
 > CleartripFlights
 > ExpediaFlights
+> MmtFlightsBook
+> CleartripFlightsBook
+> ExpediaFlightsBook
 
 ### Use below command to create all the required Topics
 > kafka-topics --create --zookeeper localhost:2181 --replication-factor 1 --partitions 1 -topic <<topic_name>>

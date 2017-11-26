@@ -40,9 +40,31 @@ router.get('/getflights', function (req, res) {
             }
         }
     })
-})
+});
+
+router.post('/book', function (req, res) {
+    console.log(req.body);
+    var vendor = req.body.vendor;
+    var queueName = req.body.vendor + "Book";
+    kafka.make_request(queueName,req.body.booking, function(err,results){
+
+        if(err){
+            console.log('Returning Error ----' + err);
+            res.send({'status': err.code, 'message' : err.message});
+        }
+        else
+        {
+            console.log('Returning results ----' + results);
+            if(results.code == "200"){
+                res.send({'status': results.code , 'api_results' : results.value});
+            }
+            else {
+                res.send({'status': 401});
+            }
+        }
+    })
+});
 
 
 
 module.exports = router;
-

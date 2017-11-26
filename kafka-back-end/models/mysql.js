@@ -15,7 +15,8 @@ function fetchData(callback,sqlQuery){
     console.log("\nSQL Query::"+sqlQuery);
 
     pool.getConnection(function(err,connection) {
-
+        console.log('err is ' + err);
+        console.log('connection is ' + connection);
         connection.query(sqlQuery, function (err, rows, fields) {
             if (err) {
                 console.log("ERROR: " + err.message);
@@ -49,6 +50,3 @@ function executeQuery(callback, sqlQuery){
 
 exports.fetchData=fetchData;
 exports.executeQuery=executeQuery;
-
-
-
