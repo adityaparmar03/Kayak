@@ -19,6 +19,10 @@ var Schema       = mongoose.Schema;
 
 // End of Redis Config
 
+mongoose.connect('mongodb://localhost:27017/cmpe273_kayak').then(function(){
+	  console.log(" Connected to DropBox Mongo DB ".green);
+	}).catch(err => console.error(err));
+
 var FlightSchema   = new Schema({
 
     flightId:String,

@@ -59,7 +59,7 @@ router.post('/book', function (req, res) {
                 res.send({'status': results.code , 'api_results' : results.value});
             }
             else {
-                res.send({'status': 401});
+                res.send({'status': results.code , 'api_results' : results.value});
             }
         }
     })

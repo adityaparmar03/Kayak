@@ -12,6 +12,7 @@
     "bcrypt": "^1.0.3",
     "kafka-node": "^2.2.3",
     "mongoose": "4.10.8",
-    "mysql": "^2.15.0"
+    "mysql": "^2.15.0",
+    "underscore": "^1.8.3"
   }
 }
