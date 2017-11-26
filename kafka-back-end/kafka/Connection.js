@@ -8,20 +8,20 @@ function ConnectionProvider() {
             this.kafkaConsumerConnection = new kafka.Consumer(this.client,[
                 { topic: 'login', partition: 0 },
                 { topic: 'register', partition: 0 },
-                { topic: 'update', partition: 0 }
-                // {topic :'getapi',partition :0},
-                // {topic :'MmtCars',partition :0},
-                // {topic :'CleartripCars',partition :0},
-                // {topic :'AlamoCars',partition :0},
-                // {topic :'MmtHotels',partition :0},
-                // {topic :'CleartripHotels',partition :0},
-                // {topic :'TripAdvisorHotels',partition :0},
-                // {topic :'MmtFlights',partition :0},
-                // {topic :'CleartripFlights',partition :0},
-                // {topic :'ExpediaFlights',partition :0},
-                // {topic :'MmtFlightsBook',partition :0},
-                // {topic :'CleartripFlightsBook',partition :0},
-                // {topic :'ExpediaFlightsBook',partition :0}
+                { topic: 'update', partition: 0 },
+                {topic :'getapi',partition :0},
+                {topic :'MmtCars',partition :0},
+                {topic :'CleartripCars',partition :0},
+                {topic :'AlamoCars',partition :0},
+                {topic :'MmtHotels',partition :0},
+                {topic :'CleartripHotels',partition :0},
+                {topic :'TripAdvisorHotels',partition :0},
+                {topic :'MmtFlights',partition :0},
+                {topic :'CleartripFlights',partition :0},
+                {topic :'ExpediaFlights',partition :0},
+                {topic :'MmtFlightsBook',partition :0},
+                {topic :'CleartripFlightsBook',partition :0},
+                {topic :'ExpediaFlightsBook',partition :0}
                  ]);
 
             this.client.on('ready', function () { console.log('client ready!') })
