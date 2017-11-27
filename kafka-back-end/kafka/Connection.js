@@ -6,6 +6,7 @@ function ConnectionProvider() {
 
             this.client = new kafka.Client("localhost:2181");
             this.kafkaConsumerConnection = new kafka.Consumer(this.client,[
+
                     { topic: 'login', partition: 0 },
                     { topic: 'register', partition: 0 },
                     { topic: 'update', partition: 0 },
@@ -22,6 +23,7 @@ function ConnectionProvider() {
                     {topic :'BookFlight',partition :0},
                     {topic :'BookHotel',partition :0},
                     {topic :'BookCar',partition :0}
+
                  ]);
 
             this.client.on('ready', function () { console.log('client ready!') })

@@ -1,6 +1,10 @@
 import React, {Component} from 'react';
 import {Link,withRouter} from 'react-router-dom';
 import PropTypes from 'prop-types';
+import * as API from '../api/API';
+
+var Regex= require('regex');
+var regex = new Regex(/\S+@\S+\.\S+/);
 
 class Nav extends Component {
 
@@ -9,11 +13,34 @@ class Nav extends Component {
        
     }
     state = {
-        
                 navpopup:false,
-                IsLogged:false
+                IsLogged:false,
+                email:null,
+                password:null,
+                repeatpassword:null
                
     };
+//********************************************************
+    registerButton(){
+      console.log("I am inside the registerButton");
+      console.log(this.state.password);
+      console.log(this.state.repeatpassword);
+      if(this.state.password===this.state.repeatpassword && this.state.email!=null) {
+  
+    console.log("+++++++++");
+      //console.log(regex.test("smcool100@gmail.com"));
+     var payload = {
+        "email" :this.state.email,
+        "password": this.state.password
+     }
+     API.doRegister(payload).then((data)=>{
+        console.log("after the registration is complete");
+     })
+
+    }
+    }
+
+//********************************************************
     displaypopup(){
         if(this.state.navpopup){
             if(this.state.IsLogged){
@@ -45,10 +72,14 @@ class Nav extends Component {
             
         }
         
-    } 
+    }
+
+ //********************************************************    
     handlepopup(){
         this.setState({navpopup:!this.state.navpopup})
     } 
+
+ //********************************************************   
 
     render(){
         return(
@@ -154,24 +185,44 @@ class Nav extends Component {
                         <div className="modal-body">
                             <div className="md-form form-sm">
                                 <i className="fa fa-envelope prefix"></i>
-                                <input type="email" id="form24" className="form-control validate"/>
+                                <input type="email" id="form24" className="form-control validate"
+                                 value = {this.state.email}
+                                 onChange={(event) => {
+                                    this.setState({
+                                        email: event.target.value
+                                    });
+                                }}/>
                                 <label data-error="wrong" data-success="right" htmlFor="form24">Your email</label>
                             </div>
 
                             <div className="md-form form-sm">
                                 <i className="fa fa-lock prefix"></i>
-                                <input type="password" id="form25" className="form-control validate"/>
+                                <input type="password" id="form25" className="form-control validate"
+                                 value = {this.state.password}
+                                 onChange={(event) => {
+                                    this.setState({
+                                        password: event.target.value
+                                    });
+                                }}/>
                                 <label data-error="Invalid" data-success="right" htmlFor="form25">Your password</label>
                             </div>
 
                             <div className="md-form form-sm">
                                 <i className="fa fa-lock prefix"></i>
-                                <input type="password" id="form26" className="form-control validate"/>
+                                <input type="password" id="form26" className="form-control validate"
+                                value = {this.state.repeatpassword}
+                                 onChange={(event) => {
+                                    this.setState({
+                                        repeatpassword: event.target.value
+                                    });
+                                }}/>
+
+                                
                                 <label data-error="Invalid" data-success="right" htmlFor="form26">Repeat password</label>
                             </div>
 
                             <div className="text-center form-sm mt-2">
-                                <button className="btn btn-info" onClick="">Sign up <i className="fa fa-sign-in ml-1"></i></button>
+                                <button className="btn btn-info" onClick={()=>{this.registerButton();}}>Sign up <i className="fa fa-sign-in ml-1"></i></button>
                             </div>
 
                         </div>
