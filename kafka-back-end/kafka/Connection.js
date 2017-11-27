@@ -22,7 +22,9 @@ function ConnectionProvider() {
                     {topic :'ExpediaFlights',partition :0},
                     {topic :'BookFlight',partition :0},
                     {topic :'BookHotel',partition :0},
-                    {topic :'BookCar',partition :0}
+                    {topic :'BookCar',partition :0},
+                    {topic :'addvendor',partition :0},
+                    {topic :'deletevendor',partition :0}
 
                  ]);
 

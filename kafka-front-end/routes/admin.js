@@ -65,4 +65,59 @@ var kafka = require('./kafka/client');
 //     })
 //
 // })
+
+
+router.post('/addvendor',function (req,res) {
+
+
+    console.log(req.body);
+
+    kafka.make_request('addvendor', req.body, function(err,results){
+
+        if(err){
+            console.log('Returning Error ----' , err);
+            res.send({'status': err.code, 'message' : err.message});
+        }
+        else
+        {
+            console.log('Returning results ----' + results);
+            if(results.code == "200"){
+                res.send({'status': results.code});
+            }
+            else {
+                res.send({'status': results.code});
+            }
+        }
+    })
+
+
+})
+
+
+router.post('/deletevendor',function (req,res) {
+
+
+    console.log(req.body);
+
+    kafka.make_request('deletevendor', req.body, function(err,results){
+
+        if(err){
+            console.log('Returning Error ----' , err);
+            res.send({'status': err.code, 'message' : err.message});
+        }
+        else
+        {
+            console.log('Returning results ----' + results);
+            if(results.code == "200"){
+                res.send({'status': results.code});
+            }
+            else {
+                res.send({'status': results.code});
+            }
+        }
+    })
+
+
+})
+
 module.exports = router;

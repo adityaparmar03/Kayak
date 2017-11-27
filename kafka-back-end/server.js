@@ -89,6 +89,30 @@ consumer.on('message', function (message) {
 
           break;
 
+      case 'addvendor':
+          console.log(message);
+          admin.addVendor(body,function (err , res) {
+              if(err)
+                  console.log(err);
+              else
+                  console.log(res);
+              response(data,res);
+              return;
+          });
+          break;
+
+      case 'deletevendor':
+          console.log(message);
+          admin.deleteVendor(body,function (err , res) {
+              if(err)
+                  console.log(err);
+              else
+                  console.log(res);
+              response(data,res);
+              return;
+          });
+          break;
+
       case 'BookFlight':
           console.log(message);
           flight.bookFlight(body,function (err , res) {

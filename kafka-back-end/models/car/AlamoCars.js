@@ -23,8 +23,9 @@ var Schema       = mongoose.Schema;
 
     carId:String,
     cartype: String,
-    pickupdate: Date,
-    dropoffdate: Date,
+    carmodel:String,
+        /*pickupdate: Date,
+    dropoffdate: Date,*/
     pickupaddress: Object,  //{'street':'101 E San Fernando St.','city':'San Jose', 'state': 'CA', 'country':'USA'}
     dropoffaddress: Object,
     dailyrent: String
