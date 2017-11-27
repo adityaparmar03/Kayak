@@ -44,7 +44,7 @@ function addVendor(msg, callback){
 
     var addApiSql="insert into vendors(`vendorname`,`servicetype`,`vendorapi`) values('"+
         vendorname+"','"+servicetype+"','"+ vendorapi+ "');";
-console.log('addApiSql',addApiSql)
+
     mysql.executeQuery(function(err){
         if(err){
             console.log(err);
@@ -84,6 +84,34 @@ function deleteVendor(msg, callback){
     },deleteApiSql);
 }
 
+
+function getVendors(msg, callback){
+
+    var res={};
+
+    var getVendorsSql="select * from vendors";
+
+    mysql.fetchData(function(err,results){
+        if(err){
+            throw err;
+        }
+        else
+        {
+            if(results.length > 0){
+
+                res.code = "200";
+                res.value = results;
+                callback(null, res);
+            }
+            else {
+                res.code = "401";
+                callback(null, res);
+            }
+        }
+    },getVendorsSql);
+}
+
 exports.addVendor = addVendor;
+exports.getVendors = getVendors;
 exports.deleteVendor = deleteVendor;
 exports.fetchUrl = fetchUrl;

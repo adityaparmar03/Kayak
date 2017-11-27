@@ -24,7 +24,8 @@ function ConnectionProvider() {
                     {topic :'BookHotel',partition :0},
                     {topic :'BookCar',partition :0},
                     {topic :'addvendor',partition :0},
-                    {topic :'deletevendor',partition :0}
+                    {topic :'deletevendor',partition :0},
+                    {topic :'getvendors',partition :0}
 
                  ]);
 

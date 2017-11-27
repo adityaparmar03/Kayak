@@ -113,6 +113,18 @@ consumer.on('message', function (message) {
           });
           break;
 
+      case 'getvendors':
+          console.log(message);
+          admin.getVendors(body,function (err , res) {
+              if(err)
+                  console.log(err);
+              else
+                  console.log(res);
+              response(data,res);
+              return;
+          });
+          break;
+
       case 'BookFlight':
           console.log(message);
           flight.bookFlight(body,function (err , res) {
