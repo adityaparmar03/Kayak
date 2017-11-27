@@ -1,0 +1,111 @@
+{
+	"id": "fd7d1528-e7a0-7ac1-b04e-1a2efb736f48",
+	"name": "Kayak",
+	"description": "",
+	"order": [
+		"60109cdf-b787-d78c-3ca9-1fe77272938c",
+		"c08882cc-19eb-50f4-abc8-2b77d39d4f59",
+		"e60c98c5-a34b-9fe2-bd74-ad3267fa0706"
+	],
+	"folders": [],
+	"folders_order": [],
+	"timestamp": 1511658045439,
+	"owner": "2819220",
+	"public": false,
+	"requests": [
+		{
+			"id": "60109cdf-b787-d78c-3ca9-1fe77272938c",
+			"headers": "",
+			"headerData": [],
+			"url": "http://localhost:3001/flight/getFlights?data={\"origincity\" : \"San Jose\", \"originstate\":\"CA\", \"destinationcity\" : \"Delhi\", \"destinationstate\":\"Delhi\",\"triptype\":\"One-Way\",\"flightclass\":\"economy\"}&vendor=MmtFlights",
+			"queryParams": [
+				{
+					"key": "data",
+					"value": "{\"origincity\" : \"San Jose\", \"originstate\":\"CA\", \"destinationcity\" : \"Delhi\", \"destinationstate\":\"Delhi\",\"triptype\":\"One-Way\",\"flightclass\":\"economy\"}",
+					"equals": true,
+					"description": "",
+					"enabled": true
+				},
+				{
+					"key": "vendor",
+					"value": "MmtFlights",
+					"equals": true,
+					"description": "",
+					"enabled": true
+				}
+			],
+			"preRequestScript": null,
+			"pathVariables": {},
+			"pathVariableData": [],
+			"method": "GET",
+			"data": null,
+			"dataMode": "params",
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1511745330986,
+			"name": "Get All Flights",
+			"description": "",
+			"collectionId": "fd7d1528-e7a0-7ac1-b04e-1a2efb736f48",
+			"responses": []
+		},
+		{
+			"id": "c08882cc-19eb-50f4-abc8-2b77d39d4f59",
+			"headers": "Content-Type: application/json\n",
+			"headerData": [
+				{
+					"key": "Content-Type",
+					"value": "application/json",
+					"description": "",
+					"enabled": true
+				}
+			],
+			"url": "http://localhost:3001/flight/book",
+			"queryParams": [],
+			"preRequestScript": null,
+			"pathVariables": {},
+			"pathVariableData": [],
+			"method": "POST",
+			"data": [],
+			"dataMode": "raw",
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1511742124073,
+			"name": "Book Flight - One Way",
+			"description": "",
+			"collectionId": "fd7d1528-e7a0-7ac1-b04e-1a2efb736f48",
+			"responses": [],
+			"rawModeData": "{\n\t\"vendor\" : \"MmtFlights\",\n\t\"booking\" :\n\t\t{\n\t\t\t\"origincity\" : \"Delhi\",\n\t        \"originstate\" : \"Delhi\",\n\t        \"destinationcity\" : \"San Francisco\",\n\t        \"destinationstate\" : \"CA\",\n\t        \"triptype\" : \"One-Way\",\n\t        \"flightclass\" : \"economy\",\n\t        \"bookingstartdate\" : \"2017-01-18 09:15:00\",\n\t        \"bookingenddate\" : \"2017-01-19 03:14:00\",\n\t        \"returnstartdate\" : \"\",\n\t        \"returnenddate\" : \"\",\n\t        \"passengers\" : 10,\n\t        \"price\" : 1200,\n\t        \"flightid\" : \"MMT100\",\n\t        \"returnflightid\" : \"\",\n\t        \"vendor\" : \"MMTFlights\"\n\t\t}\n}"
+		},
+		{
+			"id": "e60c98c5-a34b-9fe2-bd74-ad3267fa0706",
+			"headers": "Content-Type: application/json\n",
+			"headerData": [
+				{
+					"key": "Content-Type",
+					"value": "application/json",
+					"description": "",
+					"enabled": true
+				}
+			],
+			"url": "http://localhost:3001/flight/book",
+			"queryParams": [],
+			"preRequestScript": null,
+			"pathVariables": {},
+			"pathVariableData": [],
+			"method": "POST",
+			"data": [],
+			"dataMode": "raw",
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1511742330148,
+			"name": "Book Flight - Two Way",
+			"description": "",
+			"collectionId": "fd7d1528-e7a0-7ac1-b04e-1a2efb736f48",
+			"responses": [],
+			"rawModeData": "{\n\t\"vendor\" : \"MmtFlights\",\n\t\"booking\" :\n\t\t{\n\t\t\t\"origincity\" : \"Delhi\",\n\t        \"originstate\" : \"Delhi\",\n\t        \"destinationcity\" : \"San Francisco\",\n\t        \"destinationstate\" : \"CA\",\n\t        \"triptype\" : \"Two-Way\",\n\t        \"flightclass\" : \"economy\",\n\t        \"bookingstartdate\" : \"2017-01-18 09:15:00\",\n\t        \"bookingenddate\" : \"2017-01-19 03:14:00\",\n\t        \"returnstartdate\" : \"2017-03-19 03:14:00\",\n\t        \"returnenddate\" : \"2017-03-19 6:40:00\",\n\t        \"passengers\" : 10,\n\t        \"price\" : 1200,\n\t        \"flightid\" : \"MMT100\",\n\t        \"returnflightid\" : \"MMT111\",\n\t        \"vendor\" : \"MMTFlights\"\n\t\t}\n}"
+		}
+	]
+}
