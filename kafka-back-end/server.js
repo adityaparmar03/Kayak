@@ -89,17 +89,25 @@ consumer.on('message', function (message) {
 
           break;
 
-      case 'MmtFlightsBook':
-      case 'ExpediaFlightsBook':
-      case 'CleartripFlightsBook':
-          console.log("Topic Found!!!!!!!!!!!!!!!!!");
+      case 'BookFlight':
           console.log(message);
           flight.bookFlight(body,function (err , res) {
               if(err)
                 console.log(err);
               else
                 console.log(res);
-              console.log("In Final Response!!!;");
+              response(data,res);
+              return;
+          });
+          break;
+
+      case 'BookHotel':
+          console.log(message);
+          hotel.bookHotel(body,function (err , res) {
+              if(err)
+                console.log(err);
+              else
+                console.log(res);
               response(data,res);
               return;
           });
