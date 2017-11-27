@@ -27,22 +27,27 @@ var FlightSchema   = new Schema({
 
     flightId:String,
     operator: String,
+    class:Object,
     flights: Array
-//Sample
-    /*flights:[
-        {
-            'arrival': '16:00'
-            'departure': '00:00',
-            'origin': {'city':'San Jose', 'state':'CA', 'country':'USA'}
-            'destination': {'city':'Delhi', 'state':'Delhi', 'country':'India'}
-            'class':{
 
-                'type':'economy','price':'$1000', 'capacity':100},
-                'type':''first','price':'$2000' , 'capacity':100},
-                'type':''business','price':'$3000' , 'capacity':100}
-            }
-        }
-    ]*/
+//Sample
+    /*  'class':{
+
+          'type':'economy','price':'$1000', 'capacity':100},
+           'type':''first','price':'$2000' , 'capacity':100},
+            'type':''business','price':'$3000' , 'capacity':100}
+        },
+      flights:[
+          {
+              'arrivaltime': '16:00'
+              'departuretime': '00:00',
+              'arrivalday': 'Monday',
+              'departureday':'Tuesday'
+              'origin': {'city':'San Jose', 'state':'CA', 'country':'USA'}
+              'destination': {'city':'Delhi', 'state':'Delhi', 'country':'India'}
+
+          }
+      ]*/
 });
 
 module.exports = mongoose.model('MmtFlights', FlightSchema, 'MmtFlights');

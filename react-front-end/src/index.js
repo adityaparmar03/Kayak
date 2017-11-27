@@ -155,7 +155,7 @@ import Hotellist from "./components/hotelhome";
 import Carlist from "./components/carhome";
 
 import { createStore } from 'redux';
-import reducer from './reducers/index';
+import reducer from './reducers/rootreducer';
 import { Provider } from 'react-redux';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
