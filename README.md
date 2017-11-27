@@ -5,10 +5,16 @@ Checkout this repo, install dependencies, then start the gulp process with the f
 
 ```sh
 $ git clone https://github.com/MeenakshiParyani/Kayak.git
-$ cd front-end
+$ cd react-front-end
 $ npm install
-$ npm install -g web-pack
 $ npm start
+$ cd kafka-front-end
+$ npm install
+$ npm start
+$ cd kafka-back-end
+$ npm install
+$ npm start
+$ Access the Kayak Portal on http://localhost:3000
 ```
 
 # Redis Server config
