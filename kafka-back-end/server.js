@@ -113,6 +113,18 @@ consumer.on('message', function (message) {
           });
           break;
 
+      case 'BookCar':
+          console.log(message);
+          car.bookCar(body,function (err , res) {
+              if(err)
+                console.log(err);
+              else
+                console.log(res);
+              response(data,res);
+              return;
+          });
+          break;
+
       default:
           console.log("Topic not found");
           break;

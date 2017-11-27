@@ -89,7 +89,7 @@ function bookFlight(msg, callback){
                   if(isAvailable){
                       // Proceed to Booking
                        // TODO : Add credit card fields
-                      var bookingSql="insert into BILLING(`user_email`,`target_id`,`booking_type`,`billing_amount`,`target_count`,`source_city`,`source_state`,`destination_city`,`destination_state`,`trip_type`,`booking_class`,`booking_start_date`,`booking_end_date`) values('"+email+"','"+booking.flight.flightid+"','"+'FLIGHT'+"','"+booking.flight.price+"','"+booking.flight.passengers+"','"+booking.flight.origincity+"','"+booking.flight.originstate+"','"+booking.flight.destinationcity+"','"+booking.flight.destinationstate+"','"+booking.flight.triptype+"','"
+                      var bookingSql="insert into BILLING(`user_email`,`target_id`,`booking_type`,`billing_amount`,`target_count`,`source_city`,`source_state`,`destination_city`,`destination_state`,`flight_trip_type`,`booking_class`,`booking_start_date`,`booking_end_date`) values('"+email+"','"+booking.flight.flightid+"','"+'FLIGHT'+"','"+booking.flight.price+"','"+booking.flight.passengers+"','"+booking.flight.origincity+"','"+booking.flight.originstate+"','"+booking.flight.destinationcity+"','"+booking.flight.destinationstate+"','"+booking.flight.triptype+"','"
                       +booking.flight.flightclass+"','"+booking.flight.bookingstartdate+"','"+booking.flight.bookingenddate+"');";
 
                       mysql.executeQuery(function(err){
@@ -126,7 +126,7 @@ function bookFlight(msg, callback){
                      totalPrice = booking.flight.price + booking.returnflight.price;
                      // Proceed to Booking
                     // TODO : Add credit card fields
-                     var bookingSql="insert into BILLING(`user_email`,`target_id`,`booking_type`,`billing_amount`,`target_count`,`source_city`,`source_state`,`destination_city`,`destination_state`,`trip_type`,`booking_class`,`booking_start_date`,`booking_end_date`,`return_target_id`,`return_booking_start_date`,`return_booking_end_date`) values('"
+                     var bookingSql="insert into BILLING(`user_email`,`target_id`,`booking_type`,`billing_amount`,`target_count`,`source_city`,`source_state`,`destination_city`,`destination_state`,`flight_trip_type`,`booking_class`,`booking_start_date`,`booking_end_date`,`return_target_id`,`return_booking_start_date`,`return_booking_end_date`) values('"
                      +email+"','"+booking.flight.flightid+"','"+'FLIGHT'+"','"+ totalPrice +"','"+booking.flight.passengers+"','"+booking.flight.origincity+"','"+booking.flight.originstate+"','"+booking.flight.destinationcity+"','"+booking.flight.destinationstate+"','"+booking.flight.triptype+"','"
                      +booking.flight.flightclass+"','"+booking.flight.bookingstartdate+"','"+booking.flight.bookingenddate+"','"+booking.returnflight.returnflightid+"','"+booking.returnflight.returnstartdate+"','"+booking.returnflight.returnenddate+"');";
 

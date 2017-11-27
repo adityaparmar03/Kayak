@@ -115,7 +115,7 @@ function getCurrentHotelBookingCount(booking, callback){
       } , bookingCountQuery);
 }
 
-// Get Flight booking Count Helper
+// Get Hotel booking Count Helper
 function getBookedCountHelper(dbBookings){
       var count = 0;
           for(booking in dbBookings){

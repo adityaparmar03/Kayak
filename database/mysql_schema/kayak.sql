@@ -12,8 +12,8 @@ CREATE TABLE `BILLING` (
   `return_target_id` varchar(90) NOT NULL,
   `return_target_name` varchar(90) DEFAULT NULL,
   `booking_type` enum('CAR','FLIGHT','HOTEL') NOT NULL,
-  `trip_type` enum('ONE-WAY','TWO-WAY') DEFAULT NULL,
-  `vendor` varchar(90) NOT NULL,
+  `flight_trip_type` enum('ONE-WAY','TWO-WAY') DEFAULT NULL,
+  `car_trip_type` enum('SAME-DROPOFF','DIFFERENT-DROPOFF') NOT NULL,
   `room_type` enum('DELUX','PREMIUM','SUITE') DEFAULT NULL,
   `billing_date` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `billing_amount` int(11) NOT NULL COMMENT 'Billing Amount in US Dollars',
@@ -35,7 +35,8 @@ CREATE TABLE `BILLING` (
   PRIMARY KEY (`billing_id`,`user_email`,`target_id`),
   KEY `user_id_idx` (`user_email`),
   CONSTRAINT `user_email` FOREIGN KEY (`user_email`) REFERENCES `USER` (`email`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=175 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=188 DEFAULT CHARSET=latin1;
+
 
 LOCK TABLES `BILLING` WRITE;
 

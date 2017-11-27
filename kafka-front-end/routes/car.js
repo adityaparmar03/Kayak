@@ -42,7 +42,33 @@ router.get('/getcars', function (req, res) {
     })
 })
 
+router.post('/book', function (req, res) {
+    console.log(req.body);
+    var queueName = "BookCar";
+
+    var reqObject = {
+        email : req.session.email,
+        booking : req.body.booking
+    }
+    kafka.make_request(queueName, reqObject, function(err,results){
+
+        if(err){
+            console.log('Returning Error ----' + err);
+            res.send({'status': err.code, 'message' : err.message});
+        }
+        else
+        {
+            console.log('Returning results ----' + results);
+            if(results.code == "200"){
+                res.send({'status': results.code , 'api_results' : results.value});
+            }
+            else {
+                res.send({'status': results.code , 'api_results' : results.value});
+            }
+        }
+    })
+});
+
 
 
 module.exports = router;
-
