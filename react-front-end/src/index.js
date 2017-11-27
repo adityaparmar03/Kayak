@@ -152,7 +152,7 @@ import Carhome from "./components/carhome";
 
 import Flightlist from "./components/flightlist";
 import Hotellist from "./components/hotellist";
-import Carlist from "./components/carhome";
+import Carlist from "./components/carlist";
 
 import { createStore } from 'redux';
 import reducer from './reducers/rootreducer';
