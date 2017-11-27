@@ -123,12 +123,12 @@ db.TripAdvisorHotels.insert({
 db.MmtFlights.insert({
   'flightId': 'MMT100',
   'operator': 'Air China',
-  'class':{
+  'class':[
 
-            'type':'economy','price':'$1000', 'capacity':100},
-             'type':''first','price':'$2000' , 'capacity':100},
-              'type':''business','price':'$3000' , 'capacity':100}
-          },
+           { 'type':'economy','price':'$1000', 'capacity':100},
+            { 'type':'first','price':'$2000' , 'capacity':100},
+             { 'type':'business','price':'$3000' , 'capacity':100}
+          ],
   'flights':[
          {
             'arrivaltime': '16:00, Saturday',
@@ -143,12 +143,12 @@ db.MmtFlights.insert({
 db.MmtFlights.insert({
   'flightId': 'MMT111',
   'operator': 'Air India',
-  'class':{
+  'class':[
 
-              'type':'economy','price':'$1000', 'capacity':100},
-               'type':''first','price':'$2000' , 'capacity':100},
-                'type':''business','price':'$3000' , 'capacity':100}
-            },
+              {'type':'economy','price':'$1000', 'capacity':100},
+               {'type':'first','price':'$2000' , 'capacity':100},
+                {'type':'business','price':'$3000' , 'capacity':100}
+            ],
     'flights':[
            {
               'arrivaltime': '16:00, Thursday',
@@ -164,16 +164,16 @@ db.MmtFlights.insert({
 db.CleartripFlights.insert({
   'flightId': 'CT100',
   'operator': 'Lufthansa',
-  'class':{
+  'class':[
 
-                'type':'economy','price':'$1000', 'capacity':100},
-                 'type':''first','price':'$2000' , 'capacity':100},
-                  'type':''business','price':'$3000' , 'capacity':100}
-              },
+                {'type':'economy','price':'$1000', 'capacity':100},
+                 {'type':'first','price':'$2000' , 'capacity':100},
+                  {'type':'business','price':'$3000' , 'capacity':100}
+              ],
       'flights':[
              {
                 'arrivaltime': '16:00, Monday',
-                'departuretime': '00:00', Wednesday,
+                'departuretime': '00:00, Wednesday',
                 'origin': {'city':'San Francisco', 'state':'CA', 'country':'USA', 'airport':'San Francisco International Airport'},
                 'destination': {'city':'Mumbai', 'state':'Maharashtra', 'country':'India', 'airport':'Chhatrapati Shivaji Airport'}
 
@@ -185,20 +185,26 @@ db.CleartripFlights.insert({
 db.ExpediaFlights.insert({
   'flightId': 'ED100',
   'operator': 'Delta Airlines',
-  'class':{
+  'class':[
 
-                'type':'economy','price':'$1000', 'capacity':100},
-                 'type':''first','price':'$2000' , 'capacity':100},
-                  'type':''business','price':'$3000' , 'capacity':100}
-              },
-      'flights':[
-             {
-                'arrivaltime': '16:00'
-                'departuretime': '00:00',
-                'schedule': ['Wednesday', 'Friday'],
-                'origin': {'city':'New York City', 'state':'NY', 'country':'USA', 'airport':'John F Kennedy Airport'},
-                'destination': {'city':'Mumbai', 'state':'Maharashtra', 'country':'India', 'airport':'Chhatrapati Shivaji Airport'}
+                {'type':'economy','price':'$1000', 'capacity':100},
+                 {'type':'first','price':'$2000' , 'capacity':100},
+                  {'type':'business','price':'$3000' , 'capacity':100}
+             ] ,
+     'flights':[
+                  {
+                     'arrivaltime': '16:00 Monday',
+                     'departuretime': '00:00 Wednesday',
+                     'origin': {'city':'San Francisco', 'state':'CA', 'country':'USA', 'airport':'San Francisco International Airport'},
+                     'destination': {'city':'Mumbai', 'state':'Maharashtra', 'country':'India', 'airport':'Chhatrapati Shivaji Airport'}
 
-            }
-      ]
+                 },
+                 {
+                      'arrivaltime': '02:00 Wednesday',
+                      'departuretime': '12:00 Monday',
+                      'origin': {'city':'Mumbai', 'state':'Maharashtra', 'country':'India', 'airport':'Chhatrapati Shivaji Airport'},
+                      'destination': {'city':'San Francisco', 'state':'CA', 'country':'USA', 'airport':'San Francisco International Airport'}
+
+                  }
+           ]
 })

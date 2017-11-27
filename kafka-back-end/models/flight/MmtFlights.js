@@ -27,7 +27,7 @@ var FlightSchema   = new Schema({
 
     flightId:String,
     operator: String,
-    class:Object,
+    class:Array,
     flights: Array
 
 //Sample

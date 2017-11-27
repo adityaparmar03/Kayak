@@ -21,7 +21,7 @@ function searchFlights(msg, callback){
                         'flights.origin.state': originstate,
                         'flights.destination.city': destinationcity,
                         'flights.destination.state': destinationstate,
-                        'flights.class.type': flightclass/*,
+                        'class.type': flightclass/*,
                         'flights.class.capacity': capacity*/
                     }, function (err, flights) {
 
@@ -52,8 +52,7 @@ function searchFlights(msg, callback){
                         'flights.origin.state': destinationstate,
                         'flights.destination.city': origincity,
                         'flights.destination.state': originstate,
-                        'flights.class.type': flightclass,
-                        'flights.class.capacity': capacity
+                        'class.type': flightclass
                     }, function (err, flights) {
 
             if (err) {
