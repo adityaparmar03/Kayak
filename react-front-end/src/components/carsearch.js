@@ -4,7 +4,11 @@ import PropTypes from 'prop-types';
 import AutoComplete from 'material-ui/AutoComplete';
 import DatePicker from 'material-ui/DatePicker';
 import TextField from 'material-ui/TextField';
-import moment from 'moment'
+import moment from 'moment';
+import * as API from '../api/API';
+import * as Actions from '../actions/action';
+import {connect} from 'react-redux';
+
 
 class Carsearch extends Component {
 
@@ -42,6 +46,27 @@ class Carsearch extends Component {
         // call Api for search here......
         //API CALL
 
+       const payload = {
+           'pickupcity':'San Jose',
+           'pickupstate':'CA',
+           'dropoffcity':'San Jose',
+           'dropoffstate':'CA',
+           'triptype':'Two-Way'
+       }
+       API.searchCars(payload)
+           .then((res) => {
+               console.log(res);
+               if (res.status == 201) {
+
+                   this.props.carSearch(res.cars);
+
+                   console.log("Success...")
+
+               }else if (res.status == 401) {
+
+                   //  this.props.history.push('/');
+               }
+           });
       }
 
 
@@ -134,4 +159,18 @@ class Carsearch extends Component {
     }
 }
 
-export default Carsearch;
+
+function mapStateToProps(reducerdata) {
+    console.log(reducerdata);
+
+    return {reducerdata};
+}
+
+function mapDispatchToProps(dispatch) {
+    return {
+
+        carSearch : (data) => dispatch(Actions.carSearch(data))
+    };
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Carsearch);
