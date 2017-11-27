@@ -15,45 +15,30 @@ class Hotellist extends Component {
              test:[1,2,3,4,5,1,2,3,4,5],
              low: 0,
              high:0,
-             departure_start_time:0,
-             departure_end_time:1439,
-             arrival_start_time:0,
-             arrival_end_time:1439,
+             star_low: 1,
+             star_high:5,
              valuesPrice:[],
-             valuesArrivalTime:[],
-             valuesDepartureTime:[]
+             valuesStar:[],
+     
         }
      }
       maxprice = 0; 
       minprice = 0;
-      maxarrivaltime = 1439;
-      minarrivaltime = 0
-      maxdepttime = 1439;
-      mindepttime = 0
+      maxstar = 5;
+      minstar = 1;
+    
 
-    getTime(minutes){
-
-        var hour = Math.floor(minutes/60)
-        var minute = minutes%60;
-        if(hour.toString().length<2){
-            hour="0"+hour;
-        }
-        if(minute.toString().length<2){
-            minute="0"+minute;
-        }
-        return hour+":"+minute
-    }  
+     
     componentWillMount(){
 
 
         this.maxprice = 234; //get from api
         this.minprice = 67;
         var valuesPrice = [0,this.maxprice-this.minprice,0]
-        var valuesTime=[0,1439,0]
+        var valuesStar=[0,4,0]
         this.setState({
             valuesPrice: valuesPrice,
-            valuesArrivalTime:valuesTime,
-            valuesDepartureTime:valuesTime,
+            valuesStar:valuesStar,
             low:this.minprice,
             high:this.maxprice
           });
@@ -64,18 +49,13 @@ class Hotellist extends Component {
       low :  this.minprice + values[0],
       high: this.maxprice - values[2]
     });
-    onChangeDepartureTime = values =>
+    onChangeStar = values =>
     this.setState({
-      valuesDepartureTime: values,
-      departure_start_time :  this.mindepttime + values[0],
-      departure_end_time: this.maxdepttime - values[2]
+      valuesStar: values,
+      star_low :  this.minstar + values[0],
+      star_high: this.maxstar - values[2]
     });
-    onChangeArrival = values =>
-    this.setState({
-      valuesArrivalTime: values,
-      arrival_start_time :  this.minarrivaltime + values[0],
-      arrival_end_time: this.maxarrivaltime - values[2]
-    });
+   
     displaystopline(stop){
         if(stop=="nonstop"){
             return <span>&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;</span> 
@@ -111,7 +91,7 @@ class Hotellist extends Component {
                                 <div>
                                 <button type="button" className="btn btn-elegant">8.6</button><a>1,676 Reviews</a>
                                 </div>
-                                <p>282 Almaden Blvd, San Jose</p>
+                              
                             </div> 
                          
                          </div>
@@ -226,41 +206,25 @@ class Hotellist extends Component {
                      
                         <br/>  <br/>
                       
-                                    <p style={{fontWeight:"bold"}}>Departure Time</p>
+                                    <p style={{fontWeight:"bold"}}>Star</p>
                                     <hr/>    
                                     <MultiSlider
                                     colors={colors}
-                                    values={this.state.valuesDepartureTime}
-                                    onChange={this.onChangeDepartureTime}
+                                    values={this.state.valuesStar}
+                                    onChange={this.onChangeStar}
                                 />
                                 <div className="row">
 
                                         <div className="col-sm-6">
-                                        {this.getTime(this.state.departure_start_time)}
+                                        {(this.state.star_low)}
                                         </div>
                                         <div className="col-sm-6" style={{textAlign:'right',fontSize:'10wh'}}>
-                                        {this.getTime(this.state.departure_end_time)}
+                                        {(this.state.star_high)}
                                         </div>
                                 </div>
 
-                         <br/>  <br/>
-                      
-                                    <p style={{fontWeight:"bold"}}>Arrival Time</p>
-                                    <hr/>    
-                                    <MultiSlider
-                                    colors={colors}
-                                    values={this.state.valuesArrivalTime}
-                                    onChange={this.onChangeArrival}
-                                />
-                                <div className="row">
-
-                                        <div className="col-sm-6">
-                                        {this.getTime(this.state.arrival_start_time)}
-                                        </div>
-                                        <div className="col-sm-6" style={{textAlign:'right'}}>
-                                        {this.getTime(this.state.arrival_end_time)}
-                                        </div>
-                                </div>       
+                        
+         
                      
                         </div>  
 
@@ -271,37 +235,8 @@ class Hotellist extends Component {
                     </div>
                    
                 </div>
-                <div className="modal fade" id="centralModalSuccess" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-        <div className="modal-dialog modal-notify modal-success" role="document">
-           
-            <div className="modal-content">
               
-                <div className="modal-header">
-                    <p className="heading lead">Modal Success</p>
-    
-                    <button type="button" className="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true" class="white-text">&times;</span>
-                    </button>
-                </div>
-    
-               
-                <div className="modal-body">
-                    <div className="text-center">
-                        <i className="fa fa-check fa-4x mb-3 animated rotateIn"></i>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Impedit iusto nulla aperiam blanditiis ad consequatur in dolores culpa, dignissimos, eius non possimus fugiat. Esse ratione fuga, enim,
-                            ab officiis totam.</p>
-                    </div>
-                </div>
-    
-               
-                <div className="modal-footer justify-content-center">
-                    <a type="button" className="btn btn-primary-modal">Get it now <i className="fa fa-diamond ml-1"></i></a>
-                    <a type="button" className="btn btn-outline-secondary-modal waves-effect" data-dismiss="modal">No, thanks</a>
-                </div>
-            </div>
-         
-        </div>
-    </div>
+   
             </div>
         )
     }
