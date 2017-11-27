@@ -35,7 +35,7 @@ CREATE TABLE `BILLING` (
   PRIMARY KEY (`billing_id`,`user_email`,`target_id`),
   KEY `user_id_idx` (`user_email`),
   CONSTRAINT `user_email` FOREIGN KEY (`user_email`) REFERENCES `USER` (`email`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=154 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=175 DEFAULT CHARSET=latin1;
 
 LOCK TABLES `BILLING` WRITE;
 

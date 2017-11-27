@@ -116,12 +116,12 @@
 			"tests": null,
 			"currentHelper": "normal",
 			"helperAttributes": {},
-			"time": 1511765326798,
+			"time": 1511767555780,
 			"name": "Book Hotel",
 			"description": "",
 			"collectionId": "fd7d1528-e7a0-7ac1-b04e-1a2efb736f48",
 			"responses": [],
-			"rawModeData": "{\n\t\"booking\" :\n\t\t{\n\t\t\t\n\t\t\t\n\t\t}\n\t\t\t\n}"
+			"rawModeData": "{\n\t\"booking\" :\n\t\t{\n\t\t\t\"hotelid\" : \"MMT111\",\n\t\t    \"name\" : \"HolidayInn\",\n\t\t    \"address\" : {\n\t\t        \"street\" : \"101 E San Fernando St.\",\n\t\t        \"city\" : \"San Jose\",\n\t\t        \"state\" : \"CA\",\n\t\t        \"country\" : \"USA\",\n\t\t        \"zip\" : \"95112\"\n\t\t    },\n\t\t    \"roomtype\" : \"DELUX\",\n\t\t    \"price\" : 130,\n\t\t    \"roomcount\" : 10,\n\t\t    \"capacity\" : 100,\n\t\t    \"bookingstartdate\" : \"2017-01-18 09:15:00\",\n\t\t\t\"bookingenddate\" : \"2017-01-19 03:14:00\"\n\t\t}\n\t\t\t\n}"
 		},
 		{
 			"id": "c08882cc-19eb-50f4-abc8-2b77d39d4f59",

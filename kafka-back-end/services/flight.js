@@ -84,7 +84,7 @@ function bookFlight(msg, callback){
       if(tripType=='One-Way'){
             // Save the one way booking
             console.log("is one way trip");
-            var isAvailable = checkFlightAvailable(booking.flight, null, function(isAvailable){
+            checkFlightAvailable(booking.flight, null, function(isAvailable){
                   var res = {};
                   if(isAvailable){
                       // Proceed to Booking
@@ -119,7 +119,7 @@ function bookFlight(msg, callback){
            var returnBooking = getReturnBooking(booking);
            console.log('------Return Booking------');
            console.log(returnBooking);
-           var isAvailable = checkFlightAvailable(booking.flight, returnBooking, function(isAvailable){
+           checkFlightAvailable(booking.flight, returnBooking, function(isAvailable){
                  var res = {};
                  if(isAvailable == true){
                      console.log('Flight is Available!!');
