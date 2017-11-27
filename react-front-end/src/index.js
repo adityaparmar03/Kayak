@@ -151,7 +151,7 @@ import Hotelhome from "./components/hotelhome";
 import Carhome from "./components/carhome";
 
 import Flightlist from "./components/flightlist";
-import Hotellist from "./components/hotelhome";
+import Hotellist from "./components/hotellist";
 import Carlist from "./components/carhome";
 
 import { createStore } from 'redux';
