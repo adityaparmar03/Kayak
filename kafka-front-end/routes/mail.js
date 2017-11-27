@@ -13,7 +13,7 @@ var transporter = nodemailer.createTransport({
 
 
 function sendMail(req,res) {
-
+   console.log("inside send mail part");
 
     var mailOptions = {
         from: 'kayak.cmpe273@gmail.com',

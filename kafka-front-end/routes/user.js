@@ -18,7 +18,6 @@ router.post('/login', function (req, res) {
 
         if (err) {
             throw err;
-
         }
 
         if(!user ){
@@ -29,7 +28,8 @@ router.post('/login', function (req, res) {
 
             req.session.email = user.email;
             req.session.isloggedin = true;
-            res.send({"status": 201, "email": user.email});
+            console.log(user.data);
+            res.send({"status": 201, "email": user.email,"data":user.data});
 
         }
 
@@ -38,6 +38,24 @@ router.post('/login', function (req, res) {
 });
 
 //************************************************************************************************************************
+
+router.get('/checkSession', function (req, res) {
+
+    // var reqEmail = req.body.email;
+    //  var reqPassword = req.body.password;
+   console.log(req.session);
+   if(req.session.isloggedin){
+       res.send({"status":201});
+   }
+   else {
+       res.send({"status": 401});
+   }
+});
+
+//************************************************************************************************************************
+
+
+
 
 router.post('/register',function (req,res) {
 

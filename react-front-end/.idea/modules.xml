@@ -3,6 +3,7 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/.idea/logindemo.iml" filepath="$PROJECT_DIR$/.idea/logindemo.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/react-front-end.iml" filepath="$PROJECT_DIR$/.idea/react-front-end.iml" />
     </modules>
   </component>
 </project>

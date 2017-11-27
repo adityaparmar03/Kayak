@@ -11,7 +11,16 @@ class Nav extends Component {
 
     componentWillMount(){
        
+   API.checkSession().then((data)=>{
+    console.log("inside the check session response");
+    if(data.status===201){
+        console.log("user logged in ");
     }
+   })
+
+
+    }
+//********************************************************    
     state = {
                 navpopup:false,
                 IsLogged:false,
@@ -34,13 +43,40 @@ class Nav extends Component {
         "password": this.state.password
      }
      API.doRegister(payload).then((data)=>{
-        console.log("after the registration is complete");
+        if(data.status==="201"){
+        console.log("after the registration is complete");}
+     }).catch((error)=>{
+        console.log("error");
      })
 
     }
     }
 
 //********************************************************
+loginButton(){
+      console.log("I am inside the loginButton");
+      console.log(this.state.password);
+    console.log("+++++++++");
+      //console.log(regex.test("smcool100@gmail.com"));
+     var payload = {
+        "email" :this.state.email,
+        "password": this.state.password
+     }
+     API.doLogin(payload).then((data)=>{
+        console.log(data);
+        if(data.status===201){
+        console.log("after the login is complete");}
+     }).catch((error)=>{
+        console.log("error");
+     })
+
+    
+    }
+
+//********************************************************
+
+
+
     displaypopup(){
         if(this.state.navpopup){
             if(this.state.IsLogged){
@@ -151,17 +187,31 @@ class Nav extends Component {
                         <div className="modal-body mb-1">
                             <div className="md-form form-sm">
                                 <i className="fa fa-envelope prefix"></i>
-                                <input type="email" id="form22" className="form-control validate"/>
+                                <input type="email" id="form22" className="form-control validate"
+                                value = {this.state.email}
+                                 onChange={(event) => {
+                                    this.setState({
+                                        email: event.target.value
+                                    });
+                                }}/>
+
                                 <label data-error="wrong" data-success="right" htmlFor="form22">Your email</label>
                             </div>
                             
                             <div className="md-form form-sm">
                                 <i className="fa fa-lock prefix"></i>
-                                <input type="password" id="form23" className="form-control validate"/>
+                                <input type="password" id="form23" className="form-control validate"
+                                value = {this.state.password}
+                                 onChange={(event) => {
+                                    this.setState({
+                                        password: event.target.value
+                                    });
+                                }}/>
+
                                 <label data-error="wrong" data-success="right" htmlFor="form23">Your password</label>
                             </div>
                             <div className="text-center mt-2">
-                                <button className="btn btn-info" onClick="">Log in <i className="fa fa-sign-in ml-1"></i></button>
+                                <button className="btn btn-info" onClick={()=>{this.loginButton();}}>Log in <i className="fa fa-sign-in ml-1"></i></button>
                             </div>
                         </div>
                 

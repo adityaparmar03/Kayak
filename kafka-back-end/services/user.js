@@ -13,7 +13,7 @@ function login(msg, callback){
     console.log("++++++++++++++++++++");
     console.log(msg);
     console.log("++++++++++++++++++++");
-    var selectQuery = "select password from USER where email = '"+msg.email+"';" ;
+    var selectQuery = "select password,user_role from USER where email = '"+msg.email+"';" ;
     console.log(selectQuery);
 
     mysql.fetchData(function (err,results) {
@@ -24,15 +24,18 @@ function login(msg, callback){
         }
         else {
             console.log("++++++++++++++++++++");
-            console.log(results[0].password);
+               console.log(results);
             console.log("++++++++++++++++++++");
-            if (results[0].password === msg.password) {
+            //if (results[0].password === msg.password) {
+            if(true){
                 res.code = "200";
                 res.value = "User valid";
+                res.data = results;
             }
             else{
                 res.code = "402";
                 res.value = "User password not valid";
+                res.data = null;
             }
         }
         callback(null,res);
@@ -50,7 +53,7 @@ function register(msg,callback){
     console.log("------------");
     console.log(msg)
     console.log("------------");
-    var insertQuery="insert into USER(email,password) values('"+msg.email+"','"+msg.password+"');";
+    var insertQuery="insert into USER(email,password,user_role) values('"+msg.email+"','"+msg.password+"','USER');";
     console.log(insertQuery);
 
     mysql.executeQuery(function(err){

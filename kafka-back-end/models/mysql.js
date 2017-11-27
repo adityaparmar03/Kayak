@@ -4,7 +4,7 @@ var mysql = require('mysql');
 var pool  = mysql.createPool({
     host     : 'localhost',
     user     : 'root',
-    password : '', //Enter password
+    password : 'root', //Enter password
     database : 'kayak', //keep database as this since meenakshi created this database.
     port	 : 3306
 });
@@ -23,8 +23,9 @@ function fetchData(callback,sqlQuery){
             }
             else {	// return err or result
                 console.log("DB Results:--");
+                //console.log(fields);
                 console.log(rows);
-                callback(err, rows);
+                callback(err,rows);
             }
         });
         console.log("\nConnection closed..");

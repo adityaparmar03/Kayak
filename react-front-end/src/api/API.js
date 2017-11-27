@@ -15,7 +15,7 @@ type - (this should be user or admin)
 }*/
 
 export const doLogin = (payload) => 
-    fetch(`${api}/users/login`, {
+    fetch(`${api}/user/login`, {
         method: 'POST',
         headers: {
             ...headers,
@@ -24,7 +24,7 @@ export const doLogin = (payload) =>
         body: JSON.stringify(payload),
         credentials:'include'
     }).then(res => {
-
+         console.log(res);
         return res.json();
     })
         .catch(error => {
@@ -39,13 +39,33 @@ export const doLogin = (payload) =>
 //password
 //}
 export const doRegister = (payload) =>
- fetch(`${api}/users/register`, {
+ fetch(`${api}/user/register`, {
         method: 'POST',
         headers: {
             ...headers,
             'Content-Type': 'application/json'
         },
         body: JSON.stringify(payload),
+        credentials:'include'
+    }).then(res => {
+        return res.json();
+    })
+        .catch(error => {
+            console.log("This is error");
+            return error;
+        });
+
+//************************************************************************************************
+
+
+export const checkSession = () =>
+ fetch(`${api}/user/checkSession`, {
+        method: 'get',
+        headers: {
+            ...headers,
+            'Content-Type': 'application/json'
+        },
+        //body: JSON.stringify(payload),
         credentials:'include'
     }).then(res => {
         return res.json();
