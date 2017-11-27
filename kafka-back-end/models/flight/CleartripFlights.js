@@ -41,8 +41,10 @@ var FlightSchema   = new Schema({
         },
       flights:[
            {
-              'arrival': '16:00, Monday',
-              'departure': '00:00', Wednesday,
+              'arrivaltime': '16:00',
+              'arrivalday' : 'Monday'
+              'departuretime': '00:00',
+              'departureday' : 'Wednesday',
               'origin': {'city':'San Jose', 'state':'CA', 'country':'USA', 'airport':'SJC'},
               'destination': {'city':'Delhi', 'state':'Delhi', 'country':'India', 'airport':'IGI'}
 

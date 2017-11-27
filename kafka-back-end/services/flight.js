@@ -3,7 +3,6 @@ var mysql = require('../models/mysql');
 
 // Search for all flightss on the basis of city, state and class
 function searchFlights(msg, callback){
-
     var flight = require('../models/flight/'+msg.vendor);
 
     var res = {};
@@ -13,17 +12,20 @@ function searchFlights(msg, callback){
     var destinationstate = msg.searchcriteria.destinationstate;
     var triptype = msg.searchcriteria.triptype;
     var flightclass = msg.searchcriteria.flightclass;
-    var capacity;
+   // var arrivalday = msg.searchcriteria.arrivalday;
+    var departureday = msg.searchcriteria.departureday;
 
     if(triptype=='One-Way'){
 
-        flight.find({'flights.origin.city': origincity,
-                        'flights.origin.state': originstate,
-                        'flights.destination.city': destinationcity,
-                        'flights.destination.state': destinationstate,
-                        'class.type': flightclass/*,
-                        'flights.class.capacity': capacity*/
-                    }, function (err, flights) {
+
+        flight.find({'flights':{$elemMatch: {
+            'origin.city': origincity,
+            'origin.state': originstate,
+            'destination.city': destinationcity,
+            'destination.state': destinationstate,
+            'departureday' : departureday
+        }}}, function (err, flights) {
+
 
             if (err) {
                 throw err;
@@ -44,17 +46,16 @@ function searchFlights(msg, callback){
 
     else{
 
-        flight.find({'flights.origin.city': origincity,
-                        'flights.origin.state': originstate,
-                        'flights.destination.city': destinationcity,
-                        'flights.destination.state': destinationstate,
-                        'flights.origin.city': destinationcity,
-                        'flights.origin.state': destinationstate,
-                        'flights.destination.city': origincity,
-                        'flights.destination.state': originstate,
-                        'class.type': flightclass
-                    }, function (err, flights) {
-
+        flight.find({'flights':{$elemMatch: {
+            'origin.city': origincity,
+                'origin.state': originstate,
+                'destination.city': destinationcity,
+                'destination.state': destinationstate,
+                'origin.city': destinationcity,
+                'origin.state': destinationstate,
+                'destination.city': origincity,
+                'destination.state': originstate
+        }}}, function (err, flights) {
             if (err) {
                 throw err;
                 console.log("Error in searching for flights" + err);
