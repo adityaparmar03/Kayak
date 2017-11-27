@@ -19,6 +19,9 @@ bin/kafka-topics.sh --create --zookeeper localhost:2181 --replication-factor 1 -
 bin/kafka-topics.sh --create --zookeeper localhost:2181 --replication-factor 1 --partitions 1 --topic ExpediaFlightsBook
 bin/kafka-topics.sh --create --zookeeper localhost:2181 --replication-factor 1 --partitions 1 --topic CleartripFlightsBook
 
+bin/kafka-topics.sh --create --zookeeper localhost:2181 --replication-factor 1 --partitions 1 --topic register
+bin/kafka-topics.sh --create --zookeeper localhost:2181 --replication-factor 1 --partitions 1 --topic update
+
 
 create table vendors (vendorId int AUTO_INCREMENT primary key, vendorname varchar(50), servicetype varchar(50), vendorapi varchar(255));
 
@@ -131,6 +134,25 @@ db.MmtFlights.insert({
                 {'type':'economy','price':'$1000', 'capacity':100},
                 {'type':'first','price':'$2000' , 'capacity':100},
                 {'type':'business','price':'$3000' , 'capacity':100}
+            ]
+        }
+    ]
+})
+
+db.MmtFlights.insert({
+  'flightId': 'MMT111',
+  'operator': 'Air India',
+  'flights':[
+        {
+            'arrival': '16:00',
+            'departure': '00:00',
+            'origin': {'city':'San Jose', 'state':'CA', 'country':'USA'},
+            'destination': {'city':'Delhi', 'state':'Delhi', 'country':'India'},
+            'class':[
+
+                {'type':'economy','price':'$1000', 'capacity':100},
+                {'type':'first','price':'$2000' , 'capacity':20},
+                {'type':'business','price':'$3000' , 'capacity':20}
             ]
         }
     ]

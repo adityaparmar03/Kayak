@@ -5,8 +5,10 @@ function make_request(queue_name, msg_payload, callback){
     console.log('in make request from the queue' + queue_name);
 
 	rpc.makeRequest(queue_name, msg_payload, function(err, response){
-		if(err)
+		if(err){
 			console.error(err);
+      callback(err, null);
+    }
 		else{
 			console.log("response", response);
 			callback(null, response);

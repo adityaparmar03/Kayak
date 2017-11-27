@@ -95,6 +95,10 @@ consumer.on('message', function (message) {
           console.log("Topic Found!!!!!!!!!!!!!!!!!");
           console.log(message);
           flight.bookFlight(body,function (err , res) {
+              if(err)
+                console.log(err);
+              else
+                console.log(res);
               console.log("In Final Response!!!;");
               response(data,res);
               return;
