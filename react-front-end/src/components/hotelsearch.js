@@ -4,7 +4,11 @@ import PropTypes from 'prop-types';
 import AutoComplete from 'material-ui/AutoComplete';
 import DatePicker from 'material-ui/DatePicker';
 import TextField from 'material-ui/TextField';
-import moment from 'moment'
+import moment from 'moment';
+import * as API from '../api/API';
+import * as Actions from '../actions/action';
+import {connect} from 'react-redux';
+
 
 class Hotelsearch extends Component {
 
@@ -44,6 +48,26 @@ class Hotelsearch extends Component {
         // call Api for search here......
         //API CALL
 
+        const payload={
+            'city':'San Jose',
+            'state':'CA',
+            'roomtype':'delux'
+        }
+
+       API.searchHotels(payload)
+           .then((res) => {
+               console.log(res);
+               if (res.status == 201) {
+
+                   this.props.hotelSearch(res.hotels);
+
+                   console.log("Success...")
+
+               }else if (res.status == 401) {
+
+                   //  this.props.history.push('/');
+               }
+           });
       }
 
 
@@ -238,4 +262,18 @@ class Hotelsearch extends Component {
     }
 }
 
-export default Hotelsearch;
+
+function mapStateToProps(reducerdata) {
+    console.log(reducerdata);
+
+    return {reducerdata};
+}
+
+function mapDispatchToProps(dispatch) {
+    return {
+
+        hotelSearch : (data) => dispatch(Actions.hotelSearch(data))
+    };
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Hotelsearch);
