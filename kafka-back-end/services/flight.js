@@ -91,7 +91,7 @@ function bookFlight(msg, callback){
                   if(isAvailable){
                       // Proceed to Booking
                        // TODO : Add credit card fields
-                      var bookingSql="insert into BILLING(`user_email`,`target_id`,`booking_type`,`vendor`,`billing_amount`,`person_count`,`source_city`,`source_state`,`destination_city`,`destination_state`,`trip_type`,`booking_class`,`booking_start_date`,`booking_end_date`) values('"+email+"','"+booking.flightid+"','"+'FLIGHT'+"','"+booking.vendor+"','"+booking.price+"','"+booking.passengers+"','"+booking.origincity+"','"+booking.originstate+"','"+booking.destinationcity+"','"+booking.destinationstate+"','"+booking.triptype+"','"
+                      var bookingSql="insert into BILLING(`user_email`,`target_id`,`booking_type`,`vendor`,`billing_amount`,`target_count`,`source_city`,`source_state`,`destination_city`,`destination_state`,`trip_type`,`booking_class`,`booking_start_date`,`booking_end_date`) values('"+email+"','"+booking.flightid+"','"+'FLIGHT'+"','"+booking.vendor+"','"+booking.price+"','"+booking.passengers+"','"+booking.origincity+"','"+booking.originstate+"','"+booking.destinationcity+"','"+booking.destinationstate+"','"+booking.triptype+"','"
                       +booking.flightclass+"','"+booking.bookingstartdate+"','"+booking.bookingenddate+"');";
 
                       mysql.executeQuery(function(err){
@@ -127,7 +127,7 @@ function bookFlight(msg, callback){
                      console.log('Flight is Available!!');
                      // Proceed to Booking
                     // TODO : Add credit card fields
-                     var bookingSql="insert into BILLING(`user_email`,`target_id`,`booking_type`,`vendor`,`billing_amount`,`person_count`,`source_city`,`source_state`,`destination_city`,`destination_state`,`trip_type`,`booking_class`,`booking_start_date`,`booking_end_date`,`return_target_id`,`return_booking_start_date`,`return_booking_end_date`) values('"+email+"','"+booking.flightid+"','"+'FLIGHT'+"','"+booking.vendor+"','"+booking.price+"','"+booking.passengers+"','"+booking.origincity+"','"+booking.originstate+"','"+booking.destinationcity+"','"+booking.destinationstate+"','"+booking.triptype+"','"
+                     var bookingSql="insert into BILLING(`user_email`,`target_id`,`booking_type`,`vendor`,`billing_amount`,`target_count`,`source_city`,`source_state`,`destination_city`,`destination_state`,`trip_type`,`booking_class`,`booking_start_date`,`booking_end_date`,`return_target_id`,`return_booking_start_date`,`return_booking_end_date`) values('"+email+"','"+booking.flightid+"','"+'FLIGHT'+"','"+booking.vendor+"','"+booking.price+"','"+booking.passengers+"','"+booking.origincity+"','"+booking.originstate+"','"+booking.destinationcity+"','"+booking.destinationstate+"','"+booking.triptype+"','"
                      +booking.flightclass+"','"+booking.bookingstartdate+"','"+booking.bookingenddate+"','"+booking.returnflightid+"','"+booking.returnstartdate+"','"+booking.returnenddate+"');";
 
                      mysql.executeQuery(function(err){
@@ -257,13 +257,13 @@ function checkFlightAvailable(booking, returnBooking, callback){
 
 }
 
-// Get the Selected Flight Capacity
+// Get the Selected Flight Capacity per class selected
 function getFlightCapacity(flights, booking){
       console.log('Getting capacity for flight');
       console.log(flights);
       console.log(booking);
-      var classType = _.where(flights[0].flights[0].class, {type: booking.flightclass});
-      console.log(flights[0].flights[0].class + ' ' + booking.flightclass);
+      var classType = _.where(flights[0].class, {type: booking.flightclass});
+      console.log(flights[0].class + ' ' + booking.flightclass);
       return classType[0].capacity;
 }
 
@@ -294,11 +294,11 @@ function getCurrentFlightBookingCount(booking, callback){
       } , bookingCountQuery);
 }
 
-// Get Flight booking Helper
+// Get Flight booking Count Helper
 function getBookedCountHelper(dbBookings){
       var count = 0;
           for(booking in dbBookings){
-              count = count + dbBookings[booking].person_count;
+              count = count + dbBookings[booking].target_count;
           }
       console.log(" Total Seats Booked in the Current Flight are - " + count);
       return count;
