@@ -5,7 +5,9 @@
 	"order": [
 		"60109cdf-b787-d78c-3ca9-1fe77272938c",
 		"c08882cc-19eb-50f4-abc8-2b77d39d4f59",
-		"e60c98c5-a34b-9fe2-bd74-ad3267fa0706"
+		"e60c98c5-a34b-9fe2-bd74-ad3267fa0706",
+		"700b4d4d-2916-bc7a-e17e-a772ef3df8a1",
+		"8c4abe34-a22f-6f77-f41b-25807c576e40"
 	],
 	"folders": [],
 	"folders_order": [],
@@ -43,11 +45,83 @@
 			"tests": null,
 			"currentHelper": "normal",
 			"helperAttributes": {},
-			"time": 1511745330986,
-			"name": "Get All Flights",
+			"time": 1511751763766,
+			"name": "Get Flights",
 			"description": "",
 			"collectionId": "fd7d1528-e7a0-7ac1-b04e-1a2efb736f48",
 			"responses": []
+		},
+		{
+			"id": "700b4d4d-2916-bc7a-e17e-a772ef3df8a1",
+			"headers": "",
+			"headerData": [],
+			"url": "http://localhost:3001/hotel/hotels?city=San Jose&state=CA&roomtype=delux",
+			"queryParams": [
+				{
+					"key": "city",
+					"value": "San Jose",
+					"equals": true,
+					"description": "",
+					"enabled": true
+				},
+				{
+					"key": "state",
+					"value": "CA",
+					"equals": true,
+					"description": "",
+					"enabled": true
+				},
+				{
+					"key": "roomtype",
+					"value": "delux",
+					"equals": true,
+					"description": "",
+					"enabled": true
+				}
+			],
+			"preRequestScript": null,
+			"pathVariables": {},
+			"pathVariableData": [],
+			"method": "GET",
+			"data": null,
+			"dataMode": "params",
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1511751937719,
+			"name": "Get hotels",
+			"description": "",
+			"collectionId": "fd7d1528-e7a0-7ac1-b04e-1a2efb736f48",
+			"responses": []
+		},
+		{
+			"id": "8c4abe34-a22f-6f77-f41b-25807c576e40",
+			"headers": "Content-Type: application/json\n",
+			"headerData": [
+				{
+					"key": "Content-Type",
+					"value": "application/json",
+					"description": "",
+					"enabled": true
+				}
+			],
+			"url": "http://localhost:3001/hotel/book",
+			"queryParams": [],
+			"preRequestScript": null,
+			"pathVariables": {},
+			"pathVariableData": [],
+			"method": "POST",
+			"data": [],
+			"dataMode": "raw",
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1511765326798,
+			"name": "Book Hotel",
+			"description": "",
+			"collectionId": "fd7d1528-e7a0-7ac1-b04e-1a2efb736f48",
+			"responses": [],
+			"rawModeData": "{\n\t\"booking\" :\n\t\t{\n\t\t\t\n\t\t\t\n\t\t}\n\t\t\t\n}"
 		},
 		{
 			"id": "c08882cc-19eb-50f4-abc8-2b77d39d4f59",
@@ -71,12 +145,12 @@
 			"tests": null,
 			"currentHelper": "normal",
 			"helperAttributes": {},
-			"time": 1511742124073,
+			"time": 1511765182051,
 			"name": "Book Flight - One Way",
 			"description": "",
 			"collectionId": "fd7d1528-e7a0-7ac1-b04e-1a2efb736f48",
 			"responses": [],
-			"rawModeData": "{\n\t\"vendor\" : \"MmtFlights\",\n\t\"booking\" :\n\t\t{\n\t\t\t\"origincity\" : \"Delhi\",\n\t        \"originstate\" : \"Delhi\",\n\t        \"destinationcity\" : \"San Francisco\",\n\t        \"destinationstate\" : \"CA\",\n\t        \"triptype\" : \"One-Way\",\n\t        \"flightclass\" : \"economy\",\n\t        \"bookingstartdate\" : \"2017-01-18 09:15:00\",\n\t        \"bookingenddate\" : \"2017-01-19 03:14:00\",\n\t        \"returnstartdate\" : \"\",\n\t        \"returnenddate\" : \"\",\n\t        \"passengers\" : 10,\n\t        \"price\" : 1200,\n\t        \"flightid\" : \"MMT100\",\n\t        \"returnflightid\" : \"\",\n\t        \"vendor\" : \"MMTFlights\"\n\t\t}\n}"
+			"rawModeData": "{\n\t\"booking\" :\n\t\t{\n\t\t\t\"flight\" : {\n\t\t\t\t\t\"origincity\" : \"Delhi\",\n\t        \t\t\"originstate\" : \"Delhi\",\n\t\t\t        \"destinationcity\" : \"San Francisco\",\n\t\t\t        \"destinationstate\" : \"CA\",\n\t\t\t        \"triptype\" : \"One-Way\",\n\t\t\t        \"flightclass\" : \"economy\",\n\t\t\t        \"capacity\" : 100,\n\t\t\t        \"price\" : 1200,\n\t\t\t        \"bookingstartdate\" : \"2017-01-18 09:15:00\",\n\t\t\t        \"bookingenddate\" : \"2017-01-19 03:14:00\",\n\t\t\t        \"passengers\" : 10,\n\t\t\t        \"flightid\" : \"MMT100\"\n\t\t\t        \n\t\t\t}\n\t\t\t\n\t\t}\n\t\t\t\n}"
 		},
 		{
 			"id": "e60c98c5-a34b-9fe2-bd74-ad3267fa0706",
@@ -100,12 +174,12 @@
 			"tests": null,
 			"currentHelper": "normal",
 			"helperAttributes": {},
-			"time": 1511742330148,
+			"time": 1511764528266,
 			"name": "Book Flight - Two Way",
 			"description": "",
 			"collectionId": "fd7d1528-e7a0-7ac1-b04e-1a2efb736f48",
 			"responses": [],
-			"rawModeData": "{\n\t\"vendor\" : \"MmtFlights\",\n\t\"booking\" :\n\t\t{\n\t\t\t\"origincity\" : \"Delhi\",\n\t        \"originstate\" : \"Delhi\",\n\t        \"destinationcity\" : \"San Francisco\",\n\t        \"destinationstate\" : \"CA\",\n\t        \"triptype\" : \"Two-Way\",\n\t        \"flightclass\" : \"economy\",\n\t        \"bookingstartdate\" : \"2017-01-18 09:15:00\",\n\t        \"bookingenddate\" : \"2017-01-19 03:14:00\",\n\t        \"returnstartdate\" : \"2017-03-19 03:14:00\",\n\t        \"returnenddate\" : \"2017-03-19 6:40:00\",\n\t        \"passengers\" : 10,\n\t        \"price\" : 1200,\n\t        \"flightid\" : \"MMT100\",\n\t        \"returnflightid\" : \"MMT111\",\n\t        \"vendor\" : \"MMTFlights\"\n\t\t}\n}"
+			"rawModeData": "{\n\t\"booking\" :\n\t\t{\n\t\t\t\"flight\" : {\n\t\t\t\t\t\"origincity\" : \"Delhi\",\n\t        \t\t\"originstate\" : \"Delhi\",\n\t\t\t        \"destinationcity\" : \"San Francisco\",\n\t\t\t        \"destinationstate\" : \"CA\",\n\t\t\t        \"triptype\" : \"Two-Way\",\n\t\t\t        \"flightclass\" : \"economy\",\n\t\t\t        \"capacity\" : 100,\n\t\t\t        \"price\" : 1200,\n\t\t\t        \"bookingstartdate\" : \"2017-01-18 09:15:00\",\n\t\t\t        \"bookingenddate\" : \"2017-01-19 03:14:00\",\n\t\t\t        \"passengers\" : 10,\n\t\t\t        \"flightid\" : \"MMT100\"\n\t\t\t        \n\t\t\t},\n\t\t\t\"returnflight\" : {\n\t\t\t\t\t\"origincity\" : \"San Francisco\",\n\t        \t\t\"originstate\" : \"CA\",\n\t\t\t        \"destinationcity\" : \"Delhi\",\n\t\t\t        \"destinationstate\" : \"Delhi\",\n\t\t\t        \"triptype\" : \"Two-Way\",\n\t\t\t        \"flightclass\" : \"economy\",\n\t\t\t        \"capacity\" : 30,\n\t\t\t        \"price\" : 1300,\n\t\t\t        \"returnstartdate\" : \"2017-03-18 06:15:00\",\n\t\t\t        \"returnenddate\" : \"2017-03-19 18:14:00\",\n\t\t\t        \"passengers\" : 10,\n\t\t\t        \"returnflightid\" : \"MMT111\"\n\t\t\t}\n\t\t\t\n\t\t}\n\t\t\t\n}"
 		}
 	]
 }
