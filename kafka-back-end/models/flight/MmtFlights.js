@@ -27,7 +27,7 @@ var FlightSchema   = new Schema({
 
     flightId:String,
     operator: String,
-    class:Object,
+    class:Array,
     flights: Array
 
 //Sample
@@ -38,13 +38,11 @@ var FlightSchema   = new Schema({
             'type':''business','price':'$3000' , 'capacity':100}
         },
       flights:[
-          {
-              'arrivaltime': '16:00'
-              'departuretime': '00:00',
-              'arrivalday': 'Monday',
-              'departureday':'Tuesday'
-              'origin': {'city':'San Jose', 'state':'CA', 'country':'USA'}
-              'destination': {'city':'Delhi', 'state':'Delhi', 'country':'India'}
+           {
+              'arrival': '16:00, Monday',
+              'departure': '00:00', Wednesday,
+              'origin': {'city':'San Jose', 'state':'CA', 'country':'USA', 'airport':'SJC'},
+              'destination': {'city':'Delhi', 'state':'Delhi', 'country':'India', 'airport':'IGI'}
 
           }
       ]*/

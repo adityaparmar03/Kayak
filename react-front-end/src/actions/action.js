@@ -21,3 +21,30 @@ export function signIn(isLoggedIn, isAdmin, firstName, lastName, email, password
     }
 }
 
+
+export function flightSearch(flights) {
+
+    return {
+        type : Constants.SEARCH_FLIGHT,
+        flightSearchResults : flights
+    }
+};
+
+
+export function hotelSearch(hotels) {
+
+    return {
+        type : Constants.SEARCH_HOTEL,
+        hotelSearchResults : hotels
+    }
+};
+
+
+export function carSearch(cars) {
+
+    return {
+        type : Constants.SEARCH_CAR,
+        carSearchResults : cars
+    }
+};
+

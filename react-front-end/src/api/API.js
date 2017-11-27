@@ -48,7 +48,6 @@ export const doRegister = (payload) =>
         body: JSON.stringify(payload),
         credentials:'include'
     }).then(res => {
-
         return res.json();
     })
         .catch(error => {
@@ -111,7 +110,7 @@ export const clickTracker = (payload) =>
         credentials:'include',
         body: JSON.stringify(payload)
     }).then(res => {
-        console.log(res);
+
         return res.json();
     })
         .catch(error => {
@@ -119,3 +118,55 @@ export const clickTracker = (payload) =>
             return error;
         });
 
+export const searchFlights = (payload) =>
+    fetch(`${api}/flight/flights?origincity=San Jose&originstate=CA&destinationcity=Delhi&destinationstate=Delhi&triptype=One-Way&flightclass=economy`, {
+        method: 'GET',
+        headers: {
+            ...headers,
+            'Content-Type': 'application/json'
+        },
+        credentials:'include'
+    }).then(res => {
+
+        return res.json();
+    })
+        .catch(error => {
+            console.log("This is an API error");
+            return error;
+        });
+
+
+export const searchHotels = (payload) =>
+    fetch(`${api}/hotel/hotels?city=San Jose&state=CA&roomtype=delux`, {
+        method: 'GET',
+        headers: {
+            ...headers,
+            'Content-Type': 'application/json'
+        },
+        credentials:'include'
+    }).then(res => {
+
+        return res.json();
+    })
+        .catch(error => {
+            console.log("This is an API error");
+            return error;
+        });
+
+
+export const searchCars = (payload) =>
+    fetch(`${api}/car/cars?pickupcity=San Jose&pickupstate=CA&dropoffcity=San Jose&dropoffstate=CA&triptype=Two-Way`, {
+        method: 'GET',
+        headers: {
+            ...headers,
+            'Content-Type': 'application/json'
+        },
+        credentials:'include'
+    }).then(res => {
+
+        return res.json();
+    })
+        .catch(error => {
+            console.log("This is an API error");
+            return error;
+        });

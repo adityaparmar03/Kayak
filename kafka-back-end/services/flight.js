@@ -21,7 +21,7 @@ function searchFlights(msg, callback){
                         'flights.origin.state': originstate,
                         'flights.destination.city': destinationcity,
                         'flights.destination.state': destinationstate,
-                        'flights.class.type': flightclass/*,
+                        'class.type': flightclass/*,
                         'flights.class.capacity': capacity*/
                     }, function (err, flights) {
 
@@ -52,8 +52,7 @@ function searchFlights(msg, callback){
                         'flights.origin.state': destinationstate,
                         'flights.destination.city': origincity,
                         'flights.destination.state': originstate,
-                        'flights.class.type': flightclass,
-                        'flights.class.capacity': capacity
+                        'class.type': flightclass
                     }, function (err, flights) {
 
             if (err) {
@@ -71,28 +70,27 @@ function searchFlights(msg, callback){
 
         });
     }
-
 }
 
 
 
-// Book the flights of different vendors
+// Book the flight
 function bookFlight(msg, callback){
       var booking = msg.booking;
       var email = "meenakshi.paryani@gmail.com"; //msg.email - TODO : uncomment this after stable
-      var tripType = booking.triptype;
+      var tripType = booking.flight.triptype;
 
       console.log('-------booking is-------' + tripType);
       if(tripType=='One-Way'){
             // Save the one way booking
             console.log("is one way trip");
-            var isAvailable = checkFlightAvailable(booking, null, function(isAvailable){
+            var isAvailable = checkFlightAvailable(booking.flight, null, function(isAvailable){
                   var res = {};
                   if(isAvailable){
                       // Proceed to Booking
                        // TODO : Add credit card fields
-                      var bookingSql="insert into BILLING(`user_email`,`target_id`,`booking_type`,`vendor`,`billing_amount`,`person_count`,`source_city`,`source_state`,`destination_city`,`destination_state`,`trip_type`,`booking_class`,`booking_start_date`,`booking_end_date`) values('"+email+"','"+booking.flightid+"','"+'FLIGHT'+"','"+booking.vendor+"','"+booking.price+"','"+booking.passengers+"','"+booking.origincity+"','"+booking.originstate+"','"+booking.destinationcity+"','"+booking.destinationstate+"','"+booking.triptype+"','"
-                      +booking.flightclass+"','"+booking.bookingstartdate+"','"+booking.bookingenddate+"');";
+                      var bookingSql="insert into BILLING(`user_email`,`target_id`,`booking_type`,`billing_amount`,`target_count`,`source_city`,`source_state`,`destination_city`,`destination_state`,`trip_type`,`booking_class`,`booking_start_date`,`booking_end_date`) values('"+email+"','"+booking.flight.flightid+"','"+'FLIGHT'+"','"+booking.flight.price+"','"+booking.flight.passengers+"','"+booking.flight.origincity+"','"+booking.flight.originstate+"','"+booking.flight.destinationcity+"','"+booking.flight.destinationstate+"','"+booking.flight.triptype+"','"
+                      +booking.flight.flightclass+"','"+booking.flight.bookingstartdate+"','"+booking.flight.bookingenddate+"');";
 
                       mysql.executeQuery(function(err){
                           if(err){
@@ -121,14 +119,16 @@ function bookFlight(msg, callback){
            var returnBooking = getReturnBooking(booking);
            console.log('------Return Booking------');
            console.log(returnBooking);
-           var isAvailable = checkFlightAvailable(booking, returnBooking, function(isAvailable){
+           var isAvailable = checkFlightAvailable(booking.flight, returnBooking, function(isAvailable){
                  var res = {};
                  if(isAvailable == true){
                      console.log('Flight is Available!!');
+                     totalPrice = booking.flight.price + booking.returnflight.price;
                      // Proceed to Booking
                     // TODO : Add credit card fields
-                     var bookingSql="insert into BILLING(`user_email`,`target_id`,`booking_type`,`vendor`,`billing_amount`,`person_count`,`source_city`,`source_state`,`destination_city`,`destination_state`,`trip_type`,`booking_class`,`booking_start_date`,`booking_end_date`,`return_target_id`,`return_booking_start_date`,`return_booking_end_date`) values('"+email+"','"+booking.flightid+"','"+'FLIGHT'+"','"+booking.vendor+"','"+booking.price+"','"+booking.passengers+"','"+booking.origincity+"','"+booking.originstate+"','"+booking.destinationcity+"','"+booking.destinationstate+"','"+booking.triptype+"','"
-                     +booking.flightclass+"','"+booking.bookingstartdate+"','"+booking.bookingenddate+"','"+booking.returnflightid+"','"+booking.returnstartdate+"','"+booking.returnenddate+"');";
+                     var bookingSql="insert into BILLING(`user_email`,`target_id`,`booking_type`,`billing_amount`,`target_count`,`source_city`,`source_state`,`destination_city`,`destination_state`,`trip_type`,`booking_class`,`booking_start_date`,`booking_end_date`,`return_target_id`,`return_booking_start_date`,`return_booking_end_date`) values('"
+                     +email+"','"+booking.flight.flightid+"','"+'FLIGHT'+"','"+ totalPrice +"','"+booking.flight.passengers+"','"+booking.flight.origincity+"','"+booking.flight.originstate+"','"+booking.flight.destinationcity+"','"+booking.flight.destinationstate+"','"+booking.flight.triptype+"','"
+                     +booking.flight.flightclass+"','"+booking.flight.bookingstartdate+"','"+booking.flight.bookingenddate+"','"+booking.returnflight.returnflightid+"','"+booking.returnflight.returnstartdate+"','"+booking.returnflight.returnenddate+"');";
 
                      mysql.executeQuery(function(err){
                          if(err){
@@ -159,119 +159,88 @@ function getReturnBooking(bookingObj){
       var booking = {};
       if(bookingObj != undefined){
           console.log('Making return booking object');
-          booking.returnbookingstartdate = bookingObj.returnstartdate;
-          booking.returnbookingenddate = bookingObj.returnenddate;
-          booking.returnflightid = bookingObj.returnflightid;
-          booking.flightclass = bookingObj.flightclass;
-          booking.passengers = bookingObj.passengers;
+          booking.returnbookingstartdate = bookingObj.returnflight.returnstartdate;
+          booking.returnbookingenddate = bookingObj.returnflight.returnenddate;
+          booking.returnflightid = bookingObj.returnflight.returnflightid;
+          booking.flightclass = bookingObj.returnflight.flightclass;
+          booking.passengers = bookingObj.returnflight.passengers;
+          booking.capacity = bookingObj.returnflight.capacity;
           console.log(booking);
       }
       return booking;
 }
 
 function checkFlightAvailable(booking, returnBooking, callback){
-      var flight = require('../models/flight/'+booking.vendor);
-      console.log(booking.triptype);
+
+      console.log(booking);
+      console.log(returnBooking);
       if(booking.triptype == 'One-Way'){
-            flight.find({'flightId': booking.flightid}, function (err, flights) {
-                if (err) {
-                    console.log("Error in searching for flight" + err);
-                    callback(false);
-                }
-                else {
-                    if(flights != undefined){
-                      var capacity = getFlightCapacity(flights, booking);
-                      console.log("capacity is " + capacity);
-                      getCurrentFlightBookingCount(booking, function(bookedCount){
-                            var isAvailable = capacity - bookedCount >= booking.passengers;
-                            if(isAvailable){
-                                  console.log(' One way Flight available for booking ' + booking.flightid);
-                                  callback(true);
-                            }
-                            else{
-                                  console.log(' Flight Booking Capacity reached for One way flight ' + booking.flightid);
-                                  callback(false);
-                            }
-                      })
-                    }else{
-                          callback(false);
-                    }
-                }
-            });
+
+            getCurrentFlightBookingCount(booking, function(bookedCount){
+                  var capacity = booking.capacity;
+                  console.log("capacity is " + capacity);
+                  var isAvailable = capacity - bookedCount >= booking.passengers;
+                  if(isAvailable){
+                        console.log(' One way Flight available for booking ' + booking.flightid);
+                        callback(true);
+                  }
+                  else{
+                        console.log(' Flight Booking Capacity reached for One way flight ' + booking.flightid);
+                        callback(false);
+                  }
+            })
+
+
       }else{
-        flight.find({'flightId': booking.flightid}, function (err, flights) {
-            if (err) {
-                console.log("Error in searching for flight" + err);
-                callback(false);
-            }
-            else {
-                if(flights != undefined){
-                  console.log(flights);
-                  var capacity = getFlightCapacity(flights, booking);
+            console.log('--------Booking is --------');
+            console.log(booking);
+            console.log('--------Return Booking is --------');
+            console.log(returnBooking);
+            getCurrentFlightBookingCount(booking, function(bookedCount){
+                  var capacity = booking.capacity;
                   console.log("capacity for first side is " + capacity);
-                  getCurrentFlightBookingCount(booking, function(bookedCount){
-                        var isAvailable = capacity - bookedCount >= booking.passengers;
-                        console.log("bookedCount for one side is " + bookedCount + " and capacity is " + capacity + " and availability is " + isAvailable);
-                        if(isAvailable){
-                            // Check Return Flight Availability
-                            flight.find({'flightId': booking.returnflightid}, function (err, returnFlights) {
-                                if (err) {
-                                      console.log("Error in searching for flight" + err);
-                                      callback(false);
-                                }
-                                else {
-                                      if(returnFlights != undefined){
-                                      var capacity = getFlightCapacity(returnFlights, returnBooking);
-                                      console.log("capacity for second side is " + capacity);
-                                      getCurrentFlightBookingCount(returnBooking, function(bookedCount){
-                                            var isAvailable = capacity - bookedCount >= returnBooking.passengers;
-                                            if(isAvailable){
-                                                  callback(true);
-                                            }
-                                            else{
-                                                  console.log(' Flight Booking Capacity reached for return flight ' + returnBooking.returnflightid);
-                                                  callback(false);
-                                            }
+                  var isAvailable = capacity - bookedCount >= booking.passengers;
+                  console.log("bookedCount for one side is " + bookedCount + " and capacity is " + capacity + " and availability is " + isAvailable);
+                  if(isAvailable){
+                        // Check Return Flight Availability
+                        var capacity = returnBooking.capacity;
+                        console.log("capacity for second side is " + capacity);
+                        getCurrentFlightBookingCount(returnBooking, function(bookedCount){
+                              var isAvailable = capacity - bookedCount >= returnBooking.passengers;
+                              if(isAvailable){
+                                    callback(true);
+                              }
+                              else{
+                                    console.log(' Flight Booking Capacity reached for return flight ' + returnBooking.returnflightid);
+                                    callback(false);
+                              }
+                        })
+                  }else{
+                        console.log(' Flight Booking Capacity reached for one side flight ' + booking.flightid);
+                        callback(false);
+                  }
 
-                                      })
-                                    }else{
-                                          callback(false);
-                                    }
-                                }
-                            });
-                        }
-
-                        else{
-                              console.log(' Flight Booking Capacity reached for one side flight ' + booking.flightid);
-                              callback(false);
-                        }
-
-                  })
-                }else{
-                      callback(false);
-                }
-            }
-        });
+            })
 
       }
 
 }
 
-// Get the Selected Flight Capacity
-function getFlightCapacity(flights, booking){
-      console.log('Getting capacity for flight');
-      console.log(flights);
-      console.log(booking);
-      var classType = _.where(flights[0].flights[0].class, {type: booking.flightclass});
-      console.log(flights[0].flights[0].class + ' ' + booking.flightclass);
-      return classType[0].capacity;
-}
+// // Get the Selected Flight Capacity per class selected
+// function getFlightCapacity(flights, booking){
+//       console.log('Getting capacity for flight');
+//       console.log(flights);
+//       console.log(booking);
+//       var classType = _.where(flights[0].class, {type: booking.flightclass});
+//       console.log(flights[0].class + ' ' + booking.flightclass);
+//       return classType[0].capacity;
+// }
 
 // Get the Flight Booking Count
 function getCurrentFlightBookingCount(booking, callback){
       var res = {};
       var bookingCountQuery;
-      if((booking.returnbookingstartdate != undefined) && (booking.returnbookingenddate != undefined) && (booking.returnflightid != undefined)){
+      if((booking.returnflightid != undefined) && (booking.returnbookingstartdate != undefined) && (booking.returnbookingenddate != undefined)){
               // Is return flight booking
               var startDate = booking.returnbookingstartdate;
               var endDate = booking.returnbookingenddate;
@@ -294,11 +263,11 @@ function getCurrentFlightBookingCount(booking, callback){
       } , bookingCountQuery);
 }
 
-// Get Flight booking Helper
+// Get Flight booking Count Helper
 function getBookedCountHelper(dbBookings){
       var count = 0;
           for(booking in dbBookings){
-              count = count + dbBookings[booking].person_count;
+              count = count + dbBookings[booking].target_count;
           }
       console.log(" Total Seats Booked in the Current Flight are - " + count);
       return count;

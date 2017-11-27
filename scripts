@@ -15,9 +15,9 @@ bin/kafka-topics.sh --create --zookeeper localhost:2181 --replication-factor 1 -
 bin/kafka-topics.sh --create --zookeeper localhost:2181 --replication-factor 1 --partitions 1 --topic ExpediaFlights
 bin/kafka-topics.sh --create --zookeeper localhost:2181 --replication-factor 1 --partitions 1 --topic CleartripFlights
 
-bin/kafka-topics.sh --create --zookeeper localhost:2181 --replication-factor 1 --partitions 1 --topic MmtFlightsBook
-bin/kafka-topics.sh --create --zookeeper localhost:2181 --replication-factor 1 --partitions 1 --topic ExpediaFlightsBook
-bin/kafka-topics.sh --create --zookeeper localhost:2181 --replication-factor 1 --partitions 1 --topic CleartripFlightsBook
+bin/kafka-topics.sh --create --zookeeper localhost:2181 --replication-factor 1 --partitions 1 --topic BookFlight
+bin/kafka-topics.sh --create --zookeeper localhost:2181 --replication-factor 1 --partitions 1 --topic BookHotel
+bin/kafka-topics.sh --create --zookeeper localhost:2181 --replication-factor 1 --partitions 1 --topic BookCar
 
 bin/kafka-topics.sh --create --zookeeper localhost:2181 --replication-factor 1 --partitions 1 --topic register
 bin/kafka-topics.sh --create --zookeeper localhost:2181 --replication-factor 1 --partitions 1 --topic update
@@ -123,38 +123,40 @@ db.TripAdvisorHotels.insert({
 db.MmtFlights.insert({
   'flightId': 'MMT100',
   'operator': 'Air China',
-  'flights':[
-        {
-            'arrival': '16:00',
-            'departure': '00:00',
-            'origin': {'city':'San Jose', 'state':'CA', 'country':'USA'},
-            'destination': {'city':'Delhi', 'state':'Delhi', 'country':'India'},
-            'class':[
+  'class':[
 
-                {'type':'economy','price':'$1000', 'capacity':100},
-                {'type':'first','price':'$2000' , 'capacity':100},
-                {'type':'business','price':'$3000' , 'capacity':100}
-            ]
+           { 'type':'economy','price':'$1000', 'capacity':100},
+            { 'type':'first','price':'$2000' , 'capacity':100},
+             { 'type':'business','price':'$3000' , 'capacity':100}
+          ],
+  'flights':[
+         {
+            'arrivaltime': '16:00, Saturday',
+            'departuretime': '00:00, Sunday',
+            'origin': {'city':'San Jose', 'state':'CA', 'country':'USA', 'airport':'San Jose Airport'},
+            'destination': {'city':'Delhi', 'state':'Delhi', 'country':'India', 'airport':'Indra Gandhi International Airport'}
+
         }
-    ]
+  ]
 })
 
 db.MmtFlights.insert({
   'flightId': 'MMT111',
   'operator': 'Air India',
-  'flights':[
-        {
-            'arrival': '16:00',
-            'departure': '00:00',
-            'origin': {'city':'San Jose', 'state':'CA', 'country':'USA'},
-            'destination': {'city':'Delhi', 'state':'Delhi', 'country':'India'},
-            'class':[
+  'class':[
 
-                {'type':'economy','price':'$1000', 'capacity':100},
-                {'type':'first','price':'$2000' , 'capacity':20},
-                {'type':'business','price':'$3000' , 'capacity':20}
-            ]
-        }
+              {'type':'economy','price':'$1000', 'capacity':100},
+               {'type':'first','price':'$2000' , 'capacity':100},
+                {'type':'business','price':'$3000' , 'capacity':100}
+            ],
+    'flights':[
+           {
+              'arrivaltime': '16:00, Thursday',
+              'departuretime': '00:00, Friday',
+              'origin': {'city':'San Francisco', 'state':'CA', 'country':'USA', 'airport':'San Francisco International Airport'},
+              'destination': {'city':'Mumbai', 'state':'Maharashtra', 'country':'India', 'airport':'Chhatrapati Shivaji Airport'}
+
+          }
     ]
 })
 
@@ -162,38 +164,47 @@ db.MmtFlights.insert({
 db.CleartripFlights.insert({
   'flightId': 'CT100',
   'operator': 'Lufthansa',
-  'flights':[
-        {
-            'arrival': '16:00',
-            'departure': '00:00',
-            'origin': {'city':'San Jose', 'state':'CA', 'country':'USA'},
-            'destination': {'city':'Delhi', 'state':'Delhi', 'country':'India'},
-            'class':[
+  'class':[
 
                 {'type':'economy','price':'$1000', 'capacity':100},
-                {'type':'first','price':'$2000' , 'capacity':100},
-                {'type':'business','price':'$3000' , 'capacity':100}
-            ]
-        }
-    ]
+                 {'type':'first','price':'$2000' , 'capacity':100},
+                  {'type':'business','price':'$3000' , 'capacity':100}
+              ],
+      'flights':[
+             {
+                'arrivaltime': '16:00, Monday',
+                'departuretime': '00:00, Wednesday',
+                'origin': {'city':'San Francisco', 'state':'CA', 'country':'USA', 'airport':'San Francisco International Airport'},
+                'destination': {'city':'Mumbai', 'state':'Maharashtra', 'country':'India', 'airport':'Chhatrapati Shivaji Airport'}
+
+            }
+      ]
 })
 
 
 db.ExpediaFlights.insert({
   'flightId': 'ED100',
   'operator': 'Delta Airlines',
-  'flights':[
-        {
-            'arrival': '16:00',
-            'departure': '00:00',
-            'origin': {'city':'San Jose', 'state':'CA', 'country':'USA'},
-            'destination': {'city':'Delhi', 'state':'Delhi', 'country':'India'},
-            'class':[
+  'class':[
 
                 {'type':'economy','price':'$1000', 'capacity':100},
-                {'type':'first','price':'$2000' , 'capacity':100},
-                {'type':'business','price':'$3000' , 'capacity':100}
-            ]
-        }
-    ]
+                 {'type':'first','price':'$2000' , 'capacity':100},
+                  {'type':'business','price':'$3000' , 'capacity':100}
+             ] ,
+     'flights':[
+                  {
+                     'arrivaltime': '16:00 Monday',
+                     'departuretime': '00:00 Wednesday',
+                     'origin': {'city':'San Francisco', 'state':'CA', 'country':'USA', 'airport':'San Francisco International Airport'},
+                     'destination': {'city':'Mumbai', 'state':'Maharashtra', 'country':'India', 'airport':'Chhatrapati Shivaji Airport'}
+
+                 },
+                 {
+                      'arrivaltime': '02:00 Wednesday',
+                      'departuretime': '12:00 Monday',
+                      'origin': {'city':'Mumbai', 'state':'Maharashtra', 'country':'India', 'airport':'Chhatrapati Shivaji Airport'},
+                      'destination': {'city':'San Francisco', 'state':'CA', 'country':'USA', 'airport':'San Francisco International Airport'}
+
+                  }
+           ]
 })

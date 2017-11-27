@@ -1,9 +1,6 @@
 CREATE DATABASE  IF NOT EXISTS `kayak` /*!40100 DEFAULT CHARACTER SET latin1 */;
 USE `kayak`;
 
---
--- Table structure for table `BILLING`
---
 
 DROP TABLE IF EXISTS `BILLING`;
 
@@ -11,10 +8,13 @@ CREATE TABLE `BILLING` (
   `billing_id` int(11) NOT NULL AUTO_INCREMENT,
   `user_email` varchar(90) NOT NULL,
   `target_id` varchar(90) NOT NULL COMMENT 'Id of flight/car/hotel from MongoDB',
+  `target_name` varchar(90) DEFAULT NULL,
   `return_target_id` varchar(90) NOT NULL,
+  `return_target_name` varchar(90) DEFAULT NULL,
   `booking_type` enum('CAR','FLIGHT','HOTEL') NOT NULL,
   `trip_type` enum('ONE-WAY','TWO-WAY') DEFAULT NULL,
   `vendor` varchar(90) NOT NULL,
+  `room_type` enum('DELUX','PREMIUM','SUITE') DEFAULT NULL,
   `billing_date` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `billing_amount` int(11) NOT NULL COMMENT 'Billing Amount in US Dollars',
   `source_city` varchar(45) DEFAULT NULL COMMENT 'source of flight/car and address of hotel',
@@ -25,7 +25,7 @@ CREATE TABLE `BILLING` (
   `booking_end_date` datetime DEFAULT NULL,
   `return_booking_start_date` datetime DEFAULT NULL,
   `return_booking_end_date` datetime DEFAULT NULL,
-  `person_count` int(11) NOT NULL COMMENT 'Not applicable for car bookings',
+  `target_count` int(11) NOT NULL COMMENT 'Count of Passengers for flights Or\nCount of hotel rooms Or\nCount of Cars booked\n',
   `booking_class` enum('FIRST','ECONOMY','BUSINESS') DEFAULT NULL COMMENT 'Booking class of flight',
   `credit_card_type` varchar(45) DEFAULT NULL,
   `credit_card_number` int(11) DEFAULT NULL,
@@ -37,6 +37,9 @@ CREATE TABLE `BILLING` (
   CONSTRAINT `user_email` FOREIGN KEY (`user_email`) REFERENCES `USER` (`email`) ON DELETE NO ACTION ON UPDATE NO ACTION
 ) ENGINE=InnoDB AUTO_INCREMENT=154 DEFAULT CHARSET=latin1;
 
+LOCK TABLES `BILLING` WRITE;
+
+UNLOCK TABLES;
 
 --
 -- Table structure for table `CART`
@@ -58,6 +61,8 @@ CREATE TABLE `CART` (
   KEY `user_email_cart_idx` (`user_email`),
   CONSTRAINT `user_email_cart` FOREIGN KEY (`user_email`) REFERENCES `USER` (`email`) ON DELETE NO ACTION ON UPDATE NO ACTION
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+
 
 
 LOCK TABLES `CART` WRITE;
@@ -97,9 +102,9 @@ CREATE TABLE `USER` (
 --
 
 LOCK TABLES `USER` WRITE;
-/*!40000 ALTER TABLE `USER` DISABLE KEYS */;
+
 INSERT INTO `USER` VALUES ('meenakshi.paryani@gmail.com','password',NULL,NULL,'USER',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL);
-/*!40000 ALTER TABLE `USER` ENABLE KEYS */;
+
 UNLOCK TABLES;
 
 --
@@ -137,10 +142,6 @@ CREATE TABLE `vendors` (
   PRIMARY KEY (`vendorId`)
 ) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=latin1;
 
-
---
--- Dumping data for table `vendors`
---
 
 LOCK TABLES `vendors` WRITE;
 

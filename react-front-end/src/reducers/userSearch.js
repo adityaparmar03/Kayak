@@ -6,7 +6,7 @@ function carSearch(state = [], action) {
 
     switch (action.type) {
 
-        case Constants.SIGN_IN :
+        case Constants.SEARCH_CAR :
             return action.carSearchResults
 
         default :
@@ -20,7 +20,7 @@ function hotelSearch(state = [], action) {
 
     switch (action.type) {
 
-        case Constants.SIGN_IN :
+        case Constants.SEARCH_HOTEL :
             return action.hotelSearchResults
 
         default :
@@ -31,10 +31,10 @@ function hotelSearch(state = [], action) {
 
 
 function flightSearch(state = [], action) {
-
+console.log(action)
     switch (action.type) {
 
-        case Constants.SIGN_IN :
+        case Constants.SEARCH_FLIGHT :
             return action.flightSearchResults
 
         default :

@@ -44,9 +44,8 @@ router.get('/getflights', function (req, res) {
 
 router.post('/book', function (req, res) {
     console.log(req.body);
-    var vendor = req.body.vendor;
-    var queueName = req.body.vendor + "Book";
-    
+    var queueName = "BookFlight";
+
     var reqObject = {
       email : req.session.email,
       booking : req.body.booking
