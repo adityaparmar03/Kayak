@@ -111,6 +111,8 @@ export const clickTracker = (payload) =>
         body: JSON.stringify(payload)
     }).then(res => {
 
+<<<<<<< HEAD
+=======
         return res.json();
     })
         .catch(error => {
@@ -146,6 +148,7 @@ export const searchHotels = (payload) =>
         credentials:'include'
     }).then(res => {
 
+>>>>>>> 72f9920597b10015ecdccd3115e0f145ed7fda62
         return res.json();
     })
         .catch(error => {
@@ -153,6 +156,44 @@ export const searchHotels = (payload) =>
             return error;
         });
 
+<<<<<<< HEAD
+export const searchFlights = (payload) =>
+    fetch(`${api}/flight/flights?origincity=San Jose&originstate=CA&destinationcity=Delhi&destinationstate=Delhi&triptype=One-Way&flightclass=economy`, {
+        method: 'GET',
+        headers: {
+            ...headers,
+            'Content-Type': 'application/json'
+        },
+        credentials:'include'
+    }).then(res => {
+
+        return res.json();
+    })
+        .catch(error => {
+            console.log("This is an API error");
+            return error;
+        });
+
+
+export const searchHotels = (payload) =>
+    fetch(`${api}/hotel/hotels?city=San Jose&state=CA&roomtype=delux`, {
+        method: 'GET',
+        headers: {
+            ...headers,
+            'Content-Type': 'application/json'
+        },
+        credentials:'include'
+    }).then(res => {
+
+        return res.json();
+    })
+        .catch(error => {
+            console.log("This is an API error");
+            return error;
+        });
+
+=======
+>>>>>>> 72f9920597b10015ecdccd3115e0f145ed7fda62
 
 export const searchCars = (payload) =>
     fetch(`${api}/car/cars?pickupcity=San Jose&pickupstate=CA&dropoffcity=San Jose&dropoffstate=CA&triptype=Two-Way`, {
