@@ -33,13 +33,12 @@ var FlightSchema   = new Schema({
             'type':''business','price':'$3000' , 'capacity':100}
         },
       flights:[
-          {
+           {
               'arrivaltime': '16:00'
               'departuretime': '00:00',
-              'arrivalday': 'Monday',
-              'departureday':'Tuesday'
-              'origin': {'city':'San Jose', 'state':'CA', 'country':'USA'}
-              'destination': {'city':'Delhi', 'state':'Delhi', 'country':'India'}
+              'schedule': ['Monday','Wednesday', 'Friday'],
+              'origin': {'city':'San Jose', 'state':'CA', 'country':'USA', 'airport':'SJC'},
+              'destination': {'city':'Delhi', 'state':'Delhi', 'country':'India', 'airport':'IGI'}
 
           }
       ]*/

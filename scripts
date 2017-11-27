@@ -123,38 +123,42 @@ db.TripAdvisorHotels.insert({
 db.MmtFlights.insert({
   'flightId': 'MMT100',
   'operator': 'Air China',
-  'flights':[
-        {
-            'arrival': '16:00',
-            'departure': '00:00',
-            'origin': {'city':'San Jose', 'state':'CA', 'country':'USA'},
-            'destination': {'city':'Delhi', 'state':'Delhi', 'country':'India'},
-            'class':[
+  'class':{
 
-                {'type':'economy','price':'$1000', 'capacity':100},
-                {'type':'first','price':'$2000' , 'capacity':100},
-                {'type':'business','price':'$3000' , 'capacity':100}
-            ]
+            'type':'economy','price':'$1000', 'capacity':100},
+             'type':''first','price':'$2000' , 'capacity':100},
+              'type':''business','price':'$3000' , 'capacity':100}
+          },
+  'flights':[
+         {
+            'arrivaltime': '16:00'
+            'departuretime': '00:00',
+            'schedule': ['Monday','Wednesday', 'Friday'],
+            'origin': {'city':'San Jose', 'state':'CA', 'country':'USA', 'airport':'San Jose Airport'},
+            'destination': {'city':'Delhi', 'state':'Delhi', 'country':'India', 'airport':'Indra Gandhi International Airport'}
+
         }
-    ]
+  ]
 })
 
 db.MmtFlights.insert({
   'flightId': 'MMT111',
   'operator': 'Air India',
-  'flights':[
-        {
-            'arrival': '16:00',
-            'departure': '00:00',
-            'origin': {'city':'San Jose', 'state':'CA', 'country':'USA'},
-            'destination': {'city':'Delhi', 'state':'Delhi', 'country':'India'},
-            'class':[
+  'class':{
 
-                {'type':'economy','price':'$1000', 'capacity':100},
-                {'type':'first','price':'$2000' , 'capacity':20},
-                {'type':'business','price':'$3000' , 'capacity':20}
-            ]
-        }
+              'type':'economy','price':'$1000', 'capacity':100},
+               'type':''first','price':'$2000' , 'capacity':100},
+                'type':''business','price':'$3000' , 'capacity':100}
+            },
+    'flights':[
+           {
+              'arrivaltime': '16:00'
+              'departuretime': '00:00',
+              'schedule': ['Tuesday', 'Friday'],
+              'origin': {'city':'San Francisco', 'state':'CA', 'country':'USA', 'airport':'San Francisco International Airport'},
+              'destination': {'city':'Mumbai', 'state':'Maharashtra', 'country':'India', 'airport':'Chhatrapati Shivaji Airport'}
+
+          }
     ]
 })
 
@@ -162,38 +166,42 @@ db.MmtFlights.insert({
 db.CleartripFlights.insert({
   'flightId': 'CT100',
   'operator': 'Lufthansa',
-  'flights':[
-        {
-            'arrival': '16:00',
-            'departure': '00:00',
-            'origin': {'city':'San Jose', 'state':'CA', 'country':'USA'},
-            'destination': {'city':'Delhi', 'state':'Delhi', 'country':'India'},
-            'class':[
+  'class':{
 
-                {'type':'economy','price':'$1000', 'capacity':100},
-                {'type':'first','price':'$2000' , 'capacity':100},
-                {'type':'business','price':'$3000' , 'capacity':100}
-            ]
-        }
-    ]
+                'type':'economy','price':'$1000', 'capacity':100},
+                 'type':''first','price':'$2000' , 'capacity':100},
+                  'type':''business','price':'$3000' , 'capacity':100}
+              },
+      'flights':[
+             {
+                'arrivaltime': '16:00'
+                'departuretime': '00:00',
+                'schedule': ['Monday','Wednesday', 'Friday'],
+                'origin': {'city':'San Francisco', 'state':'CA', 'country':'USA', 'airport':'San Francisco International Airport'},
+                'destination': {'city':'Mumbai', 'state':'Maharashtra', 'country':'India', 'airport':'Chhatrapati Shivaji Airport'}
+
+            }
+      ]
 })
 
 
 db.ExpediaFlights.insert({
   'flightId': 'ED100',
   'operator': 'Delta Airlines',
-  'flights':[
-        {
-            'arrival': '16:00',
-            'departure': '00:00',
-            'origin': {'city':'San Jose', 'state':'CA', 'country':'USA'},
-            'destination': {'city':'Delhi', 'state':'Delhi', 'country':'India'},
-            'class':[
+  'class':{
 
-                {'type':'economy','price':'$1000', 'capacity':100},
-                {'type':'first','price':'$2000' , 'capacity':100},
-                {'type':'business','price':'$3000' , 'capacity':100}
-            ]
-        }
-    ]
+                'type':'economy','price':'$1000', 'capacity':100},
+                 'type':''first','price':'$2000' , 'capacity':100},
+                  'type':''business','price':'$3000' , 'capacity':100}
+              },
+      'flights':[
+             {
+                'arrivaltime': '16:00'
+                'departuretime': '00:00',
+                'schedule': ['Wednesday', 'Friday'],
+                'origin': {'city':'New York City', 'state':'NY', 'country':'USA', 'airport':'John F Kennedy Airport'},
+                'destination': {'city':'Mumbai', 'state':'Maharashtra', 'country':'India', 'airport':'Chhatrapati Shivaji Airport'}
+
+            }
+      ]
 })

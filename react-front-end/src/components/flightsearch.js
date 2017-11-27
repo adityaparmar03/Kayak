@@ -46,12 +46,14 @@ class Flightsearch extends Component {
         console.log("Travelers =>"+this.state.traveler)
         console.log("class =>"+this.state.class)
 
-       const  payload={'origincity':'San Jose',
+       const  payload={
+           'origincity':'San Jose',
            'originstate':'CA',
            'destinationcity':'Delhi',
            'destinationstate':'Delhi',
            'trip-type':'One-Way',
-           'flightclass':'economy'}
+           'flightclass':'economy'
+        }
 
        API.searchFlights(payload)
            .then((res) => {
