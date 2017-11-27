@@ -2,11 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="38bb411a-1218-418b-87b7-afc28b7a9352" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/kafka-back-end/models/flight/CleartripFlights.js" afterPath="$PROJECT_DIR$/kafka-back-end/models/flight/CleartripFlights.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/kafka-back-end/models/flight/ExpediaFlights.js" afterPath="$PROJECT_DIR$/kafka-back-end/models/flight/ExpediaFlights.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/kafka-back-end/models/flight/MmtFlights.js" afterPath="$PROJECT_DIR$/kafka-back-end/models/flight/MmtFlights.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/react-front-end/src/components/flightsearch.js" afterPath="$PROJECT_DIR$/react-front-end/src/components/flightsearch.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/scripts" afterPath="$PROJECT_DIR$/scripts" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
@@ -34,8 +30,8 @@
       <file leaf-file-name="MmtFlights.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/kafka-back-end/models/flight/MmtFlights.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="540">
-              <caret line="48" column="7" lean-forward="false" selection-start-line="33" selection-start-column="8" selection-end-line="48" selection-end-column="7" />
+            <state relative-caret-position="432">
+              <caret line="42" column="24" lean-forward="false" selection-start-line="42" selection-start-column="24" selection-end-line="42" selection-end-column="24" />
               <folding />
             </state>
           </provider>
@@ -44,8 +40,8 @@
       <file leaf-file-name="scripts" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/scripts">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="420">
-              <caret line="201" column="107" lean-forward="false" selection-start-line="201" selection-start-column="107" selection-end-line="201" selection-end-column="107" />
+            <state relative-caret-position="110">
+              <caret line="134" column="43" lean-forward="false" selection-start-line="134" selection-start-column="43" selection-end-line="134" selection-end-column="43" />
               <folding />
             </state>
           </provider>
@@ -382,7 +378,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="36988000" />
+    <option name="totallyTimeSpent" value="38143000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="75" y="34" width="1281" height="732" extended-state="0" />
@@ -792,16 +788,16 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/kafka-back-end/models/flight/MmtFlights.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="540">
-          <caret line="48" column="7" lean-forward="false" selection-start-line="33" selection-start-column="8" selection-end-line="48" selection-end-column="7" />
+        <state relative-caret-position="432">
+          <caret line="42" column="24" lean-forward="false" selection-start-line="42" selection-start-column="24" selection-end-line="42" selection-end-column="24" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/scripts">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="420">
-          <caret line="201" column="107" lean-forward="false" selection-start-line="201" selection-start-column="107" selection-end-line="201" selection-end-column="107" />
+        <state relative-caret-position="110">
+          <caret line="134" column="43" lean-forward="false" selection-start-line="134" selection-start-column="43" selection-end-line="134" selection-end-column="43" />
           <folding />
         </state>
       </provider>

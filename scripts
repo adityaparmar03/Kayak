@@ -131,9 +131,8 @@ db.MmtFlights.insert({
           },
   'flights':[
          {
-            'arrivaltime': '16:00'
-            'departuretime': '00:00',
-            'schedule': ['Monday','Wednesday', 'Friday'],
+            'arrivaltime': '16:00, Saturday',
+            'departuretime': '00:00, Sunday',
             'origin': {'city':'San Jose', 'state':'CA', 'country':'USA', 'airport':'San Jose Airport'},
             'destination': {'city':'Delhi', 'state':'Delhi', 'country':'India', 'airport':'Indra Gandhi International Airport'}
 
@@ -152,9 +151,8 @@ db.MmtFlights.insert({
             },
     'flights':[
            {
-              'arrivaltime': '16:00'
-              'departuretime': '00:00',
-              'schedule': ['Tuesday', 'Friday'],
+              'arrivaltime': '16:00, Thursday',
+              'departuretime': '00:00, Friday',
               'origin': {'city':'San Francisco', 'state':'CA', 'country':'USA', 'airport':'San Francisco International Airport'},
               'destination': {'city':'Mumbai', 'state':'Maharashtra', 'country':'India', 'airport':'Chhatrapati Shivaji Airport'}
 
@@ -174,9 +172,8 @@ db.CleartripFlights.insert({
               },
       'flights':[
              {
-                'arrivaltime': '16:00'
-                'departuretime': '00:00',
-                'schedule': ['Monday','Wednesday', 'Friday'],
+                'arrivaltime': '16:00, Monday',
+                'departuretime': '00:00', Wednesday,
                 'origin': {'city':'San Francisco', 'state':'CA', 'country':'USA', 'airport':'San Francisco International Airport'},
                 'destination': {'city':'Mumbai', 'state':'Maharashtra', 'country':'India', 'airport':'Chhatrapati Shivaji Airport'}
 
