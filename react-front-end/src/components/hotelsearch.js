@@ -8,7 +8,7 @@ import moment from 'moment';
 import * as API from '../api/API';
 import * as Actions from '../actions/action';
 import {connect} from 'react-redux';
-
+import cities from '../constants/cities'
 
 class Hotelsearch extends Component {
 
@@ -75,27 +75,14 @@ class Hotelsearch extends Component {
        
         this.setState({"city":value})  
            
-        var term = value.toUpperCase();
-        var API = "https://api.sandbox.amadeus.com/v1.2/airports/autocomplete?apikey=NKHaRIuzMxh8bfMSPnKPt3UGrHjDx9AV&term="+term+"&country=US";
-        //var API = "https://maps.googleapis.com/maps/api/place/autocomplete/json?input=s&types=(cities)&key=AIzaSyC6yOY5y7Y8pAehpj8khSIIDcjsulHvuFs";
+        var citysuggestion = cities().map((item,i)=>item.city+", "+item.state)
         
-        fetch(API, {method: 'GET',headers: {
-                'Accept': 'application/json',
-                'Content-Type': 'application/json',
-               
-            },
-           })
-            .then((response) => response.json())
-		    .then((json) => {
-                var citysuggestion = json.map((item,index)=>item.label)
-                this.setState({
-                    citysuggestion: citysuggestion
-                  });
-		});
-        
-      }; 
+          this.setState({
+              citysuggestion: citysuggestion
+          });
       
-    
+        }; 
+        
     
     handleStartDate(event, date){
         this.setState({startdate: date})
@@ -218,6 +205,7 @@ class Hotelsearch extends Component {
                     maxSearchResults={5}
                     underlineShow={false}
                     fullWidth={true}
+                    filter={AutoComplete.caseInsensitiveFilter}
             />
             </div>
 

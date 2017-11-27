@@ -8,7 +8,7 @@ import moment from 'moment';
 import * as API from '../api/API';
 import * as Actions from '../actions/action';
 import {connect} from 'react-redux';
-
+import cities from '../constants/cities'
 
 class Carsearch extends Component {
 
@@ -74,23 +74,11 @@ class Carsearch extends Component {
        
         this.setState({"city":value})  
            
-        var term = value.toUpperCase();
-        var API = "https://api.sandbox.amadeus.com/v1.2/airports/autocomplete?apikey=NKHaRIuzMxh8bfMSPnKPt3UGrHjDx9AV&term="+term+"&country=US";
-        //var API = "https://maps.googleapis.com/maps/api/place/autocomplete/json?input=s&types=(cities)&key=AIzaSyC6yOY5y7Y8pAehpj8khSIIDcjsulHvuFs";
-        
-        fetch(API, {method: 'GET',headers: {
-                'Accept': 'application/json',
-                'Content-Type': 'application/json',
-               
-            },
-           })
-            .then((response) => response.json())
-		    .then((json) => {
-                var citysuggestion = json.map((item,index)=>item.label)
-                this.setState({
-                    citysuggestion: citysuggestion
-                  });
-		});
+        var citysuggestion = cities().map((item,i)=>item.city+", "+item.state)
+      
+        this.setState({
+            citysuggestion: citysuggestion
+        });
         
       }; 
       
@@ -125,6 +113,7 @@ class Carsearch extends Component {
                     maxSearchResults={5}
                     underlineShow={false}
                     fullWidth={true}
+                    filter={AutoComplete.caseInsensitiveFilter}
             />
             </div>
 

@@ -8,6 +8,7 @@ import moment from 'moment';
 import * as API from '../api/API';
 import * as Actions from '../actions/action';
 import {connect} from 'react-redux';
+import cities from '../constants/cities'
 
 class Flightsearch extends Component {
 
@@ -79,49 +80,24 @@ class Flightsearch extends Component {
 
         this.setState({"from":value})
 
-        var term = value.toUpperCase();
-        var API = "https://api.sandbox.amadeus.com/v1.2/airports/autocomplete?apikey=NKHaRIuzMxh8bfMSPnKPt3UGrHjDx9AV&term="+term+"&country=US";
-        //var API = "https://maps.googleapis.com/maps/api/place/autocomplete/json?input=s&types=(cities)&key=AIzaSyC6yOY5y7Y8pAehpj8khSIIDcjsulHvuFs";
-
-        fetch(API, {method: 'GET',headers: {
-            'Accept': 'application/json',
-            'Content-Type': 'application/json',
-
-        },
-        })
-            .then((response) => response.json())
-            .then((json) => {
-                var fromsuggestion = json.map((item,index)=>item.label)
-                this.setState({
-                    fromsuggestion: fromsuggestion
-                });
-            });
+        var fromsuggestion = cities().map((item,i)=>item.city+", "+item.state)
+       
+        this.setState({
+            fromsuggestion: fromsuggestion
+        });
 
     };
     handleUpdateToInput = (value,textbox) => {
 
         this.setState({"to":value})
 
-        var term = value.toUpperCase();
-        //var API = "https://api.sandbox.amadeus.com/v1.2/airports/autocomplete?apikey=NKHaRIuzMxh8bfMSPnKPt3UGrHjDx9AV&term="+term+"&country=US";
-        var API = "https://maps.googleapis.com/maps/api/place/autocomplete/json?input=san&types=(cities)&key=AIzaSyC6yOY5y7Y8pAehpj8khSIIDcjsulHvuFs";
-        fetch(API, {method: 'GET', headers: {
-            'Accept': 'application/json',
-            'Content-Type': 'application/json',
-            'Access-Control-Allow-Origin': "*",
-            'Access-Control-Allow-Methods':'GET, POST, OPTIONS, PUT, PATCH, DELETE',
-
-            'Access-Control-Allow-Credentials':true
-        },
-        })
-            .then((response) => response.json())
-            .then((json) => {
-                var tosuggestion = json.map((item,index)=>item.description)
-                console.log(tosuggestion)
-                this.setState({
-                    tosuggestion: tosuggestion
-                });
-            });
+       
+        var tosuggestion = cities().map((item,i)=>item.city+", "+item.state)
+       
+        this.setState({
+            tosuggestion: tosuggestion
+        });
+       
 
     };
 
@@ -186,6 +162,7 @@ class Flightsearch extends Component {
     render(){
         return(
             <div>
+                
                 <div className="card" style={{backgroundColor:'#E4E5EA',
                     borderRadius: '0px',paddingTop:'3%',paddingBottom:'3%',zIndex:"1"}}>
 
@@ -201,6 +178,7 @@ class Flightsearch extends Component {
                                     floatingLabelText="From"
                                     maxSearchResults={5}
                                     underlineShow={false}
+                                    filter={AutoComplete.caseInsensitiveFilter}
 
                                 />
 
@@ -214,6 +192,7 @@ class Flightsearch extends Component {
                                         floatingLabelText="To"
                                         maxSearchResults={5}
                                         underlineShow={false}
+                                        filter={AutoComplete.caseInsensitiveFilter}
                                     />
                                 </div>
 
