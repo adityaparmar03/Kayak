@@ -17,6 +17,7 @@ router.get('/cars', function (req, res) {
 
 });
 
+
 router.get('/getcars', function (req, res) {
 
     var searchcriteria=JSON.parse(req.query.data)
@@ -42,6 +43,8 @@ router.get('/getcars', function (req, res) {
     })
 })
 
+
+
 router.post('/book', function (req, res) {
     console.log(req.body);
     var queueName = "BookCar";
@@ -50,6 +53,7 @@ router.post('/book', function (req, res) {
         email : req.session.email,
         booking : req.body.booking
     }
+
     kafka.make_request(queueName, reqObject, function(err,results){
 
         if(err){

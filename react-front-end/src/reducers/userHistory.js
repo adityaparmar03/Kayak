@@ -2,10 +2,10 @@ import * as Constants from '../constants/constants'
 import {combineReducers} from 'redux';
 
 
+
 function carBookingHistory(state = [], action) {
 
     switch (action.type) {
-
         case Constants.SIGN_IN :
             return action.carBookings
 

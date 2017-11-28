@@ -97,6 +97,48 @@ function update(msg,callback) {
 
 //****************************************************************************************************************************
 
+function bookinghistory(msg,callback){
+    var res={};
+    console.log(msg);
+
+    var search = "select user_email,booking_type,booking_start_date,booking_end_date,booking_class from user where email='"+
+        msg.email+"';"
+    mysql.fetchData(function (err,results) {
+        if(err){
+            throw err;
+            res.code = "401";
+            res.value = " error while fetching the data";
+        }
+        else{
+            if(results.length>0) {
+                res.code = "200";
+                res.value = "Data successfully fetched";
+                res.data = results;
+            }
+            else{
+                res.code = 401;
+                res.value = "No bookings found for the user";
+            }
+        }
+        callback(null,res);
+    },search)
+
+
+}
+
+//****************************************************************************************************************************
+function searchhistory(msg,callback) {
+    var res = {};
+    console.log(msg);
+    callback(null,"test");
+
+}
+
+
+
+//****************************************************************************************************************************
+
+exports.bookinghistory = bookinghistory;
 exports.update = update ;
 exports.register = register ;
 exports.login = login;

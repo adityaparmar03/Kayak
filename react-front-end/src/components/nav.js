@@ -2,6 +2,8 @@ import React, {Component} from 'react';
 import {Link,withRouter} from 'react-router-dom';
 import PropTypes from 'prop-types';
 import * as API from '../api/API';
+import * as Actions from '../actions/action';
+import {connect} from 'react-redux';
 
 var Regex= require('regex');
 var regex = new Regex(/\S+@\S+\.\S+/);
@@ -13,9 +15,12 @@ class Nav extends Component {
        
    API.checkSession().then((data)=>{
     console.log("inside the check session response");
+   
     if(data.status===201){
         console.log("user logged in ");
+        //this.props.signIn(data);
     }
+   
    })
 
 
@@ -42,6 +47,7 @@ class Nav extends Component {
         "email" :this.state.email,
         "password": this.state.password
      }
+     this.setState({password:null,repeatpassword:null,email:null});
      API.doRegister(payload).then((data)=>{
         if(data.status==="201"){
         console.log("after the registration is complete");}
@@ -62,6 +68,7 @@ loginButton(){
         "email" :this.state.email,
         "password": this.state.password
      }
+     console.log(payload);
      API.doLogin(payload).then((data)=>{
         console.log(data);
         if(data.status===201){
@@ -298,4 +305,20 @@ loginButton(){
     }
 }
 
-export default Nav;
+
+function mapStateToProps(reducerdata) {
+   // console.log(reducerdata);
+
+    return {reducerdata};
+}
+
+function mapDispatchToProps(dispatch) {
+    return {
+        //signIn : (data) => dispatch(Actions.signIn(data))
+
+    };
+}
+
+
+
+export default connect(mapStateToProps, mapDispatchToProps)(Nav);

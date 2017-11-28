@@ -157,7 +157,6 @@ function mapStateToProps(reducerdata) {
 
 function mapDispatchToProps(dispatch) {
     return {
-
         carSearch : (data) => dispatch(Actions.carSearch(data))
     };
 }

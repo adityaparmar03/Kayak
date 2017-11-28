@@ -10,7 +10,7 @@ module.exports = function(passport) {
             passwordField: 'password'
         },
         function(email, password, done) {
-
+             console.log("inside the function");
               var body = {
                   "email" : email,
                   "password": password
@@ -25,7 +25,7 @@ module.exports = function(passport) {
                 {
                     if(results.code == 200){
                         console.log("After kafka response no error and everything fine")
-                        done(null,{"email":results.email,"data":results.data});
+                        done(null,{"email":email,"data":results.data});
                     }
                     else {
                         console.log("After kafka response no error username not successfull")

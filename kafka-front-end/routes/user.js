@@ -14,6 +14,7 @@ router.post('/login', function (req, res) {
      // var reqEmail = req.body.email;
      //  var reqPassword = req.body.password;
         console.log("inside the login path with the body"+req.body);
+
    passport.authenticate('login', function(err, user) {
 
         if (err) {
@@ -50,6 +51,32 @@ router.get('/checkSession', function (req, res) {
    else {
        res.send({"status": 401});
    }
+});
+
+//************************************************************************************************************************
+
+
+router.get('/bookinghistory', function (req, res) {
+
+    // var reqEmail = req.body.email;
+    //  var reqPassword = req.body.password;
+    console.log("inside history path");
+    var email = {"email": req.session.email};
+     kafka.make_request('bookings' ,email, function (err, results) {
+         if(err){
+             console.log("Error occcured");
+         }
+         else{
+             if(results.code==="200"){
+                 console.log("Everything successfull");
+
+             }
+         }
+
+     })
+
+
+
 });
 
 //************************************************************************************************************************

@@ -1,6 +1,40 @@
 CREATE DATABASE  IF NOT EXISTS `kayak` /*!40100 DEFAULT CHARACTER SET latin1 */;
 USE `kayak`;
 
+DROP TABLE IF EXISTS `USER`;
+
+CREATE TABLE `USER` (
+  `email` varchar(90) NOT NULL,
+  `password` varchar(45) NOT NULL,
+  `first_name` varchar(45) DEFAULT NULL,
+  `last_name` varchar(45) DEFAULT NULL,
+  `user_role` enum('USER','ADMIN') DEFAULT 'USER',
+  `street_address` varchar(90) DEFAULT NULL,
+  `city` varchar(45) DEFAULT NULL,
+  `state` varchar(45) DEFAULT NULL,
+  `zip_code` int(11) DEFAULT NULL,
+  `phone` varchar(45) DEFAULT NULL,
+  `profile_image_path` varchar(90) DEFAULT NULL,
+  `credit_card_type` varchar(45) DEFAULT NULL,
+  `credit_card_number` int(11) DEFAULT NULL,
+  `credit_card_holder_name` varchar(45) DEFAULT NULL,
+  `credit_card_valid_from` date DEFAULT NULL,
+  `credit_card_valid_till` date DEFAULT NULL,
+  PRIMARY KEY (`email`),
+  UNIQUE KEY `email_UNIQUE` (`email`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+
+--
+-- Dumping data for table `USER`
+--
+
+LOCK TABLES `USER` WRITE;
+
+INSERT INTO `USER` VALUES ('meenakshi.paryani@gmail.com','password',NULL,NULL,'USER',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL);
+
+UNLOCK TABLES;
+
 
 DROP TABLE IF EXISTS `BILLING`;
 
@@ -69,48 +103,6 @@ CREATE TABLE `CART` (
 LOCK TABLES `CART` WRITE;
 
 UNLOCK TABLES;
-
---
--- Table structure for table `USER`
---
-
-DROP TABLE IF EXISTS `USER`;
-
-CREATE TABLE `USER` (
-  `email` varchar(90) NOT NULL,
-  `password` varchar(45) NOT NULL,
-  `first_name` varchar(45) DEFAULT NULL,
-  `last_name` varchar(45) DEFAULT NULL,
-  `user_role` enum('USER','ADMIN') DEFAULT 'USER',
-  `street_address` varchar(90) DEFAULT NULL,
-  `city` varchar(45) DEFAULT NULL,
-  `state` varchar(45) DEFAULT NULL,
-  `zip_code` int(11) DEFAULT NULL,
-  `phone` varchar(45) DEFAULT NULL,
-  `profile_image_path` varchar(90) DEFAULT NULL,
-  `credit_card_type` varchar(45) DEFAULT NULL,
-  `credit_card_number` int(11) DEFAULT NULL,
-  `credit_card_holder_name` varchar(45) DEFAULT NULL,
-  `credit_card_valid_from` date DEFAULT NULL,
-  `credit_card_valid_till` date DEFAULT NULL,
-  PRIMARY KEY (`email`),
-  UNIQUE KEY `email_UNIQUE` (`email`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
-
---
--- Dumping data for table `USER`
---
-
-LOCK TABLES `USER` WRITE;
-
-INSERT INTO `USER` VALUES ('meenakshi.paryani@gmail.com','password',NULL,NULL,'USER',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL);
-
-UNLOCK TABLES;
-
---
--- Table structure for table `USER_ACTIVITY`
---
 
 DROP TABLE IF EXISTS `USER_ACTIVITY`;
 

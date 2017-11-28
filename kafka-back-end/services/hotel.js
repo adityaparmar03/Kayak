@@ -47,6 +47,11 @@ function bookHotel(msg, callback){
                 var bookingSql="insert into BILLING(`user_email`,`target_id`,`target_name`,`booking_type`,`billing_amount`,`target_count`,`source_city`,`source_state`,`room_type`,`booking_start_date`,`booking_end_date`) values('"+
                 email+"','"+booking.hotelid+"','"+ booking.name +"','"+ 'HOTEL' + "','"+booking.price+"','"+booking.roomcount+"','"+booking.address.city+"','"+booking.address.state+"','"+booking.roomtype + "','" + booking.bookingstartdate+"','"+booking.bookingenddate+ "');";
 
+                //this is where the mongod insertion will come that will insert the booking object in the user schema.
+                // so that while searching for the booking history will get me the history
+
+
+
                 mysql.executeQuery(function(err){
                     if(err){
                           console.log(err);
@@ -116,6 +121,7 @@ function getCurrentHotelBookingCount(booking, callback){
 }
 
 // Get Hotel booking Count Helper
+
 function getBookedCountHelper(dbBookings){
       var count = 0;
           for(booking in dbBookings){

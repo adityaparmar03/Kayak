@@ -46,6 +46,22 @@ consumer.on('message', function (message) {
            })
           break;
 
+      case'history':
+          console.log("Inside the update switch case");
+          user.bookinghistory(body,function (err,res) {
+              response(data,res);
+              return;
+          })
+          break;
+
+      case'searchhistory':
+          console.log("Inside the update switch case");
+          user.searchhistory(body,function (err,res) {
+              response(data,res);
+              return;
+          })
+          break;
+
       case 'getapi':
           console.log("inside get api topic");
             admin.fetchUrl(body,function (err , res) {
