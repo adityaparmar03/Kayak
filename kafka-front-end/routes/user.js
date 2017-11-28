@@ -144,6 +144,38 @@ console.log("inside the update path");
 
 //************************************************************************************************************************
 
+//************************************************************************************************************************
+
+router.delete('/delete',function (req,res) {
+
+    console.log("inside the delete path");
+
+    console.log(req.query);
+    kafka.make_request('update', req.query ,function(err,results){
+
+        if(err){
+            console.log("After kafka response");
+            done(err,{});
+            res.send({"status":401})
+        }
+        else
+        {
+            if(results.code == 200){
+                res.send({"status":201})
+
+            }
+            else {
+                done(null,false);
+                res.send({"status":401})
+            }
+        }
+    })
+
+
+})
+
+//************************************************************************************************************************
+
 //Logout the user - invalidate the session
 router.post('/logout', function (req, res) {
 

@@ -55,20 +55,39 @@ function register(msg,callback){
     console.log("------------");
     var insertQuery="insert into USER(email,password,user_role) values('"+msg.email+"','"+msg.password+"','USER');";
     console.log(insertQuery);
+    var selectQuery = "select email from user where email='"+msg.email+"';";
 
-    mysql.executeQuery(function(err){
+    mysql.fetchData(function (err,results) {
         if(err){
-            throw err;
             res.code = "401";
-            res.value=" Error Occured while registering ";
+            res.value = "cannot fetch the user query";
         }
         else{
+            if(results.length>0){
+                res.code=401;
+                res.value = "user already exists";
 
-               res.code = "200";
-               res.value = "User successfully registered";
+            }
+            else{
+                mysql.executeQuery(function(err){
+                    if(err){
+                        throw err;
+                        res.code = "401";
+                        res.value=" Error Occured while registering ";
+                    }
+                    else{
 
+                        res.code = "200";
+                        res.value = "User successfully registered";
+
+                    }callback(null,res);
+                },insertQuery);
+            }
         }callback(null,res);
-     },insertQuery);
+
+    },selectQuery)
+
+
 
 }
 
@@ -137,7 +156,50 @@ function searchhistory(msg,callback) {
 
 
 //****************************************************************************************************************************
+function deleteuser(msg,callback) {
+    var res = {};
+    console.log(msg);
 
+    var delquery = "delete from user where email='"+msg.email+"';";
+
+    mysql.executeQuery(function(err){
+        if(err){
+            throw err;
+            res.code = "401";
+            res.value=" Error Occured while registering ";
+        }
+        else{
+
+            console.log("User succesfully deleted from the user table");
+            var deletebilling = "delete from billing where email='"+msg.email+"';";   //need to change this quesry to handle the
+            //non exiisting record in the billing table
+            mysql.executeQuery(function(err){
+                if(err){
+                    throw err;
+                    res.code = "401";
+                    res.value=" Error Occured while registering ";
+                }
+                else{
+
+                    res.code = "200";
+                    res.value = "User successfully deleted from all the tables";
+
+                }callback(null,res);
+            },deletebilling);
+        }
+    },delquery);
+
+
+
+
+
+    callback(null,"test");
+
+}
+//****************************************************************************************************************************
+
+
+exports.deleteuser = deleteuser;
 exports.bookinghistory = bookinghistory;
 exports.update = update ;
 exports.register = register ;
