@@ -43,6 +43,7 @@ class Hotellist extends Component {
             high:this.maxprice
           });
     }
+    
     onChangePrice = values =>
     this.setState({
       valuesPrice: values,
