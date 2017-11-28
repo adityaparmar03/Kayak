@@ -23,8 +23,8 @@ var CarSchema   = new Schema({
 
     carId:String,
     cartype: String,
-    pickupdate: Date,
-    dropoffdate: Date,
+    carmodel:String,
+    specification: String,
     pickupaddress: Object,  //{'street':'101 E San Fernando St.','city':'San Jose', 'state': 'CA', 'country':'USA'}
     dropoffaddress: Object,
     dailyrent: String

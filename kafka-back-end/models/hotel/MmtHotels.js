@@ -24,6 +24,7 @@ var HotelSchema   = new Schema({
 
     hotelId:String,
     name:String,
+    description:String,
     address: Object, //{'street':'101 E San Fernando St.','city':'San Jose', 'state': 'CA', 'country':'USA', 'zip':'95112'}
     stars: Number,
     reviews : Array,
