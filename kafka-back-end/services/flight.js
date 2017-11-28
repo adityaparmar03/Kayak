@@ -18,13 +18,16 @@ function searchFlights(msg, callback){
     if(triptype=='One-Way'){
 
 
-        flight.find({'flights':{$elemMatch: {
-            'origin.city': origincity,
-            'origin.state': originstate,
-            'destination.city': destinationcity,
-            'destination.state': destinationstate,
-            'departureday' : departureday
-        }}}, function (err, flights) {
+        flight.aggregate(
+
+            {$unwind: '$flights'},
+
+            {$match:{'flights.origin.city': origincity,
+                'flights.origin.state': originstate,
+                'flights.destination.city': destinationcity,
+                'flights.destination.state': destinationstate,
+                'flights.departureday':departureday}}
+            , function (err, flights) {
 
 
             if (err) {

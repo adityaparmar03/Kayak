@@ -46,30 +46,25 @@ class Flightsearch extends Component {
         console.log("Return Date=>"+enddate)
         console.log("Travelers =>"+this.state.traveler)
         console.log("class =>"+this.state.class)
+        console.log(moment(this.state.startdate).toString().split(" ")[0]);
+        console.log(this.state.startdate);
+
 
        const  payload={
-           'origincity':'San Jose',
-           'originstate':'CA',
-           'destinationcity':'Delhi',
-           'destinationstate':'Delhi',
-           'trip-type':'One-Way',
-           'flightclass':'economy'
+           'origincity':this.state.from.split(",")[0].trim(),
+           'originstate':this.state.from.split(",")[1].trim(),
+           'destinationcity':this.state.to.split(",")[0].trim(),
+           'destinationstate':this.state.to.split(",")[1].trim(),
+           'departureday':moment(this.state.startdate).toString().split(" ")[0],
+           'triptype':'One-Way',
+           'flightclass':this.state.class
         }
 
-       API.searchFlights(payload)
-           .then((res) => {
-               console.log(res);
-               if (res.status == 201) {
 
-                    this.props.flightSearch(res.flights);
+        console.log('payload', payload);
 
-                   console.log("Success...")
+           localStorage.setItem("flightsearchcriteria", JSON.stringify(payload));
 
-               }else if (res.status == 401) {
-
-                   //  this.props.history.push('/');
-               }
-           });
        // call Api for search here......
            //API CALL
 
@@ -238,17 +233,5 @@ class Flightsearch extends Component {
 }
 
 
-function mapStateToProps(reducerdata) {
-    console.log(reducerdata);
 
-    return {reducerdata};
-}
-
-function mapDispatchToProps(dispatch) {
-    return {
-
-        flightSearch : (data) => dispatch(Actions.flightSearch(data))
-    };
-}
-
-export default connect(mapStateToProps, mapDispatchToProps)(Flightsearch);
+export default Flightsearch;

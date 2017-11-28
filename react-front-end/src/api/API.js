@@ -181,7 +181,9 @@ export const clickTracker = (payload) =>
 
 
 export const searchFlights = (payload) =>
-    fetch(`${api}/flight/flights?origincity=San Jose&originstate=CA&destinationcity=Delhi&destinationstate=Delhi&triptype=One-Way&flightclass=economy`, {
+    fetch(`${api}/flight/flights?origincity=`+payload.origincity+`&originstate=`+payload.originstate+
+                `&destinationcity=`+payload.destinationcity+`&destinationstate=`+payload.destinationstate
+                +`&triptype=`+payload.triptype+`&flightclass=`+payload.flightclass+`&departureday=`+payload.departureday, {
         method: 'GET',
         headers: {
             ...headers,

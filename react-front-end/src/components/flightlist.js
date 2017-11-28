@@ -3,6 +3,10 @@ import {Link,withRouter} from 'react-router-dom';
 import PropTypes from 'prop-types';
 import Nav from './nav';
 
+import * as API from '../api/API';
+import * as Actions from '../actions/action';
+import {connect} from 'react-redux';
+
 import MultiSlider from "multi-slider";
 class Flightlist extends Component {
     constructor(props){
@@ -41,6 +45,22 @@ class Flightlist extends Component {
     }  
     componentWillMount(){
 
+        const payload = JSON.parse(localStorage.getItem("flightsearchcriteria"));
+        console.log('payload',payload);
+        API.searchFlights(payload)
+            .then((res) => {
+                console.log(res);
+                if (res.status == 201) {
+
+                    this.props.flightSearch(res.flights);
+
+                    console.log("Success...")
+
+                }else if (res.status == 401) {
+
+                    //  this.props.history.push('/');
+                }
+            });
 
         this.maxprice = 234; //get from api
         this.minprice = 67;
@@ -220,4 +240,19 @@ class Flightlist extends Component {
     }
 }
 
-export default withRouter(Flightlist);
+
+function mapStateToProps(reducerdata) {
+    console.log(reducerdata.userSearch.flightSearch);
+
+    const flights=reducerdata.userSearch.flightSearch;
+    return {flights};
+}
+
+function mapDispatchToProps(dispatch) {
+    return {
+
+        flightSearch : (data) => dispatch(Actions.flightSearch(data))
+    };
+}
+
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(Flightlist));
