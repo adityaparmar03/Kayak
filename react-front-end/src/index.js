@@ -153,6 +153,7 @@ import Carhome from "./components/carhome";
 import Flightlist from "./components/flightlist";
 import Hotellist from "./components/hotellist";
 import Carlist from "./components/carlist";
+import Profile from "./components/profile";
 
 import { createStore } from 'redux';
 import reducer from './reducers/rootreducer';
@@ -179,6 +180,7 @@ ReactDOM.render(
                 <Route exact path="/flightlist" component={Flightlist}/>
                 <Route exact path="/hotellist" component={Hotellist}/>
                 <Route exact path="/carlist" component={Carlist}/>
+                <Route exact path="/profile" component={Profile}/>
        
         
             </div>
