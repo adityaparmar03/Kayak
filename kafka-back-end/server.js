@@ -143,6 +143,17 @@ consumer.on('message', function (message) {
             });
             break;
 
+        // case 'updatebilling':
+        //     console.log("inside the updatebilling queue");
+        //     admin.updatebilling(body,function (err,res) {
+        //         if(err)
+        //             console.log(err);
+        //         else
+        //             console.log(res);
+        //         response(data,res);
+        //
+        //     })
+
         case 'BookFlight':
             console.log(message);
             flight.bookFlight(body,function (err , res) {

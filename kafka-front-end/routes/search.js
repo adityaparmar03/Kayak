@@ -4,7 +4,11 @@ var asyncLoop = require('node-async-loop');
 
 
 function searchFromApi(data, callback){
+    console.log("search from api data");
+    console.log("**************");
 console.log(data)
+    console.log("**************");
+console.log(data.searchtype);
     kafka.make_request('getapi', data.searchtype, function(err,results){
 
         if(err){
@@ -28,7 +32,8 @@ console.log(data)
                         }).then(function(response) {
                         search_results.push.apply(search_results,response.data.api_results);
 
-                        console.log("car results after push",search_results)
+                       // console.log("car results after push",search_results)
+
                         next();
 
                     }).catch(function(error) {

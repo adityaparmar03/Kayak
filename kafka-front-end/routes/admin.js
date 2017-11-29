@@ -146,4 +146,22 @@ router.get('/vendors',function (req,res) {
 
 
 })
+
+
+router.post('/updatebilling' , function (req,res) {
+    console.log(req.body);
+
+    kafka.make_request('updatebilling' , req.body , function (err) {
+        if(err){
+            console.log(err);
+            res.send({"status":401, "error": err})
+        }
+        else{
+            console.log("No error the info was updated");
+            res.send({"status":201 , "msg": "The info was updated "})
+        }
+
+    })
+
+})
 module.exports = router;

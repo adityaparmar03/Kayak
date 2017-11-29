@@ -28,10 +28,10 @@ function sendMail(req,res) {
             console.log(error);
         } else {
             console.log('Email sent: ' + info.response);
-            res.send({"status": 201, "email": req.body.email});
+
         }
     });
-
+    res.send({"status": 201, "email": req.body.email});
 }
 
 

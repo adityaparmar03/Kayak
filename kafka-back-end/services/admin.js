@@ -111,6 +111,32 @@ function getVendors(msg, callback){
     },getVendorsSql);
 }
 
+
+
+//function updateBilling(msg,callback) {
+  //  var res={};
+
+    //var updateQuery = "update billing set * * where user_email='"+msg.email+"';";
+    // mysql.executeQuery(function (err) {
+    //     if(err){
+    //         console.log("error while updating the user details");
+    //         res.code = "401";
+    //         res.value = "error while updating the billing info";
+    //
+    //     }
+    //     else{
+    //         res.code = "200";
+    //         res.value = "Billing info updated";
+    //
+    //     }callback(null,res);
+    //
+    // },updateQuery);
+
+//}
+
+
+
+//exports.updateBilling = updateBilling;
 exports.addVendor = addVendor;
 exports.getVendors = getVendors;
 exports.deleteVendor = deleteVendor;

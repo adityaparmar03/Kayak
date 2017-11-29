@@ -61,14 +61,18 @@ function register(msg,callback){
         if(err){
             res.code = "401";
             res.value = "cannot fetch the user query";
+            callback(null,res);
         }
         else{
+            console.log("inside here else of finding a user");
             if(results.length>0){
                 res.code=401;
                 res.value = "user already exists";
+                callback(null,res);
 
             }
             else{
+                console.log("inside else so there are no users")
                 mysql.executeQuery(function(err){
                     if(err){
                         throw err;
@@ -83,7 +87,7 @@ function register(msg,callback){
                     }callback(null,res);
                 },insertQuery);
             }
-        }callback(null,res);
+        }
 
     },selectQuery)
 
@@ -132,8 +136,20 @@ function bookinghistory(msg,callback){
             if(results.length>0) {
                 res.code = "200";
                 res.value = "Data successfully fetched";
-                res.data = results;
+                var i ;
+                for (i = 0 ; i < results.length ; i++ ){
+                    if(results[i].booking_type === "CAR"){
+                        res.car = results[i];
+                    }
+                    else if(results[i].booking_type === "FLIGHT"){
+                        res.flight = results[i];
+                    }
+                    else if(results[i].booking_type === "HOTEL"){
+                        res.hotel = results[i];
+                    }
+                }
             }
+
             else{
                 res.code = 401;
                 res.value = "No bookings found for the user";

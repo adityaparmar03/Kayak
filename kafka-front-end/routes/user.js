@@ -69,6 +69,7 @@ router.get('/bookinghistory', function (req, res) {
          else{
              if(results.code==="200"){
                  console.log("Everything successfull");
+                 res.send({"status":201 , "data": results})
 
              }
          }
@@ -95,7 +96,7 @@ router.post('/register',function (req,res) {
         }
         else
         {
-            if(results.code == 200){
+            if(results.code === "200"){
              mail.sendMail(req,res);
 
             }
@@ -158,7 +159,6 @@ router.delete('/delete',function (req,res) {
         }
         else
         {
-            console.log("What the hell");
             console.log(results);
             if(results.code === "200"){
 

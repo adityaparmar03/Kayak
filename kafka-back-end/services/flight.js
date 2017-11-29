@@ -1,6 +1,6 @@
 var _ = require("underscore");
 var mysql = require('../models/mysql');
-var searchhistory = require('../models/searchhistory');
+var searchHistory = require('../models/searchhistory');
 
 // Search for all flightss on the basis of city, state and class
 function searchFlights(msg, callback){
@@ -76,8 +76,8 @@ function searchFlights(msg, callback){
         });
     }
 
-//     var search = new searchhistory();
-//          search.
+    var searchhistory = new SearchHistory();
+
  }
 
 
@@ -160,6 +160,9 @@ function bookFlight(msg, callback){
                  }
            });
       }
+
+
+
 
 }
 
