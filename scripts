@@ -31,6 +31,11 @@ bin/kafka-topics.sh --create --zookeeper localhost:2181 --replication-factor 1 -
 bin/kafka-topics.sh --create --zookeeper localhost:2181 --replication-factor 1 --partitions 1 --topic searchhistory
 bin/kafka-topics.sh --create --zookeeper localhost:2181 --replication-factor 1 --partitions 1 --topic deleteuser
 
+bin/kafka-topics.sh --create --zookeeper localhost:2181 --replication-factor 1 --partitions 1 --topic "login"
+bin/kafka-topics.sh --create --zookeeper localhost:2181 --replication-factor 1 --partitions 1 --topic "register"
+
+
+------------------------------------------------------------MySQL------------------------------------------------------------------------------
 
 create table vendors (vendorId int AUTO_INCREMENT primary key, vendorname varchar(50), servicetype varchar(50), vendorapi varchar(255));
 
@@ -49,8 +54,6 @@ insert into vendors (vendorname, servicetype, vendorapi) values ('Cleartrip', 'f
 insert into vendors (vendorname, servicetype, vendorapi) values ('Expedia', 'flight', 'http://localhost:3001/flight/getflights?vendor=ExpediaFlights');
 
 
-bin/kafka-topics.sh --create --zookeeper localhost:2181 --replication-factor 1 --partitions 1 --topic "login"
-bin/kafka-topics.sh --create --zookeeper localhost:2181 --replication-factor 1 --partitions 1 --topic "register"
 
 
 
