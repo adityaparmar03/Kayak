@@ -6,7 +6,7 @@ var router = express.Router();
 /* GET flight list */
 router.get('/flights', function (req, res) {
 
-    var data = {'searchtype':'flight', 'searchquery':req.query}
+    var data = {'searchtype':'flight', 'searchquery':req.query }
 
     search.searchFromApi(data, function (err, results) {
 

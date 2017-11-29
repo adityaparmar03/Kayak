@@ -59,7 +59,7 @@ CREATE TABLE `BILLING` (
   `booking_end_date` datetime DEFAULT NULL,
   `return_booking_start_date` datetime DEFAULT NULL,
   `return_booking_end_date` datetime DEFAULT NULL,
-  `target_count` int(11) NOT NULL COMMENT 'Count of Passengers for flights Or\nCount of hotel rooms Or\nCount of Cars booked\n',
+  `target_count` int(11) DEFAULT NULL COMMENT 'Count of Passengers for flights Or\nCount of hotel rooms Or\nCount of Cars booked\n',
   `booking_class` enum('FIRST','ECONOMY','BUSINESS') DEFAULT NULL COMMENT 'Booking class of flight',
   `credit_card_type` varchar(45) DEFAULT NULL,
   `credit_card_number` int(11) DEFAULT NULL,

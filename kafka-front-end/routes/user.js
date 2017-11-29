@@ -81,9 +81,6 @@ router.get('/bookinghistory', function (req, res) {
 
 //************************************************************************************************************************
 
-
-
-
 router.post('/register',function (req,res) {
 
 
@@ -93,7 +90,7 @@ router.post('/register',function (req,res) {
 
         if(err){
             console.log("After kafka response");
-            done(err,{});
+
             res.send({"status":401})
         }
         else
@@ -103,7 +100,7 @@ router.post('/register',function (req,res) {
 
             }
             else {
-                done(null,false);
+
                 res.send({"status":401})
             }
         }
@@ -150,23 +147,26 @@ router.delete('/delete',function (req,res) {
 
     console.log("inside the delete path");
 
-    console.log(req.query);
-    kafka.make_request('update', req.query ,function(err,results){
+   // console.log(req.query);
+   // var email = { 'email':req.session.email };
+
+    kafka.make_request('deleteuser', req.session ,function(err,results){
 
         if(err){
             console.log("After kafka response");
-            done(err,{});
             res.send({"status":401})
         }
         else
         {
-            if(results.code == 200){
-                res.send({"status":201})
+            console.log("What the hell");
+            console.log(results);
+            if(results.code === "200"){
+
+                res.send({"status":201 ,"data":results.value})
 
             }
             else {
-                done(null,false);
-                res.send({"status":401})
+                res.send({"status":401,"data":res.value});
             }
         }
     })

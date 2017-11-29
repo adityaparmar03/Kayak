@@ -120,7 +120,7 @@ function bookinghistory(msg,callback){
     var res={};
     console.log(msg);
 
-    var search = "select booking_type , billing_amount,flight_trip_type,car_trip_type,room_type,billing_amount,billing_date,source_city,destination_city,booking_class from billing where user_email='"+msg.email+"';" ;
+    var search = "select booking_type,billing_amount,flight_trip_type,car_trip_type,room_type,billing_amount,billing_date,source_city,destination_city,booking_class from billing where user_email='"+msg.email+"';" ;
 
     mysql.fetchData(function (err,results) {
         if(err){
@@ -133,9 +133,6 @@ function bookinghistory(msg,callback){
                 res.code = "200";
                 res.value = "Data successfully fetched";
                 res.data = results;
-
-
-                console.log(res.data[0].booking_type);
             }
             else{
                 res.code = 401;
@@ -156,42 +153,40 @@ function deleteuser(msg,callback) {
     var res = {};
     console.log(msg);
 
-    var delquery = "delete from user where email='"+msg.email+"';";
+    var delquery = "delete from billing where user_email='"+msg.email+"';";
 
     mysql.executeQuery(function(err){
         if(err){
             throw err;
             res.code = "401";
-            res.value=" Error Occured while registering ";
+            res.value=" Error Occured while deleting from the billing table ";
+            callback(null,res);
         }
         else{
 
             console.log("User succesfully deleted from the user table");
-            var deletebilling = "delete from billing where email='"+msg.email+"';";   //need to change this quesry to handle the
-            //non exiisting record in the billing table
-            mysql.executeQuery(function(err){
+            var deluser = "delete from user where email='"+msg.email+"';";
+            mysql.executeQuery(function (err) {
                 if(err){
-                    throw err;
+                    //throw  err;
                     res.code = "401";
-                    res.value=" Error Occured while registering ";
+                    res.value = "error while deleting the user from the user table";
+
                 }
                 else{
-
                     res.code = "200";
-                    res.value = "User successfully deleted from all the tables";
+                    res.value = 'user deleted from both the user table and the billing table';
 
                 }callback(null,res);
-            },deletebilling);
+
+            },deluser);
+
+
         }
     },delquery);
 
-
-
-
-
-    callback(null,"test");
-
 }
+
 //****************************************************************************************************************************
 
 

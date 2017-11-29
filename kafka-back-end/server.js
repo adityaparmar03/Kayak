@@ -56,6 +56,9 @@ consumer.on('message', function (message) {
         case'deleteuser':
             console.log("Inside the deleteuser switch case");
             user.deleteuser(body,function (err,res) {
+                console.log("#############################");
+                console.log(res);
+                console.log("#############################");
                 response(data,res);
                 return;
             })
@@ -182,9 +185,9 @@ consumer.on('message', function (message) {
 
 
     }
-
-//************************************************************************************************************************
 });
+//************************************************************************************************************************
+
 
 
 

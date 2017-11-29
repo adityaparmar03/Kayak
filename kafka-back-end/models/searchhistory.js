@@ -31,4 +31,4 @@ var searchHistorySchema   = new Schema({
     bookings:{}
 });
 
-module.exports = mongoose.model('searchhistory', bookingHistorySchema,'searchhistory');
+module.exports = mongoose.model('searchhistory', searchHistorySchema,'searchhistory');
