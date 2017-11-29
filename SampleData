@@ -1,0 +1,177 @@
+
+db.ExpediaFlights.insert({
+  'flightId': 'ED100',
+  'operator': 'Delta Airlines',
+  'class':[
+
+                {'type':'Economy','price':'$1000', 'capacity':100},
+                 {'type':'First','price':'$2000' , 'capacity':100},
+                  {'type':'Business','price':'$3000' , 'capacity':100}
+             ] ,
+     'flights':[
+                  {
+                     'arrivaltime': '16:00',
+                       'arrivalday' : 'Tue',
+                       'departuretime': '00:00',
+                       'departureday' : 'Wed',
+                     'origin': {'city':'San Francisco', 'state':'California', 'country':'USA', 'airport':'San Francisco International Airport'},
+                     'destination': {'city':'San Jose', 'state':'California', 'country':'USA', 'airport':'San Jose Airport'}
+
+                 },
+                 {
+                      'arrivaltime': '02:00',
+                     'arrivalday' : 'Thu',
+                     'departuretime': '18:00',
+                     'departureday' : 'Mon',
+                      'origin': {'city':'San Jose', 'state':'California', 'country':'USA', 'airport':'San Jose Airport'},
+                      'destination': {'city':'San Francisco', 'state':'California', 'country':'USA', 'airport':'San Francisco International Airport'}
+
+                  }
+           ]
+})
+
+
+db.ExpediaFlights.insert({
+  'flightId': 'ED101',
+  'operator': 'Air USA Airlines',
+  'class':[
+
+                {'type':'Economy','price':'$1000', 'capacity':50},
+                 {'type':'First','price':'$2000' , 'capacity':50},
+                  {'type':'Business','price':'$3000' , 'capacity':10}
+             ] ,
+     'flights':[
+                  {
+                     'arrivaltime': '16:00',
+                       'arrivalday' : 'Thu',
+                       'departuretime': '00:00',
+                       'departureday' : 'Mon',
+                     'origin': {'city':'San Francisco', 'state':'California', 'country':'USA', 'airport':'San Francisco International Airport'},
+                     'destination': {'city':'San Jose', 'state':'California', 'country':'USA', 'airport':'San Jose Airport'}
+
+                 },
+                 {
+                      'arrivaltime': '02:00',
+                     'arrivalday' : 'Tue',
+                     'departuretime': '18:00',
+                     'departureday' : 'Wed',
+                      'origin': {'city':'San Jose', 'state':'California', 'country':'USA', 'airport':'San Jose Airport'},
+                      'destination': {'city':'San Francisco', 'state':'California', 'country':'USA', 'airport':'San Francisco International Airport'}
+
+                  }
+           ]
+})
+
+
+db.MmtFlights.insert({
+  'flightId': 'MMT100',
+  'operator': 'Lufthansa Airlines',
+  'class':[
+
+                {'type':'Economy','price':'$1000', 'capacity':50},
+                 {'type':'First','price':'$2000' , 'capacity':50},
+                  {'type':'Business','price':'$3000' , 'capacity':10}
+             ] ,
+     'flights':[
+                  {
+                     'arrivaltime': '16:00',
+                       'arrivalday' : 'Thu',
+                       'departuretime': '00:00',
+                       'departureday' : 'Mon',
+                     'origin': {'city':'San Francisco', 'state':'California', 'country':'USA', 'airport':'San Francisco International Airport'},
+                     'destination': {'city':'San Jose', 'state':'California', 'country':'USA', 'airport':'San Jose Airport'}
+
+                 }
+           ]
+})
+
+
+db.MmtFlights.insert({
+  'flightId': 'MMT101',
+  'operator': 'Air China Airlines',
+  'class':[
+
+                {'type':'Economy','price':'$1000', 'capacity':50},
+                 {'type':'First','price':'$2000' , 'capacity':50},
+                  {'type':'Business','price':'$3000' , 'capacity':10}
+             ] ,
+     'flights':[
+                  {
+                     'arrivaltime': '05:00',
+                       'arrivalday' : 'Thu',
+                       'departuretime': '11:00',
+                       'departureday' : 'Mon',
+                     'origin': {'city':'San Francisco', 'state':'California', 'country':'USA', 'airport':'San Francisco International Airport'},
+                     'destination': {'city':'San Jose', 'state':'California', 'country':'USA', 'airport':'San Jose Airport'}
+
+                 },
+                 {
+                      'arrivaltime': '06:00',
+                     'arrivalday' : 'Tue',
+                     'departuretime': '10:00',
+                     'departureday' : 'Wed',
+                      'origin': {'city':'San Jose', 'state':'California', 'country':'USA', 'airport':'San Jose Airport'},
+                      'destination': {'city':'San Francisco', 'state':'California', 'country':'USA', 'airport':'San Francisco International Airport'}
+
+                  }
+           ]
+})
+
+
+
+db.CleartripFlights.insert({
+  'flightId': 'CT100',
+  'operator': 'Deccan Airlines',
+  'class':[
+
+                {'type':'Economy','price':'$1000', 'capacity':10},
+                 {'type':'First','price':'$2000' , 'capacity':10},
+                  {'type':'Business','price':'$3000' , 'capacity':5}
+             ] ,
+     'flights':[
+                  {
+                     'arrivaltime': '08:00',
+                       'arrivalday' : 'Thu',
+                       'departuretime': '22:00',
+                       'departureday' : 'Mon',
+                     'origin': {'city':'San Francisco', 'state':'California', 'country':'USA', 'airport':'San Francisco International Airport'},
+                     'destination': {'city':'San Jose', 'state':'California', 'country':'USA', 'airport':'San Jose Airport'}
+
+                 },
+                 {
+                      'arrivaltime': '15:00',
+                     'arrivalday' : 'Tue',
+                     'departuretime': '09:00',
+                     'departureday' : 'Wed',
+                      'origin': {'city':'San Jose', 'state':'California', 'country':'USA', 'airport':'San Jose Airport'},
+                      'destination': {'city':'San Francisco', 'state':'California', 'country':'USA', 'airport':'San Francisco International Airport'}
+
+                  }
+           ]
+})
+
+
+db.CleartripFlights.insert({
+  'flightId': 'CT100',
+  'operator': 'Jet Airways',
+  'class':[
+
+                {'type':'Economy','price':'$1000', 'capacity':10},
+                 {'type':'First','price':'$2000' , 'capacity':10},
+                  {'type':'Business','price':'$3000' , 'capacity':5}
+             ] ,
+     'flights':[
+                  {
+                     'arrivaltime': '08:00',
+                       'arrivalday' : 'Thu',
+                       'departuretime': '22:00',
+                       'departureday' : 'Mon',
+                     'origin': {'city':'New York', 'state':'New York', 'country':'USA', 'airport':'San Francisco International Airport'},
+                     'destination': {'city':'San Diego', 'state':'California', 'country':'USA', 'airport':'San Jose Airport'}
+
+                 }
+           ]
+})
+
+
+
