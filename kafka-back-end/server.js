@@ -44,17 +44,9 @@ consumer.on('message', function (message) {
             })
             break;
 
-        case'history':
+        case'bookings':
             console.log("Inside the update switch case");
             user.bookinghistory(body,function (err,res) {
-                response(data,res);
-                return;
-            })
-            break;
-
-        case'searchhistory':
-            console.log("Inside the update switch case");
-            user.searchhistory(body,function (err,res) {
                 response(data,res);
                 return;
             })

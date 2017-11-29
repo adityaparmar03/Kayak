@@ -120,8 +120,8 @@ function bookinghistory(msg,callback){
     var res={};
     console.log(msg);
 
-    var search = "select user_email,booking_type,booking_start_date,booking_end_date,booking_class from user where email='"+
-        msg.email+"';"
+    var search = "select booking_type , billing_amount,flight_trip_type,car_trip_type,room_type,billing_amount,billing_date,source_city,destination_city,booking_class from billing where user_email='"+msg.email+"';" ;
+
     mysql.fetchData(function (err,results) {
         if(err){
             throw err;
@@ -133,6 +133,9 @@ function bookinghistory(msg,callback){
                 res.code = "200";
                 res.value = "Data successfully fetched";
                 res.data = results;
+
+
+                console.log(res.data[0].booking_type);
             }
             else{
                 res.code = 401;
@@ -146,13 +149,6 @@ function bookinghistory(msg,callback){
 }
 
 //****************************************************************************************************************************
-function searchhistory(msg,callback) {
-    var res = {};
-    console.log(msg);
-    callback(null,"test");
-
-}
-
 
 
 //****************************************************************************************************************************

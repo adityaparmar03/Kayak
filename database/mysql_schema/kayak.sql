@@ -43,7 +43,7 @@ CREATE TABLE `BILLING` (
   `user_email` varchar(90) NOT NULL,
   `target_id` varchar(90) NOT NULL COMMENT 'Id of flight/car/hotel from MongoDB',
   `target_name` varchar(90) DEFAULT NULL,
-  `return_target_id` varchar(90) NOT NULL,
+  `return_target_id` varchar(90) DEFAULT NULL,
   `return_target_name` varchar(90) DEFAULT NULL,
   `booking_type` enum('CAR','FLIGHT','HOTEL') NOT NULL,
   `flight_trip_type` enum('ONE-WAY','TWO-WAY') DEFAULT NULL,

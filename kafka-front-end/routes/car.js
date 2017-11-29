@@ -46,7 +46,7 @@ router.get('/getcars', function (req, res) {
 
 
 router.post('/book', function (req, res) {
-    console.log(req.body);
+    //console.log(req.body);
     var queueName = "BookCar";
 
     var reqObject = {
@@ -54,20 +54,20 @@ router.post('/book', function (req, res) {
         booking : req.body.booking
     }
 
-    kafka.make_request(queueName, reqObject, function(err,results){
+      //console.log(req.session.email);
+    kafka.make_request(queueName, reqObject, function(err,results) {
 
-        if(err){
+        if (err) {
             console.log('Returning Error ----' + err);
-            res.send({'status': err.code, 'message' : err.message});
+            res.send({'status': err.code, 'message': err.message});
         }
-        else
-        {
+        else {
             console.log('Returning results ----' + results);
-            if(results.code == "200"){
-                res.send({'status': results.code , 'api_results' : results.value});
+            if (results.code == "200") {
+                res.send({'status': results.code, 'api_results': results.value});
             }
             else {
-                res.send({'status': results.code , 'api_results' : results.value});
+                res.send({'status': results.code, 'api_results': results.value});
             }
         }
     })

@@ -8,23 +8,6 @@ router.get('/flights', function (req, res) {
 
     var data = {'searchtype':'flight', 'searchquery':req.query}
 
-    if(req.session.isloggedin){
-        kafka.make_request('searchhistory',data,function (err,results) {
-
-            if(err){
-                console.log(err);
-            }
-            else{
-                if(results.code==="200") {
-                    console.log("search criteria saveed")
-                }
-                else{
-                    console.log("error while saving the search criteria");
-                }
-            }
-        })
-    }
-
     search.searchFromApi(data, function (err, results) {
 
         if(err || !results){

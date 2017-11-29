@@ -4,8 +4,8 @@ var mysql = require('mysql');
 var pool  = mysql.createPool({
     host     : 'localhost',
     user     : 'root',
-    password : 'kimtani02', //Enter password
-    database : 'cmpe273_kayak', //keep database as this since meenakshi created this database.
+    password : 'root', //Enter password
+    database : 'kayak', //keep database as this since meenakshi created this database.
     port	 : 3306
 });
 
@@ -24,7 +24,7 @@ function fetchData(callback,sqlQuery){
             else {	// return err or result
                 console.log("DB Results:--");
                 //console.log(fields);
-                console.log(rows);
+               // console.log(rows);
                 callback(err,rows);
             }
         });

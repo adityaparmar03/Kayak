@@ -71,7 +71,7 @@ function searchCars(msg, callback){
 // Book the Car
 function bookCar(msg, callback){
       var booking = msg.booking;
-      var email = "meenakshi.paryani@gmail.com"; //msg.email - TODO : uncomment this after stable
+      var email = msg.email   // - TODO : uncomment this after stable
 
       console.log('-------booking is-------');
       console.log(booking);
@@ -86,22 +86,26 @@ function bookCar(msg, callback){
                 email+"','"+booking.carid+"','"+ booking.cartype +"','"+ 'CAR' + "','"+booking.price+"','"+booking.pickupaddress.city+"','"+booking.pickupaddress.state+"','"+booking.dropoffaddress.city+"','"+booking.dropoffaddress.state+"','"+booking.triptype + "','" + booking.pickupdate
                 +"','"+booking.dropoffdate+ "');";
 
+               // console.log("*************************************************");
+               // console.log(bookingSql);
+               // console.log("*************************************************");
+
                 mysql.executeQuery(function(err){
                     if(err){
                           console.log(err);
                           res.code = "401";
-                          res.value=" Error booking the Hotel";
+                          res.value=" Error booking the car";
                           callback(null, res);
                     }
                     else{
                            res.code = "200";
-                           res.value = "Hotel booked Successfully";
+                           res.value = "car booked Successfully";
                            callback(null, res);
                     }
                  },bookingSql);
             }else{
                 res.code = 402;
-                res.value = "Hotel is not available to book for current selections!";
+                res.value = "car is not available to book for current selections!";
                 callback(null, res);
             }
       });
@@ -128,8 +132,6 @@ function checkCarAvailable(booking, callback){
       })
 
 
-
-
 }
 
 
@@ -147,6 +149,7 @@ function getCurrentCarBookingStatus(booking, callback){
              callback(0);
           }
           else {
+              console.log("inside getcurrentcarbookingstatus");
              callback(getBookedCountHelper(dbBookings));
           }
 
@@ -156,6 +159,7 @@ function getCurrentCarBookingStatus(booking, callback){
 // Get Car booking Count Helper
 function getBookedCountHelper(dbBookings){
       var count = 0;
+
           for(booking in dbBookings){
               count = count + 1;
           }
