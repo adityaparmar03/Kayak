@@ -1,3 +1,4 @@
+use cmpe273_kayak;
 
 db.ExpediaFlights.insert({
   'flightId': 'ED100',
@@ -174,4 +175,120 @@ db.CleartripFlights.insert({
 })
 
 
+
+
+
+db.MmtCars.insert({
+'carId':'MMT101',
+'cartype':'Small',
+'carmodel':'BMW',
+'specification':'automatic',
+'pickupaddress': {'street':'101 E San Fernando St.','city':'San Jose', 'state': 'California', 'country':'USA'},
+'dropoffaddress': {'street':'101 E San Fernando St.','city':'San Jose', 'state': 'California', 'country':'USA'},
+'dailyrent':'$100'})
+
+
+db.CleartripCars.insert({
+'carId': 'CT101',
+'cartype':'Medium',
+'carmodel':'Audi',
+'specification':'manual',
+'pickupaddress': {'street':'101 E San Fernando St.','city':'San Jose', 'state': 'California', 'country':'USA'},
+'dropoffaddress': {'street':'101 E San Fernando St.','city':'San Jose', 'state': 'California', 'country':'USA'},
+'dailyrent':'$200'})
+
+
+db.AlamoCars.insert({
+'carId': 'AL101',
+'cartype':'Large',
+'carmodel':'Lexus',
+'specification':'manual',
+'pickupaddress': {'street':'101 E San Fernando St.','city':'San Jose', 'state': 'California', 'country':'USA'},
+'dropoffaddress': {'street':'101 E San Fernando St.','city':'San Jose', 'state': 'California', 'country':'USA'},
+'dailyrent':'$200'})
+
+
+
+db.MmtCars.insert({
+'carId':'MMT102',
+'cartype':'SUV',
+'carmodel':'BMW',
+'specification':'automatic',
+'pickupaddress': {'street':'101 E San Fernando St.','city':'San Jose', 'state': 'California', 'country':'USA'},
+'dropoffaddress': {'street':'101 E San Fernando St.','city':'San Jose', 'state': 'California', 'country':'USA'},
+'dailyrent':'$150'})
+
+
+db.CleartripCars.insert({
+'carId': 'CT102',
+'cartype':'Luxury',
+'carmodel':'Audi',
+'specification':'manual',
+'pickupaddress': {'street':'101 E San Fernando St.','city':'San Jose', 'state': 'California', 'country':'USA'},
+'dropoffaddress': {'street':'101 E San Fernando St.','city':'San Jose', 'state': 'California', 'country':'USA'},
+'dailyrent':'$90'})
+
+
+db.AlamoCars.insert({
+'carId': 'AL101',
+'cartype':'Van',
+'carmodel':'Lexus',
+'specification':'manual',
+'pickupaddress': {'street':'101 E San Fernando St.','city':'San Jose', 'state': 'California', 'country':'USA'},
+'dropoffaddress': {'street':'101 E San Fernando St.','city':'San Jose', 'state': 'California', 'country':'USA'},
+'dailyrent':'$230'})
+
+
+
+
+
+
+db.MmtHotels.insert({
+'hotelId': 'MMT111',
+'name': 'Holiday Inn',
+'description': 'Very good hotel. Easily accessible by car and good for sightseeing. Great rooms and fantastic service. Awesome vibe.',
+'address': {'street':'101 E San Fernando Street','city':'San Jose', 'state': 'California', 'country':'USA', 'zip':'95112'},
+'stars': 3,
+'reviews':['Good', 'Bad', 'Awesome Food'],
+'rating':8,
+'rooms':[
+     {'occupancy':2, 'price':'$120', 'rooomcount':100},
+     {'occupancy':3,'price':'$220', 'rooomcount':100},
+     {'occupancy':4,'price':'$320', 'rooomcount':100}
+    ]
+    })
+
+
+
+db.CleartripHotels.insert({
+'hotelId': 'MMT112',
+'name': 'Lemon Tree',
+'description': 'Very good hotel. Easily accessible by car and good for sightseeing. Great rooms and fantastic service. Awesome vibe.',
+'address': {'street':'201 S 4th St #100','city':'San Jose', 'state': 'California', 'country':'USA', 'zip':'95112'},
+'stars': 3,
+'reviews':['Good', 'Bad', 'Awesome Food'],
+'rating':9,
+'rooms':[
+     {'occupancy':2, 'price':'$120', 'rooomcount':100},
+     {'occupancy':3,'price':'$220', 'rooomcount':100},
+     {'occupancy':4,'price':'$320', 'rooomcount':100}
+    ]
+    })
+
+
+
+db.TripAdvisorHotels.insert({
+'hotelId': 'MMT113',
+'name': 'Hyatt',
+'description': 'Very good hotel. Easily accessible by car and good for sightseeing. Great rooms and fantastic service. Awesome vibe.',
+'address': {'street':'33 S 3rd St','city':'San Jose', 'state': 'California', 'country':'USA', 'zip':'95112'},
+'stars': 3,
+'reviews':['Good', 'Bad', 'Awesome Food'],
+'rating':7,
+'rooms':[
+     {'occupancy':2, 'price':'$120', 'rooomcount':100},
+     {'occupancy':3,'price':'$220', 'rooomcount':100},
+     {'occupancy':4,'price':'$320', 'rooomcount':100}
+    ]
+    })
 

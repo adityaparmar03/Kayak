@@ -2,12 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="38bb411a-1218-418b-87b7-afc28b7a9352" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/kafka-back-end/services/car.js" afterPath="$PROJECT_DIR$/kafka-back-end/services/car.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/react-front-end/src/api/API.js" afterPath="$PROJECT_DIR$/react-front-end/src/api/API.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/react-front-end/src/components/carlist.js" afterPath="$PROJECT_DIR$/react-front-end/src/components/carlist.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/react-front-end/src/components/carsearch.js" afterPath="$PROJECT_DIR$/react-front-end/src/components/carsearch.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/react-front-end/src/components/hotellist.js" afterPath="$PROJECT_DIR$/react-front-end/src/components/hotellist.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/react-front-end/src/components/hotelsearch.js" afterPath="$PROJECT_DIR$/react-front-end/src/components/hotelsearch.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/SampleData" afterPath="$PROJECT_DIR$/SampleData" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/scripts" afterPath="$PROJECT_DIR$/scripts" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -21,16 +17,6 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="hotel.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/kafka-back-end/services/hotel.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="116">
-              <caret line="14" column="8" lean-forward="false" selection-start-line="14" selection-start-column="8" selection-end-line="14" selection-end-column="8" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="car.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/kafka-back-end/services/car.js">
           <provider selected="true" editor-type-id="text-editor">
@@ -63,11 +49,21 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="hotelsearch.js" pinned="false" current-in-tab="true">
+      <file leaf-file-name="hotelsearch.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/react-front-end/src/components/hotelsearch.js">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="299">
               <caret line="53" column="41" lean-forward="false" selection-start-line="53" selection-start-column="41" selection-end-line="53" selection-end-column="41" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="SampleData" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/SampleData">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="18">
+              <caret line="1" column="0" lean-forward="true" selection-start-line="1" selection-start-column="0" selection-end-line="1" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -118,8 +114,8 @@
       <file leaf-file-name="scripts" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/scripts">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="18">
-              <caret line="59" column="0" lean-forward="true" selection-start-line="59" selection-start-column="0" selection-end-line="88" selection-end-column="0" />
+            <state relative-caret-position="451">
+              <caret line="58" column="0" lean-forward="true" selection-start-line="58" selection-start-column="0" selection-end-line="58" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -168,7 +164,6 @@
         <option value="$PROJECT_DIR$/kafka-back-end/server.js" />
         <option value="$PROJECT_DIR$/kafka-back-end/kafka/Connection.js" />
         <option value="$PROJECT_DIR$/kafka-front-end/routes/admin.js" />
-        <option value="$PROJECT_DIR$/scripts" />
         <option value="$PROJECT_DIR$/kafka-back-end/models/car/AlamoCars.js" />
         <option value="$PROJECT_DIR$/kafka-back-end/models/car/CleartripCars.js" />
         <option value="$PROJECT_DIR$/kafka-back-end/models/car/MmtCars.js" />
@@ -187,6 +182,8 @@
         <option value="$PROJECT_DIR$/react-front-end/src/components/hotellist.js" />
         <option value="$PROJECT_DIR$/react-front-end/src/components/hotelsearch.js" />
         <option value="$PROJECT_DIR$/react-front-end/src/api/API.js" />
+        <option value="$PROJECT_DIR$/scripts" />
+        <option value="$PROJECT_DIR$/SampleData" />
       </list>
     </option>
   </component>
@@ -387,12 +384,12 @@
       <updated>1511003810338</updated>
       <workItem from="1511003843070" duration="2686000" />
       <workItem from="1511051276004" duration="12850000" />
-      <workItem from="1511915416330" duration="5020000" />
+      <workItem from="1511915416330" duration="5215000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="71076000" />
+    <option name="totallyTimeSpent" value="71271000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="75" y="34" width="1281" height="732" extended-state="0" />
@@ -439,13 +436,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/react-front-end/src/App.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/kafka-back-end/models_1/alamo.js" />
     <entry file="file://$PROJECT_DIR$/kafka-back-end/models_1/mysql.js" />
     <entry file="file://$PROJECT_DIR$/kafka-back-end/package.json">
@@ -706,14 +696,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/scripts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="18">
-          <caret line="59" column="0" lean-forward="true" selection-start-line="59" selection-start-column="0" selection-end-line="88" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/kafka-back-end/models/car/AlamoCars.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="242">
@@ -794,6 +776,22 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="299">
           <caret line="53" column="41" lean-forward="false" selection-start-line="53" selection-start-column="41" selection-end-line="53" selection-end-column="41" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/scripts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="451">
+          <caret line="58" column="0" lean-forward="true" selection-start-line="58" selection-start-column="0" selection-end-line="58" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/SampleData">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="18">
+          <caret line="1" column="0" lean-forward="true" selection-start-line="1" selection-start-column="0" selection-end-line="1" selection-end-column="0" />
           <folding />
         </state>
       </provider>
