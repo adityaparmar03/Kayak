@@ -49,26 +49,18 @@ class Hotelsearch extends Component {
         //API CALL
 
         const payload={
-            'city':'San Jose',
-            'state':'CA',
-            'roomtype':'delux'
+            'city':this.state.city.split(",")[0].trim(),
+            'state':this.state.city.split(",")[1].trim(),
+            'occupancy':this.state.guests
         }
 
-       API.searchHotels(payload)
-           .then((res) => {
-               console.log(res);
-               if (res.status == 201) {
 
-                   this.props.hotelSearch(res.hotels);
+           console.log('payload', payload);
 
-                   console.log("Success...")
+           localStorage.setItem("hotelsearchcriteria", JSON.stringify(payload));
 
-               }else if (res.status == 401) {
 
-                   //  this.props.history.push('/');
-               }
-           });
-      }
+       }
 
 
       handleUpdateCityInput = (value,textbox) => {

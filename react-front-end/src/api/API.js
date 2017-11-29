@@ -201,7 +201,7 @@ export const searchFlights = (payload) =>
 
 
 export const searchHotels = (payload) =>
-    fetch(`${api}/hotel/hotels?city=San Jose&state=CA&roomtype=delux`, {
+    fetch(`${api}/hotel/hotels?city=`+payload.city+`&state=`+payload.state+`&occupancy=`+payload.occupancy, {
         method: 'GET',
         headers: {
             ...headers,
@@ -221,7 +221,8 @@ export const searchHotels = (payload) =>
 
 
 export const searchCars = (payload) =>
-    fetch(`${api}/car/cars?pickupcity=San Jose&pickupstate=CA&dropoffcity=San Jose&dropoffstate=CA&triptype=Two-Way`, {
+    fetch(`${api}/car/cars?pickupcity=`+payload.pickupcity+`&pickupstate=`+payload.pickupstate+
+        `&dropoffcity=`+payload.dropoffcity+`&dropoffstate=`+payload.dropoffstate, {
         method: 'GET',
         headers: {
             ...headers,

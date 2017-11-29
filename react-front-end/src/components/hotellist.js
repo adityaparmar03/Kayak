@@ -4,6 +4,10 @@ import PropTypes from 'prop-types';
 import Nav from './nav';
 import MultiSlider from "multi-slider";
 
+import * as API from '../api/API';
+import * as Actions from '../actions/action';
+import {connect} from 'react-redux';
+
 class Hotellist extends Component {
     constructor(props){
         super(props);
@@ -30,6 +34,26 @@ class Hotellist extends Component {
 
      
     componentWillMount(){
+
+
+        const payload = JSON.parse(localStorage.getItem("hotelsearchcriteria"));
+        console.log('payload',payload);
+
+
+        API.searchHotels(payload)
+            .then((res) => {
+                console.log(res);
+                if (res.status == 201) {
+
+                    this.props.hotelSearch(res.hotels);
+
+                    console.log("Success...")
+
+                }else if (res.status == 401) {
+
+                    //  this.props.history.push('/');
+                }
+            });
 
 
         this.maxprice = 234; //get from api
@@ -243,4 +267,20 @@ class Hotellist extends Component {
     }
 }
 
-export default withRouter(Hotellist);
+
+
+function mapStateToProps(reducerdata) {
+    console.log(reducerdata.userSearch.hotelSearch);
+
+    const hotels=reducerdata.userSearch.hotelSearch;
+    return {hotels};
+}
+
+function mapDispatchToProps(dispatch) {
+    return {
+
+        hotelSearch : (data) => dispatch(Actions.hotelSearch(data))
+    };
+}
+
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(Hotellist));

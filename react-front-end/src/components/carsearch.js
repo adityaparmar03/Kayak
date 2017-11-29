@@ -46,27 +46,20 @@ class Carsearch extends Component {
         // call Api for search here......
         //API CALL
 
-       const payload = {
-           'pickupcity':'San Jose',
-           'pickupstate':'CA',
-           'dropoffcity':'San Jose',
-           'dropoffstate':'CA',
-           'triptype':'Two-Way'
-       }
-       API.searchCars(payload)
-           .then((res) => {
-               console.log(res);
-               if (res.status == 201) {
 
-                   this.props.carSearch(res.cars);
+           const payload = {
+               'pickupcity':this.state.city.split(",")[0].trim(),
+               'pickupstate':this.state.city.split(",")[1].trim(),
+               'dropoffcity':this.state.city.split(",")[0].trim(),
+               'dropoffstate':this.state.city.split(",")[1].trim()
+            }
 
-                   console.log("Success...")
 
-               }else if (res.status == 401) {
+           console.log('payload', payload);
 
-                   //  this.props.history.push('/');
-               }
-           });
+           localStorage.setItem("carsearchcriteria", JSON.stringify(payload));
+
+
       }
 
 
@@ -149,16 +142,4 @@ class Carsearch extends Component {
 }
 
 
-function mapStateToProps(reducerdata) {
-    console.log(reducerdata);
-
-    return {reducerdata};
-}
-
-function mapDispatchToProps(dispatch) {
-    return {
-        carSearch : (data) => dispatch(Actions.carSearch(data))
-    };
-}
-
-export default connect(mapStateToProps, mapDispatchToProps)(Carsearch);
+export default Carsearch;

@@ -10,9 +10,9 @@ function searchCars(msg, callback){
      var pickupstate = msg.searchcriteria.pickupstate;
      var dropoffcity = msg.searchcriteria.dropoffcity;
      var dropoffstate = msg.searchcriteria.dropoffstate;
-     var triptype = msg.searchcriteria.triptype;
+   //  var triptype = msg.searchcriteria.triptype;
 
-    if(triptype=='One-Way'){
+  //  if(triptype=='One-Way'){
 
     car.find({'pickupaddress.city': pickupcity,
         'pickupaddress.state': pickupstate,
@@ -34,7 +34,8 @@ function searchCars(msg, callback){
             }
 
         });
-    }
+  //  }
+/*
 
     else{
 
@@ -63,6 +64,7 @@ function searchCars(msg, callback){
 
         });
     }
+*/
 
 }
 

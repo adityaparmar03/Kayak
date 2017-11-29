@@ -4,6 +4,11 @@ import PropTypes from 'prop-types';
 import Nav from './nav';
 import MultiSlider from "multi-slider";
 
+import * as API from '../api/API';
+import * as Actions from '../actions/action';
+import {connect} from 'react-redux';
+
+
 class Carlist extends Component {
     constructor(props){
         super(props);
@@ -30,6 +35,23 @@ class Carlist extends Component {
      
     componentWillMount(){
 
+        const payload = JSON.parse(localStorage.getItem("carsearchcriteria"));
+        console.log('payload',payload);
+
+        API.searchCars(payload)
+            .then((res) => {
+                console.log(res);
+                if (res.status == 201) {
+
+                    this.props.carSearch(res.cars);
+
+                    console.log("Success...")
+
+                }else if (res.status == 401) {
+
+                    //  this.props.history.push('/');
+                }
+            });
 
         this.maxprice = 234; //get from api
         this.minprice = 67;
@@ -226,4 +248,19 @@ class Carlist extends Component {
     }
 }
 
-export default withRouter(Carlist);
+
+function mapStateToProps(reducerdata) {
+    console.log(reducerdata.userSearch.carSearch);
+
+    const cars=reducerdata.userSearch.carSearch;
+    return {cars};
+}
+
+function mapDispatchToProps(dispatch) {
+    return {
+
+        carSearch : (data) => dispatch(Actions.carSearch(data))
+    };
+}
+
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(Carlist));
