@@ -112,8 +112,48 @@ class AdminPanel extends Component {
                     </div>
                 
                     <div className="tab-pane fade" id="booking" role="tabpanel">
-                    
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nihil odit magnam minima, soluta doloribus reiciendis molestiae placeat unde eos molestias. Quisquam aperiam, pariatur. Tempora, placeat ratione porro voluptate odit minima.</p>
+                    <div>
+
+
+                    </div>    
+                    <div className="card" > 
+                                    <table className="table table-responsive-sm">
+                                        <thead>
+                                                <tr>
+                                                    <th>Booking Id</th>
+                                                    <th>Booking Type</th>
+                                                    <th>Price</th>
+                                                    <th>User</th>
+                                                    <th>Credit Card</th>
+                                                    <th>Date</th>
+                                                    <th></th>
+                                                    <th></th>
+                                                    <th></th>
+
+                                                </tr>
+                                            </thead> 
+                                            <tbody>
+                                                {this.props.vendors.map((vendor, index)=>(<tr>
+                                                    <td>12321</td>
+                                                    <td>flight </td>
+                                                    <th>$424</th>
+                                                    <td>UserID(aditya@parmar.in)</td>
+                                                    <td>Creditcard No (543424424424442)</td>
+                                                    <td>10/32/2018</td>
+                                                  
+                                                  
+                                                    <td><i className="fa fa-eye fa-2x"/></td>
+                                                    <td><i className="fa fa-pencil fa-2x"/></td>
+                                                    <td><i className="fa fa-trash fa-2x"/></td>
+                                                    </tr>))
+
+                                                }
+
+                                            </tbody>      
+
+
+                                    </table>  
+                                </div> 
                     </div>
                     
                         <div className="tab-pane fade" id="vendor" role="tabpanel" style={{paddingLeft:"1vw"}}>
@@ -173,9 +213,9 @@ class AdminPanel extends Component {
                                                     <input type="text" className="form-control"/>
                                                        
                                                      Type: <select className="form-control">
-                                                        <option value="volvo">Volvo</option>
-                                                        <option value="saab">Saab</option>
-                                                        <option value="mercedes">Mercedes</option>
+                                                        <option value="flight">Flight</option>
+                                                        <option value="hotel">Hotel</option>
+                                                        <option value="car">Car</option>
                 
                                                     </select>
                                                     <button className="btn btn-default btn-lg btn-block">ADD</button>
