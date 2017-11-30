@@ -23,7 +23,8 @@ var FlightSchema   = new Schema({
     flightId:String,
     operator: String,
     class:Array,
-    flights: Array
+    flights: Array,
+    imageurl:String
 
 //Sample
     /*  'class':{

@@ -27,7 +27,8 @@ var Schema       = mongoose.Schema;
     specification: String,
     pickupaddress: Object,  //{'street':'101 E San Fernando St.','city':'San Jose', 'state': 'CA', 'country':'USA'}
     dropoffaddress: Object,
-    dailyrent: String
+    dailyrent: Number,
+    imageurl:String
 
 });
 

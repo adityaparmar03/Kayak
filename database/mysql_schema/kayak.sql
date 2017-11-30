@@ -1,7 +1,12 @@
 CREATE DATABASE  IF NOT EXISTS `kayak` /*!40100 DEFAULT CHARACTER SET latin1 */;
 USE `kayak`;
 
+DROP TABLE IF EXISTS `BILLING`;
+DROP TABLE IF EXISTS `CART`;
+DROP TABLE IF EXISTS `USER_ACTIVITY`;
+DROP TABLE IF EXISTS `vendors`;
 DROP TABLE IF EXISTS `USER`;
+
 
 CREATE TABLE `USER` (
   `email` varchar(90) NOT NULL,
@@ -35,9 +40,6 @@ INSERT INTO `USER` VALUES ('meenakshi.paryani@gmail.com','password',NULL,NULL,'U
 
 UNLOCK TABLES;
 
-
-DROP TABLE IF EXISTS `BILLING`;
-
 CREATE TABLE `BILLING` (
   `billing_id` int(11) NOT NULL AUTO_INCREMENT,
   `user_email` varchar(90) NOT NULL,
@@ -47,7 +49,7 @@ CREATE TABLE `BILLING` (
   `return_target_name` varchar(90) DEFAULT NULL,
   `booking_type` enum('CAR','FLIGHT','HOTEL') NOT NULL,
   `flight_trip_type` enum('ONE-WAY','TWO-WAY') DEFAULT NULL,
-  `car_trip_type` enum('SAME-DROPOFF','DIFFERENT-DROPOFF') NOT NULL,
+  `car_trip_type` enum('SAME-DROPOFF','DIFFERENT-DROPOFF') DEFAULT NULL,
   `room_type` enum('DELUX','PREMIUM','SUITE') DEFAULT NULL,
   `billing_date` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `billing_amount` int(11) NOT NULL COMMENT 'Billing Amount in US Dollars',
@@ -80,7 +82,7 @@ UNLOCK TABLES;
 -- Table structure for table `CART`
 --
 
-DROP TABLE IF EXISTS `CART`;
+
 
 CREATE TABLE `CART` (
   `cart_id` int(11) NOT NULL AUTO_INCREMENT,
@@ -104,8 +106,6 @@ LOCK TABLES `CART` WRITE;
 
 UNLOCK TABLES;
 
-DROP TABLE IF EXISTS `USER_ACTIVITY`;
-
 CREATE TABLE `USER_ACTIVITY` (
   `activity_id` int(11) NOT NULL AUTO_INCREMENT,
   `user_email` varchar(90) NOT NULL,
@@ -124,8 +124,6 @@ UNLOCK TABLES;
 --
 -- Table structure for table `vendors`
 --
-
-DROP TABLE IF EXISTS `vendors`;
 
 CREATE TABLE `vendors` (
   `vendorId` int(11) NOT NULL AUTO_INCREMENT,

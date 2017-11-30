@@ -102,7 +102,7 @@ function getCurrentHotelBookingCount(booking, callback){
       var bookingCountQuery;
       var startDate = booking.bookingstartdate;
       var endDate = booking.bookingenddate;
-      bookingCountQuery = "select * from BILLING where target_id='" + booking.hotelid + "' AND booking_start_date ='" + startDate + "' AND booking_end_date ='" + endDate + "'";
+      bookingCountQuery = "select * from BILLING where target_id='" + booking.hotelid + "' AND booking_start_date between '" + startDate + "' AND '" + endDate + "'";
 
       mysql.fetchData(function (err,dbBookings) {
 
