@@ -37,7 +37,7 @@ function bookHotel(msg, callback){
       var email = msg.email ; //- TODO : uncomment this after stable
 
       var creditCard = msg.credit_card;
-      var email = "meenakshi.paryani@gmail.com"; //msg.email - TODO : uncomment this after stable
+      var email = msg.email;
 
 
       console.log('-------booking is-------');

@@ -84,10 +84,10 @@ function searchFlights(msg, callback){
 // Book the flight
 function bookFlight(msg, callback){
       var booking = msg.booking;
-      var email = msg.email //- TODO : uncomment this after stable
-    console.log("*****************");
-    console.log(email);
-    console.log("*****************");
+      var email = msg.email
+      console.log("*****************");
+      console.log(email);
+      console.log("*****************");
       var tripType = booking.flight.triptype;
       var creditCard = msg.credit_card;
 
@@ -138,7 +138,6 @@ function bookFlight(msg, callback){
                      console.log('Flight is Available!!');
                      totalPrice = booking.flight.price + booking.returnflight.price;
                      // Proceed to Booking
-                    // TODO : Add credit card fields
                      var bookingSql="insert into BILLING(`user_email`,`target_id`,`target_name`,`return_target_name`,`source_airport`,`destination_airport`,`return_source_airport`,`return_destination_airport`,`booking_type`,`billing_amount`,`target_count`,`source_city`,`source_state`,`destination_city`,`destination_state`,`flight_trip_type`,`booking_class`,`booking_start_date`,`booking_end_date`,`return_target_id`,`return_booking_start_date`,`return_booking_end_date`,`credit_card_type`, `credit_card_number`, `credit_card_holder_name`,`credit_card_valid_from`,`credit_card_valid_till`) values('"
                      +email+"','"+ booking.flight.flightId +"','"+ booking.flight.operator + "','"+ booking.returnflight.operator + "','"+ booking.flight.source_airport + "','"+ booking.flight.destination_airport + "','"+  booking.returnflight.source_airport + "','"+ booking.returnflight.destination_airport +  "','" + 'FLIGHT'+"','"
                      + totalPrice +"','"+booking.flight.passengers+"','"+booking.flight.origincity+"','"+booking.flight.originstate+"','"+booking.flight.destinationcity+"','"+booking.flight.destinationstate+"','"+booking.flight.triptype+"','"

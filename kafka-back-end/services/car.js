@@ -71,7 +71,7 @@ function searchCars(msg, callback){
 // Book the Car
 function bookCar(msg, callback){
       var booking = msg.booking;
-      var email = msg.email   // - TODO : uncomment this after stable
+      var email = msg.email;
       var creditCard = msg.credit_card;
       console.log('-------booking is-------');
       console.log(booking);
