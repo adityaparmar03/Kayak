@@ -49,7 +49,8 @@ router.post('/book', function (req, res) {
 
     var reqObject = {
       email : req.session.email,
-      booking : req.body.booking
+      booking : req.body.booking,
+      credit_card : req.body.credit_card
     }
     kafka.make_request(queueName, reqObject, function(err,results){
 

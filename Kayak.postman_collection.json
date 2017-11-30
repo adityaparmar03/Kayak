@@ -147,12 +147,12 @@
 			"tests": null,
 			"currentHelper": "normal",
 			"helperAttributes": {},
-			"time": 1512008751084,
+			"time": 1512019560134,
 			"name": "Book Hotel",
 			"description": "",
 			"collectionId": "fd7d1528-e7a0-7ac1-b04e-1a2efb736f48",
 			"responses": [],
-			"rawModeData": "{\n\t\"booking\" :\n\t\t{\n\t\t\t\"hotelid\" : \"MMT111\",\n\t\t    \"name\" : \"HolidayInn\",\n\t\t    \"address\" : {\n\t\t        \"street\" : \"101 E San Fernando St.\",\n\t\t        \"city\" : \"San Jose\",\n\t\t        \"state\" : \"CA\",\n\t\t        \"country\" : \"USA\",\n\t\t        \"zip\" : \"95112\"\n\t\t    },\n\t\t    \"roomtype\" : \"DELUX\",\n\t\t    \"price\" : 130,\n\t\t    \"roomcount\" : 10,\n\t\t    \"capacity\" : 100,\n\t\t    \"bookingstartdate\" : \"2017-01-18 09:15:00\",\n\t\t\t\"bookingenddate\" : \"2017-01-19 03:14:00\"\n\t\t}\n\t\t\t\n}"
+			"rawModeData": "{\n\t\"booking\" :\n\t\t{\n\t\t\t\"hotelId\" : \"MMT111\",\n\t\t    \"name\" : \"HolidayInn\",\n\t\t    \"address\" : {\n\t\t        \"street\" : \"101 E San Fernando St.\",\n\t\t        \"city\" : \"San Jose\",\n\t\t        \"state\" : \"CA\",\n\t\t        \"country\" : \"USA\",\n\t\t        \"zip\" : \"95112\"\n\t\t    },\n\t\t    \"roomtype\" : \"DELUX\",\n\t\t    \"price\" : 130,\n\t\t    \"roomcount\" : 10,\n\t\t    \"capacity\" : 100,\n\t\t    \"bookingstartdate\" : \"2017-01-18 09:15:00\",\n\t\t\t\"bookingenddate\" : \"2017-01-19 03:14:00\"\n\t\t},\n\t\t\n\t\t\"credit_card\" : {\n\t\t\t\"card_type\" : \"MasterCard\",\n\t\t\t\"card_number\": \"012345678989\",\n\t\t\t\"card_holder_name\" : \"Meenakshi Paryani\",\n\t\t\t\"valid_from\" : \"2017-01-18\",\n\t\t\t\"valid_till\" : \"2017-01-26\"\n\t\t}\n\t\t\t\n}"
 		},
 		{
 			"id": "acf07d3d-4a64-76c2-3448-beaef45fdf61",
@@ -176,12 +176,12 @@
 			"tests": null,
 			"currentHelper": "normal",
 			"helperAttributes": {},
-			"time": 1512017707825,
+			"time": 1512020237157,
 			"name": "Book Car",
 			"description": "",
 			"collectionId": "fd7d1528-e7a0-7ac1-b04e-1a2efb736f48",
 			"responses": [],
-			"rawModeData": "{\n\t\"booking\" :\n\t\t{\n\t\t\t\"carId\" : \"MMT103\",\n\t\t    \"cartype\" : \"Small\",\n\t\t    \"carmodel\" : \"BMW\",\n\t\t    \"pickupdate\" : \"2017-01-18 09:15:00\",\n\t\t    \"dropoffdate\" : \"2017-01-19 23:14:00\",\n\t\t    \"triptype\"    : \"SAME-DROPOFF\",\n\t\t    \"pickupaddress\" : {\n\t\t        \"street\" : \"101 E San Fernando St.\",\n\t\t        \"city\" : \"San Jose\",\n\t\t        \"state\" : \"CA\",\n\t\t        \"country\" : \"USA\"\n\t\t    },\n\t\t    \"dropoffaddress\" : {\n\t\t        \"street\" : \"101 E San Fernando St.\",\n\t\t        \"city\" : \"San Jose\",\n\t\t        \"state\" : \"CA\",\n\t\t        \"country\" : \"USA\"\n\t\t    },\n\t\t    \"price\" : \"20\"\n\t\t}\n\t\t\t\n}"
+			"rawModeData": "{\n\t\"booking\" :\n\t\t{\n\t\t\t\"carId\" : \"MMT103\",\n\t\t    \"cartype\" : \"Small\",\n\t\t    \"carmodel\" : \"BMW\",\n\t\t    \"pickupdate\" : \"2017-01-18 09:15:00\",\n\t\t    \"dropoffdate\" : \"2017-01-19 23:14:00\",\n\t\t    \"triptype\"    : \"SAME-DROPOFF\",\n\t\t    \"pickupaddress\" : {\n\t\t        \"street\" : \"101 E San Fernando St.\",\n\t\t        \"city\" : \"San Jose\",\n\t\t        \"state\" : \"CA\",\n\t\t        \"country\" : \"USA\"\n\t\t    },\n\t\t    \"dropoffaddress\" : {\n\t\t        \"street\" : \"101 E San Fernando St.\",\n\t\t        \"city\" : \"San Jose\",\n\t\t        \"state\" : \"CA\",\n\t\t        \"country\" : \"USA\"\n\t\t    },\n\t\t    \"price\" : \"20\"\n\t\t},\n\t\t\n\t\t\"credit_card\" : {\n\t\t\t\"card_type\" : \"MasterCard\",\n\t\t\t\"card_number\": \"012345678989\",\n\t\t\t\"card_holder_name\" : \"Meenakshi Paryani\",\n\t\t\t\"valid_from\" : \"2017-01-18\",\n\t\t\t\"valid_till\" : \"2017-01-26\"\n\t\t}\n\t\t\t\n}"
 		},
 		{
 			"id": "c08882cc-19eb-50f4-abc8-2b77d39d4f59",
@@ -205,12 +205,12 @@
 			"tests": null,
 			"currentHelper": "normal",
 			"helperAttributes": {},
-			"time": 1511765182051,
+			"time": 1512023061342,
 			"name": "Book Flight - One Way",
 			"description": "",
 			"collectionId": "fd7d1528-e7a0-7ac1-b04e-1a2efb736f48",
 			"responses": [],
-			"rawModeData": "{\n\t\"booking\" :\n\t\t{\n\t\t\t\"flight\" : {\n\t\t\t\t\t\"origincity\" : \"Delhi\",\n\t        \t\t\"originstate\" : \"Delhi\",\n\t\t\t        \"destinationcity\" : \"San Francisco\",\n\t\t\t        \"destinationstate\" : \"CA\",\n\t\t\t        \"triptype\" : \"One-Way\",\n\t\t\t        \"flightclass\" : \"economy\",\n\t\t\t        \"capacity\" : 100,\n\t\t\t        \"price\" : 1200,\n\t\t\t        \"bookingstartdate\" : \"2017-01-18 09:15:00\",\n\t\t\t        \"bookingenddate\" : \"2017-01-19 03:14:00\",\n\t\t\t        \"passengers\" : 10,\n\t\t\t        \"flightid\" : \"MMT100\"\n\t\t\t        \n\t\t\t}\n\t\t\t\n\t\t}\n\t\t\t\n}"
+			"rawModeData": "{\n\t\"booking\" :\n\t\t{\n\t\t\t\"flight\" : {\n\t\t\t\t\t\"operator\" : \"Delta Airlines\",\n\t\t\t\t\t\"origincity\" : \"Delhi\",\n\t        \t\t\"originstate\" : \"Delhi\",\n\t\t\t        \"destinationcity\" : \"San Francisco\",\n\t\t\t        \"destinationstate\" : \"CA\",\n\t\t\t        \"triptype\" : \"One-Way\",\n\t\t\t        \"flightclass\" : \"economy\",\n\t\t\t        \"capacity\" : 100,\n\t\t\t        \"price\" : 1200,\n\t\t\t        \"bookingstartdate\" : \"2017-01-18 09:15:00\",\n\t\t\t        \"bookingenddate\" : \"2017-01-19 03:14:00\",\n\t\t\t        \"passengers\" : 10,\n\t\t\t        \"flightId\" : \"MMT100\",\n\t\t\t        \"source_airport\" : \"Delhi International Airport\",\n\t\t\t        \"destination_airport\" : \"SF International Airport\"\n\t\t\t        \n\t\t\t}\n\t\t\t\n\t\t},\n\t\t\n\t\t\"credit_card\" : {\n\t\t\t\"card_type\" : \"MasterCard\",\n\t\t\t\"card_number\": \"012345678989\",\n\t\t\t\"card_holder_name\" : \"Meenakshi Paryani\",\n\t\t\t\"valid_from\" : \"2017-01-18\",\n\t\t\t\"valid_till\" : \"2017-01-26\"\n\t\t}\n\t\t\t\n}"
 		},
 		{
 			"id": "e60c98c5-a34b-9fe2-bd74-ad3267fa0706",
@@ -234,12 +234,12 @@
 			"tests": null,
 			"currentHelper": "normal",
 			"helperAttributes": {},
-			"time": 1511764528266,
+			"time": 1512023877143,
 			"name": "Book Flight - Two Way",
 			"description": "",
 			"collectionId": "fd7d1528-e7a0-7ac1-b04e-1a2efb736f48",
 			"responses": [],
-			"rawModeData": "{\n\t\"booking\" :\n\t\t{\n\t\t\t\"flight\" : {\n\t\t\t\t\t\"origincity\" : \"Delhi\",\n\t        \t\t\"originstate\" : \"Delhi\",\n\t\t\t        \"destinationcity\" : \"San Francisco\",\n\t\t\t        \"destinationstate\" : \"CA\",\n\t\t\t        \"triptype\" : \"Two-Way\",\n\t\t\t        \"flightclass\" : \"economy\",\n\t\t\t        \"capacity\" : 100,\n\t\t\t        \"price\" : 1200,\n\t\t\t        \"bookingstartdate\" : \"2017-01-18 09:15:00\",\n\t\t\t        \"bookingenddate\" : \"2017-01-19 03:14:00\",\n\t\t\t        \"passengers\" : 10,\n\t\t\t        \"flightid\" : \"MMT100\"\n\t\t\t        \n\t\t\t},\n\t\t\t\"returnflight\" : {\n\t\t\t\t\t\"origincity\" : \"San Francisco\",\n\t        \t\t\"originstate\" : \"CA\",\n\t\t\t        \"destinationcity\" : \"Delhi\",\n\t\t\t        \"destinationstate\" : \"Delhi\",\n\t\t\t        \"triptype\" : \"Two-Way\",\n\t\t\t        \"flightclass\" : \"economy\",\n\t\t\t        \"capacity\" : 30,\n\t\t\t        \"price\" : 1300,\n\t\t\t        \"returnstartdate\" : \"2017-03-18 06:15:00\",\n\t\t\t        \"returnenddate\" : \"2017-03-19 18:14:00\",\n\t\t\t        \"passengers\" : 10,\n\t\t\t        \"returnflightid\" : \"MMT111\"\n\t\t\t}\n\t\t\t\n\t\t}\n\t\t\t\n}"
+			"rawModeData": "{\n\t\"booking\" :\n\t\t{\n\t\t\t\"flight\" : {\n\t\t\t\t\t\"operator\" : \"Delta Airlines\",\n\t\t\t\t\t\"origincity\" : \"Delhi\",\n\t        \t\t\"originstate\" : \"Delhi\",\n\t\t\t        \"destinationcity\" : \"San Francisco\",\n\t\t\t        \"destinationstate\" : \"CA\",\n\t\t\t        \"triptype\" : \"Two-Way\",\n\t\t\t        \"flightclass\" : \"economy\",\n\t\t\t        \"capacity\" : 100,\n\t\t\t        \"price\" : 1200,\n\t\t\t        \"bookingstartdate\" : \"2017-01-18 09:15:00\",\n\t\t\t        \"bookingenddate\" : \"2017-01-19 03:14:00\",\n\t\t\t        \"passengers\" : 10,\n\t\t\t        \"flightId\" : \"MMT100\",\n\t\t\t        \"source_airport\" : \"Delhi International Airport\",\n\t\t\t        \"destination_airport\" : \"SF International Airport\"\n\t\t\t        \n\t\t\t},\n\t\t\t\"returnflight\" : {\n\t\t\t\t\t\"operator\" : \"Delta Airlines\",\n\t\t\t\t\t\"origincity\" : \"San Francisco\",\n\t        \t\t\"originstate\" : \"CA\",\n\t\t\t        \"destinationcity\" : \"Delhi\",\n\t\t\t        \"destinationstate\" : \"Delhi\",\n\t\t\t        \"triptype\" : \"Two-Way\",\n\t\t\t        \"flightclass\" : \"economy\",\n\t\t\t        \"capacity\" : 30,\n\t\t\t        \"price\" : 1300,\n\t\t\t        \"returnstartdate\" : \"2017-03-18 06:15:00\",\n\t\t\t        \"returnenddate\" : \"2017-03-19 18:14:00\",\n\t\t\t        \"passengers\" : 10,\n\t\t\t        \"flightId\" : \"MMT111\",\n\t\t\t        \"source_airport\" : \"SF International Airport\",\n\t\t\t        \"destination_airport\" : \"Delhi International Airport\"\n\t\t\t}\n\t\t\t\n\t\t},\n\t\t\n\t\t\"credit_card\" : {\n\t\t\t\"card_type\" : \"MasterCard\",\n\t\t\t\"card_number\": \"012345678989\",\n\t\t\t\"card_holder_name\" : \"Meenakshi Paryani\",\n\t\t\t\"valid_from\" : \"2017-01-18\",\n\t\t\t\"valid_till\" : \"2017-01-26\"\n\t\t}\n\t\t\t\n}"
 		}
 	]
 }

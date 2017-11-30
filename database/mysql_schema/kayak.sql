@@ -17,7 +17,7 @@ CREATE TABLE `USER` (
   `street_address` varchar(90) DEFAULT NULL,
   `city` varchar(45) DEFAULT NULL,
   `state` varchar(45) DEFAULT NULL,
-  `zip_code` int(11) DEFAULT NULL,
+  `zip_code` varchar(45) DEFAULT NULL,
   `phone` varchar(45) DEFAULT NULL,
   `profile_image_path` varchar(90) DEFAULT NULL,
   `credit_card_type` varchar(45) DEFAULT NULL,
@@ -51,12 +51,23 @@ CREATE TABLE `BILLING` (
   `flight_trip_type` enum('ONE-WAY','TWO-WAY') DEFAULT NULL,
   `car_trip_type` enum('SAME-DROPOFF','DIFFERENT-DROPOFF') DEFAULT NULL,
   `room_type` enum('DELUX','PREMIUM','SUITE') DEFAULT NULL,
+  `car_type` enum('SMALL','MEDIUM','LARGE','SUV') DEFAULT NULL,
   `billing_date` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `billing_amount` int(11) NOT NULL COMMENT 'Billing Amount in US Dollars',
   `source_city` varchar(45) DEFAULT NULL COMMENT 'source of flight/car and address of hotel',
   `source_state` varchar(45) DEFAULT NULL,
+  `source_street` varchar(45) DEFAULT NULL COMMENT 'Airport name for flight and address of hotel ',
+  `source_country` varchar(45) DEFAULT NULL,
+  `source_zipcode` varchar(45) DEFAULT NULL,
   `destination_city` varchar(45) DEFAULT NULL COMMENT 'Destination of flight/car drop off , NA for hotel',
   `destination_state` varchar(45) DEFAULT NULL,
+  `destination_street` varchar(45) DEFAULT NULL,
+  `destination_country` varchar(45) DEFAULT NULL,
+  `destination_zipcode` varchar(45) DEFAULT NULL,
+  `source_airport` varchar(45) DEFAULT NULL,
+  `destination_airport` varchar(45) DEFAULT NULL,
+  `return_source_airport` varchar(45) DEFAULT NULL,
+  `return_destination_airport` varchar(45) DEFAULT NULL,
   `booking_start_date` datetime DEFAULT NULL,
   `booking_end_date` datetime DEFAULT NULL,
   `return_booking_start_date` datetime DEFAULT NULL,
@@ -71,7 +82,7 @@ CREATE TABLE `BILLING` (
   PRIMARY KEY (`billing_id`,`user_email`,`target_id`),
   KEY `user_id_idx` (`user_email`),
   CONSTRAINT `user_email` FOREIGN KEY (`user_email`) REFERENCES `USER` (`email`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=188 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=226 DEFAULT CHARSET=latin1;
 
 
 LOCK TABLES `BILLING` WRITE;

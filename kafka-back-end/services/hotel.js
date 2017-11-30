@@ -49,7 +49,8 @@ function bookHotel(msg, callback){
                 var bookingSql="insert into BILLING(`user_email`,`target_id`,`target_name`,`booking_type`,`billing_amount`,`target_count`,`source_city`,`source_state`,`source_street`,`source_country`,`source_zipcode`,`room_type`,`booking_start_date`,`booking_end_date`,`credit_card_type`, `credit_card_number`, `credit_card_holder_name`,`credit_card_valid_from`,`credit_card_valid_till`) values('"+
                 email+"','"+booking.hotelId+"','"+ booking.name +"','"+ 'HOTEL' + "','"+booking.price+"','"+booking.roomcount+"','"
                 +booking.address.city+"','"+booking.address.state+"','"+booking.address.street+"','"+booking.address.country+"','"
-                +booking.address.zip+"','"+booking.roomtype + "','" + booking.bookingstartdate+"','"+booking.bookingenddate+ "','"+creditCard.card_type+"','"+creditCard.card_number+"','"+creditCard.card_holder_name+"','"+creditCard.valid_from+"','"+creditCard.valid_till+"');";
+                +booking.address.zip+"','"+booking.roomtype + "','" + booking.bookingstartdate+"','"+booking.bookingenddate+ "','"
+                +creditCard.card_type+"','"+creditCard.card_number+"','"+creditCard.card_holder_name+"','"+creditCard.valid_from+"','"+creditCard.valid_till+"');";
 
                 mysql.executeQuery(function(err){
                     if(err){

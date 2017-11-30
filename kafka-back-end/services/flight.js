@@ -86,6 +86,7 @@ function bookFlight(msg, callback){
       var booking = msg.booking;
       var email = "meenakshi.paryani@gmail.com"; //msg.email - TODO : uncomment this after stable
       var tripType = booking.flight.triptype;
+      var creditCard = msg.credit_card;
 
       console.log('-------booking is-------' + tripType);
       if(tripType=='One-Way'){
@@ -96,8 +97,10 @@ function bookFlight(msg, callback){
                   if(isAvailable){
                       // Proceed to Booking
                        // TODO : Add credit card fields
-                      var bookingSql="insert into BILLING(`user_email`,`target_id`,`booking_type`,`billing_amount`,`target_count`,`source_city`,`source_state`,`destination_city`,`destination_state`,`flight_trip_type`,`booking_class`,`booking_start_date`,`booking_end_date`) values('"+email+"','"+booking.flight.flightid+"','"+'FLIGHT'+"','"+booking.flight.price+"','"+booking.flight.passengers+"','"+booking.flight.origincity+"','"+booking.flight.originstate+"','"+booking.flight.destinationcity+"','"+booking.flight.destinationstate+"','"+booking.flight.triptype+"','"
-                      +booking.flight.flightclass+"','"+booking.flight.bookingstartdate+"','"+booking.flight.bookingenddate+"');";
+                      var bookingSql="insert into BILLING(`user_email`,`target_id`,`target_name`,`source_airport`,`destination_airport`,`booking_type`,`billing_amount`,`target_count`,`source_city`,`source_state`,`destination_city`,`destination_state`,`flight_trip_type`,`booking_class`,`booking_start_date`,`booking_end_date`,`credit_card_type`, `credit_card_number`, `credit_card_holder_name`,`credit_card_valid_from`,`credit_card_valid_till`) values('"
+                      +email+"','" + booking.flight.flightId + "','" + booking.flight.operator + "','" + booking.flight.source_airport + "','" + booking.flight.destination_airport
+                      + "','"+'FLIGHT'+"','"+booking.flight.price+"','"+booking.flight.passengers+"','"+booking.flight.origincity+"','"+booking.flight.originstate+"','"+booking.flight.destinationcity+"','"+booking.flight.destinationstate+"','"+booking.flight.triptype+"','"
+                      +booking.flight.flightclass+"','"+booking.flight.bookingstartdate+"','"+booking.flight.bookingenddate+ "','"+creditCard.card_type+"','"+creditCard.card_number+"','"+creditCard.card_holder_name+"','"+creditCard.valid_from+"','"+creditCard.valid_till+"');";
 
                       mysql.executeQuery(function(err){
                           if(err){
@@ -133,9 +136,11 @@ function bookFlight(msg, callback){
                      totalPrice = booking.flight.price + booking.returnflight.price;
                      // Proceed to Booking
                     // TODO : Add credit card fields
-                     var bookingSql="insert into BILLING(`user_email`,`target_id`,`booking_type`,`billing_amount`,`target_count`,`source_city`,`source_state`,`destination_city`,`destination_state`,`flight_trip_type`,`booking_class`,`booking_start_date`,`booking_end_date`,`return_target_id`,`return_booking_start_date`,`return_booking_end_date`) values('"
-                     +email+"','"+booking.flight.flightid+"','"+'FLIGHT'+"','"+ totalPrice +"','"+booking.flight.passengers+"','"+booking.flight.origincity+"','"+booking.flight.originstate+"','"+booking.flight.destinationcity+"','"+booking.flight.destinationstate+"','"+booking.flight.triptype+"','"
-                     +booking.flight.flightclass+"','"+booking.flight.bookingstartdate+"','"+booking.flight.bookingenddate+"','"+booking.returnflight.returnflightid+"','"+booking.returnflight.returnstartdate+"','"+booking.returnflight.returnenddate+"');";
+                     var bookingSql="insert into BILLING(`user_email`,`target_id`,`target_name`,`return_target_name`,`source_airport`,`destination_airport`,`return_source_airport`,`return_destination_airport`,`booking_type`,`billing_amount`,`target_count`,`source_city`,`source_state`,`destination_city`,`destination_state`,`flight_trip_type`,`booking_class`,`booking_start_date`,`booking_end_date`,`return_target_id`,`return_booking_start_date`,`return_booking_end_date`,`credit_card_type`, `credit_card_number`, `credit_card_holder_name`,`credit_card_valid_from`,`credit_card_valid_till`) values('"
+                     +email+"','"+ booking.flight.flightId +"','"+ booking.flight.operator + "','"+ booking.returnflight.operator + "','"+ booking.flight.source_airport + "','"+ booking.flight.destination_airport + "','"+  booking.returnflight.source_airport + "','"+ booking.returnflight.destination_airport +  "','" + 'FLIGHT'+"','"
+                     + totalPrice +"','"+booking.flight.passengers+"','"+booking.flight.origincity+"','"+booking.flight.originstate+"','"+booking.flight.destinationcity+"','"+booking.flight.destinationstate+"','"+booking.flight.triptype+"','"
+                     +booking.flight.flightclass+"','"+booking.flight.bookingstartdate+"','"+booking.flight.bookingenddate+"','"+booking.returnflight.flightId+"','"+booking.returnflight.returnstartdate+"','"+booking.returnflight.returnenddate + "','"
+                     +creditCard.card_type+"','"+creditCard.card_number+"','"+creditCard.card_holder_name+"','"+creditCard.valid_from+"','"+creditCard.valid_till+"');";
 
                      mysql.executeQuery(function(err){
                          if(err){
@@ -171,7 +176,7 @@ function getReturnBooking(bookingObj){
           console.log('Making return booking object');
           booking.returnbookingstartdate = bookingObj.returnflight.returnstartdate;
           booking.returnbookingenddate = bookingObj.returnflight.returnenddate;
-          booking.returnflightid = bookingObj.returnflight.returnflightid;
+          booking.returnflightId = bookingObj.returnflight.flightId;
           booking.flightclass = bookingObj.returnflight.flightclass;
           booking.passengers = bookingObj.returnflight.passengers;
           booking.capacity = bookingObj.returnflight.capacity;
@@ -191,11 +196,11 @@ function checkFlightAvailable(booking, returnBooking, callback){
                   console.log("capacity is " + capacity);
                   var isAvailable = capacity - bookedCount >= booking.passengers;
                   if(isAvailable){
-                        console.log(' One way Flight available for booking ' + booking.flightid);
+                        console.log(' One way Flight available for booking ' + booking.flightId);
                         callback(true);
                   }
                   else{
-                        console.log(' Flight Booking Capacity reached for One way flight ' + booking.flightid);
+                        console.log(' Flight Booking Capacity reached for One way flight ' + booking.flightId);
                         callback(false);
                   }
             })
@@ -221,12 +226,12 @@ function checkFlightAvailable(booking, returnBooking, callback){
                                     callback(true);
                               }
                               else{
-                                    console.log(' Flight Booking Capacity reached for return flight ' + returnBooking.returnflightid);
+                                    console.log(' Flight Booking Capacity reached for return flight ' + returnBooking.returnflightId);
                                     callback(false);
                               }
                         })
                   }else{
-                        console.log(' Flight Booking Capacity reached for one side flight ' + booking.flightid);
+                        console.log(' Flight Booking Capacity reached for one side flight ' + booking.flightId);
                         callback(false);
                   }
 
@@ -250,16 +255,16 @@ function checkFlightAvailable(booking, returnBooking, callback){
 function getCurrentFlightBookingCount(booking, callback){
       var res = {};
       var bookingCountQuery;
-      if((booking.returnflightid != undefined) && (booking.returnbookingstartdate != undefined) && (booking.returnbookingenddate != undefined)){
+      if((booking.returnflightId != undefined) && (booking.returnbookingstartdate != undefined) && (booking.returnbookingenddate != undefined)){
               // Is return flight booking
               var startDate = booking.returnbookingstartdate;
               var endDate = booking.returnbookingenddate;
-              bookingCountQuery = "select * from BILLING where return_target_id='" + booking.returnflightid + "' AND return_booking_start_date ='" + startDate + "'  AND return_booking_end_date ='" + endDate + "'";
+              bookingCountQuery = "select * from BILLING where return_target_id='" + booking.returnflightId + "' AND return_booking_start_date ='" + startDate + "'  AND return_booking_end_date ='" + endDate + "'";
       }else{
               // Is One way Booking
               var startDate = booking.bookingstartdate;
               var endDate = booking.bookingenddate;
-              bookingCountQuery = "select * from BILLING where target_id='" + booking.flightid + "' AND booking_start_date ='" + startDate + "' AND booking_end_date ='" + endDate + "'";
+              bookingCountQuery = "select * from BILLING where target_id='" + booking.flightId + "' AND booking_start_date ='" + startDate + "' AND booking_end_date ='" + endDate + "'";
       }
       mysql.fetchData(function (err,dbBookings) {
 
