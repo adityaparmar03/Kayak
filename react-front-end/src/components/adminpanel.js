@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import {Link,withRouter} from 'react-router-dom';
 import PropTypes from 'prop-types';
 import Nav from './nav'
+import AdminPanelUsers from './adminpanelusers'
 
 import * as API from '../api/API';
 import * as Actions from '../actions/action';
@@ -106,9 +107,7 @@ class AdminPanel extends Component {
                      </div>
                 
                     <div className="tab-pane fade" id="user" role="tabpanel">
-                    
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nihil odit magnam minima, soluta doloribus reiciendis molestiae placeat unde eos molestias. Quisquam aperiam, pariatur. Tempora, placeat ratione porro voluptate odit minima.</p>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nihil odit magnam minima, soluta doloribus reiciendis molestiae placeat unde eos molestias. Quisquam aperiam, pariatur. Tempora, placeat ratione porro voluptate odit minima.</p>
+                    <AdminPanelUsers/>
                     </div>
                 
                     <div className="tab-pane fade" id="booking" role="tabpanel">
@@ -116,44 +115,44 @@ class AdminPanel extends Component {
 
 
                     </div>    
-                    <div className="card" > 
-                                    <table className="table table-responsive-sm">
-                                        <thead>
-                                                <tr>
-                                                    <th>Booking Id</th>
-                                                    <th>Booking Type</th>
-                                                    <th>Price</th>
-                                                    <th>User</th>
-                                                    <th>Credit Card</th>
-                                                    <th>Date</th>
-                                                    <th></th>
-                                                    <th></th>
-                                                    <th></th>
+                        <div className="card" > 
+                                        <table className="table table-responsive-sm">
+                                            <thead>
+                                                    <tr>
+                                                        <th>Booking Id</th>
+                                                        <th>Booking Type</th>
+                                                        <th>Price</th>
+                                                        <th>User</th>
+                                                        <th>Credit Card</th>
+                                                        <th>Date</th>
+                                                        <th></th>
+                                                        <th></th>
+                                                        <th></th>
 
-                                                </tr>
-                                            </thead> 
-                                            <tbody>
-                                                {this.props.vendors.map((vendor, index)=>(<tr>
-                                                    <td>12321</td>
-                                                    <td>flight </td>
-                                                    <th>$424</th>
-                                                    <td>UserID(aditya@parmar.in)</td>
-                                                    <td>Creditcard No (543424424424442)</td>
-                                                    <td>10/32/2018</td>
-                                                  
-                                                  
-                                                    <td><i className="fa fa-eye fa-2x"/></td>
-                                                    <td><i className="fa fa-pencil fa-2x"/></td>
-                                                    <td><i className="fa fa-trash fa-2x"/></td>
-                                                    </tr>))
+                                                    </tr>
+                                                </thead> 
+                                                <tbody>
+                                                    {this.props.vendors.map((vendor, index)=>(<tr>
+                                                        <td>12321</td>
+                                                        <td>flight </td>
+                                                        <th>$424</th>
+                                                        <td>UserID(aditya@parmar.in)</td>
+                                                        <td>Creditcard No (543424424424442)</td>
+                                                        <td>10/32/2018</td>
+                                                    
+                                                    
+                                                        <td><i className="fa fa-eye fa-2x"/></td>
+                                                        <td><i className="fa fa-pencil fa-2x"/></td>
+                                                        <td><i className="fa fa-trash fa-2x"/></td>
+                                                        </tr>))
 
-                                                }
+                                                    }
 
-                                            </tbody>      
+                                                </tbody>      
 
 
-                                    </table>  
-                                </div> 
+                                        </table>  
+                        </div> 
                     </div>
                     
                         <div className="tab-pane fade" id="vendor" role="tabpanel" style={{paddingLeft:"1vw"}}>
