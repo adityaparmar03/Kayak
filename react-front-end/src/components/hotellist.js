@@ -23,6 +23,7 @@ class Hotellist extends Component {
              star_high:5,
              valuesPrice:[],
              valuesStar:[],
+             googlemap:"https://www.google.com/maps/embed/v1/place?key=AIzaSyAOW5Lf27NBLJDBfmgD_mlvIBlu97OHzXw&q="
      
         }
      }
@@ -92,7 +93,36 @@ class Hotellist extends Component {
             return <span>&mdash;&mdash;&#9632;&mdash;&mdash;&#9632;&mdash;&mdash;</span> 
         }
     }
-    displayhotels(item,index){
+    star(num){
+        switch(num){
+            case 1:
+                return <p>&#9733;</p> 
+            case 2:
+                return <p>&#9733;&#9733;</p> 
+            case 3:
+                return <p>&#9733;&#9733;&#9733;</p>   
+            case 4:
+                return <p>&#9733;&#9733;&#9733;&#9734;</p> 
+            case 5:
+                return  <p>&#9733;&#9733;&#9733;&#9734;&#9734;</p>               
+
+        }
+            
+    }
+    getrooms(rooms){
+        return rooms.map((item,i)=> <div className="col-sm-2">
+        
+              <div style={{textAlign:"center",marginTop:'0vh'}}>
+              <b style={{fontSize:"20px",fontWeight:"bold"}}>${item.price}</b><br/>
+              <b style={{fontSize:"15px",fontWeight:"bold"}}>{item.roomtype}</b><br/>
+              <button style={{minWidth:"8vw",maxHeight:'7.5vh'}}className="btn btn-deep-orange">Book</button>
+              </div>
+
+         
+     </div>  )
+    }
+
+    displayhotels(data,index){
         
             return(
                 
@@ -101,20 +131,20 @@ class Hotellist extends Component {
                     <div className="row">
                         <div className="col-sm-5">
                         <div className="view overlay hm-zoom">
-                         <img src={require('../image/samplehotel.jpg')}
-                            className="img-fluid " alt={this.state.hotelname}/>
+                         <img src={'http://localhost:3001/images/'+data.imageurl}
+                            className="img-fluid " alt={data.name}/>
                                 <div className="mask flex-center waves-effect waves-light">
-                                    <p className="white-text">{this.state.hotelname}</p>
+                                    <p className="white-text">{data.name}</p>
                                 </div>
                         </div>
                              
                          </div>
                          <div className="col-sm-4">
                             <div  style={{marginTop:'3vh'}}>
-                                <h4 class="h4-responsive"><b>Hyatt</b></h4>
-                                <p>&#9733;&#9733;&#9733;&#9734;&#9734;</p>
+                                <h4 class="h4-responsive"><b>{data.name}</b></h4>
+                                {this.star(data.stars)}
                                 <div>
-                                <button type="button" className="btn btn-elegant">8.6</button><a>1,676 Reviews</a>
+                                <button type="button" className="btn btn-elegant">{data.rating}</button><a>{data.reviews.length} Reviews</a>
                                 </div>
                               
                             </div> 
@@ -122,10 +152,10 @@ class Hotellist extends Component {
                          </div>
                         <div className="col-sm-3">
                                 <div style={{textAlign:"center",marginTop:'5vh'}}>
-                                <b style={{fontSize:"20px",fontWeight:"bold"}}>$251</b><br/>
-                                <b style={{fontSize:"15px",fontWeight:"bold"}}>Delux</b><br/>
+                                <b style={{fontSize:"20px",fontWeight:"bold"}}>${data.rooms[0].price}</b><br/>
+                                <b style={{fontSize:"15px",fontWeight:"bold"}}>{data.rooms[0].roomtype}</b><br/>
                                 <button style={{minWidth:"10vw",maxHeight:'7.5vh'}}className="btn btn-deep-orange">Book</button>
-                                </div>
+                     </div>
 
                         </div>
                     </div>
@@ -148,26 +178,33 @@ class Hotellist extends Component {
                     <div className="tab-content">
                    
                         <div className="tab-pane fade in show active" id={'panel1'+index} role="tabpanel">
-                            <p>Excellent city hotel. Close to City Creek Mall. Close to the city center with easily acessible parking. Great pool.</p>
-                            <h4><b>Address:</b></h4>
-                            <h6>282 Almaden Blvd</h6>
-                            <h6>San Jose,CA</h6>
+                        <p>{data.description}</p>
+                            <div className="row">
+                                <div className="col-sm-4">
+                                    
+                                    <h4><b>Address:</b></h4>
+                                    <h6>{data.address.street}</h6>
+                                    <h6>{data.address.city}, {data.address.state} - {data.address.zip}</h6>
+                                </div>    
+                                {this.getrooms(data.rooms)} 
+                            </div>
                         </div>
 
                         <div className="tab-pane fade" id={'panel2'+index} role="tabpanel">
+                        
                         <iframe
                                 width="100%"
                                 height="450"
                                 frameBorder="0"
                                 
                                 
-                                src="https://www.google.com/maps/embed/v1/place?key=AIzaSyAOW5Lf27NBLJDBfmgD_mlvIBlu97OHzXw&q=282AlmadenBlvd+SanJose">
+                                src={this.state.googlemap+data.address.street} >
                          </iframe>
                         </div>
    
                         <div className="tab-pane fade" id={'panel3'+index} role="tabpanel">
-                        <h4><b>Overall 8.6 Excellent</b></h4>
-                        <h6><b>Based on 5,655 reviews</b></h6>
+                        <h4><b>Overall {data.rating}</b></h4>
+                        <h6><b>Based on {data.reviews.length} reviews</b></h6>
                         <p><b>Location</b></p>
                         <div className="progress">
                             <div className="progress-bar progress-bar-striped" style={{width:'40%',height:"100px"}}></div>
@@ -184,6 +221,10 @@ class Hotellist extends Component {
                         <div className="progress">
                             <div className="progress-bar progress-bar-striped" style={{width:'80%',height:"100px"}}></div>
                         </div>
+                        <div style={{ overflow: 'scroll', height: '20vh'}}>
+                        <p><b>Reviews</b></p>
+                        {data.reviews.map((item,i)=><p>"{item}"</p>)}
+                        </div>    
                            
                         </div>
 
@@ -256,7 +297,7 @@ class Hotellist extends Component {
                         
                     </div>
                     <div className="col-8" style={{ overflow: 'scroll', height: '90vh'}}>
-                         { this.state.test.map((this.displayhotels),this)}     
+                         { this.props.hotels.map((this.displayhotels),this)}     
                     </div>
                    
                 </div>
@@ -271,7 +312,6 @@ class Hotellist extends Component {
 
 function mapStateToProps(reducerdata) {
     console.log(reducerdata.userSearch.hotelSearch);
-
     const hotels=reducerdata.userSearch.hotelSearch;
     return {hotels};
 }
