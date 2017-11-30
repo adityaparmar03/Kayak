@@ -18,7 +18,6 @@ function searchFlights(msg, callback){
 
     if(triptype=='One-Way'){
 
-
         flight.aggregate(
 
             {$unwind: '$flights'},
