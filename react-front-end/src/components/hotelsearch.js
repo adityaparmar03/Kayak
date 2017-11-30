@@ -5,10 +5,8 @@ import AutoComplete from 'material-ui/AutoComplete';
 import DatePicker from 'material-ui/DatePicker';
 import TextField from 'material-ui/TextField';
 import moment from 'moment';
-import * as API from '../api/API';
-import * as Actions from '../actions/action';
-import {connect} from 'react-redux';
 import cities from '../constants/cities'
+
 
 class Hotelsearch extends Component {
 
@@ -58,6 +56,7 @@ class Hotelsearch extends Component {
            console.log('payload', payload);
 
            localStorage.setItem("hotelsearchcriteria", JSON.stringify(payload));
+           this.props.history.push('/hotellist');
 
 
        }
@@ -243,17 +242,5 @@ class Hotelsearch extends Component {
 }
 
 
-function mapStateToProps(reducerdata) {
-    //console.log(reducerdata);
 
-    return {reducerdata};
-}
-
-function mapDispatchToProps(dispatch) {
-    return {
-
-        hotelSearch : (data) => dispatch(Actions.hotelSearch(data))
-    };
-}
-
-export default connect(mapStateToProps, mapDispatchToProps)(Hotelsearch);
+export default withRouter(Hotelsearch);

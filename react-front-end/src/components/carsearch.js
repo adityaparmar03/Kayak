@@ -58,6 +58,7 @@ class Carsearch extends Component {
            console.log('payload', payload);
 
            localStorage.setItem("carsearchcriteria", JSON.stringify(payload));
+           this.props.history.push("/carlist");
 
 
       }
@@ -142,4 +143,4 @@ class Carsearch extends Component {
 }
 
 
-export default Carsearch;
+export default withRouter(Carsearch);

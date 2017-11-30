@@ -2,6 +2,11 @@ import React, {Component} from 'react';
 import {Link,withRouter} from 'react-router-dom';
 import PropTypes from 'prop-types';
 import Nav from './nav'
+
+import * as API from '../api/API';
+import * as Actions from '../actions/action';
+import {connect} from 'react-redux';
+
 var ReactGridLayout = require('react-grid-layout');
 class AdminPanel extends Component {
 
@@ -14,10 +19,26 @@ class AdminPanel extends Component {
         }
      }
     componentWillMount(){
-      
+
+        API.getVendors()
+            .then((res) => {
+                console.log(res.vendors);
+
+                if (res.status == 200) {
+
+                    this.props.getVendors(res.vendors);
+
+                    console.log("Success...")
+
+                }else if (res.status == 401) {
+
+                    //  this.props.history.push('/');
+                }
+            });
     }
 
     render(){
+        console.log(this.props.vendors)
         return(
             <div>
                 <div style={{backgroundColor:'black'}}>
@@ -64,21 +85,24 @@ class AdminPanel extends Component {
                                     <th>Vendor Name</th>
                                     <th>Type of Service</th>
                                     <th>Vendor API</th>
-                                    <th>Delete</th>
+
                                 </tr>
                             </thead> 
                             <tbody>
-                                {this.state.test.map(()=>(<tr>
-                                    <td>Vendor Name</td>
+                                {this.props.vendors.map((vendor, index)=>(<tr>
+                                    <td>{vendor.vendorname}</td>
                                     <td>
-                                    <select className="form-control">
+                                    {/*<select className="form-control">
                                         <option value="volvo">Volvo</option>
                                         <option value="saab">Saab</option>
                                         <option value="mercedes">Mercedes</option>
   
-                                    </select>
+                                    </select>*/}
+                                        {vendor.servicetype}
                                     </td>
-                                    <td><input type="text" className="form-control"/></td>
+                                    <td>{/*<input type="text" className="form-control"/>*/}
+                                        {vendor.vendorapi}</td>
+                                    {/*<td><i className="fa fa-edit"/></td>*/}
                                     <td><i className="fa fa-trash"/></td>
                                     </tr>))
 
@@ -98,4 +122,19 @@ class AdminPanel extends Component {
     }
 }
 
-export default AdminPanel;
+
+function mapStateToProps(reducerdata) {
+
+    const vendors = reducerdata.vendor;
+    console.log(reducerdata.vendor);
+    return {vendors};
+}
+
+function mapDispatchToProps(dispatch) {
+    return {
+
+        getVendors : (data) => dispatch(Actions.getVendors(data))
+    };
+}
+
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(AdminPanel));

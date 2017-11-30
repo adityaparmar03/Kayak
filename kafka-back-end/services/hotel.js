@@ -33,12 +33,12 @@ function searchHotels(msg, callback){
 // Book the Hotel
 function bookHotel(msg, callback){
       var booking = msg.booking;
-<<<<<<< HEAD
+
       var email = msg.email ; //- TODO : uncomment this after stable
-=======
+
       var creditCard = msg.credit_card;
       var email = "meenakshi.paryani@gmail.com"; //msg.email - TODO : uncomment this after stable
->>>>>>> b6d1bf4b0d40d6ce16baf9adc010b52a4e7e3d64
+
 
       console.log('-------booking is-------');
       console.log(booking);

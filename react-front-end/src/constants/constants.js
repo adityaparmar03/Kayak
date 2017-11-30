@@ -11,4 +11,7 @@ export const BOOK_FLIGHT="BOOK_FLIGHT";
 export const BOOK_CAR="BOOK_CAR";
 export const BOOK_HOTEL="BOOK_HOTEL";
 export const USER_HISTORY="USER_HISTORY";
+export const GET_VENDORS="GET_VENDORS";
+export const ADD_VENDOR="ADD_VENDOR";
+export const DELETE_VENDOR="DELETE_VENDOR";
 

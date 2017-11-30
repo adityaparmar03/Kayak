@@ -35,3 +35,27 @@ export function carSearch(cars) {
     }
 };
 
+export function getVendors(vendors) {
+
+    return {
+        type : Constants.GET_VENDORS,
+        vendors : vendors
+    }
+};
+
+export function addVendor(vendor) {
+
+    return {
+        type : Constants.ADD_VENDOR,
+        vendor : vendor
+    }
+};
+
+export function deleteVendor(index) {
+
+    return {
+        type : Constants.DELETE_VENDOR,
+        index : index
+    }
+};
+
