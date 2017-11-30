@@ -49,7 +49,7 @@ CREATE TABLE `BILLING` (
   `return_target_name` varchar(90) DEFAULT NULL,
   `booking_type` enum('CAR','FLIGHT','HOTEL') NOT NULL,
   `flight_trip_type` enum('ONE-WAY','TWO-WAY') DEFAULT NULL,
-  `car_trip_type` enum('SAME-DROPOFF','DIFFERENT-DROPOFF') NOT NULL,
+  `car_trip_type` enum('SAME-DROPOFF','DIFFERENT-DROPOFF') DEFAULT NULL,
   `room_type` enum('DELUX','PREMIUM','SUITE') DEFAULT NULL,
   `billing_date` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `billing_amount` int(11) NOT NULL COMMENT 'Billing Amount in US Dollars',
