@@ -23,6 +23,9 @@ class Carlist extends Component {
              star_low: 1,
              star_high:5,
              valuesPrice:[],
+             initialpricemax:0,
+             googlemap:"https://www.google.com/maps/embed/v1/place?key=AIzaSyAOW5Lf27NBLJDBfmgD_mlvIBlu97OHzXw&q="
+             
        
      
         }
@@ -45,7 +48,16 @@ class Carlist extends Component {
 
                     this.props.carSearch(res.cars);
 
-                    console.log("Success...")
+                
+                    var price = res.cars.map((item,i)=>parseInt(item.dailyrent));   
+                    var max = price.reduce(function(a, b) {
+                        return Math.max(a, b);
+                    });
+                    var min = price.reduce(function(a, b) {
+                        return Math.min(a, b);
+                    });
+                    
+
 
                 }else if (res.status == 401) {
 
@@ -83,17 +95,19 @@ class Carlist extends Component {
             return <span>&mdash;&mdash;&#9632;&mdash;&mdash;&#9632;&mdash;&mdash;</span> 
         }
     }
-    displayhotels(item,index){
-        
+    displayhotels(data,index){
+            
+            
             return(
                 
-                <div className="card"  >
+                <div className="card" key={index}>
                     <div data-toggle="collapse" data-target={'#details'+index}>
                     <div className="row">
                     <div className="col-sm-4">
                             <div style={{padding:'1vw'}}>
-                                <h5 class="h5-responsive" ><b>Car Name</b></h5>
-                                <p>Specification</p>
+                                <h5 class="h5-responsive" ><b>{data.carmodel}</b></h5>
+                                <p>Pickup : {data.pickupaddress.street}, {data.pickupaddress.city}, {data.pickupaddress.state}</p>
+                                <p>Dropoff : {data.dropoffaddress.street}, {data.dropoffaddress.city}, {data.dropoffaddress.state}</p>
                              
                                 <button type="button" className="btn btn-primary">Get Direction</button>
                                
@@ -103,10 +117,10 @@ class Carlist extends Component {
                          </div>
                         <div className="col-sm-5">
                         <div className="view overlay hm-zoom">
-                         <img src={require('../image/carsample.png')}
-                            className="img-fluid " alt={this.state.hotelname}/>
+                         <img src={'http://localhost:3001/images/'+data.imageurl}
+                            className="img-fluid " alt={data.carmodel}/>
                                 <div className="mask flex-center waves-effect waves-light">
-                                    <p className="white-text">{this.state.carname}</p>
+                                    <p className="white-text">{data.carmodel}</p>
                                 </div>
                         </div>
                              
@@ -114,8 +128,8 @@ class Carlist extends Component {
                         
                         <div className="col-sm-3">
                                 <div style={{textAlign:"center",marginTop:'5vh'}}>
-                                <b style={{fontSize:"20px",fontWeight:"bold"}}>$251</b><br/>
-                                <b style={{fontSize:"15px",fontWeight:"bold"}}>Car Type</b><br/>
+                                <b style={{fontSize:"20px",fontWeight:"bold"}}>${data.dailyrent}</b><br/>
+                                <b style={{fontSize:"15px",fontWeight:"bold"}}>{data.cartype}</b><br/>
                                 <button style={{minWidth:"10vw",maxHeight:'7.5vh'}}className="btn btn-deep-orange">Book</button>
                                 </div>
 
@@ -129,9 +143,8 @@ class Carlist extends Component {
                                 width="100%"
                                 height="450"
                                 frameBorder="0"
-                                
-                                
-                                src="https://www.google.com/maps/embed/v1/place?key=AIzaSyAOW5Lf27NBLJDBfmgD_mlvIBlu97OHzXw&q=282AlmadenBlvd+SanJose">
+                                src={this.state.googlemap+data.pickupaddress.street}
+                                >
                          </iframe>
                     
                     </div>
@@ -177,16 +190,7 @@ class Carlist extends Component {
                       
                                     <p style={{fontWeight:"bold"}}>Type</p>
                                     <hr/>    
-                                        <div className="form-check form-check">
-                                                <label className="form-check-label">
-                                                <input type="checkbox" className="form-check-input" value=""/>Small
-                                                </label>
-                                        </div>
-                                        <div className="form-check form-check">
-                                                <label className="form-check-label">
-                                                <input type="checkbox" className="form-check-input" value=""/>Medium
-                                                </label>
-                                        </div>
+                                        
                                         <div className="form-check form-check">
                                                 <label className="form-check-label">
                                                 <input type="checkbox" className="form-check-input" value=""/>Small
@@ -237,7 +241,7 @@ class Carlist extends Component {
                         
                     </div>
                     <div className="col-8" style={{ overflow: 'scroll', height: '90vh'}}>
-                         { this.state.test.map((this.displayhotels),this)}     
+                         { this.props.cars.map((this.displayhotels),this)}     
                     </div>
                    
                 </div>
@@ -253,6 +257,7 @@ function mapStateToProps(reducerdata) {
     console.log(reducerdata.userSearch.carSearch);
 
     const cars=reducerdata.userSearch.carSearch;
+    console.log(cars)
     return {cars};
 }
 
