@@ -63,7 +63,8 @@ class Flightsearch extends Component {
 
         console.log('payload', payload);
 
-           localStorage.setItem("flightsearchcriteria", JSON.stringify(payload));
+        localStorage.setItem("flightsearchcriteria", JSON.stringify(payload));
+        this.props.history.push('/flightlist');
 
        // call Api for search here......
            //API CALL
@@ -234,4 +235,4 @@ class Flightsearch extends Component {
 
 
 
-export default Flightsearch;
+export default withRouter(Flightsearch);

@@ -154,6 +154,9 @@ import Flightlist from "./components/flightlist";
 import Hotellist from "./components/hotellist";
 import Carlist from "./components/carlist";
 import Profile from "./components/profile";
+import AdminPanel from "./components/adminpanel";
+import FlightBooking from "./components/flightbooking";
+
 
 import { createStore } from 'redux';
 import reducer from './reducers/rootreducer';
@@ -181,6 +184,8 @@ ReactDOM.render(
                 <Route exact path="/hotellist" component={Hotellist}/>
                 <Route exact path="/carlist" component={Carlist}/>
                 <Route exact path="/profile" component={Profile}/>
+                <Route exact path="/admin" component={AdminPanel}/>
+                <Route exact path="/flightbooking" component={FlightBooking}/>
        
         
             </div>
