@@ -72,7 +72,7 @@ function searchCars(msg, callback){
 function bookCar(msg, callback){
       var booking = msg.booking;
       var email = msg.email   // - TODO : uncomment this after stable
-
+      var creditCard = msg.credit_card;
       console.log('-------booking is-------');
       console.log(booking);
 
@@ -82,9 +82,10 @@ function bookCar(msg, callback){
             if(isAvailable){
                 // Proceed to Booking
                  // TODO : Add credit card fields
-                var bookingSql="insert into BILLING(`user_email`,`target_id`,`target_name`,`booking_type`,`billing_amount`,`source_city`,`source_state`,`destination_city`,`destination_state`,`car_trip_type`,`booking_start_date`,`booking_end_date`) values('"+
-                email+"','"+booking.carid+"','"+ booking.cartype +"','"+ 'CAR' + "','"+booking.price+"','"+booking.pickupaddress.city+"','"+booking.pickupaddress.state+"','"+booking.dropoffaddress.city+"','"+booking.dropoffaddress.state+"','"+booking.triptype + "','" + booking.pickupdate
-                +"','"+booking.dropoffdate+ "');";
+                var bookingSql="insert into BILLING(`user_email`,`target_id`,`target_name`,`car_type`,`booking_type`,`billing_amount`,`source_city`,`source_state`,`source_street`,`source_country`,`destination_city`,`destination_state`,`destination_street`,`destination_country`,`car_trip_type`,`booking_start_date`,`booking_end_date`,`credit_card_type`, `credit_card_number`, `credit_card_holder_name`,`credit_card_valid_from`,`credit_card_valid_till`) values('"+
+                email+"','"+booking.carId+"','"+ booking.carmodel+"','"+ booking.cartype +"','"+ 'CAR' + "','"+booking.price+"','"+booking.pickupaddress.city+"','"+booking.pickupaddress.state+"','"+booking.pickupaddress.street+"','"+booking.pickupaddress.country+"','"+booking.dropoffaddress.city
+                +"','"+booking.dropoffaddress.state+"','"+booking.dropoffaddress.street+"','"+booking.dropoffaddress.country+"','"+booking.triptype + "','" + booking.pickupdate
+                +"','"+booking.dropoffdate+ "','"+creditCard.card_type+"','"+creditCard.card_number+"','"+creditCard.card_holder_name+"','"+creditCard.valid_from+"','"+creditCard.valid_till+"');";
 
                // console.log("*************************************************");
                // console.log(bookingSql);
@@ -122,11 +123,11 @@ function checkCarAvailable(booking, callback){
 
               var isAvailable = bookedCount <= 0;
               if(isAvailable){
-                    console.log(' Car available for booking ' + booking.carid);
+                    console.log(' Car available for booking ' + booking.carId);
                     callback(true);
               }
               else{
-                    console.log(' Booking Capacity reached for Car ' + booking.carid + ' ' + booking.cartype);
+                    console.log(' Booking Capacity reached for Car ' + booking.carId + ' ' + booking.carmodel);
                     callback(false);
               }
       })
@@ -141,7 +142,7 @@ function getCurrentCarBookingStatus(booking, callback){
       var bookingCountQuery;
       var startDate = booking.pickupdate;
       var endDate = booking.dropoffdate;
-      bookingCountQuery = "select * from BILLING where target_id='" + booking.carid + "' AND booking_start_date between '" + startDate + "' AND '" + endDate + "'";
+      bookingCountQuery = "select * from BILLING where target_id='" + booking.carId + "' AND booking_start_date between '" + startDate + "' AND '" + endDate + "'";
 
       mysql.fetchData(function (err,dbBookings) {
 
