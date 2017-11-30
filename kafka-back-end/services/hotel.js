@@ -34,6 +34,7 @@ function searchHotels(msg, callback){
 // Book the Hotel
 function bookHotel(msg, callback){
       var booking = msg.booking;
+      var creditCard = msg.credit_card;
       var email = "meenakshi.paryani@gmail.com"; //msg.email - TODO : uncomment this after stable
 
       console.log('-------booking is-------');
@@ -45,8 +46,10 @@ function bookHotel(msg, callback){
             if(isAvailable){
                 // Proceed to Booking
                  // TODO : Add credit card fields
-                var bookingSql="insert into BILLING(`user_email`,`target_id`,`target_name`,`booking_type`,`billing_amount`,`target_count`,`source_city`,`source_state`,`room_type`,`booking_start_date`,`booking_end_date`) values('"+
-                email+"','"+booking.hotelid+"','"+ booking.name +"','"+ 'HOTEL' + "','"+booking.price+"','"+booking.roomcount+"','"+booking.address.city+"','"+booking.address.state+"','"+booking.roomtype + "','" + booking.bookingstartdate+"','"+booking.bookingenddate+ "');";
+                var bookingSql="insert into BILLING(`user_email`,`target_id`,`target_name`,`booking_type`,`billing_amount`,`target_count`,`source_city`,`source_state`,`source_street`,`source_country`,`source_zipcode`,`room_type`,`booking_start_date`,`booking_end_date`,`credit_card_type`, `credit_card_number`, `credit_card_holder_name`,`credit_card_valid_from`,`credit_card_valid_till`) values('"+
+                email+"','"+booking.hotelId+"','"+ booking.name +"','"+ 'HOTEL' + "','"+booking.price+"','"+booking.roomcount+"','"
+                +booking.address.city+"','"+booking.address.state+"','"+booking.address.street+"','"+booking.address.country+"','"
+                +booking.address.zip+"','"+booking.roomtype + "','" + booking.bookingstartdate+"','"+booking.bookingenddate+ "','"+creditCard.card_type+"','"+creditCard.card_number+"','"+creditCard.card_holder_name+"','"+creditCard.valid_from+"','"+creditCard.valid_till+"');";
 
                 mysql.executeQuery(function(err){
                     if(err){
@@ -81,11 +84,11 @@ function checkHotelAvailable(booking, callback){
               console.log("capacity is " + capacity);
               var isAvailable = capacity - bookedCount >= booking.roomcount;
               if(isAvailable){
-                    console.log(' Hotel available for booking ' + booking.hotelid);
+                    console.log(' Hotel available for booking ' + booking.hotelId);
                     callback(true);
               }
               else{
-                    console.log(' Booking Capacity reached for Hotel ' + booking.flightid + ' ' + booking.name);
+                    console.log(' Booking Capacity reached for Hotel ' + booking.hotelId + ' ' + booking.name);
                     callback(false);
               }
       })
@@ -102,7 +105,7 @@ function getCurrentHotelBookingCount(booking, callback){
       var bookingCountQuery;
       var startDate = booking.bookingstartdate;
       var endDate = booking.bookingenddate;
-      bookingCountQuery = "select * from BILLING where target_id='" + booking.hotelid + "' AND booking_start_date between '" + startDate + "' AND '" + endDate + "'";
+      bookingCountQuery = "select * from BILLING where target_id='" + booking.hotelId + "' AND booking_start_date between '" + startDate + "' AND '" + endDate + "'";
 
       mysql.fetchData(function (err,dbBookings) {
 
