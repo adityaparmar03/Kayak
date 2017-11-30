@@ -29,7 +29,8 @@ var HotelSchema   = new Schema({
     stars: Number,
     reviews : Array,
     rating: Number,
-    rooms : Array
+    rooms : Array,
+    imageurl:String
     //[
     // {roomtype: 'delux', 'price':'$120', 'rooomcount':100},
     // {roomtype:'premium','price':'$220', 'rooomcount':100},
