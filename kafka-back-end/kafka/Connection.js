@@ -29,7 +29,8 @@ function ConnectionProvider() {
                     {topic :'bookings',partition :0},
                     {topic :'deleteuser',partition :0},
                     {topic :'updatebilling',partition :0},
-                    {topic :'getallusers',partition :0}
+                    {topic :'getallusers',partition :0},
+                    {topic :'getuserdata',partition :0}
 
                  ]);
 

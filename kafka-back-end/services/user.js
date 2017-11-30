@@ -215,7 +215,25 @@ function bookinghistory(msg,callback){
 
 //****************************************************************************************************************************
 
+function getuserdata(msg,callback){
+    var res= {};
+    console.log(msg);
+    var getQuery = "select first_name,last_name,user_role,city,state,zip_code,profile_image_path,email,phone from user where email='"+msg.email+"';";
+    mysql.fetchData(function (err,results) {
+        if(err){
+            res.code = "401";
+            res.value = "Error while fetching the user ";
+        }
+        else{
+            console.log("inside the else of the get data");
+            res.code = "200";
+            res.value = "succesfully fetched the data";
+            res.data = results;
 
+        }callback(null,res);
+    },getQuery);
+
+}
 
 
 
@@ -258,9 +276,12 @@ function deleteuser(msg,callback) {
 
 }
 
+
+
+
 //****************************************************************************************************************************
 
-
+exports.getuserdata = getuserdata;
 exports.deleteuser = deleteuser;
 exports.bookinghistory = bookinghistory;
 exports.update = update ;

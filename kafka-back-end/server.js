@@ -36,6 +36,16 @@ consumer.on('message', function (message) {
             })
             break;
 
+        case 'getuserdata':
+            console.log("inside the switch case");
+            console.log(body);
+            console.log("********************");
+            user.getuserdata(body,function (err,res) {
+                response(data,res);
+                return;
+            })
+            break;
+
         case'update':
             console.log("Inside the update switch case");
             user.update(body,function (err,res) {

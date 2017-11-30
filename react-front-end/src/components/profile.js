@@ -3,16 +3,28 @@ import {Link,withRouter} from 'react-router-dom';
 import PropTypes from 'prop-types';
 import Nav from './nav'
 import axios from 'axios'
+import {connect} from 'react-redux';
+import userProfile from "../reducers/userProfile";
+import * as Actions from '../actions/action';
+import * as API from '../api/API';
 
 class Profile extends Component {
-    
-   
-      
-      
-     
+
+
     componentWillMount(){
         console.log("willmountcalling");
-       
+        API.checkSession().then((data)=>{
+            console.log("inside the check session response");
+
+            if(data.status===201){
+                console.log("user logged in ");
+                console.log(data);
+                console.log("*************");
+                this.props.signIn(data);
+            }
+
+        })
+
     }
 
     render(){
@@ -53,7 +65,7 @@ class Profile extends Component {
                                         <div className="col-sm-6">
                                         <div className="md-form">
                                             <i className="fa fa-user prefix"></i>
-                                            <input type="text" id="firstname" className="form-control"/>
+                                            <input type="text" id="firstname" value={this.props.userprofile.firstname} className="form-control"/>
                                             <label htmlFor="firstname">Firstname</label>
                                         </div>
 
@@ -61,7 +73,7 @@ class Profile extends Component {
                                         <div className="col-sm-6">
                                         <div className="md-form">
                                             <i className="fa fa-user prefix"></i>
-                                            <input type="text" id="lastname" className="form-control"/>
+                                            <input type="text" id="lastname" value={this.props.userprofile.lastname} className="form-control"/>
                                             <label htmlFor="lastname">Lastname</label>
                                         </div>
 
@@ -71,7 +83,7 @@ class Profile extends Component {
                                         <div className="col-sm-4">
                                         <div className="md-form">
                                         <i className="fa fa-envelope prefix"></i>
-                                        <input type="text" id="email" className="form-control"/>
+                                        <input type="text" value={this.props.userprofile.email}  id="email" className="form-control"/>
                                         <label htmlFor="email">Email</label>
                                         </div>
 
@@ -80,7 +92,7 @@ class Profile extends Component {
                                         <div className="md-form">
                                         <i className="fa fa-eye prefix"></i>
                                        
-                                        <input type="text" id="password" className="form-control"/>
+                                        <input type="text" id="password" value="********" disabled className="form-control"/>
                                         <label htmlFor="password">Password</label>
                                         
                                         </div>
@@ -90,7 +102,7 @@ class Profile extends Component {
                                         <div className="md-form">
                                         <i className="fa fa-phone prefix"></i>
                                        
-                                        <input type="text" id="phone" className="form-control"/>
+                                        <input type="text" id="phone" value={this.props.userprofile.phonenumber} className="form-control"/>
                                         <label htmlFor="phone">Phone Number</label>
                                       
                                         </div>
@@ -102,7 +114,7 @@ class Profile extends Component {
                                         <div className="md-form">
                                         <i className="fa fa-map-marker prefix"></i>
                                        
-                                        <input type="text" id="address" className="form-control"/>
+                                        <input type="text" id="address" value={this.props.userprofile.address} className="form-control"/>
                                         <label htmlFor="address">Address</label>
                                       
                                         </div>
@@ -112,7 +124,7 @@ class Profile extends Component {
                                         <div className="md-form">
                                         <i className="fa fa-location-arrow prefix"></i>
                                        
-                                        <input type="text" id="zipcode" className="form-control"/>
+                                        <input type="text" id="zipcode" value={this.props.userprofile.zipcode} className="form-control"/>
                                         <label htmlFor="form2">Zip Code</label>
                                       
                                         </div>
@@ -180,4 +192,24 @@ class Profile extends Component {
     }
 }
 
-export default Profile;
+
+
+
+function mapStateToProps(reducerdata) {
+    // console.log(reducerdata);
+    const userprofile = reducerdata.userProfile;
+
+    console.log(userprofile);
+
+    return {userprofile};
+}
+
+function mapDispatchToProps(dispatch) {
+    return {
+        signIn : (data) => dispatch(Actions.signIn(data))
+
+    };
+}
+
+
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(Profile));

@@ -31,7 +31,7 @@ function hotelSearch(state = [], action) {
 
 
 function flightSearch(state = [], action) {
-console.log(action)
+//console.log(action)
     switch (action.type) {
 
         case Constants.SEARCH_FLIGHT :

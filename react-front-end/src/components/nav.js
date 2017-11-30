@@ -4,6 +4,8 @@ import PropTypes from 'prop-types';
 import * as API from '../api/API';
 import * as Actions from '../actions/action';
 import {connect} from 'react-redux';
+import userProfile from "../reducers/userProfile";
+
 
 var Regex= require('regex');
 var regex = new Regex(/\S+@\S+\.\S+/);
@@ -18,7 +20,7 @@ class Nav extends Component {
    
     if(data.status===201){
         console.log("user logged in ");
-        //this.props.signIn(data);
+        this.props.signIn(data);
     }
    
    })
@@ -31,7 +33,8 @@ class Nav extends Component {
                 IsLogged:false,
                 email:null,
                 password:null,
-                repeatpassword:null
+                repeatpassword:null,
+                modalValue:null
                
     };
 //********************************************************
@@ -41,9 +44,9 @@ class Nav extends Component {
       console.log(this.state.repeatpassword);
       if(this.state.password===this.state.repeatpassword && this.state.email!=null) {
   
-    console.log("+++++++++");
+          console.log("+++++++++");
       //console.log(regex.test("smcool100@gmail.com"));
-     var payload = {
+         var payload = {
         "email" :this.state.email,
         "password": this.state.password
      }
@@ -68,13 +71,20 @@ loginButton(){
         "email" :this.state.email,
         "password": this.state.password
      }
-     console.log(payload);
+     //console.log(payload);
      API.doLogin(payload).then((data)=>{
-        console.log(data);
+        //console.log(data);
         if(data.status===201){
-        console.log("after the login is complete");}
-     }).catch((error)=>{
-        console.log("error");
+        console.log("after the login is complete");
+     //   this.setState({IsLogged:true})
+            console.log(this.props.userprofile);
+            this.setState({modalValue:"modal"});
+
+            console.log("Before getting in the signin reducer  "+ this.props.userprofile.isLoggedIn)
+
+
+        this.props.signIn(data);
+        }
      })
 
     
@@ -86,12 +96,14 @@ loginButton(){
 
     displaypopup(){
         if(this.state.navpopup){
-            if(this.state.IsLogged){
+            if(this.props.userprofile.isLoggedIn){
                 return <div style={{marginTop:"4.5%",minWidth:"200px",position: 'absolute',
                 top: '0px', left: '0px', marginLeft:"83%",marginRight:"0%",borderRadius:"0",zIndex:"2"}} className="card">
                    <div className="card-body"> 
                        <button type="button" className="btn btn-deep-orange btn-block"
-                       onClick={()=>this.handlepopup()} >Profile</button>
+                       onClick={()=>{
+                           this.props.history.push('/profile');
+                           this.handlepopup()}} >Profile</button>
                        <button type="button" className="btn btn-outline-deep-orange waves-effect btn-block"
                        onClick={()=>this.handlepopup()}>Sign Out</button>
                        
@@ -119,6 +131,7 @@ loginButton(){
 
  //********************************************************    
     handlepopup(){
+
         this.setState({navpopup:!this.state.navpopup})
     } 
 
@@ -218,7 +231,10 @@ loginButton(){
                                 <label data-error="wrong" data-success="right" htmlFor="form23">Your password</label>
                             </div>
                             <div className="text-center mt-2">
-                                <button className="btn btn-info" onClick={()=>{this.loginButton();}}>Log in <i className="fa fa-sign-in ml-1"></i></button>
+                                <button className="btn btn-info"  data-dismiss={this.state.modalValue}
+                                        onClick={()=>{
+                                            console.log(this.state.modalValue)
+                                            this.loginButton();}}>Log in <i className="fa fa-sign-in ml-1"></i></button>
                             </div>
                         </div>
                 
@@ -308,17 +324,20 @@ loginButton(){
 
 function mapStateToProps(reducerdata) {
    // console.log(reducerdata);
+  const userprofile = reducerdata.userProfile;
 
-    return {reducerdata};
+  console.log(userprofile);
+
+    return {userprofile};
 }
 
 function mapDispatchToProps(dispatch) {
     return {
-        //signIn : (data) => dispatch(Actions.signIn(data))
+        signIn : (data) => dispatch(Actions.signIn(data))
 
     };
 }
 
 
 
-export default connect(mapStateToProps, mapDispatchToProps)(Nav);
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(Nav));

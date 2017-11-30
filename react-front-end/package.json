@@ -7,7 +7,7 @@
     "gapi": "0.0.3",
     "jquery": "^3.2.1",
     "material-ui": "^0.19.4",
-    "moment": "^2.19.2",
+    "moment": "^2.19.3",
     "multi-slider": "^4.0.0",
     "prop-types": "^15.5.10",
     "react": "^15.6.1",

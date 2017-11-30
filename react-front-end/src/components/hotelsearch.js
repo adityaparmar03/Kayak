@@ -244,7 +244,7 @@ class Hotelsearch extends Component {
 
 
 function mapStateToProps(reducerdata) {
-    console.log(reducerdata);
+    //console.log(reducerdata);
 
     return {reducerdata};
 }

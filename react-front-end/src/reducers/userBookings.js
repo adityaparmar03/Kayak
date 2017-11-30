@@ -6,7 +6,7 @@ function userBooking(state = [], action) {
 
     switch (action.type) {
 
-        case Constants.SIGN_IN :
+        case Constants.USER_HISTORY :
             return action.booking
 
         default :

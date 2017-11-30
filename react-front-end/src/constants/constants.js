@@ -10,3 +10,5 @@ export const VIEW_FLIGHT_DETAIL="VIEW_FLIGHT_DETAIL";
 export const BOOK_FLIGHT="BOOK_FLIGHT";
 export const BOOK_CAR="BOOK_CAR";
 export const BOOK_HOTEL="BOOK_HOTEL";
+export const USER_HISTORY="USER_HISTORY";
+

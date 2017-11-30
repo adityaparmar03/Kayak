@@ -6,7 +6,7 @@ import {combineReducers} from 'redux';
 function carBookingHistory(state = [], action) {
 
     switch (action.type) {
-        case Constants.SIGN_IN :
+        case Constants.USER_HISTORY :
             return action.carBookings
 
         default :
@@ -19,7 +19,7 @@ function hotelBookingHistory(state = [], action) {
 
     switch (action.type) {
 
-        case Constants.SIGN_IN :
+        case Constants.USER_HISTORY :
             return action.hotelBookings
 
         default :
@@ -32,7 +32,7 @@ function flightBookingHistory(state = [], action) {
 
     switch (action.type) {
 
-        case Constants.SIGN_IN :
+        case Constants.USER_HISTORY :
             return action.flightBookings
 
         default :

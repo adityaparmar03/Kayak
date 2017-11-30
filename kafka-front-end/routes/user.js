@@ -44,9 +44,26 @@ router.get('/checkSession', function (req, res) {
 
     // var reqEmail = req.body.email;
     //  var reqPassword = req.body.password;
-   console.log(req.session);
+  // console.log(req.session);
    if(req.session.isloggedin){
-       res.send({"status":201});
+
+       var email = {"email":req.session.email}
+console.log(email);
+       kafka.make_request('getuserdata',email,function (err,results) {
+           if(err){
+               res.send({"status":401,"data":"error while fetching the data for logged in user"})
+           }
+           else {
+               if(results.code==200){
+                   res.send({"status":201,"data":results.data});
+               }
+               else{
+                   res.send({"status":401,"data":results.value});
+               }
+           }
+
+       })
+
    }
    else {
        res.send({"status": 401});
