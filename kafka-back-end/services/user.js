@@ -2,9 +2,49 @@
 
 //var bcrypt = require('bcrypt');
 var mysql = require('../models/mysql');
+var crypto = require('crypto');
+/**
+ * generates random string of characters i.e salt
+ * @function
+ * @param {number} length - Length of the random string.
+ */
+var genRandomString = function(length){
+    return crypto.randomBytes(Math.ceil(length/2))
+        .toString('hex') /** convert to hexadecimal format */
+        .slice(0,length);   /** return required number of characters */
+};
+
+/**
+ * hash password with sha512.
+ * @function
+ * @param {string} password - List of required fields.
+ * @param {string} salt - Data to be validated.
+ */
+var sha512 = function(password, salt){
+    var hash = crypto.createHmac('sha512', salt); /** Hashing algorithm sha512 */
+    hash.update(password);
+    var value = hash.digest('hex');
+    return {
+        salt:salt,
+        passwordHash:value
+    };
+};
+
+function saltHashPassword(userpassword) {
+    var salt = genRandomString(16); /** Gives us salt of length 16 */
+    var passwordData = sha512(userpassword, salt);
+    console.log('UserPassword = '+userpassword);
+    console.log('Passwordhash = '+passwordData.passwordHash);
+    console.log('nSalt = '+passwordData.salt);
+    return passwordData;
+}
+
+
+
+
 
 function login(msg, callback){
-
+    var reqPassword = saltHashPassword(msg.password);
     var res = {};
     console.log("++++++++++++++++++++");
     console.log(msg);
@@ -20,13 +60,16 @@ function login(msg, callback){
         }
         else {
             console.log("++++++++++++++++++++");
-               console.log(results);
+               console.log(results[0].password);
+               console.log("1234");
+               console.log(reqPassword);
             console.log("++++++++++++++++++++");
-            //if (results[0].password === msg.password) {
-            if(true){
+
+            if (results[0].password == reqPassword) {
+
                 res.code = "200";
                 res.value = "User valid";
-                res.data = results;
+                res.data = results[0].user_role;
             }
             else{
                 res.code = "402";
@@ -45,11 +88,12 @@ function login(msg, callback){
 
 function register(msg,callback){
 
+    var reqPassword = saltHashPassword(msg.password);
     var res={};
     console.log("------------");
     console.log(msg)
     console.log("------------");
-    var insertQuery="insert into USER(email,password,user_role) values('"+msg.email+"','"+msg.password+"','USER');";
+    var insertQuery="insert into USER(email,password,user_role) values('"+msg.email+"','"+reqPassword+"','USER');";
     console.log(insertQuery);
     var selectQuery = "select email from user where email='"+msg.email+"';";
 
