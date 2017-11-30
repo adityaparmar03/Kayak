@@ -196,12 +196,12 @@ class Flightsearch extends Component {
                             <div className="col-sm-1" style={{backgroundColor:'white'}}>
                                 <DatePicker hintText="Start Date" mode="landscape"
                                             onChange={this.handleStartDate.bind(this)}
-                                            floatingLabelText="Start Date"/>
+                                            floatingLabelText="Departure"/>
                             </div>
-                            <div className="col-sm-1" style={{backgroundColor:'white'}}>
+                            <div className="col-sm-1" style={{backgroundColor:'white',paddingRight:"2vw"}}>
                                 <DatePicker hintText="Return Date" mode="landscape"
                                             onChange={this.handleEndDate.bind(this)}
-                                            floatingLabelText="Return Date"/>
+                                            floatingLabelText="Return"/>
                             </div>
                             <div className="col-sm-3">
                                 <div style={{backgroundColor:'white'}} onClick={()=>this.handlepopup()}>

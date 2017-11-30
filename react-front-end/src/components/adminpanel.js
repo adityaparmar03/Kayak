@@ -5,9 +5,16 @@ import Nav from './nav'
 var ReactGridLayout = require('react-grid-layout');
 class AdminPanel extends Component {
 
-
+    constructor(props){
+        super(props);
+        this.state = {
+            // Data
+           
+             test:[1,2,3]
+        }
+     }
     componentWillMount(){
-       
+      
     }
 
     render(){
@@ -49,9 +56,39 @@ class AdminPanel extends Component {
                     
                         <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nihil odit magnam minima, soluta doloribus reiciendis molestiae placeat unde eos molestias. Quisquam aperiam, pariatur. Tempora, placeat ratione porro voluptate odit minima.</p>
                     </div>
-                    <div className="tab-pane fade" id="booking" role="tabpanel">
-                    
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nihil odit magnam minima, soluta doloribus reiciendis molestiae placeat unde eos molestias. Quisquam aperiam, pariatur. Tempora, placeat ratione porro voluptate odit minima.</p>
+                    <div className="tab-pane fade" id="vendor" role="tabpanel" style={{paddingLeft:"10vw",paddingRight:"10vw"}}>
+                       <div className="card" > 
+                       <table className="table table-responsive-sm">
+                           <thead>
+                                <tr>
+                                    <th>Vendor Name</th>
+                                    <th>Type of Service</th>
+                                    <th>Vendor API</th>
+                                    <th>Delete</th>
+                                </tr>
+                            </thead> 
+                            <tbody>
+                                {this.state.test.map(()=>(<tr>
+                                    <td>Vendor Name</td>
+                                    <td>
+                                    <select className="form-control">
+                                        <option value="volvo">Volvo</option>
+                                        <option value="saab">Saab</option>
+                                        <option value="mercedes">Mercedes</option>
+  
+                                    </select>
+                                    </td>
+                                    <td><input type="text" className="form-control"/></td>
+                                    <td><i className="fa fa-trash"/></td>
+                                    </tr>))
+
+                                }
+
+                            </tbody>      
+
+
+                       </table>  
+                       </div>  
                     </div>
                 
                 </div>
