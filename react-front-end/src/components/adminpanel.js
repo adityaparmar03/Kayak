@@ -37,6 +37,44 @@ class AdminPanel extends Component {
             });
     }
 
+    addVendor(data){
+
+        API.addVendorApi(data)
+            .then((status) => {
+                console.log(status);
+
+                if (status == 200) {
+
+                    this.props.addVendor(data);
+
+                    console.log("Success...")
+
+                }else if (res.status == 401) {
+
+                    //  this.props.history.push('/');
+                }
+            });
+    }
+
+    deleteVendor(index, data){
+
+        API.deleteVendorApi(data)
+            .then((status) => {
+                console.log(status);
+
+                if (status == 200) {
+
+                    this.props.deleteVendor(index);
+
+                    console.log("Success...")
+
+                }else if (res.status == 401) {
+
+                    //  this.props.history.push('/');
+                }
+            });
+    }
+
     render(){
         console.log(this.props.vendors)
         return(
@@ -133,7 +171,9 @@ function mapStateToProps(reducerdata) {
 function mapDispatchToProps(dispatch) {
     return {
 
-        getVendors : (data) => dispatch(Actions.getVendors(data))
+        getVendors : (data) => dispatch(Actions.getVendors(data)),
+        addVendor : (data) => dispatch(Actions.addVendor(data)),
+        deleteVendor : (data) => dispatch(Actions.deleteVendor(data))
     };
 }
 

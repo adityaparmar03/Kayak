@@ -2,15 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="38bb411a-1218-418b-87b7-afc28b7a9352" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/kafka-back-end/models/mysql.js" afterPath="$PROJECT_DIR$/kafka-back-end/models/mysql.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/kafka-back-end/services/hotel.js" afterPath="$PROJECT_DIR$/kafka-back-end/services/hotel.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/react-front-end/src/actions/action.js" afterPath="$PROJECT_DIR$/react-front-end/src/actions/action.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/react-front-end/src/components/adminpanel.js" afterPath="$PROJECT_DIR$/react-front-end/src/components/adminpanel.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/react-front-end/src/components/carsearch.js" afterPath="$PROJECT_DIR$/react-front-end/src/components/carsearch.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/react-front-end/src/components/hotelsearch.js" afterPath="$PROJECT_DIR$/react-front-end/src/components/hotelsearch.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/react-front-end/src/constants/constants.js" afterPath="$PROJECT_DIR$/react-front-end/src/constants/constants.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/react-front-end/src/reducers/rootreducer.js" afterPath="$PROJECT_DIR$/react-front-end/src/reducers/rootreducer.js" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -27,8 +19,8 @@
       <file leaf-file-name="adminpanel.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/react-front-end/src/components/adminpanel.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="144">
-              <caret line="104" column="39" lean-forward="false" selection-start-line="104" selection-start-column="36" selection-end-line="104" selection-end-column="78" />
+            <state relative-caret-position="60">
+              <caret line="60" column="28" lean-forward="false" selection-start-line="60" selection-start-column="28" selection-end-line="60" selection-end-column="28" />
               <folding>
                 <element signature="e#0#39#0" expanded="true" />
               </folding>
@@ -46,18 +38,6 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="hotel.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/kafka-back-end/services/hotel.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-252">
-              <caret line="40" column="0" lean-forward="true" selection-start-line="40" selection-start-column="0" selection-end-line="40" selection-end-column="0" />
-              <folding>
-                <marker date="1512042710168" expanded="true" signature="4079:4389" ph="{...}" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="userProfile.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/react-front-end/src/reducers/userProfile.js">
           <provider selected="true" editor-type-id="text-editor">
@@ -70,33 +50,21 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="userSearch.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/react-front-end/src/reducers/userSearch.js">
+      <file leaf-file-name="admin.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/kafka-front-end/routes/admin.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="168">
-              <caret line="43" column="1" lean-forward="true" selection-start-line="43" selection-start-column="1" selection-end-line="43" selection-end-column="1" />
+            <state relative-caret-position="2238">
+              <caret line="128" column="0" lean-forward="true" selection-start-line="128" selection-start-column="0" selection-end-line="128" selection-end-column="0" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="vendor.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/react-front-end/src/reducers/vendor.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="222">
-              <caret line="38" column="0" lean-forward="true" selection-start-line="38" selection-start-column="0" selection-end-line="38" selection-end-column="0" />
-              <folding>
-                <element signature="e#0#51#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="admin.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/kafka-front-end/routes/admin.js">
+        <entry file="file://$PROJECT_DIR$/kafka-back-end/services/admin.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="564">
-              <caret line="128" column="0" lean-forward="true" selection-start-line="128" selection-start-column="0" selection-end-line="128" selection-end-column="0" />
+            <state relative-caret-position="1230">
+              <caret line="128" column="12" lean-forward="true" selection-start-line="128" selection-start-column="12" selection-end-line="128" selection-end-column="12" />
               <folding />
             </state>
           </provider>
@@ -420,7 +388,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="95689000" />
+    <option name="totallyTimeSpent" value="96164000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="75" y="34" width="1281" height="732" extended-state="0" />
@@ -725,14 +693,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/kafka-back-end/services/admin.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="330">
-          <caret line="135" column="0" lean-forward="true" selection-start-line="113" selection-start-column="0" selection-end-line="135" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/react-front-end/src/api/API.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="150">
@@ -825,14 +785,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/kafka-front-end/routes/admin.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="564">
-          <caret line="128" column="0" lean-forward="true" selection-start-line="128" selection-start-column="0" selection-end-line="128" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/react-front-end/src/reducers/rootreducer.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="144">
@@ -905,10 +857,26 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/kafka-front-end/routes/admin.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2238">
+          <caret line="128" column="0" lean-forward="true" selection-start-line="128" selection-start-column="0" selection-end-line="128" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/kafka-back-end/services/admin.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1230">
+          <caret line="128" column="12" lean-forward="true" selection-start-line="128" selection-start-column="12" selection-end-line="128" selection-end-column="12" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/react-front-end/src/components/adminpanel.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="144">
-          <caret line="104" column="39" lean-forward="false" selection-start-line="104" selection-start-column="36" selection-end-line="104" selection-end-column="78" />
+        <state relative-caret-position="60">
+          <caret line="60" column="28" lean-forward="false" selection-start-line="60" selection-start-column="28" selection-end-line="60" selection-end-column="28" />
           <folding>
             <element signature="e#0#39#0" expanded="true" />
           </folding>
