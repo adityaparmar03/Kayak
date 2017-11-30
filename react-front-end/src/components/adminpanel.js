@@ -49,7 +49,7 @@ class AdminPanel extends Component {
 
                     console.log("Success...")
 
-                }else if (res.status == 401) {
+                }else if (status == 401) {
 
                     //  this.props.history.push('/');
                 }
@@ -68,7 +68,7 @@ class AdminPanel extends Component {
 
                     console.log("Success...")
 
-                }else if (res.status == 401) {
+                }else if (status == 401) {
 
                     //  this.props.history.push('/');
                 }
@@ -115,43 +115,86 @@ class AdminPanel extends Component {
                     
                         <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nihil odit magnam minima, soluta doloribus reiciendis molestiae placeat unde eos molestias. Quisquam aperiam, pariatur. Tempora, placeat ratione porro voluptate odit minima.</p>
                     </div>
-                    <div className="tab-pane fade" id="vendor" role="tabpanel" style={{paddingLeft:"10vw",paddingRight:"10vw"}}>
-                       <div className="card" > 
-                       <table className="table table-responsive-sm">
-                           <thead>
-                                <tr>
-                                    <th>Vendor Name</th>
-                                    <th>Type of Service</th>
-                                    <th>Vendor API</th>
+                    
+                        <div className="tab-pane fade" id="vendor" role="tabpanel" style={{paddingLeft:"1vw"}}>
+                         <div className="row">
+                             <div className="col-sm-8">
+                                <div className="card" > 
+                                    <table className="table table-responsive-sm">
+                                        <thead>
+                                                <tr>
+                                                    <th>Vendor Name</th>
+                                                    <th>Type of Service</th>
+                                                    <th>Vendor API</th>
 
-                                </tr>
-                            </thead> 
-                            <tbody>
-                                {this.props.vendors.map((vendor, index)=>(<tr>
-                                    <td>{vendor.vendorname}</td>
-                                    <td>
-                                    {/*<select className="form-control">
-                                        <option value="volvo">Volvo</option>
-                                        <option value="saab">Saab</option>
-                                        <option value="mercedes">Mercedes</option>
-  
-                                    </select>*/}
-                                        {vendor.servicetype}
-                                    </td>
-                                    <td>{/*<input type="text" className="form-control"/>*/}
-                                        {vendor.vendorapi}</td>
-                                    {/*<td><i className="fa fa-edit"/></td>*/}
-                                    <td><i className="fa fa-trash"/></td>
-                                    </tr>))
+                                                </tr>
+                                            </thead> 
+                                            <tbody>
+                                                {this.props.vendors.map((vendor, index)=>(<tr>
+                                                    <td>{vendor.vendorname}</td>
+                                                    <td>
+                                                    {/*<select className="form-control">
+                                                        <option value="volvo">Volvo</option>
+                                                        <option value="saab">Saab</option>
+                                                        <option value="mercedes">Mercedes</option>
+                
+                                                    </select>*/}
+                                                        {vendor.servicetype}
+                                                    </td>
+                                                    <td>{/*<input type="text" className="form-control"/>*/}
+                                                        {vendor.vendorapi}</td>
+                                                    {/*<td><i className="fa fa-edit"/></td>*/}
+                                                    <td><i className="fa fa-trash"/></td>
+                                                    </tr>))
 
-                                }
+                                                }
 
-                            </tbody>      
+                                            </tbody>      
 
 
-                       </table>  
-                       </div>  
-                    </div>
+                                    </table>  
+                                </div>  
+                             </div>
+                         
+                        <div className="col-sm-4">
+                        <div className="card" > 
+                                    <table className="table table-responsive-sm">
+                                        <thead>
+                                                <tr>
+                                                    <th>Add Vendor</th>
+                                                </tr>
+                                            </thead> 
+                                            <tbody>
+                                               <tr>
+                                                    <td>
+                                                    Vendor Name:    
+                                                    <input type="text" className="form-control"/> 
+                                                    Vendor EndPoints:  
+                                                    <input type="text" className="form-control"/>
+                                                       
+                                                     Type: <select className="form-control">
+                                                        <option value="volvo">Volvo</option>
+                                                        <option value="saab">Saab</option>
+                                                        <option value="mercedes">Mercedes</option>
+                
+                                                    </select>
+                                                    <button className="btn btn-default btn-lg btn-block">ADD</button>
+                       
+                                                    </td>
+                                                    
+                                               </tr>
+
+                                                
+
+                                            </tbody>      
+
+
+                                    </table>  
+                                </div> 
+                        </div>
+                        </div>
+                    </div>    
+                   
                 
                 </div>
                 
