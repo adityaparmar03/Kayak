@@ -12,7 +12,11 @@ class Flightlist extends Component {
     constructor(props){
         super(props);
         this.state = {
-             test:[1,2,3,4,5,1,2,3,4,5],
+            // Data
+            flightlist:"",
+
+             //UI State
+            
              low: 0,
              high:0,
              departure_start_time:0,
@@ -103,27 +107,28 @@ class Flightlist extends Component {
             return <span>&mdash;&mdash;&#9632;&mdash;&mdash;&#9632;&mdash;&mdash;</span> 
         }
     }
-    displayflights(){
+    displayflights(data,index){
         
             return(
                 <div className="jumbotron">
-
+                    <div data-toggle="collapse" data-target={'#details'+index}>
                     <div className="row">
                         <div className="col-sm-9">
                             <div className="row" style={{paddingTop:"4vh"}}>
-                                    <div className="col-sm-2" style={{textAlign:"center",fontSize:"12px",fontWeight:"bold"}}>
-                                        11/24
+                                    <div className="col-sm-0" style={{textAlign:"center",fontSize:"12px",fontWeight:"bold"}}>
+                                        
                                     </div>
-                                    <div className="col-sm-2" style={{textAlign:"center",fontSize:"12px",fontWeight:""}}>
+                                    <div className="col-sm-4" style={{textAlign:"center",fontSize:"12px",fontWeight:""}}>
                                     <div  style={{textAlign:"center"}}>
-                                                <img src={require('../image/hotelbg.jpg')} height="25vh" width="25vw" alt="logo"/>
-                                                <p>United</p>
+                                                <img src={'http://localhost:3001/images/'+data.imageurl} height="45vh" width="45vw" alt="logo"/>
+                                                <br/>
+                                                <p>{data.operator}</p>
                                        </div>
                                     </div>
                                     <div className="col-sm-2" style={{textAlign:"center",fontSize:"12px"}}>
                                        <div  style={{textAlign:"center"}}>
-                                                <p style={{fontWeight:"bold"}}>3:59 pm</p>
-                                                <p>SFO</p>
+                                                <p style={{fontWeight:"bold"}}>{data.flights.arrivaltime}</p>
+                                                <p>{data.flights.origin.city}</p>
                                        </div>
                                     </div>
                                     <div className="col-sm-2" style={{textAlign:"center"}}>
@@ -134,24 +139,65 @@ class Flightlist extends Component {
                                     </div>
                                     <div className="col-sm-2" style={{textAlign:"center",fontSize:"12px"}}>
                                     <div  style={{textAlign:"center"}}>
-                                             <p style={{fontWeight:"bold"}}>3:59 pm</p>
-                                             <p>SFO</p>
+                                             <p style={{fontWeight:"bold"}}>{data.flights.departuretime}</p>
+                                             <p>{data.flights.destination.city}</p>
                                     </div>
                                     </div>
                                     <div className="col-sm-2" style={{textAlign:"center"}}>
-                                        <p style={{fontSize:"12px",fontWeight:"bold"}}>LXI09</p>
+                                        <p style={{fontSize:"12px",fontWeight:"bold"}}>{data.flightId}</p>
                                     </div>
                                     
                             </div>
                          </div>
                         <div className="col-sm-3">
                                 <div style={{textAlign:"center"}}>
-                                <b style={{fontSize:"20px",fontWeight:"bold"}}>$251</b><br/>
-                                <b style={{fontSize:"12px",fontWeight:"bold"}}>Class</b><br/>
+                                <b style={{fontSize:"20px",fontWeight:"bold"}}>${data.class[0].price}</b><br/>
+                                <b style={{fontSize:"12px",fontWeight:"bold"}}>{data.class[0].type}</b><br/>
                                 <button style={{width:"12vw"}}className="btn btn-deep-orange">Book</button>
                                 </div>
 
                         </div>
+                    </div>
+                    </div>
+                    <div id={'details'+index} className="collapse">
+                        <div className="row">
+                                <div className="col-sm-9">
+                                    <div className="row">
+                                         <div className="col-sm-6">
+                                            <p><b>Origin</b></p> 
+                                            <p>Day: {data.flights.arrivalday}</p>
+                                            <p>Time: {data.flights.arrivaltime}</p>
+                                            <p>Airport: {data.flights.origin.airport}</p>
+                                            <p>City: {data.flights.origin.city}</p>
+                                            <p>State: {data.flights.origin.state}</p>
+                                           
+                                         </div>
+                                         <div className="col-sm-6">
+                                            <p><b>Destination</b></p> 
+                                            <p>Day: {data.flights.departureday}</p>
+                                            <p>Time: {data.flights.departuretime}</p>
+                                            <p>Airport: {data.flights.destination.airport}</p>
+                                            <p>City: {data.flights.destination.city}</p>
+                                            <p>State: {data.flights.destination.state}</p>
+                                         </div> 
+                                    </div>        
+
+                                </div>    
+                                <div className="col-sm-3">
+                        
+                                        <div style={{textAlign:"center"}}>
+                                        <b style={{fontSize:"20px",fontWeight:"bold"}}>${data.class[1].price}</b><br/>
+                                        <b style={{fontSize:"12px",fontWeight:"bold"}}>{data.class[1].type}</b><br/>
+                                        <button style={{width:"12vw"}}className="btn btn-deep-orange">Book</button>
+                                        </div>
+                                        <div style={{textAlign:"center"}}>
+                                        <b style={{fontSize:"20px",fontWeight:"bold"}}>${data.class[2].price}</b><br/>
+                                        <b style={{fontSize:"12px",fontWeight:"bold"}}>{data.class[2].type}</b><br/>
+                                        <button style={{width:"12vw"}}className="btn btn-deep-orange">Book</button>
+                                        </div>
+
+                                </div>
+                        </div>    
                     </div>
     
                  </div> 
@@ -231,7 +277,7 @@ class Flightlist extends Component {
                         
                     </div>
                     <div className="col-8" style={{ overflow: 'scroll', height: '90vh'}}>
-                         { this.state.test.map((this.displayflights),this)}     
+                         { this.props.flightlist.map((this.displayflights),this)}     
                     </div>
                    
                 </div>
@@ -243,9 +289,10 @@ class Flightlist extends Component {
 
 function mapStateToProps(reducerdata) {
     console.log(reducerdata.userSearch.flightSearch);
-
-    const flights=reducerdata.userSearch.flightSearch;
-    return {flights};
+    
+   
+    const flightlist=reducerdata.userSearch.flightSearch;
+    return {flightlist};
 }
 
 function mapDispatchToProps(dispatch) {
