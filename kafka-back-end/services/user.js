@@ -3,10 +3,6 @@
 //var bcrypt = require('bcrypt');
 var mysql = require('../models/mysql');
 
-
-
-
-
 function login(msg, callback){
 
     var res = {};
@@ -123,7 +119,9 @@ function update(msg,callback) {
 function bookinghistory(msg,callback){
     var res={};
     console.log(msg);
-
+    var car = [];
+    var flight = [];
+    var hotel = [];
     var search = "select booking_type,billing_amount,flight_trip_type,car_trip_type,room_type,billing_amount,billing_date,source_city,destination_city,booking_class from billing where user_email='"+msg.email+"';" ;
 
     mysql.fetchData(function (err,results) {
@@ -139,15 +137,25 @@ function bookinghistory(msg,callback){
                 var i ;
                 for (i = 0 ; i < results.length ; i++ ){
                     if(results[i].booking_type === "CAR"){
-                        res.car = results[i];
+                            console.log("#############");
+                            console.log(results[i]);
+                            console.log("#############");
+                        car.push(results[i]);
+                        console.log(car);
+
                     }
                     else if(results[i].booking_type === "FLIGHT"){
-                        res.flight = results[i];
+                        //res.flight = results[i];
+                        flight.push(results[i]);
+
                     }
                     else if(results[i].booking_type === "HOTEL"){
-                        res.hotel = results[i];
+                       hotel.push(results[i]);
                     }
                 }
+                res.car = car;
+                res.flight = flight;
+                res.hotel =hotel;
             }
 
             else{
@@ -162,6 +170,9 @@ function bookinghistory(msg,callback){
 }
 
 //****************************************************************************************************************************
+
+
+
 
 
 //****************************************************************************************************************************

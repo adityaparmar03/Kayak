@@ -85,7 +85,10 @@ function searchFlights(msg, callback){
 // Book the flight
 function bookFlight(msg, callback){
       var booking = msg.booking;
-      var email = "meenakshi.paryani@gmail.com"; //msg.email - TODO : uncomment this after stable
+      var email = msg.email //- TODO : uncomment this after stable
+    console.log("*****************");
+    console.log(email);
+    console.log("*****************");
       var tripType = booking.flight.triptype;
 
       console.log('-------booking is-------' + tripType);

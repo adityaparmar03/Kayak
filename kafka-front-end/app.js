@@ -61,6 +61,7 @@ app.use('/user', user);
 app.use('/car', car);
 app.use('/hotel', hotel);
 app.use('/flight', flight);
+app.use('/admin',admin);
 
 // app.get('/auth/google', passport_google.authenticate('google', { scope : ['profile', 'email'] }));
 // app.get('/auth/google/callback',
@@ -69,7 +70,7 @@ app.use('/flight', flight);
 //         failureRedirect : '/'      // status 401 redirect to register page. status 401
 //     }));
 
-app.use('/admin',admin);
+
 
 
 

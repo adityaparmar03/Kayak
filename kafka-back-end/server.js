@@ -73,6 +73,14 @@ consumer.on('message', function (message) {
 
             break;
 
+        case 'getallusers':
+            console.log("inside get user api topic");
+            admin.getusers(body,function(err,res){
+                response(data,res);
+                return;
+            })
+            break;
+
 
         case 'MmtCars':
         case 'AlamoCars':

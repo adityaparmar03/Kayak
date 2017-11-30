@@ -134,9 +134,28 @@ function getVendors(msg, callback){
 
 //}
 
+function getusers(msg,callback) {
+    var res = {};
+    var getQuery = "select first_name,last_name,email from user ; ";
+    mysql.fetchData(function (err,results) {
+        if(err){
+            res.code = 401;
+            res.value = "Error while fetching the data ";
+            console.log("inside the error "+ err);
+        }
+        else{
+            res.code = "200" ;
+            res.value = "User data fetched";
+            res.data=results;
+        } callback(null,res);
+
+    },getQuery)
+
+}
 
 
 //exports.updateBilling = updateBilling;
+exports.getusers = getusers;
 exports.addVendor = addVendor;
 exports.getVendors = getVendors;
 exports.deleteVendor = deleteVendor;

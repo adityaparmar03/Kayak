@@ -34,7 +34,7 @@ function searchHotels(msg, callback){
 // Book the Hotel
 function bookHotel(msg, callback){
       var booking = msg.booking;
-      var email = "meenakshi.paryani@gmail.com"; //msg.email - TODO : uncomment this after stable
+      var email = msg.email ; //- TODO : uncomment this after stable
 
       console.log('-------booking is-------');
       console.log(booking);
