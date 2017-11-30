@@ -2,9 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="38bb411a-1218-418b-87b7-afc28b7a9352" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/kafka-front-end/public/images/BMW.png" afterPath="$PROJECT_DIR$/kafka-front-end/public/images/BMW.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/kafka-front-end/public/images/lexus.png" afterPath="$PROJECT_DIR$/kafka-front-end/public/images/lexus.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/kafka-back-end/services/hotel.js" afterPath="$PROJECT_DIR$/kafka-back-end/services/hotel.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/react-front-end/src/api/API.js" afterPath="$PROJECT_DIR$/react-front-end/src/api/API.js" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -18,103 +17,53 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="AlamoCars.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/kafka-back-end/models/car/AlamoCars.js">
+      <file leaf-file-name="profile.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/react-front-end/src/components/profile.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="309">
-              <caret line="35" column="0" lean-forward="false" selection-start-line="35" selection-start-column="0" selection-end-line="35" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="CleartripCars.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/kafka-back-end/models/car/CleartripCars.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="242">
-              <caret line="29" column="21" lean-forward="false" selection-start-line="29" selection-start-column="21" selection-end-line="29" selection-end-column="21" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="MmtCars.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/kafka-back-end/models/car/MmtCars.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="189">
-              <caret line="29" column="21" lean-forward="false" selection-start-line="29" selection-start-column="21" selection-end-line="29" selection-end-column="21" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="CleartripFlights.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/kafka-back-end/models/flight/CleartripFlights.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="162">
-              <caret line="27" column="19" lean-forward="false" selection-start-line="27" selection-start-column="19" selection-end-line="27" selection-end-column="19" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="MmtHotels.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/kafka-back-end/models/hotel/MmtHotels.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="170">
-              <caret line="32" column="19" lean-forward="false" selection-start-line="32" selection-start-column="19" selection-end-line="32" selection-end-column="19" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="TripAdvisorHotels.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/kafka-back-end/models/hotel/TripAdvisorHotels.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="183">
-              <caret line="38" column="0" lean-forward="false" selection-start-line="38" selection-start-column="0" selection-end-line="38" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="mysql.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/kafka-back-end/models/mysql.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="234">
-              <caret line="13" column="0" lean-forward="true" selection-start-line="13" selection-start-column="0" selection-end-line="13" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="hotel.js" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/kafka-back-end/services/hotel.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="54">
-              <caret line="12" column="4" lean-forward="false" selection-start-line="12" selection-start-column="4" selection-end-line="12" selection-end-column="4" />
+            <state relative-caret-position="270">
+              <caret line="27" column="5" lean-forward="false" selection-start-line="27" selection-start-column="5" selection-end-line="27" selection-end-column="5" />
               <folding>
-                <marker date="1512031942926" expanded="true" signature="4007:4317" ph="{...}" />
+                <element signature="e#0#39#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="CleartripHotels.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/kafka-back-end/models/hotel/CleartripHotels.js">
+      <file leaf-file-name="adminpanel.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/react-front-end/src/components/adminpanel.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="439">
-              <caret line="32" column="19" lean-forward="false" selection-start-line="32" selection-start-column="19" selection-end-line="32" selection-end-column="19" />
+            <state relative-caret-position="226">
+              <caret line="53" column="262" lean-forward="false" selection-start-line="53" selection-start-column="262" selection-end-line="53" selection-end-column="262" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="MmtFlights.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/kafka-back-end/models/flight/MmtFlights.js">
+      <file leaf-file-name="SampleData" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/SampleData">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="340">
-              <caret line="34" column="8" lean-forward="false" selection-start-line="34" selection-start-column="8" selection-end-line="34" selection-end-column="8" />
+            <state relative-caret-position="2089">
+              <caret line="338" column="9" lean-forward="false" selection-start-line="338" selection-start-column="9" selection-end-line="338" selection-end-column="9" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="API.js" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/react-front-end/src/api/API.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="204">
+              <caret line="180" column="23" lean-forward="false" selection-start-line="180" selection-start-column="23" selection-end-line="180" selection-end-column="23" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="admin.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/kafka-front-end/routes/admin.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-833">
+              <caret line="13" column="33" lean-forward="false" selection-start-line="13" selection-start-column="24" selection-end-line="13" selection-end-column="33" />
               <folding />
             </state>
           </provider>
@@ -155,7 +104,6 @@
         <option value="$PROJECT_DIR$/react-front-end/src/index.js" />
         <option value="$PROJECT_DIR$/react-front-end/src/reducers/userSearch.js" />
         <option value="$PROJECT_DIR$/react-front-end/src/actions/action.js" />
-        <option value="$PROJECT_DIR$/kafka-back-end/services/admin.js" />
         <option value="$PROJECT_DIR$/kafka-back-end/server.js" />
         <option value="$PROJECT_DIR$/kafka-back-end/kafka/Connection.js" />
         <option value="$PROJECT_DIR$/kafka-front-end/routes/admin.js" />
@@ -167,7 +115,6 @@
         <option value="$PROJECT_DIR$/react-front-end/src/components/carlist.js" />
         <option value="$PROJECT_DIR$/react-front-end/src/components/hotellist.js" />
         <option value="$PROJECT_DIR$/react-front-end/src/components/hotelsearch.js" />
-        <option value="$PROJECT_DIR$/react-front-end/src/api/API.js" />
         <option value="$PROJECT_DIR$/scripts" />
         <option value="$PROJECT_DIR$/kafka-front-end/routes/flight.js" />
         <option value="$PROJECT_DIR$/kafka-back-end/services/flight.js" />
@@ -186,6 +133,8 @@
         <option value="$PROJECT_DIR$/kafka-back-end/models/car/MmtCars.js" />
         <option value="$PROJECT_DIR$/SampleData" />
         <option value="$PROJECT_DIR$/kafka-back-end/services/hotel.js" />
+        <option value="$PROJECT_DIR$/kafka-back-end/services/admin.js" />
+        <option value="$PROJECT_DIR$/react-front-end/src/api/API.js" />
       </list>
     </option>
   </component>
@@ -420,18 +369,19 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="92262000" />
+    <option name="totallyTimeSpent" value="92794000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="75" y="34" width="1281" height="732" extended-state="0" />
+    <editor active="true" />
     <layout>
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.24960254" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.24960254" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.2172471" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.3018242" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
@@ -565,20 +515,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/kafka-back-end/services/admin.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="314">
-          <caret line="106" column="33" lean-forward="false" selection-start-line="106" selection-start-column="33" selection-end-line="106" selection-end-column="33" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/kafka-front-end/routes/admin.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="242">
-          <caret line="138" column="74" lean-forward="false" selection-start-line="138" selection-start-column="74" selection-end-line="138" selection-end-column="74" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/kafka-back-end/models/User.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="198">
@@ -618,13 +554,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/react-front-end/src/api/API.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="3654">
-          <caret line="203" column="86" lean-forward="false" selection-start-line="203" selection-start-column="86" selection-end-line="203" selection-end-column="86" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/react-front-end/src/components/hotelsearch.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="774">
@@ -634,8 +563,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/SampleData">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="406">
-          <caret line="345" column="0" lean-forward="true" selection-start-line="345" selection-start-column="0" selection-end-line="345" selection-end-column="0" />
+        <state relative-caret-position="2089">
+          <caret line="338" column="9" lean-forward="false" selection-start-line="338" selection-start-column="9" selection-end-line="338" selection-end-column="9" />
           <folding />
         </state>
       </provider>
@@ -645,7 +574,7 @@
         <state relative-caret-position="180">
           <caret line="118" column="87" lean-forward="false" selection-start-line="118" selection-start-column="67" selection-end-line="118" selection-end-column="87" />
           <folding>
-            <element signature="e#0#39#0" expanded="true" />
+            <element signature="e#0#39#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -690,16 +619,16 @@
         <state relative-caret-position="702">
           <caret line="96" column="0" lean-forward="false" selection-start-line="96" selection-start-column="0" selection-end-line="96" selection-end-column="0" />
           <folding>
-            <marker date="1512003844639" expanded="true" signature="1559:1983" ph="{...}" />
-            <marker date="1512003844639" expanded="true" signature="1798:1983" ph="{...}" />
-            <marker date="1512003844639" expanded="true" signature="1886:1983" ph="{...}" />
-            <marker date="1512003844639" expanded="true" signature="1925:1983" ph="{...}" />
-            <marker date="1512003844639" expanded="true" signature="3995:4250" ph="{...}" />
-            <marker date="1512003844639" expanded="true" signature="3995:4256" ph="{...}" />
-            <marker date="1512003844639" expanded="true" signature="3995:4261" ph="{...}" />
-            <marker date="1512003844639" expanded="true" signature="4068:4148" ph="{...}" />
-            <marker date="1512003844639" expanded="true" signature="4166:4240" ph="{...}" />
-            <marker date="1512003844639" expanded="true" signature="4474:4572" ph="{...}" />
+            <marker date="1512040407629" expanded="true" signature="2065:2489" ph="{...}" />
+            <marker date="1512040407629" expanded="true" signature="2304:2489" ph="{...}" />
+            <marker date="1512040407629" expanded="true" signature="2392:2489" ph="{...}" />
+            <marker date="1512040407629" expanded="true" signature="2431:2489" ph="{...}" />
+            <marker date="1512040407629" expanded="true" signature="4501:4756" ph="{...}" />
+            <marker date="1512040407629" expanded="true" signature="4501:4762" ph="{...}" />
+            <marker date="1512040407629" expanded="true" signature="4501:4767" ph="{...}" />
+            <marker date="1512040407629" expanded="true" signature="4574:4654" ph="{...}" />
+            <marker date="1512040407629" expanded="true" signature="4672:4746" ph="{...}" />
+            <marker date="1512040407629" expanded="true" signature="4980:5078" ph="{...}" />
           </folding>
         </state>
       </provider>
@@ -709,15 +638,15 @@
         <state relative-caret-position="224">
           <caret line="48" column="22" lean-forward="false" selection-start-line="48" selection-start-column="22" selection-end-line="48" selection-end-column="22" />
           <folding>
-            <marker date="1512003844623" expanded="true" signature="413:5276" ph="{...}" />
-            <marker date="1512003844623" expanded="true" signature="620:5274" ph="{...}" />
-            <marker date="1512003844623" expanded="true" signature="4217:4525" ph="..." />
-            <marker date="1512003844623" expanded="true" signature="4308:4504" ph="{...}" />
-            <marker date="1512003844623" expanded="true" signature="4552:4858" ph="..." />
-            <marker date="1512003844623" expanded="true" signature="4641:4837" ph="{...}" />
-            <marker date="1512003844623" expanded="true" signature="4883:5185" ph="..." />
-            <marker date="1512003844623" expanded="true" signature="4968:5164" ph="{...}" />
-            <marker date="1512003844623" expanded="true" signature="5203:5266" ph="..." />
+            <marker date="1512040407617" expanded="true" signature="413:5813" ph="{...}" />
+            <marker date="1512040407617" expanded="true" signature="620:5811" ph="{...}" />
+            <marker date="1512040407617" expanded="true" signature="4754:5062" ph="..." />
+            <marker date="1512040407617" expanded="true" signature="4845:5041" ph="{...}" />
+            <marker date="1512040407617" expanded="true" signature="5089:5395" ph="..." />
+            <marker date="1512040407617" expanded="true" signature="5178:5374" ph="{...}" />
+            <marker date="1512040407617" expanded="true" signature="5420:5722" ph="..." />
+            <marker date="1512040407617" expanded="true" signature="5505:5701" ph="{...}" />
+            <marker date="1512040407617" expanded="true" signature="5740:5803" ph="..." />
           </folding>
         </state>
       </provider>
@@ -727,28 +656,28 @@
         <state relative-caret-position="-582">
           <caret line="122" column="9" lean-forward="false" selection-start-line="122" selection-start-column="9" selection-end-line="122" selection-end-column="9" />
           <folding>
-            <marker date="1512003844623" expanded="true" signature="1242:1728" ph="{...}" />
-            <marker date="1512003844623" expanded="true" signature="1616:1728" ph="{...}" />
-            <marker date="1512003844623" expanded="true" signature="1633:1728" ph="{...}" />
-            <marker date="1512003844623" expanded="true" signature="4486:4622" ph="{...}" />
-            <marker date="1512003844623" expanded="true" signature="4486:4656" ph="{...}" />
-            <marker date="1512003844623" expanded="true" signature="4486:4668" ph="{...}" />
-            <marker date="1512003844623" expanded="true" signature="4503:4612" ph="{...}" />
-            <marker date="1512003844623" expanded="true" signature="5133:5308" ph="{...}" />
-            <marker date="1512003844623" expanded="true" signature="5518:5928" ph="{...}" />
-            <marker date="1512003844623" expanded="true" signature="5543:5720" ph="{...}" />
-            <marker date="1512003844623" expanded="true" signature="5741:5894" ph="{...}" />
+            <marker date="1512040407625" expanded="true" signature="1242:1728" ph="{...}" />
+            <marker date="1512040407625" expanded="true" signature="1616:1728" ph="{...}" />
+            <marker date="1512040407625" expanded="true" signature="1633:1728" ph="{...}" />
+            <marker date="1512040407625" expanded="true" signature="4486:4622" ph="{...}" />
+            <marker date="1512040407625" expanded="true" signature="4486:4656" ph="{...}" />
+            <marker date="1512040407625" expanded="true" signature="4486:4668" ph="{...}" />
+            <marker date="1512040407625" expanded="true" signature="4503:4612" ph="{...}" />
+            <marker date="1512040407625" expanded="true" signature="5133:5308" ph="{...}" />
+            <marker date="1512040407625" expanded="true" signature="5518:5928" ph="{...}" />
+            <marker date="1512040407625" expanded="true" signature="5543:5720" ph="{...}" />
+            <marker date="1512040407625" expanded="true" signature="5741:5894" ph="{...}" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/kafka-back-end/services/car.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-810">
-          <caret line="12" column="5" lean-forward="false" selection-start-line="12" selection-start-column="5" selection-end-line="12" selection-end-column="5" />
+        <state relative-caret-position="222">
+          <caret line="15" column="0" lean-forward="false" selection-start-line="15" selection-start-column="0" selection-end-line="15" selection-end-column="0" />
           <folding>
-            <marker date="1512025625948" expanded="true" signature="1880:1933" ph="{...}" />
-            <marker date="1512025625948" expanded="true" signature="5765:5928" ph="{...}" />
+            <marker date="1512037548599" expanded="true" signature="1880:1933" ph="{...}" />
+            <marker date="1512037548599" expanded="true" signature="5765:5928" ph="{...}" />
           </folding>
         </state>
       </provider>
@@ -757,78 +686,11 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="432">
           <caret line="150" column="0" lean-forward="false" selection-start-line="150" selection-start-column="0" selection-end-line="150" selection-end-column="0" />
-          <folding>
-            <marker date="1512025625948" expanded="true" signature="781:1560" ph="{...}" />
-            <marker date="1512025625948" expanded="true" signature="859:1133" ph="{...}" />
-            <marker date="1512025625948" expanded="true" signature="867:1132" ph="{&quot;flights.origin.city&quot;: origincity...}" />
-            <marker date="1512025625948" expanded="true" signature="1172:1552" ph="{...}" />
-            <marker date="1512025625948" expanded="true" signature="1197:1345" ph="{...}" />
-            <marker date="1512025625948" expanded="true" signature="1363:1541" ph="{...}" />
-            <marker date="1512025625948" expanded="true" signature="1570:2428" ph="{...}" />
-            <marker date="1512025625948" expanded="true" signature="1593:2017" ph="{...}" />
-            <marker date="1512025625948" expanded="true" signature="1604:2016" ph="{...}" />
-            <marker date="1512025625948" expanded="true" signature="1617:2015" ph="{&quot;origin.city&quot;: origincity...}" />
-            <marker date="1512025625948" expanded="true" signature="2043:2420" ph="{...}" />
-            <marker date="1512025625948" expanded="true" signature="2066:2214" ph="{...}" />
-            <marker date="1512025625948" expanded="true" signature="2232:2409" ph="{...}" />
-            <marker date="1512025625948" expanded="true" signature="2537:2716" ph="{...}" />
-            <marker date="1512025625948" expanded="true" signature="2804:4709" ph="{...}" />
-            <marker date="1512025625948" expanded="true" signature="2966:4698" ph="{...}" />
-            <marker date="1512025625948" expanded="true" signature="3033:4485" ph="{...}" />
-            <marker date="1512025625948" expanded="true" signature="3057:3134" ph="//..." />
-            <marker date="1512025625948" expanded="true" signature="3891:4452" ph="{...}" />
-            <marker date="1512025625948" expanded="true" signature="3926:4179" ph="{...}" />
-            <marker date="1512025625948" expanded="true" signature="4210:4427" ph="{...}" />
-            <marker date="1512025625948" expanded="true" signature="4489:4684" ph="{...}" />
-            <marker date="1512025625948" expanded="true" signature="4721:7143" ph="{...}" />
-            <marker date="1512025625948" expanded="true" signature="4997:7133" ph="{...}" />
-            <marker date="1512025625948" expanded="true" signature="5070:6862" ph="{...}" />
-            <marker date="1512025625948" expanded="true" signature="5237:5311" ph="//..." />
-            <marker date="1512025625948" expanded="true" signature="6278:6830" ph="{...}" />
-            <marker date="1512025625948" expanded="true" signature="6312:6560" ph="{...}" />
-            <marker date="1512025625948" expanded="true" signature="6590:6806" ph="{...}" />
-            <marker date="1512025625948" expanded="true" signature="6866:7120" ph="{...}" />
-            <marker date="1512025625948" expanded="true" signature="7188:7805" ph="{...}" />
-            <marker date="1512025625948" expanded="true" signature="7247:7781" ph="{...}" />
-            <marker date="1512025625948" expanded="true" signature="7974:8655" ph="{...}" />
-            <marker date="1512025625948" expanded="true" signature="8048:8644" ph="{...}" />
-            <marker date="1512025625948" expanded="true" signature="8274:8433" ph="{...}" />
-            <marker date="1512025625948" expanded="true" signature="8456:8630" ph="{...}" />
-            <marker date="1512025625948" expanded="true" signature="8925:10339" ph="{...}" />
-            <marker date="1512025625948" expanded="true" signature="9316:10145" ph="{...}" />
-            <marker date="1512025625948" expanded="true" signature="9610:10124" ph="{...}" />
-            <marker date="1512025625948" expanded="true" signature="9757:9842" ph="{...}" />
-            <marker date="1512025625948" expanded="true" signature="9877:10098" ph="{...}" />
-            <marker date="1512025625948" expanded="true" signature="10149:10324" ph="{...}" />
-            <marker date="1512025625948" expanded="true" signature="12887:13215" ph="{...}" />
-            <marker date="1512025625948" expanded="true" signature="11052:11437" ph="{...}" />
-            <marker date="1512025625948" expanded="true" signature="12887:12987" ph="{...}" />
-            <marker date="1512025625948" expanded="true" signature="13036:13191" ph="{...}" />
-            <marker date="1512025625948" expanded="true" signature="13057:13096" ph="{...}" />
-            <marker date="1512025625948" expanded="true" signature="13112:13182" ph="{...}" />
-            <marker date="1512025625948" expanded="true" signature="13293:13530" ph="{...}" />
-            <marker date="1512025625948" expanded="true" signature="13352:13429" ph="{...}" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/react-front-end/src/components/adminpanel.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="72">
-          <caret line="4" column="0" lean-forward="false" selection-start-line="4" selection-start-column="0" selection-end-line="4" selection-end-column="0" />
-          <folding>
-            <element signature="e#0#39#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/react-front-end/package-lock.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="198">
-          <caret line="206" column="0" lean-forward="false" selection-start-line="206" selection-start-column="0" selection-end-line="206" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/react-front-end/package-lock.json" />
     <entry file="file://$PROJECT_DIR$/react-front-end/package.json">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="146">
@@ -847,7 +709,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="270">
           <caret line="26" column="19" lean-forward="false" selection-start-line="26" selection-start-column="19" selection-end-line="26" selection-end-column="19" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -855,7 +716,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="170">
           <caret line="32" column="19" lean-forward="false" selection-start-line="32" selection-start-column="19" selection-end-line="32" selection-end-column="19" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -863,7 +723,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="183">
           <caret line="38" column="0" lean-forward="false" selection-start-line="38" selection-start-column="0" selection-end-line="38" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -887,7 +746,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="162">
           <caret line="27" column="19" lean-forward="false" selection-start-line="27" selection-start-column="19" selection-end-line="27" selection-end-column="19" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -903,7 +761,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="439">
           <caret line="32" column="19" lean-forward="false" selection-start-line="32" selection-start-column="19" selection-end-line="32" selection-end-column="19" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -919,7 +776,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="234">
           <caret line="13" column="0" lean-forward="true" selection-start-line="13" selection-start-column="0" selection-end-line="13" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -928,8 +784,40 @@
         <state relative-caret-position="54">
           <caret line="12" column="4" lean-forward="false" selection-start-line="12" selection-start-column="4" selection-end-line="12" selection-end-column="4" />
           <folding>
-            <marker date="1512031942926" expanded="true" signature="4007:4317" ph="{...}" />
+            <marker date="1512040407625" expanded="true" signature="4146:4456" ph="{...}" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/kafka-back-end/services/admin.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="330">
+          <caret line="135" column="0" lean-forward="true" selection-start-line="113" selection-start-column="0" selection-end-line="135" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/react-front-end/src/components/adminpanel.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="226">
+          <caret line="53" column="262" lean-forward="false" selection-start-line="53" selection-start-column="262" selection-end-line="53" selection-end-column="262" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/kafka-front-end/routes/admin.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-833">
+          <caret line="13" column="33" lean-forward="false" selection-start-line="13" selection-start-column="24" selection-end-line="13" selection-end-column="33" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/react-front-end/src/api/API.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="204">
+          <caret line="180" column="23" lean-forward="false" selection-start-line="180" selection-start-column="23" selection-end-line="180" selection-end-column="23" />
+          <folding />
         </state>
       </provider>
     </entry>

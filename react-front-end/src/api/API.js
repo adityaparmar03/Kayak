@@ -141,43 +141,60 @@ export const clickTracker = (payload) =>
         });
 
 
-        
+export const addVendorApi = (payload) =>
+    fetch(`${api}/admin/addvendor`, {
+        method: 'POST',
+        headers: {
+            ...headers,
+            'Content-Type': 'application/json'
+        },
+        credentials:'include',
+        body: JSON.stringify(payload)
+    }).then(res => {
 
-// export const searchFlights = (payload) =>
-//     fetch(`${api}/flight/flights?origincity=San Jose&originstate=CA&destinationcity=Delhi&destinationstate=Delhi&triptype=One-Way&flightclass=economy`, {
-//         method: 'GET',
-//         headers: {
-//             ...headers,
-//             'Content-Type': 'application/json'
-//         },
-//         credentials:'include'
-//     }).then(res => {
-
-//         return res.json();
-//     })
-//         .catch(error => {
-//             console.log("This is an API error");
-//             return error;
-//         });
-
-
-// export const searchHotels = (payload) =>
-//     fetch(`${api}/hotel/hotels?city=San Jose&state=CA&roomtype=delux`, {
-//         method: 'GET',
-//         headers: {
-//             ...headers,
-//             'Content-Type': 'application/json'
-//         },
-//         credentials:'include'
-//     }).then(res => {
+        return res.status;
+    })
+        .catch(error => {
+            console.log("This is an API error");
+            return error;
+        });
 
 
-//         return res.json();
-//     })
-//         .catch(error => {
-//             console.log("This is an API error");
-//             return error;
-//         });
+export const deleteVendorApi = (payload) =>
+    fetch(`${api}/admin/deletevendor`, {
+        method: 'POST',
+        headers: {
+            ...headers,
+            'Content-Type': 'application/json'
+        },
+        credentials:'include',
+        body: JSON.stringify(payload)
+    }).then(res => {
+
+        return res.status;
+    })
+        .catch(error => {
+            console.log("This is an API error");
+            return error;
+        });
+
+export const getVendors = (payload) =>
+    fetch(`${api}/admin/vendors`, {
+        method: 'GET',
+        headers: {
+            ...headers,
+            'Content-Type': 'application/json'
+        },
+        credentials:'include'
+    }).then(res => {
+
+        return res.json();
+    })
+        .catch(error => {
+            console.log("This is an API error");
+            return error;
+        });
+
 
 
 export const searchFlights = (payload) =>
