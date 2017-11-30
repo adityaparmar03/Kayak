@@ -1,3 +1,4 @@
+var mysql = require('../models/mysql');
 
 
 // Search for all hotels on the basis of city, state and room type

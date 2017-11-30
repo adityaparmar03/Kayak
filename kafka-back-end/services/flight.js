@@ -76,7 +76,7 @@ function searchFlights(msg, callback){
         });
     }
 
-    var searchhistory = new SearchHistory();
+  //  var searchhistory = new SearchHistory();
 
  }
 
