@@ -3,6 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="38bb411a-1218-418b-87b7-afc28b7a9352" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/kafka-back-end/services/hotel.js" afterPath="$PROJECT_DIR$/kafka-back-end/services/hotel.js" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -56,18 +57,6 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="flightlist.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/react-front-end/src/components/flightlist.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="180">
-              <caret line="118" column="87" lean-forward="false" selection-start-line="118" selection-start-column="67" selection-end-line="118" selection-end-column="87" />
-              <folding>
-                <element signature="e#0#39#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="MmtHotels.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/kafka-back-end/models/hotel/MmtHotels.js">
           <provider selected="true" editor-type-id="text-editor">
@@ -88,12 +77,24 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="mysql.js" pinned="false" current-in-tab="true">
+      <file leaf-file-name="mysql.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/kafka-back-end/models/mysql.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="198">
-              <caret line="11" column="13" lean-forward="true" selection-start-line="0" selection-start-column="0" selection-end-line="54" selection-end-column="0" />
+            <state relative-caret-position="234">
+              <caret line="13" column="0" lean-forward="true" selection-start-line="13" selection-start-column="0" selection-end-line="13" selection-end-column="0" />
               <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="hotel.js" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/kafka-back-end/services/hotel.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="252">
+              <caret line="14" column="60" lean-forward="false" selection-start-line="14" selection-start-column="60" selection-end-line="14" selection-end-column="60" />
+              <folding>
+                <marker date="1512027794622" expanded="true" signature="4005:4315" ph="{...}" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -160,7 +161,6 @@
         <option value="$PROJECT_DIR$/react-front-end/src/components/flightsearch.js" />
         <option value="$PROJECT_DIR$/react-front-end/src/components/flightlist.js" />
         <option value="$PROJECT_DIR$/kafka-back-end/models/User.js" />
-        <option value="$PROJECT_DIR$/kafka-back-end/services/hotel.js" />
         <option value="$PROJECT_DIR$/kafka-back-end/services/car.js" />
         <option value="$PROJECT_DIR$/react-front-end/src/components/carsearch.js" />
         <option value="$PROJECT_DIR$/react-front-end/src/components/carlist.js" />
@@ -184,6 +184,7 @@
         <option value="$PROJECT_DIR$/kafka-back-end/models/car/CleartripCars.js" />
         <option value="$PROJECT_DIR$/kafka-back-end/models/car/MmtCars.js" />
         <option value="$PROJECT_DIR$/SampleData" />
+        <option value="$PROJECT_DIR$/kafka-back-end/services/hotel.js" />
       </list>
     </option>
   </component>
@@ -417,7 +418,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="89628000" />
+    <option name="totallyTimeSpent" value="90050000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="75" y="34" width="1281" height="732" extended-state="0" />
@@ -834,21 +835,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/kafka-back-end/services/hotel.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1170">
-          <caret line="65" column="20" lean-forward="false" selection-start-line="65" selection-start-column="20" selection-end-line="65" selection-end-column="20" />
-          <folding>
-            <marker date="1512025625948" expanded="true" signature="4043:4353" ph="{...}" />
-            <marker date="1512025625948" expanded="true" signature="4174:4329" ph="{...}" />
-            <marker date="1512025625948" expanded="true" signature="4195:4234" ph="{...}" />
-            <marker date="1512025625948" expanded="true" signature="4250:4320" ph="{...}" />
-            <marker date="1512025625948" expanded="true" signature="4431:4659" ph="{...}" />
-            <marker date="1512025625948" expanded="true" signature="4490:4567" ph="{...}" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/kafka-back-end/models/searchhistory.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-364">
@@ -930,9 +916,19 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/kafka-back-end/models/mysql.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="198">
-          <caret line="11" column="13" lean-forward="true" selection-start-line="0" selection-start-column="0" selection-end-line="54" selection-end-column="0" />
+        <state relative-caret-position="234">
+          <caret line="13" column="0" lean-forward="true" selection-start-line="13" selection-start-column="0" selection-end-line="13" selection-end-column="0" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/kafka-back-end/services/hotel.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="252">
+          <caret line="14" column="60" lean-forward="false" selection-start-line="14" selection-start-column="60" selection-end-line="14" selection-end-column="60" />
+          <folding>
+            <marker date="1512027794622" expanded="true" signature="4005:4315" ph="{...}" />
+          </folding>
         </state>
       </provider>
     </entry>

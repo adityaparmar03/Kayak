@@ -12,8 +12,7 @@ function searchHotels(msg, callback){
     var state = msg.searchcriteria.state;
     var occupancy = Number(msg.searchcriteria.occupancy);
 
-    hotel.find({'address.city': city, 'address.state': state,
-        'rooms.occupancy': occupancy }, function (err, hotels) {
+    hotel.find({'address.city': city, 'address.state': state }, function (err, hotels) {
 
         if (err) {
             throw err;
