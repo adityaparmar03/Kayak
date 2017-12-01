@@ -11,6 +11,7 @@ var hotel = require('./routes/hotel');
 var user = require('./routes/user');
 var car = require('./routes/car');
 var flight = require('./routes/flight');
+var analytics = require('./routes/analytics');
 
 var mongoSessionURL = "mongodb://localhost:27017/sessions";
 var expressSessions = require("express-session");
@@ -62,6 +63,7 @@ app.use('/car', car);
 app.use('/hotel', hotel);
 app.use('/flight', flight);
 app.use('/admin',admin);
+app.use('/analytics',analytics);
 
 // app.get('/auth/google', passport_google.authenticate('google', { scope : ['profile', 'email'] }));
 // app.get('/auth/google/callback',

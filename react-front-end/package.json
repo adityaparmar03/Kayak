@@ -13,6 +13,7 @@
     "react": "^15.6.1",
     "react-dom": "^15.6.1",
     "react-file-input": "^0.2.5",
+    "react-google-charts": "^1.5.5",
     "react-grid-layout": "^0.16.0",
     "react-panels": "2.5.1",
     "react-redux": "^5.0.6",

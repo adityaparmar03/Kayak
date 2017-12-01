@@ -156,6 +156,8 @@ import Carlist from "./components/carlist";
 import Profile from "./components/profile";
 import AdminPanel from "./components/adminpanel";
 import FlightBooking from "./components/flightbooking";
+import UserAnalytics from "./components/UserAnalytics";
+import SalesAnalytics from "./components/SalesAnalytics";
 
 
 import { createStore } from 'redux';
@@ -186,7 +188,9 @@ ReactDOM.render(
                 <Route exact path="/profile" component={Profile}/>
                 <Route exact path="/admin" component={AdminPanel}/>
                 <Route exact path="/flightbooking" component={FlightBooking}/>
-       
+                <Route exact path="/useranalytics" component={UserAnalytics}/>
+                <Route exact path="/salesanalytics" component={SalesAnalytics}/>
+
         
             </div>
             </MuiThemeProvider>

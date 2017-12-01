@@ -72,7 +72,7 @@ class Tracker extends Component {
             <div className="App">
                 <header className="App-header">
                     <img src={logo} className="App-logo" alt="logo" />
-                    <h1 className="App-title">Welcome to React</h1>
+                    <h1 className="App-titlels">Welcome to React</h1>
                 </header>
                 <p className="App-intro">
                     To get started, edit <code>src/App.js</code> and save to reload.
@@ -83,7 +83,7 @@ class Tracker extends Component {
                         name="share"
                         id="Button1"
                         value="share"
-                        onClick={() => {this.clickHandler({userId:"userId",sessionId:"sessionId",eventTime:this.timeConverter(date.getTime()),eventName:"eventName",pageId:"pageId",buttonId:"buttonId",objectId:"objectId"})}}>
+                        onClick={() => {this.clickHandler({userId:"userId",sessionId:"sessionId",eventTime:this.timeConverter(date.getTime()),eventName:"eventName",pageId:"pageId",buttonId:"buttonId",objectId:"objectId",pageNav:this.props.pageNav+"pageId"})}}>
                     Track My Clicks
                 </button>
             </div>
