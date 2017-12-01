@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import {Link,withRouter} from 'react-router-dom';
 import PropTypes from 'prop-types';
 import Nav from './nav'
-import adminpanelDashboard from './adminpaneldashboard'
+import AdminPanelDashboard from './adminpaneldashboard'
 import AdminPanelUsers from './adminpanelusers'
 import AdminPanelBookings from './adminpanelbookings'
 import AdminPanelVendors from './adminpanelvendors'
@@ -47,8 +47,8 @@ class AdminPanel extends Component {
                 <div className="tab-content">
                 
                     <div className="tab-pane fade in show active" id="dashboard" role="tabpanel">
-                    
-                    <adminpanelDashboard/>
+                   
+                    <AdminPanelDashboard/>
 
                      </div>
                 

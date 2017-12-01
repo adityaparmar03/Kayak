@@ -14,7 +14,7 @@ class PieChart extends React.Component {
                 title: "Percentage of user's visiting a particular page",
                 is3D: true
             },
-            width: "40%",
+            //width: "40%",
             height: "500px",
             data : [
                 ["Page Name", "% of users visits"],
