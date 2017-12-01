@@ -10,7 +10,8 @@ var initialstate = {
     address:null,
     zipcode:null,
     phonenumber:null,
-    imgpath:" "
+    imgpath:null,
+    creditcard:null
 
 }
 
@@ -35,7 +36,9 @@ function userProfile(state = initialstate, action) {
                 lastname:action.payload.data[0].last_name,
                 phonenumber:action.payload.data[0].phone,
                 zipcode:action.payload.data[0].zipcode,
-                imgpath:action.payload.data[0].profile_image_path
+                imgpath:action.payload.data[0].profile_image_path,
+                address:action.payload.data[0].street_address,
+                creditcard:action.payload.data[0].credit_card_number
             }
 
 

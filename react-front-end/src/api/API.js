@@ -7,6 +7,9 @@ const headers = {
 
 //Sample
 
+
+
+
 //************************************************************************************************
 /*payload = {
 email
@@ -56,6 +59,31 @@ export const doRegister = (payload) =>
     });
 
 //************************************************************************************************
+
+//************************************************************************************************
+//payload = {
+//email
+//password
+//}
+export const gethistory = (payload) =>
+    fetch(`${api}/user/bookinghistory`, {
+        method: 'POST',
+        headers: {
+            ...headers,
+            'Content-Type': 'application/json'
+        },
+       // body: JSON.stringify(payload),
+        credentials:'include'
+    }).then(res => {
+        return res.json();
+    })
+        .catch(error => {
+            console.log("This is error");
+            return error;
+        });
+
+//************************************************************************************************
+
 
 
 export const checkSession = () =>

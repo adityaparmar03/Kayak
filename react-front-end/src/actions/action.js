@@ -17,6 +17,14 @@ export function flightSearch(flights) {
     }
 };
 
+export function bokinghistory(data){
+    return {
+        type:Constants.USER_HISTORY,
+        payload:data
+
+    }
+
+}
 
 export function hotelSearch(hotels) {
 
