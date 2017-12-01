@@ -16,7 +16,7 @@ class Flightlist extends Component {
             flightlist:"",
 
              //UI State
-            
+
              low: 0,
              high:0,
              departure_start_time:0,
@@ -28,7 +28,7 @@ class Flightlist extends Component {
              valuesDepartureTime:[]
         }
      }
-      maxprice = 0; 
+      maxprice = 0;
       minprice = 0;
       maxarrivaltime = 1439;
       minarrivaltime = 0
@@ -46,7 +46,7 @@ class Flightlist extends Component {
             minute="0"+minute;
         }
         return hour+":"+minute
-    }  
+    }
     componentWillMount(){
 
         const payload = JSON.parse(localStorage.getItem("flightsearchcriteria"));
@@ -98,18 +98,19 @@ class Flightlist extends Component {
     });
     displaystopline(stop){
         if(stop=="nonstop"){
-            return <span>&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;</span> 
+            return <span>&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;</span>
         }
         else if(stop=="onestop"){
-            return <span>&mdash;&mdash;&#9632;&mdash;&mdash;&mdash;</span> 
+            return <span>&mdash;&mdash;&#9632;&mdash;&mdash;&mdash;</span>
         }
         else{
-            return <span>&mdash;&mdash;&#9632;&mdash;&mdash;&#9632;&mdash;&mdash;</span> 
+            return <span>&mdash;&mdash;&#9632;&mdash;&mdash;&#9632;&mdash;&mdash;</span>
         }
     }
     handleBook(data,classtype,price){
         console.log("selected data ="+JSON.stringify(data))
         var flightbooking = {
+          booking : {
             flight : {
                 "operator" : "Delta Airlines",
                 "origincity" : "Delhi",
@@ -126,7 +127,7 @@ class Flightlist extends Component {
                 "flightId" : "MMT100",
                 "source_airport" : "Delhi International Airport",
                 "destination_airport" : "SF International Airport"
-                
+
             },
             returnflight: {
                 "operator" : "Delta Airlines",
@@ -144,28 +145,25 @@ class Flightlist extends Component {
                 "flightId" : "MMT111",
                 "source_airport" : "SF International Airport",
                 "destination_airport" : "Delhi International Airport"
-            },
-            travellerdeatils:{
-                firstname:"",
-                lastname:"",
-                email:"",
-                phonenumber:"",
-                address:"",
-                zipcode:""
-
-            },
-            paymentdetails:{
-                creditcard:"",
-                expirydate:"",
-                cvv:""
-             }
-        
-           
+            }
+          },
+          credit_card : {
+      			"card_type" : "MasterCard",
+      			"card_number": "012345678989",
+      			"card_holder_name" : "Meenakshi Paryani",
+      			"valid_from" : "2017-01-18",
+      			"valid_till" : "2017-01-26"
+    		  }
         }
-      
+
+        console.log('payload', flightbooking);
+
+        localStorage.setItem("flightbooking", JSON.stringify(flightbooking));
+        this.props.history.push('/flightbooking');
+
     }
     displayflights(data,index){
-        
+
             return(
                 <div className="jumbotron">
                     <div data-toggle="collapse" data-target={'#details'+index}>
@@ -173,7 +171,7 @@ class Flightlist extends Component {
                         <div className="col-sm-9">
                             <div className="row" style={{paddingTop:"4vh"}}>
                                     <div className="col-sm-0" style={{textAlign:"center",fontSize:"12px",fontWeight:"bold"}}>
-                                        
+
                                     </div>
                                     <div className="col-sm-4" style={{textAlign:"center",fontSize:"12px",fontWeight:""}}>
                                     <div  style={{textAlign:"center"}}>
@@ -203,7 +201,7 @@ class Flightlist extends Component {
                                     <div className="col-sm-2" style={{textAlign:"center"}}>
                                         <p style={{fontSize:"12px",fontWeight:"bold"}}>{data.flightId}</p>
                                     </div>
-                                    
+
                             </div>
                          </div>
                         <div className="col-sm-3">
@@ -222,27 +220,27 @@ class Flightlist extends Component {
                                 <div className="col-sm-9">
                                     <div className="row">
                                          <div className="col-sm-6">
-                                            <p><b>Origin</b></p> 
+                                            <p><b>Origin</b></p>
                                             <p>Day: {data.flights.arrivalday}</p>
                                             <p>Time: {data.flights.arrivaltime}</p>
                                             <p>Airport: {data.flights.origin.airport}</p>
                                             <p>City: {data.flights.origin.city}</p>
                                             <p>State: {data.flights.origin.state}</p>
-                                           
+
                                          </div>
                                          <div className="col-sm-6">
-                                            <p><b>Destination</b></p> 
+                                            <p><b>Destination</b></p>
                                             <p>Day: {data.flights.departureday}</p>
                                             <p>Time: {data.flights.departuretime}</p>
                                             <p>Airport: {data.flights.destination.airport}</p>
                                             <p>City: {data.flights.destination.city}</p>
                                             <p>State: {data.flights.destination.state}</p>
-                                         </div> 
-                                    </div>        
+                                         </div>
+                                    </div>
 
-                                </div>    
+                                </div>
                                 <div className="col-sm-3">
-                        
+
                                         <div style={{textAlign:"center"}}>
                                         <b style={{fontSize:"20px",fontWeight:"bold"}}>${data.class[1].price}</b><br/>
                                         <b style={{fontSize:"12px",fontWeight:"bold"}}>{data.class[1].type}</b><br/>
@@ -255,10 +253,10 @@ class Flightlist extends Component {
                                         </div>
 
                                 </div>
-                        </div>    
+                        </div>
                     </div>
-    
-                 </div> 
+
+                 </div>
             )
      }
     render(){
@@ -270,13 +268,13 @@ class Flightlist extends Component {
                 </div>
                 <div className="jumbotron">
                   {this.state.values}
-                </div>    
+                </div>
                 <div className="row">
 
                     <div className="col-4">
                         <div className="jumbotron">
                                 <p style={{fontWeight:"bold"}}>Price</p>
-                                <hr/>    
+                                <hr/>
                                 <MultiSlider
                                 colors={colors}
                                 values={this.state.valuesPrice}
@@ -291,11 +289,11 @@ class Flightlist extends Component {
                                         High:${this.state.high}
                                         </div>
                                     </div>
-                     
+
                         <br/>  <br/>
-                      
+
                                     <p style={{fontWeight:"bold"}}>Departure Time</p>
-                                    <hr/>    
+                                    <hr/>
                                     <MultiSlider
                                     colors={colors}
                                     values={this.state.valuesDepartureTime}
@@ -312,9 +310,9 @@ class Flightlist extends Component {
                                 </div>
 
                          <br/>  <br/>
-                      
+
                                     <p style={{fontWeight:"bold"}}>Arrival Time</p>
-                                    <hr/>    
+                                    <hr/>
                                     <MultiSlider
                                     colors={colors}
                                     values={this.state.valuesArrivalTime}
@@ -328,16 +326,16 @@ class Flightlist extends Component {
                                         <div className="col-sm-6" style={{textAlign:'right'}}>
                                         {this.getTime(this.state.arrival_end_time)}
                                         </div>
-                                </div>       
-                     
-                        </div>  
+                                </div>
 
-                        
+                        </div>
+
+
                     </div>
                     <div className="col-8" style={{ overflow: 'scroll', height: '90vh'}}>
-                         { this.props.flightlist.map((this.displayflights),this)}     
+                         { this.props.flightlist.map((this.displayflights),this)}
                     </div>
-                   
+
                 </div>
             </div>
         )
@@ -347,8 +345,8 @@ class Flightlist extends Component {
 
 function mapStateToProps(reducerdata) {
     console.log(reducerdata.userSearch.flightSearch);
-    
-   
+
+
     const flightlist=reducerdata.userSearch.flightSearch;
     return {flightlist};
 }

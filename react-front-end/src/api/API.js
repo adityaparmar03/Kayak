@@ -14,7 +14,7 @@ password
 type - (this should be user or admin)
 }*/
 
-export const doLogin = (payload) => 
+export const doLogin = (payload) =>
     fetch(`${api}/user/login`, {
         method: 'POST',
         headers: {
@@ -27,10 +27,10 @@ export const doLogin = (payload) =>
          console.log(res);
         return res.json();
     })
-        .catch(error => {
-            console.log("This is error");
-            return error;
-        });
+    .catch(error => {
+        console.log("This is error");
+        return error;
+    });
 
 
 //************************************************************************************************
@@ -50,10 +50,10 @@ export const doRegister = (payload) =>
     }).then(res => {
         return res.json();
     })
-        .catch(error => {
-            console.log("This is error");
-            return error;
-        });
+    .catch(error => {
+        console.log("This is error");
+        return error;
+    });
 
 //************************************************************************************************
 
@@ -70,10 +70,10 @@ export const checkSession = () =>
     }).then(res => {
         return res.json();
     })
-        .catch(error => {
-            console.log("This is error");
-            return error;
-        });
+    .catch(error => {
+        console.log("This is error");
+        return error;
+    });
 
 //************************************************************************************************
 
@@ -99,10 +99,10 @@ export const doUpdate = (payload) =>
 
         return res.json();
     })
-        .catch(error => {
-            console.log("This is error");
-            return error;
-        });
+    .catch(error => {
+        console.log("This is error");
+        return error;
+    });
 
 //************************************************************************************************
 
@@ -135,10 +135,10 @@ export const clickTracker = (payload) =>
 
         return res.json();
     })
-        .catch(error => {
-            console.log("This is an API error");
-            return error;
-        });
+    .catch(error => {
+        console.log("This is an API error");
+        return error;
+    });
 
 
 export const addVendorApi = (payload) =>
@@ -154,10 +154,10 @@ export const addVendorApi = (payload) =>
 
         return res.status;
     })
-        .catch(error => {
-            console.log("This is an API error");
-            return error;
-        });
+    .catch(error => {
+        console.log("This is an API error");
+        return error;
+    });
 
 
 export const deleteVendorApi = (payload) =>
@@ -173,10 +173,10 @@ export const deleteVendorApi = (payload) =>
 
         return res.status;
     })
-        .catch(error => {
-            console.log("This is an API error");
-            return error;
-        });
+    .catch(error => {
+        console.log("This is an API error");
+        return error;
+    });
 
 export const getVendors = (payload) =>
     fetch(`${api}/admin/vendors`, {
@@ -190,10 +190,10 @@ export const getVendors = (payload) =>
 
         return res.json();
     })
-        .catch(error => {
-            console.log("This is an API error");
-            return error;
-        });
+    .catch(error => {
+        console.log("This is an API error");
+        return error;
+    });
 
 
 
@@ -211,10 +211,10 @@ export const searchFlights = (payload) =>
 
         return res.json();
     })
-        .catch(error => {
-            console.log("This is an API error");
-            return error;
-        });
+    .catch(error => {
+        console.log("This is an API error");
+        return error;
+    });
 
 
 export const searchHotels = (payload) =>
@@ -229,10 +229,10 @@ export const searchHotels = (payload) =>
 
         return res.json();
     })
-        .catch(error => {
-            console.log("This is an API error");
-            return error;
-        });
+    .catch(error => {
+        console.log("This is an API error");
+        return error;
+    });
 
 
 
@@ -250,7 +250,24 @@ export const searchCars = (payload) =>
 
         return res.json();
     })
-        .catch(error => {
-            console.log("This is an API error");
-            return error;
-        });
+    .catch(error => {
+        console.log("This is an API error");
+        return error;
+    });
+
+export const bookFlight = (payload) =>
+    fetch(`${api}/flight/book`, {
+        method: 'POST',
+        headers: {
+            ...headers,
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(payload)
+    }).then(res => {
+        console.log('Response of flight booking API is ' + res);
+        return res.json();
+    })
+    .catch(error => {
+        console.log("This is an API error");
+        return error;
+    });

@@ -14,7 +14,7 @@ class Flightsearch extends Component {
 
 
     componentWillMount(){
-       
+
     }
     state = {
 
@@ -23,7 +23,7 @@ class Flightsearch extends Component {
         to:"",
         startdate:"",
         enddate:"",
-        
+
         // UI State
         fromsuggestion: [],
         tosuggestion: [],
@@ -32,42 +32,42 @@ class Flightsearch extends Component {
         class:"Economy"
       };
        handleSubmit(){
-        
-        var startdate =moment(this.state.startdate).month()+"/"+
-        moment(this.state.startdate).date()+"/"+
-        moment(this.state.startdate).year()
-        var enddate =moment(this.state.enddate).month()+"/"+
-        moment(this.state.enddate).date()+"/"+
-        moment(this.state.enddate).year()
 
-        console.log("From=>"+this.state.from)
-        console.log("To=>"+this.state.to)
-        console.log("Stat date=>"+startdate)
-        console.log("Return Date=>"+enddate)
-        console.log("Travelers =>"+this.state.traveler)
-        console.log("class =>"+this.state.class)
-        console.log(moment(this.state.startdate).toString().split(" ")[0]);
-        console.log(this.state.startdate);
+              var startdate =moment(this.state.startdate).month()+"/"+
+              moment(this.state.startdate).date()+"/"+
+              moment(this.state.startdate).year()
+              var enddate =moment(this.state.enddate).month()+"/"+
+              moment(this.state.enddate).date()+"/"+
+              moment(this.state.enddate).year()
 
-
-       const  payload={
-           'origincity':this.state.from.split(",")[0].trim(),
-           'originstate':this.state.from.split(",")[1].trim(),
-           'destinationcity':this.state.to.split(",")[0].trim(),
-           'destinationstate':this.state.to.split(",")[1].trim(),
-           'departureday':moment(this.state.startdate).toString().split(" ")[0],
-           'triptype':'One-Way',
-           'flightclass':this.state.class
-        }
+              console.log("From=>"+this.state.from)
+              console.log("To=>"+this.state.to)
+              console.log("Stat date=>"+startdate)
+              console.log("Return Date=>"+enddate)
+              console.log("Travelers =>"+this.state.traveler)
+              console.log("class =>"+this.state.class)
+              console.log(moment(this.state.startdate).toString().split(" ")[0]);
+              console.log(this.state.startdate);
 
 
-        console.log('payload', payload);
+              const  payload={
+                  'origincity':this.state.from.split(",")[0].trim(),
+                  'originstate':this.state.from.split(",")[1].trim(),
+                  'destinationcity':this.state.to.split(",")[0].trim(),
+                  'destinationstate':this.state.to.split(",")[1].trim(),
+                  'departureday':moment(this.state.startdate).toString().split(" ")[0],
+                  'triptype':'One-Way',
+                  'flightclass':this.state.class
+              }
 
-        localStorage.setItem("flightsearchcriteria", JSON.stringify(payload));
-        this.props.history.push('/flightlist');
 
-       // call Api for search here......
-           //API CALL
+              console.log('payload', payload);
+
+              localStorage.setItem("flightsearchcriteria", JSON.stringify(payload));
+              this.props.history.push('/flightlist');
+
+             // call Api for search here......
+                 //API CALL
 
        }
 
@@ -77,7 +77,7 @@ class Flightsearch extends Component {
         this.setState({"from":value})
 
         var fromsuggestion = cities().map((item,i)=>item.city+", "+item.state)
-       
+
         this.setState({
             fromsuggestion: fromsuggestion
         });
@@ -87,13 +87,13 @@ class Flightsearch extends Component {
 
         this.setState({"to":value})
 
-       
+
         var tosuggestion = cities().map((item,i)=>item.city+", "+item.state)
-       
+
         this.setState({
             tosuggestion: tosuggestion
         });
-       
+
 
     };
 
@@ -158,7 +158,7 @@ class Flightsearch extends Component {
     render(){
         return(
             <div>
-                
+
                 <div className="card" style={{backgroundColor:'#E4E5EA',
                     borderRadius: '0px',paddingTop:'3%',paddingBottom:'3%',zIndex:"1"}}>
 
