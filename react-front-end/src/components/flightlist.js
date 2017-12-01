@@ -112,40 +112,40 @@ class Flightlist extends Component {
         var flightbooking = {
           booking : {
             flight : {
-                "operator" : "Delta Airlines",
-                "origincity" : "Delhi",
-                "originstate" : "Delhi",
-                "destinationcity" : "San Francisco",
-                "destinationstate" : "CA",
-                "triptype" : "Two-Way",
-                "flightclass" : "economy",
+                "operator" : data.operator,
+                "origincity" : data.flights.origin.city,
+                "originstate" : data.flights.origin.state,
+                "destinationcity" : data.flights.destination.city,
+                "destinationstate" : data.flights.destination.state,
+                "triptype" : "One-Way", // TODO : remove hardcoding
+                "flightclass" : classtype,
                 "capacity" : 100,
                 "price" : price,
                 "bookingstartdate" : "2017-01-18 09:15:00",
                 "bookingenddate" : "2017-01-19 03:14:00",
                 "passengers" : 10,
-                "flightId" : "MMT100",
-                "source_airport" : "Delhi International Airport",
-                "destination_airport" : "SF International Airport"
-
-            },
-            returnflight: {
-                "operator" : "Delta Airlines",
-                "origincity" : "San Francisco",
-                "originstate" : "CA",
-                "destinationcity" : "Delhi",
-                "destinationstate" : "Delhi",
-                "triptype" : "Two-Way",
-                "flightclass" : "economy",
-                "capacity" : 30,
-                "price" : 1300,
-                "returnstartdate" : "2017-03-18 06:15:00",
-                "returnenddate" : "2017-03-19 18:14:00",
-                "passengers" : 10,
-                "flightId" : "MMT111",
-                "source_airport" : "SF International Airport",
-                "destination_airport" : "Delhi International Airport"
+                "flightId" : data.flightId,
+                "source_airport" : data.flights.destination.airport,
+                "destination_airport" : data.flights.origin.airport
             }
+            // ,
+            // returnflight: {
+            //     "operator" : "Delta Airlines",
+            //     "origincity" : "San Francisco",
+            //     "originstate" : "CA",
+            //     "destinationcity" : "Delhi",
+            //     "destinationstate" : "Delhi",
+            //     "triptype" : "Two-Way",
+            //     "flightclass" : "economy",
+            //     "capacity" : 30,
+            //     "price" : 1300,
+            //     "returnstartdate" : "2017-03-18 06:15:00",
+            //     "returnenddate" : "2017-03-19 18:14:00",
+            //     "passengers" : 10,
+            //     "flightId" : "MMT111",
+            //     "source_airport" : "SF International Airport",
+            //     "destination_airport" : "Delhi International Airport"
+            // }
           },
           credit_card : {
       			"card_type" : "MasterCard",
@@ -157,7 +157,6 @@ class Flightlist extends Component {
         }
 
         console.log('payload', flightbooking);
-
         localStorage.setItem("flightbooking", JSON.stringify(flightbooking));
         this.props.history.push('/flightbooking');
 
@@ -208,7 +207,7 @@ class Flightlist extends Component {
                                 <div style={{textAlign:"center"}}>
                                 <b style={{fontSize:"20px",fontWeight:"bold"}}>${data.class[0].price}</b><br/>
                                 <b style={{fontSize:"12px",fontWeight:"bold"}}>{data.class[0].type}</b><br/>
-                                <button style={{width:"12vw"}} onClick={()=>this.handleBook(data,"")}
+                                <button style={{width:"12vw"}} onClick={()=>this.handleBook(data,data.class[0].type, data.class[0].price)}
                                 className="btn btn-deep-orange">Book</button>
                                 </div>
 

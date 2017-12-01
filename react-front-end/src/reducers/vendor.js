@@ -1,38 +1,38 @@
 import * as Constants from '../constants/constants'
 import {combineReducers} from 'redux';
-/*
-var initialstate = {
-    vendorId:"",
-    vendorname:"",
-    servicetype:"",
-    vendorapi:""
-}*/
 
-function vendor(state = [], action) {
+
+
+function vendor(vendors = [], action) {
 
     switch (action.type) {
 
         case Constants.GET_VENDORS :
             return action.vendors
 
+
         case Constants.DELETE_VENDOR :
-            return {
-                files:[
-                    ...state.slice(0, action.index),
-                    ...state.slice(action.index + 1)
-                ]
-            }
+            vendors=[
+            ...vendors.slice(0, action.index),
+            ...vendors.slice(action.index + 1)
+            ]
+            return vendors;
+
+
 
         case Constants.ADD_VENDOR :
-            return {
-                state:[
-                    ...state,
-                    action.vendor
-                ]
-            }
+
+           vendors=[
+                ...vendors,
+                action.vendor
+            ]
+
+            return  vendors;
+
+
 
         default :
-            return state;
+            return vendors;
 
     }
 }

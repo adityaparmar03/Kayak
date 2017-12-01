@@ -59,12 +59,12 @@ class Carhome extends Component {
                     </div>
 
                     <div className="tab-pane fade" id="hotel" role="tabpanel"  
-                    style={{paddingTop:"8%",marginTop:'-9%'}}>>
+                    style={{paddingTop:"8%",marginTop:'-9%'}}>
                     <Hotelsearch/>    
                     </div>
                 
                     <div className="tab-pane fade in show active" id="car" role="tabpanel"  
-                    style={{paddingTop:"8%",marginTop:'-9%'}}>>
+                    style={{paddingTop:"8%",marginTop:'-9%'}}>
                     <Carsearch/>    
                     </div>
 
