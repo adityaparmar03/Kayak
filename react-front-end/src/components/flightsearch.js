@@ -10,6 +10,7 @@ import * as Actions from '../actions/action';
 import {connect} from 'react-redux';
 import cities from '../constants/cities'
 import Toggle from 'material-ui/Toggle';
+
 class Flightsearch extends Component {
 
 
