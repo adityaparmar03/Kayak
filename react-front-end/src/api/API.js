@@ -14,7 +14,7 @@ password
 type - (this should be user or admin)
 }*/
 
-export const doLogin = (payload) => 
+export const doLogin = (payload) =>
     fetch(`${api}/user/login`, {
         method: 'POST',
         headers: {
@@ -27,10 +27,10 @@ export const doLogin = (payload) =>
          console.log(res);
         return res.json();
     })
-        .catch(error => {
-            console.log("This is error");
-            return error;
-        });
+    .catch(error => {
+        console.log("This is error");
+        return error;
+    });
 
 
 //************************************************************************************************
@@ -50,10 +50,10 @@ export const doRegister = (payload) =>
     }).then(res => {
         return res.json();
     })
-        .catch(error => {
-            console.log("This is error");
-            return error;
-        });
+    .catch(error => {
+        console.log("This is error");
+        return error;
+    });
 
 //************************************************************************************************
 
@@ -70,10 +70,10 @@ export const checkSession = () =>
     }).then(res => {
         return res.json();
     })
-        .catch(error => {
-            console.log("This is error");
-            return error;
-        });
+    .catch(error => {
+        console.log("This is error");
+        return error;
+    });
 
 //************************************************************************************************
 
@@ -87,8 +87,8 @@ export const checkSession = () =>
 //zzip code etc
 //}
 export const doUpdate = (payload) =>
- fetch(`${api}/users/update`, {
-        method: 'POST',
+ fetch(`${api}/user/update`, {
+        method: 'PUT',
         headers: {
             ...headers,
             'Content-Type': 'application/json'
@@ -99,10 +99,10 @@ export const doUpdate = (payload) =>
 
         return res.json();
     })
-        .catch(error => {
-            console.log("This is error");
-            return error;
-        });
+    .catch(error => {
+        console.log("This is error");
+        return error;
+    });
 
 //************************************************************************************************
 
@@ -120,7 +120,6 @@ buttonId:"buttonId",
 objectId:"objectId"
 }
 */
-
 export const addVendorApi = (payload) =>
     fetch(`${api}/admin/addvendor`, {
         method: 'POST',
@@ -134,10 +133,10 @@ export const addVendorApi = (payload) =>
 
         return res.status;
     })
-        .catch(error => {
-            console.log("This is an API error");
-            return error;
-        });
+    .catch(error => {
+        console.log("This is an API error");
+        return error;
+    });
 
 
 export const deleteVendorApi = (payload) =>
@@ -153,10 +152,10 @@ export const deleteVendorApi = (payload) =>
 
         return res.status;
     })
-        .catch(error => {
-            console.log("This is an API error");
-            return error;
-        });
+    .catch(error => {
+        console.log("This is an API error");
+        return error;
+    });
 
 export const getVendors = (payload) =>
     fetch(`${api}/admin/vendors`, {
@@ -170,10 +169,10 @@ export const getVendors = (payload) =>
 
         return res.json();
     })
-        .catch(error => {
-            console.log("This is an API error");
-            return error;
-        });
+    .catch(error => {
+        console.log("This is an API error");
+        return error;
+    });
 
 
 
@@ -191,10 +190,10 @@ export const searchFlights = (payload) =>
 
         return res.json();
     })
-        .catch(error => {
-            console.log("This is an API error");
-            return error;
-        });
+    .catch(error => {
+        console.log("This is an API error");
+        return error;
+    });
 
 
 export const searchHotels = (payload) =>
@@ -209,10 +208,10 @@ export const searchHotels = (payload) =>
 
         return res.json();
     })
-        .catch(error => {
-            console.log("This is an API error");
-            return error;
-        });
+    .catch(error => {
+        console.log("This is an API error");
+        return error;
+    });
 
 
 
@@ -237,6 +236,25 @@ export const searchCars = (payload) =>
 
 export const clickTracker = (payload) =>
     fetch(`${api}/analytics/clicktracker`, {
+        method: 'POST',
+        headers: {
+            ...headers,
+            'Content-Type': 'application/json'
+        },
+        credentials:'include',
+        body: JSON.stringify(payload)
+    }).then(res => {
+        console.log(res);
+        return res.json();
+    })
+        .catch(error => {
+            console.log("This is an API error");
+            return error;
+        });
+
+
+export const bookFlight = (payload) =>
+    fetch(`${api}/flight/book`, {
         method: 'POST',
         headers: {
             ...headers,

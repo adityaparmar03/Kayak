@@ -21,7 +21,7 @@ CREATE TABLE `USER` (
   `phone` varchar(45) DEFAULT NULL,
   `profile_image_path` varchar(90) DEFAULT NULL,
   `credit_card_type` varchar(45) DEFAULT NULL,
-  `credit_card_number` int(11) DEFAULT NULL,
+  `credit_card_number` varchar(45) DEFAULT NULL,
   `credit_card_holder_name` varchar(45) DEFAULT NULL,
   `credit_card_valid_from` date DEFAULT NULL,
   `credit_card_valid_till` date DEFAULT NULL,

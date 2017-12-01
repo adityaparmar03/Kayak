@@ -10,6 +10,18 @@ import * as API from '../api/API';
 
 class Profile extends Component {
 
+    state={
+        phone:"",
+        firstname:"",
+        lastname:"",
+        address:"",
+        zip:"",
+        creditcard:"",
+        cvv:"",
+        imgpath:"",
+        emailid:"smcool100@gmail.com"
+
+    }
 
     componentWillMount(){
         console.log("willmountcalling");
@@ -26,6 +38,29 @@ class Profile extends Component {
         })
 
     }
+
+    updateUserData(){
+
+        //validation for the zip code will come here.
+
+
+        var payload = {};
+        console.log("***********");
+        console.log(this.state.emailid);
+         payload = this.state;
+
+
+        //console.log(payload);
+        API.doUpdate(payload).then((data)=>{
+            if(data.status==201){
+                console.log("Succesfull push");
+                this.props.history.push('/profile');
+            }
+        })
+
+
+    }
+
 
     render(){
         return(
@@ -65,7 +100,12 @@ class Profile extends Component {
                                         <div className="col-sm-6">
                                         <div className="md-form">
                                             <i className="fa fa-user prefix"></i>
-                                            <input type="text" id="firstname" value={this.props.userprofile.firstname} className="form-control"/>
+                                            <input type="text" id="firstname" placeholder={this.props.userprofile.firstname} className="form-control"
+                                                   onChange={(event) => {
+                                                       this.setState({
+                                                           firstname: event.target.value
+                                                       });
+                                                   }}/>
                                             <label htmlFor="firstname">Firstname</label>
                                         </div>
 
@@ -73,7 +113,12 @@ class Profile extends Component {
                                         <div className="col-sm-6">
                                         <div className="md-form">
                                             <i className="fa fa-user prefix"></i>
-                                            <input type="text" id="lastname" value={this.props.userprofile.lastname} className="form-control"/>
+                                            <input type="text" id="lastname" placeholder={this.props.userprofile.lastname} className="form-control"
+                                                   onChange={(event) => {
+                                                       this.setState({
+                                                           lastname: event.target.value
+                                                       });
+                                                   }}/>
                                             <label htmlFor="lastname">Lastname</label>
                                         </div>
 
@@ -83,7 +128,8 @@ class Profile extends Component {
                                         <div className="col-sm-4">
                                         <div className="md-form">
                                         <i className="fa fa-envelope prefix"></i>
-                                        <input type="text" value={this.props.userprofile.email}  id="email" className="form-control"/>
+                                        <input type="text" disabled placeholder={this.props.userprofile.email}  id="email" className="form-control"
+                                               />
                                         <label htmlFor="email">Email</label>
                                         </div>
 
@@ -102,7 +148,14 @@ class Profile extends Component {
                                         <div className="md-form">
                                         <i className="fa fa-phone prefix"></i>
                                        
-                                        <input type="text" id="phone" value={this.props.userprofile.phonenumber} className="form-control"/>
+                                        <input type="text" id="phone" placeholder={this.props.userprofile.phonenumber}
+                                               className="form-control"
+                                               onChange={(event) => {
+                                                   this.setState({
+                                                       phone: event.target.value
+                                                   });
+                                               }}
+                                        />
                                         <label htmlFor="phone">Phone Number</label>
                                       
                                         </div>
@@ -114,7 +167,12 @@ class Profile extends Component {
                                         <div className="md-form">
                                         <i className="fa fa-map-marker prefix"></i>
                                        
-                                        <input type="text" id="address" value={this.props.userprofile.address} className="form-control"/>
+                                        <input type="text" id="address" placeholder={this.props.userprofile.address} className="form-control"
+                                               onChange={(event) => {
+                                                   this.setState({
+                                                       address: event.target.value
+                                                   });
+                                               }}/>
                                         <label htmlFor="address">Address</label>
                                       
                                         </div>
@@ -124,7 +182,12 @@ class Profile extends Component {
                                         <div className="md-form">
                                         <i className="fa fa-location-arrow prefix"></i>
                                        
-                                        <input type="text" id="zipcode" value={this.props.userprofile.zipcode} className="form-control"/>
+                                        <input type="text" id="zipcode" placeholder={this.props.userprofile.zipcode} className="form-control"
+                                               onChange={(event) => {
+                                                   this.setState({
+                                                       zip: event.target.value
+                                                   });
+                                               }}/>
                                         <label htmlFor="form2">Zip Code</label>
                                       
                                         </div>
@@ -165,7 +228,7 @@ class Profile extends Component {
                                     <input type="file" id="uploadpic" /> 
                                 </div>
 
-                                <button type="button" className="btn btn-light-blue btn-lg btn-block">Save</button>
+                                <button type="button" className="btn btn-light-blue btn-lg btn-block" onClick={()=>this.updateUserData()}>Save</button>
 
                                 
                     </div>

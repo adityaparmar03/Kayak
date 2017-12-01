@@ -1,7 +1,7 @@
 import * as Constants from '../constants/constants'
 
 export function signIn(action) {
-    
+
     return {
         type: Constants.SIGN_IN,
         payload: action
@@ -59,3 +59,26 @@ export function deleteVendor(index) {
     }
 };
 
+export function bookFlight(index) {
+
+    return {
+        type : Constants.BOOK_FLIGHT,
+        index : index
+    }
+};
+
+export function bookHotel(index) {
+
+    return {
+        type : Constants.BOOK_HOTEL,
+        index : index
+    }
+};
+
+export function bookCar(index) {
+
+    return {
+        type : Constants.BOOK_CAR,
+        index : index
+    }
+};
