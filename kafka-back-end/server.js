@@ -4,6 +4,8 @@ var car = require('./services/car');
 var hotel = require('./services/hotel');
 var flight = require('./services/flight');
 var admin = require('./services/admin');
+var click_tracker = require('./services/click_tracker');
+var get_chart = require('./services/get_chart');
 var consumer = connection.getConsumer();
 var producer = connection.getProducer();
 
@@ -199,6 +201,32 @@ consumer.on('message', function (message) {
         case 'BookCar':
             console.log(message);
             car.bookCar(body,function (err , res) {
+                if(err)
+                    console.log(err);
+                else
+                    console.log(res);
+                response(data,res);
+                return;
+            });
+            break;
+
+        case 'click_tracker_req':
+
+            click_tracker.handle_request(body, function(err,res){
+                //console.log('after handle',res);
+                if(err)
+                    console.log(err);
+                else
+                    console.log(res);
+                response(data,res);
+                return;
+            });
+
+            break;
+
+        case 'get_chart_req':
+            get_chart.handle_request(body, function(err,res){
+                //console.log('after handle',res);
                 if(err)
                     console.log(err);
                 else

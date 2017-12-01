@@ -148,27 +148,6 @@ buttonId:"buttonId",
 objectId:"objectId"
 }
 */
-export const clickTracker = (payload) =>
-    fetch(`${api}/clicktracker`, {
-        method: 'POST',
-        headers: {
-            ...headers,
-            'Content-Type': 'application/json'
-        },
-        credentials:'include',
-        body: JSON.stringify(payload)
-    }).then(res => {
-
-
-
-        return res.json();
-    })
-    .catch(error => {
-        console.log("This is an API error");
-        return error;
-    });
-
-
 export const addVendorApi = (payload) =>
     fetch(`${api}/admin/addvendor`, {
         method: 'POST',
@@ -278,10 +257,29 @@ export const searchCars = (payload) =>
 
         return res.json();
     })
-    .catch(error => {
-        console.log("This is an API error");
-        return error;
-    });
+        .catch(error => {
+            console.log("This is an API error");
+            return error;
+        });
+
+export const clickTracker = (payload) =>
+    fetch(`${api}/analytics/clicktracker`, {
+        method: 'POST',
+        headers: {
+            ...headers,
+            'Content-Type': 'application/json'
+        },
+        credentials:'include',
+        body: JSON.stringify(payload)
+    }).then(res => {
+        console.log(res);
+        return res.json();
+    })
+        .catch(error => {
+            console.log("This is an API error");
+            return error;
+        });
+
 
 export const bookFlight = (payload) =>
     fetch(`${api}/flight/book`, {
@@ -290,12 +288,33 @@ export const bookFlight = (payload) =>
             ...headers,
             'Content-Type': 'application/json'
         },
+        credentials:'include',
         body: JSON.stringify(payload)
     }).then(res => {
-        console.log('Response of flight booking API is ' + res);
+        console.log(res);
         return res.json();
     })
-    .catch(error => {
-        console.log("This is an API error");
-        return error;
-    });
+        .catch(error => {
+            console.log("This is an API error");
+            return error;
+        });
+
+
+export const getChart = (payload) =>
+    fetch(`${api}/analytics/getchart`, {
+        method: 'POST',
+        headers: {
+            ...headers,
+            'Content-Type': 'application/json'
+        },
+        credentials:'include',
+        body: JSON.stringify(payload)
+    }).then(res => {
+        console.log(res);
+        return res.json();
+    })
+        .catch(error => {
+            console.log("This is an API error");
+            return error;
+        });
+

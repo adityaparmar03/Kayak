@@ -9,7 +9,7 @@ import * as API from '../api/API';
 import * as Actions from '../actions/action';
 import {connect} from 'react-redux';
 import cities from '../constants/cities'
-
+import Toggle from 'material-ui/Toggle';
 class Flightsearch extends Component {
 
 
@@ -29,7 +29,8 @@ class Flightsearch extends Component {
         tosuggestion: [],
         travelerpopup:false,
         traveler:1,
-        class:"Economy"
+        class:"Economy",
+        returndateenable:false
       };
        handleSubmit(){
 
@@ -155,13 +156,54 @@ class Flightsearch extends Component {
         }
 
     }
+     styles = {
+       
+        toggle: {
+          marginBottom: 16,
+        },
+        thumbOff: {
+          backgroundColor: '#ffcccc',
+        },
+        trackOff: {
+          backgroundColor: '#ff9d9d',
+        },
+        thumbSwitched: {
+          backgroundColor: 'red',
+        },
+        trackSwitched: {
+          backgroundColor: '#ff9d9d',
+        },
+        labelStyle: {
+          color: 'red',
+        },
+      };
+    handleToggle(){
+        this.setState({
+            returndateenable:!this.state.returndateenable
+        })
+    }  
     render(){
         return(
             <div>
-
                 <div className="card" style={{backgroundColor:'#E4E5EA',
                     borderRadius: '0px',paddingTop:'3%',paddingBottom:'3%',zIndex:"1"}}>
-
+                    <table>
+                        <tr>
+                        <td>One-way</td>
+                        <td><Toggle
+                                
+                                thumbStyle={this.styles.thumbOff}
+                                trackStyle={this.styles.trackOff}
+                                thumbSwitchedStyle={this.styles.thumbSwitched}
+                                trackSwitchedStyle={this.styles.trackSwitched}
+                                labelStyle={this.styles.labelStyle}
+                                defaultToggled={true}
+                                onToggle={this.handleToggle.bind(this)}
+                            /></td>
+                        <td>Round-Trip</td>
+                        </tr>
+                     </table>   
+                  
                     <div className="card-body">
                         <div className="row">
 
@@ -194,14 +236,22 @@ class Flightsearch extends Component {
 
                             </div>
                             <div className="col-sm-1" style={{backgroundColor:'white'}}>
-                                <DatePicker hintText="Start Date" mode="landscape"
-                                            onChange={this.handleStartDate.bind(this)}
-                                            floatingLabelText="Departure"/>
+                                <DatePicker 
+                                hintText="Start Date"
+                                 mode="landscape"
+                                 autoOk={true}
+                                 onChange={this.handleStartDate.bind(this)}
+                              
+                                floatingLabelText="Departure"/>
                             </div>
                             <div className="col-sm-1" style={{backgroundColor:'white',paddingRight:"2vw"}}>
-                                <DatePicker hintText="Return Date" mode="landscape"
-                                            onChange={this.handleEndDate.bind(this)}
-                                            floatingLabelText="Return"/>
+                                <DatePicker 
+                                hintText="Return Date" 
+                                mode="landscape"
+                                autoOk={true} 
+                                onChange={this.handleEndDate.bind(this)}
+                                disabled={this.state.returndateenable}
+                                floatingLabelText="Return"/>
                             </div>
                             <div className="col-sm-3">
                                 <div style={{backgroundColor:'white'}} onClick={()=>this.handlepopup()}>

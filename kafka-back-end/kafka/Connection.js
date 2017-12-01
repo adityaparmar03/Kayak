@@ -30,8 +30,9 @@ function ConnectionProvider() {
                     {topic :'deleteuser',partition :0},
                     {topic :'updatebilling',partition :0},
                     {topic :'getallusers',partition :0},
-                    {topic :'getuserdata',partition :0}
-
+                    {topic :'getuserdata',partition :0},
+                    {topic :'click_tracker_req',partition :0},
+                    {topic :'get_chart_req',partition :0}
                  ]);
 
             this.client.on('ready', function () { console.log('client ready!') })

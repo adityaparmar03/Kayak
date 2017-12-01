@@ -2,16 +2,40 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="c49127ec-0e22-497b-b878-2320b6889aa9" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/components/usertrips.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../.idea/dbnavigator.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../kafka-back-end/services/chart_queries.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../kafka-back-end/services/click_tracker.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../kafka-back-end/services/get_chart.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../kafka-front-end/routes/analytics.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/charts/BarChart.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/charts/DonutChart.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/charts/Histogram.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/charts/PieChart.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/charts/Top5CarChart.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/charts/Top5Chart.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/charts/Top5FlightChart.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/charts/Top5HotelChart.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/charts/WordTree.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/components/SalesAnalytics.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/components/UserAnalytics.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../.idea/workspace.xml" afterPath="$PROJECT_DIR$/../.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../kafka-back-end/.idea/workspace.xml" afterPath="$PROJECT_DIR$/../kafka-back-end/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../kafka-back-end/kafka/Connection.js" afterPath="$PROJECT_DIR$/../kafka-back-end/kafka/Connection.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../kafka-back-end/models/mysql.js" afterPath="$PROJECT_DIR$/../kafka-back-end/models/mysql.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../kafka-back-end/services/user.js" afterPath="$PROJECT_DIR$/../kafka-back-end/services/user.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../kafka-back-end/package-lock.json" afterPath="$PROJECT_DIR$/../kafka-back-end/package-lock.json" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../kafka-back-end/server.js" afterPath="$PROJECT_DIR$/../kafka-back-end/server.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../kafka-front-end/.idea/workspace.xml" afterPath="$PROJECT_DIR$/../kafka-front-end/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/actions/action.js" afterPath="$PROJECT_DIR$/src/actions/action.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../kafka-front-end/app.js" afterPath="$PROJECT_DIR$/../kafka-front-end/app.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../kafka-front-end/package.json" afterPath="$PROJECT_DIR$/../kafka-front-end/package.json" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../kafka-front-end/routes/kafka/client.js" afterPath="$PROJECT_DIR$/../kafka-front-end/routes/kafka/client.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/package.json" afterPath="$PROJECT_DIR$/package.json" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/api/API.js" afterPath="$PROJECT_DIR$/src/api/API.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/profile.js" afterPath="$PROJECT_DIR$/src/components/profile.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/reducers/userProfile.js" afterPath="$PROJECT_DIR$/src/reducers/userProfile.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/adminpanel.js" afterPath="$PROJECT_DIR$/src/components/adminpanel.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/adminpaneldashboard.js" afterPath="$PROJECT_DIR$/src/components/adminpaneldashboard.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/flightsearch.js" afterPath="$PROJECT_DIR$/src/components/flightsearch.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/tracker.js" afterPath="$PROJECT_DIR$/src/components/tracker.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/index.js" afterPath="$PROJECT_DIR$/src/index.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../scripts" afterPath="$PROJECT_DIR$/../scripts" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -30,7 +54,7 @@
         <entry file="file://$PROJECT_DIR$/src/components/nav.js">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="-150">
-              <caret line="216" column="0" lean-forward="true" selection-start-line="216" selection-start-column="0" selection-end-line="216" selection-end-column="0" />
+              <caret line="216" column="0" lean-forward="false" selection-start-line="216" selection-start-column="0" selection-end-line="216" selection-end-column="0" />
               <folding>
                 <element signature="e#0#39#0" expanded="true" />
               </folding>
@@ -71,7 +95,7 @@
         <entry file="file://$PROJECT_DIR$/src/components/Welcome.js">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="285">
-              <caret line="21" column="23" lean-forward="true" selection-start-line="0" selection-start-column="0" selection-end-line="21" selection-end-column="23" />
+              <caret line="21" column="23" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="21" selection-end-column="23" />
               <folding />
             </state>
           </provider>
@@ -81,7 +105,7 @@
         <entry file="file://$PROJECT_DIR$/src/components/usertrips.js">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="150">
-              <caret line="10" column="0" lean-forward="true" selection-start-line="10" selection-start-column="0" selection-end-line="10" selection-end-column="0" />
+              <caret line="10" column="0" lean-forward="false" selection-start-line="10" selection-start-column="0" selection-end-line="10" selection-end-column="0" />
               <folding>
                 <element signature="e#0#39#0" expanded="true" />
               </folding>
@@ -115,7 +139,7 @@
         <entry file="file://$PROJECT_DIR$/src/reducers/userProfile.js">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="242">
-              <caret line="40" column="68" lean-forward="true" selection-start-line="40" selection-start-column="68" selection-end-line="40" selection-end-column="68" />
+              <caret line="40" column="68" lean-forward="false" selection-start-line="40" selection-start-column="68" selection-end-line="40" selection-end-column="68" />
               <folding>
                 <element signature="e#0#51#0" expanded="true" />
               </folding>
@@ -325,12 +349,12 @@
       <workItem from="1511807593293" duration="25000" />
       <workItem from="1511807652557" duration="89000" />
       <workItem from="1511807908523" duration="49000" />
-      <workItem from="1512021963105" duration="23455000" />
+      <workItem from="1512021963105" duration="23516000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="45089000" />
+    <option name="totallyTimeSpent" value="45150000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1280" height="800" extended-state="6" />
@@ -596,7 +620,7 @@
         <state relative-caret-position="120">
           <caret line="8" column="35" lean-forward="false" selection-start-line="8" selection-start-column="35" selection-end-line="8" selection-end-column="35" />
           <folding>
-            <element signature="e#0#51#0" expanded="true" />
+            <element signature="e#0#51#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -606,7 +630,7 @@
         <state relative-caret-position="146">
           <caret line="33" column="2" lean-forward="false" selection-start-line="33" selection-start-column="2" selection-end-line="33" selection-end-column="2" />
           <folding>
-            <element signature="e#0#51#0" expanded="true" />
+            <element signature="e#0#51#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -639,7 +663,7 @@
     <entry file="file://$PROJECT_DIR$/src/components/nav.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-150">
-          <caret line="216" column="0" lean-forward="true" selection-start-line="216" selection-start-column="0" selection-end-line="216" selection-end-column="0" />
+          <caret line="216" column="0" lean-forward="false" selection-start-line="216" selection-start-column="0" selection-end-line="216" selection-end-column="0" />
           <folding>
             <element signature="e#0#39#0" expanded="true" />
           </folding>
@@ -649,7 +673,7 @@
     <entry file="file://$PROJECT_DIR$/src/reducers/userProfile.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="242">
-          <caret line="40" column="68" lean-forward="true" selection-start-line="40" selection-start-column="68" selection-end-line="40" selection-end-column="68" />
+          <caret line="40" column="68" lean-forward="false" selection-start-line="40" selection-start-column="68" selection-end-line="40" selection-end-column="68" />
           <folding>
             <element signature="e#0#51#0" expanded="true" />
           </folding>
@@ -677,7 +701,7 @@
     <entry file="file://$PROJECT_DIR$/src/components/Welcome.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="285">
-          <caret line="21" column="23" lean-forward="true" selection-start-line="0" selection-start-column="0" selection-end-line="21" selection-end-column="23" />
+          <caret line="21" column="23" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="21" selection-end-column="23" />
           <folding />
         </state>
       </provider>
@@ -695,7 +719,7 @@
     <entry file="file://$PROJECT_DIR$/src/components/usertrips.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="150">
-          <caret line="10" column="0" lean-forward="true" selection-start-line="10" selection-start-column="0" selection-end-line="10" selection-end-column="0" />
+          <caret line="10" column="0" lean-forward="false" selection-start-line="10" selection-start-column="0" selection-end-line="10" selection-end-column="0" />
           <folding>
             <element signature="e#0#39#0" expanded="true" />
           </folding>
