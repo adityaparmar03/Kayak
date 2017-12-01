@@ -44,6 +44,7 @@ router.get('/getflights', function (req, res) {
 });
 
 router.post('/book', function (req, res) {
+    console.log('Request is ---------');
     console.log(req.body);
     var queueName = "BookFlight";
 

@@ -84,88 +84,96 @@ function searchFlights(msg, callback){
 // Book the flight
 function bookFlight(msg, callback){
       var booking = msg.booking;
-      var email = msg.email
+      var email =  "meenakshi.paryani@gmail.com"; //msg.email // TODO : uncomment later
       console.log("*****************");
       console.log(email);
       console.log("*****************");
-      var tripType = booking.flight.triptype;
       var creditCard = msg.credit_card;
+      if(booking != undefined && email != undefined){
+        var tripType = booking.flight.triptype;
+        console.log('-------booking is-------' + tripType);
+        if(tripType=='One-Way'){
+              // Save the one way booking
+              console.log("is one way trip");
+              checkFlightAvailable(booking.flight, null, function(isAvailable){
+                    var res = {};
+                    if(isAvailable){
+                        // Proceed to Booking
+                         // TODO : Add credit card fields
+                        var bookingSql="insert into BILLING(`user_email`,`target_id`,`target_name`,`source_airport`,`destination_airport`,`booking_type`,`billing_amount`,`target_count`,`source_city`,`source_state`,`destination_city`,`destination_state`,`flight_trip_type`,`booking_class`,`booking_start_date`,`booking_end_date`,`credit_card_type`, `credit_card_number`, `credit_card_holder_name`,`credit_card_valid_from`,`credit_card_valid_till`) values('"
+                        +email+"','" + booking.flight.flightId + "','" + booking.flight.operator + "','" + booking.flight.source_airport + "','" + booking.flight.destination_airport
+                        + "','"+'FLIGHT'+"','"+booking.flight.price+"','"+booking.flight.passengers+"','"+booking.flight.origincity+"','"+booking.flight.originstate+"','"+booking.flight.destinationcity+"','"+booking.flight.destinationstate+"','"+booking.flight.triptype+"','"
+                        +booking.flight.flightclass+"','"+booking.flight.bookingstartdate+"','"+booking.flight.bookingenddate+ "','"+creditCard.card_type+"','"+creditCard.card_number+"','"+creditCard.card_holder_name+"','"+creditCard.valid_from+"','"+creditCard.valid_till+"');";
 
-      console.log('-------booking is-------' + tripType);
-      if(tripType=='One-Way'){
-            // Save the one way booking
-            console.log("is one way trip");
-            checkFlightAvailable(booking.flight, null, function(isAvailable){
-                  var res = {};
-                  if(isAvailable){
-                      // Proceed to Booking
-                       // TODO : Add credit card fields
-                      var bookingSql="insert into BILLING(`user_email`,`target_id`,`target_name`,`source_airport`,`destination_airport`,`booking_type`,`billing_amount`,`target_count`,`source_city`,`source_state`,`destination_city`,`destination_state`,`flight_trip_type`,`booking_class`,`booking_start_date`,`booking_end_date`,`credit_card_type`, `credit_card_number`, `credit_card_holder_name`,`credit_card_valid_from`,`credit_card_valid_till`) values('"
-                      +email+"','" + booking.flight.flightId + "','" + booking.flight.operator + "','" + booking.flight.source_airport + "','" + booking.flight.destination_airport
-                      + "','"+'FLIGHT'+"','"+booking.flight.price+"','"+booking.flight.passengers+"','"+booking.flight.origincity+"','"+booking.flight.originstate+"','"+booking.flight.destinationcity+"','"+booking.flight.destinationstate+"','"+booking.flight.triptype+"','"
-                      +booking.flight.flightclass+"','"+booking.flight.bookingstartdate+"','"+booking.flight.bookingenddate+ "','"+creditCard.card_type+"','"+creditCard.card_number+"','"+creditCard.card_holder_name+"','"+creditCard.valid_from+"','"+creditCard.valid_till+"');";
+                        mysql.executeQuery(function(err){
+                            if(err){
+                                  console.log(err);
+                                  res.code = "401";
+                                  res.value=" Error booking the flight";
+                                  callback(null, res);
+                            }
+                            else{
+                                   res.code = "200";
+                                   res.value = "One-Way Flight booked Successfully";
+                                   callback(null, res);
+                            }
+                         },bookingSql);
+                    }else{
+                        res.code = 402;
+                        res.value = "Flight is not available to book for current selections!";
+                        callback(null, res);
+                    }
+              });
 
-                      mysql.executeQuery(function(err){
-                          if(err){
-                                console.log(err);
-                                res.code = "401";
-                                res.value=" Error booking the flight";
-                                callback(null, res);
-                          }
-                          else{
-                                 res.code = "200";
-                                 res.value = "One-Way Flight booked Successfully";
+        }
+
+        else{
+             // Save the two way booking
+             var returnBooking = getReturnBooking(booking);
+             console.log('------Return Booking------');
+             console.log(returnBooking);
+             checkFlightAvailable(booking.flight, returnBooking, function(isAvailable){
+                   var res = {};
+                   if(isAvailable == true){
+                       console.log('Flight is Available!!');
+                       totalPrice = booking.flight.price + booking.returnflight.price;
+                       // Proceed to Booking
+                       var bookingSql="insert into BILLING(`user_email`,`target_id`,`target_name`,`return_target_name`,`source_airport`,`destination_airport`,`return_source_airport`,`return_destination_airport`,`booking_type`,`billing_amount`,`target_count`,`source_city`,`source_state`,`destination_city`,`destination_state`,`flight_trip_type`,`booking_class`,`booking_start_date`,`booking_end_date`,`return_target_id`,`return_booking_start_date`,`return_booking_end_date`,`credit_card_type`, `credit_card_number`, `credit_card_holder_name`,`credit_card_valid_from`,`credit_card_valid_till`) values('"
+                       +email+"','"+ booking.flight.flightId +"','"+ booking.flight.operator + "','"+ booking.returnflight.operator + "','"+ booking.flight.source_airport + "','"+ booking.flight.destination_airport + "','"+  booking.returnflight.source_airport + "','"+ booking.returnflight.destination_airport +  "','" + 'FLIGHT'+"','"
+                       + totalPrice +"','"+booking.flight.passengers+"','"+booking.flight.origincity+"','"+booking.flight.originstate+"','"+booking.flight.destinationcity+"','"+booking.flight.destinationstate+"','"+booking.flight.triptype+"','"
+                       +booking.flight.flightclass+"','"+booking.flight.bookingstartdate+"','"+booking.flight.bookingenddate+"','"+booking.returnflight.flightId+"','"+booking.returnflight.returnstartdate+"','"+booking.returnflight.returnenddate + "','"
+                       +creditCard.card_type+"','"+creditCard.card_number+"','"+creditCard.card_holder_name+"','"+creditCard.valid_from+"','"+creditCard.valid_till+"');";
+
+                       mysql.executeQuery(function(err){
+                           if(err){
+                                 console.log(err);
+                                 res.code = "401";
+                                 res.value=" Error booking the flight";
                                  callback(null, res);
-                          }
-                       },bookingSql);
-                  }else{
-                      res.code = 402;
-                      res.value = "Flight is not available to book for current selections!";
-                      callback(null, res);
-                  }
-            });
+                           }
+                           else{
+                                  res.code = "200";
+                                  res.value = "Two - Way Flight booked Successfully";
+                                  callback(null, res);
 
+                           }
+                        },bookingSql);
+                   }else{
+                       console.log('Flight is Not Available!!');
+                       res.code = 402;
+                       res.value = "Flight is not available to book for current selections!";
+                       callback(null, res);
+                   }
+             });
+        }
+      }else{
+              var res = {}
+              res.code = "401";
+              res.value=" Error booking the flight";
+              callback(null, res);
       }
 
-      else{
-           // Save the two way booking
-           var returnBooking = getReturnBooking(booking);
-           console.log('------Return Booking------');
-           console.log(returnBooking);
-           checkFlightAvailable(booking.flight, returnBooking, function(isAvailable){
-                 var res = {};
-                 if(isAvailable == true){
-                     console.log('Flight is Available!!');
-                     totalPrice = booking.flight.price + booking.returnflight.price;
-                     // Proceed to Booking
-                     var bookingSql="insert into BILLING(`user_email`,`target_id`,`target_name`,`return_target_name`,`source_airport`,`destination_airport`,`return_source_airport`,`return_destination_airport`,`booking_type`,`billing_amount`,`target_count`,`source_city`,`source_state`,`destination_city`,`destination_state`,`flight_trip_type`,`booking_class`,`booking_start_date`,`booking_end_date`,`return_target_id`,`return_booking_start_date`,`return_booking_end_date`,`credit_card_type`, `credit_card_number`, `credit_card_holder_name`,`credit_card_valid_from`,`credit_card_valid_till`) values('"
-                     +email+"','"+ booking.flight.flightId +"','"+ booking.flight.operator + "','"+ booking.returnflight.operator + "','"+ booking.flight.source_airport + "','"+ booking.flight.destination_airport + "','"+  booking.returnflight.source_airport + "','"+ booking.returnflight.destination_airport +  "','" + 'FLIGHT'+"','"
-                     + totalPrice +"','"+booking.flight.passengers+"','"+booking.flight.origincity+"','"+booking.flight.originstate+"','"+booking.flight.destinationcity+"','"+booking.flight.destinationstate+"','"+booking.flight.triptype+"','"
-                     +booking.flight.flightclass+"','"+booking.flight.bookingstartdate+"','"+booking.flight.bookingenddate+"','"+booking.returnflight.flightId+"','"+booking.returnflight.returnstartdate+"','"+booking.returnflight.returnenddate + "','"
-                     +creditCard.card_type+"','"+creditCard.card_number+"','"+creditCard.card_holder_name+"','"+creditCard.valid_from+"','"+creditCard.valid_till+"');";
 
-                     mysql.executeQuery(function(err){
-                         if(err){
-                               console.log(err);
-                               res.code = "401";
-                               res.value=" Error booking the flight";
-                               callback(null, res);
-                         }
-                         else{
-                                res.code = "200";
-                                res.value = "Two - Way Flight booked Successfully";
-                                callback(null, res);
-
-                         }
-                      },bookingSql);
-                 }else{
-                     console.log('Flight is Not Available!!');
-                     res.code = 402;
-                     res.value = "Flight is not available to book for current selections!";
-                     callback(null, res);
-                 }
-           });
-      }
 
 
 

@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import {Link,withRouter} from 'react-router-dom';
 import PropTypes from 'prop-types';
 import Nav from './nav';
+import * as API from '../api/API';
 
 class FlightBooking extends Component {
 
@@ -12,7 +13,24 @@ class FlightBooking extends Component {
         }
      }
     componentWillMount(){
-      
+
+      const payload = JSON.parse(localStorage.getItem("flightbooking"));
+      console.log('payload',payload);
+      API.bookFlight(payload)
+          .then((res) => {
+              console.log(res);
+              if (res.status == 200) {
+                  console.log("Success booking the Flight!");
+                  console.log("Response is " + res);
+              }else if (res.status == 402) {
+                  console.log("Error booking the Flight!");
+                  console.log("Error is " + res);
+              }else {
+                  console.log("Error booking the Flight!");
+                  console.log("Error is " + res);
+              }
+          });
+
     }
 
     render(){
@@ -21,25 +39,25 @@ class FlightBooking extends Component {
                 <div style={{backgroundColor:'black'}}>
                 <Nav/>
                 </div>
-                
+
                     <div style={{padding:'2%',paddingLeft:'10%',paddingRight:'10%'}}>
                         <div className="card">
-                    
+
                         <div className="card-header mdb-color lighten-1 white-text">
-                            Booking Details 
+                            Booking Details
                         </div>
                                 <div className="card-body">
                                     <p>Type: Flight</p>
                                     <p>Type: Flight</p>
                                     <p>Type: Flight</p>
                                 </div>
-                        </div>         
-                        
-                    
+                        </div>
+
+
                         <div className="card">
-                    
+
                         <div className="card-header mdb-color lighten-1 white-text">
-                            Personal Details 
+                            Personal Details
                         </div>
                                 <div className="card-body">
                                     <div className="row">
@@ -69,14 +87,14 @@ class FlightBooking extends Component {
                                         </div>
 
                                         </div>
-                                       
+
                                         <div className="col-sm-6">
                                         <div className="md-form">
                                         <i className="fa fa-phone prefix"></i>
-                                       
+
                                         <input type="text" id="phone" className="form-control"/>
                                         <label htmlFor="phone">Phone Number</label>
-                                      
+
                                         </div>
 
                                         </div>
@@ -85,32 +103,32 @@ class FlightBooking extends Component {
                                         <div className="col-sm-8">
                                         <div className="md-form">
                                         <i className="fa fa-map-marker prefix"></i>
-                                       
+
                                         <input type="text" id="address" className="form-control"/>
                                         <label htmlFor="address">Address</label>
-                                      
+
                                         </div>
 
                                         </div>
                                         <div className="col-sm-4">
                                         <div className="md-form">
                                         <i className="fa fa-location-arrow prefix"></i>
-                                       
+
                                         <input type="text" id="zipcode" className="form-control"/>
                                         <label htmlFor="form2">Zip Code</label>
-                                      
+
                                         </div>
 
                                         </div>
                                 </div>
                         </div>
-                        </div>         
-                        
-                    
+                        </div>
+
+
                         <div className="card">
-                    
+
                         <div className="card-header mdb-color lighten-1 white-text">
-                            Payment 
+                            Payment
                         </div>
                         <div className="card-body">
                             <div className="row">
@@ -125,9 +143,9 @@ class FlightBooking extends Component {
                                 <div className="col-sm-4">
                                     <label>Expiry Date :  </label>
                                     <div className="md-form form-group">
-                                    
+
                                         <input type="month" id="form92" className="form-control validate"/>
-                                    
+
                                     </div>
 
                                 </div>
@@ -141,11 +159,11 @@ class FlightBooking extends Component {
                             </div>
                             <button className="btn btn-default btn-lg btn-block">Pay</button>
                           </div>
-                        </div>         
-                        
-                     </div> 
-                
-                 
+                        </div>
+
+                     </div>
+
+
             </div>
         )
     }
