@@ -14,7 +14,32 @@ function searchCars(msg, callback){
 
   //  if(triptype=='One-Way'){
 
-    car.find({'pickupaddress.city': pickupcity,
+    query = car.find({'pickupaddress.city': pickupcity,
+        'pickupaddress.state': pickupstate,
+        'dropoffaddress.city': dropoffcity,
+        'dropoffaddress.state': dropoffstate
+    });
+
+    //query.where("id", req.session.userId);
+    query.lean();
+    query.exec(function (err, cars) {
+
+        if (err) {
+            throw err;
+            console.log("Error in searching for cars")
+        }
+        else {
+
+            console.log("Car List:", cars)
+            res.code = "200";
+            res.value = cars;
+
+            callback(null, res);
+        }
+
+    });
+
+    /*car.find({'pickupaddress.city': pickupcity,
         'pickupaddress.state': pickupstate,
         'dropoffaddress.city': dropoffcity,
         'dropoffaddress.state': dropoffstate
@@ -34,7 +59,7 @@ function searchCars(msg, callback){
             }
 
         });
-  //  }
+*/  //  }
 /*
 
     else{
