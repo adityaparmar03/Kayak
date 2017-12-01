@@ -60,6 +60,25 @@ export const doRegister = (payload) =>
 
 //************************************************************************************************
 
+export const getbookings = (payload)=>{
+    fetch(`${api}/user/bookinghistory`, {
+        method: 'get',
+        headers: {
+            ...headers,
+            'Content-Type': 'application/json'
+        },
+        //body: JSON.stringify(payload),
+        credentials:'include'
+    }).then(res => {
+        return res.json();
+    })
+        .catch(error => {
+            console.log("This is error");
+            return error;
+        });
+}
+
+
 //************************************************************************************************
 //payload = {
 //email

@@ -8,7 +8,9 @@ class UserTrip extends Component {
 
     componentWillMount(){
 
-
+         API.getbookings().then((data)=>{
+             console.log("inside here");
+         })
     }
 
     render(){

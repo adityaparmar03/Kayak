@@ -61,8 +61,8 @@
       <file leaf-file-name="user.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/services/user.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="241">
-              <caret line="222" column="142" lean-forward="false" selection-start-line="222" selection-start-column="142" selection-end-line="222" selection-end-column="142" />
+            <state relative-caret-position="799">
+              <caret line="190" column="0" lean-forward="false" selection-start-line="190" selection-start-column="0" selection-end-line="190" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -71,25 +71,27 @@
       <file leaf-file-name="car.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/services/car.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="17">
-              <caret line="76" column="5" lean-forward="false" selection-start-line="76" selection-start-column="5" selection-end-line="76" selection-end-column="5" />
-              <folding>
-                <marker date="1512067901262" expanded="true" signature="1880:1944" ph="{...}" />
-                <marker date="1512067901262" expanded="true" signature="5252:5626" ph="{...}" />
-                <marker date="1512067901262" expanded="true" signature="5383:5602" ph="{...}" />
-                <marker date="1512067901262" expanded="true" signature="5404:5443" ph="{...}" />
-                <marker date="1512067901262" expanded="true" signature="5459:5593" ph="{...}" />
-                <marker date="1512067901262" expanded="true" signature="5701:5887" ph="{...}" />
-                <marker date="1512067901262" expanded="true" signature="5761:5807" ph="{...}" />
-              </folding>
+            <state relative-caret-position="1305">
+              <caret line="87" column="74" lean-forward="false" selection-start-line="87" selection-start-column="74" selection-end-line="87" selection-end-column="74" />
+              <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="mysql.js" pinned="false" current-in-tab="true">
+      <file leaf-file-name="bookinghistory.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/models/bookinghistory.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="432">
+              <caret line="34" column="0" lean-forward="false" selection-start-line="34" selection-start-column="0" selection-end-line="34" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="mysql.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/models/mysql.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="89">
+            <state relative-caret-position="-288">
               <caret line="6" column="4" lean-forward="false" selection-start-line="6" selection-start-column="4" selection-end-line="6" selection-end-column="4" />
               <folding />
             </state>
@@ -112,23 +114,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="CleartripFlights.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/models/flight/CleartripFlights.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="810">
-              <caret line="55" column="83" lean-forward="false" selection-start-line="55" selection-start-column="67" selection-end-line="55" selection-end-column="83" />
-              <folding>
-                <marker date="1512017836275" expanded="true" signature="783:1621" ph="/*...*/" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="flight.js" pinned="false" current-in-tab="false">
+      <file leaf-file-name="flight.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/services/flight.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="294">
-              <caret line="144" column="80" lean-forward="false" selection-start-line="143" selection-start-column="22" selection-end-line="144" selection-end-column="80" />
+            <state relative-caret-position="525">
+              <caret line="86" column="32" lean-forward="false" selection-start-line="86" selection-start-column="32" selection-end-line="86" selection-end-column="32" />
               <folding />
             </state>
           </provider>
@@ -150,15 +140,15 @@
         <option value="$PROJECT_DIR$/models/car/AlamoCars.js" />
         <option value="$PROJECT_DIR$/models/User.js" />
         <option value="$PROJECT_DIR$/models/bookinghistory.js" />
-        <option value="$PROJECT_DIR$/services/car.js" />
         <option value="$PROJECT_DIR$/models/searchhistory.js" />
-        <option value="$PROJECT_DIR$/services/flight.js" />
         <option value="$PROJECT_DIR$/services/hotel.js" />
         <option value="$PROJECT_DIR$/services/admin.js" />
         <option value="$PROJECT_DIR$/kafka/Connection.js" />
         <option value="$PROJECT_DIR$/server.js" />
-        <option value="$PROJECT_DIR$/services/user.js" />
         <option value="$PROJECT_DIR$/models/mysql.js" />
+        <option value="$PROJECT_DIR$/services/car.js" />
+        <option value="$PROJECT_DIR$/services/user.js" />
+        <option value="$PROJECT_DIR$/services/flight.js" />
       </list>
     </option>
   </component>
@@ -274,25 +264,24 @@
       <workItem from="1510982302839" duration="4129000" />
       <workItem from="1511073710782" duration="1040000" />
       <workItem from="1511250240645" duration="17496000" />
-      <workItem from="1511576632453" duration="47616000" />
+      <workItem from="1511576632453" duration="50299000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="70281000" />
+    <option name="totallyTimeSpent" value="72964000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1280" height="800" extended-state="0" />
-    <editor active="true" />
     <layout>
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.25416997" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.2173315" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.2173315" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="npm" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="false" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.3287483" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="true" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
@@ -482,36 +471,12 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/models/bookinghistory.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="455">
-          <caret line="34" column="0" lean-forward="false" selection-start-line="34" selection-start-column="0" selection-end-line="34" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/models/flight/CleartripFlights.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="810">
           <caret line="55" column="83" lean-forward="false" selection-start-line="55" selection-start-column="67" selection-end-line="55" selection-end-column="83" />
           <folding>
             <marker date="1512017836275" expanded="true" signature="783:1621" ph="/*...*/" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/services/car.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="17">
-          <caret line="76" column="5" lean-forward="false" selection-start-line="76" selection-start-column="5" selection-end-line="76" selection-end-column="5" />
-          <folding>
-            <marker date="1512067901262" expanded="true" signature="1880:1944" ph="{...}" />
-            <marker date="1512067901262" expanded="true" signature="5252:5626" ph="{...}" />
-            <marker date="1512067901262" expanded="true" signature="5383:5602" ph="{...}" />
-            <marker date="1512067901262" expanded="true" signature="5404:5443" ph="{...}" />
-            <marker date="1512067901262" expanded="true" signature="5459:5593" ph="{...}" />
-            <marker date="1512067901262" expanded="true" signature="5701:5887" ph="{...}" />
-            <marker date="1512067901262" expanded="true" signature="5761:5807" ph="{...}" />
           </folding>
         </state>
       </provider>
@@ -566,26 +531,42 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/models/mysql.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-288">
+          <caret line="6" column="4" lean-forward="false" selection-start-line="6" selection-start-column="4" selection-end-line="6" selection-end-column="4" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/services/car.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1305">
+          <caret line="87" column="74" lean-forward="false" selection-start-line="87" selection-start-column="74" selection-end-line="87" selection-end-column="74" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/models/bookinghistory.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="432">
+          <caret line="34" column="0" lean-forward="false" selection-start-line="34" selection-start-column="0" selection-end-line="34" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/services/user.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="241">
-          <caret line="222" column="142" lean-forward="false" selection-start-line="222" selection-start-column="142" selection-end-line="222" selection-end-column="142" />
+        <state relative-caret-position="799">
+          <caret line="190" column="0" lean-forward="false" selection-start-line="190" selection-start-column="0" selection-end-line="190" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/services/flight.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="294">
-          <caret line="144" column="80" lean-forward="false" selection-start-line="143" selection-start-column="22" selection-end-line="144" selection-end-column="80" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/models/mysql.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="89">
-          <caret line="6" column="4" lean-forward="false" selection-start-line="6" selection-start-column="4" selection-end-line="6" selection-end-column="4" />
+        <state relative-caret-position="525">
+          <caret line="86" column="32" lean-forward="false" selection-start-line="86" selection-start-column="32" selection-end-line="86" selection-end-column="32" />
           <folding />
         </state>
       </provider>

@@ -84,7 +84,7 @@ function searchFlights(msg, callback){
 // Book the flight
 function bookFlight(msg, callback){
       var booking = msg.booking;
-      var email =  "meenakshi.paryani@gmail.com"; //msg.email // TODO : uncomment later
+      var email =  msg.email    // TODO : uncomment later
       console.log("*****************");
       console.log(email);
       console.log("*****************");
@@ -165,7 +165,7 @@ function bookFlight(msg, callback){
                        callback(null, res);
                    }
              });
-        }
+         }
       }else{
               var res = {}
               res.code = "401";

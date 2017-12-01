@@ -85,7 +85,7 @@ function bookCar(msg, callback){
                 var bookingSql="insert into BILLING(`user_email`,`target_id`,`target_name`,`car_type`,`booking_type`,`billing_amount`,`source_city`,`source_state`,`source_street`,`source_country`,`destination_city`,`destination_state`,`destination_street`,`destination_country`,`car_trip_type`,`booking_start_date`,`booking_end_date`,`credit_card_type`, `credit_card_number`, `credit_card_holder_name`,`credit_card_valid_from`,`credit_card_valid_till`) values('"+
                 email+"','"+booking.carId+"','"+ booking.carmodel+"','"+ booking.cartype +"','"+ 'CAR' + "','"+booking.price+"','"+booking.pickupaddress.city+"','"+booking.pickupaddress.state+"','"+booking.pickupaddress.street+"','"+booking.pickupaddress.country+"','"+booking.dropoffaddress.city
                 +"','"+booking.dropoffaddress.state+"','"+booking.dropoffaddress.street+"','"+booking.dropoffaddress.country+"','"+booking.triptype + "','" + booking.pickupdate
-                +"','"+booking.dropoffdate+ "','"+creditCard.card_type+"','"+creditCard.card_number+"','"+creditCard.card_holder_name+"','"+creditCard.valid_from+"','"+creditCard.valid_till+"');";
+                +"','"+booking.dropoffdate+ "','"+creditCard.card_type+"',"+creditCard.card_number+",'"+creditCard.card_holder_name+"','"+creditCard.valid_from+"','"+creditCard.valid_till+"');";
 
                // console.log("*************************************************");
                // console.log(bookingSql);

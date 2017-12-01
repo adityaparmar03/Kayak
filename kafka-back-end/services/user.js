@@ -182,16 +182,19 @@ function bookinghistory(msg,callback){
                 res.value = "Data successfully fetched";
                 var i ;
                 for (i = 0 ; i < results.length ; i++ ){
-                    if(results[i].booking_type === "CAR"){
-                            console.log("#############");
-                            console.log(results[i]);
-                            console.log("#############");
+                    if(results[i].booking_type == "CAR"){
+
                         car.push(results[i]);
                         console.log(car);
 
                     }
-                    else if(results[i].booking_type === "FLIGHT"){
-                        //res.flight = results[i];
+
+
+                    else if(results[i].booking_type == "FLIGHT"){
+                        // es.flight = results[i];
+                        console.log("**********");
+                        console.log(results[i]);
+                        console.log("**********");
                         flight.push(results[i]);
 
                     }
