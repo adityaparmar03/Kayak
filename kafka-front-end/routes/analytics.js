@@ -2,9 +2,10 @@ var express = require('express');
 var router = express.Router();
 var kafka = require('./kafka/client');
 
+
 //************************************************************************************************************************
 
-router.post('/clickrate', function (req, res) {
+router.post('/clicktracker', function (req, res) {
 
      // var reqEmail = req.body.email;
      //  var reqPassword = req.body.password;

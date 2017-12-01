@@ -3,17 +3,10 @@
   <component name="ChangeListManager">
     <list default="true" id="38bb411a-1218-418b-87b7-afc28b7a9352" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/kafka-back-end/kafka/Connection.js" afterPath="$PROJECT_DIR$/kafka-back-end/kafka/Connection.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/kafka-back-end/package-lock.json" afterPath="$PROJECT_DIR$/kafka-back-end/package-lock.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/kafka-back-end/server.js" afterPath="$PROJECT_DIR$/kafka-back-end/server.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/kafka-front-end/app.js" afterPath="$PROJECT_DIR$/kafka-front-end/app.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/kafka-front-end/package.json" afterPath="$PROJECT_DIR$/kafka-front-end/package.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/kafka-front-end/routes/kafka/client.js" afterPath="$PROJECT_DIR$/kafka-front-end/routes/kafka/client.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/react-front-end/package.json" afterPath="$PROJECT_DIR$/react-front-end/package.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/react-front-end/src/api/API.js" afterPath="$PROJECT_DIR$/react-front-end/src/api/API.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/kafka-back-end/models/mysql.js" afterPath="$PROJECT_DIR$/kafka-back-end/models/mysql.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/kafka-front-end/routes/analytics.js" afterPath="$PROJECT_DIR$/kafka-front-end/routes/analytics.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/react-front-end/src/components/tracker.js" afterPath="$PROJECT_DIR$/react-front-end/src/components/tracker.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/react-front-end/src/index.js" afterPath="$PROJECT_DIR$/react-front-end/src/index.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/scripts" afterPath="$PROJECT_DIR$/scripts" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -27,11 +20,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="scripts" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/scripts">
+      <file leaf-file-name="analytics.js" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/kafka-front-end/routes/analytics.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="181">
-              <caret line="35" column="0" lean-forward="false" selection-start-line="35" selection-start-column="0" selection-end-line="35" selection-end-column="113" />
+            <state relative-caret-position="465">
+              <caret line="31" column="0" lean-forward="true" selection-start-line="31" selection-start-column="0" selection-end-line="31" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -41,47 +34,17 @@
         <entry file="file://$PROJECT_DIR$/kafka-front-end/app.js">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="975">
-              <caret line="65" column="19" lean-forward="false" selection-start-line="65" selection-start-column="19" selection-end-line="65" selection-end-column="19" />
+              <caret line="65" column="30" lean-forward="false" selection-start-line="65" selection-start-column="21" selection-end-line="65" selection-end-column="30" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="car.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/kafka-front-end/routes/car.js">
+      <file leaf-file-name="mysql.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/kafka-back-end/models/mysql.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-887">
-              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="analytics.js" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/kafka-front-end/routes/analytics.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="131">
-              <caret line="37" column="37" lean-forward="false" selection-start-line="37" selection-start-column="37" selection-end-line="37" selection-end-column="37" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="mail.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/kafka-front-end/routes/mail.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-257">
-              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="client.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/kafka-front-end/routes/kafka/client.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="45">
-              <caret line="3" column="32" lean-forward="false" selection-start-line="3" selection-start-column="22" selection-end-line="3" selection-end-column="32" />
+            <state relative-caret-position="-273">
+              <caret line="8" column="19" lean-forward="true" selection-start-line="8" selection-start-column="19" selection-end-line="8" selection-end-column="19" />
               <folding />
             </state>
           </provider>
@@ -90,9 +53,43 @@
       <file leaf-file-name="API.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/react-front-end/src/api/API.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="51">
-              <caret line="238" column="28" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="274" selection-end-column="0" />
+            <state relative-caret-position="1617">
+              <caret line="237" column="40" lean-forward="false" selection-start-line="237" selection-start-column="40" selection-end-line="237" selection-end-column="40" />
               <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="App.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/react-front-end/src/App.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="0">
+              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="index.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/react-front-end/src/index.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="765">
+              <caret line="193" column="49" lean-forward="false" selection-start-line="193" selection-start-column="36" selection-end-line="193" selection-end-column="49" />
+              <folding>
+                <element signature="e#2912#2938#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="tracker.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/react-front-end/src/components/tracker.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="848">
+              <caret line="70" column="33" lean-forward="false" selection-start-line="70" selection-start-column="33" selection-end-line="70" selection-end-column="33" />
+              <folding>
+                <element signature="e#0#41#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -111,7 +108,7 @@
         <entry file="file://$PROJECT_DIR$/kafka-front-end/routes/flight.js">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="0">
-              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="3" selection-end-column="30" />
               <folding />
             </state>
           </provider>
@@ -121,7 +118,7 @@
         <entry file="file://$PROJECT_DIR$/kafka-front-end/routes/admin.js">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="1482">
-              <caret line="128" column="0" lean-forward="true" selection-start-line="128" selection-start-column="0" selection-end-line="128" selection-end-column="0" />
+              <caret line="128" column="0" lean-forward="false" selection-start-line="128" selection-start-column="0" selection-end-line="128" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -183,14 +180,11 @@
         <option value="$PROJECT_DIR$/react-front-end/src/components/carsearch.js" />
         <option value="$PROJECT_DIR$/react-front-end/src/constants/constants.js" />
         <option value="$PROJECT_DIR$/react-front-end/src/reducers/rootreducer.js" />
-        <option value="$PROJECT_DIR$/kafka-back-end/models/mysql.js" />
         <option value="$PROJECT_DIR$/kafka-back-end/services/hotel.js" />
         <option value="$PROJECT_DIR$/react-front-end/src/actions/action.js" />
         <option value="$PROJECT_DIR$/react-front-end/src/reducers/vendor.js" />
         <option value="$PROJECT_DIR$/react-front-end/src/components/adminpanel.js" />
-        <option value="$PROJECT_DIR$/react-front-end/src/components/tracker.js" />
         <option value="$PROJECT_DIR$/react-front-end/src/charts/BarChart.js" />
-        <option value="$PROJECT_DIR$/react-front-end/src/index.js" />
         <option value="$PROJECT_DIR$/react-front-end/src/components/SalesAnalytics.js" />
         <option value="$PROJECT_DIR$/react-front-end/src/components/UserAnalytics.js" />
         <option value="$PROJECT_DIR$/kafka-front-end/routes/kafka/client.js" />
@@ -200,6 +194,9 @@
         <option value="$PROJECT_DIR$/kafka-back-end/kafka/Connection.js" />
         <option value="$PROJECT_DIR$/scripts" />
         <option value="$PROJECT_DIR$/kafka-front-end/app.js" />
+        <option value="$PROJECT_DIR$/react-front-end/src/index.js" />
+        <option value="$PROJECT_DIR$/react-front-end/src/components/tracker.js" />
+        <option value="$PROJECT_DIR$/kafka-back-end/models/mysql.js" />
         <option value="$PROJECT_DIR$/react-front-end/src/api/API.js" />
         <option value="$PROJECT_DIR$/kafka-front-end/routes/analytics.js" />
       </list>
@@ -252,6 +249,17 @@
             <path>
               <item name="Kayak" type="b2602c69:ProjectViewProjectNode" />
               <item name="Kayak" type="462c0819:PsiDirectoryNode" />
+              <item name="kafka-back-end" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Kayak" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Kayak" type="462c0819:PsiDirectoryNode" />
+              <item name="kafka-back-end" type="462c0819:PsiDirectoryNode" />
+              <item name="models" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Kayak" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Kayak" type="462c0819:PsiDirectoryNode" />
               <item name="kafka-front-end" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
@@ -263,9 +271,27 @@
             <path>
               <item name="Kayak" type="b2602c69:ProjectViewProjectNode" />
               <item name="Kayak" type="462c0819:PsiDirectoryNode" />
-              <item name="kafka-front-end" type="462c0819:PsiDirectoryNode" />
-              <item name="routes" type="462c0819:PsiDirectoryNode" />
-              <item name="kafka" type="462c0819:PsiDirectoryNode" />
+              <item name="react-front-end" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Kayak" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Kayak" type="462c0819:PsiDirectoryNode" />
+              <item name="react-front-end" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Kayak" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Kayak" type="462c0819:PsiDirectoryNode" />
+              <item name="react-front-end" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="api" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Kayak" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Kayak" type="462c0819:PsiDirectoryNode" />
+              <item name="react-front-end" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="components" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -323,7 +349,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="102363000" />
+    <option name="totallyTimeSpent" value="104107000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -336,7 +362,6 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1440" height="900" extended-state="0" />
-    <editor active="true" />
     <layout>
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32889965" sideWeight="0.5" order="13" side_tool="false" content_ui="tabs" />
       <window_info id="DB Browser" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
@@ -344,7 +369,7 @@
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="14" side_tool="true" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="15" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.47037485" sideWeight="0.5" order="16" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32648125" sideWeight="0.5" order="16" side_tool="false" content_ui="tabs" />
       <window_info id="FAQ Robot" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.25679544" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Project Explorer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
@@ -555,16 +580,8 @@
         <state relative-caret-position="690">
           <caret line="46" column="9" lean-forward="false" selection-start-line="46" selection-start-column="9" selection-end-line="46" selection-end-column="9" />
           <folding>
-            <marker date="1512084845000" expanded="true" signature="5247:5269" ph=" CREATE statement" />
+            <marker date="1512093834000" expanded="true" signature="5251:5273" ph=" CREATE statement" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/react-front-end/src/components/tracker.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="461">
-          <caret line="74" column="46" lean-forward="false" selection-start-line="74" selection-start-column="46" selection-end-line="74" selection-end-column="46" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -573,27 +590,6 @@
         <state relative-caret-position="-1084">
           <caret line="0" column="26" lean-forward="false" selection-start-line="0" selection-start-column="26" selection-end-line="0" selection-end-column="26" />
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/react-front-end/src/App.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding>
-            <element signature="e#0#39#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/react-front-end/src/index.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="293">
-          <caret line="180" column="35" lean-forward="true" selection-start-line="180" selection-start-column="35" selection-end-line="180" selection-end-column="35" />
-          <folding>
-            <element signature="n#!!doc" expanded="false" />
-            <element signature="e#2912#2938#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -621,14 +617,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/kafka-back-end/models/mysql.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="90">
-          <caret line="6" column="16" lean-forward="false" selection-start-line="6" selection-start-column="16" selection-end-line="6" selection-end-column="16" />
           <folding />
         </state>
       </provider>
@@ -724,26 +712,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/kafka-front-end/app.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="975">
-          <caret line="65" column="19" lean-forward="false" selection-start-line="65" selection-start-column="19" selection-end-line="65" selection-end-column="19" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/kafka-front-end/routes/car.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-887">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/react-front-end/src/api/API.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="51">
-          <caret line="238" column="28" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="274" selection-end-column="0" />
           <folding />
         </state>
       </provider>
@@ -775,12 +747,12 @@
     <entry file="file://$PROJECT_DIR$/kafka-front-end/routes/admin.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1482">
-          <caret line="128" column="0" lean-forward="true" selection-start-line="128" selection-start-column="0" selection-end-line="128" selection-end-column="0" />
+          <caret line="128" column="0" lean-forward="false" selection-start-line="128" selection-start-column="0" selection-end-line="128" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/kafka-front-end/routes/flight.js">
+    <entry file="file://$PROJECT_DIR$/react-front-end/src/App.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
@@ -788,10 +760,62 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/react-front-end/src/index.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="765">
+          <caret line="193" column="49" lean-forward="false" selection-start-line="193" selection-start-column="36" selection-end-line="193" selection-end-column="49" />
+          <folding>
+            <element signature="e#2912#2938#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/kafka-back-end/models/mysql.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-273">
+          <caret line="8" column="19" lean-forward="true" selection-start-line="8" selection-start-column="19" selection-end-line="8" selection-end-column="19" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/kafka-front-end/routes/flight.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="3" selection-end-column="30" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/react-front-end/src/components/tracker.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="848">
+          <caret line="70" column="33" lean-forward="false" selection-start-line="70" selection-start-column="33" selection-end-line="70" selection-end-column="33" />
+          <folding>
+            <element signature="e#0#41#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/react-front-end/src/api/API.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1617">
+          <caret line="237" column="40" lean-forward="false" selection-start-line="237" selection-start-column="40" selection-end-line="237" selection-end-column="40" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/kafka-front-end/app.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="975">
+          <caret line="65" column="30" lean-forward="false" selection-start-line="65" selection-start-column="21" selection-end-line="65" selection-end-column="30" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/kafka-front-end/routes/analytics.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="131">
-          <caret line="37" column="37" lean-forward="false" selection-start-line="37" selection-start-column="37" selection-end-line="37" selection-end-column="37" />
+        <state relative-caret-position="465">
+          <caret line="31" column="0" lean-forward="true" selection-start-line="31" selection-start-column="0" selection-end-line="31" selection-end-column="0" />
           <folding />
         </state>
       </provider>

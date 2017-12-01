@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
-import logo from '../logo.svg';
-import * as API from '../api/api'
+import * as API from '../api/API'
 
 
 class Tracker extends Component {
@@ -70,15 +69,6 @@ class Tracker extends Component {
 
 
             <div className="App">
-                <header className="App-header">
-                    <img src={logo} className="App-logo" alt="logo" />
-                    <h1 className="App-titlels">Welcome to React</h1>
-                </header>
-                <p className="App-intro">
-                    To get started, edit <code>src/App.js</code> and save to reload.
-                </p>
-
-
                 <button className=" form-control btn btn-info" type="button"
                         name="share"
                         id="Button1"
