@@ -6,11 +6,11 @@ import * as API from '../api/API';
 class UserTrip extends Component {
 
 
-    componentWillMount(){
+    componentDidMount(){
 
-         API.getbookings().then((data)=>{
-             console.log("inside here");
-         })
+         // API.getbookings().then((data)=>{
+         //     console.log("inside here");
+         // })
     }
 
     render(){
@@ -18,6 +18,7 @@ class UserTrip extends Component {
 
             <div>
                 <h1>Hello, This is Kayak!!</h1>
+
 
             </div>
         )

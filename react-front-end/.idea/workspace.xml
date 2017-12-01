@@ -2,14 +2,18 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="c49127ec-0e22-497b-b878-2320b6889aa9" name="Default" comment="">
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/reducers/userHistory.js" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../kafka-back-end/.idea/workspace.xml" afterPath="$PROJECT_DIR$/../kafka-back-end/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../kafka-back-end/services/car.js" afterPath="$PROJECT_DIR$/../kafka-back-end/services/car.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../kafka-back-end/services/flight.js" afterPath="$PROJECT_DIR$/../kafka-back-end/services/flight.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../kafka-back-end/services/user.js" afterPath="$PROJECT_DIR$/../kafka-back-end/services/user.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../kafka-front-end/.idea/workspace.xml" afterPath="$PROJECT_DIR$/../kafka-front-end/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/actions/action.js" afterPath="$PROJECT_DIR$/src/actions/action.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/api/API.js" afterPath="$PROJECT_DIR$/src/api/API.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/profile.js" afterPath="$PROJECT_DIR$/src/components/profile.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/usertrips.js" afterPath="$PROJECT_DIR$/src/components/usertrips.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/reducers/rootreducer.js" afterPath="$PROJECT_DIR$/src/reducers/rootreducer.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/reducers/userBookings.js" afterPath="$PROJECT_DIR$/src/reducers/userBookings.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/reducers/userProfile.js" afterPath="$PROJECT_DIR$/src/reducers/userProfile.js" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -40,14 +44,15 @@
         <entry file="file://$PROJECT_DIR$/src/components/flightlist.js">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="2010">
-              <caret line="360" column="25" lean-forward="false" selection-start-line="360" selection-start-column="15" selection-end-line="360" selection-end-column="25" />
+              <caret line="359" column="25" lean-forward="false" selection-start-line="359" selection-start-column="15" selection-end-line="359" selection-end-column="25" />
               <folding>
                 <element signature="e#0#39#0" expanded="true" />
-                <marker date="1512093169389" expanded="true" signature="346:429" ph="{...}" />
-                <marker date="1512093169389" expanded="true" signature="370:429" ph="{...}" />
-                <marker date="1512093169389" expanded="true" signature="415:429" ph="{...}" />
-                <marker date="1512093169389" expanded="true" signature="15031:15125" ph="{...}" />
-                <marker date="1512093169389" expanded="true" signature="15044:15122" ph="{...}" />
+                <marker date="1512161208151" expanded="true" signature="346:429" ph="{...}" />
+                <marker date="1512161208151" expanded="true" signature="370:429" ph="{...}" />
+                <marker date="1512161208151" expanded="true" signature="415:429" ph="{...}" />
+                <marker date="1512161208151" expanded="true" signature="15198:15202" ph="{...}" />
+                <marker date="1512161208151" expanded="true" signature="15242:15336" ph="{...}" />
+                <marker date="1512161208151" expanded="true" signature="15255:15333" ph="{...}" />
               </folding>
             </state>
           </provider>
@@ -56,21 +61,11 @@
       <file leaf-file-name="profile.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/components/profile.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="185">
-              <caret line="33" column="28" lean-forward="true" selection-start-line="33" selection-start-column="28" selection-end-line="33" selection-end-column="28" />
+            <state relative-caret-position="960">
+              <caret line="64" column="47" lean-forward="false" selection-start-line="64" selection-start-column="47" selection-end-line="64" selection-end-column="47" />
               <folding>
                 <element signature="e#0#39#0" expanded="true" />
               </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Welcome.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/components/Welcome.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="285">
-              <caret line="21" column="23" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="21" selection-end-column="23" />
-              <folding />
             </state>
           </provider>
         </entry>
@@ -78,8 +73,8 @@
       <file leaf-file-name="usertrips.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/components/usertrips.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="150">
-              <caret line="10" column="33" lean-forward="false" selection-start-line="10" selection-start-column="33" selection-end-line="10" selection-end-column="33" />
+            <state relative-caret-position="300">
+              <caret line="20" column="0" lean-forward="false" selection-start-line="20" selection-start-column="0" selection-end-line="20" selection-end-column="0" />
               <folding>
                 <element signature="e#0#39#0" expanded="true" />
               </folding>
@@ -87,23 +82,23 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="userHistory.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/reducers/userHistory.js">
+      <file leaf-file-name="rootreducer.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/reducers/rootreducer.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="92">
-              <caret line="23" column="0" lean-forward="true" selection-start-line="23" selection-start-column="0" selection-end-line="23" selection-end-column="0" />
+            <state relative-caret-position="150">
+              <caret line="10" column="0" lean-forward="true" selection-start-line="10" selection-start-column="0" selection-end-line="10" selection-end-column="0" />
               <folding>
-                <element signature="e#0#51#0" expanded="true" />
+                <element signature="e#0#38#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="API.js" pinned="false" current-in-tab="true">
+      <file leaf-file-name="API.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/api/API.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="534">
-              <caret line="65" column="18" lean-forward="true" selection-start-line="65" selection-start-column="18" selection-end-line="65" selection-end-column="18" />
+            <state relative-caret-position="96">
+              <caret line="72" column="20" lean-forward="false" selection-start-line="72" selection-start-column="20" selection-end-line="72" selection-end-column="20" />
               <folding />
             </state>
           </provider>
@@ -112,22 +107,10 @@
       <file leaf-file-name="userProfile.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/reducers/userProfile.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="242">
-              <caret line="40" column="68" lean-forward="false" selection-start-line="40" selection-start-column="68" selection-end-line="40" selection-end-column="68" />
+            <state relative-caret-position="-69">
+              <caret line="50" column="64" lean-forward="false" selection-start-line="50" selection-start-column="64" selection-end-line="50" selection-end-column="64" />
               <folding>
                 <element signature="e#0#51#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="hotelsearch.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/components/hotelsearch.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="172">
-              <caret line="244" column="0" lean-forward="false" selection-start-line="244" selection-start-column="0" selection-end-line="244" selection-end-column="0" />
-              <folding>
-                <element signature="e#0#39#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -136,8 +119,18 @@
       <file leaf-file-name="action.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/actions/action.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="330">
-              <caret line="22" column="20" lean-forward="false" selection-start-line="22" selection-start-column="20" selection-end-line="22" selection-end-column="20" />
+            <state relative-caret-position="152">
+              <caret line="19" column="19" lean-forward="false" selection-start-line="19" selection-start-column="19" selection-end-line="19" selection-end-column="19" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="userBookings.js" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/reducers/userBookings.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="156">
+              <caret line="24" column="29" lean-forward="false" selection-start-line="24" selection-start-column="29" selection-end-line="24" selection-end-column="29" />
               <folding />
             </state>
           </provider>
@@ -175,17 +168,18 @@
         <option value="$PROJECT_DIR$/src/index.js" />
         <option value="$PROJECT_DIR$/package-lock.json" />
         <option value="$PROJECT_DIR$/package.json" />
-        <option value="$PROJECT_DIR$/src/reducers/userHistory.js" />
         <option value="$PROJECT_DIR$/src/reducers/userSearch.js" />
         <option value="$PROJECT_DIR$/src/constants/constants.js" />
-        <option value="$PROJECT_DIR$/src/reducers/userBookings.js" />
         <option value="$PROJECT_DIR$/src/components/hotelsearch.js" />
         <option value="$PROJECT_DIR$/src/components/nav.js" />
         <option value="$PROJECT_DIR$/src/reducers/userProfile.js" />
-        <option value="$PROJECT_DIR$/src/actions/action.js" />
-        <option value="$PROJECT_DIR$/src/components/profile.js" />
         <option value="$PROJECT_DIR$/src/api/API.js" />
+        <option value="$PROJECT_DIR$/src/reducers/userHistory.js" />
+        <option value="$PROJECT_DIR$/src/reducers/rootreducer.js" />
         <option value="$PROJECT_DIR$/src/components/usertrips.js" />
+        <option value="$PROJECT_DIR$/src/components/profile.js" />
+        <option value="$PROJECT_DIR$/src/actions/action.js" />
+        <option value="$PROJECT_DIR$/src/reducers/userBookings.js" />
       </list>
     </option>
   </component>
@@ -323,24 +317,26 @@
       <workItem from="1511807593293" duration="25000" />
       <workItem from="1511807652557" duration="89000" />
       <workItem from="1511807908523" duration="49000" />
-      <workItem from="1512021963105" duration="24960000" />
+      <workItem from="1512021963105" duration="29593000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="46594000" />
+    <option name="totallyTimeSpent" value="51227000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1280" height="800" extended-state="6" />
+    <editor active="true" />
     <layout>
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.20810167" sideWeight="0.8606272" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.20810167" sideWeight="0.8586066" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.21045393" sideWeight="0.13899921" order="12" side_tool="true" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.3287483" sideWeight="0.50277996" order="12" side_tool="true" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3287483" sideWeight="0.49722" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3397524" sideWeight="0.49722" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="npm" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.20810167" sideWeight="0.13937283" order="2" side_tool="true" content_ui="tabs" />
+      <window_info id="npm" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.20810167" sideWeight="0.14139344" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.21045393" sideWeight="0.8610008" order="10" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.21045393" sideWeight="0.8610008" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="true" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
@@ -350,7 +346,6 @@
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Execute Anonymous" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Salesforce" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
     </layout>
@@ -368,7 +363,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/package-lock.json" />
     <entry file="file://$PROJECT_DIR$/package.json">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="210">
@@ -588,16 +582,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/reducers/userBookings.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="120">
-          <caret line="8" column="35" lean-forward="false" selection-start-line="8" selection-start-column="35" selection-end-line="8" selection-end-column="35" />
-          <folding>
-            <element signature="e#0#51#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/reducers/userSearch.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="146">
@@ -621,14 +605,15 @@
     <entry file="file://$PROJECT_DIR$/src/components/flightlist.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="2010">
-          <caret line="360" column="25" lean-forward="false" selection-start-line="360" selection-start-column="15" selection-end-line="360" selection-end-column="25" />
+          <caret line="359" column="25" lean-forward="false" selection-start-line="359" selection-start-column="15" selection-end-line="359" selection-end-column="25" />
           <folding>
             <element signature="e#0#39#0" expanded="true" />
-            <marker date="1512093169389" expanded="true" signature="346:429" ph="{...}" />
-            <marker date="1512093169389" expanded="true" signature="370:429" ph="{...}" />
-            <marker date="1512093169389" expanded="true" signature="415:429" ph="{...}" />
-            <marker date="1512093169389" expanded="true" signature="15031:15125" ph="{...}" />
-            <marker date="1512093169389" expanded="true" signature="15044:15122" ph="{...}" />
+            <marker date="1512161208151" expanded="true" signature="346:429" ph="{...}" />
+            <marker date="1512161208151" expanded="true" signature="370:429" ph="{...}" />
+            <marker date="1512161208151" expanded="true" signature="415:429" ph="{...}" />
+            <marker date="1512161208151" expanded="true" signature="15198:15202" ph="{...}" />
+            <marker date="1512161208151" expanded="true" signature="15242:15336" ph="{...}" />
+            <marker date="1512161208151" expanded="true" signature="15255:15333" ph="{...}" />
           </folding>
         </state>
       </provider>
@@ -643,24 +628,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/reducers/userProfile.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="242">
-          <caret line="40" column="68" lean-forward="false" selection-start-line="40" selection-start-column="68" selection-end-line="40" selection-end-column="68" />
-          <folding>
-            <element signature="e#0#51#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/actions/action.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="330">
-          <caret line="22" column="20" lean-forward="false" selection-start-line="22" selection-start-column="20" selection-end-line="22" selection-end-column="20" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/components/Welcome.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="285">
@@ -669,40 +636,74 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/api/API.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="96">
+          <caret line="72" column="20" lean-forward="false" selection-start-line="72" selection-start-column="20" selection-end-line="72" selection-end-column="20" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/reducers/rootreducer.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="150">
+          <caret line="10" column="0" lean-forward="true" selection-start-line="10" selection-start-column="0" selection-end-line="10" selection-end-column="0" />
+          <folding>
+            <element signature="e#0#38#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/reducers/userHistory.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="92">
-          <caret line="23" column="0" lean-forward="true" selection-start-line="23" selection-start-column="0" selection-end-line="23" selection-end-column="0" />
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/usertrips.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="300">
+          <caret line="20" column="0" lean-forward="false" selection-start-line="20" selection-start-column="0" selection-end-line="20" selection-end-column="0" />
           <folding>
-            <element signature="e#0#51#0" expanded="true" />
+            <element signature="e#0#39#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/components/profile.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="185">
-          <caret line="33" column="28" lean-forward="true" selection-start-line="33" selection-start-column="28" selection-end-line="33" selection-end-column="28" />
+        <state relative-caret-position="960">
+          <caret line="64" column="47" lean-forward="false" selection-start-line="64" selection-start-column="47" selection-end-line="64" selection-end-column="47" />
           <folding>
             <element signature="e#0#39#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/usertrips.js">
+    <entry file="file://$PROJECT_DIR$/src/actions/action.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="150">
-          <caret line="10" column="33" lean-forward="false" selection-start-line="10" selection-start-column="33" selection-end-line="10" selection-end-column="33" />
+        <state relative-caret-position="152">
+          <caret line="19" column="19" lean-forward="false" selection-start-line="19" selection-start-column="19" selection-end-line="19" selection-end-column="19" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/reducers/userProfile.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-69">
+          <caret line="50" column="64" lean-forward="false" selection-start-line="50" selection-start-column="64" selection-end-line="50" selection-end-column="64" />
           <folding>
-            <element signature="e#0#39#0" expanded="true" />
+            <element signature="e#0#51#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/api/API.js">
+    <entry file="file://$PROJECT_DIR$/src/reducers/userBookings.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="534">
-          <caret line="65" column="18" lean-forward="true" selection-start-line="65" selection-start-column="18" selection-end-line="65" selection-end-column="18" />
+        <state relative-caret-position="156">
+          <caret line="24" column="29" lean-forward="false" selection-start-line="24" selection-start-column="29" selection-end-line="24" selection-end-column="29" />
           <folding />
         </state>
       </provider>

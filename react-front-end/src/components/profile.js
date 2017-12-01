@@ -56,17 +56,32 @@ class Profile extends Component {
 
     }
 
+    trip(){
+        console.log("inside the trips click function");
+        API.gethistory().then((data)=>{
+            console.log("inside here");
+            console.log(data);
+            if(data.status==201){
+                this.props.bokingHistory(data);
+
+            }
+
+        })
+    }
+
     updateUserData(){
 
         //validation for the zip code will come here.
 
 
-        var payload = {};
+
         console.log("***********");
-         payload = this.state;
+       var payload = this.state;
 
          console.log(this.state.email);
+         console.log("---------------");
         console.log(payload);
+        console.log("---------------");
         API.doUpdate(payload).then((data)=>{
             if(data.status==201){
                 console.log("Succesfull push");
@@ -104,7 +119,7 @@ class Profile extends Component {
                         <a className="nav-link active" data-toggle="tab" href="#panel5" role="tab"><i class="fa fa-user"></i> Personal Details</a>
                     </li>
                     <li className="nav-item">
-                        <a className="nav-link" data-toggle="tab" href="#panel6" role="tab"><i class="fa fa-heart"></i> Trips</a>
+                        <a className="nav-link" data-toggle="tab" href="#panel6" role="tab" onClick={()=>{this.trip();}}><i class="fa fa-heart"></i> Trips</a>
                     </li>
                 </ul>
 
@@ -201,7 +216,7 @@ class Profile extends Component {
                                         <input type="text" id="zipcode" value={this.state.zipcode} className="form-control"
                                                onChange={(event) => {
                                                    this.setState({
-                                                       zip: event.target.value
+                                                       zipcode: event.target.value
                                                    });
                                                }}/>
                                         <label htmlFor="form2">Zip Code</label>
@@ -263,7 +278,7 @@ class Profile extends Component {
                     </div>
    
   
-</div>
+    </div>
                 </div>
 
             </div>
@@ -292,7 +307,8 @@ function mapStateToProps(reducerdata) {
 
 function mapDispatchToProps(dispatch) {
     return {
-        signIn : (data) => dispatch(Actions.signIn(data))
+        signIn : (data) => dispatch(Actions.signIn(data)),
+        bokingHistory : (data) => dispatch(Actions.bookingHistory(data))
 
     };
 }

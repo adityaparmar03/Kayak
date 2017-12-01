@@ -49,7 +49,7 @@ function login(msg, callback){
     console.log("++++++++++++++++++++");
     console.log(msg);
     console.log("++++++++++++++++++++");
-    var selectQuery = "select password,user_role from USER where email = '"+msg.email+"';" ;
+    var selectQuery = "select * from USER where email = '"+msg.email+"';" ;
     console.log(selectQuery);
 
     mysql.fetchData(function (err,results) {
@@ -141,7 +141,7 @@ function update(msg,callback) {
     var res={};
     console.log(msg);
     var updateQuery = "update user set first_name='"+msg.firstname+"', last_name='"+msg.lastname+"',street_address='"+msg.address+"'," +
-        "phone='"+msg.phonenumber+"',profile_image_path='"+msg.imgpath+"',credit_card_number='"+msg.creditcard+"',zip_code='"+msg.zip+"' where email='"+msg.email+"';";
+        "phone='"+msg.phonenumber+"',profile_image_path='"+msg.imgpath+"',credit_card_number='"+msg.creditcard+"',zip_code='"+msg.zipcode+"' where email='"+msg.email+"';";
     console.log(updateQuery);
     mysql.executeQuery(function(err){
         if(err){
@@ -168,7 +168,7 @@ function bookinghistory(msg,callback){
     var car = [];
     var flight = [];
     var hotel = [];
-    var search = "select booking_type,billing_amount,flight_trip_type,car_trip_type,room_type,billing_amount,billing_date,source_city,destination_city,booking_class from billing where user_email='"+msg.email+"';" ;
+    var search = "select billing_id,booking_type,billing_amount,flight_trip_type,car_trip_type,room_type,billing_amount,billing_date,source_city,destination_city,booking_class from billing where user_email='"+msg.email+"';" ;
 
     mysql.fetchData(function (err,results) {
         if(err){
@@ -233,6 +233,9 @@ function getuserdata(msg,callback){
             console.log("inside the else of the get data");
             res.code = "200";
             res.value = "succesfully fetched the data";
+            console.log("^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^");
+            console.log(results);
+            console.log("^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^");
             res.data = results;
 
         }callback(null,res);

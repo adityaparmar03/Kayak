@@ -17,7 +17,7 @@ export function flightSearch(flights) {
     }
 };
 
-export function bokinghistory(data){
+export function bookingHistory(data){
     return {
         type:Constants.USER_HISTORY,
         payload:data

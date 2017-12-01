@@ -2,7 +2,7 @@ import * as Constants from '../constants/constants'
 import {combineReducers} from 'redux';
 
 var initialstate = {
-    isLoggedIn:null,
+    isLoggedIn:false,
     firstname:null,
     lastname:null,
     isadmin:false,
@@ -28,6 +28,30 @@ function userProfile(state = initialstate, action) {
                     isadmin:true
                 }
             }
+            if(action.payload.data[0].first_name=='null'){
+                action.payload.data[0].first_name="";
+
+            }
+            if(action.payload.data[0].last_name=='null'){
+                console.log("inside lastnamenull");
+                action.payload.data[0].last_name="";
+            }
+            if(action.payload.data[0].phone=='null'){
+                action.payload.data[0].phone="";
+            }
+            if(action.payload.data[0].zip_code=='null'){
+                action.payload.data[0].zip_code="";
+            }
+            if(action.payload.data[0].profile_image_path=='null'){
+                action.payload.data[0].profile_image_path="";
+            }
+            if(action.payload.data[0].street_address=='null'){
+                action.payload.data[0].street_address="";
+            }
+            if(action.payload.data[0].credit_card_number=='null'){
+                action.payload.data[0].credit_card_number="";
+            }
+
             state= {
                 ...state,
                 isLoggedIn:true,
@@ -35,7 +59,7 @@ function userProfile(state = initialstate, action) {
                 firstname:action.payload.data[0].first_name,
                 lastname:action.payload.data[0].last_name,
                 phonenumber:action.payload.data[0].phone,
-                zipcode:action.payload.data[0].zipcode,
+                zipcode:action.payload.data[0].zip_code,
                 imgpath:action.payload.data[0].profile_image_path,
                 address:action.payload.data[0].street_address,
                 creditcard:action.payload.data[0].credit_card_number

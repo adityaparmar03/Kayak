@@ -1,13 +1,31 @@
 import * as Constants from '../constants/constants'
 import {combineReducers} from 'redux';
 
+var initialState = {
 
-function userBooking(state = [], action) {
+    flight:{},
+    car:{},
+    hotel:{}
+
+}
+
+
+function userBooking(state = initialState, action) {
 
     switch (action.type) {
 
         case Constants.USER_HISTORY :
-            return action.booking
+            state = {
+                ...state,
+                car:action.payload.data.car,
+                flight:action.payload.data.flight,
+                hotel:action.payload.data.hotel
+            }
+            console.log("~~~~~~~~~~~~~~~~~~~~~~~~");
+            console.log(state);
+            console.log("~~~~~~~~~~~~~~~~~~~~~~~~");
+
+            return state;
 
         default :
             return state;
