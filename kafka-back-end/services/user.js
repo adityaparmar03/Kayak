@@ -140,7 +140,9 @@ function register(msg,callback){
 function update(msg,callback) {
     var res={};
     console.log(msg);
-    var updateQuery = "update user set password='"+msg.password+"' where email='"+msg.email+"';";
+    var updateQuery = "update user set first_name='"+msg.firstname+"', last_name='"+msg.lastname+"',street_address='"+msg.address+"'," +
+        "phone='"+msg.phone+"',profile_image_path='"+msg.imgpath+"',zip_code='"+msg.zip+"' where email='"+msg.emailid+"';";
+    console.log(updateQuery);
     mysql.executeQuery(function(err){
         if(err){
             throw err;
@@ -218,7 +220,7 @@ function bookinghistory(msg,callback){
 function getuserdata(msg,callback){
     var res= {};
     console.log(msg);
-    var getQuery = "select first_name,last_name,user_role,city,state,zip_code,profile_image_path,email,phone from user where email='"+msg.email+"';";
+    var getQuery = "select first_name,last_name,user_role,city,state,zip_code,profile_image_path,email,phone,street_address from user where email='"+msg.email+"';";
     mysql.fetchData(function (err,results) {
         if(err){
             res.code = "401";

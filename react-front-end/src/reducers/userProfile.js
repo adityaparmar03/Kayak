@@ -2,14 +2,14 @@ import * as Constants from '../constants/constants'
 import {combineReducers} from 'redux';
 
 var initialstate = {
-    isLoggedIn:false,
-    firstname:" ",
-    lastname:" ",
+    isLoggedIn:null,
+    firstname:null,
+    lastname:null,
     isadmin:false,
-    email:" ",
-    address:" ",
-    zipcode:" ",
-    phonenumber:" ",
+    email:null,
+    address:null,
+    zipcode:null,
+    phonenumber:null,
     imgpath:" "
 
 }
@@ -30,7 +30,12 @@ function userProfile(state = initialstate, action) {
             state= {
                 ...state,
                 isLoggedIn:true,
-                email:action.payload.data[0].email
+                email:action.payload.data[0].email,
+                firstname:action.payload.data[0].first_name,
+                lastname:action.payload.data[0].last_name,
+                phonenumber:action.payload.data[0].phone,
+                zipcode:action.payload.data[0].zipcode,
+                imgpath:action.payload.data[0].profile_image_path
             }
 
 

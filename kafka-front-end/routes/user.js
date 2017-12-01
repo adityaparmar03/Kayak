@@ -132,8 +132,9 @@ router.post('/register',function (req,res) {
 router.put('/update',function (req,res) {
 
 console.log("inside the update path");
+console.log("*********************");
     console.log(req.body);
-
+    console.log("*********************");
     kafka.make_request('update', req.body ,function(err,results){
 
         if(err){

@@ -87,8 +87,8 @@ export const checkSession = () =>
 //zzip code etc
 //}
 export const doUpdate = (payload) =>
- fetch(`${api}/users/update`, {
-        method: 'POST',
+ fetch(`${api}/user/update`, {
+        method: 'PUT',
         headers: {
             ...headers,
             'Content-Type': 'application/json'
