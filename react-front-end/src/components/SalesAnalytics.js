@@ -13,18 +13,18 @@ class UserAnalytics extends Component {
                 <h2>Sales Analytics</h2>
 
                 <div className="row container-fluid" >
-                    <div className="col-sm-6">
+                    <div className="col-sm-12">
                         <Top5Chart/>
                     </div>
-                    <div className="col-sm-6">
+                    <div className="col-sm-12">
                         <Top5CarChart/>
                     </div>
                 </div>
                 <div className="row container-fluid" >
-                    <div className="col-sm-6">
+                    <div className="col-sm-12">
                         <Top5FlightChart/>
                     </div>
-                    <div className="col-sm-6">
+                    <div className="col-sm-12">
                         <Top5HotelChart/>
                     </div>
                 </div>
