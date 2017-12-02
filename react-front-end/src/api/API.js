@@ -248,6 +248,24 @@ export const getVendors = (payload) =>
     });
 
 
+export const getBills = () =>
+    fetch(`${api}/admin/bills`, {
+        method: 'GET',
+        headers: {
+            ...headers,
+            'Content-Type': 'application/json'
+        },
+        credentials:'include'
+    }).then(res => {
+
+        return res.json();
+    })
+        .catch(error => {
+            console.log("This is an API error");
+            return error;
+        });
+
+
 
 export const searchFlights = (payload) =>
     fetch(`${api}/flight/flights?origincity=`+payload.origincity+`&originstate=`+payload.originstate+

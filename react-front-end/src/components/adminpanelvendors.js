@@ -7,30 +7,10 @@ import {connect} from 'react-redux';
 
 class AdminPanelVendors extends Component {
 
-    state={
-        vendorname:"",
-        servicetype:"",
-        vendorapi:""
-
-    }
 
     componentWillMount(){
         
-                API.getVendors()
-                    .then((res) => {
-                        console.log(res);
-        
-                        if (res.status == 200) {
-        
-                            this.props.getVendors(res.vendors);
-        
-                            console.log("Success...")
-        
-                        }else if (res.status == 401) {
-        
-                            //  this.props.history.push('/');
-                        }
-                    });
+
     }
 
     addVendor(){
@@ -163,7 +143,7 @@ class AdminPanelVendors extends Component {
 }
 function mapStateToProps(reducerdata) {
     
-        const vendors = reducerdata.vendor;
+        const vendors = reducerdata.adminTask.vendor;
         console.log(reducerdata);
         return {vendors};
     }
@@ -171,10 +151,10 @@ function mapStateToProps(reducerdata) {
     function mapDispatchToProps(dispatch) {
         return {
     
-            getVendors : (data) => dispatch(Actions.getVendors(data)),
+
             addVendor : (data) => dispatch(Actions.addVendor(data)),
             deleteVendor : (data) => dispatch(Actions.deleteVendor(data))
         };
     }
     
- export default withRouter(connect(mapStateToProps, mapDispatchToProps)(AdminPanelVendors));
+ export default connect(mapStateToProps, mapDispatchToProps)(AdminPanelVendors);

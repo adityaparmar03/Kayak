@@ -16,4 +16,5 @@ export const ADD_VENDOR="ADD_VENDOR";
 export const DELETE_VENDOR="DELETE_VENDOR";
 export const ALL_USERS="ALL_USERS";
 export const DELETE_USER="DELETE_USER";
+export const GET_BILLS="GET_BILLS";
 

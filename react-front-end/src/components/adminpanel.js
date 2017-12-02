@@ -40,6 +40,43 @@ class AdminPanel extends Component {
         })
      }
 
+     vendorDetails(){
+         API.getVendors()
+             .then((res) => {
+                 console.log(res);
+
+                 if (res.status == 200) {
+
+                     this.props.getVendors(res.vendors);
+
+                     console.log("Success...")
+
+                 }else if (res.status == 401) {
+
+                     //  this.props.history.push('/');
+                 }
+             });
+     }
+
+     billingDetails(){
+         API.getBills()
+             .then((res) => {
+                 console.log(res);
+
+                 if (res.status == 200) {
+
+                     this.props.getBills(res.bills);
+
+                     console.log("Success...")
+
+                 }else if (res.status == 401) {
+
+                     //  this.props.history.push('/');
+                 }
+             });
+
+     }
+
    
     render(){
         console.log(this.props.vendors)
@@ -56,10 +93,10 @@ class AdminPanel extends Component {
                         <a className="nav-link" data-toggle="tab" href="#user" role="tab" onClick={()=>{this.userdetails()}}><i className="fa fa-user"></i> User</a>
                     </li>
                     <li className="nav-item">
-                        <a className="nav-link" data-toggle="tab" href="#booking" role="tab"><i className="fa fa-table"></i> Booking</a>
+                        <a className="nav-link" data-toggle="tab" href="#booking" role="tab" onClick={()=>{this.billingDetails()}}><i className="fa fa-table"></i> Booking</a>
                     </li>
                     <li className="nav-item">
-                        <a className="nav-link" data-toggle="tab" href="#vendor" role="tab"><i className="fa fa-users"></i> Vendor</a>
+                        <a className="nav-link" data-toggle="tab" href="#vendor" role="tab" onClick={()=>{this.vendorDetails()}}><i className="fa fa-users"></i> Vendor</a>
                     </li>
                 </ul>
 
@@ -96,6 +133,8 @@ class AdminPanel extends Component {
 function mapDispatchToProps(dispatch) {
     return {
 
+        getBills : (data) => dispatch(Actions.getBills(data)),
+        getVendors : (data) => dispatch(Actions.getVendors(data)),
         allUsers : (data) => dispatch(Actions.allUsers(data))
     };
 }

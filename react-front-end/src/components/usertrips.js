@@ -22,9 +22,9 @@ class UserTrip extends Component {
         return(
 
             <div>
-<<<<<<< HEAD
+
                 <h4>Hello, This is Kayak!!</h4>
-=======
+
                 <ul className="nav md-pills nav-justified pills-primary">
                 <li className="nav-item">
                     <a className="nav-link active" data-toggle="tab" href="#flights" role="tab">Flights</a>

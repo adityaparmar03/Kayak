@@ -50,6 +50,14 @@ export function getVendors(vendors) {
     }
 };
 
+export function getBills(bills) {
+
+    return {
+        type : Constants.GET_BILLS,
+        bills : bills
+    }
+};
+
 export function allUsers(data) {
     return{
         type: Constants.ALL_USERS,

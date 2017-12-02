@@ -50,7 +50,7 @@ class AdminPanelUsers extends Component {
                                                 </tr>
                                             </thead> 
                                             <tbody>
-                                            {this.props.alluser.map((user, index)=>( <tr>
+                                            {this.props.users.map((user, index)=>( <tr>
                                                     <td>1</td>
 
                                                     <td>{user.firstname}</td>
@@ -201,11 +201,11 @@ class AdminPanelUsers extends Component {
 
 function mapStateToProps(reducerdata) {
      console.log(reducerdata);
-    const alluser = reducerdata.allUsers;
+    const users = reducerdata.adminTask.user;
     console.log("****************");
-    console.log(alluser);
+    console.log(users);
     console.log("****************");
-    return {alluser};
+    return {users};
 }
 
 function mapDispatchToProps(dispatch) {
