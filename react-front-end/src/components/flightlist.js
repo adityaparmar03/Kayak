@@ -50,6 +50,7 @@ class Flightlist extends Component {
     }
     componentWillMount(){
 
+        console.log(this.props.location.flightsearchcriteria);
         const payload = JSON.parse(localStorage.getItem("flightsearchcriteria"));
         console.log('payload',payload);
         API.searchFlights(payload)

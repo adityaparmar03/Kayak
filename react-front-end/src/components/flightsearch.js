@@ -31,7 +31,7 @@ class Flightsearch extends Component {
         travelerpopup:false,
         traveler:1,
         class:"Economy",
-        returndateenable:false
+        returndateenable:true
       };
        handleSubmit(){
 
@@ -49,7 +49,7 @@ class Flightsearch extends Component {
               console.log("Travelers =>"+this.state.traveler)
               console.log("class =>"+this.state.class)
               console.log(moment(this.state.startdate).toString().split(" ")[0]);
-              console.log(this.state.startdate);
+              console.log(this.state.returndateenable);
 
 
               const  payload={
@@ -58,7 +58,8 @@ class Flightsearch extends Component {
                   'destinationcity':this.state.to.split(",")[0].trim(),
                   'destinationstate':this.state.to.split(",")[1].trim(),
                   'departureday':moment(this.state.startdate).toString().split(" ")[0],
-                  'triptype':'One-Way',
+                  'triptype':this.state.returndateenable==true?"Two-Way":"One-Way",
+                  'arrivalday':moment(this.state.enddate).toString().split(" ")[0],
                   'flightclass':this.state.class
               }
 
@@ -66,10 +67,13 @@ class Flightsearch extends Component {
               console.log('payload', payload);
 
               localStorage.setItem("flightsearchcriteria", JSON.stringify(payload));
-              this.props.history.push('/flightlist');
+              this.props.history.push({
+                    pathname:'/flightlist',
+                    // search: '?query=abc',
+                    flightsearchcriteria: payload
+                })
 
-             // call Api for search here......
-                 //API CALL
+
 
        }
 
@@ -251,7 +255,7 @@ class Flightsearch extends Component {
                                 mode="landscape"
                                 autoOk={true} 
                                 onChange={this.handleEndDate.bind(this)}
-                                disabled={this.state.returndateenable}
+                                disabled={!this.state.returndateenable}
                                 floatingLabelText="Return"/>
                             </div>
                             <div className="col-sm-3">

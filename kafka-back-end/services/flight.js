@@ -51,7 +51,7 @@ function searchFlights(msg, callback){
     }
 
     else{
-
+console.log('checkkk',arrivalday);
         flight.aggregate(
 
             {$unwind: '$flights'},

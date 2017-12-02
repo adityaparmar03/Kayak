@@ -270,7 +270,8 @@ export const getBills = () =>
 export const searchFlights = (payload) =>
     fetch(`${api}/flight/flights?origincity=`+payload.origincity+`&originstate=`+payload.originstate+
                 `&destinationcity=`+payload.destinationcity+`&destinationstate=`+payload.destinationstate
-                +`&triptype=`+payload.triptype+`&flightclass=`+payload.flightclass+`&departureday=`+payload.departureday, {
+                +`&triptype=`+payload.triptype+`&flightclass=`+payload.flightclass+`&departureday=`+payload.departureday+
+                    `&arrivalday=`+payload.arrivalday, {
         method: 'GET',
         headers: {
             ...headers,
