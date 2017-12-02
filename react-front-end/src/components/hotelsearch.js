@@ -7,7 +7,6 @@ import TextField from 'material-ui/TextField';
 import moment from 'moment';
 import cities from '../constants/cities'
 
-
 class Hotelsearch extends Component {
 
 
@@ -26,7 +25,8 @@ class Hotelsearch extends Component {
         citysuggestion: [],
         travelerpopup:false,
         rooms:1,
-        guests:1
+        guests:1,
+     
       };
        handleSubmit(){
         
@@ -134,6 +134,7 @@ class Hotelsearch extends Component {
         if(this.state.travelerpopup){
             return <div style={{marginTop:"-6%",minWidth:"300px",
             marginLeft:"60%",marginRight:"10%",borderRadius:"0",zIndex:"2"}} className="card">
+               
                 <div className="card-body"> 
                     <button type="button" className="close" aria-label="Close" onClick={()=>this.handlepopup()}>
                         <span aria-hidden="true">&times;</span>
@@ -176,6 +177,7 @@ class Hotelsearch extends Component {
         }
         
     } 
+      
     render(){
         return(
             <div>
