@@ -8,6 +8,7 @@ import * as Actions from '../actions/action';
 import {connect} from 'react-redux';
 
 import MultiSlider from "multi-slider";
+
 class Flightlist extends Component {
     constructor(props){
         super(props);
@@ -107,6 +108,7 @@ class Flightlist extends Component {
             return <span>&mdash;&mdash;&#9632;&mdash;&mdash;&#9632;&mdash;&mdash;</span>
         }
     }
+    
     handleBook(data,classtype,price){
         console.log("selected data ="+JSON.stringify(data))
         var flightbooking = {
@@ -117,7 +119,7 @@ class Flightlist extends Component {
                 "originstate" : data.flights.origin.state,
                 "destinationcity" : data.flights.destination.city,
                 "destinationstate" : data.flights.destination.state,
-                "triptype" : "One-Way", // TODO : remove hardcoding
+                "triptype" : "One-Way", // TODO : remove hardcoding and add support for one way flights
                 "flightclass" : classtype,
                 "capacity" : 100,
                 "price" : price,
@@ -155,12 +157,13 @@ class Flightlist extends Component {
       			"valid_till" : "2017-01-26"
     		  }
         }
-
-        console.log('payload', flightbooking);
+        // use unique ID : TODO
+        var uniqueId = flightbooking + Date.now();
+        console.log('payload', flightbooking, ' ', uniqueId);
         localStorage.setItem("flightbooking", JSON.stringify(flightbooking));
         this.props.history.push('/flightbooking');
-
     }
+
     displayflights(data,index){
 
             return(

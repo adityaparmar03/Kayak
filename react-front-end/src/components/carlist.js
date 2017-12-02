@@ -16,7 +16,7 @@ class Carlist extends Component {
 
             //dummy
             carname:"Mercedes-Benz",
-            // UI states 
+            // UI states
              test:[1,2,3,4,5,1,2,3,4,5],
              low: 0,
              high:0,
@@ -25,17 +25,17 @@ class Carlist extends Component {
              valuesPrice:[],
              initialpricemax:0,
              googlemap:"https://www.google.com/maps/embed/v1/place?key=AIzaSyAOW5Lf27NBLJDBfmgD_mlvIBlu97OHzXw&q="
-             
-       
-     
+
+
+
         }
      }
-      maxprice = 0; 
+      maxprice = 0;
       minprice = 0;
 
-    
 
-     
+
+
     componentWillMount(){
 
         const payload = JSON.parse(localStorage.getItem("carsearchcriteria"));
@@ -48,15 +48,15 @@ class Carlist extends Component {
 
                     this.props.carSearch(res.cars);
 
-                
-                    var price = res.cars.map((item,i)=>parseInt(item.dailyrent));   
+
+                    var price = res.cars.map((item,i)=>parseInt(item.dailyrent));
                     var max = price.reduce(function(a, b) {
                         return Math.max(a, b);
                     });
                     var min = price.reduce(function(a, b) {
                         return Math.min(a, b);
                     });
-                    
+
 
 
                 }else if (res.status == 401) {
@@ -71,7 +71,7 @@ class Carlist extends Component {
         var valuesStar=[0,4,0]
         this.setState({
             valuesPrice: valuesPrice,
-         
+
             low:this.minprice,
             high:this.maxprice
           });
@@ -82,24 +82,54 @@ class Carlist extends Component {
       low :  this.minprice + values[0],
       high: this.maxprice - values[2]
     });
-    
-   
+
+
     displaystopline(stop){
         if(stop=="nonstop"){
-            return <span>&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;</span> 
+            return <span>&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;</span>
         }
         else if(stop=="onestop"){
-            return <span>&mdash;&mdash;&#9632;&mdash;&mdash;&mdash;</span> 
+            return <span>&mdash;&mdash;&#9632;&mdash;&mdash;&mdash;</span>
         }
         else{
-            return <span>&mdash;&mdash;&#9632;&mdash;&mdash;&#9632;&mdash;&mdash;</span> 
+            return <span>&mdash;&mdash;&#9632;&mdash;&mdash;&#9632;&mdash;&mdash;</span>
         }
     }
+
+    handleBook(data,triptype,price){
+        console.log("selected data ="+JSON.stringify(data))
+        var carbooking = {
+          booking : {
+      			"carId" : data.carId,
+      		    "cartype" : data.cartype,
+      		    "carmodel" : data.carmodel,
+      		    "pickupdate" : "2017-01-18 09:15:00",
+      		    "dropoffdate" : "2017-01-19 23:14:00",
+      		    "triptype"    : "SAME-DROPOFF", // TODO - get triptype from ui
+      		    "pickupaddress" : data.pickupaddress,
+      		    "dropoffaddress" : data.dropoffaddress,
+      		    "price" : price // TODO - price calculation on UI
+      		},
+          credit_card : { // TODO - add credit card from user
+      			"card_type" : "MasterCard",
+      			"card_number": "012345678989",
+      			"card_holder_name" : "Meenakshi Paryani",
+      			"valid_from" : "2017-01-18",
+      			"valid_till" : "2017-01-26"
+    		  }
+        }
+        // use unique ID : TODO
+        var uniqueId = carbooking + Date.now();
+        console.log('payload', carbooking, ' ', uniqueId);
+        localStorage.setItem("carbooking", JSON.stringify(carbooking));
+        this.props.history.push('/carbooking');
+    }
+
     displayhotels(data,index){
-            
-            
+
+
             return(
-                
+
                 <div className="card" key={index}>
                     <div data-toggle="collapse" data-target={'#details'+index}>
                     <div className="row">
@@ -108,12 +138,12 @@ class Carlist extends Component {
                                 <h5 class="h5-responsive" ><b>{data.carmodel}</b></h5>
                                 <p>Pickup : {data.pickupaddress.street}, {data.pickupaddress.city}, {data.pickupaddress.state}</p>
                                 <p>Dropoff : {data.dropoffaddress.street}, {data.dropoffaddress.city}, {data.dropoffaddress.state}</p>
-                             
+
                                 <button type="button" className="btn btn-primary">Get Direction</button>
-                               
-                              
-                            </div> 
-                         
+
+
+                            </div>
+
                          </div>
                         <div className="col-sm-5">
                         <div className="view overlay hm-zoom">
@@ -123,22 +153,23 @@ class Carlist extends Component {
                                     <p className="white-text">{data.carmodel}</p>
                                 </div>
                         </div>
-                             
+
                          </div>
-                        
+
                         <div className="col-sm-3">
                                 <div style={{textAlign:"center",marginTop:'5vh'}}>
                                 <b style={{fontSize:"20px",fontWeight:"bold"}}>${data.dailyrent}</b><br/>
                                 <b style={{fontSize:"15px",fontWeight:"bold"}}>{data.cartype}</b><br/>
-                                <button style={{minWidth:"10vw",maxHeight:'7.5vh'}}className="btn btn-deep-orange">Book</button>
+                                <button style={{minWidth:"10vw",maxHeight:'7.5vh'}}className="btn btn-deep-orange"
+                                onClick={()=>this.handleBook(data,data, data)}>Book</button>
                                 </div>
 
                         </div>
                     </div>
                     </div>
                     <div id={'details'+index} className="collapse">
-                    
-                  
+
+
                          <iframe
                                 width="100%"
                                 height="450"
@@ -146,11 +177,11 @@ class Carlist extends Component {
                                 src={this.state.googlemap+data.pickupaddress.street}
                                 >
                          </iframe>
-                    
+
                     </div>
-                   
-                    
-                 </div> 
+
+
+                 </div>
             )
      }
     render(){
@@ -159,18 +190,18 @@ class Carlist extends Component {
             <div>
                 <div style={{backgroundColor:'black'}}>
                 <Nav/>
-                
+
                 </div>
                 <div className="jumbotron">
-                
-                </div>  
-              
+
+                </div>
+
                 <div className="row">
 
                     <div className="col-4">
                         <div className="jumbotron">
                                 <p style={{fontWeight:"bold"}}>Price</p>
-                                <hr/>    
+                                <hr/>
                                 <MultiSlider
                                 colors={colors}
                                 values={this.state.valuesPrice}
@@ -185,12 +216,12 @@ class Carlist extends Component {
                                         High:${this.state.high}
                                         </div>
                                     </div>
-                     
+
                         <br/>  <br/>
-                      
+
                                     <p style={{fontWeight:"bold"}}>Type</p>
-                                    <hr/>    
-                                        
+                                    <hr/>
+
                                         <div className="form-check form-check">
                                                 <label className="form-check-label">
                                                 <input type="checkbox" className="form-check-input" value=""/>Small
@@ -233,20 +264,20 @@ class Carlist extends Component {
                                              </label>
                                          </div>
 
-                        
-         
-                     
-                        </div>  
 
-                        
+
+
+                        </div>
+
+
                     </div>
                     <div className="col-8" style={{ overflow: 'scroll', height: '90vh'}}>
-                         { this.props.cars.map((this.displayhotels),this)}     
+                         { this.props.cars.map((this.displayhotels),this)}
                     </div>
-                   
+
                 </div>
-              
-   
+
+
             </div>
         )
     }
