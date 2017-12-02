@@ -11,6 +11,8 @@ class UserTrip extends Component {
 
     componentDidMount(){
 
+         // All three Api goes here
+         
          // API.getbookings().then((data)=>{
          //     console.log("inside here");
          // })
@@ -20,7 +22,58 @@ class UserTrip extends Component {
         return(
 
             <div>
+<<<<<<< HEAD
                 <h4>Hello, This is Kayak!!</h4>
+=======
+                <ul className="nav md-pills nav-justified pills-primary">
+                <li className="nav-item">
+                    <a className="nav-link active" data-toggle="tab" href="#flights" role="tab">Flights</a>
+                </li>
+                <li className="nav-item">
+                    <a className="nav-link" data-toggle="tab" href="#hotels" role="tab">Hotels</a>
+                </li>
+                <li className="nav-item">
+                    <a className="nav-link" data-toggle="tab" href="#cars" role="tab">Cars</a>
+                </li>
+               
+                </ul>
+                <div className="tab-content">
+
+    
+                        <div className="tab-pane fade in show active" id="flights" role="tabpanel">
+                            
+
+                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nihil odit magnam minima, soluta doloribus
+                                reiciendis molestiae placeat unde eos molestias. Quisquam aperiam, pariatur. Tempora, placeat ratione
+                                porro voluptate odit minima.</p>
+
+                        </div>
+    
+                        <div className="tab-pane fade" id="hotels" role="tabpanel">
+                            
+
+                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nihil odit magnam minima, soluta doloribus
+                                reiciendis molestiae placeat unde eos molestias. Quisquam aperiam, pariatur. Tempora, placeat ratione
+                                porro voluptate odit minima.</p>
+                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nihil odit magnam minima, soluta doloribus
+                                reiciendis molestiae placeat unde eos molestias. Quisquam aperiam, pariatur. Tempora, placeat ratione
+                                porro voluptate odit minima.</p>
+
+                        </div>
+    
+                        <div className="tab-pane fade" id="cars" role="tabpanel">
+                           
+
+                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nihil odit magnam minima, soluta doloribus
+                                reiciendis molestiae placeat unde eos molestias. Quisquam aperiam, pariatur. Tempora, placeat ratione
+                                porro voluptate odit minima.</p>
+
+                        </div>
+    
+   
+
+                    </div>
+>>>>>>> d3276ebe2049b7c2d0b341bcf919e6ad50898ede
 
 
 

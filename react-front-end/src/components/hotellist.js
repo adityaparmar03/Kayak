@@ -15,7 +15,7 @@ class Hotellist extends Component {
 
             //dummy
             hotelname:"Hyatt",
-            // UI states 
+            // UI states
              test:[1,2,3,4,5,1,2,3,4,5],
              low: 0,
              high:0,
@@ -24,16 +24,16 @@ class Hotellist extends Component {
              valuesPrice:[],
              valuesStar:[],
              googlemap:"https://www.google.com/maps/embed/v1/place?key=AIzaSyAOW5Lf27NBLJDBfmgD_mlvIBlu97OHzXw&q="
-     
+
         }
      }
-      maxprice = 0; 
+      maxprice = 0;
       minprice = 0;
       maxstar = 5;
       minstar = 1;
-    
 
-     
+
+
     componentWillMount(){
 
 
@@ -68,7 +68,7 @@ class Hotellist extends Component {
             high:this.maxprice
           });
     }
-    
+
     onChangePrice = values =>
     this.setState({
       valuesPrice: values,
@@ -81,51 +81,83 @@ class Hotellist extends Component {
       star_low :  this.minstar + values[0],
       star_high: this.maxstar - values[2]
     });
-   
+
     displaystopline(stop){
         if(stop=="nonstop"){
-            return <span>&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;</span> 
+            return <span>&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;</span>
         }
         else if(stop=="onestop"){
-            return <span>&mdash;&mdash;&#9632;&mdash;&mdash;&mdash;</span> 
+            return <span>&mdash;&mdash;&#9632;&mdash;&mdash;&mdash;</span>
         }
         else{
-            return <span>&mdash;&mdash;&#9632;&mdash;&mdash;&#9632;&mdash;&mdash;</span> 
+            return <span>&mdash;&mdash;&#9632;&mdash;&mdash;&#9632;&mdash;&mdash;</span>
         }
     }
     star(num){
         switch(num){
             case 1:
-                return <p>&#9733;</p> 
+                return <p>&#9733;</p>
             case 2:
-                return <p>&#9733;&#9733;</p> 
+                return <p>&#9733;&#9733;</p>
             case 3:
-                return <p>&#9733;&#9733;&#9733;</p>   
+                return <p>&#9733;&#9733;&#9733;</p>
             case 4:
-                return <p>&#9733;&#9733;&#9733;&#9734;</p> 
+                return <p>&#9733;&#9733;&#9733;&#9734;</p>
             case 5:
-                return  <p>&#9733;&#9733;&#9733;&#9734;&#9734;</p>               
+                return  <p>&#9733;&#9733;&#9733;&#9734;&#9734;</p>
 
         }
-            
+
     }
     getrooms(rooms){
         return rooms.map((item,i)=> <div className="col-sm-2">
-        
+
               <div style={{textAlign:"center",marginTop:'0vh'}}>
               <b style={{fontSize:"20px",fontWeight:"bold"}}>${item.price}</b><br/>
               <b style={{fontSize:"15px",fontWeight:"bold"}}>{item.roomtype}</b><br/>
               <button style={{minWidth:"8vw",maxHeight:'7.5vh'}}className="btn btn-deep-orange">Book</button>
               </div>
 
-         
+
      </div>  )
     }
 
+
+    handleBook(data,classtype,price, capacity){
+        console.log("selected data ="+JSON.stringify(data))
+        var hotelbooking = {
+
+          booking :{
+        			"hotelId" : data.hotelId,
+        		    "name" : data.name,
+        		    "address" : data.address,
+        		    "roomtype" : classtype,
+        		    "price" : price,
+        		    "roomcount" : 10, // TODO : add roomcount in state
+        		    "capacity" : capacity,
+        		    "bookingstartdate" : "2017-01-18 09:15:00",
+        			  "bookingenddate" : "2017-01-19 03:14:00"
+        	},
+
+      		"credit_card" : {
+      			"card_type" : "MasterCard",
+      			"card_number": "012345678989",
+      			"card_holder_name" : "Meenakshi Paryani",
+      			"valid_from" : "2017-01-18",
+      			"valid_till" : "2017-01-26"
+      		}
+        }
+        // use unique ID : TODO
+        var uniqueId = hotelbooking + Date.now();
+        console.log('payload', hotelbooking, ' ', uniqueId);
+        localStorage.setItem("hotelbooking", JSON.stringify(hotelbooking));
+        this.props.history.push('/hotelbooking');
+      }
+
     displayhotels(data,index){
-        
+
             return(
-                
+
                 <div className="card" >
                     <div data-toggle="collapse" data-target={'#details'+index}>
                     <div className="row">
@@ -137,7 +169,7 @@ class Hotellist extends Component {
                                     <p className="white-text">{data.name}</p>
                                 </div>
                         </div>
-                             
+
                          </div>
                          <div className="col-sm-4">
                             <div  style={{marginTop:'3vh'}}>
@@ -146,22 +178,23 @@ class Hotellist extends Component {
                                 <div>
                                 <button type="button" className="btn btn-elegant">{data.rating}</button><a>{data.reviews.length} Reviews</a>
                                 </div>
-                              
-                            </div> 
-                         
+
+                            </div>
+
                          </div>
                         <div className="col-sm-3">
                                 <div style={{textAlign:"center",marginTop:'5vh'}}>
                                 <b style={{fontSize:"20px",fontWeight:"bold"}}>${data.rooms[0].price}</b><br/>
                                 <b style={{fontSize:"15px",fontWeight:"bold"}}>{data.rooms[0].roomtype}</b><br/>
-                                <button style={{minWidth:"10vw",maxHeight:'7.5vh'}}className="btn btn-deep-orange">Book</button>
+                                <button style={{minWidth:"10vw",maxHeight:'7.5vh'}}className="btn btn-deep-orange"
+                                onClick={()=>this.handleBook(data, data.rooms[0].roomtype, data.rooms[0].price, data.rooms[0].rooomcount)}>Book</button>
                      </div>
 
                         </div>
                     </div>
                     </div>
                     <div id={'details'+index} className="collapse">
-                    
+
                     <ul className="nav md-pills nav-justified pills-secondary">
                         <li className="nav-item">
                             <a className="nav-link active" data-toggle="tab" href={'#panel1'+index} role="tab">Details</a>
@@ -172,36 +205,36 @@ class Hotellist extends Component {
                         <li className="nav-item">
                             <a className="nav-link" data-toggle="tab" href={'#panel3'+index} role="tab">Review</a>
                         </li>
-                     
+
                     </ul>
 
                     <div className="tab-content">
-                   
+
                         <div className="tab-pane fade in show active" id={'panel1'+index} role="tabpanel">
                         <p>{data.description}</p>
                             <div className="row">
                                 <div className="col-sm-4">
-                                    
+
                                     <h4><b>Address:</b></h4>
                                     <h6>{data.address.street}</h6>
                                     <h6>{data.address.city}, {data.address.state} - {data.address.zip}</h6>
-                                </div>    
-                                {this.getrooms(data.rooms)} 
+                                </div>
+                                {this.getrooms(data.rooms)}
                             </div>
                         </div>
 
                         <div className="tab-pane fade" id={'panel2'+index} role="tabpanel">
-                        
+
                         <iframe
                                 width="100%"
                                 height="450"
                                 frameBorder="0"
-                                
-                                
+
+
                                 src={this.state.googlemap+data.address.street} >
                          </iframe>
                         </div>
-   
+
                         <div className="tab-pane fade" id={'panel3'+index} role="tabpanel">
                         <h4><b>Overall {data.rating}</b></h4>
                         <h6><b>Based on {data.reviews.length} reviews</b></h6>
@@ -224,17 +257,17 @@ class Hotellist extends Component {
                         <div style={{ overflow: 'scroll', height: '20vh'}}>
                         <p><b>Reviews</b></p>
                         {data.reviews.map((item,i)=><p>"{item}"</p>)}
-                        </div>    
-                           
                         </div>
 
-                       
-   
+                        </div>
+
+
+
                     </div>
-         
+
                     </div>
-                    
-                 </div> 
+
+                 </div>
             )
      }
     render(){
@@ -243,18 +276,18 @@ class Hotellist extends Component {
             <div>
                 <div style={{backgroundColor:'black'}}>
                 <Nav/>
-                
+
                 </div>
                 <div className="jumbotron">
-                
-                </div>  
-              
+
+                </div>
+
                 <div className="row">
 
                     <div className="col-4">
                         <div className="jumbotron">
                                 <p style={{fontWeight:"bold"}}>Price</p>
-                                <hr/>    
+                                <hr/>
                                 <MultiSlider
                                 colors={colors}
                                 values={this.state.valuesPrice}
@@ -269,11 +302,11 @@ class Hotellist extends Component {
                                         High:${this.state.high}
                                         </div>
                                     </div>
-                     
+
                         <br/>  <br/>
-                      
+
                                     <p style={{fontWeight:"bold"}}>Star</p>
-                                    <hr/>    
+                                    <hr/>
                                     <MultiSlider
                                     colors={colors}
                                     values={this.state.valuesStar}
@@ -289,20 +322,20 @@ class Hotellist extends Component {
                                         </div>
                                 </div>
 
-                        
-         
-                     
-                        </div>  
 
-                        
+
+
+                        </div>
+
+
                     </div>
                     <div className="col-8" style={{ overflow: 'scroll', height: '90vh'}}>
-                         { this.props.hotels.map((this.displayhotels),this)}     
+                         { this.props.hotels.map((this.displayhotels),this)}
                     </div>
-                   
+
                 </div>
-              
-   
+
+
             </div>
         )
     }

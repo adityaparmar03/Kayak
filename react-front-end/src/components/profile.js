@@ -273,7 +273,7 @@ class Profile extends Component {
                     </div>
                 
                     <div className="tab-pane fade" id="panel6" role="tabpanel">
-                        <br/>
+                        
 
                         <UserTrip/>
 

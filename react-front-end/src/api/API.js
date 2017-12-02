@@ -302,10 +302,10 @@ export const searchCars = (payload) =>
 
         return res.json();
     })
-        .catch(error => {
-            console.log("This is an API error");
-            return error;
-        });
+    .catch(error => {
+        console.log("This is an API error");
+        return error;
+    });
 
 export const clickTracker = (payload) =>
     fetch(`${api}/analytics/clicktracker`, {
@@ -320,10 +320,10 @@ export const clickTracker = (payload) =>
         console.log(res);
         return res.json();
     })
-        .catch(error => {
-            console.log("This is an API error");
-            return error;
-        });
+    .catch(error => {
+        console.log("This is an API error");
+        return error;
+    });
 
 
 export const bookFlight = (payload) =>
@@ -339,10 +339,47 @@ export const bookFlight = (payload) =>
         console.log(res);
         return res.json();
     })
-        .catch(error => {
-            console.log("This is an API error");
-            return error;
-        });
+    .catch(error => {
+        console.log("Error booking flight");
+        return error;
+    });
+
+export const bookCar = (payload) =>
+    fetch(`${api}/car/book`, {
+        method: 'POST',
+        headers: {
+            ...headers,
+            'Content-Type': 'application/json'
+        },
+        credentials:'include',
+        body: JSON.stringify(payload)
+    }).then(res => {
+        console.log(res);
+        return res.json();
+    })
+    .catch(error => {
+        console.log("Error booking Car");
+        return error;
+    });
+
+
+export const bookHotel = (payload) =>
+    fetch(`${api}/hotel/book`, {
+        method: 'POST',
+        headers: {
+            ...headers,
+            'Content-Type': 'application/json'
+        },
+        credentials:'include',
+        body: JSON.stringify(payload)
+    }).then(res => {
+        console.log(res);
+        return res.json();
+    })
+    .catch(error => {
+        console.log("Error booking Hotel");
+        return error;
+    });
 
 
 export const getChart = (payload) =>
@@ -358,8 +395,7 @@ export const getChart = (payload) =>
         console.log(res);
         return res.json();
     })
-        .catch(error => {
-            console.log("This is an API error");
-            return error;
-        });
-
+    .catch(error => {
+        console.log("This is an API error");
+        return error;
+    });

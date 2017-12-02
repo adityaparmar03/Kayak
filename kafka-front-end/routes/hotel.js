@@ -46,6 +46,12 @@ router.post('/book', function (req, res) {
     console.log(req.body);
     var queueName = "BookHotel";
 
+    console.log('Request is ---------');
+    console.log(req.body);
+
+    console.log('Session is ---------');
+    console.log(req.session);
+
     var reqObject = {
         email : req.session.email,
         booking : req.body.booking,

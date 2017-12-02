@@ -9,6 +9,7 @@ import * as API from '../api/API';
 import * as Actions from '../actions/action';
 import {connect} from 'react-redux';
 import cities from '../constants/cities'
+import Toggle from 'material-ui/Toggle';
 
 class Carsearch extends Component {
 
@@ -27,6 +28,7 @@ class Carsearch extends Component {
        
         citysuggestion: [],
         travelerpopup:false,
+        returndateenable:true
         
       };
        handleSubmit(){
@@ -84,7 +86,32 @@ class Carsearch extends Component {
     handleEndDate(event, date){
         this.setState({enddate: date})
     }
-      
+    styles = {
+        
+         toggle: {
+           marginBottom: 16,
+         },
+         thumbOff: {
+           backgroundColor: '#ffcccc',
+         },
+         trackOff: {
+           backgroundColor: '#ff9d9d',
+         },
+         thumbSwitched: {
+           backgroundColor: 'red',
+         },
+         trackSwitched: {
+           backgroundColor: '#ff9d9d',
+         },
+         labelStyle: {
+           color: 'red',
+         },
+       };
+    handleToggle(){
+        this.setState({
+            returndateenable:!this.state.returndateenable
+        })
+    }  
    
    
     render(){
@@ -92,42 +119,70 @@ class Carsearch extends Component {
             <div>
             <div className="card" style={{backgroundColor:'#E4E5EA',
              borderRadius: '0px',paddingTop:'3%',paddingBottom:'3%',zIndex:"1"}}>
-
+                    <table>
+                        <tr>
+                        <td>Same Dropoff</td>
+                        <td><Toggle
+                                
+                                thumbStyle={this.styles.thumbOff}
+                                trackStyle={this.styles.trackOff}
+                                thumbSwitchedStyle={this.styles.thumbSwitched}
+                                trackSwitchedStyle={this.styles.trackSwitched}
+                                labelStyle={this.styles.labelStyle}
+                                defaultToggled={false}
+                                onToggle={this.handleToggle.bind(this)}
+                            /></td>
+                        <td>Different Dropoff</td>
+                        </tr>
+                     </table> 
             <div className="card-body">
             <div className="row">
             
            
-            <div className="col-sm-5">
+            <div className="col-sm-6">
             <div style={{backgroundColor:'white',paddingLeft:"5%",paddingRight:"5%"}}>
+            <div>
             <AutoComplete
                     hintText="City"
                     dataSource={this.state.citysuggestion}
                     onUpdateInput={this.handleUpdateCityInput}
-                    floatingLabelText="City"
+                    floatingLabelText="From"
                     maxSearchResults={5}
                     underlineShow={false}
-                    fullWidth={true}
+                    fullWidth={false}
+                    filter={AutoComplete.caseInsensitiveFilter}
+            />
+            <AutoComplete
+                    hintText="City"
+                    dataSource={this.state.citysuggestion}
+                    onUpdateInput={this.handleUpdateCityInput}
+                    floatingLabelText="To"
+                    maxSearchResults={5}
+                    underlineShow={false}
+                    fullWidth={false}
+                    disabled={this.state.returndateenable}
                     filter={AutoComplete.caseInsensitiveFilter}
             />
             </div>
+            </div>
 
             </div>
-            <div className="col-sm-3" style={{backgroundColor:'white',paddingLeft:"2%",paddingRight:"5%"}}>
+            <div className="col-sm-2" style={{backgroundColor:'white',paddingLeft:"2%",paddingRight:"5%"}}>
             <DatePicker hintText="Start Date" mode="landscape"  
             onChange={this.handleStartDate.bind(this)}
             floatingLabelText="Start Date"/>
             </div>
-            <div className="col-sm-3" style={{backgroundColor:'white',paddingLeft:"0%",paddingRight:"5%"}}>
+            <div className="col-sm-2" style={{backgroundColor:'white',paddingLeft:"0%",paddingRight:"5%"}}>
             <DatePicker hintText="Return Date" mode="landscape"
             onChange={this.handleEndDate.bind(this)} 
             floatingLabelText="Return Date"/>
             </div>
             
-            <div className="col-sm-1" >
+            <div className="col-sm-2" >
 
             <button type="button" className="btn btn-deep-orange" 
             onClick={()=>this.handleSubmit()}
-            style={{marginLeft:"-10%",height:'60px'}}>
+            style={{marginLeft:"-0%",height:'60px'}}>
                  <i className="fa fa-arrow-right" aria-hidden="true"></i></button>
             </div>
            

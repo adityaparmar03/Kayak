@@ -156,6 +156,8 @@ import Carlist from "./components/carlist";
 import Profile from "./components/profile";
 import AdminPanel from "./components/adminpanel";
 import FlightBooking from "./components/flightbooking";
+import HotelBooking from "./components/hotelbooking";
+import CarBooking from "./components/carbooking";
 import UserAnalytics from "./components/UserAnalytics";
 import SalesAnalytics from "./components/SalesAnalytics";
 import ClickTracker from "./components/tracker";
@@ -176,9 +178,9 @@ const store = createStore(
 ReactDOM.render(
     <Provider store={store}>
          <Router>
-         <MuiThemeProvider> 
+         <MuiThemeProvider>
             <div>
-       
+
                 <Route exact path="/" component={Flighthome}/>
                 <Route exact path="/flight" component={Flighthome}/>
                 <Route exact path="/hotel" component={Hotelhome}/>
@@ -189,11 +191,13 @@ ReactDOM.render(
                 <Route exact path="/profile" component={Profile}/>
                 <Route exact path="/admin" component={AdminPanel}/>
                 <Route exact path="/flightbooking" component={FlightBooking}/>
+                <Route exact path="/hotelbooking" component={HotelBooking}/>
+                <Route exact path="/carbooking" component={CarBooking}/>
                 <Route exact path="/useranalytics" component={UserAnalytics}/>
                 <Route exact path="/salesanalytics" component={SalesAnalytics}/>
                 <Route exact path="/clickltracker" component={ClickTracker}/>
 
-        
+
             </div>
             </MuiThemeProvider>
      </Router>
