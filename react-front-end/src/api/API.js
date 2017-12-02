@@ -87,6 +87,48 @@ export const gethistory = () =>
 
 //************************************************************************************************
 
+export const getAllUsers = () =>
+    fetch(`${api}/admin/getallusers`, {
+        method: 'get',
+        headers: {
+            ...headers,
+            'Content-Type': 'application/json'
+        },
+        //body: JSON.stringify(payload),
+        credentials:'include'
+    }).then(res => {
+        return res.json();
+    })
+        .catch(error => {
+            console.log("This is error");
+            return error;
+        });
+
+
+
+//************************************************************************************************
+export const deleteUser = (payload) =>
+    fetch(`${api}/user/delete`, {
+        method: 'delete',
+        headers: {
+            ...headers,
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(payload),
+        credentials:'include'
+    }).then(res => {
+        return res.json();
+    })
+        .catch(error => {
+            console.log("This is error");
+            return error;
+        });
+
+
+
+//************************************************************************************************
+
+
 
 
 export const checkSession = () =>

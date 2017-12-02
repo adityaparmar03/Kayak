@@ -1,15 +1,29 @@
 import React, {Component} from 'react';
 import {Link,withRouter} from 'react-router-dom';
 import PropTypes from 'prop-types';
+import * as Actions from '../actions/action';
+import * as API from '../api/API';
+import {connect} from 'react-redux';
 
 class AdminPanelUsers extends Component {
     constructor(props){
         super(props);
         this.state = {
             // Data
-           
              test:[1,2,3]
         }
+     }
+
+     deleteUser(index,email){
+        var payload = {"email":email}
+        console.log(payload);
+        API.deleteUser(payload).then((data)=>{
+            if(data.status==201){
+             console.log("User deleted");
+                this.props.deleteUser(index);
+            }
+        })
+
      }
 
     componentWillMount(){
@@ -22,7 +36,7 @@ class AdminPanelUsers extends Component {
             <div className="card" > 
                                     <table className="table table-responsive-sm">
                                         <thead>
-                                                <tr>
+                                        <tr>
                                                     <th>User Id</th>
                                                     <th>Name</th>
                                                     <th>Email</th>
@@ -36,21 +50,22 @@ class AdminPanelUsers extends Component {
                                                 </tr>
                                             </thead> 
                                             <tbody>
-                                                {this.state.test.map((vendor, index)=>(<tr>
+                                            {this.props.alluser.map((user, index)=>( <tr>
                                                     <td>1</td>
-                                                    <td>Aditya Parmar</td>
-                                                    <th>parmar@adi.tya</th>
-                                                    <td>24342423424</td>
-                                                    <td>754 The Alameda 2207, San Jose, California, USA</td>
-                                                    <td>95126</td>
+
+                                                    <td>{user.firstname}</td>
+                                                    <th>{user.email}</th>
+                                                    <td>{user.phone}</td>
+                                                    <td>{user.street_address}</td>
+                                                    <td>{user.zipcode}</td>
                                                   
                                                   
                                                     <td><i className="fa fa-eye fa-2x" data-toggle="modal" data-target="#usermodel" /></td>
                                                     <td><i className="fa fa-pencil fa-2x" data-toggle="modal" data-target="#usermodel"/></td>
-                                                    <td><i className="fa fa-trash fa-2x"/></td>
-                                                    </tr>))
+                                                    <td><i className="fa fa-trash fa-2x" onClick={()=>{this.deleteUser(index,user.email)}}/></td>
+                                                    </tr>))}
 
-                                                }
+
 
                                             </tbody>      
 
@@ -184,4 +199,24 @@ class AdminPanelUsers extends Component {
     }
 }
 
-export default AdminPanelUsers;
+function mapStateToProps(reducerdata) {
+     console.log(reducerdata);
+    const alluser = reducerdata.allUsers;
+    console.log("****************");
+    console.log(alluser);
+    console.log("****************");
+    return {alluser};
+}
+
+function mapDispatchToProps(dispatch) {
+    return {
+        deleteUser : (data) => dispatch(Actions.deleteUser(data)),
+        allUsers : (data) => dispatch(Actions.allUsers(data))
+
+    };
+}
+
+
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(AdminPanelUsers));
+
+

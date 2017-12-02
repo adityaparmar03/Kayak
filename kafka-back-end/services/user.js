@@ -140,22 +140,50 @@ function register(msg,callback){
 function update(msg,callback) {
     var res={};
     console.log(msg);
-    var updateQuery = "update user set first_name='"+msg.firstname+"', last_name='"+msg.lastname+"',street_address='"+msg.address+"'," +
-        "phone='"+msg.phonenumber+"',profile_image_path='"+msg.imgpath+"',credit_card_number='"+msg.creditcard+"',zip_code='"+msg.zipcode+"' where email='"+msg.email+"';";
-    console.log(updateQuery);
-    mysql.executeQuery(function(err){
-        if(err){
-            throw err;
-            res.code = "401";
-            res.value=" Error Occured while registering ";
-        }
-        else{
+    var updateBilling = "update billing set user_email='"+msg.email+"'where user_email='"+msg.user_email+"';";
+    var foreignKey="SET foreign_key_checks = 0;"
 
-            res.code = "200";
-            res.value = "User successfully registered";
 
-        }callback(null,res);
-    },updateQuery);
+   mysql.executeQuery(function (err) {
+      if(err){
+          throw err;
+          res.code = "401";
+          res.value="error";
+      }
+      else{
+          console.log("executed the set foreign key query");
+          console.log("+++++++++++++++++++");
+          mysql.executeQuery(function(err){
+              if(err){
+                  throw err;
+                  res.code = "401";
+                  res.value=" Error Occured while registering ";
+              }
+              else{
+                  console.log("executed the set billing key query");
+                  console.log("+++++++++++++++++++");
+                  var updateQuery = "update user set email='"+msg.email+"', first_name='"+msg.firstname+"', last_name='"+msg.lastname+"',street_address='"+msg.address+"'," +
+                      "phone='"+msg.phonenumber+"',profile_image_path='"+msg.imgpath+"',credit_card_number='"+msg.creditcard+"',zip_code='"+msg.zipcode+"' where email='"+msg.user_email+"';";
+
+                  mysql.executeQuery(function(err){
+                      if(err) {
+                          throw err;
+                          res.code = "401";
+                          res.value=" Error Occured while registering ";
+                      }
+                      else{
+                          res.code = "200";
+                          res.value = "User successfully registered";
+                      }callback(null,res);
+
+                  },updateQuery)
+              }
+          },updateBilling);
+      }
+   },foreignKey)
+
+
+
 
 }
 

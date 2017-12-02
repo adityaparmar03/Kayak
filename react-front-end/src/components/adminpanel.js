@@ -6,7 +6,9 @@ import AdminPanelDashboard from './adminpaneldashboard'
 import AdminPanelUsers from './adminpanelusers'
 import AdminPanelBookings from './adminpanelbookings'
 import AdminPanelVendors from './adminpanelvendors'
-
+import * as Actions from '../actions/action';
+import * as API from '../api/API';
+import {connect} from 'react-redux';
 
 
 //var ReactGridLayout = require('react-grid-layout');
@@ -20,7 +22,24 @@ class AdminPanel extends Component {
              test:[1,2,3]
         }
      }
-   
+
+     userdetails(){
+
+        console.log("user info");
+
+        API.getAllUsers().then((data)=>{
+            if(data.status==201){
+                console.log("------------------");
+                console.log(data);
+                console.log("------------------");
+                this.props.allUsers(data)
+            }
+            else{
+                console.log("error");
+            }
+        })
+     }
+
    
     render(){
         console.log(this.props.vendors)
@@ -31,10 +50,10 @@ class AdminPanel extends Component {
                 </div>
                 <ul className="nav nav-tabs nav-justified indigo" role="tablist">
                     <li className="nav-item">
-                        <a className="nav-link active" data-toggle="tab" href="#dashboard" role="tab"><i className="fa fa-line-chart"></i> Dashboard</a>
+                         <a className="nav-link active" data-toggle="tab" href="#dashboard" role="tab"><i className="fa fa-line-chart"></i> Dashboard</a>
                     </li>
                     <li className="nav-item">
-                        <a className="nav-link" data-toggle="tab" href="#user" role="tab"><i className="fa fa-user"></i> User</a>
+                        <a className="nav-link" data-toggle="tab" href="#user" role="tab" onClick={()=>{this.userdetails()}}><i className="fa fa-user"></i> User</a>
                     </li>
                     <li className="nav-item">
                         <a className="nav-link" data-toggle="tab" href="#booking" role="tab"><i className="fa fa-table"></i> Booking</a>
@@ -48,7 +67,7 @@ class AdminPanel extends Component {
                 
                     <div className="tab-pane fade in show active" id="dashboard" role="tabpanel">
                    
-                    <AdminPanelDashboard/>
+                        {/* <AdminPanelDashboard/>    */}
 
                      </div>
                 
@@ -74,4 +93,13 @@ class AdminPanel extends Component {
 }
 
 
-export default (AdminPanel);
+function mapDispatchToProps(dispatch) {
+    return {
+
+        allUsers : (data) => dispatch(Actions.allUsers(data))
+    };
+}
+
+export default  connect(null,mapDispatchToProps)(AdminPanel)
+
+

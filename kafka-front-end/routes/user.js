@@ -92,15 +92,11 @@ router.get('/bookinghistory', function (req, res) {
          }
 
      })
-
-
-
 });
 
 //************************************************************************************************************************
 
 router.post('/register',function (req,res) {
-
 
     console.log(req.body);
 
@@ -123,9 +119,8 @@ router.post('/register',function (req,res) {
             }
         }
     })
-
-
 })
+
 
 //************************************************************************************************************************
 
@@ -135,7 +130,10 @@ console.log("inside the update path");
 console.log("*********************");
     console.log(req.body);
     console.log("*********************");
-    kafka.make_request('update', req.body ,function(err,results){
+    var payload = req.body;
+    payload['user_email']=req.session.email;
+    console.log(payload.user_email);
+    kafka.make_request('update', payload ,function(err,results){
 
         if(err){
             console.log("After kafka response");
@@ -145,6 +143,7 @@ console.log("*********************");
         else
         {
             if(results.code == 200){
+                req.session.email = req.body.email;
                res.send({"status":201})
 
             }
@@ -166,10 +165,11 @@ router.delete('/delete',function (req,res) {
 
     console.log("inside the delete path");
 
+
    // console.log(req.query);
    // var email = { 'email':req.session.email };
 
-    kafka.make_request('deleteuser', req.session ,function(err,results){
+    kafka.make_request('deleteuser', req.body ,function(err,results){
 
         if(err){
             console.log("After kafka response");

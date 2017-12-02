@@ -1,10 +1,7 @@
 import React, {Component} from 'react';
 import {Link,withRouter} from 'react-router-dom';
-import PropTypes from 'prop-types';
 import Nav from './nav'
-import axios from 'axios'
 import {connect} from 'react-redux';
-import userProfile from "../reducers/userProfile";
 import * as Actions from '../actions/action';
 import * as API from '../api/API';
 import UserTrip from './usertrips'
@@ -85,7 +82,7 @@ class Profile extends Component {
         API.doUpdate(payload).then((data)=>{
             if(data.status==201){
                 console.log("Succesfull push");
-                this.props.history.push('/profile');
+              //  this.props.history.push('/profile');
             }
         })
 
@@ -159,8 +156,13 @@ class Profile extends Component {
                                         <div className="col-sm-4">
                                         <div className="md-form">
                                         <i className="fa fa-envelope prefix"></i>
-                                        <input type="text" disabled value={this.state.email}  id="email" className="form-control"
-                                               />
+                                        <input type="text"  value={this.state.email}  id="email" className="form-control"
+                                               onChange={(event) => {
+                                                   this.setState({
+                                                       email: event.target.value
+                                                   });
+                                               }}/>
+
                                         <label htmlFor="email">Email</label>
                                         </div>
 
