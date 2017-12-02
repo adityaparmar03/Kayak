@@ -85,9 +85,20 @@ function searchFlights(msg, callback){
                     if(flights.length>0) {
                         asyncLoop(flights, function (item, next) {
                             console.log(item.flights.length)
-                            if (item.flights.length == 2)
+                            if (item.flights.length == 2){
+                                if(item.flights[0].origin.city==origincity) {
+                                    item.flights[0]["path"] = "to";
+                                    item.flights[1]["path"] = "from";
+                                }
+                                else {
+                                    item.flights[0]["path"] = "to";
+                                    item.flights[1]["path"] = "from";
+                                }
 
                                 roundtripflights.push(item);
+
+                            }
+
                             next();
                         }, function (err) {
                             if (err) {
