@@ -38,14 +38,14 @@ router.post('/login', function (req, res) {
 
         if(!user ){
             console.log('Could not find user');
-            res.send({status: 401});
+            res.send({status: 401,"value":"Failed Login"});
         }
         else {
 
             req.session.email = user.email;
             req.session.isloggedin = true;
             console.log(user.data);
-            res.send({"status": 201, "email": user.email,"data":user.data});
+            res.send({status: 201,"value":"Success Login"});
 
         }
 
@@ -70,10 +70,13 @@ router.get('/checkSession', function (req, res) {
             }
             else {
                 if(results.code==200){
-                    res.send({"status":201,"data":results.data});
+                    console.log("-------------");
+                    console.log(results);
+                    console.log("-------------");
+                    res.send({"status":201,"data":results});
                 }
                 else{
-                    res.send({"status":401,"data":results.value});
+                    res.send({"status":401,"data":results});
                 }
             }
 
@@ -113,7 +116,9 @@ router.get('/bookinghistory', function (req, res) {
 
 router.post('/register',function (req,res) {
 
+    console.log("_______________");
     console.log(req.body);
+    console.log("_______________");
 
     kafka.make_request('register', req.body ,function(err,results){
 
@@ -243,7 +248,7 @@ router.post('/logout', function (req, res) {
 
     req.session.destroy();
     console.log('Session destroyed');
-    res.status(201).send();
+    res.status(201).send({status:201,"value":"logout succesfull"});
 
 });
 

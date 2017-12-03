@@ -49,7 +49,7 @@ function login(msg, callback){
     console.log("++++++++++++++++++++");
     console.log(msg);
     console.log("++++++++++++++++++++");
-    var selectQuery = "select * from USER where email = '"+msg.email+"';" ;
+    var selectQuery = "select password from USER where email = '"+msg.email+"';" ;
     console.log(selectQuery);
 
     mysql.fetchData(function (err,results) {
@@ -59,7 +59,7 @@ function login(msg, callback){
             res.value = "Username not valid";
         }
         else {
-            console.log("++++++++++++++++++++");
+            //console.log("++++++++++++++++++++");
             console.log(results[0].password);
             console.log("1234");
             console.log(reqPassword);
@@ -68,13 +68,13 @@ function login(msg, callback){
             if (results[0].password == reqPassword) {
 
                 res.code = "200";
-                res.value = "User valid";
-                res.data = results[0].user_role;
+                res.value = "Login success";
+               // res.data = results[0].user_role;
             }
             else{
                 res.code = "402";
                 res.value = "User password not valid";
-                res.data = null;
+              //  res.data = null;
             }
         }
         callback(null,res);
@@ -280,7 +280,7 @@ function getuserdata(msg,callback){
     var res= {};
     console.log(msg);
     var getQuery = "select first_name,last_name,user_role,city,state,zip_code,profile_image_path,email,phone,street_address,credit_card_number from user where email='"+msg.email+"';";
-    mysql.executeQuery(function (err) {
+    mysql.fetchData(function (err,results) {
         if(err){
             res.code = "401";
             res.value = "Error while fetching the user ";
@@ -288,7 +288,11 @@ function getuserdata(msg,callback){
         else{
             console.log("inside the else of the get data");
             res.code = "200";
-            res.value = "Path succesfully updated";
+            res.value = "user data success fully fetched";
+            res.data=results;
+            console.log("*********************");
+            console.log(results)
+            console.log("*********************");
         }callback(null,res);
     },getQuery);
 

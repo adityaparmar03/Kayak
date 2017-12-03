@@ -60,6 +60,23 @@ export const doRegister = (payload) =>
 
 //************************************************************************************************
 
+export const doLogout = (payload) =>
+    fetch(`${api}/user/logout`, {
+        method: 'POST',
+        headers: {
+            ...headers,
+            'Content-Type': 'application/json'
+        },
+        //body: JSON.stringify(payload),
+        credentials:'include'
+    }).then(res => {
+        console.log(res);
+        return res.json();
+    })
+        .catch(error => {
+            console.log("This is error");
+            return error;
+        });
 
 
 

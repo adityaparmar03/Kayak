@@ -82,7 +82,11 @@ class Profile extends Component {
         API.doUpdate(payload).then((data)=>{
             if(data.status==201){
                 console.log("Succesfull push");
-              //  this.props.history.push('/profile');
+                this.successshowAlert("User data succesfully updated");
+
+            }
+            else{
+                this.errorshowAlert("Error while updating the user info ");
             }
         })
 
