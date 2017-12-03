@@ -344,5 +344,24 @@ function getBookedCountHelper(dbBookings){
       return count;
 }
 
-exports.searchFlights=searchFlights;
+
+
+// Search for all flightss on the basis of city, state and class
+function searchFlights(msg, callback) {
+
+    var flight = require('../models/flight/' + msg.vendor);
+
+    var res = {};
+    var origincity = msg.searchcriteria.origincity;
+    var originstate = msg.searchcriteria.originstate;
+    var destinationcity = msg.searchcriteria.destinationcity;
+    var destinationstate = msg.searchcriteria.destinationstate;
+    var triptype = msg.searchcriteria.triptype;
+    var flightclass = msg.searchcriteria.flightclass;
+    var arrivalday = msg.searchcriteria.arrivalday;
+    var departureday = msg.searchcriteria.departureday;
+
+
+}
+    exports.searchFlights=searchFlights;
 exports.bookFlight=bookFlight;

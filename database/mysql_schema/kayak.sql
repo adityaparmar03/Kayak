@@ -11,9 +11,10 @@ DROP TABLE IF EXISTS `USER`;
 CREATE TABLE `USER` (
   `email` varchar(90) NOT NULL,
   `password` varchar(45) NOT NULL,
-  `first_name` varchar(45) DEFAULT '',
-  `last_name` varchar(45) DEFAULT '',
+  `first_name` varchar(45) NOT NULL,
+  `last_name` varchar(45) DEFAULT NULL,
   `user_role` enum('USER','ADMIN') DEFAULT 'USER',
+<<<<<<< Updated upstream
   `street_address` varchar(90) DEFAULT '',
   `city` varchar(45) default '',
   `state` varchar(45)default '',
@@ -25,6 +26,19 @@ CREATE TABLE `USER` (
   `credit_card_holder_name` varchar(45) DEFAULT '',
   `credit_card_valid_from` date DEFAULT null,
   `credit_card_valid_till` date DEFAULT null,
+=======
+  `street_address` varchar(90) DEFAULT NULL,
+  `city` varchar(45) DEFAULT NULL,
+  `state` varchar(45) DEFAULT NULL,
+  `zip_code` varchar(45) DEFAULT NULL,
+  `phone` varchar(45) DEFAULT NULL,
+  `profile_image_path` varchar(90) DEFAULT NULL,
+  `credit_card_type` varchar(45) DEFAULT NULL,
+  `credit_card_number` int(16) DEFAULT NULL,
+  `credit_card_holder_name` varchar(45) DEFAULT NULL,
+  `credit_card_valid_from` date DEFAULT NULL,
+  `credit_card_valid_till` date DEFAULT NULL,
+>>>>>>> Stashed changes
   PRIMARY KEY (`email`),
   UNIQUE KEY `email_UNIQUE` (`email`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
@@ -36,7 +50,7 @@ CREATE TABLE `USER` (
 
 LOCK TABLES `USER` WRITE;
 
-
+INSERT INTO `USER` VALUES ('meenakshi.paryani@gmail.com','password',NULL,NULL,'USER',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL);
 
 UNLOCK TABLES;
 
@@ -44,9 +58,9 @@ CREATE TABLE `BILLING` (
   `billing_id` int(11) NOT NULL AUTO_INCREMENT,
   `user_email` varchar(90) NOT NULL,
   `target_id` varchar(90) NOT NULL COMMENT 'Id of flight/car/hotel from MongoDB',
-  `target_name` varchar(90) DEFAULT '',
-  `return_target_id` varchar(90) DEFAULT '',
-  `return_target_name` varchar(90) DEFAULT '',
+  `target_name` varchar(90) DEFAULT NULL,
+  `return_target_id` varchar(90) DEFAULT NULL,
+  `return_target_name` varchar(90) DEFAULT NULL,
   `booking_type` enum('CAR','FLIGHT','HOTEL') NOT NULL,
   `flight_trip_type` enum('ONE-WAY','TWO-WAY') DEFAULT NULL,
   `car_trip_type` enum('SAME-DROPOFF','DIFFERENT-DROPOFF') DEFAULT NULL,
@@ -54,29 +68,29 @@ CREATE TABLE `BILLING` (
   `car_type` enum('SMALL','MEDIUM','LARGE','SUV') DEFAULT NULL,
   `billing_date` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `billing_amount` int(20) NOT NULL COMMENT 'Billing Amount in US Dollars',
-  `source_city` varchar(45) DEFAULT '' COMMENT 'source of flight/car and address of hotel',
-  `source_state` varchar(45) DEFAULT '',
+  `source_city` varchar(45) DEFAULT NULL COMMENT 'source of flight/car and address of hotel',
+  `source_state` varchar(45) DEFAULT NULL,
   `source_street` varchar(45) DEFAULT NULL COMMENT 'Airport name for flight and address of hotel ',
-  `source_country` varchar(45) DEFAULT ',
-  `source_zipcode` varchar(45) DEFAULT ',
-  `destination_city` varchar(45) DEFAULT '' COMMENT 'Destination of flight/car drop off , NA for hotel',
-  `destination_state` varchar(45) DEFAULT '',
-  `destination_street` varchar(45) DEFAULT '',
-  `destination_country` varchar(45) DEFAULT '',
-  `destination_zipcode` varchar(45) DEFAULT '',
-  `source_airport` varchar(45) DEFAULT '',
-  `destination_airport` varchar(45) DEFAULT '',
-  `return_source_airport` varchar(45) DEFAULT '',
-  `return_destination_airport` varchar(45) DEFAULT '',
-  `booking_start_date` datetime DEFAULT null,
-  `booking_end_date` datetime DEFAULT null,
-  `return_booking_start_date` datetime DEFAULT  null,
-  `return_booking_end_date` datetime DEFAULT null,
+  `source_country` varchar(45) DEFAULT NULL,
+  `source_zipcode` varchar(45) DEFAULT NULL,
+  `destination_city` varchar(45) DEFAULT NULL COMMENT 'Destination of flight/car drop off , NA for hotel',
+  `destination_state` varchar(45) DEFAULT NULL,
+  `destination_street` varchar(45) DEFAULT NULL,
+  `destination_country` varchar(45) DEFAULT NULL,
+  `destination_zipcode` varchar(45) DEFAULT NULL,
+  `source_airport` varchar(45) DEFAULT NULL,
+  `destination_airport` varchar(45) DEFAULT NULL,
+  `return_source_airport` varchar(45) DEFAULT NULL,
+  `return_destination_airport` varchar(45) DEFAULT NULL,
+  `booking_start_date` datetime DEFAULT NULL,
+  `booking_end_date` datetime DEFAULT NULL,
+  `return_booking_start_date` datetime DEFAULT NULL,
+  `return_booking_end_date` datetime DEFAULT NULL,
   `target_count` int(11) DEFAULT NULL COMMENT 'Count of Passengers for flights Or\nCount of hotel rooms Or\nCount of Cars booked\n',
   `booking_class` enum('FIRST','ECONOMY','BUSINESS') DEFAULT NULL COMMENT 'Booking class of flight',
-  `credit_card_type` varchar(45) DEFAULT '',
-  `credit_card_number` varchar(16) DEFAULT '',
-  `credit_card_holder_name` varchar(45) DEFAULT '',
+  `credit_card_type` varchar(45) DEFAULT NULL,
+  `credit_card_number` int(16) DEFAULT NULL,
+  `credit_card_holder_name` varchar(45) DEFAULT NULL,
   `credit_card_valid_from` date DEFAULT NULL,
   `credit_card_valid_till` date DEFAULT NULL,
   PRIMARY KEY (`billing_id`,`user_email`,`target_id`),
@@ -147,21 +161,6 @@ CREATE TABLE `vendors` (
 ) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=latin1;
 
 
-
-create table searchhistory (
-  `user_email` varchar(90) NOT NULL,
-  `search_type` enum('CAR','FLIGHT','HOTEL') NOT NULL,
-  `flight_trip_type` enum('ONE-WAY','TWO-WAY') ,
-  `car_trip_type` enum('SAME-DROPOFF','DIFFERENT-DROPOFF'),
-  `source_city` varchar(45) DEFAULT '' COMMENT 'source of flight/car and address of hotel',
-  `source_state` varchar(45) DEFAULT '',
-  `destination_city` varchar(45) DEFAULT '' COMMENT 'Destination of flight/car drop off , NA for hotel',
-  `destination_state` varchar(45) DEFAULT '',
-  `start_date` varchar(90) ,
-  `end_date` varchar(90) ,
-  `target_count` int(11) COMMENT 'Count of Passengers for flights Or\nCount of hotel rooms Or\nCount of Cars booked\n'
-  );
-  
 LOCK TABLES `vendors` WRITE;
 
 INSERT INTO `vendors` VALUES (1,'MMT','car','http://localhost:3001/car/getcars?vendor=MmtCars'),(2,'Cleartrip','car','http://localhost:3001/car/getcars?vendor=CleartripCars'),(3,'Alamo','car','http://localhost:3001/car/getcars?vendor=AlamoCars'),(4,'MMT','hotel','http://localhost:3001/hotel/gethotels?vendor=MmtHotels'),(5,'Cleartrip','hotel','http://localhost:3001/hotel/gethotels?vendor=CleartripHotels'),(6,'TripAdvisor','hotel','http://localhost:3001/hotel/gethotels?vendor=TripAdvisorHotels'),(7,'MMT','flight','http://localhost:3001/flight/getflights?vendor=MmtFlights'),(8,'Cleartrip','flight','http://localhost:3001/flight/getflights?vendor=CleartripFlights'),(9,'Expedia','flight','http://localhost:3001/flight/getflights?vendor=ExpediaFlights');

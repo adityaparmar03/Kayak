@@ -41,9 +41,11 @@ function addVendor(msg, callback){
     var vendorname = msg.vendorname;
     var servicetype = msg.servicetype;
     var vendorapi = msg.vendorapi;
+    var email = msg.email;
+    var model= msg.model;
 
-    var addApiSql="insert into vendors(`vendorname`,`servicetype`,`vendorapi`) values('"+
-        vendorname+"','"+servicetype+"','"+ vendorapi+ "');";
+    var addApiSql="insert into vendors(`vendorname`,`servicetype`,`vendorapi`, `email`, `model`) values('"+
+        vendorname+"','"+servicetype+"','"+ vendorapi+ "','"+ email+ "','"+ model+ "');";
 
     mysql.executeQuery(function(err){
         if(err){

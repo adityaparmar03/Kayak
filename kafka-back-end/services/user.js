@@ -96,7 +96,11 @@ function register(msg,callback){
     console.log("------------");
     console.log(msg)
     console.log("------------");
-    var insertQuery="insert into USER(email,password,user_role) values('"+msg.email+"','"+reqPassword+"','USER');";
+    if(!msg.role)
+        msg.role="USER"
+    else
+        msg.role;
+    var insertQuery="insert into USER(email,password,user_role) values('"+msg.email+"','"+reqPassword+"','"+msg.role+"')";
     console.log(insertQuery);
     var selectQuery = "select email from user where email='"+msg.email+"';";
 

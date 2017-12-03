@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import * as API from '../api/API';
 import * as Actions from '../actions/action';
 import {connect} from 'react-redux';
-
+import AlertContainer from 'react-alert'
 class AdminPanelVendors extends Component {
 
 
@@ -18,24 +18,53 @@ class AdminPanelVendors extends Component {
         const data= {
                 vendorname: this.refs.ref1.value,
                 servicetype:this.refs.ref2.value,
-                vendorapi:this.refs.ref3.value
+                vendorapi:this.refs.ref3.value,
+                email:this.refs.ref6.value,
+                model:this.refs.ref7.value
             }
+
         console.log(data);
-                API.addVendorApi(data)
-                    .then((status) => {
-                        console.log(status);
-        
-                        if (status == 200) {
-        console.log("In status..")
-                            this.props.addVendor(data);
-        
-                            console.log("Success...")
-        
-                        }else if (status == 401) {
-        
-                            //  this.props.history.push('/');
-                        }
-                    });
+
+        API.addVendorApi(data)
+            .then((status) => {
+                console.log(status);
+
+                if (status == 200) {
+
+                    this.props.addVendor(data);
+
+                    console.log("Success...")
+
+                }else if (status == 401) {
+
+                    //  this.props.history.push('/');
+                }
+            });
+
+    }
+
+    vendorRegister(){
+
+
+        const vendorregister={
+            email:this.refs.ref4.value,
+            password:this.refs.ref5.value,
+            role:"VENDOR"
+        }
+
+        API.doRegister(vendorregister).then((data)=>{
+
+            if(data.status==201){
+                console.log("after the registration is complete");
+                this.successshowAlert("Vendor registered successfully");
+
+            }
+            else if (data.status == 401) {
+
+                //  this.props.history.push('/');
+            }
+        });
+
     }
         
             deleteVendor(index, data){
@@ -56,11 +85,27 @@ class AdminPanelVendors extends Component {
                         }
                     });
             }
-        
+
+    errorshowAlert = (msg) => {
+        this.msg.show(msg, {
+            time: 5000,
+            type: 'success',
+            icon: <img src={require('../image/error.png')} />
+        })
+    }
+
+    successshowAlert = (msg) => {
+        this.msg.show(msg, {
+            time: 5000,
+            type: 'success',
+            icon: <img src={require('../image/success.png')} />
+        })
+    }
 
     render(){
         return(
             <div className="row">
+                <AlertContainer ref={a => this.msg = a} {...this.alertOptions} />
                              <div className="col-sm-8">
                                 <div className="card" > 
                                     <table className="table table-responsive-sm">
@@ -107,23 +152,30 @@ class AdminPanelVendors extends Component {
                                                     <td>
                                                     Vendor Name:    
                                                     <input type="text" className="form-control"
-                                                    /*onchange={(event)=>{this.setState({
 
-                                                        firstname: event.target.value==""?this.props.userdata.firstName:event.target.value
-                                                    });*/
                                                         ref="ref1" />
                                                     Vendor EndPoint:
                                                     <input type="text" className="form-control"
                                                            ref="ref2" />
 
-                                                     Type: <select className="form-control" ref="ref3" >
+                                                        Vendor Email:
+                                                        <input type="text" className="form-control"
+
+                                                               ref="ref6" />
+
+                                                        Vendor Schema:
+                                                        <input type="text" className="form-control"
+
+                                                               ref="ref7" />
+
+                                                        Type: <select className="form-control" ref="ref3" >
                                                         <option value="flight">Flight</option>
                                                         <option value="hotel">Hotel</option>
                                                         <option value="car">Car</option>
                 
                                                     </select>
                                                     <button className="btn btn-default btn-lg btn-block"
-                                                    onClick={()=>this.addVendor()}>ADD</button>
+                                                    onClick={()=>this.addVendor()}>Add</button>
                        
                                                     </td>
                                                     
@@ -136,7 +188,43 @@ class AdminPanelVendors extends Component {
 
                                     </table>  
                                 </div> 
-                        </div>
+
+
+                <div className="card" >
+                    <table className="table table-responsive-sm">
+                        <thead>
+                        <tr>
+                            <th>Vendor Register</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr>
+                            <td>
+
+                                Vendor Email:
+                                <input type="text" className="form-control"
+
+                                       ref="ref4" />
+                                Password:
+                                <input type="password" className="form-control"
+                                       ref="ref5" />
+
+
+                                <button className="btn btn-default btn-lg btn-block"
+                                        onClick={()=>this.vendorRegister()}>Save</button>
+
+                            </td>
+
+                        </tr>
+
+
+
+                        </tbody>
+
+
+                    </table>
+                </div>
+            </div>
                         </div>
         )
     }
