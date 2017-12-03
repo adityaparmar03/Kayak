@@ -13,20 +13,7 @@ CREATE TABLE `USER` (
   `password` varchar(45) NOT NULL,
   `first_name` varchar(45) NOT NULL,
   `last_name` varchar(45) DEFAULT NULL,
-  `user_role` enum('USER','ADMIN') DEFAULT 'USER',
-<<<<<<< Updated upstream
-  `street_address` varchar(90) DEFAULT '',
-  `city` varchar(45) default '',
-  `state` varchar(45)default '',
-  `zip_code` varchar(45)default '',
-  `phone` varchar(45)default '',
-  `profile_image_path` varchar(300) default '' ,
-  `credit_card_type` varchar(45) DEFAULT '',
-  `credit_card_number` varchar(16) DEFAULT '',
-  `credit_card_holder_name` varchar(45) DEFAULT '',
-  `credit_card_valid_from` date DEFAULT null,
-  `credit_card_valid_till` date DEFAULT null,
-=======
+  `user_role` enum('USER','ADMIN', 'VENDOR') DEFAULT 'USER',
   `street_address` varchar(90) DEFAULT NULL,
   `city` varchar(45) DEFAULT NULL,
   `state` varchar(45) DEFAULT NULL,
@@ -38,7 +25,7 @@ CREATE TABLE `USER` (
   `credit_card_holder_name` varchar(45) DEFAULT NULL,
   `credit_card_valid_from` date DEFAULT NULL,
   `credit_card_valid_till` date DEFAULT NULL,
->>>>>>> Stashed changes
+
   PRIMARY KEY (`email`),
   UNIQUE KEY `email_UNIQUE` (`email`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
@@ -152,13 +139,28 @@ UNLOCK TABLES;
 -- Table structure for table `vendors`
 --
 
+
 CREATE TABLE `vendors` (
   `vendorId` int(11) NOT NULL AUTO_INCREMENT,
   `vendorname` varchar(50) DEFAULT NULL,
   `servicetype` varchar(50) DEFAULT NULL,
   `vendorapi` varchar(255) DEFAULT NULL,
+  `model` varchar(255) ,
+  `email` varchar(255) ,
   PRIMARY KEY (`vendorId`)
 ) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=latin1;
+
+
+
+  INSERT INTO `vendors` VALUES (1,'MMT','car','http://localhost:3001/car/getcars?vendor=MmtCars', 'mmt@gmail.com', 'MmtCars');
+  INSERT INTO `vendors` VALUES (2, 'Cleartrip','car','http://localhost:3001/car/getcars?vendor=CleartripCars', 'cct@gmail.com','CleartripCars');
+  INSERT INTO `vendors` VALUES (3,'Alamo','car','http://localhost:3001/car/getcars?vendor=AlamoCars', 'ac@gmail.com', 'AlamoCars');
+  INSERT INTO `vendors` VALUES (4,'MMT','hotel','http://localhost:3001/hotel/gethotels?vendor=MmtHotels', 'mmt@gmail.com',  'MmtHotels');
+  INSERT INTO `vendors` VALUES (5,'Cleartrip','hotel','http://localhost:3001/hotel/gethotels?vendor=CleartripHotels', 'cct@gmail.com', 'CleartripHotels' );
+  INSERT INTO `vendors` VALUES (6,'TripAdvisor','hotel','http://localhost:3001/hotel/gethotels?vendor=TripAdvisorHotels', 'triad@gmail.com', 'TripAdvisorHotels');
+  INSERT INTO `vendors` VALUES (7,'MMT','flight','http://localhost:3001/flight/getflights?vendor=MmtFlights', 'mmt@gmail.com', MmtFlights);
+  INSERT INTO `vendors` VALUES (8,'Cleartrip','flight','http://localhost:3001/flight/getflights?vendor=CleartripFlights', 'cct@gmail.com', 'CleartripFlights');
+  INSERT INTO `vendors` VALUES (9,'Expedia','flight','http://localhost:3001/flight/getflights?vendor=ExpediaFlights', 'expedia@gmail.com', 'ExpediaFlights');
 
 
 LOCK TABLES `vendors` WRITE;

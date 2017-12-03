@@ -43,17 +43,15 @@ router.get('/getflights', function (req, res) {
     })
 });
 
-router.post('/book', function (req, res) {
+router.post('/addflight', function (req, res) {
     console.log('Request is ---------');
     console.log(req.body);
-    var queueName = "BookFlight";
 
     var reqObject = {
       email : req.session.email,
-      booking : req.body.booking,
-      credit_card : req.body.credit_card
+      flight : req.body
     }
-    kafka.make_request(queueName, reqObject, function(err,results){
+    kafka.make_request("addflight", reqObject, function(err,results){
 
         if(err){
             console.log('Returning Error ----' + err);
@@ -63,14 +61,15 @@ router.post('/book', function (req, res) {
         {
             console.log('Returning results ----' + results);
             if(results.code == "200"){
-                res.send({'status': results.code , 'api_results' : results.value});
+                res.send({'status': results.code });
             }
             else {
-                res.send({'status': results.code , 'api_results' : results.value});
+                res.send({'status': results.code });
             }
         }
     })
 });
+
 
 
 

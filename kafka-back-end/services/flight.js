@@ -346,22 +346,43 @@ function getBookedCountHelper(dbBookings){
 
 
 
-// Search for all flightss on the basis of city, state and class
-function searchFlights(msg, callback) {
+function addFlight(msg, callback) {
 
-    var flight = require('../models/flight/' + msg.vendor);
+    var getModel="select model from vendors where email="+msg.email;
+    mysql.fetchData(function(err,results){
+        if(err){
+            throw err;
+        }
+        else
+        {
+            console.log(results);
+            if(results.length > 0){
 
-    var res = {};
-    var origincity = msg.searchcriteria.origincity;
-    var originstate = msg.searchcriteria.originstate;
-    var destinationcity = msg.searchcriteria.destinationcity;
-    var destinationstate = msg.searchcriteria.destinationstate;
-    var triptype = msg.searchcriteria.triptype;
-    var flightclass = msg.searchcriteria.flightclass;
-    var arrivalday = msg.searchcriteria.arrivalday;
-    var departureday = msg.searchcriteria.departureday;
+                var flight = require('../models/flight/' + results[0].model);
+
+                var res = {};
+                var origincity = msg.searchcriteria.origincity;
+                var originstate = msg.searchcriteria.originstate;
+                var destinationcity = msg.searchcriteria.destinationcity;
+                var destinationstate = msg.searchcriteria.destinationstate;
+                var triptype = msg.searchcriteria.triptype;
+                var flightclass = msg.searchcriteria.flightclass;
+                var arrivalday = msg.searchcriteria.arrivalday;
+                var departureday = msg.searchcriteria.departureday;
+
+
+            }
+            else {
+                res.code = "401";
+
+                callback(null, res);
+            }
+        }
+    },getModel);
 
 
 }
-    exports.searchFlights=searchFlights;
+
+exports.searchFlights=searchFlights;
+exports.addFlight=addFlight;
 exports.bookFlight=bookFlight;
