@@ -14,6 +14,10 @@ class FlightBooking extends Component {
      }
     componentWillMount(){
 
+
+    }
+
+    handlePay(){
       const payload = JSON.parse(localStorage.getItem("flightbooking"));
       console.log('payload',payload);
       API.bookFlight(payload)
@@ -30,7 +34,6 @@ class FlightBooking extends Component {
                   console.log("Error is " + res);
               }
           });
-
     }
 
     render(){
@@ -157,7 +160,7 @@ class FlightBooking extends Component {
 
                                 </div>
                             </div>
-                            <button className="btn btn-default btn-lg btn-block">Pay</button>
+                            <button className="btn btn-default btn-lg btn-block" onClick={()=>this.handlePay()}>Pay</button>
                           </div>
                         </div>
 
