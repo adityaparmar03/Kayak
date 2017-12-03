@@ -10,10 +10,16 @@ class CarBooking extends Component {
         super(props);
         this.state = {
             progress:'100%',
-        
+
         }
      }
     componentWillMount(){
+
+
+
+    }
+
+    handlePay(){
 
       const payload = JSON.parse(localStorage.getItem("carbooking"));
       console.log('payload=>',payload);
@@ -31,7 +37,6 @@ class CarBooking extends Component {
                   console.log("Error is " + res);
               }
           });
-
     }
 
     render(){
@@ -51,30 +56,30 @@ class CarBooking extends Component {
                                 <div className="row">
                                 <div className="col-sm-6">
                                 Car: {this.state.hotelname}
-                                </div> 
+                                </div>
                                 <div className="col-sm-6">
                                 Address: {this.state.address}
-                                </div>   
+                                </div>
                             </div>
                             <br/>
                             <div className="row">
                                 <div className="col-sm-6">
                                   Room Type: {this.state.roomtype}
-                                </div> 
+                                </div>
                                 <div className="col-sm-6">
                                   No of Rooms: {this.state.noofrooms}
                                 </div>
-                                
-                            </div> 
+
+                            </div>
                             <br/>
                             <div className="row">
                                 <div className="col-sm-6">
                                   Stay: {this.state.stay}
-                                </div> 
+                                </div>
                                 <div className="col-sm-6">
                                   Total: ${this.state.total}
-                              </div>   
-                            </div> 
+                              </div>
+                            </div>
                                 </div>
                         </div>
 
@@ -182,7 +187,7 @@ class CarBooking extends Component {
 
                                 </div>
                             </div>
-                            <button className="btn btn-default btn-lg btn-block">Pay</button>
+                            <button className="btn btn-default btn-lg btn-block" onClick={()=>this.handlePay()>Pay</button>
                           </div>
                         </div>
 
