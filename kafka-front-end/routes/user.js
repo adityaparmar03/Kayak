@@ -121,7 +121,7 @@ router.get('/bookinghistory', function (req, res) {
         }
         else{
             console.log("i am here");
-            if(results.code==="200"){
+            if(results.code==200){
                 console.log("Everything successfull");
                 res.send({"status":201 , "data": results})
 
@@ -299,7 +299,7 @@ router.get('/searchhistory', function (req, res) {
         }
         else{
 
-            if(results.code==="200"){
+            if(results.code==200){
 
                 res.send({"status":201 , "data": results})
 

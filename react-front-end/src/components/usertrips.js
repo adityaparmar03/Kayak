@@ -43,7 +43,7 @@ class UserTrip extends Component {
             .then((res) => {
                 console.log(res);
 
-                if (res.status == 200) {
+                if (res.status == 201) {
 
                     this.props.searchHistory(res.data);
 
@@ -177,11 +177,11 @@ class UserTrip extends Component {
 
 function mapStateToProps(reducerdata) {
     // console.log(reducerdata);
-    const bookings = reducerdata.userBooking;
+    const bookingHistoryList = reducerdata.userHistory;
 
-    console.log(bookings);  //all the data in the booking just waiting for aditya to give me boxes so i can fill that up
+    console.log(bookingHistoryList);
 
-    return {bookings};
+    return {bookingHistoryList};
 }
 
 function mapDispatchToProps(dispatch) {

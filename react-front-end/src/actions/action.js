@@ -18,7 +18,16 @@ export function flightSearch(flights) {
 
 export function bookingHistory(data){
     return {
-        type:Constants.USER_HISTORY,
+        type:Constants.BOOKING_HISTORY,
+        payload:data
+
+    }
+
+}
+
+export function searchHistory(data){
+    return {
+        type:Constants.SEARCH_HISTORY,
         payload:data
 
     }

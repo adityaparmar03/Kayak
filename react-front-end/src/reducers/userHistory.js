@@ -3,12 +3,12 @@ import {combineReducers} from 'redux';
 
 var initialState = {
 
-    flightbooking:{},
-    carbooking:{},
-    hotelbooking:{},
-    flightsearch:{},
-    carsearch:{},
-    hotelsearch:{}
+    flightbooking:[],
+    carbooking:[],
+    hotelbooking:[],
+    flightsearch:[],
+    carsearch:[],
+    hotelsearch:[]
 
 }
 
@@ -33,9 +33,9 @@ function userHistory(state = initialState, action) {
         case Constants.SEARCH_HISTORY :
             state = {
                 ...state,
-                carsearch:action.payload.data.car,
-                flightsearch:action.payload.data.flight,
-                hotelsearch:action.payload.data.hotel
+                carsearch:action.payload.car,
+                flightsearch:action.payload.flight,
+                hotelsearch:action.payload.hotel
             }
             console.log("~~~~~~~~~~~~~~~~~~~~~~~~");
             console.log(state);

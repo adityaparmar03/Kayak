@@ -6,7 +6,7 @@ var pool  = mysql.createPool({
     user     : 'root',
 
 
-    password : 'Sunil@28', //Enter password
+    password : 'kimtani02', //Enter password
     database : 'kayak', //keep database as this since meenakshi created this database.
     port	 : 3306
 });
