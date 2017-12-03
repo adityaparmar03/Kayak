@@ -107,6 +107,20 @@ class Profile extends Component {
 
 
     }
+     errorshowAlert = (msg) => {
+        this.msg.show(msg, {
+            time: 5000,
+            type: 'success',
+            icon: <img src={require('../image/error.png')} />
+        })
+    }
+    successshowAlert = (msg) => {
+        this.msg.show(msg, {
+            time: 5000,
+            type: 'success',
+            icon: <img src={require('../image/success.png')} />
+        })
+    }
 
     tripdisplay(data){
         if(data.type == "flight"){

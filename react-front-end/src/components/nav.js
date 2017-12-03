@@ -14,17 +14,18 @@ class Nav extends Component {
 
 
     componentWillMount(){
-       
+       // API.doLogout().then((data)=>{
+       //     console.log("adf");
+       // })
    API.checkSession().then((data)=>{
     console.log("inside the check session response");
-   
     if(data.status===201){
         console.log("user logged in ");
         console.log(data.data.value);
         this.successshowAlert(data.data.value);
         this.props.signIn(data);
     }
-   
+
    })
 
 
@@ -64,7 +65,10 @@ class Nav extends Component {
             this.successshowAlert("you have succesfully registered");
         }
         else{
-            this.errorshowAlert("Error while registering ");
+              console.log(data);
+            this.errorshowAlert(data.value);
+
+
         }
 
 
@@ -112,6 +116,9 @@ loginButton(){
             this.props.userprofile.isLoggedIn = true;
           //  console.log("Before getting in the signin reducer  "+ this.props.userprofile.isLoggedIn)
        // this.props.signIn(data);
+        }
+        else{
+            this.errorshowAlert(data.value);
         }
      })
 
@@ -264,7 +271,7 @@ loginButton(){
                                     });
                                 }}/>
 
-                                <label data-error="wrong" data-success="right" htmlFor="form22">Your email</label>
+                                <label htmlFor="form22">Your email</label>
                             </div>
                             
                             <div className="md-form form-sm">
@@ -277,12 +284,12 @@ loginButton(){
                                     });
                                 }}/>
 
-                                <label data-error="wrong" data-success="right" htmlFor="form23">Your password</label>
+                                <label htmlFor="form23">Your password</label>
                             </div>
                             <div className="text-center mt-2">
                                 <button className="btn btn-info"  data-dismiss={this.state.modalValue}
                                         onClick={()=>{
-                                            console.log(this.state.modalValue)
+                                           // console.log(this.state.modalValue)
                                             this.loginButton();}}>Log in <i className="fa fa-sign-in ml-1"></i></button>
                             </div>
                         </div>
@@ -326,7 +333,7 @@ loginButton(){
                                         password: event.target.value
                                     });
                                 }}/>
-                                <label data-error="Invalid" data-success="right" htmlFor="form25">Your password</label>
+                                <label  htmlFor="form25">Your password</label>
                             </div>
 
                             <div className="md-form form-sm">
@@ -340,7 +347,7 @@ loginButton(){
                                 }}/>
 
                                 
-                                <label data-error="Invalid" data-success="right" htmlFor="form26">Repeat password</label>
+                                <label htmlFor="form26">Repeat password</label>
                             </div>
 
                             <div className="text-center form-sm mt-2">
