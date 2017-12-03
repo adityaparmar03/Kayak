@@ -56,8 +56,24 @@ class Carsearch extends Component {
                'dropoffstate':this.state.city.split(",")[1].trim(),
                'startdate' : startdate,
                'enddate' : enddate,
+               'searchtype': "car",
                'dropoff' : this.state.returndateenable ? 'DIFFERENT-DROPOFF' : 'SAME-DROPOFF'
             }
+
+           API.addHistory(payload)
+               .then((res) => {
+
+
+                   if (res.status == 200) {
+
+
+                       console.log("Success...")
+
+                   }else if (res.status == 401) {
+
+                       //  this.props.history.push('/');
+                   }
+               });
 
 
            console.log('payload', payload);

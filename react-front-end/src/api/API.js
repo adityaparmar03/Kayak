@@ -362,6 +362,26 @@ export const clickTracker = (payload) =>
     });
 
 
+
+export const addHistory = (payload) =>
+    fetch(`${api}/user/addhistory`, {
+        method: 'POST',
+        headers: {
+            ...headers,
+            'Content-Type': 'application/json'
+        },
+        credentials:'include',
+        body: JSON.stringify(payload)
+    }).then(res => {
+        console.log(res);
+        return res.json();
+    })
+        .catch(error => {
+            console.log("This is an API error");
+            return error;
+        });
+
+
 export const bookFlight = (payload) =>
     fetch(`${api}/flight/book`, {
         method: 'POST',

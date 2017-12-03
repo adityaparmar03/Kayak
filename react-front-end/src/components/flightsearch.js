@@ -62,9 +62,24 @@ class Flightsearch extends Component {
                   'arrivalday':moment(this.state.enddate).toString().split(" ")[0],
                   'flightclass':this.state.class,
                   'startdate' : startdate,
-                  'enddate' : enddate
+                  'enddate' : enddate,
+                  'searchtype':'flight'
               }
 
+           API.addHistory(payload)
+               .then((res) => {
+
+
+                   if (res.status == 200) {
+
+
+                       console.log("Success...")
+
+                   }else if (res.status == 401) {
+
+                       //  this.props.history.push('/');
+                   }
+               });
 
               console.log('payload', payload);
 

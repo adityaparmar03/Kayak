@@ -28,8 +28,13 @@ router.post('/login', function (req, res) {
 
     // var reqEmail = req.body.email;
     //  var reqPassword = req.body.password;
+<<<<<<< Updated upstream
     console.log("inside the login path with the body"+req.body.email);
 
+=======
+    console.log("inside the login path with the body"+req.body);
+var email= req.body.email;
+>>>>>>> Stashed changes
     passport.authenticate('login', function(err, user) {
 
         if (err) {
@@ -41,7 +46,7 @@ router.post('/login', function (req, res) {
         }
         else {
             if(user.code==201) {
-                req.session.email = user.email;
+                req.session.email = email;
                 req.session.isloggedin = true;
                 console.log(user.data);
                 res.send({status: 201, "value": user.data});
@@ -264,5 +269,34 @@ router.post('/logout', function (req, res) {
 });
 
 //************************************************************************************************************************
+
+
+
+router.post('/addhistory', function (req, res) {
+
+    var reqObject = {
+        email : req.session.email,
+        payload : req.body
+    }
+    kafka.make_request("addhistory", reqObject, function(err,results){
+
+        if(err){
+            console.log('Returning Error ----' + err);
+            res.send({'status': err.code, 'message' : err.message});
+        }
+        else
+        {
+            console.log('Returning results ----' + results);
+            if(results.code == "200"){
+                res.send({'status': results.code});
+            }
+            else {
+                res.send({'status': results.code});
+            }
+        }
+    })
+});
+
+
 
 module.exports = router;

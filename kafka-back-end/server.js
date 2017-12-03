@@ -190,18 +190,32 @@ consumer.on('message', function (message) {
             })
 
             break;
-/*
 
-        case 'updatebill':
-
-            admin.updateBill(body,function (err,res) {
+        case 'addhistory':
+            user.addHistory(body, function(err,res){
+                //console.log('after handle',res);
                 if(err)
                     console.log(err);
                 else
                     console.log(res);
                 response(data,res);
+                return;
+            });
+            break;
 
-            })
+        /*
+
+
+    case 'updatebill':
+
+        admin.updateBill(body,function (err,res) {
+            if(err)
+                console.log(err);
+            else
+                console.log(res);
+            response(data,res);
+
+        })
 
 */
 

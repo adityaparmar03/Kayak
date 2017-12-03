@@ -340,8 +340,52 @@ function deleteuser(msg,callback) {
 
 
 
+
+function addHistory(msg, callback) {
+
+    var startdate = new Date(msg.payload.startdate);
+    var enddate = new Date(msg.payload.enddate);
+
+    var res={};
+    if(msg.payload.searchtype=="flight") {
+        var historySql = "insert into searchhistory(`user_email`,`search_type`,`source_city`,`source_state`,`destination_city`,`destination_state`,`flight_trip_type`,`start_date`,`end_date`) values('"
+            + msg.email + "','" + 'FLIGHT' + "','" + msg.payload.origincity + "','" + msg.payload.originstate + "','" + msg.payload.destinationcity + "','" + msg.payload.destinationstate + "','"
+            + msg.payload.triptype + "','" + startdate + "','" + enddate + "');";
+    }
+
+    else if(msg.payload.searchtype=="hotel") {
+        var historySql = "insert into searchhistory(`user_email`,`search_type`,`source_city`,`source_state`,`start_date`,`end_date`) values('"
+            + msg.email + "','" + 'HOTEL' + "','" + msg.payload.city + "','" + msg.payload.state + "','"
+             + startdate + "','" + enddate + "');";
+
+    }
+
+    else {
+        var historySql = "insert into searchhistory(`user_email`,`search_type`,`source_city`,`source_state`,`destination_city`,`destination_state`,`start_date`,`end_date`) values('"
+            + msg.email + "','" + 'CAR' + "','" + msg.payload.pickupcity + "','" + msg.payload.pickupstate + "','" + msg.payload.dropoffcity + "','" + msg.payload.dropoffstate
+            + "','" + startdate + "','" +enddate + "');";
+
+    }
+    mysql.executeQuery(function(err){
+        if(err){
+            //throw  err;
+            res.code = "401";
+
+        }
+        else{
+            res.code = "200";
+
+        }
+        callback(null,res);
+    },historySql);
+}
+
+
+
+
 //****************************************************************************************************************************
 exports.upload = upload;
+exports.addHistory = addHistory;
 exports.getuserdata = getuserdata;
 exports.deleteuser = deleteuser;
 exports.bookinghistory = bookinghistory;

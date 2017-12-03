@@ -5,7 +5,8 @@ import AutoComplete from 'material-ui/AutoComplete';
 import DatePicker from 'material-ui/DatePicker';
 import TextField from 'material-ui/TextField';
 import moment from 'moment';
-import cities from '../constants/cities'
+import cities from '../constants/cities';
+import * as API from '../api/API';
 
 class Hotelsearch extends Component {
 
@@ -52,9 +53,24 @@ class Hotelsearch extends Component {
             'occupancy':this.state.guests,
             'startdate' : startdate,
             'enddate' : enddate,
-            'roomcount' : this.state.rooms
+            'roomcount' : this.state.rooms,
+            'searchtype': 'hotel'
         }
 
+           API.addHistory(payload)
+               .then((res) => {
+
+
+                   if (res.status == 200) {
+
+
+                       console.log("Success...")
+
+                   }else if (res.status == 401) {
+
+                       //  this.props.history.push('/');
+                   }
+               });
 
            console.log('payload', payload);
 
