@@ -6,6 +6,7 @@ var router = express.Router();
 /* GET car list */
 router.get('/hotels', function (req, res) {
 
+    console.log("Inside Hotels");
     var data = {'searchtype':'hotel', 'searchquery':req.query}
     search.searchFromApi(data, function (err, results) {
 
@@ -19,6 +20,7 @@ router.get('/hotels', function (req, res) {
 
 router.get('/gethotels', function (req, res) {
 
+    console.log("In gethotels");
     var searchcriteria=JSON.parse(req.query.data)
 
     var vendor = req.query.vendor ;

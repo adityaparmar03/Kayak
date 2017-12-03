@@ -28,7 +28,7 @@ router.post('/login', function (req, res) {
 
     // var reqEmail = req.body.email;
     //  var reqPassword = req.body.password;
-    console.log("inside the login path with the body"+req.body);
+    console.log("inside the login path with the body"+req.body.email);
 
     passport.authenticate('login', function(err, user) {
 
@@ -45,7 +45,7 @@ router.post('/login', function (req, res) {
             req.session.email = user.email;
             req.session.isloggedin = true;
             console.log(user.data);
-            res.send({status: 201,"value":"Success Login"});
+            res.send({status:201,"value":"Success Login"});
 
         }
 
@@ -106,6 +106,8 @@ router.get('/bookinghistory', function (req, res) {
                 console.log("Everything successfull");
                 res.send({"status":201 , "data": results})
 
+            } else {
+                res.send({"status":401 , "data": results})
             }
         }
 
