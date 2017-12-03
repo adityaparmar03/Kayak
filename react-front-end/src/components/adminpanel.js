@@ -104,7 +104,7 @@ class AdminPanel extends Component {
                 
                     <div className="tab-pane fade in show active" id="dashboard" role="tabpanel">
                    
-                        {/* <AdminPanelDashboard/>    */}
+                         <AdminPanelDashboard/>
 
                      </div>
                 

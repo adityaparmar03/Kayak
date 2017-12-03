@@ -13,7 +13,7 @@ class DonutChart extends React.Component {
             chartType:"PieChart",
             options : {
                 "title": "Percentage of time spent by a user on a particular page",
-                "pieHole": 0.5
+                "pieHole": 0.4
             },
            // width: "40%",
             height: "500px",
