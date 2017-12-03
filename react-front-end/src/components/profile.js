@@ -20,7 +20,11 @@ class Profile extends Component {
                 zipcode:"",
                 phonenumber:"",
                 imgpath:"",
-                creditcard:""
+                creditcard:"",
+
+
+                //dummy
+               
 
             }
     }
@@ -31,11 +35,11 @@ class Profile extends Component {
         API.checkSession().then((data)=>{
             console.log("inside the check session response");
                  console.log(data);
-                 console.log("aaaaaaaaaaaaaaaaa");
+               
             if(data.status===201){
                 console.log("user logged in ");
                 console.log(data);
-                console.log("*************");
+              
                 this.props.signIn(data);
                 this.setState({
                     email:this.props.userprofile.email,
@@ -92,7 +96,22 @@ class Profile extends Component {
 
 
     }
+     errorshowAlert = (msg) => {
+        this.msg.show(msg, {
+            time: 5000,
+            type: 'success',
+            icon: <img src={require('../image/error.png')} />
+        })
+    }
+    successshowAlert = (msg) => {
+        this.msg.show(msg, {
+            time: 5000,
+            type: 'success',
+            icon: <img src={require('../image/success.png')} />
+        })
+    }
 
+    
 
     render(){
         return(

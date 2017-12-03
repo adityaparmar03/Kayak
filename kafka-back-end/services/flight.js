@@ -1,7 +1,6 @@
 
 var _ = require("underscore");
 var mysql = require('../models/mysql');
-var searchHistory = require('../models/searchhistory');
 var asyncLoop = require('node-async-loop');
 
 // Search for all flightss on the basis of city, state and class
@@ -51,7 +50,7 @@ function searchFlights(msg, callback){
     }
 
     else{
-console.log('checkkk',arrivalday);
+
         flight.aggregate(
 
             {$unwind: '$flights'},
@@ -72,7 +71,7 @@ console.log('checkkk',arrivalday);
                         'flights.departureday': arrivalday
                     }]
             }},
-            { $group : { _id : {flightId:"$flightId", operator:"$operator", imageurl:"$imageurl"}, flights: { $push: "$flights" } } }, function (err, flights) {
+            { $group : { _id : {flightId:"$flightId", operator:"$operator", imageurl:"$imageurl", class:"$class"}, flights: { $push: "$flights" } } }, function (err, flights) {
 
 
                 if (err) {
@@ -105,6 +104,7 @@ console.log('checkkk',arrivalday);
                                 throw err;
 
                             }
+
                             console.log("Flight List:", roundtripflights)
                             res.code = "200";
                             res.value = roundtripflights;
@@ -125,11 +125,7 @@ console.log('checkkk',arrivalday);
 
 
     }
-
-    //  var searchhistory = new SearchHistory();
-
 }
-
 
 // Book the flight
 function bookFlight(msg, callback){
@@ -350,9 +346,3 @@ function getBookedCountHelper(dbBookings){
 
 exports.searchFlights=searchFlights;
 exports.bookFlight=bookFlight;
-
-
-
-
-
-

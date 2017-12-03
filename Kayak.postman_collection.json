@@ -4,9 +4,11 @@
 	"description": "",
 	"order": [
 		"60109cdf-b787-d78c-3ca9-1fe77272938c",
+		"6e74f0e2-3568-0aef-6926-d931561a895b",
+		"700b4d4d-2916-bc7a-e17e-a772ef3df8a1",
+		"3cf0e2c0-0e1e-224f-7cff-e5020ca62cda",
 		"c08882cc-19eb-50f4-abc8-2b77d39d4f59",
 		"e60c98c5-a34b-9fe2-bd74-ad3267fa0706",
-		"700b4d4d-2916-bc7a-e17e-a772ef3df8a1",
 		"8c4abe34-a22f-6f77-f41b-25807c576e40",
 		"acf07d3d-4a64-76c2-3448-beaef45fdf61",
 		"1f6301df-a13e-bd6b-9c48-1c5d21332601"
@@ -47,21 +49,35 @@
 			"rawModeData": "{\n\t\"email\" : \"meenakshi.paryani@gmail.com\",\n\t\"password\" : \"password\"\n\t\n}"
 		},
 		{
-			"id": "60109cdf-b787-d78c-3ca9-1fe77272938c",
+			"id": "3cf0e2c0-0e1e-224f-7cff-e5020ca62cda",
 			"headers": "",
 			"headerData": [],
-			"url": "http://localhost:3001/flight/getFlights?data={\"origincity\" : \"San Jose\", \"originstate\":\"CA\", \"destinationcity\" : \"Delhi\", \"destinationstate\":\"Delhi\",\"triptype\":\"One-Way\",\"flightclass\":\"economy\"}&vendor=MmtFlights",
+			"url": "http://localhost:3001/car/cars?pickupcity=San Jose&pickupstate=California&dropoffcity=San Jose&dropoffstate=California",
 			"queryParams": [
 				{
-					"key": "data",
-					"value": "{\"origincity\" : \"San Jose\", \"originstate\":\"CA\", \"destinationcity\" : \"Delhi\", \"destinationstate\":\"Delhi\",\"triptype\":\"One-Way\",\"flightclass\":\"economy\"}",
+					"key": "pickupcity",
+					"value": "San Jose",
 					"equals": true,
 					"description": "",
 					"enabled": true
 				},
 				{
-					"key": "vendor",
-					"value": "MmtFlights",
+					"key": "pickupstate",
+					"value": "California",
+					"equals": true,
+					"description": "",
+					"enabled": true
+				},
+				{
+					"key": "dropoffcity",
+					"value": "San Jose",
+					"equals": true,
+					"description": "",
+					"enabled": true
+				},
+				{
+					"key": "dropoffstate",
+					"value": "California",
 					"equals": true,
 					"description": "",
 					"enabled": true
@@ -76,8 +92,80 @@
 			"tests": null,
 			"currentHelper": "normal",
 			"helperAttributes": {},
-			"time": 1511751763766,
-			"name": "Get Flights",
+			"time": 1512275857265,
+			"name": "Get Cars",
+			"description": "",
+			"collectionId": "fd7d1528-e7a0-7ac1-b04e-1a2efb736f48",
+			"responses": []
+		},
+		{
+			"id": "60109cdf-b787-d78c-3ca9-1fe77272938c",
+			"headers": "",
+			"headerData": [],
+			"url": "http://localhost:3001/flight/getFlights?data={\"origincity\" : \"San Francisco\", \"originstate\":\"California\", \"destinationcity\" : \"San Jose\", \"destinationstate\":\"California\",\"origincity\" : \"San Jose\", \"originstate\":\"California\", \"destinationcity\" : \"San Francisco\", \"destinationstate\":\"California\",\"triptype\":\"Two-Way\",\"flightclass\":\"economy\"}&vendor=ExpediaFlights",
+			"queryParams": [
+				{
+					"key": "data",
+					"value": "{\"origincity\" : \"San Francisco\", \"originstate\":\"California\", \"destinationcity\" : \"San Jose\", \"destinationstate\":\"California\",\"origincity\" : \"San Jose\", \"originstate\":\"California\", \"destinationcity\" : \"San Francisco\", \"destinationstate\":\"California\",\"triptype\":\"Two-Way\",\"flightclass\":\"economy\"}",
+					"equals": true,
+					"description": "",
+					"enabled": true
+				},
+				{
+					"key": "vendor",
+					"value": "ExpediaFlights",
+					"equals": true,
+					"description": "",
+					"enabled": true
+				}
+			],
+			"preRequestScript": null,
+			"pathVariables": {},
+			"pathVariableData": [],
+			"method": "GET",
+			"data": null,
+			"dataMode": "params",
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1512210326308,
+			"name": "Get Flights- Two Way",
+			"description": "",
+			"collectionId": "fd7d1528-e7a0-7ac1-b04e-1a2efb736f48",
+			"responses": []
+		},
+		{
+			"id": "6e74f0e2-3568-0aef-6926-d931561a895b",
+			"headers": "",
+			"headerData": [],
+			"url": "http://localhost:3001/flight/getFlights?data={\"origincity\" : \"San Francisco\", \"originstate\":\"California\", \"destinationcity\" : \"San Jose\", \"destinationstate\":\"California\",\"triptype\":\"One-Way\",\"flightclass\":\"economy\", \"departureday\":\"Wed\"}&vendor=ExpediaFlights",
+			"queryParams": [
+				{
+					"key": "data",
+					"value": "{\"origincity\" : \"San Francisco\", \"originstate\":\"California\", \"destinationcity\" : \"San Jose\", \"destinationstate\":\"California\",\"triptype\":\"One-Way\",\"flightclass\":\"economy\", \"departureday\":\"Wed\"}",
+					"equals": true,
+					"description": "",
+					"enabled": true
+				},
+				{
+					"key": "vendor",
+					"value": "ExpediaFlights",
+					"equals": true,
+					"description": "",
+					"enabled": true
+				}
+			],
+			"preRequestScript": null,
+			"pathVariables": {},
+			"pathVariableData": [],
+			"method": "GET",
+			"data": null,
+			"dataMode": "params",
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1512211789963,
+			"name": "Get Flights- One Way",
 			"description": "",
 			"collectionId": "fd7d1528-e7a0-7ac1-b04e-1a2efb736f48",
 			"responses": []
@@ -86,7 +174,7 @@
 			"id": "700b4d4d-2916-bc7a-e17e-a772ef3df8a1",
 			"headers": "",
 			"headerData": [],
-			"url": "http://localhost:3001/hotel/hotels?city=San Jose&state=CA&roomtype=delux",
+			"url": "http://localhost:3001/hotel/hotels?city=San Jose&state=California&roomtype=delux",
 			"queryParams": [
 				{
 					"key": "city",
@@ -97,7 +185,7 @@
 				},
 				{
 					"key": "state",
-					"value": "CA",
+					"value": "California",
 					"equals": true,
 					"description": "",
 					"enabled": true
@@ -119,7 +207,7 @@
 			"tests": null,
 			"currentHelper": "normal",
 			"helperAttributes": {},
-			"time": 1511751937719,
+			"time": 1512268727548,
 			"name": "Get hotels",
 			"description": "",
 			"collectionId": "fd7d1528-e7a0-7ac1-b04e-1a2efb736f48",
@@ -176,12 +264,12 @@
 			"tests": null,
 			"currentHelper": "normal",
 			"helperAttributes": {},
-			"time": 1512020237157,
+			"time": 1512109757118,
 			"name": "Book Car",
 			"description": "",
 			"collectionId": "fd7d1528-e7a0-7ac1-b04e-1a2efb736f48",
 			"responses": [],
-			"rawModeData": "{\n\t\"booking\" :\n\t\t{\n\t\t\t\"carId\" : \"MMT103\",\n\t\t    \"cartype\" : \"Small\",\n\t\t    \"carmodel\" : \"BMW\",\n\t\t    \"pickupdate\" : \"2017-01-18 09:15:00\",\n\t\t    \"dropoffdate\" : \"2017-01-19 23:14:00\",\n\t\t    \"triptype\"    : \"SAME-DROPOFF\",\n\t\t    \"pickupaddress\" : {\n\t\t        \"street\" : \"101 E San Fernando St.\",\n\t\t        \"city\" : \"San Jose\",\n\t\t        \"state\" : \"CA\",\n\t\t        \"country\" : \"USA\"\n\t\t    },\n\t\t    \"dropoffaddress\" : {\n\t\t        \"street\" : \"101 E San Fernando St.\",\n\t\t        \"city\" : \"San Jose\",\n\t\t        \"state\" : \"CA\",\n\t\t        \"country\" : \"USA\"\n\t\t    },\n\t\t    \"price\" : \"20\"\n\t\t},\n\t\t\n\t\t\"credit_card\" : {\n\t\t\t\"card_type\" : \"MasterCard\",\n\t\t\t\"card_number\": \"012345678989\",\n\t\t\t\"card_holder_name\" : \"Meenakshi Paryani\",\n\t\t\t\"valid_from\" : \"2017-01-18\",\n\t\t\t\"valid_till\" : \"2017-01-26\"\n\t\t}\n\t\t\t\n}"
+			"rawModeData": "{\n\t\"booking\" :\n\t\t{\n\t\t\t\"carId\" : \"MMT105\",\n\t\t    \"cartype\" : \"Small\",\n\t\t    \"carmodel\" : \"BMW\",\n\t\t    \"pickupdate\" : \"2017-01-18 09:15:00\",\n\t\t    \"dropoffdate\" : \"2017-01-19 23:14:00\",\n\t\t    \"triptype\"    : \"SAME-DROPOFF\",\n\t\t    \"pickupaddress\" : {\n\t\t        \"street\" : \"101 E San Fernando St.\",\n\t\t        \"city\" : \"San Jose\",\n\t\t        \"state\" : \"CA\",\n\t\t        \"country\" : \"USA\"\n\t\t    },\n\t\t    \"dropoffaddress\" : {\n\t\t        \"street\" : \"101 E San Fernando St.\",\n\t\t        \"city\" : \"San Jose\",\n\t\t        \"state\" : \"CA\",\n\t\t        \"country\" : \"USA\"\n\t\t    },\n\t\t    \"price\" : \"20\"\n\t\t},\n\t\t\n\t\t\"credit_card\" : {\n\t\t\t\"card_type\" : \"MasterCard\",\n\t\t\t\"card_number\": \"012345678989\",\n\t\t\t\"card_holder_name\" : \"Meenakshi Paryani\",\n\t\t\t\"valid_from\" : \"2017-01-18\",\n\t\t\t\"valid_till\" : \"2017-01-26\"\n\t\t}\n\t\t\t\n}"
 		},
 		{
 			"id": "c08882cc-19eb-50f4-abc8-2b77d39d4f59",
@@ -234,12 +322,12 @@
 			"tests": null,
 			"currentHelper": "normal",
 			"helperAttributes": {},
-			"time": 1512023877143,
+			"time": 1512064000003,
 			"name": "Book Flight - Two Way",
 			"description": "",
 			"collectionId": "fd7d1528-e7a0-7ac1-b04e-1a2efb736f48",
 			"responses": [],
-			"rawModeData": "{\n\t\"booking\" :\n\t\t{\n\t\t\t\"flight\" : {\n\t\t\t\t\t\"operator\" : \"Delta Airlines\",\n\t\t\t\t\t\"origincity\" : \"Delhi\",\n\t        \t\t\"originstate\" : \"Delhi\",\n\t\t\t        \"destinationcity\" : \"San Francisco\",\n\t\t\t        \"destinationstate\" : \"CA\",\n\t\t\t        \"triptype\" : \"Two-Way\",\n\t\t\t        \"flightclass\" : \"economy\",\n\t\t\t        \"capacity\" : 100,\n\t\t\t        \"price\" : 1200,\n\t\t\t        \"bookingstartdate\" : \"2017-01-18 09:15:00\",\n\t\t\t        \"bookingenddate\" : \"2017-01-19 03:14:00\",\n\t\t\t        \"passengers\" : 10,\n\t\t\t        \"flightId\" : \"MMT100\",\n\t\t\t        \"source_airport\" : \"Delhi International Airport\",\n\t\t\t        \"destination_airport\" : \"SF International Airport\"\n\t\t\t        \n\t\t\t},\n\t\t\t\"returnflight\" : {\n\t\t\t\t\t\"operator\" : \"Delta Airlines\",\n\t\t\t\t\t\"origincity\" : \"San Francisco\",\n\t        \t\t\"originstate\" : \"CA\",\n\t\t\t        \"destinationcity\" : \"Delhi\",\n\t\t\t        \"destinationstate\" : \"Delhi\",\n\t\t\t        \"triptype\" : \"Two-Way\",\n\t\t\t        \"flightclass\" : \"economy\",\n\t\t\t        \"capacity\" : 30,\n\t\t\t        \"price\" : 1300,\n\t\t\t        \"returnstartdate\" : \"2017-03-18 06:15:00\",\n\t\t\t        \"returnenddate\" : \"2017-03-19 18:14:00\",\n\t\t\t        \"passengers\" : 10,\n\t\t\t        \"flightId\" : \"MMT111\",\n\t\t\t        \"source_airport\" : \"SF International Airport\",\n\t\t\t        \"destination_airport\" : \"Delhi International Airport\"\n\t\t\t}\n\t\t\t\n\t\t},\n\t\t\n\t\t\"credit_card\" : {\n\t\t\t\"card_type\" : \"MasterCard\",\n\t\t\t\"card_number\": \"012345678989\",\n\t\t\t\"card_holder_name\" : \"Meenakshi Paryani\",\n\t\t\t\"valid_from\" : \"2017-01-18\",\n\t\t\t\"valid_till\" : \"2017-01-26\"\n\t\t}\n\t\t\t\n}"
+			"rawModeData": "{\n\t\"booking\" :\n\t\t{\n\t\t\t\"flight\" : {\n\t\t\t\t\t\"operator\" : \"Delta Airlines\",\n\t\t\t\t\t\"origincity\" : \"Delhi\",\n\t        \t\t\"originstate\" : \"Delhi\",\n\t\t\t        \"destinationcity\" : \"San Francisco\",\n\t\t\t        \"destinationstate\" : \"CA\",\n\t\t\t        \"triptype\" : \"Two-Way\",\n\t\t\t        \"flightclass\" : \"economy\",\n\t\t\t        \"capacity\" : 100,\n\t\t\t        \"price\" : 1200,\n\t\t\t        \"bookingstartdate\" : \"2017-01-18 09:15:00\",\n\t\t\t        \"bookingenddate\" : \"2017-01-19 03:14:00\",\n\t\t\t        \"passengers\" : 10,\n\t\t\t        \"flightId\" : \"MMT100\",\n\t\t\t        \"source_airport\" : \"Delhi International Airport\",\n\t\t\t        \"destination_airport\" : \"SF International Airport\"\n\t\t\t        \n\t\t\t},\n\t\t\t\"returnflight\" : {\n\t\t\t\t\t\"operator\" : \"Delta Airlines\",\n\t\t\t\t\t\"origincity\" : \"San Francisco\",\n\t        \t\t\"originstate\" : \"CA\",\n\t\t\t        \"destinationcity\" : \"Delhi\",\n\t\t\t        \"destinationstate\" : \"Delhi\",\n\t\t\t        \"triptype\" : \"Two-Way\",\n\t\t\t        \"flightclass\" : \"economy\",\n\t\t\t        \"capacity\" : 40,\n\t\t\t        \"price\" : 1300,\n\t\t\t        \"returnstartdate\" : \"2017-03-18 06:15:00\",\n\t\t\t        \"returnenddate\" : \"2017-03-19 18:14:00\",\n\t\t\t        \"passengers\" : 10,\n\t\t\t        \"flightId\" : \"MMT111\",\n\t\t\t        \"source_airport\" : \"SF International Airport\",\n\t\t\t        \"destination_airport\" : \"Delhi International Airport\"\n\t\t\t}\n\t\t\t\n\t\t},\n\t\t\n\t\t\"credit_card\" : {\n\t\t\t\"card_type\" : \"MasterCard\",\n\t\t\t\"card_number\": \"012345678989\",\n\t\t\t\"card_holder_name\" : \"Meenakshi Paryani\",\n\t\t\t\"valid_from\" : \"2017-01-18\",\n\t\t\t\"valid_till\" : \"2017-01-26\"\n\t\t}\n\t\t\t\n}"
 		}
 	]
 }

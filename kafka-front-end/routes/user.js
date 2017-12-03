@@ -8,7 +8,7 @@ var multer = require('multer');
 var storage = multer.diskStorage({
     destination: function (req, file, cb) {
 
-        const username ="./routes/Profilepictures/";
+        const username ="./public/profile/";
 
         cb(null,username);
     },
@@ -37,17 +37,27 @@ router.post('/login', function (req, res) {
         }
 
         if(!user ){
-            console.log('Could not find user');
             res.send({status: 401,"value":"Failed Login"});
         }
         else {
+            if(user.code==201) {
+                req.session.email = user.email;
+                req.session.isloggedin = true;
+                console.log(user.data);
+                res.send({status: 201, "value": user.data});
+            }
+            else{
+
 
             req.session.email = user.email;
             req.session.isloggedin = true;
             console.log(user.data);
             res.send({status:201,"value":"Success Login"});
 
-        }
+            }
+            }
+
+
 
     })(req,res);
 
@@ -100,14 +110,17 @@ router.get('/bookinghistory', function (req, res) {
     kafka.make_request('bookings' ,email, function (err, results) {
         if(err){
             console.log("Error occcured");
+            res.send({"status":401 , "data": results})
         }
         else{
+            console.log("i am here");
             if(results.code==="200"){
                 console.log("Everything successfull");
                 res.send({"status":201 , "data": results})
 
             } else {
                 res.send({"status":401 , "data": results})
+
             }
         }
 
@@ -132,12 +145,12 @@ router.post('/register',function (req,res) {
         else
         {
             if(results.code === "200"){
-                mail.sendMail(req,res);
+                mail.sendMail(req,res,results);
 
             }
             else {
 
-                res.send({"status":401})
+                res.send({"status":401,"value":results.value})
             }
         }
     })
@@ -184,11 +197,9 @@ router.put('/update',function (req,res) {
 
 router.post('/upload', upload.single('mypic'),function (req, res, next) {
 
-    console.log(req.body);
-    console.log(__dirname);
     var payload = {"email": req.session.email}
 
-    payload["imgpath"] = __dirname + "/Profilepictures/"+req.session.email+".jpg";
+    payload["imgpath"] = req.session.email+".jpg";
 
     console.log(payload);
 
@@ -230,9 +241,7 @@ router.delete('/delete',function (req,res) {
         {
             console.log(results);
             if(results.code === "200"){
-
                 res.send({"status":201 ,"data":results.value})
-
             }
             else {
                 res.send({"status":401,"data":res.value});

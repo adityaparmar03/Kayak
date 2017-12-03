@@ -13,8 +13,19 @@ class UserTrip extends Component {
         this.state =
             {
                 //UI 
-                test:[1,2,3,4,5]
-
+                test:[1,2,3,4,5],
+                data : [{
+                    type : "flight",
+                    name:"fff"
+                },
+                {
+                    type : "hotel",
+                    name:"fffhotel"
+                },
+                {
+                    type : "car",
+                    name:"fffcar"
+                }]
             }
     }
     componentDidMount(){
@@ -26,23 +37,107 @@ class UserTrip extends Component {
          // })
     }
 
-    displaytrips(){
-        var type = "flight"
-        if(type=="flight"){
+    displaytrips(data,index){
+      
+        if(data.type=="flight"){
+            return(
+                <div className="card" style={{padding:"2%"}}>
+                     <div className="row">
+                     <div className="col-sm-6">
+                     Hotel Name: 
+                     </div>
+                     <div className="col-sm-6">
+                     Address: 
+                     </div>
+                 </div>
+                 <br/>
+                 <div className="row">
+                     <div className="col-sm-6">
+                       Room Type:
+                     </div>
+                     <div className="col-sm-6">
+                       No of Rooms:
+                     </div>
 
-            <div>
-                    <p>flight</p>
-            </div>    
+                 </div>
+                 <br/>
+                 <div className="row">
+                     <div className="col-sm-6">
+                       Stay: 
+                     </div>
+                     <div className="col-sm-6">
+                       Total: $
+                   </div>
+                 </div> 
+                </div> 
+            )
+                
         }
-        else if(type=="hotel"){
-            <div>
-                    <p>flight</p>
-            </div> 
+        else if(data.type=="hotel"){
+            return(
+                <div className="card" style={{padding:"2%"}}>
+                     <div className="row">
+                     <div className="col-sm-6">
+                      : 
+                     </div>
+                     <div className="col-sm-6">
+                     Address: 
+                     </div>
+                 </div>
+                 <br/>
+                 <div className="row">
+                     <div className="col-sm-6">
+                       From :
+                     </div>
+                     <div className="col-sm-6">
+                       No of Rooms:
+                     </div>
+
+                 </div>
+                 <br/>
+                 <div className="row">
+                     <div className="col-sm-6">
+                       Stay: 
+                     </div>
+                     <div className="col-sm-6">
+                       Total: $
+                   </div>
+                 </div> 
+                </div> 
+            )
         }
         else{
-            <div>
-                    <p>flight</p>
-            </div>
+            return(
+                <div className="card" style={{padding:"2%"}}>
+                     <div className="row">
+                     <div className="col-sm-6">
+                      Car 
+                     </div>
+                     <div className="col-sm-6">
+                      Pick up: 
+                     </div>
+                 </div>
+                 <br/>
+                 <div className="row">
+                     <div className="col-sm-6">
+                        Pick-up:
+                     </div>
+                     <div className="col-sm-6">
+                        Drop-off:
+                     </div>
+
+                 </div>
+                 <br/>
+                 <div className="row">
+                     <div className="col-sm-6">
+                       Date: 
+                     </div>
+                     <div className="col-sm-6">
+                       Total: $
+                   </div>
+                 </div> 
+                </div> 
+            )
         }
     }
 
@@ -51,7 +146,7 @@ class UserTrip extends Component {
             <div>
 
 
-                   
+                   {this.state.data.map(this.displaytrips)}
 
                     
 

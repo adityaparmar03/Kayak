@@ -25,11 +25,11 @@ module.exports = function(passport) {
                 {
                     if(results.code == 200){
                         console.log("After kafka response no error and everything fine")
-                        done(null,{"email":email,"data":results.data});
+                        done(null,{"code":201,"data":results.value});
                     }
                     else {
                         console.log("After kafka response no error username not successfull")
-                        done(null,false);
+                        done(err,{"code":401,"data":results.value});
                     }
                 }
             });

@@ -49,6 +49,7 @@ class Hotellist extends Component {
                     this.props.hotelSearch(res.hotels);
 
                     console.log("Success...")
+                    
 
                 }else if (res.status == 401) {
 
@@ -96,24 +97,31 @@ class Hotellist extends Component {
     star(num){
         switch(num){
             case 1:
-                return <p>&#9733;</p>
+                return <p>&#9733;&#9734;&#9734;&#9734;&#9734;</p>
             case 2:
-                return <p>&#9733;&#9733;</p>
+                return <p>&#9733;&#9733;&#9734;&#9734;&#9734;</p>
             case 3:
-                return <p>&#9733;&#9733;&#9733;</p>
+                return <p>&#9733;&#9733;&#9733;&#9734;&#9734;</p>
             case 4:
-                return <p>&#9733;&#9733;&#9733;&#9734;</p>
+                return <p>&#9733;&#9733;&#9733;&#9733;&#9734;</p>
             case 5:
-                return  <p>&#9733;&#9733;&#9733;&#9734;&#9734;</p>
+                return  <p>&#9733;&#9733;&#9733;&#9733;&#9733;</p>
 
         }
 
     }
-   
+
 
 
     handleBook(data,classtype,price, capacity){
         console.log("selected data ="+JSON.stringify(data))
+        var hotelsearchcriteria = JSON.parse(localStorage.getItem('hotelsearchcriteria'));
+        var roomcount = hotelsearchcriteria.roomcount;
+        var startdate = new Date(hotelsearchcriteria.startdate);
+        var enddate = new Date(hotelsearchcriteria.enddate);
+        var oneDay = 24*60*60*1000;
+        var diffDays = Math.round(Math.abs((startdate.getTime() - enddate.getTime())/(oneDay)));
+        var totalPrice = diffDays * price * roomcount;
         var hotelbooking = {
 
           booking :{
@@ -121,22 +129,23 @@ class Hotellist extends Component {
         		    "name" : data.name,
         		    "address" : data.address,
         		    "roomtype" : classtype,
-        		    "price" : price,
-        		    "roomcount" : 10, // TODO : add roomcount in state
+        		    "price" : totalPrice,
+        		    "roomcount" : roomcount,
         		    "capacity" : capacity,
-        		    "bookingstartdate" : "2017-01-18 09:15:00",
-        			"bookingenddate" : "2017-01-19 03:14:00"
-        	},
+        		    "bookingstartdate" : startdate,
+        			  "bookingenddate" : enddate,
+                "days" : diffDays
 
-      		"credit_card" : {
-      			"card_type" : "MasterCard",
-      			"card_number": "012345678989",
-      			"card_holder_name" : "Meenakshi Paryani",
-      			"valid_from" : "2017-01-18",
-      			"valid_till" : "2017-01-26"
-      		}
+        	}
+
+      		// "credit_card" : {
+      		// 	"card_type" : "MasterCard",
+      		// 	"card_number": "012345678989",
+      		// 	"card_holder_name" : "Meenakshi Paryani",
+      		// 	"valid_from" : "2017-01-18",
+      		// 	"valid_till" : "2017-01-26"
+      		// }
         }
-        // use unique ID : TODO
         var uniqueId = hotelbooking + Date.now();
         console.log('payload', hotelbooking, ' ', uniqueId);
         localStorage.setItem("hotelbooking", JSON.stringify(hotelbooking));
@@ -144,131 +153,137 @@ class Hotellist extends Component {
       }
 
     displayhotels(data,index){
+          console.log(this.state.low)
+            if(
+                ((this.state.star_low <= data.stars)&&(this.state.star_high >= data.stars))
 
-            return(
+                 ){
+                return(
 
-                <div className="card" >
-                    <div data-toggle="collapse" data-target={'#details'+index}>
-                    <div className="row">
-                        <div className="col-sm-7">
-                        <div className="view overlay hm-zoom">
-                         <img src={'http://localhost:3001/images/'+data.imageurl}
-                            className="img-fluid " alt={data.name}/>
-                                <div className="mask flex-center waves-effect waves-light">
-                                    <p className="white-text">{data.name}</p>
-                                </div>
-                        </div>
+                                    <div className="card" >
+                                        <div data-toggle="collapse" data-target={'#details'+index}>
+                                        <div className="row">
+                                            <div className="col-sm-7">
+                                            <div className="view overlay hm-zoom">
+                                             <img src={'http://localhost:3001/images/'+data.imageurl}
+                                                className="img-fluid " alt={data.name}/>
+                                                    <div className="mask flex-center waves-effect waves-light">
+                                                        <p className="white-text">{data.name}</p>
+                                                    </div>
+                                            </div>
 
-                         </div>
-                         <div className="col-sm-2">
-                            <div  style={{marginTop:'3vh'}}>
-                                <h4 class="h4-responsive"><b>{data.name}</b></h4>
-                                {this.star(data.stars)}
-                                <div>
-                                <button type="button" className="btn btn-elegant">{data.rating}</button>
-                                <br/><a>{data.reviews.length} Reviews</a>
-                                </div>
+                                             </div>
+                                             <div className="col-sm-2">
+                                                <div  style={{marginTop:'3vh'}}>
+                                                    <h4 class="h4-responsive"><b>{data.name}</b></h4>
+                                                    {this.star(data.stars)}
+                                                    <div>
+                                                    <button type="button" className="btn btn-elegant">{data.rating}</button>
+                                                    <br/><a>{data.reviews.length} Reviews</a>
+                                                    </div>
 
-                            </div>
+                                                </div>
 
-                         </div>
-                        <div className="col-sm-3">
-                                <div style={{textAlign:"center",marginTop:'1vh'}}>
-                                <b style={{fontSize:"20px",fontWeight:"bold"}}>${data.rooms[0].price}</b><br/>
-                                <b style={{fontSize:"15px",fontWeight:"bold"}}>{data.rooms[0].roomtype}</b><br/>
-                                <button style={{minWidth:"10vw",maxHeight:'7.5vh'}}className="btn btn-deep-orange"
-                                onClick={()=>this.handleBook(data, data.rooms[0].roomtype, data.rooms[0].price, data.rooms[0].rooomcount)}>Book</button>
-                                <br/>
-                                <b style={{fontSize:"20px",fontWeight:"bold"}}>${data.rooms[1].price}</b><br/>
-                                <b style={{fontSize:"15px",fontWeight:"bold"}}>{data.rooms[1].roomtype}</b><br/>
-                                <button style={{minWidth:"10vw",maxHeight:'7.5vh'}}className="btn btn-deep-orange"
-                                onClick={()=>this.handleBook(data, data.rooms[1].roomtype, data.rooms[1].price, data.rooms[1].rooomcount)}>Book</button>
-                                <br/>
-                                <b style={{fontSize:"20px",fontWeight:"bold"}}>${data.rooms[2].price}</b><br/>
-                                <b style={{fontSize:"15px",fontWeight:"bold"}}>{data.rooms[2].roomtype}</b><br/>
-                                <button style={{minWidth:"10vw",maxHeight:'7.5vh'}}className="btn btn-deep-orange"
-                                onClick={()=>this.handleBook(data, data.rooms[2].roomtype, data.rooms[2].price, data.rooms[2].rooomcount)}>Book</button>
-                     </div>
+                                             </div>
+                                            <div className="col-sm-3">
+                                                    <div style={{textAlign:"center",marginTop:'1vh'}}>
+                                                    <b style={{fontSize:"20px",fontWeight:"bold"}}>${data.rooms[0].price}</b><br/>
+                                                    <b style={{fontSize:"15px",fontWeight:"bold"}}>{data.rooms[0].roomtype}</b><br/>
+                                                    <button style={{minWidth:"10vw",maxHeight:'7.5vh'}}className="btn btn-deep-orange"
+                                                    onClick={()=>this.handleBook(data, data.rooms[0].roomtype, data.rooms[0].price, data.rooms[0].rooomcount)}>Book</button>
+                                                    <br/>
+                                                    <b style={{fontSize:"20px",fontWeight:"bold"}}>${data.rooms[1].price}</b><br/>
+                                                    <b style={{fontSize:"15px",fontWeight:"bold"}}>{data.rooms[1].roomtype}</b><br/>
+                                                    <button style={{minWidth:"10vw",maxHeight:'7.5vh'}}className="btn btn-deep-orange"
+                                                    onClick={()=>this.handleBook(data, data.rooms[1].roomtype, data.rooms[1].price, data.rooms[1].rooomcount)}>Book</button>
+                                                    <br/>
+                                                    <b style={{fontSize:"20px",fontWeight:"bold"}}>${data.rooms[2].price}</b><br/>
+                                                    <b style={{fontSize:"15px",fontWeight:"bold"}}>{data.rooms[2].roomtype}</b><br/>
+                                                    <button style={{minWidth:"10vw",maxHeight:'7.5vh'}}className="btn btn-deep-orange"
+                                                    onClick={()=>this.handleBook(data, data.rooms[2].roomtype, data.rooms[2].price, data.rooms[2].rooomcount)}>Book</button>
+                                         </div>
 
-                        </div>
-                    </div>
-                    </div>
-                    <div id={'details'+index} className="collapse">
+                                            </div>
+                                        </div>
+                                        </div>
+                                        <div id={'details'+index} className="collapse">
 
-                    <ul className="nav md-pills nav-justified pills-secondary">
-                        <li className="nav-item">
-                            <a className="nav-link active" data-toggle="tab" href={'#panel1'+index} role="tab">Details</a>
-                        </li>
-                        <li className="nav-item">
-                            <a className="nav-link" data-toggle="tab" href={'#panel2'+index} role="tab">Map</a>
-                        </li>
-                        <li className="nav-item">
-                            <a className="nav-link" data-toggle="tab" href={'#panel3'+index} role="tab">Review</a>
-                        </li>
+                                        <ul className="nav md-pills nav-justified pills-secondary">
+                                            <li className="nav-item">
+                                                <a className="nav-link active" data-toggle="tab" href={'#panel1'+index} role="tab">Details</a>
+                                            </li>
+                                            <li className="nav-item">
+                                                <a className="nav-link" data-toggle="tab" href={'#panel2'+index} role="tab">Map</a>
+                                            </li>
+                                            <li className="nav-item">
+                                                <a className="nav-link" data-toggle="tab" href={'#panel3'+index} role="tab">Review</a>
+                                            </li>
 
-                    </ul>
+                                        </ul>
 
-                    <div className="tab-content">
+                                        <div className="tab-content">
 
-                        <div className="tab-pane fade in show active" id={'panel1'+index} role="tabpanel">
-                        <p>{data.description}</p>
-                            <div className="row">
-                                <div className="col-sm-4">
+                                            <div className="tab-pane fade in show active" id={'panel1'+index} role="tabpanel">
+                                            <p>{data.description}</p>
+                                                <div className="row">
+                                                    <div className="col-sm-4">
 
-                                    <h4><b>Address:</b></h4>
-                                    <h6>{data.address.street}</h6>
-                                    <h6>{data.address.city}, {data.address.state} - {data.address.zip}</h6>
-                                </div>
-                             
-                            </div>
-                        </div>
+                                                        <h4><b>Address:</b></h4>
+                                                        <h6>{data.address.street}</h6>
+                                                        <h6>{data.address.city}, {data.address.state} - {data.address.zip}</h6>
+                                                    </div>
 
-                        <div className="tab-pane fade" id={'panel2'+index} role="tabpanel">
+                                                </div>
+                                            </div>
 
-                        <iframe
-                                width="100%"
-                                height="450"
-                                frameBorder="0"
+                                            <div className="tab-pane fade" id={'panel2'+index} role="tabpanel">
 
-
-                                src={this.state.googlemap+data.address.street} >
-                         </iframe>
-                        </div>
-
-                        <div className="tab-pane fade" id={'panel3'+index} role="tabpanel">
-                        <h4><b>Overall {data.rating}</b></h4>
-                        <h6><b>Based on {data.reviews.length} reviews</b></h6>
-                        <p><b>Location</b></p>
-                        <div className="progress">
-                            <div className="progress-bar progress-bar-striped" style={{width:'40%',height:"100px"}}></div>
-                        </div>
-                        <p><b>Food</b></p>
-                        <div className="progress">
-                            <div className="progress-bar progress-bar-striped" style={{width:'60%',height:"100px"}}></div>
-                        </div>
-                        <p><b>Service</b></p>
-                        <div className="progress">
-                            <div className="progress-bar progress-bar-striped" style={{width:'20%',height:"100px"}}></div>
-                        </div>
-                        <p><b>Room</b></p>
-                        <div className="progress">
-                            <div className="progress-bar progress-bar-striped" style={{width:'80%',height:"100px"}}></div>
-                        </div>
-                        <div style={{ overflow: 'scroll', height: '20vh'}}>
-                        <p><b>Reviews</b></p>
-                        {data.reviews.map((item,i)=><p>"{item}"</p>)}
-                        </div>
-
-                        </div>
+                                            <iframe
+                                                    width="100%"
+                                                    height="450"
+                                                    frameBorder="0"
 
 
+                                                    src={this.state.googlemap+data.address.street} >
+                                             </iframe>
+                                            </div>
 
-                    </div>
+                                            <div className="tab-pane fade" id={'panel3'+index} role="tabpanel">
+                                            <h4><b>Overall {data.rating}</b></h4>
+                                            <h6><b>Based on {data.reviews.length} reviews</b></h6>
+                                            <p><b>Location</b></p>
+                                            <div className="progress">
+                                                <div className="progress-bar progress-bar-striped" style={{width:'40%',height:"100px"}}></div>
+                                            </div>
+                                            <p><b>Food</b></p>
+                                            <div className="progress">
+                                                <div className="progress-bar progress-bar-striped" style={{width:'60%',height:"100px"}}></div>
+                                            </div>
+                                            <p><b>Service</b></p>
+                                            <div className="progress">
+                                                <div className="progress-bar progress-bar-striped" style={{width:'20%',height:"100px"}}></div>
+                                            </div>
+                                            <p><b>Room</b></p>
+                                            <div className="progress">
+                                                <div className="progress-bar progress-bar-striped" style={{width:'80%',height:"100px"}}></div>
+                                            </div>
+                                            <div style={{ overflow: 'scroll', height: '20vh'}}>
+                                            <p><b>Reviews</b></p>
+                                            {data.reviews.map((item,i)=><p>"{item}"</p>)}
+                                            </div>
 
-                    </div>
+                                            </div>
 
-                 </div>
-            )
+
+
+                                        </div>
+
+                                        </div>
+
+                                     </div>
+                                )
+            }
+
      }
     render(){
         var colors = ["#FCBD7E", "#EB9F71", "#E6817C"];
