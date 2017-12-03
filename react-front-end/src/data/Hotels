@@ -1,0 +1,180 @@
+
+db.MmtHotels.insert({
+'hotelId': 'MMT111',
+'name': 'Holiday Inn',
+'imageurl': 'holidayinn.jpg',
+'description': 'Very good hotel. Easily accessible by car and good for sightseeing. Great rooms and fantastic service. Awesome vibe.',
+'address': {'street':'101 E San Fernando Street','city':'San Jose', 'state': 'California', 'country':'USA', 'zip':'95112'},
+'stars': 3,
+'reviews':['Good', 'Bad', 'Awesome Food'],
+'rating':8.5,
+'rooms':[
+     {'roomtype':'Delux', 'price':120, 'rooomcount':100},
+     {'roomtype':'Super Delux','price':220, 'rooomcount':100},
+     {'roomtype':'Premium','price':320, 'rooomcount':100}
+    ]
+    })
+
+
+
+db.CleartripHotels.insert({
+'hotelId': 'CT112',
+'name': 'Lemon Tree',
+'imageurl': 'lemontree.jpg',
+'description': 'Very good hotel. Easily accessible by car and good for sightseeing. Great rooms and fantastic service. Awesome vibe.',
+'address': {'street':'201 S 4th St #100','city':'San Jose', 'state': 'California', 'country':'USA', 'zip':'95112'},
+'stars': 5,
+'reviews':['Good', 'Bad', 'Awesome Food'],
+'rating':9.5,
+'rooms':[
+    {'roomtype':'Delux', 'price':520, 'rooomcount':100},
+         {'roomtype':'Super Delux','price':720, 'rooomcount':100},
+         {'roomtype':'Premium','price':920, 'rooomcount':100}
+    ]
+    })
+
+
+
+db.TripAdvisorHotels.insert({
+'hotelId': 'MMT113',
+'name': 'Hyatt',
+'imageurl': 'hyatt.jpg',
+'description': 'Very good hotel. Easily accessible by car and good for sightseeing. Great rooms and fantastic service. Awesome vibe.',
+'address': {'street':'33 S 3rd St','city':'San Jose', 'state': 'California', 'country':'USA', 'zip':'95112'},
+'stars': 4,
+'reviews':['Good', 'Bad', 'Awesome Food'],
+'rating':7.5,
+'rooms':[
+     {'roomtype':'Delux', 'price':120, 'rooomcount':100},
+          {'roomtype':'Super Delux','price':440, 'rooomcount':100},
+          {'roomtype':'Premium','price':1000, 'rooomcount':100}
+    ]
+    })
+
+
+
+db.CleartripHotels.insert({
+'hotelId': 'CT112',
+'name': 'Lemon Tree',
+'imageurl': 'lemontree.jpg',
+'description': 'Very good hotel. Easily accessible by car and good for sightseeing. Great rooms and fantastic service. Awesome vibe.',
+'address': {'street':'55 Cyril Magnin St','city':'San Francisco', 'state': 'California', 'country':'USA', 'zip':'95112'},
+'stars': 5,
+'reviews':['Good', 'Bad', 'Awesome Food'],
+'rating':9.5,
+'rooms':[
+    {'roomtype':'Delux', 'price':520, 'rooomcount':100},
+         {'roomtype':'Super Delux','price':720, 'rooomcount':100},
+         {'roomtype':'Premium','price':920, 'rooomcount':100}
+    ]
+    })
+
+
+
+db.TripAdvisorHotels.insert({
+'hotelId': 'TAH113',
+'name': 'Hyatt',
+'imageurl': 'hyatt.jpg',
+'description': 'Very good hotel. Easily accessible by car and good for sightseeing. Great rooms and fantastic service. Awesome vibe.',
+'address': {'street':'12 4th St','city':'San Francisco', 'state': 'California', 'country':'USA', 'zip':'95112'},
+'stars': 4,
+'reviews':['Good', 'Bad', 'Awesome Food'],
+'rating':7.5,
+'rooms':[
+     {'roomtype':'Delux', 'price':120, 'rooomcount':100},
+          {'roomtype':'Super Delux','price':440, 'rooomcount':100},
+          {'roomtype':'Premium','price':1000, 'rooomcount':100}
+    ]
+    })
+
+
+
+db.MmtHotels.insert({
+'hotelId': 'MMT111',
+'name': 'Hyatt Regency',
+'imageurl': 'holidayinn.jpg',
+'description': 'Very good hotel. Easily accessible by car and good for sightseeing. Great rooms and fantastic service. Awesome vibe.',
+'address': {'street':'101 E San Fernando Street','city':'San Jose', 'state': 'California', 'country':'USA', 'zip':'95112'},
+'stars': 4,
+'reviews':['Good', 'Bad', 'Awesome Food'],
+'rating':8.5,
+'rooms':[
+     {'roomtype':'Delux', 'price':140, 'rooomcount':100},
+     {'roomtype':'Super Delux','price':220, 'rooomcount':100},
+     {'roomtype':'Premium','price':320, 'rooomcount':100}
+    ]
+    })
+
+
+
+db.CleartripHotels.insert({
+'hotelId': 'CT112',
+'name': 'The Leela',
+'imageurl': 'lemontree.jpg',
+'description': 'Very good hotel. Easily accessible by car and good for sightseeing. Great rooms and fantastic service. Awesome vibe.',
+'address': {'street':'201 S 4th St #100','city':'San Jose', 'state': 'California', 'country':'USA', 'zip':'95112'},
+'stars': 3,
+'reviews':['Good', 'Bad', 'Awesome Food'],
+'rating':9.5,
+'rooms':[
+    {'roomtype':'Delux', 'price':590, 'rooomcount':100},
+         {'roomtype':'Super Delux','price':720, 'rooomcount':100},
+         {'roomtype':'Premium','price':920, 'rooomcount':100}
+    ]
+    })
+
+
+
+db.TripAdvisorHotels.insert({
+'hotelId': 'MMT113',
+'name': 'The Taj Mahal Palace',
+'imageurl': 'hyatt.jpg',
+'description': 'Very good hotel. Easily accessible by car and good for sightseeing. Great rooms and fantastic service. Awesome vibe.',
+'address': {'street':'33 S 3rd St','city':'San Jose', 'state': 'California', 'country':'USA', 'zip':'95112'},
+'stars': 5,
+'reviews':['Good', 'Bad', 'Awesome Food'],
+'rating':7.5,
+'rooms':[
+     {'roomtype':'Delux', 'price':420, 'rooomcount':100},
+          {'roomtype':'Super Delux','price':440, 'rooomcount':100},
+          {'roomtype':'Premium','price':1000, 'rooomcount':100}
+    ]
+    })
+
+
+
+db.CleartripHotels.insert({
+'hotelId': 'CT112',
+'name': 'The Oberoi',
+'imageurl': 'lemontree.jpg',
+'description': 'Very good hotel. Easily accessible by car and good for sightseeing. Great rooms and fantastic service. Awesome vibe.',
+'address': {'street':'55 Cyril Magnin St','city':'San Francisco', 'state': 'California', 'country':'USA', 'zip':'95112'},
+'stars': 2,
+'reviews':['Good', 'Bad', 'Awesome Food'],
+'rating':9.5,
+'rooms':[
+    {'roomtype':'Delux', 'price':920, 'rooomcount':100},
+         {'roomtype':'Super Delux','price':720, 'rooomcount':100},
+         {'roomtype':'Premium','price':920, 'rooomcount':100}
+    ]
+    })
+
+
+
+db.TripAdvisorHotels.insert({
+'hotelId': 'TAH113',
+'name': 'Trident',
+'imageurl': 'hyatt.jpg',
+'description': 'Very good hotel. Easily accessible by car and good for sightseeing. Great rooms and fantastic service. Awesome vibe.',
+'address': {'street':'12 4th St','city':'San Francisco', 'state': 'California', 'country':'USA', 'zip':'95112'},
+'stars': 5,
+'reviews':['Good', 'Bad', 'Awesome Food'],
+'rating':7.5,
+'rooms':[
+     {'roomtype':'Delux', 'price':920, 'rooomcount':100},
+          {'roomtype':'Super Delux','price':440, 'rooomcount':100},
+          {'roomtype':'Premium','price':1000, 'rooomcount':100}
+    ]
+    })
+
+

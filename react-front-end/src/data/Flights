@@ -1,0 +1,1431 @@
+db.ExpediaFlights.insert({
+  'flightId': 'ED100',
+  'operator': 'Delta Airlines',
+  'imageurl': 'deltaairlines.jpg',
+  'class':[
+
+                {'type':'Economy','price':100, 'capacity':100},
+                 {'type':'First','price':200 , 'capacity':100},
+                  {'type':'Business','price':300 , 'capacity':100}
+             ] ,
+     'flights':[
+                  {
+                     'arrivaltime': '16:00',
+                       'arrivalday' : 'Tue',
+                       'departuretime': '00:00',
+                       'departureday' : 'Mon',
+                     'origin': {'city':'San Francisco', 'state':'California', 'country':'USA', 'airport':'San Francisco International Airport'},
+                     'destination': {'city':'San Jose', 'state':'California', 'country':'USA', 'airport':'San Jose Airport'}
+
+                 },
+                 {
+                      'arrivaltime': '02:00',
+                     'arrivalday' : 'Wed',
+                     'departuretime': '18:00',
+                     'departureday' : 'Tue',
+                      'origin': {'city':'San Jose', 'state':'California', 'country':'USA', 'airport':'San Jose Airport'},
+                      'destination': {'city':'San Francisco', 'state':'California', 'country':'USA', 'airport':'San Francisco International Airport'}
+
+                  }
+           ]
+})
+
+
+
+
+db.ExpediaFlights.insert({
+  'flightId': 'ED100',
+  'operator': 'Delta Airlines',
+  'imageurl': 'deltaairlines.jpg',
+  'class':[
+
+                {'type':'Economy','price':100, 'capacity':100},
+                 {'type':'First','price':200 , 'capacity':100},
+                  {'type':'Business','price':300 , 'capacity':100}
+             ] ,
+     'flights':[
+                  {
+                     'arrivaltime': '16:00',
+                       'arrivalday' : 'Wed',
+                       'departuretime': '00:00',
+                       'departureday' : 'Mon',
+                     'origin': {'city':'San Francisco', 'state':'California', 'country':'USA', 'airport':'San Francisco International Airport'},
+                     'destination': {'city':'San Jose', 'state':'California', 'country':'USA', 'airport':'San Jose Airport'}
+
+                 },
+                 {
+                      'arrivaltime': '02:00',
+                     'arrivalday' : 'Thu',
+                     'departuretime': '18:00',
+                     'departureday' : 'Wed',
+                      'origin': {'city':'San Jose', 'state':'California', 'country':'USA', 'airport':'San Jose Airport'},
+                      'destination': {'city':'San Francisco', 'state':'California', 'country':'USA', 'airport':'San Francisco International Airport'}
+
+                  }
+           ]
+})
+
+
+
+
+
+db.ExpediaFlights.insert({
+  'flightId': 'ED100',
+  'operator': 'Delta Airlines',
+  'imageurl': 'deltaairlines.jpg',
+  'class':[
+
+                {'type':'Economy','price':100, 'capacity':100},
+                 {'type':'First','price':200 , 'capacity':100},
+                  {'type':'Business','price':300 , 'capacity':100}
+             ] ,
+     'flights':[
+                  {
+                     'arrivaltime': '16:00',
+                       'arrivalday' : 'Thu',
+                       'departuretime': '00:00',
+                       'departureday' : 'Mon',
+                     'origin': {'city':'San Francisco', 'state':'California', 'country':'USA', 'airport':'San Francisco International Airport'},
+                     'destination': {'city':'San Jose', 'state':'California', 'country':'USA', 'airport':'San Jose Airport'}
+
+                 },
+                 {
+                      'arrivaltime': '02:00',
+                     'arrivalday' : 'Fri',
+                     'departuretime': '18:00',
+                     'departureday' : 'Thu',
+                      'origin': {'city':'San Jose', 'state':'California', 'country':'USA', 'airport':'San Jose Airport'},
+                      'destination': {'city':'San Francisco', 'state':'California', 'country':'USA', 'airport':'San Francisco International Airport'}
+
+                  }
+           ]
+})
+
+
+
+
+db.ExpediaFlights.insert({
+  'flightId': 'ED100',
+  'operator': 'Delta Airlines',
+  'imageurl': 'deltaairlines.jpg',
+  'class':[
+
+                {'type':'Economy','price':100, 'capacity':100},
+                 {'type':'First','price':200 , 'capacity':100},
+                  {'type':'Business','price':300 , 'capacity':100}
+             ] ,
+     'flights':[
+                  {
+                     'arrivaltime': '16:00',
+                       'arrivalday' : 'Fri',
+                       'departuretime': '00:00',
+                       'departureday' : 'Mon',
+                     'origin': {'city':'San Francisco', 'state':'California', 'country':'USA', 'airport':'San Francisco International Airport'},
+                     'destination': {'city':'San Jose', 'state':'California', 'country':'USA', 'airport':'San Jose Airport'}
+
+                 },
+                 {
+                      'arrivaltime': '02:00',
+                     'arrivalday' : 'Sat',
+                     'departuretime': '18:00',
+                     'departureday' : 'Fri',
+                      'origin': {'city':'San Jose', 'state':'California', 'country':'USA', 'airport':'San Jose Airport'},
+                      'destination': {'city':'San Francisco', 'state':'California', 'country':'USA', 'airport':'San Francisco International Airport'}
+
+                  }
+           ]
+})
+
+
+
+
+db.ExpediaFlights.insert({
+  'flightId': 'ED100',
+  'operator': 'Delta Airlines',
+  'imageurl': 'deltaairlines.jpg',
+  'class':[
+
+                {'type':'Economy','price':100, 'capacity':100},
+                 {'type':'First','price':200 , 'capacity':100},
+                  {'type':'Business','price':300 , 'capacity':100}
+             ] ,
+     'flights':[
+                  {
+                     'arrivaltime': '16:00',
+                       'arrivalday' : 'Sat',
+                       'departuretime': '00:00',
+                       'departureday' : 'Mon',
+                     'origin': {'city':'San Francisco', 'state':'California', 'country':'USA', 'airport':'San Francisco International Airport'},
+                     'destination': {'city':'San Jose', 'state':'California', 'country':'USA', 'airport':'San Jose Airport'}
+
+                 },
+                 {
+                      'arrivaltime': '02:00',
+                     'arrivalday' : 'Sun',
+                     'departuretime': '18:00',
+                     'departureday' : 'Sat',
+                      'origin': {'city':'San Jose', 'state':'California', 'country':'USA', 'airport':'San Jose Airport'},
+                      'destination': {'city':'San Francisco', 'state':'California', 'country':'USA', 'airport':'San Francisco International Airport'}
+
+                  }
+           ]
+})
+
+
+
+
+
+db.ExpediaFlights.insert({
+  'flightId': 'ED100',
+  'operator': 'Delta Airlines',
+  'imageurl': 'deltaairlines.jpg',
+  'class':[
+
+                {'type':'Economy','price':100, 'capacity':100},
+                 {'type':'First','price':200 , 'capacity':100},
+                  {'type':'Business','price':300 , 'capacity':100}
+             ] ,
+     'flights':[
+                  {
+                     'arrivaltime': '16:00',
+                       'arrivalday' : 'Wed',
+                       'departuretime': '00:00',
+                       'departureday' : 'Tue',
+                     'origin': {'city':'San Francisco', 'state':'California', 'country':'USA', 'airport':'San Francisco International Airport'},
+                     'destination': {'city':'San Jose', 'state':'California', 'country':'USA', 'airport':'San Jose Airport'}
+
+                 },
+                 {
+                      'arrivaltime': '02:00',
+                     'arrivalday' : 'Thu',
+                     'departuretime': '18:00',
+                     'departureday' : 'Wed',
+                      'origin': {'city':'San Jose', 'state':'California', 'country':'USA', 'airport':'San Jose Airport'},
+                      'destination': {'city':'San Francisco', 'state':'California', 'country':'USA', 'airport':'San Francisco International Airport'}
+
+                  }
+           ]
+})
+
+
+
+
+db.ExpediaFlights.insert({
+  'flightId': 'ED100',
+  'operator': 'Delta Airlines',
+  'imageurl': 'deltaairlines.jpg',
+  'class':[
+
+                {'type':'Economy','price':100, 'capacity':100},
+                 {'type':'First','price':200 , 'capacity':100},
+                  {'type':'Business','price':300 , 'capacity':100}
+             ] ,
+     'flights':[
+                  {
+                     'arrivaltime': '16:00',
+                       'arrivalday' : 'Thu',
+                       'departuretime': '00:00',
+                       'departureday' : 'Tue',
+                     'origin': {'city':'San Francisco', 'state':'California', 'country':'USA', 'airport':'San Francisco International Airport'},
+                     'destination': {'city':'San Jose', 'state':'California', 'country':'USA', 'airport':'San Jose Airport'}
+
+                 },
+                 {
+                      'arrivaltime': '02:00',
+                     'arrivalday' : 'Fri',
+                     'departuretime': '18:00',
+                     'departureday' : 'Thu',
+                      'origin': {'city':'San Jose', 'state':'California', 'country':'USA', 'airport':'San Jose Airport'},
+                      'destination': {'city':'San Francisco', 'state':'California', 'country':'USA', 'airport':'San Francisco International Airport'}
+
+                  }
+           ]
+})
+
+
+
+
+
+db.ExpediaFlights.insert({
+  'flightId': 'ED100',
+  'operator': 'Delta Airlines',
+  'imageurl': 'deltaairlines.jpg',
+  'class':[
+
+                {'type':'Economy','price':100, 'capacity':100},
+                 {'type':'First','price':200 , 'capacity':100},
+                  {'type':'Business','price':300 , 'capacity':100}
+             ] ,
+     'flights':[
+                  {
+                     'arrivaltime': '16:00',
+                       'arrivalday' : 'Fri',
+                       'departuretime': '00:00',
+                       'departureday' : 'Tue',
+                     'origin': {'city':'San Francisco', 'state':'California', 'country':'USA', 'airport':'San Francisco International Airport'},
+                     'destination': {'city':'San Jose', 'state':'California', 'country':'USA', 'airport':'San Jose Airport'}
+
+                 },
+                 {
+                      'arrivaltime': '02:00',
+                     'arrivalday' : 'Sat',
+                     'departuretime': '18:00',
+                     'departureday' : 'Fri',
+                      'origin': {'city':'San Jose', 'state':'California', 'country':'USA', 'airport':'San Jose Airport'},
+                      'destination': {'city':'San Francisco', 'state':'California', 'country':'USA', 'airport':'San Francisco International Airport'}
+
+                  }
+           ]
+})
+
+
+
+
+
+
+db.ExpediaFlights.insert({
+  'flightId': 'ED100',
+  'operator': 'Delta Airlines',
+  'imageurl': 'deltaairlines.jpg',
+  'class':[
+
+                {'type':'Economy','price':100, 'capacity':100},
+                 {'type':'First','price':200 , 'capacity':100},
+                  {'type':'Business','price':300 , 'capacity':100}
+             ] ,
+     'flights':[
+                  {
+                     'arrivaltime': '16:00',
+                       'arrivalday' : 'Sat',
+                       'departuretime': '00:00',
+                       'departureday' : 'Tue',
+                     'origin': {'city':'San Francisco', 'state':'California', 'country':'USA', 'airport':'San Francisco International Airport'},
+                     'destination': {'city':'San Jose', 'state':'California', 'country':'USA', 'airport':'San Jose Airport'}
+
+                 },
+                 {
+                      'arrivaltime': '02:00',
+                     'arrivalday' : 'Sun',
+                     'departuretime': '18:00',
+                     'departureday' : 'Sat',
+                      'origin': {'city':'San Jose', 'state':'California', 'country':'USA', 'airport':'San Jose Airport'},
+                      'destination': {'city':'San Francisco', 'state':'California', 'country':'USA', 'airport':'San Francisco International Airport'}
+
+                  }
+           ]
+})
+
+
+
+
+
+db.ExpediaFlights.insert({
+  'flightId': 'ED100',
+  'operator': 'Delta Airlines',
+  'imageurl': 'deltaairlines.jpg',
+  'class':[
+
+                {'type':'Economy','price':100, 'capacity':100},
+                 {'type':'First','price':200 , 'capacity':100},
+                  {'type':'Business','price':300 , 'capacity':100}
+             ] ,
+     'flights':[
+                  {
+                     'arrivaltime': '16:00',
+                       'arrivalday' : 'Sun',
+                       'departuretime': '00:00',
+                       'departureday' : 'Tue',
+                     'origin': {'city':'San Francisco', 'state':'California', 'country':'USA', 'airport':'San Francisco International Airport'},
+                     'destination': {'city':'San Jose', 'state':'California', 'country':'USA', 'airport':'San Jose Airport'}
+
+                 },
+                 {
+                      'arrivaltime': '02:00',
+                     'arrivalday' : 'Mon',
+                     'departuretime': '18:00',
+                     'departureday' : 'Sun',
+                      'origin': {'city':'San Jose', 'state':'California', 'country':'USA', 'airport':'San Jose Airport'},
+                      'destination': {'city':'San Francisco', 'state':'California', 'country':'USA', 'airport':'San Francisco International Airport'}
+
+                  }
+           ]
+})
+
+
+
+
+
+
+db.ExpediaFlights.insert({
+  'flightId': 'ED100',
+  'operator': 'Delta Airlines',
+  'imageurl': 'deltaairlines.jpg',
+  'class':[
+
+                {'type':'Economy','price':100, 'capacity':100},
+                 {'type':'First','price':200 , 'capacity':100},
+                  {'type':'Business','price':300 , 'capacity':100}
+             ] ,
+     'flights':[
+                  {
+                     'arrivaltime': '16:00',
+                       'arrivalday' : 'Thu',
+                       'departuretime': '00:00',
+                       'departureday' : 'Wed',
+                     'origin': {'city':'San Francisco', 'state':'California', 'country':'USA', 'airport':'San Francisco International Airport'},
+                     'destination': {'city':'San Jose', 'state':'California', 'country':'USA', 'airport':'San Jose Airport'}
+
+                 },
+                 {
+                      'arrivaltime': '02:00',
+                     'arrivalday' : 'Fri',
+                     'departuretime': '18:00',
+                     'departureday' : 'Thu',
+                      'origin': {'city':'San Jose', 'state':'California', 'country':'USA', 'airport':'San Jose Airport'},
+                      'destination': {'city':'San Francisco', 'state':'California', 'country':'USA', 'airport':'San Francisco International Airport'}
+
+                  }
+           ]
+})
+
+
+
+
+
+db.ExpediaFlights.insert({
+  'flightId': 'ED100',
+  'operator': 'Delta Airlines',
+  'imageurl': 'deltaairlines.jpg',
+  'class':[
+
+                {'type':'Economy','price':100, 'capacity':100},
+                 {'type':'First','price':200 , 'capacity':100},
+                  {'type':'Business','price':300 , 'capacity':100}
+             ] ,
+     'flights':[
+                  {
+                     'arrivaltime': '16:00',
+                       'arrivalday' : 'Fri',
+                       'departuretime': '00:00',
+                       'departureday' : 'Wed',
+                     'origin': {'city':'San Francisco', 'state':'California', 'country':'USA', 'airport':'San Francisco International Airport'},
+                     'destination': {'city':'San Jose', 'state':'California', 'country':'USA', 'airport':'San Jose Airport'}
+
+                 },
+                 {
+                      'arrivaltime': '02:00',
+                     'arrivalday' : 'Sat',
+                     'departuretime': '18:00',
+                     'departureday' : 'Fri',
+                      'origin': {'city':'San Jose', 'state':'California', 'country':'USA', 'airport':'San Jose Airport'},
+                      'destination': {'city':'San Francisco', 'state':'California', 'country':'USA', 'airport':'San Francisco International Airport'}
+
+                  }
+           ]
+})
+
+
+
+
+
+
+db.ExpediaFlights.insert({
+  'flightId': 'ED100',
+  'operator': 'Delta Airlines',
+  'imageurl': 'deltaairlines.jpg',
+  'class':[
+
+                {'type':'Economy','price':100, 'capacity':100},
+                 {'type':'First','price':200 , 'capacity':100},
+                  {'type':'Business','price':300 , 'capacity':100}
+             ] ,
+     'flights':[
+                  {
+                     'arrivaltime': '16:00',
+                       'arrivalday' : 'Sat',
+                       'departuretime': '00:00',
+                       'departureday' : 'Wed',
+                     'origin': {'city':'San Francisco', 'state':'California', 'country':'USA', 'airport':'San Francisco International Airport'},
+                     'destination': {'city':'San Jose', 'state':'California', 'country':'USA', 'airport':'San Jose Airport'}
+
+                 },
+                 {
+                      'arrivaltime': '02:00',
+                     'arrivalday' : 'Sun',
+                     'departuretime': '18:00',
+                     'departureday' : 'Sat',
+                      'origin': {'city':'San Jose', 'state':'California', 'country':'USA', 'airport':'San Jose Airport'},
+                      'destination': {'city':'San Francisco', 'state':'California', 'country':'USA', 'airport':'San Francisco International Airport'}
+
+                  }
+           ]
+})
+
+
+
+
+
+
+db.ExpediaFlights.insert({
+  'flightId': 'ED100',
+  'operator': 'Delta Airlines',
+  'imageurl': 'deltaairlines.jpg',
+  'class':[
+
+                {'type':'Economy','price':100, 'capacity':100},
+                 {'type':'First','price':200 , 'capacity':100},
+                  {'type':'Business','price':300 , 'capacity':100}
+             ] ,
+     'flights':[
+                  {
+                     'arrivaltime': '16:00',
+                       'arrivalday' : 'Sun',
+                       'departuretime': '00:00',
+                       'departureday' : 'Wed',
+                     'origin': {'city':'San Francisco', 'state':'California', 'country':'USA', 'airport':'San Francisco International Airport'},
+                     'destination': {'city':'San Jose', 'state':'California', 'country':'USA', 'airport':'San Jose Airport'}
+
+                 },
+                 {
+                      'arrivaltime': '02:00',
+                     'arrivalday' : 'Mon',
+                     'departuretime': '18:00',
+                     'departureday' : 'Sun',
+                      'origin': {'city':'San Jose', 'state':'California', 'country':'USA', 'airport':'San Jose Airport'},
+                      'destination': {'city':'San Francisco', 'state':'California', 'country':'USA', 'airport':'San Francisco International Airport'}
+
+                  }
+           ]
+})
+
+
+
+
+db.ExpediaFlights.insert({
+  'flightId': 'ED100',
+  'operator': 'Delta Airlines',
+  'imageurl': 'deltaairlines.jpg',
+  'class':[
+
+                {'type':'Economy','price':100, 'capacity':100},
+                 {'type':'First','price':200 , 'capacity':100},
+                  {'type':'Business','price':300 , 'capacity':100}
+             ] ,
+     'flights':[
+                  {
+                     'arrivaltime': '16:00',
+                       'arrivalday' : 'Fri',
+                       'departuretime': '00:00',
+                       'departureday' : 'Thu',
+                     'origin': {'city':'San Francisco', 'state':'California', 'country':'USA', 'airport':'San Francisco International Airport'},
+                     'destination': {'city':'San Jose', 'state':'California', 'country':'USA', 'airport':'San Jose Airport'}
+
+                 },
+                 {
+                      'arrivaltime': '02:00',
+                     'arrivalday' : 'Sat',
+                     'departuretime': '18:00',
+                     'departureday' : 'Fri',
+                      'origin': {'city':'San Jose', 'state':'California', 'country':'USA', 'airport':'San Jose Airport'},
+                      'destination': {'city':'San Francisco', 'state':'California', 'country':'USA', 'airport':'San Francisco International Airport'}
+
+                  }
+           ]
+})
+
+
+db.ExpediaFlights.insert({
+  'flightId': 'ED100',
+  'operator': 'Delta Airlines',
+  'imageurl': 'deltaairlines.jpg',
+  'class':[
+
+                {'type':'Economy','price':100, 'capacity':100},
+                 {'type':'First','price':200 , 'capacity':100},
+                  {'type':'Business','price':300 , 'capacity':100}
+             ] ,
+     'flights':[
+                  {
+                     'arrivaltime': '16:00',
+                       'arrivalday' : 'Sat',
+                       'departuretime': '00:00',
+                       'departureday' : 'Thu',
+                     'origin': {'city':'San Francisco', 'state':'California', 'country':'USA', 'airport':'San Francisco International Airport'},
+                     'destination': {'city':'San Jose', 'state':'California', 'country':'USA', 'airport':'San Jose Airport'}
+
+                 },
+                 {
+                      'arrivaltime': '02:00',
+                     'arrivalday' : 'Sun',
+                     'departuretime': '18:00',
+                     'departureday' : 'Sat',
+                      'origin': {'city':'San Jose', 'state':'California', 'country':'USA', 'airport':'San Jose Airport'},
+                      'destination': {'city':'San Francisco', 'state':'California', 'country':'USA', 'airport':'San Francisco International Airport'}
+
+                  }
+           ]
+})
+
+
+
+
+
+db.ExpediaFlights.insert({
+  'flightId': 'ED100',
+  'operator': 'Delta Airlines',
+  'imageurl': 'deltaairlines.jpg',
+  'class':[
+
+                {'type':'Economy','price':100, 'capacity':100},
+                 {'type':'First','price':200 , 'capacity':100},
+                  {'type':'Business','price':300 , 'capacity':100}
+             ] ,
+     'flights':[
+                  {
+                     'arrivaltime': '16:00',
+                       'arrivalday' : 'Sun',
+                       'departuretime': '00:00',
+                       'departureday' : 'Thu',
+                     'origin': {'city':'San Francisco', 'state':'California', 'country':'USA', 'airport':'San Francisco International Airport'},
+                     'destination': {'city':'San Jose', 'state':'California', 'country':'USA', 'airport':'San Jose Airport'}
+
+                 },
+                 {
+                      'arrivaltime': '02:00',
+                     'arrivalday' : 'Mon',
+                     'departuretime': '18:00',
+                     'departureday' : 'Sun',
+                      'origin': {'city':'San Jose', 'state':'California', 'country':'USA', 'airport':'San Jose Airport'},
+                      'destination': {'city':'San Francisco', 'state':'California', 'country':'USA', 'airport':'San Francisco International Airport'}
+
+                  }
+           ]
+})
+
+
+
+
+
+db.ExpediaFlights.insert({
+  'flightId': 'ED100',
+  'operator': 'Delta Airlines',
+  'imageurl': 'deltaairlines.jpg',
+  'class':[
+
+                {'type':'Economy','price':100, 'capacity':100},
+                 {'type':'First','price':200 , 'capacity':100},
+                  {'type':'Business','price':300 , 'capacity':100}
+             ] ,
+     'flights':[
+                  {
+                     'arrivaltime': '16:00',
+                       'arrivalday' : 'Sat',
+                       'departuretime': '00:00',
+                       'departureday' : 'Fri',
+                     'origin': {'city':'San Francisco', 'state':'California', 'country':'USA', 'airport':'San Francisco International Airport'},
+                     'destination': {'city':'San Jose', 'state':'California', 'country':'USA', 'airport':'San Jose Airport'}
+
+                 },
+                 {
+                      'arrivaltime': '02:00',
+                     'arrivalday' : 'Sun',
+                     'departuretime': '18:00',
+                     'departureday' : 'Sat',
+                      'origin': {'city':'San Jose', 'state':'California', 'country':'USA', 'airport':'San Jose Airport'},
+                      'destination': {'city':'San Francisco', 'state':'California', 'country':'USA', 'airport':'San Francisco International Airport'}
+
+                  }
+           ]
+})
+
+
+
+
+
+db.ExpediaFlights.insert({
+  'flightId': 'ED100',
+  'operator': 'Delta Airlines',
+  'imageurl': 'deltaairlines.jpg',
+  'class':[
+
+                {'type':'Economy','price':100, 'capacity':100},
+                 {'type':'First','price':200 , 'capacity':100},
+                  {'type':'Business','price':300 , 'capacity':100}
+             ] ,
+     'flights':[
+                  {
+                     'arrivaltime': '16:00',
+                       'arrivalday' : 'Sun',
+                       'departuretime': '00:00',
+                       'departureday' : 'Fri',
+                     'origin': {'city':'San Francisco', 'state':'California', 'country':'USA', 'airport':'San Francisco International Airport'},
+                     'destination': {'city':'San Jose', 'state':'California', 'country':'USA', 'airport':'San Jose Airport'}
+
+                 },
+                 {
+                      'arrivaltime': '02:00',
+                     'arrivalday' : 'Mon',
+                     'departuretime': '18:00',
+                     'departureday' : 'Sun',
+                      'origin': {'city':'San Jose', 'state':'California', 'country':'USA', 'airport':'San Jose Airport'},
+                      'destination': {'city':'San Francisco', 'state':'California', 'country':'USA', 'airport':'San Francisco International Airport'}
+
+                  }
+           ]
+})
+
+
+
+
+
+db.ExpediaFlights.insert({
+  'flightId': 'ED100',
+  'operator': 'Delta Airlines',
+  'imageurl': 'deltaairlines.jpg',
+  'class':[
+
+                {'type':'Economy','price':100, 'capacity':100},
+                 {'type':'First','price':200 , 'capacity':100},
+                  {'type':'Business','price':300 , 'capacity':100}
+             ] ,
+     'flights':[
+                  {
+                     'arrivaltime': '16:00',
+                       'arrivalday' : 'Sun',
+                       'departuretime': '00:00',
+                       'departureday' : 'Sat',
+                     'origin': {'city':'San Francisco', 'state':'California', 'country':'USA', 'airport':'San Francisco International Airport'},
+                     'destination': {'city':'San Jose', 'state':'California', 'country':'USA', 'airport':'San Jose Airport'}
+
+                 },
+                 {
+                      'arrivaltime': '02:00',
+                     'arrivalday' : 'Mon',
+                     'departuretime': '18:00',
+                     'departureday' : 'Sun',
+                      'origin': {'city':'San Jose', 'state':'California', 'country':'USA', 'airport':'San Jose Airport'},
+                      'destination': {'city':'San Francisco', 'state':'California', 'country':'USA', 'airport':'San Francisco International Airport'}
+
+                  }
+           ]
+})
+
+
+=====================================================================
+
+
+db.ExpediaFlights.insert({
+  'flightId': 'ED100',
+  'operator': 'Delta Airlines',
+  'imageurl': 'deltaairlines.jpg',
+  'class':[
+
+                {'type':'Economy','price':100, 'capacity':100},
+                 {'type':'First','price':200 , 'capacity':100},
+                  {'type':'Business','price':300 , 'capacity':100}
+             ] ,
+     'flights':[
+                  {
+                     'arrivaltime': '16:00',
+                       'arrivalday' : 'Tue',
+                       'departuretime': '00:00',
+                       'departureday' : 'Mon',
+                     'origin': {'city':'Los Angeles', 'state':'California', 'country':'USA', 'airport':'Los Angeles International Airport'},
+                     'destination': {'city':'San Jose', 'state':'California', 'country':'USA', 'airport':'San Jose Airport'}
+
+                 },
+                 {
+                      'arrivaltime': '02:00',
+                     'arrivalday' : 'Wed',
+                     'departuretime': '18:00',
+                     'departureday' : 'Tue',
+                      'origin': {'city':'San Jose', 'state':'California', 'country':'USA', 'airport':'San Jose Airport'},
+                      'destination': {'city':'Los Angeles', 'state':'California', 'country':'USA', 'airport':'Los Angeles International Airport'}
+
+                  }
+           ]
+})
+
+
+
+
+db.ExpediaFlights.insert({
+  'flightId': 'ED100',
+  'operator': 'Delta Airlines',
+  'imageurl': 'deltaairlines.jpg',
+  'class':[
+
+                {'type':'Economy','price':100, 'capacity':100},
+                 {'type':'First','price':200 , 'capacity':100},
+                  {'type':'Business','price':300 , 'capacity':100}
+             ] ,
+     'flights':[
+                  {
+                     'arrivaltime': '16:00',
+                       'arrivalday' : 'Wed',
+                       'departuretime': '00:00',
+                       'departureday' : 'Mon',
+                     'origin': {'city':'Los Angeles', 'state':'California', 'country':'USA', 'airport':'Los Angeles International Airport'},
+                     'destination': {'city':'San Jose', 'state':'California', 'country':'USA', 'airport':'San Jose Airport'}
+
+                 },
+                 {
+                      'arrivaltime': '02:00',
+                     'arrivalday' : 'Thu',
+                     'departuretime': '18:00',
+                     'departureday' : 'Wed',
+                      'origin': {'city':'San Jose', 'state':'California', 'country':'USA', 'airport':'San Jose Airport'},
+                      'destination': {'city':'Los Angeles', 'state':'California', 'country':'USA', 'airport':'Los Angeles International Airport'}
+
+                  }
+           ]
+})
+
+
+
+
+
+db.ExpediaFlights.insert({
+  'flightId': 'ED100',
+  'operator': 'Delta Airlines',
+  'imageurl': 'deltaairlines.jpg',
+  'class':[
+
+                {'type':'Economy','price':100, 'capacity':100},
+                 {'type':'First','price':200 , 'capacity':100},
+                  {'type':'Business','price':300 , 'capacity':100}
+             ] ,
+     'flights':[
+                  {
+                     'arrivaltime': '16:00',
+                       'arrivalday' : 'Thu',
+                       'departuretime': '00:00',
+                       'departureday' : 'Mon',
+                     'origin': {'city':'Los Angeles', 'state':'California', 'country':'USA', 'airport':'Los Angeles International Airport'},
+                     'destination': {'city':'San Jose', 'state':'California', 'country':'USA', 'airport':'San Jose Airport'}
+
+                 },
+                 {
+                      'arrivaltime': '02:00',
+                     'arrivalday' : 'Fri',
+                     'departuretime': '18:00',
+                     'departureday' : 'Thu',
+                      'origin': {'city':'San Jose', 'state':'California', 'country':'USA', 'airport':'San Jose Airport'},
+                      'destination': {'city':'Los Angeles', 'state':'California', 'country':'USA', 'airport':'Los Angeles International Airport'}
+
+                  }
+           ]
+})
+
+
+
+
+db.ExpediaFlights.insert({
+  'flightId': 'ED100',
+  'operator': 'Delta Airlines',
+  'imageurl': 'deltaairlines.jpg',
+  'class':[
+
+                {'type':'Economy','price':100, 'capacity':100},
+                 {'type':'First','price':200 , 'capacity':100},
+                  {'type':'Business','price':300 , 'capacity':100}
+             ] ,
+     'flights':[
+                  {
+                     'arrivaltime': '16:00',
+                       'arrivalday' : 'Fri',
+                       'departuretime': '00:00',
+                       'departureday' : 'Mon',
+                     'origin': {'city':'Los Angeles', 'state':'California', 'country':'USA', 'airport':'Los Angeles International Airport'},
+                     'destination': {'city':'San Jose', 'state':'California', 'country':'USA', 'airport':'San Jose Airport'}
+
+                 },
+                 {
+                      'arrivaltime': '02:00',
+                     'arrivalday' : 'Sat',
+                     'departuretime': '18:00',
+                     'departureday' : 'Fri',
+                      'origin': {'city':'San Jose', 'state':'California', 'country':'USA', 'airport':'San Jose Airport'},
+                      'destination': {'city':'Los Angeles', 'state':'California', 'country':'USA', 'airport':'Los Angeles International Airport'}
+
+                  }
+           ]
+})
+
+
+
+
+db.ExpediaFlights.insert({
+  'flightId': 'ED100',
+  'operator': 'Delta Airlines',
+  'imageurl': 'deltaairlines.jpg',
+  'class':[
+
+                {'type':'Economy','price':100, 'capacity':100},
+                 {'type':'First','price':200 , 'capacity':100},
+                  {'type':'Business','price':300 , 'capacity':100}
+             ] ,
+     'flights':[
+                  {
+                     'arrivaltime': '16:00',
+                       'arrivalday' : 'Sat',
+                       'departuretime': '00:00',
+                       'departureday' : 'Mon',
+                     'origin': {'city':'Los Angeles', 'state':'California', 'country':'USA', 'airport':'Los Angeles International Airport'},
+                     'destination': {'city':'San Jose', 'state':'California', 'country':'USA', 'airport':'San Jose Airport'}
+
+                 },
+                 {
+                      'arrivaltime': '02:00',
+                     'arrivalday' : 'Sun',
+                     'departuretime': '18:00',
+                     'departureday' : 'Sat',
+                      'origin': {'city':'San Jose', 'state':'California', 'country':'USA', 'airport':'San Jose Airport'},
+                      'destination': {'city':'Los Angeles', 'state':'California', 'country':'USA', 'airport':'Los Angeles International Airport'}
+
+                  }
+           ]
+})
+
+
+
+
+
+db.ExpediaFlights.insert({
+  'flightId': 'ED100',
+  'operator': 'Delta Airlines',
+  'imageurl': 'deltaairlines.jpg',
+  'class':[
+
+                {'type':'Economy','price':100, 'capacity':100},
+                 {'type':'First','price':200 , 'capacity':100},
+                  {'type':'Business','price':300 , 'capacity':100}
+             ] ,
+     'flights':[
+                  {
+                     'arrivaltime': '16:00',
+                       'arrivalday' : 'Wed',
+                       'departuretime': '00:00',
+                       'departureday' : 'Tue',
+                     'origin': {'city':'Los Angeles', 'state':'California', 'country':'USA', 'airport':'Los Angeles International Airport'},
+                     'destination': {'city':'San Jose', 'state':'California', 'country':'USA', 'airport':'San Jose Airport'}
+
+                 },
+                 {
+                      'arrivaltime': '02:00',
+                     'arrivalday' : 'Thu',
+                     'departuretime': '18:00',
+                     'departureday' : 'Wed',
+                      'origin': {'city':'San Jose', 'state':'California', 'country':'USA', 'airport':'San Jose Airport'},
+                      'destination': {'city':'Los Angeles', 'state':'California', 'country':'USA', 'airport':'Los Angeles International Airport'}
+
+                  }
+           ]
+})
+
+
+
+
+db.ExpediaFlights.insert({
+  'flightId': 'ED100',
+  'operator': 'Delta Airlines',
+  'imageurl': 'deltaairlines.jpg',
+  'class':[
+
+                {'type':'Economy','price':100, 'capacity':100},
+                 {'type':'First','price':200 , 'capacity':100},
+                  {'type':'Business','price':300 , 'capacity':100}
+             ] ,
+     'flights':[
+                  {
+                     'arrivaltime': '16:00',
+                       'arrivalday' : 'Thu',
+                       'departuretime': '00:00',
+                       'departureday' : 'Tue',
+                     'origin': {'city':'Los Angeles', 'state':'California', 'country':'USA', 'airport':'Los Angeles International Airport'},
+                     'destination': {'city':'San Jose', 'state':'California', 'country':'USA', 'airport':'San Jose Airport'}
+
+                 },
+                 {
+                      'arrivaltime': '02:00',
+                     'arrivalday' : 'Fri',
+                     'departuretime': '18:00',
+                     'departureday' : 'Thu',
+                      'origin': {'city':'San Jose', 'state':'California', 'country':'USA', 'airport':'San Jose Airport'},
+                      'destination': {'city':'Los Angeles', 'state':'California', 'country':'USA', 'airport':'Los Angeles International Airport'}
+
+                  }
+           ]
+})
+
+
+
+
+
+db.ExpediaFlights.insert({
+  'flightId': 'ED100',
+  'operator': 'Delta Airlines',
+  'imageurl': 'deltaairlines.jpg',
+  'class':[
+
+                {'type':'Economy','price':100, 'capacity':100},
+                 {'type':'First','price':200 , 'capacity':100},
+                  {'type':'Business','price':300 , 'capacity':100}
+             ] ,
+     'flights':[
+                  {
+                     'arrivaltime': '16:00',
+                       'arrivalday' : 'Fri',
+                       'departuretime': '00:00',
+                       'departureday' : 'Tue',
+                     'origin': {'city':'Los Angeles', 'state':'California', 'country':'USA', 'airport':'Los Angeles International Airport'},
+                     'destination': {'city':'San Jose', 'state':'California', 'country':'USA', 'airport':'San Jose Airport'}
+
+                 },
+                 {
+                      'arrivaltime': '02:00',
+                     'arrivalday' : 'Sat',
+                     'departuretime': '18:00',
+                     'departureday' : 'Fri',
+                      'origin': {'city':'San Jose', 'state':'California', 'country':'USA', 'airport':'San Jose Airport'},
+                      'destination': {'city':'Los Angeles', 'state':'California', 'country':'USA', 'airport':'Los Angeles International Airport'}
+
+                  }
+           ]
+})
+
+
+
+
+
+
+db.ExpediaFlights.insert({
+  'flightId': 'ED100',
+  'operator': 'Delta Airlines',
+  'imageurl': 'deltaairlines.jpg',
+  'class':[
+
+                {'type':'Economy','price':100, 'capacity':100},
+                 {'type':'First','price':200 , 'capacity':100},
+                  {'type':'Business','price':300 , 'capacity':100}
+             ] ,
+     'flights':[
+                  {
+                     'arrivaltime': '16:00',
+                       'arrivalday' : 'Sat',
+                       'departuretime': '00:00',
+                       'departureday' : 'Tue',
+                     'origin': {'city':'Los Angeles', 'state':'California', 'country':'USA', 'airport':'Los Angeles International Airport'},
+                     'destination': {'city':'San Jose', 'state':'California', 'country':'USA', 'airport':'San Jose Airport'}
+
+                 },
+                 {
+                      'arrivaltime': '02:00',
+                     'arrivalday' : 'Sun',
+                     'departuretime': '18:00',
+                     'departureday' : 'Sat',
+                      'origin': {'city':'San Jose', 'state':'California', 'country':'USA', 'airport':'San Jose Airport'},
+                      'destination': {'city':'Los Angeles', 'state':'California', 'country':'USA', 'airport':'Los Angeles International Airport'}
+
+                  }
+           ]
+})
+
+
+
+
+
+db.ExpediaFlights.insert({
+  'flightId': 'ED100',
+  'operator': 'Delta Airlines',
+  'imageurl': 'deltaairlines.jpg',
+  'class':[
+
+                {'type':'Economy','price':100, 'capacity':100},
+                 {'type':'First','price':200 , 'capacity':100},
+                  {'type':'Business','price':300 , 'capacity':100}
+             ] ,
+     'flights':[
+                  {
+                     'arrivaltime': '16:00',
+                       'arrivalday' : 'Sun',
+                       'departuretime': '00:00',
+                       'departureday' : 'Tue',
+                     'origin': {'city':'Los Angeles', 'state':'California', 'country':'USA', 'airport':'Los Angeles International Airport'},
+                     'destination': {'city':'San Jose', 'state':'California', 'country':'USA', 'airport':'San Jose Airport'}
+
+                 },
+                 {
+                      'arrivaltime': '02:00',
+                     'arrivalday' : 'Mon',
+                     'departuretime': '18:00',
+                     'departureday' : 'Sun',
+                      'origin': {'city':'San Jose', 'state':'California', 'country':'USA', 'airport':'San Jose Airport'},
+                      'destination': {'city':'Los Angeles', 'state':'California', 'country':'USA', 'airport':'Los Angeles International Airport'}
+
+                  }
+           ]
+})
+
+
+
+
+
+
+db.ExpediaFlights.insert({
+  'flightId': 'ED100',
+  'operator': 'Delta Airlines',
+  'imageurl': 'deltaairlines.jpg',
+  'class':[
+
+                {'type':'Economy','price':100, 'capacity':100},
+                 {'type':'First','price':200 , 'capacity':100},
+                  {'type':'Business','price':300 , 'capacity':100}
+             ] ,
+     'flights':[
+                  {
+                     'arrivaltime': '16:00',
+                       'arrivalday' : 'Thu',
+                       'departuretime': '00:00',
+                       'departureday' : 'Wed',
+                     'origin': {'city':'Los Angeles', 'state':'California', 'country':'USA', 'airport':'Los Angeles International Airport'},
+                     'destination': {'city':'San Jose', 'state':'California', 'country':'USA', 'airport':'San Jose Airport'}
+
+                 },
+                 {
+                      'arrivaltime': '02:00',
+                     'arrivalday' : 'Fri',
+                     'departuretime': '18:00',
+                     'departureday' : 'Thu',
+                      'origin': {'city':'San Jose', 'state':'California', 'country':'USA', 'airport':'San Jose Airport'},
+                      'destination': {'city':'Los Angeles', 'state':'California', 'country':'USA', 'airport':'Los Angeles International Airport'}
+
+                  }
+           ]
+})
+
+
+
+
+
+db.ExpediaFlights.insert({
+  'flightId': 'ED100',
+  'operator': 'Delta Airlines',
+  'imageurl': 'deltaairlines.jpg',
+  'class':[
+
+                {'type':'Economy','price':100, 'capacity':100},
+                 {'type':'First','price':200 , 'capacity':100},
+                  {'type':'Business','price':300 , 'capacity':100}
+             ] ,
+     'flights':[
+                  {
+                     'arrivaltime': '16:00',
+                       'arrivalday' : 'Fri',
+                       'departuretime': '00:00',
+                       'departureday' : 'Wed',
+                     'origin': {'city':'Los Angeles', 'state':'California', 'country':'USA', 'airport':'Los Angeles International Airport'},
+                     'destination': {'city':'San Jose', 'state':'California', 'country':'USA', 'airport':'San Jose Airport'}
+
+                 },
+                 {
+                      'arrivaltime': '02:00',
+                     'arrivalday' : 'Sat',
+                     'departuretime': '18:00',
+                     'departureday' : 'Fri',
+                      'origin': {'city':'San Jose', 'state':'California', 'country':'USA', 'airport':'San Jose Airport'},
+                      'destination': {'city':'Los Angeles', 'state':'California', 'country':'USA', 'airport':'Los Angeles International Airport'}
+
+                  }
+           ]
+})
+
+
+
+
+
+
+db.ExpediaFlights.insert({
+  'flightId': 'ED100',
+  'operator': 'Delta Airlines',
+  'imageurl': 'deltaairlines.jpg',
+  'class':[
+
+                {'type':'Economy','price':100, 'capacity':100},
+                 {'type':'First','price':200 , 'capacity':100},
+                  {'type':'Business','price':300 , 'capacity':100}
+             ] ,
+     'flights':[
+                  {
+                     'arrivaltime': '16:00',
+                       'arrivalday' : 'Sat',
+                       'departuretime': '00:00',
+                       'departureday' : 'Wed',
+                     'origin': {'city':'Los Angeles', 'state':'California', 'country':'USA', 'airport':'Los Angeles International Airport'},
+                     'destination': {'city':'San Jose', 'state':'California', 'country':'USA', 'airport':'San Jose Airport'}
+
+                 },
+                 {
+                      'arrivaltime': '02:00',
+                     'arrivalday' : 'Sun',
+                     'departuretime': '18:00',
+                     'departureday' : 'Sat',
+                      'origin': {'city':'San Jose', 'state':'California', 'country':'USA', 'airport':'San Jose Airport'},
+                      'destination': {'city':'Los Angeles', 'state':'California', 'country':'USA', 'airport':'Los Angeles International Airport'}
+
+                  }
+           ]
+})
+
+
+
+
+
+
+db.ExpediaFlights.insert({
+  'flightId': 'ED100',
+  'operator': 'Delta Airlines',
+  'imageurl': 'deltaairlines.jpg',
+  'class':[
+
+                {'type':'Economy','price':100, 'capacity':100},
+                 {'type':'First','price':200 , 'capacity':100},
+                  {'type':'Business','price':300 , 'capacity':100}
+             ] ,
+     'flights':[
+                  {
+                     'arrivaltime': '16:00',
+                       'arrivalday' : 'Sun',
+                       'departuretime': '00:00',
+                       'departureday' : 'Wed',
+                     'origin': {'city':'Los Angeles', 'state':'California', 'country':'USA', 'airport':'Los Angeles International Airport'},
+                     'destination': {'city':'San Jose', 'state':'California', 'country':'USA', 'airport':'San Jose Airport'}
+
+                 },
+                 {
+                      'arrivaltime': '02:00',
+                     'arrivalday' : 'Mon',
+                     'departuretime': '18:00',
+                     'departureday' : 'Sun',
+                      'origin': {'city':'San Jose', 'state':'California', 'country':'USA', 'airport':'San Jose Airport'},
+                      'destination': {'city':'Los Angeles', 'state':'California', 'country':'USA', 'airport':'Los Angeles International Airport'}
+
+                  }
+           ]
+})
+
+
+
+
+db.ExpediaFlights.insert({
+  'flightId': 'ED100',
+  'operator': 'Delta Airlines',
+  'imageurl': 'deltaairlines.jpg',
+  'class':[
+
+                {'type':'Economy','price':100, 'capacity':100},
+                 {'type':'First','price':200 , 'capacity':100},
+                  {'type':'Business','price':300 , 'capacity':100}
+             ] ,
+     'flights':[
+                  {
+                     'arrivaltime': '16:00',
+                       'arrivalday' : 'Fri',
+                       'departuretime': '00:00',
+                       'departureday' : 'Thu',
+                     'origin': {'city':'Los Angeles', 'state':'California', 'country':'USA', 'airport':'Los Angeles International Airport'},
+                     'destination': {'city':'San Jose', 'state':'California', 'country':'USA', 'airport':'San Jose Airport'}
+
+                 },
+                 {
+                      'arrivaltime': '02:00',
+                     'arrivalday' : 'Sat',
+                     'departuretime': '18:00',
+                     'departureday' : 'Fri',
+                      'origin': {'city':'San Jose', 'state':'California', 'country':'USA', 'airport':'San Jose Airport'},
+                      'destination': {'city':'Los Angeles', 'state':'California', 'country':'USA', 'airport':'Los Angeles International Airport'}
+
+                  }
+           ]
+})
+
+
+db.ExpediaFlights.insert({
+  'flightId': 'ED100',
+  'operator': 'Delta Airlines',
+  'imageurl': 'deltaairlines.jpg',
+  'class':[
+
+                {'type':'Economy','price':100, 'capacity':100},
+                 {'type':'First','price':200 , 'capacity':100},
+                  {'type':'Business','price':300 , 'capacity':100}
+             ] ,
+     'flights':[
+                  {
+                     'arrivaltime': '16:00',
+                       'arrivalday' : 'Sat',
+                       'departuretime': '00:00',
+                       'departureday' : 'Thu',
+                     'origin': {'city':'Los Angeles', 'state':'California', 'country':'USA', 'airport':'Los Angeles International Airport'},
+                     'destination': {'city':'San Jose', 'state':'California', 'country':'USA', 'airport':'San Jose Airport'}
+
+                 },
+                 {
+                      'arrivaltime': '02:00',
+                     'arrivalday' : 'Sun',
+                     'departuretime': '18:00',
+                     'departureday' : 'Sat',
+                      'origin': {'city':'San Jose', 'state':'California', 'country':'USA', 'airport':'San Jose Airport'},
+                      'destination': {'city':'Los Angeles', 'state':'California', 'country':'USA', 'airport':'Los Angeles International Airport'}
+
+                  }
+           ]
+})
+
+
+
+
+
+db.ExpediaFlights.insert({
+  'flightId': 'ED100',
+  'operator': 'Delta Airlines',
+  'imageurl': 'deltaairlines.jpg',
+  'class':[
+
+                {'type':'Economy','price':100, 'capacity':100},
+                 {'type':'First','price':200 , 'capacity':100},
+                  {'type':'Business','price':300 , 'capacity':100}
+             ] ,
+     'flights':[
+                  {
+                     'arrivaltime': '16:00',
+                       'arrivalday' : 'Sun',
+                       'departuretime': '00:00',
+                       'departureday' : 'Thu',
+                     'origin': {'city':'Los Angeles', 'state':'California', 'country':'USA', 'airport':'Los Angeles International Airport'},
+                     'destination': {'city':'San Jose', 'state':'California', 'country':'USA', 'airport':'San Jose Airport'}
+
+                 },
+                 {
+                      'arrivaltime': '02:00',
+                     'arrivalday' : 'Mon',
+                     'departuretime': '18:00',
+                     'departureday' : 'Sun',
+                      'origin': {'city':'San Jose', 'state':'California', 'country':'USA', 'airport':'San Jose Airport'},
+                      'destination': {'city':'Los Angeles', 'state':'California', 'country':'USA', 'airport':'Los Angeles International Airport'}
+
+                  }
+           ]
+})
+
+
+
+
+
+db.ExpediaFlights.insert({
+  'flightId': 'ED100',
+  'operator': 'Delta Airlines',
+  'imageurl': 'deltaairlines.jpg',
+  'class':[
+
+                {'type':'Economy','price':100, 'capacity':100},
+                 {'type':'First','price':200 , 'capacity':100},
+                  {'type':'Business','price':300 , 'capacity':100}
+             ] ,
+     'flights':[
+                  {
+                     'arrivaltime': '16:00',
+                       'arrivalday' : 'Sat',
+                       'departuretime': '00:00',
+                       'departureday' : 'Fri',
+                     'origin': {'city':'Los Angeles', 'state':'California', 'country':'USA', 'airport':'Los Angeles International Airport'},
+                     'destination': {'city':'San Jose', 'state':'California', 'country':'USA', 'airport':'San Jose Airport'}
+
+                 },
+                 {
+                      'arrivaltime': '02:00',
+                     'arrivalday' : 'Sun',
+                     'departuretime': '18:00',
+                     'departureday' : 'Sat',
+                      'origin': {'city':'San Jose', 'state':'California', 'country':'USA', 'airport':'San Jose Airport'},
+                      'destination': {'city':'Los Angeles', 'state':'California', 'country':'USA', 'airport':'Los Angeles International Airport'}
+
+                  }
+           ]
+})
+
+
+
+
+
+db.ExpediaFlights.insert({
+  'flightId': 'ED100',
+  'operator': 'Delta Airlines',
+  'imageurl': 'deltaairlines.jpg',
+  'class':[
+
+                {'type':'Economy','price':100, 'capacity':100},
+                 {'type':'First','price':200 , 'capacity':100},
+                  {'type':'Business','price':300 , 'capacity':100}
+             ] ,
+     'flights':[
+                  {
+                     'arrivaltime': '16:00',
+                       'arrivalday' : 'Sun',
+                       'departuretime': '00:00',
+                       'departureday' : 'Fri',
+                     'origin': {'city':'Los Angeles', 'state':'California', 'country':'USA', 'airport':'Los Angeles International Airport'},
+                     'destination': {'city':'San Jose', 'state':'California', 'country':'USA', 'airport':'San Jose Airport'}
+
+                 },
+                 {
+                      'arrivaltime': '02:00',
+                     'arrivalday' : 'Mon',
+                     'departuretime': '18:00',
+                     'departureday' : 'Sun',
+                      'origin': {'city':'San Jose', 'state':'California', 'country':'USA', 'airport':'San Jose Airport'},
+                      'destination': {'city':'Los Angeles', 'state':'California', 'country':'USA', 'airport':'Los Angeles International Airport'}
+
+                  }
+           ]
+})
+
+
+
+
+
+db.ExpediaFlights.insert({
+  'flightId': 'ED100',
+  'operator': 'Delta Airlines',
+  'imageurl': 'deltaairlines.jpg',
+  'class':[
+
+                {'type':'Economy','price':100, 'capacity':100},
+                 {'type':'First','price':200 , 'capacity':100},
+                  {'type':'Business','price':300 , 'capacity':100}
+             ] ,
+     'flights':[
+                  {
+                     'arrivaltime': '16:00',
+                       'arrivalday' : 'Sun',
+                       'departuretime': '00:00',
+                       'departureday' : 'Sat',
+                     'origin': {'city':'Los Angeles', 'state':'California', 'country':'USA', 'airport':'Los Angeles International Airport'},
+                     'destination': {'city':'San Jose', 'state':'California', 'country':'USA', 'airport':'San Jose Airport'}
+
+                 },
+                 {
+                      'arrivaltime': '02:00',
+                     'arrivalday' : 'Mon',
+                     'departuretime': '18:00',
+                     'departureday' : 'Sun',
+                      'origin': {'city':'San Jose', 'state':'California', 'country':'USA', 'airport':'San Jose Airport'},
+                      'destination': {'city':'Los Angeles', 'state':'California', 'country':'USA', 'airport':'Los Angeles International Airport'}
+
+                  }
+           ]
+})
+
+
+
+

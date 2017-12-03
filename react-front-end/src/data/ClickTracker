@@ -1,0 +1,477 @@
+INSERT INTO `kayak`.`click_tracker`
+(`userId`,
+`sessionId`,
+`eventTime`,
+`eventName`,
+`pageId`,
+`buttonId`,
+`objectId`,
+`pageNav`)
+VALUES
+('Sunil',
+'Session1',
+CURDATE(),
+'Clicked',
+'Search',
+'Button1',
+'Object1',
+'Home Login Search Booking Payment History Logout');
+
+INSERT INTO `kayak`.`click_tracker`
+(`userId`,
+`sessionId`,
+`eventTime`,
+`eventName`,
+`pageId`,
+`buttonId`,
+`objectId`,
+`pageNav`)
+VALUES
+('Sunil',
+'Session1',
+CURDATE(),
+'Clicked',
+'Home',
+'Button1',
+'Object1',
+'Home Login Search Booking Payment History Search Logout');
+
+INSERT INTO `kayak`.`click_tracker`
+(`userId`,
+`sessionId`,
+`eventTime`,
+`eventName`,
+`pageId`,
+`buttonId`,
+`objectId`,
+`pageNav`)
+VALUES
+('Sunil',
+'Session1',
+CURDATE(),
+'Clicked',
+'Profile',
+'Button1',
+'Object1',
+'Home Login Search Logout');
+
+INSERT INTO `kayak`.`click_tracker`
+(`userId`,
+`sessionId`,
+`eventTime`,
+`eventName`,
+`pageId`,
+`buttonId`,
+`objectId`,
+`pageNav`)
+VALUES
+('Sunil',
+'Session1',
+CURDATE(),
+'Clicked',
+'History',
+'Button1',
+'Object1',
+'Home Login History Logout');
+
+INSERT INTO `kayak`.`click_tracker`
+(`userId`,
+`sessionId`,
+`eventTime`,
+`eventName`,
+`pageId`,
+`buttonId`,
+`objectId`,
+`pageNav`)
+VALUES
+('Sunil',
+'Session1',
+CURDATE(),
+'Clicked',
+'Booking',
+'Button1',
+'Object1',
+'Home Login Booking Logout');
+
+
+=====================================================================
+
+
+INSERT INTO `kayak`.`click_tracker`
+(`userId`,
+`sessionId`,
+`eventTime`,
+`eventName`,
+`pageId`,
+`buttonId`,
+`objectId`,
+`pageNav`)
+VALUES
+('Dishant',
+'Session1',
+CURDATE(),
+'Clicked',
+'Search',
+'Button1',
+'Object1',
+'Home Login Search Booking Payment Logout');
+
+INSERT INTO `kayak`.`click_tracker`
+(`userId`,
+`sessionId`,
+`eventTime`,
+`eventName`,
+`pageId`,
+`buttonId`,
+`objectId`,
+`pageNav`)
+VALUES
+('Dishant',
+'Session1',
+CURDATE(),
+'Clicked',
+'Home',
+'Button1',
+'Object1',
+'Home Login Booking Payment Search Logout');
+
+INSERT INTO `kayak`.`click_tracker`
+(`userId`,
+`sessionId`,
+`eventTime`,
+`eventName`,
+`pageId`,
+`buttonId`,
+`objectId`,
+`pageNav`)
+VALUES
+('Dishant',
+'Session1',
+CURDATE(),
+'Clicked',
+'Profile',
+'Button1',
+'Object1',
+'Home Login Search History Search');
+
+INSERT INTO `kayak`.`click_tracker`
+(`userId`,
+`sessionId`,
+`eventTime`,
+`eventName`,
+`pageId`,
+`buttonId`,
+`objectId`,
+`pageNav`)
+VALUES
+('Dishant',
+'Session1',
+CURDATE(),
+'Clicked',
+'History',
+'Button1',
+'Object1',
+'Home Login Search History Search Booking Logout');
+
+INSERT INTO `kayak`.`click_tracker`
+(`userId`,
+`sessionId`,
+`eventTime`,
+`eventName`,
+`pageId`,
+`buttonId`,
+`objectId`,
+`pageNav`)
+VALUES
+('Dishant',
+'Session1',
+CURDATE(),
+'Clicked',
+'Booking',
+'Button1',
+'Object1',
+'Home Login Search History Search History Logout');
+
+
+=====================================================
+
+
+INSERT INTO `kayak`.`click_tracker`
+(`userId`,
+`sessionId`,
+`eventTime`,
+`eventName`,
+`pageId`,
+`buttonId`,
+`objectId`,
+`pageNav`)
+VALUES
+('Sid',
+'Session1',
+CURDATE(),
+'Clicked',
+'Search',
+'Button1',
+'Object1',
+'Home Login Booking');
+
+INSERT INTO `kayak`.`click_tracker`
+(`userId`,
+`sessionId`,
+`eventTime`,
+`eventName`,
+`pageId`,
+`buttonId`,
+`objectId`,
+`pageNav`)
+VALUES
+('Dishant',
+'Session1',
+CURDATE(),
+'Clicked',
+'Search',
+'Button1',
+'Object1',
+'Home Login Logout');
+
+INSERT INTO `kayak`.`click_tracker`
+(`userId`,
+`sessionId`,
+`eventTime`,
+`eventName`,
+`pageId`,
+`buttonId`,
+`objectId`,
+`pageNav`)
+VALUES
+('Dishant',
+'Session1',
+CURDATE(),
+'Clicked',
+'Search',
+'Button1',
+'Object1',
+'Home Search');
+
+INSERT INTO `kayak`.`click_tracker`
+(`userId`,
+`sessionId`,
+`eventTime`,
+`eventName`,
+`pageId`,
+`buttonId`,
+`objectId`,
+`pageNav`)
+VALUES
+('Sid',
+'Session1',
+CURDATE(),
+'Clicked',
+'History',
+'Button1',
+'Object1',
+'Home Login Search History Search Booking Logout');
+
+====================================================
+
+
+INSERT INTO `kayak`.`click_tracker`
+(`userId`,
+`sessionId`,
+`eventTime`,
+`eventName`,
+`pageId`,
+`buttonId`,
+`objectId`,
+`pageNav`)
+VALUES
+('Dishant',
+'Session1',
+CURDATE(),
+'Clicked',
+'Search',
+'Button1',
+'Object1',
+'Home Login Search Booking Payment History Logout');
+
+INSERT INTO `kayak`.`click_tracker`
+(`userId`,
+`sessionId`,
+`eventTime`,
+`eventName`,
+`pageId`,
+`buttonId`,
+`objectId`,
+`pageNav`)
+VALUES
+('Meenakshi',
+'Session1',
+CURDATE(),
+'Clicked',
+'Search',
+'Button1',
+'Object1',
+'Home Login Search Booking Payment History Search Logout');
+
+INSERT INTO `kayak`.`click_tracker`
+(`userId`,
+`sessionId`,
+`eventTime`,
+`eventName`,
+`pageId`,
+`buttonId`,
+`objectId`,
+`pageNav`)
+VALUES
+('Meenakshi',
+'Session1',
+CURDATE(),
+'Clicked',
+'Profile',
+'Button1',
+'Object1',
+'Home Login Search Logout');
+
+INSERT INTO `kayak`.`click_tracker`
+(`userId`,
+`sessionId`,
+`eventTime`,
+`eventName`,
+`pageId`,
+`buttonId`,
+`objectId`,
+`pageNav`)
+VALUES
+('Dishant',
+'Session1',
+CURDATE(),
+'Clicked',
+'Profile',
+'Button1',
+'Object1',
+'Home Login History Logout');
+
+INSERT INTO `kayak`.`click_tracker`
+(`userId`,
+`sessionId`,
+`eventTime`,
+`eventName`,
+`pageId`,
+`buttonId`,
+`objectId`,
+`pageNav`)
+VALUES
+('Dishant',
+'Session1',
+CURDATE(),
+'Clicked',
+'Profile',
+'Button1',
+'Object1',
+'Home Login Booking Logout');
+
+
+
+========================================
+
+
+INSERT INTO `kayak`.`click_tracker`
+(`userId`,
+`sessionId`,
+`eventTime`,
+`eventName`,
+`pageId`,
+`buttonId`,
+`objectId`,
+`pageNav`)
+VALUES
+('Aditya',
+'Session1',
+CURDATE(),
+'Clicked',
+'Home',
+'Button1',
+'Object1',
+'Home Login Search Booking Payment Logout');
+
+INSERT INTO `kayak`.`click_tracker`
+(`userId`,
+`sessionId`,
+`eventTime`,
+`eventName`,
+`pageId`,
+`buttonId`,
+`objectId`,
+`pageNav`)
+VALUES
+('Aditya',
+'Session1',
+CURDATE(),
+'Clicked',
+'Home',
+'Button1',
+'Object1',
+'Home Login Booking Payment Search Logout');
+
+INSERT INTO `kayak`.`click_tracker`
+(`userId`,
+`sessionId`,
+`eventTime`,
+`eventName`,
+`pageId`,
+`buttonId`,
+`objectId`,
+`pageNav`)
+VALUES
+('Dishant',
+'Session1',
+CURDATE(),
+'Clicked',
+'Booking',
+'Button1',
+'Object1',
+'Home Login Search History Search');
+
+INSERT INTO `kayak`.`click_tracker`
+(`userId`,
+`sessionId`,
+`eventTime`,
+`eventName`,
+`pageId`,
+`buttonId`,
+`objectId`,
+`pageNav`)
+VALUES
+('Sid',
+'Session1',
+CURDATE(),
+'Clicked',
+'Booking',
+'Button1',
+'Object1',
+'Home Login Search History Search Booking Logout');
+
+INSERT INTO `kayak`.`click_tracker`
+(`userId`,
+`sessionId`,
+`eventTime`,
+`eventName`,
+`pageId`,
+`buttonId`,
+`objectId`,
+`pageNav`)
+VALUES
+('Meenakshi',
+'Session1',
+CURDATE(),
+'Clicked',
+'Home',
+'Button1',
+'Object1',
+'Home Login Search History Search History Logout');
+
+==================================================================
+
+
+
+

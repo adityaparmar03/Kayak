@@ -87,8 +87,37 @@ class Nav extends Component {
         })
     }
 
+//********************************************************
+    validateZipCode(elementValue){
+        var zipCodePattern;
+        if (elementValue.indexOf('-') > -1)
+        {
+            zipCodePattern = /^\d{5}$|^\d{5}-\d{4}$/;
+        } else {
+            zipCodePattern = /^\d{5}$/;
+        }
+
+        //console.log("Zip Validation : ",zipCodePattern.test(elementValue))
+        return zipCodePattern.test(elementValue);
+    }
+//********************************************************
+    validateEmail(mail)
+    {
+        if (/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(mail))
+        {
+            console.log("true");
+            return (true)
+        }
+        console.log("false");
+        return (false)
+    }
 
 //********************************************************
+    telephoneCheck(str) {
+        var isphone = /^(1\s|1|)?((\(\d{3}\))|\d{3})(\-|\s)?(\d{3})(\-|\s)?(\d{4})$/.test(str);
+        return isphone;
+    }
+//****************************************************
 loginButton(){
       console.log("I am inside the loginButton");
       console.log(this.state.password);
