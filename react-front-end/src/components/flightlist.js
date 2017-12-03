@@ -54,7 +54,7 @@ class Flightlist extends Component {
         console.log(this.props.location.flightsearchcriteria);
         const payload = JSON.parse(localStorage.getItem("flightsearchcriteria"));
         console.log('payload',payload);
-       
+
         this.setState({
             triptype:payload.triptype
         })
@@ -114,9 +114,13 @@ class Flightlist extends Component {
             return <span>&mdash;&mdash;&#9632;&mdash;&mdash;&#9632;&mdash;&mdash;</span>
         }
     }
-    
-    handleBook(data,classtype,price){
+
+    handleBookOneWay(data,classtype,price, capacity){
         console.log("selected data ="+JSON.stringify(data))
+        var flightsearchcriteria = JSON.parse(localStorage.getItem('flightsearchcriteria'));
+        var passengers = flightsearchcriteria.passengers;
+        var startdate = flightsearchcriteria.startdate;
+        var enddate = flightsearchcriteria.enddate;
         var flightbooking = {
           booking : {
             flight : {
@@ -125,45 +129,75 @@ class Flightlist extends Component {
                 "originstate" : data.flights.origin.state,
                 "destinationcity" : data.flights.destination.city,
                 "destinationstate" : data.flights.destination.state,
-                "triptype" : "One-Way", // TODO : remove hardcoding and add support for one way flights
+                "triptype" : "One-Way", // TODO : add proper dates
                 "flightclass" : classtype,
-                "capacity" : 100,
-                "price" : price,
-                "bookingstartdate" : "2017-01-18 09:15:00",
-                "bookingenddate" : "2017-01-19 03:14:00",
-                "passengers" : 10,
+                "capacity" : capacity,
+                "price" : price * passengers,
+                "bookingstartdate" : startdate,
+                "bookingenddate" : '',
+                "passengers" : passengers,
                 "flightId" : data.flightId,
                 "source_airport" : data.flights.destination.airport,
                 "destination_airport" : data.flights.origin.airport
             }
-            // ,
-            // returnflight: {
-            //     "operator" : "Delta Airlines",
-            //     "origincity" : "San Francisco",
-            //     "originstate" : "CA",
-            //     "destinationcity" : "Delhi",
-            //     "destinationstate" : "Delhi",
-            //     "triptype" : "Two-Way",
-            //     "flightclass" : "economy",
-            //     "capacity" : 30,
-            //     "price" : 1300,
-            //     "returnstartdate" : "2017-03-18 06:15:00",
-            //     "returnenddate" : "2017-03-19 18:14:00",
-            //     "passengers" : 10,
-            //     "flightId" : "MMT111",
-            //     "source_airport" : "SF International Airport",
-            //     "destination_airport" : "Delhi International Airport"
-            // }
-          },
-          credit_card : {
-      			"card_type" : "MasterCard",
-      			"card_number": "012345678989",
-      			"card_holder_name" : "Meenakshi Paryani",
-      			"valid_from" : "2017-01-18",
-      			"valid_till" : "2017-01-26"
-    		  }
+
+          }
         }
         // use unique ID : TODO
+        var uniqueId = flightbooking + Date.now();
+        console.log('payload', flightbooking, ' ', uniqueId);
+        localStorage.setItem("flightbooking", JSON.stringify(flightbooking));
+        this.props.history.push('/flightbooking');
+    }
+
+
+    handleBookTwoWay(data,classtype,price, capacity){
+        console.log("selected data ="+JSON.stringify(data));
+        var toFlight = data.flights.filter(flight => flight.path =='to')[0];
+        var fromFlight = data.flights.filter(flight => flight.path =='from')[0];
+        var flightsearchcriteria = JSON.parse(localStorage.getItem('flightsearchcriteria'));
+        var passengers = flightsearchcriteria.passengers;
+        var startdate = flightsearchcriteria.startdate;
+        var enddate = flightsearchcriteria.enddate;
+        var flightbooking = {
+          booking : {
+            flight : {
+                "operator" : data._id.operator,
+                "origincity" : toFlight.origin.city,
+                "originstate" : toFlight.origin.state,
+                "destinationcity" : toFlight.destination.city,
+                "destinationstate" : toFlight.destination.state,
+                "triptype" : "Two-Way",
+                "flightclass" : classtype,
+                "capacity" : capacity,
+                "price" : price * passengers ,
+                "bookingstartdate" : startdate,
+                "bookingenddate" : startdate,
+                "passengers" : passengers,
+                "flightId" : data._id.flightId,
+                "source_airport" : toFlight.origin.airport,
+                "destination_airport" : toFlight.destination.airport
+            }
+            ,
+            returnflight: {
+                "operator" : data._id.operato,
+                "origincity" : fromFlight.origin.city,
+                "originstate" : fromFlight.origin.state,
+                "destinationcity" : fromFlight.destination.city,
+                "destinationstate" : fromFlight.destination.state,
+                "triptype" : "Two-Way",
+                "flightclass" : classtype,
+                "capacity" : capacity,
+                "price" : price * passengers,
+                "returnstartdate" : enddate,
+                "returnenddate" : enddate,
+                "passengers" : passengers,
+                "flightId" : data._id.flightId,
+                "source_airport" : fromFlight.origin.airport,
+                "destination_airport" : fromFlight.destination.airport
+            }
+          }
+        }
         var uniqueId = flightbooking + Date.now();
         console.log('payload', flightbooking, ' ', uniqueId);
         localStorage.setItem("flightbooking", JSON.stringify(flightbooking));
@@ -216,7 +250,7 @@ class Flightlist extends Component {
                                 <div style={{textAlign:"center"}}>
                                 <b style={{fontSize:"20px",fontWeight:"bold"}}>${data.class[0].price}</b><br/>
                                 <b style={{fontSize:"12px",fontWeight:"bold"}}>{data.class[0].type}</b><br/>
-                                <button style={{width:"12vw"}} onClick={()=>this.handleBook(data,data.class[0].type, data.class[0].price)}
+                                <button style={{width:"12vw"}} onClick={()=>this.handleBookOneWay(data,data.class[0].type, data.class[0].price, data.class[0].capacity)}
                                 className="btn btn-deep-orange">Book</button>
                                 </div>
 
@@ -252,12 +286,14 @@ class Flightlist extends Component {
                                         <div style={{textAlign:"center"}}>
                                         <b style={{fontSize:"20px",fontWeight:"bold"}}>${data.class[1].price}</b><br/>
                                         <b style={{fontSize:"12px",fontWeight:"bold"}}>{data.class[1].type}</b><br/>
-                                        <button style={{width:"12vw"}}className="btn btn-deep-orange">Book</button>
+                                        <button style={{width:"12vw"}}className="btn btn-deep-orange"
+                                        onClick={()=>this.handleBookOneWay(data,data.class[1].type, data.class[1].price, data.class[1].capacity)}>Book</button>
                                         </div>
                                         <div style={{textAlign:"center"}}>
                                         <b style={{fontSize:"20px",fontWeight:"bold"}}>${data.class[2].price}</b><br/>
                                         <b style={{fontSize:"12px",fontWeight:"bold"}}>{data.class[2].type}</b><br/>
-                                        <button style={{width:"12vw"}}className="btn btn-deep-orange">Book</button>
+                                        <button style={{width:"12vw"}}className="btn btn-deep-orange"
+                                        onClick={()=>this.handleBookOneWay(data,data.class[2].type, data.class[2].price, data.class[2].capacity)} >Book</button>
                                         </div>
 
                                 </div>
@@ -333,7 +369,7 @@ class Flightlist extends Component {
                                 <div style={{textAlign:"center"}}>
                                 <b style={{fontSize:"20px",fontWeight:"bold"}}>${data._id.class[0].price}</b><br/>
                                 <b style={{fontSize:"12px",fontWeight:"bold"}}>{data._id.class[0].type}</b><br/>
-                                <button style={{width:"12vw"}} onClick={()=>this.handleBook(data,data._id.class[0].type, data._id.class[0].price)}
+                                <button style={{width:"12vw"}} onClick={()=>this.handleBookTwoWay(data,data._id.class[0].type, data._id.class[0].price, data._id.class[0].capacity)}
                                 className="btn btn-deep-orange">Book</button>
                                 </div>
                                 </div>
@@ -387,7 +423,7 @@ class Flightlist extends Component {
                                     <div style={{textAlign:"center"}}>
                                     <b style={{fontSize:"20px",fontWeight:"bold"}}>${data._id.class[1].price}</b><br/>
                                     <b style={{fontSize:"12px",fontWeight:"bold"}}>{data._id.class[1].type}</b><br/>
-                                    <button style={{width:"12vw"}} onClick={()=>this.handleBook(data,data._id.class[1].type, data._id.class[1].price)}
+                                    <button style={{width:"12vw"}} onClick={()=>this.handleBookTwoWay(data,data._id.class[1].type, data._id.class[1].price, data._id.class[1].capacity)}
                                     className="btn btn-deep-orange">Book</button>
                                     </div>
                                     </div>
@@ -396,11 +432,11 @@ class Flightlist extends Component {
                                     <div style={{textAlign:"center"}}>
                                     <b style={{fontSize:"20px",fontWeight:"bold"}}>${data._id.class[2].price}</b><br/>
                                     <b style={{fontSize:"12px",fontWeight:"bold"}}>{data._id.class[2].type}</b><br/>
-                                    <button style={{width:"12vw"}} onClick={()=>this.handleBook(data,data._id.class[2].type, data._id.class[2].price)}
+                                    <button style={{width:"12vw"}} onClick={()=>this.handleBookTwoWay(data,data._id.class[2].type, data._id.class[2].price, data._id.class[2].capacity)}
                                     className="btn btn-deep-orange">Book</button>
                                     </div>
                                     </div>
-                                       
+
 
                                 </div>
                         </div>
@@ -409,7 +445,7 @@ class Flightlist extends Component {
                  </div>
             )
         }
-            
+
      }
     render(){
         var colors = ["#FCBD7E", "#EB9F71", "#E6817C"];

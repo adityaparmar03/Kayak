@@ -62,7 +62,8 @@ class Flightsearch extends Component {
                   'arrivalday':moment(this.state.enddate).toString().split(" ")[0],
                   'flightclass':this.state.class,
                   'startdate' : startdate,
-                  'enddate' : enddate
+                  'enddate' : enddate,
+                  'passengers' : this.state.traveler
               }
 
 

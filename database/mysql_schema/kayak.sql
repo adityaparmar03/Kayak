@@ -14,7 +14,7 @@ CREATE TABLE `USER` (
   `first_name` varchar(45) DEFAULT '',
   `last_name` varchar(45) DEFAULT '',
   `user_role` enum('USER','ADMIN') DEFAULT 'USER',
-  `street_address` varchar(90),
+  `street_address` varchar(90) DEFAULT '',
   `city` varchar(45) default '',
   `state` varchar(45)default '',
   `zip_code` varchar(45)default '',

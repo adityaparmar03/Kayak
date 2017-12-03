@@ -25,12 +25,12 @@ class Nav extends Component {
         this.successshowAlert(data.data.value);
         this.props.signIn(data);
     }
-
+   
    })
 
 
     }
-//********************************************************    
+//********************************************************
     state = {
                 navpopup:false,
                 IsLogged:false,
@@ -38,7 +38,7 @@ class Nav extends Component {
                 password:null,
                 repeatpassword:null,
                 modalValue:null
-               
+
     };
 //********************************************************
     registerButton(){
@@ -46,7 +46,7 @@ class Nav extends Component {
       console.log(this.state.password);
       console.log(this.state.repeatpassword);
       if(this.state.password===this.state.repeatpassword && this.state.email!=null) {
-  
+
           console.log("+++++++++");
       //console.log(regex.test("smcool100@gmail.com"));
          var payload = {
@@ -122,7 +122,7 @@ loginButton(){
         }
      })
 
-    
+
     }
 
 //********************************************************
@@ -134,43 +134,43 @@ loginButton(){
             if(this.props.userprofile.isLoggedIn){
                 return <div style={{marginTop:"4.5%",minWidth:"200px",position: 'absolute',
                 top: '0px', left: '0px', marginLeft:"83%",marginRight:"0%",borderRadius:"0",zIndex:"2"}} className="card">
-                   <div className="card-body"> 
+                   <div className="card-body">
                        <button type="button" className="btn btn-deep-orange btn-block"
                        onClick={()=>{
                            this.props.history.push('/profile');
                            this.handlepopup()}} >Profile</button>
                        <button type="button" className="btn btn-outline-deep-orange waves-effect btn-block"
                        onClick={()=>this.logout()}>Sign Out</button>
-                       
+
                    </div>
-                
-               </div> 
+
+               </div>
             }
             else{
                 return <div style={{marginTop:"4.5%",minWidth:"200px",position: 'absolute',
                 top: '0px', left: '0px', marginLeft:"83%",marginRight:"0%",borderRadius:"0",zIndex:"2"}} className="card">
-                   <div className="card-body"> 
+                   <div className="card-body">
                        <button type="button" className="btn btn-deep-orange btn-block"
                         data-toggle="modal" data-target="#modalLRForm" onClick={()=>this.handlepopup()}>SIGN UP</button>
                        <button type="button" className="btn btn-outline-deep-orange waves-effect btn-block" data-toggle="modal" data-target="#modalLRForm"
                        onClick={()=>this.handlepopup()}>SIGN IN</button>
-                       
+
                    </div>
-                
+
                </div>
             }
-            
+
         }
-        
+
     }
 
- //********************************************************    
+ //********************************************************
     handlepopup(){
 
         this.setState({navpopup:!this.state.navpopup})
-    } 
+    }
 
- //********************************************************   
+ //********************************************************
     alertOptions = {
         offset: 14,
         position: 'top center',
@@ -198,17 +198,17 @@ loginButton(){
                  <AlertContainer ref={a => this.msg = a} {...this.alertOptions} />
                 <nav className="navbar navbar-expand-lg navbar-dark" >
 
- 
+
              <a className="navbar-brand" href="#"><img width="120px" src={require('../image/kayaklogo.png')}/></a>
 
- 
+
             <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
                     aria-expanded="false" aria-label="Toggle navigation"><span className="navbar-toggler-icon"></span></button>
 
-  
+
              <div className="collapse navbar-collapse" id="navbarSupportedContent">
 
-    
+
             <ul className="navbar-nav mr-auto">
                         <li className="nav-item">
                             <a className="nav-link" href="/flight">Flights</a>
@@ -219,32 +219,32 @@ loginButton(){
                         <li className="nav-item">
                             <a className="nav-link" href="/car">Cars</a>
                         </li>
-            
 
-           
+
+
 
              </ul>
-     
+
                 <form className="form-inline">
                             <ul className="navbar-nav mr-auto">
                             <li className="nav-item" onClick={()=>this.handlepopup()}>
                                 <a className="nav-link">My Account</a>
                             </li>
-                            
+
                         </ul>
                 </form>
             </div>
-  
+
         </nav>
         <div className="modal fade" id="modalLRForm" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
     <div className="modal-dialog cascading-modal" role="document">
-      
+
         <div className="modal-content">
 
-         
+
             <div className="modal-c-tabs">
 
-             
+
                 <ul className="nav nav-tabs tabs-2 light-blue darken-3" role="tablist">
                     <li className="nav-item">
                         <a className="nav-link active" data-toggle="tab" href="#panel7" role="tab"><i className="fa fa-user mr-1"></i> Login</a>
@@ -254,12 +254,12 @@ loginButton(){
                     </li>
                 </ul>
 
-      
+
                 <div className="tab-content">
-                   
+
                     <div className="tab-pane fade in show active" id="panel7" role="tabpanel">
 
-                        
+
                         <div className="modal-body mb-1">
                             <div className="md-form form-sm">
                                 <i className="fa fa-envelope prefix"></i>
@@ -273,7 +273,7 @@ loginButton(){
 
                                 <label htmlFor="form22">Your email</label>
                             </div>
-                            
+
                             <div className="md-form form-sm">
                                 <i className="fa fa-lock prefix"></i>
                                 <input type="password" id="form23" className="form-control validate"
@@ -293,24 +293,24 @@ loginButton(){
                                             this.loginButton();}}>Log in <i className="fa fa-sign-in ml-1"></i></button>
                             </div>
                         </div>
-                
+
                         <div className="modal-footer">
                             <div className="options text-center text-md-right mt-1">
                                 <p>Not a member? <a href="#" className="blue-text">Sign Up</a></p>
                                 <p>Forgot <a href="#" className="blue-text">Password?</a></p>
                             </div>
-                            <button type="button" 
-                            className="btn btn-outline-info waves-effect ml-auto" 
+                            <button type="button"
+                            className="btn btn-outline-info waves-effect ml-auto"
                             data-dismiss="modal">Close</button>
                         </div>
 
                     </div>
-                
 
-                
+
+
                     <div className="tab-pane fade" id="panel8" role="tabpanel">
 
-                   
+
                         <div className="modal-body">
                             <div className="md-form form-sm">
                                 <i className="fa fa-envelope prefix"></i>
@@ -346,7 +346,7 @@ loginButton(){
                                     });
                                 }}/>
 
-                                
+
                                 <label htmlFor="form26">Repeat password</label>
                             </div>
 
@@ -355,7 +355,7 @@ loginButton(){
                             </div>
 
                         </div>
-                        
+
                         <div className="modal-footer">
                             <div className="options text-right">
                                 <p className="pt-1">Already have an account? <a href="#" className="blue-text">Log In</a></p>
@@ -363,15 +363,15 @@ loginButton(){
                             <button type="button" className="btn btn-outline-info waves-effect ml-auto" data-dismiss="modal">Close</button>
                         </div>
                     </div>
-               
+
                 </div>
 
             </div>
         </div>
-     
+
     </div>
 </div>
-              {this.displaypopup()}  
+              {this.displaypopup()}
             </div>
         )
     }
