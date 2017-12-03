@@ -21,13 +21,20 @@ class CarBooking extends Component {
       const payload = JSON.parse(localStorage.getItem("carbooking"));
       console.log("payload=>"+payload)
 
-      var pickupaddress = payload.booking.pickupaddress.street+", "+
-      payload.booking.pickupaddress.city+", "+
-      payload.booking.pickupaddress.state+" - ";
+      var pickupaddress, dropoffaddress;
+      if(payload.booking.pickupaddress != undefined){
+        pickupaddress = payload.booking.pickupaddress.street+", "+
+        payload.booking.pickupaddress.city+", "+
+        payload.booking.pickupaddress.state+" - ";
+      }
 
-      var dropoffaddress = payload.booking.dropoffaddress.street+", "+
-      payload.booking.dropoffaddress.city+", "+
-      payload.booking.dropoffaddress.state+" - ";
+      if(payload.booking.dropoffaddress != undefined){
+        var dropoffaddress = payload.booking.dropoffaddress.street+", "+
+        payload.booking.dropoffaddress.city+", "+
+        payload.booking.dropoffaddress.state+" - ";
+      }
+
+
 
       this.setState({
 
