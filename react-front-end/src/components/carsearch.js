@@ -15,7 +15,7 @@ class Carsearch extends Component {
 
 
     componentWillMount(){
-       
+
     }
     state = {
 
@@ -23,16 +23,16 @@ class Carsearch extends Component {
         city:"",
         startdate:"",
         enddate:"",
-        
+
         // UI State
-       
+
         citysuggestion: [],
         travelerpopup:false,
-        returndateenable:true
-        
+        returndateenable:false
+
       };
        handleSubmit(){
-        
+
         var startdate =moment(this.state.startdate).month()+"/"+
         moment(this.state.startdate).date()+"/"+
         moment(this.state.startdate).year()
@@ -43,7 +43,7 @@ class Carsearch extends Component {
         console.log("From=>"+this.state.city)
         console.log("Stat date=>"+startdate)
         console.log("Return Date=>"+enddate)
-    
+
 
         // call Api for search here......
         //API CALL
@@ -53,7 +53,10 @@ class Carsearch extends Component {
                'pickupcity':this.state.city.split(",")[0].trim(),
                'pickupstate':this.state.city.split(",")[1].trim(),
                'dropoffcity':this.state.city.split(",")[0].trim(),
-               'dropoffstate':this.state.city.split(",")[1].trim()
+               'dropoffstate':this.state.city.split(",")[1].trim(),
+               'startdate' : startdate,
+               'enddate' : enddate,
+               'dropoff' : this.state.returndateenable ? 'DIFFERENT-DROPOFF' : 'SAME-DROPOFF'
             }
 
 
@@ -67,19 +70,19 @@ class Carsearch extends Component {
 
 
       handleUpdateCityInput = (value,textbox) => {
-       
-        this.setState({"city":value})  
-           
+
+        this.setState({"city":value})
+
         var citysuggestion = cities().map((item,i)=>item.city+", "+item.state)
-      
+
         this.setState({
             citysuggestion: citysuggestion
         });
-        
-      }; 
-      
-    
-    
+
+      };
+
+
+
     handleStartDate(event, date){
         this.setState({startdate: date})
     }
@@ -87,7 +90,7 @@ class Carsearch extends Component {
         this.setState({enddate: date})
     }
     styles = {
-        
+
          toggle: {
            marginBottom: 16,
          },
@@ -111,9 +114,9 @@ class Carsearch extends Component {
         this.setState({
             returndateenable:!this.state.returndateenable
         })
-    }  
-   
-   
+    }
+
+
     render(){
         return(
             <div>
@@ -123,7 +126,7 @@ class Carsearch extends Component {
                         <tr>
                         <td>Same Dropoff</td>
                         <td><Toggle
-                                
+
                                 thumbStyle={this.styles.thumbOff}
                                 trackStyle={this.styles.trackOff}
                                 thumbSwitchedStyle={this.styles.thumbSwitched}
@@ -134,11 +137,11 @@ class Carsearch extends Component {
                             /></td>
                         <td>Different Dropoff</td>
                         </tr>
-                     </table> 
+                     </table>
             <div className="card-body">
             <div className="row">
-            
-           
+
+
             <div className="col-sm-6">
             <div style={{backgroundColor:'white',paddingLeft:"5%",paddingRight:"5%"}}>
             <div>
@@ -160,7 +163,7 @@ class Carsearch extends Component {
                     maxSearchResults={5}
                     underlineShow={false}
                     fullWidth={false}
-                    disabled={this.state.returndateenable}
+                    disabled={!this.state.returndateenable}
                     filter={AutoComplete.caseInsensitiveFilter}
             />
             </div>
@@ -168,30 +171,30 @@ class Carsearch extends Component {
 
             </div>
             <div className="col-sm-2" style={{backgroundColor:'white',paddingLeft:"2%",paddingRight:"5%"}}>
-            <DatePicker hintText="Start Date" mode="landscape"  
+            <DatePicker hintText="Start Date" mode="landscape"
             onChange={this.handleStartDate.bind(this)}
             floatingLabelText="Start Date"/>
             </div>
             <div className="col-sm-2" style={{backgroundColor:'white',paddingLeft:"0%",paddingRight:"5%"}}>
             <DatePicker hintText="Return Date" mode="landscape"
-            onChange={this.handleEndDate.bind(this)} 
+            onChange={this.handleEndDate.bind(this)}
             floatingLabelText="Return Date"/>
             </div>
-            
+
             <div className="col-sm-2" >
 
-            <button type="button" className="btn btn-deep-orange" 
+            <button type="button" className="btn btn-deep-orange"
             onClick={()=>this.handleSubmit()}
             style={{marginLeft:"-0%",height:'60px'}}>
                  <i className="fa fa-arrow-right" aria-hidden="true"></i></button>
             </div>
-           
+
           </div>
             </div>
 
         </div>
-        
-        
+
+
         </div>
         )
     }

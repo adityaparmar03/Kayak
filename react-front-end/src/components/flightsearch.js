@@ -60,7 +60,9 @@ class Flightsearch extends Component {
                   'departureday':moment(this.state.startdate).toString().split(" ")[0],
                   'triptype':this.state.returndateenable==true?"Two-Way":"One-Way",
                   'arrivalday':moment(this.state.enddate).toString().split(" ")[0],
-                  'flightclass':this.state.class
+                  'flightclass':this.state.class,
+                  'startdate' : startdate,
+                  'enddate' : enddate
               }
 
 
@@ -162,7 +164,7 @@ class Flightsearch extends Component {
 
     }
      styles = {
-       
+
         toggle: {
           marginBottom: 16,
         },
@@ -186,7 +188,7 @@ class Flightsearch extends Component {
         this.setState({
             returndateenable:!this.state.returndateenable
         })
-    }  
+    }
     render(){
         return(
             <div>
@@ -196,7 +198,7 @@ class Flightsearch extends Component {
                         <tr>
                         <td>One-way</td>
                         <td><Toggle
-                                
+
                                 thumbStyle={this.styles.thumbOff}
                                 trackStyle={this.styles.trackOff}
                                 thumbSwitchedStyle={this.styles.thumbSwitched}
@@ -207,8 +209,8 @@ class Flightsearch extends Component {
                             /></td>
                         <td>Round-Trip</td>
                         </tr>
-                     </table>   
-                  
+                     </table>
+
                     <div className="card-body">
                         <div className="row">
 
@@ -241,19 +243,19 @@ class Flightsearch extends Component {
 
                             </div>
                             <div className="col-sm-1" style={{backgroundColor:'white'}}>
-                                <DatePicker 
+                                <DatePicker
                                 hintText="Start Date"
                                  mode="landscape"
                                  autoOk={true}
                                  onChange={this.handleStartDate.bind(this)}
-                              
+
                                 floatingLabelText="Departure"/>
                             </div>
                             <div className="col-sm-1" style={{backgroundColor:'white',paddingRight:"2vw"}}>
-                                <DatePicker 
-                                hintText="Return Date" 
+                                <DatePicker
+                                hintText="Return Date"
                                 mode="landscape"
-                                autoOk={true} 
+                                autoOk={true}
                                 onChange={this.handleEndDate.bind(this)}
                                 disabled={!this.state.returndateenable}
                                 floatingLabelText="Return"/>

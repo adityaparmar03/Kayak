@@ -11,7 +11,7 @@ class Hotelsearch extends Component {
 
 
     componentWillMount(){
-       
+
     }
     state = {
 
@@ -19,17 +19,17 @@ class Hotelsearch extends Component {
         city:"",
         startdate:"",
         enddate:"",
-        
+
         // UI State
-       
+
         citysuggestion: [],
         travelerpopup:false,
         rooms:1,
         guests:1,
-     
+
       };
        handleSubmit(){
-        
+
         var startdate =moment(this.state.startdate).month()+"/"+
         moment(this.state.startdate).date()+"/"+
         moment(this.state.startdate).year()
@@ -49,7 +49,10 @@ class Hotelsearch extends Component {
         const payload={
             'city':this.state.city.split(",")[0].trim(),
             'state':this.state.city.split(",")[1].trim(),
-            'occupancy':this.state.guests
+            'occupancy':this.state.guests,
+            'startdate' : startdate,
+            'enddate' : enddate,
+            'roomcount' : this.state.rooms
         }
 
 
@@ -63,30 +66,30 @@ class Hotelsearch extends Component {
 
 
       handleUpdateCityInput = (value,textbox) => {
-       
-        this.setState({"city":value})  
-           
+
+        this.setState({"city":value})
+
         var citysuggestion = cities().map((item,i)=>item.city+", "+item.state)
-        
+
           this.setState({
               citysuggestion: citysuggestion
           });
-      
-        }; 
-        
-    
+
+        };
+
+
     handleStartDate(event, date){
         this.setState({startdate: date})
     }
     handleEndDate(event, date){
         this.setState({enddate: date})
     }
-      
+
     handlepopup(){
         this.setState({travelerpopup:!this.state.travelerpopup})
-    } 
+    }
     changetraveler(op,type){
-       
+
         if(op=="+"){
             if(type === "rooms"){
                 if(this.state.rooms >= this.state.guests){
@@ -94,37 +97,37 @@ class Hotelsearch extends Component {
                 }
                 this.setState({rooms:this.state.rooms+1})
             }else{
-                
+
                 if(this.state.guests >= this.state.rooms*4){
                     this.setState({rooms:this.state.rooms+1})
                 }
                 this.setState({guests:this.state.guests+1})
             }
-               
+
         }else{
             if(type === "rooms"){
                 if(this.state.rooms > 1){
-                   
+
                     this.setState({rooms:this.state.rooms-1})
-                   
+
                     if((this.state.guests) > (this.state.rooms-1)*4){
                         this.setState({guests:(this.state.rooms-1)*4})
-                       
+
                     }
-                    
+
                 }
-                
+
             }else{
                 if(this.state.guests > 1)
                 {
                     if(this.state.rooms < this.state.guests){
                         this.setState({guests:this.state.guests-1})
                     }
-                    
+
                 }
-               
+
             }
-               
+
         }
     }
     changeclass(cl){
@@ -134,12 +137,12 @@ class Hotelsearch extends Component {
         if(this.state.travelerpopup){
             return <div style={{marginTop:"-6%",minWidth:"300px",
             marginLeft:"60%",marginRight:"10%",borderRadius:"0",zIndex:"2"}} className="card">
-               
-                <div className="card-body"> 
+
+                <div className="card-body">
                     <button type="button" className="close" aria-label="Close" onClick={()=>this.handlepopup()}>
                         <span aria-hidden="true">&times;</span>
                     </button>
-                    
+
                     <h6><b>Rooms</b></h6>
                     <hr/>
                     <div className="row">
@@ -153,7 +156,7 @@ class Hotelsearch extends Component {
                             <button type="button" onClick={()=>this.changetraveler("+","rooms")}
                             className="btn btn-outline-primary waves-effect">+</button>
                         </div>
-                   
+
                      </div>
                      <br/>
                      <h6><b>Guests</b></h6>
@@ -169,15 +172,15 @@ class Hotelsearch extends Component {
                             <button type="button" onClick={()=>this.changetraveler("+","guests")}
                             className="btn btn-outline-primary waves-effect">+</button>
                         </div>
-                   
+
                      </div>
                 </div>
-             
+
             </div>
         }
-        
-    } 
-      
+
+    }
+
     render(){
         return(
             <div>
@@ -186,8 +189,8 @@ class Hotelsearch extends Component {
 
             <div className="card-body">
             <div className="row">
-            
-           
+
+
             <div className="col-sm-4">
             <div style={{backgroundColor:'white',paddingLeft:"5%",paddingRight:"5%"}}>
             <AutoComplete
@@ -204,17 +207,17 @@ class Hotelsearch extends Component {
 
             </div>
             <div className="col-sm-2" style={{backgroundColor:'white',paddingLeft:"2%",paddingRight:"5%"}}>
-            <DatePicker hintText="Start Date" mode="landscape"  
+            <DatePicker hintText="Start Date" mode="landscape"
             onChange={this.handleStartDate.bind(this)}
             floatingLabelText="Start Date"/>
             </div>
             <div className="col-sm-2" style={{backgroundColor:'white',paddingLeft:"0%",paddingRight:"5%"}}>
             <DatePicker hintText="Return Date" mode="landscape"
-            onChange={this.handleEndDate.bind(this)} 
+            onChange={this.handleEndDate.bind(this)}
             floatingLabelText="Return Date"/>
             </div>
             <div className="col-sm-3">
-            <div style={{backgroundColor:'white',paddingLeft:"5%",paddingRight:"5%"}} onClick={()=>this.handlepopup()}>    
+            <div style={{backgroundColor:'white',paddingLeft:"5%",paddingRight:"5%"}} onClick={()=>this.handlepopup()}>
             <TextField
                  hintText="Occupancy"
                  floatingLabelText="Occupancy"
@@ -226,18 +229,18 @@ class Hotelsearch extends Component {
             </div>
             <div className="col-sm-1" >
 
-            <button type="button" className="btn btn-deep-orange" 
+            <button type="button" className="btn btn-deep-orange"
             onClick={()=>this.handleSubmit()}
             style={{marginLeft:"-10%",height:'60px'}}>
                  <i className="fa fa-arrow-right" aria-hidden="true"></i></button>
             </div>
-           
+
           </div>
             </div>
 
         </div>
          {this.displaypopup()}
-        
+
         </div>
         )
     }

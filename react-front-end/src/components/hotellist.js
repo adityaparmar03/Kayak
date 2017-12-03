@@ -109,11 +109,18 @@ class Hotellist extends Component {
         }
 
     }
-   
+
 
 
     handleBook(data,classtype,price, capacity){
         console.log("selected data ="+JSON.stringify(data))
+        var hotelsearchcriteria = JSON.parse(localStorage.getItem('hotelsearchcriteria'));
+        var roomcount = hotelsearchcriteria.roomcount;
+        var startdate = new Date(hotelsearchcriteria.startdate);
+        var enddate = new Date(hotelsearchcriteria.enddate);
+        var oneDay = 24*60*60*1000;
+        var diffDays = Math.round(Math.abs((startdate.getTime() - enddate.getTime())/(oneDay)));
+        var totalPrice = diffDays * price;
         var hotelbooking = {
 
           booking :{
@@ -121,12 +128,14 @@ class Hotellist extends Component {
         		    "name" : data.name,
         		    "address" : data.address,
         		    "roomtype" : classtype,
-        		    "price" : price,
-        		    "roomcount" : 10, // TODO : add roomcount in state
+        		    "price" : totalPrice,
+        		    "roomcount" : roomcount,
         		    "capacity" : capacity,
-        		    "bookingstartdate" : "2017-01-18 09:15:00",
-        			"bookingenddate" : "2017-01-19 03:14:00"
-        	},
+        		    "bookingstartdate" : startdate,
+        			  "bookingenddate" : enddate,
+                "days" : diffDays
+
+        	}, // TODO - add credit card details with booking
 
       		"credit_card" : {
       			"card_type" : "MasterCard",
@@ -136,7 +145,6 @@ class Hotellist extends Component {
       			"valid_till" : "2017-01-26"
       		}
         }
-        // use unique ID : TODO
         var uniqueId = hotelbooking + Date.now();
         console.log('payload', hotelbooking, ' ', uniqueId);
         localStorage.setItem("hotelbooking", JSON.stringify(hotelbooking));
@@ -219,7 +227,7 @@ class Hotellist extends Component {
                                     <h6>{data.address.street}</h6>
                                     <h6>{data.address.city}, {data.address.state} - {data.address.zip}</h6>
                                 </div>
-                             
+
                             </div>
                         </div>
 

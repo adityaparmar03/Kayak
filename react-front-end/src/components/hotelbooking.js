@@ -25,7 +25,7 @@ class HotelBooking extends Component {
       payload.booking.address.city+", "+
       payload.booking.address.state+" - "+
       payload.booking.address.zip
-      var price = 
+      var price =
 
       this.setState({
 
@@ -33,12 +33,17 @@ class HotelBooking extends Component {
             address:address,
             roomtype:payload.booking.roomtype,
             noofrooms:payload.booking.roomcount,
-            total:payload.booking.roomcount*payload.booking.price,
+            total:payload.booking.price,
             stay:payload.booking.bookingstartdate+" - "+payload.booking.bookingenddate
 
       })
 
       console.log('payload',payload);
+
+    }
+
+    handlePay(){
+      const payload = JSON.parse(localStorage.getItem("hotelbooking"));
       API.bookHotel(payload)
           .then((res) => {
               console.log(res);
@@ -53,7 +58,6 @@ class HotelBooking extends Component {
                   console.log("Error is " + res);
               }
           });
-
     }
 
     render(){
@@ -73,30 +77,30 @@ class HotelBooking extends Component {
                                     <div className="row">
                                         <div className="col-sm-6">
                                         Hotel Name: {this.state.hotelname}
-                                        </div> 
+                                        </div>
                                         <div className="col-sm-6">
                                         Address: {this.state.address}
-                                        </div>   
+                                        </div>
                                     </div>
                                     <br/>
                                     <div className="row">
                                         <div className="col-sm-6">
                                           Room Type: {this.state.roomtype}
-                                        </div> 
+                                        </div>
                                         <div className="col-sm-6">
                                           No of Rooms: {this.state.noofrooms}
                                         </div>
-                                        
-                                    </div> 
+
+                                    </div>
                                     <br/>
                                     <div className="row">
                                         <div className="col-sm-6">
                                           Stay: {this.state.stay}
-                                        </div> 
+                                        </div>
                                         <div className="col-sm-6">
                                           Total: ${this.state.total}
-                                      </div>   
-                                    </div>  
+                                      </div>
+                                    </div>
                                 </div>
                         </div>
 
@@ -204,7 +208,7 @@ class HotelBooking extends Component {
 
                                 </div>
                             </div>
-                            <button className="btn btn-default btn-lg btn-block">Pay</button>
+                            <button className="btn btn-default btn-lg btn-block" onClick={()=>this.handlePay()}></button>
                           </div>
                         </div>
 

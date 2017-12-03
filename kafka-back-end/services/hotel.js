@@ -29,7 +29,7 @@ function searchHotels(msg, callback){
             callback(null, res);
         }
 
-    });    
+    });
 }
 
 // Book the Hotel
