@@ -3,7 +3,22 @@ var router = express.Router();
 var passport = require('passport');
 var kafka = require('./kafka/client');
 var mail = require('./mail');
+var multer = require('multer');
 
+var storage = multer.diskStorage({
+    destination: function (req, file, cb) {
+
+        const username ="./routes/Profilepictures/";
+
+        cb(null,username);
+    },
+    filename: function (req, file, cb) {
+
+        cb(null, req.session.email+".jpg");
+    }
+});
+
+var upload = multer({storage:storage});
 
 
 
@@ -11,11 +26,11 @@ var mail = require('./mail');
 
 router.post('/login', function (req, res) {
 
-     // var reqEmail = req.body.email;
-     //  var reqPassword = req.body.password;
-        console.log("inside the login path with the body"+req.body);
+    // var reqEmail = req.body.email;
+    //  var reqPassword = req.body.password;
+    console.log("inside the login path with the body"+req.body);
 
-   passport.authenticate('login', function(err, user) {
+    passport.authenticate('login', function(err, user) {
 
         if (err) {
             throw err;
@@ -44,30 +59,30 @@ router.get('/checkSession', function (req, res) {
 
     // var reqEmail = req.body.email;
     //  var reqPassword = req.body.password;
-  // console.log(req.session);
-   if(req.session.isloggedin){
+    // console.log(req.session);
+    if(req.session.isloggedin){
 
-       var email = {"email":req.session.email}
-console.log(email);
-       kafka.make_request('getuserdata',email,function (err,results) {
-           if(err){
-               res.send({"status":401,"data":"error while fetching the data for logged in user"})
-           }
-           else {
-               if(results.code==200){
-                   res.send({"status":201,"data":results.data});
-               }
-               else{
-                   res.send({"status":401,"data":results.value});
-               }
-           }
+        var email = {"email":req.session.email}
+        console.log(email);
+        kafka.make_request('getuserdata',email,function (err,results) {
+            if(err){
+                res.send({"status":401,"data":"error while fetching the data for logged in user"})
+            }
+            else {
+                if(results.code==200){
+                    res.send({"status":201,"data":results.data});
+                }
+                else{
+                    res.send({"status":401,"data":results.value});
+                }
+            }
 
-       })
+        })
 
-   }
-   else {
-       res.send({"status": 401});
-   }
+    }
+    else {
+        res.send({"status": 401});
+    }
 });
 
 //************************************************************************************************************************
@@ -79,19 +94,19 @@ router.get('/bookinghistory', function (req, res) {
     //  var reqPassword = req.body.password;
     console.log("inside history path");
     var email = {"email": req.session.email};
-     kafka.make_request('bookings' ,email, function (err, results) {
-         if(err){
-             console.log("Error occcured");
-         }
-         else{
-             if(results.code==="200"){
-                 console.log("Everything successfull");
-                 res.send({"status":201 , "data": results})
+    kafka.make_request('bookings' ,email, function (err, results) {
+        if(err){
+            console.log("Error occcured");
+        }
+        else{
+            if(results.code==="200"){
+                console.log("Everything successfull");
+                res.send({"status":201 , "data": results})
 
-             }
-         }
+            }
+        }
 
-     })
+    })
 });
 
 //************************************************************************************************************************
@@ -110,7 +125,7 @@ router.post('/register',function (req,res) {
         else
         {
             if(results.code === "200"){
-             mail.sendMail(req,res);
+                mail.sendMail(req,res);
 
             }
             else {
@@ -126,8 +141,8 @@ router.post('/register',function (req,res) {
 
 router.put('/update',function (req,res) {
 
-console.log("inside the update path");
-console.log("*********************");
+    console.log("inside the update path");
+    console.log("*********************");
     console.log(req.body);
     console.log("*********************");
     var payload = req.body;
@@ -144,7 +159,7 @@ console.log("*********************");
         {
             if(results.code == 200){
                 req.session.email = req.body.email;
-               res.send({"status":201})
+                res.send({"status":201})
 
             }
             else {
@@ -157,7 +172,36 @@ console.log("*********************");
 
 })
 
+
 //************************************************************************************************************************
+
+router.post('/upload', upload.single('mypic'),function (req, res, next) {
+
+    console.log(req.body);
+    console.log(__dirname);
+    var payload = {"email": req.session.email}
+
+    payload["imgpath"] = __dirname + "/Profilepictures/"+req.session.email+".jpg";
+
+    console.log(payload);
+
+    kafka.make_request('upload', payload ,function(err,results){
+
+        if(err){
+            console.log("After kafka response");
+
+            res.send({"status":401})
+        }
+        else
+        {
+            res.send({"status":201});
+        }
+    })
+})
+
+
+//************************************************************************************************************************
+
 
 //************************************************************************************************************************
 
@@ -166,10 +210,10 @@ router.delete('/delete',function (req,res) {
     console.log("inside the delete path");
 
 
-   // console.log(req.query);
-   // var email = { 'email':req.session.email };
+    // console.log(req.query);
+    // var email = { 'email':req.session.email };
 
-    kafka.make_request('deleteuser', req.body ,function(err,results){
+    kafka.make_request('deleteuser', req.body.email ,function(err,results){
 
         if(err){
             console.log("After kafka response");

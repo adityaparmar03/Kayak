@@ -55,14 +55,14 @@ function login(msg, callback){
     mysql.fetchData(function (err,results) {
 
         if (err){
-           res.code = "401" ;
-           res.value = "Username not valid";
+            res.code = "401" ;
+            res.value = "Username not valid";
         }
         else {
             console.log("++++++++++++++++++++");
-               console.log(results[0].password);
-               console.log("1234");
-               console.log(reqPassword);
+            console.log(results[0].password);
+            console.log("1234");
+            console.log(reqPassword);
             console.log("++++++++++++++++++++");
 
             if (results[0].password == reqPassword) {
@@ -144,43 +144,43 @@ function update(msg,callback) {
     var foreignKey="SET foreign_key_checks = 0;"
 
 
-   mysql.executeQuery(function (err) {
-      if(err){
-          throw err;
-          res.code = "401";
-          res.value="error";
-      }
-      else{
-          console.log("executed the set foreign key query");
-          console.log("+++++++++++++++++++");
-          mysql.executeQuery(function(err){
-              if(err){
-                  throw err;
-                  res.code = "401";
-                  res.value=" Error Occured while registering ";
-              }
-              else{
-                  console.log("executed the set billing key query");
-                  console.log("+++++++++++++++++++");
-                  var updateQuery = "update user set email='"+msg.email+"', first_name='"+msg.firstname+"', last_name='"+msg.lastname+"',street_address='"+msg.address+"'," +
-                      "phone='"+msg.phonenumber+"',profile_image_path='"+msg.imgpath+"',credit_card_number='"+msg.creditcard+"',zip_code='"+msg.zipcode+"' where email='"+msg.user_email+"';";
+    mysql.executeQuery(function (err) {
+        if(err){
+            throw err;
+            res.code = "401";
+            res.value="error";
+        }
+        else{
+            console.log("executed the set foreign key query");
+            console.log("+++++++++++++++++++");
+            mysql.executeQuery(function(err){
+                if(err){
+                    throw err;
+                    res.code = "401";
+                    res.value=" Error Occured while registering ";
+                }
+                else{
+                    console.log("executed the set billing key query");
+                    console.log("+++++++++++++++++++");
+                    var updateQuery = "update user set email='"+msg.email+"', first_name='"+msg.firstname+"', last_name='"+msg.lastname+"',street_address='"+msg.address+"'," +
+                        "phone='"+msg.phonenumber+"',profile_image_path='"+msg.imgpath+"',credit_card_number='"+msg.creditcard+"',zip_code='"+msg.zipcode+"' where email='"+msg.user_email+"';";
 
-                  mysql.executeQuery(function(err){
-                      if(err) {
-                          throw err;
-                          res.code = "401";
-                          res.value=" Error Occured while registering ";
-                      }
-                      else{
-                          res.code = "200";
-                          res.value = "User successfully registered";
-                      }callback(null,res);
+                    mysql.executeQuery(function(err){
+                        if(err) {
+                            throw err;
+                            res.code = "401";
+                            res.value=" Error Occured while registering ";
+                        }
+                        else{
+                            res.code = "200";
+                            res.value = "User successfully registered";
+                        }callback(null,res);
 
-                  },updateQuery)
-              }
-          },updateBilling);
-      }
-   },foreignKey)
+                    },updateQuery)
+                }
+            },updateBilling);
+        }
+    },foreignKey)
 
 
 
@@ -227,7 +227,7 @@ function bookinghistory(msg,callback){
 
                     }
                     else if(results[i].booking_type === "HOTEL"){
-                       hotel.push(results[i]);
+                        hotel.push(results[i]);
                     }
                 }
                 res.car = car;
@@ -248,10 +248,11 @@ function bookinghistory(msg,callback){
 
 //****************************************************************************************************************************
 
-function getuserdata(msg,callback){
+
+function upload(msg,callback){
     var res= {};
     console.log(msg);
-    var getQuery = "select first_name,last_name,user_role,city,state,zip_code,profile_image_path,email,phone,street_address,credit_card_number from user where email='"+msg.email+"';";
+    var getQuery = "update user set profile_image_path = '"+msg.imgpath+"' where email='"+msg.email+"';";
     mysql.fetchData(function (err,results) {
         if(err){
             res.code = "401";
@@ -272,6 +273,26 @@ function getuserdata(msg,callback){
 }
 
 
+
+//**************************************************************************************************************************
+
+function getuserdata(msg,callback){
+    var res= {};
+    console.log(msg);
+    var getQuery = "select first_name,last_name,user_role,city,state,zip_code,profile_image_path,email,phone,street_address,credit_card_number from user where email='"+msg.email+"';";
+    mysql.executeQuery(function (err) {
+        if(err){
+            res.code = "401";
+            res.value = "Error while fetching the user ";
+        }
+        else{
+            console.log("inside the else of the get data");
+            res.code = "200";
+            res.value = "Path succesfully updated";
+        }callback(null,res);
+    },getQuery);
+
+}
 
 //****************************************************************************************************************************
 function deleteuser(msg,callback) {
@@ -316,7 +337,7 @@ function deleteuser(msg,callback) {
 
 
 //****************************************************************************************************************************
-
+exports.upload = upload;
 exports.getuserdata = getuserdata;
 exports.deleteuser = deleteuser;
 exports.bookinghistory = bookinghistory;

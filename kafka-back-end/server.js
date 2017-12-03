@@ -8,6 +8,9 @@ var click_tracker = require('./services/click_tracker');
 var get_chart = require('./services/get_chart');
 var consumer = connection.getConsumer();
 var producer = connection.getProducer();
+var mongoose     = require('mongoose');
+mongoose.Promise = require('bluebird');
+
 
 console.log('server is running');
 consumer.on('message', function (message) {
@@ -91,6 +94,15 @@ consumer.on('message', function (message) {
                 response(data,res);
                 return;
             })
+            break;
+
+        case 'upload':
+            console.log("inside upload topic");
+            user.upload(body,function (err , res) {
+                response(data,res);
+                return;
+            })
+
             break;
 
 
@@ -259,6 +271,26 @@ consumer.on('message', function (message) {
 
     }
 });
+
+// Redis Config
+
+// var redis = require('ioredis');
+// var MongooseRedis = require('mongoose-with-redis');
+// var redisClient = redis.createClient();
+//
+// var cacheOptions = {
+//     cache: true,
+//     expires: 60, // keeping it low for now , will extend in future
+//     prefix: 'RedisCache'
+// };
+//
+// MongooseRedis(mongoose, redisClient, cacheOptions);
+
+// End of Redis Config
+
+mongoose.connect('mongodb://localhost:27017/cmpe273_kayak').then(function(){
+	  console.log(" Connected to DropBox Mongo DB ".green);
+	}).catch(err => console.error("error connecting to mongo" + err));
 //************************************************************************************************************************
 
 
