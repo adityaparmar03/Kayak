@@ -255,67 +255,16 @@ class Flightlist extends Component {
         localStorage.setItem("flightbooking", JSON.stringify(flightbooking));
         this.props.history.push('/flightbooking');
     }
-
     displayflights(data,index){
-        if(this.state.triptype == 'One-Way'){
-            return(
-                <div className="jumbotron">
-                    <div data-toggle="collapse" data-target={'#details'+index}>
-                    <div className="row">
-                        <div className="col-sm-9">
-                            <div className="row" style={{paddingTop:"4vh"}}>
-                                    <div className="col-sm-0" style={{textAlign:"center",fontSize:"12px",fontWeight:"bold"}}>
-
-                                    </div>
-                                    <div className="col-sm-4" style={{textAlign:"center",fontSize:"12px",fontWeight:""}}>
-                                    <div  style={{textAlign:"center"}}>
-                                                <img src={'http://localhost:3001/images/'+data.imageurl} height="45vh" width="45vw" alt="logo"/>
-                                                <br/>
-                                                <p>{data.operator}</p>
-                                       </div>
-                                    </div>
-                                    <div className="col-sm-2" style={{textAlign:"center",fontSize:"12px"}}>
-                                       <div  style={{textAlign:"center"}}>
-                                                <p style={{fontWeight:"bold"}}>{data.flights.arrivaltime}</p>
-                                                <p>{data.flights.origin.city}</p>
-                                       </div>
-                                    </div>
-                                    <div className="col-sm-2" style={{textAlign:"center"}}>
-                                    <div  style={{textAlign:"center"}}>
-                                         {this.displaystopline("nonstop")}
-                                         <p style={{fontSize:"12px"}}>non stop</p>
-                                    </div>
-                                    </div>
-                                    <div className="col-sm-2" style={{textAlign:"center",fontSize:"12px"}}>
-                                    <div  style={{textAlign:"center"}}>
-                                             <p style={{fontWeight:"bold"}}>{data.flights.departuretime}</p>
-                                             <p>{data.flights.destination.city}</p>
-                                    </div>
-                                    </div>
-                                    <div className="col-sm-2" style={{textAlign:"center"}}>
-                                        <p style={{fontSize:"12px",fontWeight:"bold"}}>{data.flightId}</p>
-                                    </div>
-
-                            </div>
-                         </div>
-                        <div className="col-sm-3">
-                                <div style={{textAlign:"center"}}>
-                                <b style={{fontSize:"20px",fontWeight:"bold"}}>${data.class[0].price}</b><br/>
-                                <b style={{fontSize:"12px",fontWeight:"bold"}}>{data.class[0].type}</b><br/>
-                                <button style={{width:"12vw"}} onClick={()=>this.handleBookOneWay(data,data.class[0].type, data.class[0].price, data.class[0].capacity)}
-                                className="btn btn-deep-orange">Book</button>
-                                </div>
-
-    displayflights(data,index){
-
-
+        
+      
             if(this.state.triptype == 'One-Way'){
                 if(this.state.low <= data.class[0].price &&  data.class[0].price <=this.state.high
                    && this.state.arrival_start_time <= this.getminutes(data.flights.arrivaltime)
                    && this.state.arrival_end_time >= this.getminutes(data.flights.arrivaltime)
                    && this.state.departure_start_time <= this.getminutes(data.flights.departuretime)
                    && this.state.departure_end_time >= this.getminutes(data.flights.departuretime)
-
+                   
                 ){
                     return(
                         <div className="jumbotron">
@@ -324,7 +273,7 @@ class Flightlist extends Component {
                                 <div className="col-sm-9">
                                     <div className="row" style={{paddingTop:"4vh"}}>
                                             <div className="col-sm-0" style={{textAlign:"center",fontSize:"12px",fontWeight:"bold"}}>
-
+        
                                             </div>
                                             <div className="col-sm-4" style={{textAlign:"center",fontSize:"12px",fontWeight:""}}>
                                             <div  style={{textAlign:"center"}}>
@@ -354,24 +303,17 @@ class Flightlist extends Component {
                                             <div className="col-sm-2" style={{textAlign:"center"}}>
                                                 <p style={{fontSize:"12px",fontWeight:"bold"}}>{data.flightId}</p>
                                             </div>
-
+        
                                     </div>
                                  </div>
                                 <div className="col-sm-3">
-
                                         <div style={{textAlign:"center"}}>
-                                        <b style={{fontSize:"20px",fontWeight:"bold"}}>${data.class[1].price}</b><br/>
-                                        <b style={{fontSize:"12px",fontWeight:"bold"}}>{data.class[1].type}</b><br/>
-                                        <button style={{width:"12vw"}}className="btn btn-deep-orange"
-                                        onClick={()=>this.handleBookOneWay(data,data.class[1].type, data.class[1].price, data.class[1].capacity)}>Book</button>
+                                        <b style={{fontSize:"20px",fontWeight:"bold"}}>${data.class[0].price}</b><br/>
+                                        <b style={{fontSize:"12px",fontWeight:"bold"}}>{data.class[0].type}</b><br/>
+                                        <button style={{width:"12vw"}} onClick={()=>this.handleBookOneWay(data,data.class[0].type,data.class[0].price, data.class[0].capacity)}
+                                        className="btn btn-deep-orange">Book</button>
                                         </div>
-                                        <div style={{textAlign:"center"}}>
-                                        <b style={{fontSize:"20px",fontWeight:"bold"}}>${data.class[2].price}</b><br/>
-                                        <b style={{fontSize:"12px",fontWeight:"bold"}}>{data.class[2].type}</b><br/>
-                                        <button style={{width:"12vw"}}className="btn btn-deep-orange"
-                                        onClick={()=>this.handleBookOneWay(data,data.class[2].type, data.class[2].price, data.class[2].capacity)} >Book</button>
-                                        </div>
-
+        
                                 </div>
                             </div>
                             </div>
@@ -386,7 +328,7 @@ class Flightlist extends Component {
                                                     <p>Airport: {data.flights.origin.airport}</p>
                                                     <p>City: {data.flights.origin.city}</p>
                                                     <p>State: {data.flights.origin.state}</p>
-
+        
                                                  </div>
                                                  <div className="col-sm-6">
                                                     <p><b>Destination</b></p>
@@ -397,46 +339,48 @@ class Flightlist extends Component {
                                                     <p>State: {data.flights.destination.state}</p>
                                                  </div>
                                             </div>
-
+        
                                         </div>
                                         <div className="col-sm-3">
-
+        
                                                 <div style={{textAlign:"center"}}>
                                                 <b style={{fontSize:"20px",fontWeight:"bold"}}>${data.class[1].price}</b><br/>
                                                 <b style={{fontSize:"12px",fontWeight:"bold"}}>{data.class[1].type}</b><br/>
-                                                <button style={{width:"12vw"}}className="btn btn-deep-orange">Book</button>
+                                                <button style={{width:"12vw"}} onClick={()=>this.handleBookOneWay(data,data.class[1].type,data.class[1].price, data.class[1].capacity)}
+                                                className="btn btn-deep-orange">Book</button>
                                                 </div>
                                                 <div style={{textAlign:"center"}}>
                                                 <b style={{fontSize:"20px",fontWeight:"bold"}}>${data.class[2].price}</b><br/>
                                                 <b style={{fontSize:"12px",fontWeight:"bold"}}>{data.class[2].type}</b><br/>
-                                                <button style={{width:"12vw"}}className="btn btn-deep-orange">Book</button>
+                                                <button style={{width:"12vw"}} onClick={()=>this.handleBookOneWay(data,data.class[2].type,data.class[2].price,  data.class[2].capacity)}
+                                                className="btn btn-deep-orange">Book</button>
                                                 </div>
-
+        
                                         </div>
                                 </div>
                             </div>
-
+        
                          </div>
-                        <div className="col-sm-3">
-                                <br/>
-                                <div style={{textAlign:"center"}}>
-                                <div style={{textAlign:"center"}}>
-                                <b style={{fontSize:"20px",fontWeight:"bold"}}>${data._id.class[0].price}</b><br/>
-                                <b style={{fontSize:"12px",fontWeight:"bold"}}>{data._id.class[0].type}</b><br/>
-                                <button style={{width:"12vw"}} onClick={()=>this.handleBookTwoWay(data,data._id.class[0].type, data._id.class[0].price, data._id.class[0].capacity)}
-                                className="btn btn-deep-orange">Book</button>
-                                </div>
-                                </div>
-
-                        </div>
-                    </div>
-                    </div>
-                    <div id={'details'+index} className="collapse">
-                        <div className="row">
+                    )
+                }
+               
+            }
+            else{
+                if(this.state.low <= data._id.class[0].price &&  data._id.class[0].price <=this.state.high
+                    && this.state.arrival_start_time <= this.getminutes(data.flights[0].arrivaltime)
+                    && this.state.arrival_end_time >= this.getminutes(data.flights[0].arrivaltime)
+                    && this.state.departure_start_time <= this.getminutes(data.flights[0].departuretime)
+                    && this.state.departure_end_time >= this.getminutes(data.flights[0].departuretime)
+                    
+                ){
+                    return(
+                        <div className="jumbotron">
+                            <div data-toggle="collapse" data-target={'#details'+index}>
+                            <div className="row">
                                 <div className="col-sm-9">
                                     <div className="row" style={{paddingTop:"4vh"}}>
                                             <div className="col-sm-0" style={{textAlign:"center",fontSize:"12px",fontWeight:"bold"}}>
-
+        
                                             </div>
                                             <div className="col-sm-4" style={{textAlign:"center",fontSize:"12px",fontWeight:""}}>
                                             <div  style={{textAlign:"center"}}>
@@ -453,7 +397,7 @@ class Flightlist extends Component {
                                                         <p style={{fontWeight:"bold"}}>{data.flights[0].departuretime}</p>
                                                         <p>{data.flights[0].origin.city}</p>
                                                </div>
-
+                                               
                                                <div  style={{textAlign:"center"}}>
                                                         <p style={{fontWeight:"bold"}}>{data.flights[1].departuretime}</p>
                                                         <p>{data.flights[1].origin.city}</p>
@@ -465,7 +409,7 @@ class Flightlist extends Component {
                                                     {this.displaystopline("nonstop")}
                                                     <p style={{fontSize:"12px"}}>non stop</p>
                                                 </div>
-
+                                               
                                                 <div  style={{textAlign:"center"}}>
                                                     {this.displaystopline("nonstop")}
                                                     <p style={{fontSize:"12px"}}>non stop</p>
@@ -476,7 +420,7 @@ class Flightlist extends Component {
                                                      <p style={{fontWeight:"bold"}}>{data.flights[0].arrivaltime}</p>
                                                      <p>{data.flights[0].destination.city}</p>
                                             </div>
-
+                                            
                                             <div  style={{textAlign:"center"}}>
                                                      <p style={{fontWeight:"bold"}}>{data.flights[0].arrivaltime}</p>
                                                      <p>{data.flights[1].destination.city}</p>
@@ -485,37 +429,96 @@ class Flightlist extends Component {
                                             <div className="col-sm-2" style={{textAlign:"center"}}>
                                                 <p style={{fontSize:"12px",fontWeight:"bold"}}>{data.flightId}</p>
                                             </div>
-
+        
                                     </div>
                                  </div>
                                 <div className="col-sm-3">
-                                    <div style={{textAlign:"center"}}>
-                                    <div style={{textAlign:"center"}}>
-                                    <b style={{fontSize:"20px",fontWeight:"bold"}}>${data._id.class[1].price}</b><br/>
-                                    <b style={{fontSize:"12px",fontWeight:"bold"}}>{data._id.class[1].type}</b><br/>
-                                    <button style={{width:"12vw"}} onClick={()=>this.handleBookTwoWay(data,data._id.class[1].type, data._id.class[1].price, data._id.class[1].capacity)}
-                                    className="btn btn-deep-orange">Book</button>
-                                    </div>
-                                    </div>
-                                    <br/>
-                                    <div style={{textAlign:"center"}}>
-                                    <div style={{textAlign:"center"}}>
-                                    <b style={{fontSize:"20px",fontWeight:"bold"}}>${data._id.class[2].price}</b><br/>
-                                    <b style={{fontSize:"12px",fontWeight:"bold"}}>{data._id.class[2].type}</b><br/>
-                                    <button style={{width:"12vw"}} onClick={()=>this.handleBookTwoWay(data,data._id.class[2].type, data._id.class[2].price, data._id.class[2].capacity)}
-                                    className="btn btn-deep-orange">Book</button>
-                                    </div>
-                                    </div>
-
-
+                                        <br/>
+                                        <div style={{textAlign:"center"}}>
+                                        <div style={{textAlign:"center"}}>
+                                        <b style={{fontSize:"20px",fontWeight:"bold"}}>${data._id.class[0].price}</b><br/>
+                                        <b style={{fontSize:"12px",fontWeight:"bold"}}>{data._id.class[0].type}</b><br/>
+                                        <button style={{width:"12vw"}} onClick={()=>this.handleBookTwoWay(data,data._id.class[0].type, data._id.class[0].price,data._id.class[0].capacity)}
+                                        className="btn btn-deep-orange">Book</button>
+                                        </div>
+                                        </div>
+        
                                 </div>
-                        </div>
-                    </div>
-
-                 </div>
-            )
-        }
-
+                            </div>
+                            </div>
+                            <div id={'details'+index} className="collapse">
+                                <div className="row">
+                                        <div className="col-sm-9">
+                                            <div className="row">
+                                                 <div className="col-sm-3">
+                                                    <p><b>Origin</b></p>
+                                                    <p>Day: {data.flights[0].arrivalday}</p>
+                                                    <p>Time: {data.flights[0].arrivaltime}</p>
+                                                    <p>Airport: {data.flights[0].origin.airport}</p>
+                                                    <p>City: {data.flights[0].origin.city}</p>
+                                                    <p>State: {data.flights[0].origin.state}</p>
+        
+                                                 </div>
+                                                 <div className="col-sm-3">
+                                                    <p><b>Destination</b></p>
+                                                    <p>Day: {data.flights[0].departureday}</p>
+                                                    <p>Time: {data.flights[0].departuretime}</p>
+                                                    <p>Airport: {data.flights[0].destination.airport}</p>
+                                                    <p>City: {data.flights[0].destination.city}</p>
+                                                    <p>State: {data.flights[0].destination.state}</p>
+                                                 </div>
+                                                 <div className="col-sm-3">
+                                                    <p><b>Origin</b></p>
+                                                    <p>Day: {data.flights[1].arrivalday}</p>
+                                                    <p>Time: {data.flights[1].arrivaltime}</p>
+                                                    <p>Airport: {data.flights[1].origin.airport}</p>
+                                                    <p>City: {data.flights[1].origin.city}</p>
+                                                    <p>State: {data.flights[1].origin.state}</p>
+        
+                                                 </div>
+                                                 <div className="col-sm-3">
+                                                    <p><b>Destination</b></p>
+                                                    <p>Day: {data.flights[1].departureday}</p>
+                                                    <p>Time: {data.flights[1].departuretime}</p>
+                                                    <p>Airport: {data.flights[1].destination.airport}</p>
+                                                    <p>City: {data.flights[1].destination.city}</p>
+                                                    <p>State: {data.flights[1].destination.state}</p>
+                                                 </div>
+                                            </div>
+        
+                                        </div>
+                                        <div className="col-sm-3">
+                                            <div style={{textAlign:"center"}}>
+                                            <div style={{textAlign:"center"}}>
+                                            <b style={{fontSize:"20px",fontWeight:"bold"}}>${data._id.class[1].price}</b><br/>
+                                            <b style={{fontSize:"12px",fontWeight:"bold"}}>{data._id.class[1].type}</b><br/>
+                                            <button style={{width:"12vw"}} onClick={()=>this.handleBookTwoWay(data,data._id.class[1].type, data._id.class[1].price,data._id.class[1].capacity)}
+                                            className="btn btn-deep-orange">Book</button>
+                                            </div>
+                                            </div>
+                                            <br/>
+                                            <div style={{textAlign:"center"}}>
+                                            <div style={{textAlign:"center"}}>
+                                            <b style={{fontSize:"20px",fontWeight:"bold"}}>${data._id.class[2].price}</b><br/>
+                                            <b style={{fontSize:"12px",fontWeight:"bold"}}>{data._id.class[2].type}</b><br/>
+                                            <button style={{width:"12vw"}} onClick={()=>this.handleBookTwoWay(data,data._id.class[2].type, data._id.class[2].price,data._id.class[2].capacity)}
+                                            className="btn btn-deep-orange">Book</button>
+                                            </div>
+                                            </div>
+                                               
+        
+                                        </div>
+                                </div>
+                            </div>
+        
+                         </div>
+                    ) 
+                }
+               
+            }
+        
+       
+            
      }
     render(){
         var colors = ["#FCBD7E", "#EB9F71", "#E6817C"];
