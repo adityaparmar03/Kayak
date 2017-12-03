@@ -100,29 +100,36 @@ class Carlist extends Component {
         }
     }
 
-    handleBook(data,triptype,price){
+    handleBook(data, price){
         console.log("selected data ="+JSON.stringify(data))
+        var carsearchcriteria = JSON.parse(localStorage.getItem('carsearchcriteria'));
+        var dropoff = carsearchcriteria.dropoff;
+        var startdate = new Date(carsearchcriteria.startdate);
+        var enddate = new Date(carsearchcriteria.enddate);
+        var oneDay = 24*60*60*1000;
+        var diffDays = Math.round(Math.abs((startdate.getTime() - enddate.getTime())/(oneDay)));
+        var totalPrice = diffDays * price;
         var carbooking = {
           booking : {
-      			"carId" : data.carId,
+      			  "carId" : data.carId,
       		    "cartype" : data.cartype,
       		    "carmodel" : data.carmodel,
-      		    "pickupdate" : "2017-01-18 09:15:00",
-      		    "dropoffdate" : "2017-01-19 23:14:00",
-      		    "triptype"    : "SAME-DROPOFF", // TODO - get triptype from ui
+      		    "pickupdate" : startdate,
+      		    "dropoffdate" : enddate,
+      		    "triptype"    : dropoff,
       		    "pickupaddress" : data.pickupaddress,
       		    "dropoffaddress" : data.dropoffaddress,
-      		    "price" : price // TODO - price calculation on UI
-      		},
-          credit_card : { // TODO - add credit card from user
-      			"card_type" : "MasterCard",
-      			"card_number": "012345678989",
-      			"card_holder_name" : "Meenakshi Paryani",
-      			"valid_from" : "2017-01-18",
-      			"valid_till" : "2017-01-26"
-    		  }
+      		    "price" : totalPrice,
+              "days" : diffDays
+      		}
+          // credit_card : { // TODO - add credit card from user
+      		// 	"card_type" : "MasterCard",
+      		// 	"card_number": "012345678989",
+      		// 	"card_holder_name" : "Meenakshi Paryani",
+      		// 	"valid_from" : "2017-01-18",
+      		// 	"valid_till" : "2017-01-26"
+    		  // }
         }
-        // use unique ID : TODO
         var uniqueId = carbooking + Date.now();
         console.log('payload', carbooking, ' ', uniqueId);
         localStorage.setItem("carbooking", JSON.stringify(carbooking));

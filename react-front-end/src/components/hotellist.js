@@ -135,15 +135,15 @@ class Hotellist extends Component {
         			  "bookingenddate" : enddate,
                 "days" : diffDays
 
-        	}, // TODO - add credit card details with booking
+        	}
 
-      		"credit_card" : {
-      			"card_type" : "MasterCard",
-      			"card_number": "012345678989",
-      			"card_holder_name" : "Meenakshi Paryani",
-      			"valid_from" : "2017-01-18",
-      			"valid_till" : "2017-01-26"
-      		}
+      		// "credit_card" : {
+      		// 	"card_type" : "MasterCard",
+      		// 	"card_number": "012345678989",
+      		// 	"card_holder_name" : "Meenakshi Paryani",
+      		// 	"valid_from" : "2017-01-18",
+      		// 	"valid_till" : "2017-01-26"
+      		// }
         }
         var uniqueId = hotelbooking + Date.now();
         console.log('payload', hotelbooking, ' ', uniqueId);
