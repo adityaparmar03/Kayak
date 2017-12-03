@@ -135,15 +135,12 @@ loginButton(){
      API.doLogin(payload).then((data)=>{
         //console.log(data);
         if(data.status===201){
-        console.log("after the login is complete");
-        console.log("000000000000000000000");
-        console.log(data)
-            console.log("000000000000000000000");
+      
             this.successshowAlert("you have succesfully registered");
             //this.props.history.push('/');
             this.props.userprofile.isLoggedIn = true;
             window.location.reload();
-
+           // this.props.history.push(this.props.location.pathname); 
           //  console.log("Before getting in the signin reducer  "+ this.props.userprofile.isLoggedIn)
        // this.props.signIn(data);
         }
