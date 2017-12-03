@@ -25,8 +25,7 @@ class HotelBooking extends Component {
       payload.booking.address.city+", "+
       payload.booking.address.state+" - "+
       payload.booking.address.zip
-      var price =
-
+    
       this.setState({
 
             hotelname: payload.booking.name,
@@ -34,7 +33,7 @@ class HotelBooking extends Component {
             roomtype:payload.booking.roomtype,
             noofrooms:payload.booking.roomcount,
             total:payload.booking.price,
-            stay:payload.booking.bookingstartdate+" - "+payload.booking.bookingenddate
+            stay:payload.booking.days+" days ("+payload.booking.bookingstartdate.substring(0, 10)+" - "+payload.booking.bookingenddate.substring(0, 10)+")"
 
       })
 
