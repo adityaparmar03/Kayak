@@ -355,7 +355,7 @@ function addHistory(msg, callback) {
 
     var res={};
     if(msg.payload.searchtype=="flight") {
-        var historySql = "insert into searhistory(`user_email`,`search_type`,`source_city`,`source_state`,`destination_city`,`destination_state`,`flight_trip_type`,`start_date`,`end_date`) values('"
+        var historySql = "insert into searchistory(`user_email`,`search_type`,`source_city`,`source_state`,`destination_city`,`destination_state`,`flight_trip_type`,`start_date`,`end_date`) values('"
             + msg.email + "','" + 'FLIGHT' + "','" + msg.payload.origincity + "','" + msg.payload.originstate + "','" + msg.payload.destinationcity + "','" + msg.payload.destinationstate + "','"
             + msg.payload.triptype + "','" + startdate + "','" + enddate + "');";
     }

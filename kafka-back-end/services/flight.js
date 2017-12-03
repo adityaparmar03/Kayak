@@ -358,19 +358,63 @@ function addFlight(msg, callback) {
             console.log(results);
             if(results.length > 0){
 
+
                 var flight = require('../models/flight/' + results[0].model);
 
+
+                var newflight = new flight();
+
+
+                var newclass=[]
+
+                newclass.push({'type':'Economy','price':100, 'capacity':50});
+                newclass.push({'type':'First','price':200 , 'capacity':50});
+                newclass.push({'type':'Business','price':300 , 'capacity':10});
+
+                var routeArr=[]
+
+                routeArr.push({
+                        'arrivaltime': '16:00',
+                        'arrivalday' : 'Thu',
+                        'departuretime': '00:00',
+                        'departureday' : 'Mon',
+                        'origin': {'city':'San Francisco', 'state':'California', 'country':'USA', 'airport':'San Francisco International Airport'},
+                        'destination': {'city':'San Jose', 'state':'California', 'country':'USA', 'airport':'San Jose Airport'}
+
+                    });
+
+                routeArr.push(
+                    {
+                        'arrivaltime': '02:00',
+                        'arrivalday' : 'Tue',
+                        'departuretime': '18:00',
+                        'departureday' : 'Wed',
+                        'origin': {'city':'San Jose', 'state':'California', 'country':'USA', 'airport':'San Jose Airport'},
+                        'destination': {'city':'San Francisco', 'state':'California', 'country':'USA', 'airport':'San Francisco International Airport'}
+
+                    });
+                newflight.flightId=msg.flight.flightId,
+                newflight.operator=msg.flight.operator,
+                newflight.class=newclass,
+                newflight.flights= routeArr,
+                newflight.imageurl=msg.flight.imageurl
+
                 var res = {};
-                var origincity = msg.searchcriteria.origincity;
-                var originstate = msg.searchcriteria.originstate;
-                var destinationcity = msg.searchcriteria.destinationcity;
-                var destinationstate = msg.searchcriteria.destinationstate;
-                var triptype = msg.searchcriteria.triptype;
-                var flightclass = msg.searchcriteria.flightclass;
-                var arrivalday = msg.searchcriteria.arrivalday;
-                var departureday = msg.searchcriteria.departureday;
 
+                newflight.save(function (err) {
 
+                    if (err) {
+                        console.log(err)
+                        res.code = "401";
+
+                    }
+                    else {
+
+                        res.code = "200";
+                        res.value = {"filedata": filedata};
+                        callback(null, res);
+                    }
+                });
             }
             else {
                 res.code = "401";
