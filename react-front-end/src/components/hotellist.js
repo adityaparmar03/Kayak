@@ -109,18 +109,7 @@ class Hotellist extends Component {
         }
 
     }
-    getrooms(rooms){
-        return rooms.map((item,i)=> <div className="col-sm-2">
-
-              <div style={{textAlign:"center",marginTop:'0vh'}}>
-              <b style={{fontSize:"20px",fontWeight:"bold"}}>${item.price}</b><br/>
-              <b style={{fontSize:"15px",fontWeight:"bold"}}>{item.roomtype}</b><br/>
-              <button style={{minWidth:"8vw",maxHeight:'7.5vh'}}className="btn btn-deep-orange">Book</button>
-              </div>
-
-
-     </div>  )
-    }
+   
 
 
     handleBook(data,classtype,price, capacity){
@@ -136,7 +125,7 @@ class Hotellist extends Component {
         		    "roomcount" : 10, // TODO : add roomcount in state
         		    "capacity" : capacity,
         		    "bookingstartdate" : "2017-01-18 09:15:00",
-        			  "bookingenddate" : "2017-01-19 03:14:00"
+        			"bookingenddate" : "2017-01-19 03:14:00"
         	},
 
       		"credit_card" : {
@@ -161,7 +150,7 @@ class Hotellist extends Component {
                 <div className="card" >
                     <div data-toggle="collapse" data-target={'#details'+index}>
                     <div className="row">
-                        <div className="col-sm-5">
+                        <div className="col-sm-7">
                         <div className="view overlay hm-zoom">
                          <img src={'http://localhost:3001/images/'+data.imageurl}
                             className="img-fluid " alt={data.name}/>
@@ -171,23 +160,34 @@ class Hotellist extends Component {
                         </div>
 
                          </div>
-                         <div className="col-sm-4">
+                         <div className="col-sm-2">
                             <div  style={{marginTop:'3vh'}}>
                                 <h4 class="h4-responsive"><b>{data.name}</b></h4>
                                 {this.star(data.stars)}
                                 <div>
-                                <button type="button" className="btn btn-elegant">{data.rating}</button><a>{data.reviews.length} Reviews</a>
+                                <button type="button" className="btn btn-elegant">{data.rating}</button>
+                                <br/><a>{data.reviews.length} Reviews</a>
                                 </div>
 
                             </div>
 
                          </div>
                         <div className="col-sm-3">
-                                <div style={{textAlign:"center",marginTop:'5vh'}}>
+                                <div style={{textAlign:"center",marginTop:'1vh'}}>
                                 <b style={{fontSize:"20px",fontWeight:"bold"}}>${data.rooms[0].price}</b><br/>
                                 <b style={{fontSize:"15px",fontWeight:"bold"}}>{data.rooms[0].roomtype}</b><br/>
                                 <button style={{minWidth:"10vw",maxHeight:'7.5vh'}}className="btn btn-deep-orange"
                                 onClick={()=>this.handleBook(data, data.rooms[0].roomtype, data.rooms[0].price, data.rooms[0].rooomcount)}>Book</button>
+                                <br/>
+                                <b style={{fontSize:"20px",fontWeight:"bold"}}>${data.rooms[1].price}</b><br/>
+                                <b style={{fontSize:"15px",fontWeight:"bold"}}>{data.rooms[1].roomtype}</b><br/>
+                                <button style={{minWidth:"10vw",maxHeight:'7.5vh'}}className="btn btn-deep-orange"
+                                onClick={()=>this.handleBook(data, data.rooms[1].roomtype, data.rooms[1].price, data.rooms[1].rooomcount)}>Book</button>
+                                <br/>
+                                <b style={{fontSize:"20px",fontWeight:"bold"}}>${data.rooms[2].price}</b><br/>
+                                <b style={{fontSize:"15px",fontWeight:"bold"}}>{data.rooms[2].roomtype}</b><br/>
+                                <button style={{minWidth:"10vw",maxHeight:'7.5vh'}}className="btn btn-deep-orange"
+                                onClick={()=>this.handleBook(data, data.rooms[2].roomtype, data.rooms[2].price, data.rooms[2].rooomcount)}>Book</button>
                      </div>
 
                         </div>
@@ -219,7 +219,7 @@ class Hotellist extends Component {
                                     <h6>{data.address.street}</h6>
                                     <h6>{data.address.city}, {data.address.state} - {data.address.zip}</h6>
                                 </div>
-                                {this.getrooms(data.rooms)}
+                             
                             </div>
                         </div>
 

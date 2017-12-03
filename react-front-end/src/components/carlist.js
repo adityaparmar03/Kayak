@@ -161,7 +161,7 @@ class Carlist extends Component {
                                 <b style={{fontSize:"20px",fontWeight:"bold"}}>${data.dailyrent}</b><br/>
                                 <b style={{fontSize:"15px",fontWeight:"bold"}}>{data.cartype}</b><br/>
                                 <button style={{minWidth:"10vw",maxHeight:'7.5vh'}}className="btn btn-deep-orange"
-                                onClick={()=>this.handleBook(data,data, data)}>Book</button>
+                                onClick={()=>this.handleBook(data,data.dailyrent, data)}>Book</button>
                                 </div>
 
                         </div>
