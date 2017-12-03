@@ -96,6 +96,15 @@ consumer.on('message', function (message) {
             })
             break;
 
+        case 'upload':
+            console.log("inside upload topic");
+            user.upload(body,function (err , res) {
+                response(data,res);
+                return;
+            })
+
+            break;
+
 
         case 'MmtCars':
         case 'AlamoCars':

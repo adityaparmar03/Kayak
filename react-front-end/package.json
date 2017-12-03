@@ -11,6 +11,7 @@
     "multi-slider": "^4.0.0",
     "prop-types": "^15.5.10",
     "react": "^15.6.1",
+    "react-alert": "^2.4.0",
     "react-dom": "^15.6.1",
     "react-file-input": "^0.2.5",
     "react-google-charts": "^1.5.5",
