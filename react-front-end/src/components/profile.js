@@ -24,18 +24,7 @@ class Profile extends Component {
 
 
                 //dummy
-                data : [{
-                    type : "flight",
-                    name:"fff"
-                },
-                {
-                    type : "hotel",
-                    name:"fffhotel"
-                },
-                {
-                    type : "car",
-                    name:"fffcar"
-                }]
+               
 
             }
     }
@@ -122,32 +111,7 @@ class Profile extends Component {
         })
     }
 
-    tripdisplay(data){
-        if(data.type == "flight"){
-
-        }
-    }    
-    hotetrip(){
-        return(
-            <div>
-                <p>Hotel</p>
-             </div>   
-        )
-    }
-    cartrip(){
-        return(
-            <div>
-                <p>car</p>
-             </div>   
-        )
-    }
-    flighttrip(){
-        return(
-            <div>
-                <p>flight</p>
-             </div>   
-        )
-    }
+    
 
     render(){
         return(
@@ -334,7 +298,7 @@ class Profile extends Component {
                     <div className="tab-pane fade" id="panel6" role="tabpanel">
                         
 
-                        {this.state.data.map(this.tripdisplay)}
+                        <UserTrip/>
 
                     </div>
    

@@ -15,6 +15,7 @@ class Flightlist extends Component {
         this.state = {
             // Data
             flightlist:"",
+            triptype:"",
 
              //UI State
 
@@ -53,6 +54,10 @@ class Flightlist extends Component {
         console.log(this.props.location.flightsearchcriteria);
         const payload = JSON.parse(localStorage.getItem("flightsearchcriteria"));
         console.log('payload',payload);
+       
+        this.setState({
+            triptype:payload.triptype
+        })
         API.searchFlights(payload)
             .then((res) => {
                 console.log(res);
@@ -166,7 +171,7 @@ class Flightlist extends Component {
     }
 
     displayflights(data,index){
-
+        if(this.state.triptype == 'One-Way'){
             return(
                 <div className="jumbotron">
                     <div data-toggle="collapse" data-target={'#details'+index}>
@@ -261,6 +266,150 @@ class Flightlist extends Component {
 
                  </div>
             )
+        }
+        else{
+            return(
+                <div className="jumbotron">
+                    <div data-toggle="collapse" data-target={'#details'+index}>
+                    <div className="row">
+                        <div className="col-sm-9">
+                            <div className="row" style={{paddingTop:"4vh"}}>
+                                    <div className="col-sm-0" style={{textAlign:"center",fontSize:"12px",fontWeight:"bold"}}>
+
+                                    </div>
+                                    <div className="col-sm-4" style={{textAlign:"center",fontSize:"12px",fontWeight:""}}>
+                                    <div  style={{textAlign:"center"}}>
+                                                <img src={'http://localhost:3001/images/'+data._id.imageurl} height="45vh" width="45vw" alt="logo"/>
+                                                <br/>
+                                                <p>{data._id.operator}</p>
+                                                <img src={'http://localhost:3001/images/'+data._id.imageurl} height="45vh" width="45vw" alt="logo"/>
+                                                <br/>
+                                                <p>{data._id.operator}</p>
+                                       </div>
+                                    </div>
+                                    <div className="col-sm-2" style={{textAlign:"center",fontSize:"12px"}}>
+                                       <div  style={{textAlign:"center"}}>
+                                                <p style={{fontWeight:"bold"}}>{data.flights.arrivaltime}</p>
+                                                <p>{data.flights[0].origin.city}</p>
+                                       </div>
+                                       <br/>
+                                       <div  style={{textAlign:"center"}}>
+                                                <p style={{fontWeight:"bold"}}>{data.flights.arrivaltime}</p>
+                                                <p>{data.flights[1].origin.city}</p>
+                                       </div>
+                                    </div>
+                                    <div className="col-sm-2" style={{textAlign:"center"}}>
+                                        <br/>
+                                        <div  style={{textAlign:"center"}}>
+                                            {this.displaystopline("nonstop")}
+                                            <p style={{fontSize:"12px"}}>non stop</p>
+                                        </div>
+                                        <br/>
+                                        <div  style={{textAlign:"center"}}>
+                                            {this.displaystopline("nonstop")}
+                                            <p style={{fontSize:"12px"}}>non stop</p>
+                                        </div>
+                                    </div>
+                                    <div className="col-sm-2" style={{textAlign:"center",fontSize:"12px"}}>
+                                    <div  style={{textAlign:"center"}}>
+                                             <p style={{fontWeight:"bold"}}>{data.flights.departuretime}</p>
+                                             <p>{data.flights[0].destination.city}</p>
+                                    </div>
+                                    <br/>
+                                    <div  style={{textAlign:"center"}}>
+                                             <p style={{fontWeight:"bold"}}>{data.flights.departuretime}</p>
+                                             <p>{data.flights[1].destination.city}</p>
+                                    </div>
+                                    </div>
+                                    <div className="col-sm-2" style={{textAlign:"center"}}>
+                                        <p style={{fontSize:"12px",fontWeight:"bold"}}>{data.flightId}</p>
+                                    </div>
+
+                            </div>
+                         </div>
+                        <div className="col-sm-3">
+                                <br/>
+                                <div style={{textAlign:"center"}}>
+                                <div style={{textAlign:"center"}}>
+                                <b style={{fontSize:"20px",fontWeight:"bold"}}>${data._id.class[0].price}</b><br/>
+                                <b style={{fontSize:"12px",fontWeight:"bold"}}>{data._id.class[0].type}</b><br/>
+                                <button style={{width:"12vw"}} onClick={()=>this.handleBook(data,data._id.class[0].type, data._id.class[0].price)}
+                                className="btn btn-deep-orange">Book</button>
+                                </div>
+                                </div>
+
+                        </div>
+                    </div>
+                    </div>
+                    <div id={'details'+index} className="collapse">
+                        <div className="row">
+                                <div className="col-sm-9">
+                                    <div className="row">
+                                         <div className="col-sm-3">
+                                            <p><b>Origin</b></p>
+                                            <p>Day: {data.flights[0].arrivalday}</p>
+                                            <p>Time: {data.flights[0].arrivaltime}</p>
+                                            <p>Airport: {data.flights[0].origin.airport}</p>
+                                            <p>City: {data.flights[0].origin.city}</p>
+                                            <p>State: {data.flights[0].origin.state}</p>
+
+                                         </div>
+                                         <div className="col-sm-3">
+                                            <p><b>Destination</b></p>
+                                            <p>Day: {data.flights[0].departureday}</p>
+                                            <p>Time: {data.flights[0].departuretime}</p>
+                                            <p>Airport: {data.flights[0].destination.airport}</p>
+                                            <p>City: {data.flights[0].destination.city}</p>
+                                            <p>State: {data.flights[0].destination.state}</p>
+                                         </div>
+                                         <div className="col-sm-3">
+                                            <p><b>Origin</b></p>
+                                            <p>Day: {data.flights[1].arrivalday}</p>
+                                            <p>Time: {data.flights[1].arrivaltime}</p>
+                                            <p>Airport: {data.flights[1].origin.airport}</p>
+                                            <p>City: {data.flights[1].origin.city}</p>
+                                            <p>State: {data.flights[1].origin.state}</p>
+
+                                         </div>
+                                         <div className="col-sm-3">
+                                            <p><b>Destination</b></p>
+                                            <p>Day: {data.flights[1].departureday}</p>
+                                            <p>Time: {data.flights[1].departuretime}</p>
+                                            <p>Airport: {data.flights[1].destination.airport}</p>
+                                            <p>City: {data.flights[1].destination.city}</p>
+                                            <p>State: {data.flights[1].destination.state}</p>
+                                         </div>
+                                    </div>
+
+                                </div>
+                                <div className="col-sm-3">
+                                    <div style={{textAlign:"center"}}>
+                                    <div style={{textAlign:"center"}}>
+                                    <b style={{fontSize:"20px",fontWeight:"bold"}}>${data._id.class[1].price}</b><br/>
+                                    <b style={{fontSize:"12px",fontWeight:"bold"}}>{data._id.class[1].type}</b><br/>
+                                    <button style={{width:"12vw"}} onClick={()=>this.handleBook(data,data._id.class[1].type, data._id.class[1].price)}
+                                    className="btn btn-deep-orange">Book</button>
+                                    </div>
+                                    </div>
+                                    <br/>
+                                    <div style={{textAlign:"center"}}>
+                                    <div style={{textAlign:"center"}}>
+                                    <b style={{fontSize:"20px",fontWeight:"bold"}}>${data._id.class[2].price}</b><br/>
+                                    <b style={{fontSize:"12px",fontWeight:"bold"}}>{data._id.class[2].type}</b><br/>
+                                    <button style={{width:"12vw"}} onClick={()=>this.handleBook(data,data._id.class[2].type, data._id.class[2].price)}
+                                    className="btn btn-deep-orange">Book</button>
+                                    </div>
+                                    </div>
+                                       
+
+                                </div>
+                        </div>
+                    </div>
+
+                 </div>
+            )
+        }
+            
      }
     render(){
         var colors = ["#FCBD7E", "#EB9F71", "#E6817C"];

@@ -187,7 +187,7 @@ class CarBooking extends Component {
 
                                 </div>
                             </div>
-                            <button className="btn btn-default btn-lg btn-block" onClick={()=>this.handlePay()>Pay</button>
+                            <button className="btn btn-default btn-lg btn-block" onClick={()=>this.handlePay()}>Pay</button>
                           </div>
                         </div>
 
