@@ -22,7 +22,7 @@ class Nav extends Component {
     if(data.status===201){
         console.log("user logged in ");
         console.log(data.data.value);
-        this.successshowAlert(data.data.value);
+        //this.successshowAlert(data.data.value);
         this.props.signIn(data);
     }
    
@@ -91,8 +91,37 @@ class Nav extends Component {
         })
     }
 
+//********************************************************
+    validateZipCode(elementValue){
+        var zipCodePattern;
+        if (elementValue.indexOf('-') > -1)
+        {
+            zipCodePattern = /^\d{5}$|^\d{5}-\d{4}$/;
+        } else {
+            zipCodePattern = /^\d{5}$/;
+        }
+
+        //console.log("Zip Validation : ",zipCodePattern.test(elementValue))
+        return zipCodePattern.test(elementValue);
+    }
+//********************************************************
+    validateEmail(mail)
+    {
+        if (/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(mail))
+        {
+            console.log("true");
+            return (true)
+        }
+        console.log("false");
+        return (false)
+    }
 
 //********************************************************
+    telephoneCheck(str) {
+        var isphone = /^(1\s|1|)?((\(\d{3}\))|\d{3})(\-|\s)?(\d{3})(\-|\s)?(\d{4})$/.test(str);
+        return isphone;
+    }
+//****************************************************
 loginButton(){
       console.log("I am inside the loginButton");
       console.log(this.state.password);
@@ -112,8 +141,9 @@ loginButton(){
             console.log("000000000000000000000");
             this.successshowAlert("you have succesfully registered");
             //this.props.history.push('/');
-            window.location.reload();
             this.props.userprofile.isLoggedIn = true;
+            window.location.reload();
+
           //  console.log("Before getting in the signin reducer  "+ this.props.userprofile.isLoggedIn)
        // this.props.signIn(data);
         }
@@ -178,6 +208,7 @@ loginButton(){
         time: 5000,
         transition: 'scale'
       }
+
      errorshowAlert = (msg) => {
         this.msg.show(msg, {
           time: 5000,
@@ -185,6 +216,7 @@ loginButton(){
           icon: <img src={require('../image/error.png')} />
         })
       }
+
      successshowAlert = (msg) => {
         this.msg.show(msg, {
           time: 5000,
@@ -192,6 +224,7 @@ loginButton(){
           icon: <img src={require('../image/success.png')} />
         })
       }
+
     render(){
         return(
             <div >
@@ -321,7 +354,7 @@ loginButton(){
                                         email: event.target.value
                                     });
                                 }}/>
-                                <label data-error="wrong" data-success="right" htmlFor="form24">Your email</label>
+                                <label htmlFor="form24">Your email</label>
                             </div>
 
                             <div className="md-form form-sm">

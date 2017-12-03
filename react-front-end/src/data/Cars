@@ -1,0 +1,205 @@
+
+db.MmtCars.insert({
+'carId':'MMT101',
+'cartype':'Small',
+'carmodel':'BMW',
+'imageurl': 'BMW.png',
+'specification':'automatic',
+'pickupaddress': {'street':'101 E San Fernando St.','city':'San Jose', 'state': 'California', 'country':'USA'},
+'dropoffaddress': {'street':'101 E San Fernando St.','city':'San Jose', 'state': 'California', 'country':'USA'},
+'dailyrent':100})
+
+
+db.CleartripCars.insert({
+'carId': 'CT101',
+'cartype':'Medium',
+'carmodel':'Audi',
+'imageurl': 'audi.png',
+'specification':'manual',
+'pickupaddress': {'street':'101 E San Fernando St.','city':'San Jose', 'state': 'California', 'country':'USA'},
+'dropoffaddress': {'street':'101 E San Fernando St.','city':'San Jose', 'state': 'California', 'country':'USA'},
+'dailyrent':200})
+
+
+db.AlamoCars.insert({
+'carId': 'AL101',
+'cartype':'Large',
+'carmodel':'Lexus',
+'imageurl': 'lexus.png',
+'specification':'manual',
+'pickupaddress': {'street':'101 E San Fernando St.','city':'San Jose', 'state': 'California', 'country':'USA'},
+'dropoffaddress': {'street':'101 E San Fernando St.','city':'San Jose', 'state': 'California', 'country':'USA'},
+'dailyrent':200})
+
+
+
+db.MmtCars.insert({
+'carId':'MMT102',
+'cartype':'SUV',
+'carmodel':'BMW',
+'specification':'automatic',
+'imageurl': 'BMW.png',
+'pickupaddress': {'street':'101 E San Fernando St.','city':'San Jose', 'state': 'California', 'country':'USA'},
+'dropoffaddress': {'street':'101 E San Fernando St.','city':'San Jose', 'state': 'California', 'country':'USA'},
+'dailyrent':150})
+
+
+db.CleartripCars.insert({
+'carId': 'CT102',
+'cartype':'Luxury',
+'carmodel':'Audi',
+'imageurl': 'audi.png',
+'specification':'manual',
+'pickupaddress': {'street':'101 E San Fernando St.','city':'San Jose', 'state': 'California', 'country':'USA'},
+'dropoffaddress': {'street':'101 E San Fernando St.','city':'San Jose', 'state': 'California', 'country':'USA'},
+'dailyrent':90})
+
+
+db.AlamoCars.insert({
+'carId': 'AL101',
+'cartype':'Van',
+'carmodel':'Lexus',
+'imageurl': 'lexus.png',
+'specification':'manual',
+'pickupaddress': {'street':'101 E San Fernando St.','city':'San Jose', 'state': 'California', 'country':'USA'},
+'dropoffaddress': {'street':'101 E San Fernando St.','city':'San Jose', 'state': 'California', 'country':'USA'},
+'dailyrent':230})
+
+
+
+
+db.MmtCars.insert({
+'carId':'MMT1011',
+'cartype':'Small',
+'carmodel':'BMW',
+'imageurl': 'BMW.png',
+'specification':'automatic',
+'pickupaddress': {'street':'754 The Alameda','city':'San Jose', 'state': 'California', 'country':'USA'},
+'dropoffaddress': {'street':'754 The Alameda','city':'San Jose', 'state': 'California', 'country':'USA'},
+'dailyrent':100})
+
+
+db.CleartripCars.insert({
+'carId': 'CT1011',
+'cartype':'Medium',
+'carmodel':'Audi',
+'imageurl': 'audi.png',
+'specification':'manual',
+'pickupaddress': {'street':'754 The Alameda','city':'San Jose', 'state': 'California', 'country':'USA'},
+'dropoffaddress': {'street':'754 The Alameda','city':'San Jose', 'state': 'California', 'country':'USA'},
+'dailyrent':2000})
+
+
+db.AlamoCars.insert({
+'carId': 'AL1011',
+'cartype':'Large',
+'carmodel':'Lexus',
+'imageurl': 'lexus.png',
+'specification':'manual',
+'pickupaddress': {'street':'754 The Alameda','city':'San Jose', 'state': 'California', 'country':'USA'},
+'dropoffaddress': {'street':'754 The Alameda','city':'San Jose', 'state': 'California', 'country':'USA'},
+'dailyrent':205})
+
+
+
+db.MmtCars.insert({
+'carId':'MMT1021',
+'cartype':'SUV',
+'carmodel':'BMW',
+'specification':'automatic',
+'imageurl': 'BMW.png',
+'pickupaddress': {'street':'754 The Alameda','city':'San Jose', 'state': 'California', 'country':'USA'},
+'dropoffaddress': {'street':'754 The Alameda','city':'San Jose', 'state': 'California', 'country':'USA'},
+'dailyrent':155})
+
+
+db.CleartripCars.insert({
+'carId': 'CT1021',
+'cartype':'Luxury',
+'carmodel':'Audi',
+'imageurl': 'audi.png',
+'specification':'manual',
+'pickupaddress': {'street':'754 The Alameda','city':'San Jose', 'state': 'California', 'country':'USA'},
+'dropoffaddress': {'street':'754 The Alameda','city':'San Jose', 'state': 'California', 'country':'USA'},
+'dailyrent':150})
+
+
+db.AlamoCars.insert({
+'carId': 'AL1011',
+'cartype':'Van',
+'carmodel':'Lexus',
+'imageurl': 'lexus.png',
+'specification':'manual',
+'pickupaddress': {'street':'754 The Alameda','city':'San Jose', 'state': 'California', 'country':'USA'},
+'dropoffaddress': {'street':'754 The Alameda','city':'San Jose', 'state': 'California', 'country':'USA'},
+'dailyrent':130})
+
+
+
+
+
+db.MmtCars.insert({
+'carId':'MMT105',
+'cartype':'Small',
+'carmodel':'BMW',
+'imageurl': 'BMW.png',
+'specification':'automatic',
+'pickupaddress': {'street':'695 Tasman Dr','city':'San Jose', 'state': 'California', 'country':'USA'},
+'dropoffaddress': {'street':'695 Tasman Dr','city':'San Jose', 'state': 'California', 'country':'USA'},
+'dailyrent':105})
+
+
+db.CleartripCars.insert({
+'carId': 'CT105',
+'cartype':'Medium',
+'carmodel':'Audi',
+'imageurl': 'audi.png',
+'specification':'manual',
+'pickupaddress': {'street':'695 Tasman Dr','city':'San Jose', 'state': 'California', 'country':'USA'},
+'dropoffaddress': {'street':'695 Tasman Dr','city':'San Jose', 'state': 'California', 'country':'USA'},
+'dailyrent':250})
+
+
+db.AlamoCars.insert({
+'carId': 'AL105',
+'cartype':'Large',
+'carmodel':'Lexus',
+'imageurl': 'lexus.png',
+'specification':'manual',
+'pickupaddress': {'street':'695 Tasman Dr','city':'San Jose', 'state': 'California', 'country':'USA'},
+'dropoffaddress': {'street':'695 Tasman Dr','city':'San Jose', 'state': 'California', 'country':'USA'},
+'dailyrent':250})
+
+
+
+db.MmtCars.insert({
+'carId':'MMT105',
+'cartype':'SUV',
+'carmodel':'BMW',
+'specification':'automatic',
+'imageurl': 'BMW.png',
+'pickupaddress': {'street':'695 Tasman Dr','city':'San Jose', 'state': 'California', 'country':'USA'},
+'dropoffaddress': {'street':'695 Tasman Dr','city':'San Jose', 'state': 'California', 'country':'USA'},
+'dailyrent':105})
+
+
+db.CleartripCars.insert({
+'carId': 'CT105',
+'cartype':'Luxury',
+'carmodel':'Audi',
+'imageurl': 'audi.png',
+'specification':'manual',
+'pickupaddress': {'street':'695 Tasman Dr','city':'San Jose', 'state': 'California', 'country':'USA'},
+'dropoffaddress': {'street':'695 Tasman Dr','city':'San Jose', 'state': 'California', 'country':'USA'},
+'dailyrent':195})
+
+
+db.AlamoCars.insert({
+'carId': 'AL105',
+'cartype':'Van',
+'carmodel':'Lexus',
+'imageurl': 'lexus.png',
+'specification':'manual',
+'pickupaddress': {'street':'695 Tasman Dr','city':'San Jose', 'state': 'California', 'country':'USA'},
+'dropoffaddress': {'street':'695 Tasman Dr','city':'San Jose', 'state': 'California', 'country':'USA'},
+'dailyrent':139})

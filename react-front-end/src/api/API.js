@@ -195,6 +195,20 @@ export const doUpdate = (payload) =>
     });
 
 //************************************************************************************************
+export const upload = (payload) =>
+    fetch(`${api}/user/upload`, {
+        method: 'POST',
+        body:payload,
+        credentials:'include'
+    }).then(res => {
+        return res.json();
+    })
+        .catch(error => {
+            console.log("This is error");
+            return error;
+        });
+
+//************************************************************************************************
 
 
 
@@ -360,6 +374,44 @@ export const clickTracker = (payload) =>
         console.log("This is an API error");
         return error;
     });
+
+
+
+export const addHistory = (payload) =>
+    fetch(`${api}/user/addhistory`, {
+        method: 'POST',
+        headers: {
+            ...headers,
+            'Content-Type': 'application/json'
+        },
+        credentials:'include',
+        body: JSON.stringify(payload)
+    }).then(res => {
+        console.log(res);
+        return res.json();
+    })
+        .catch(error => {
+            console.log("This is an API error");
+            return error;
+        });
+
+
+export const searchHistory = () =>
+    fetch(`${api}/user/searchhistory`, {
+        method: 'GET',
+        headers: {
+            ...headers,
+            'Content-Type': 'application/json'
+        },
+        credentials:'include'
+    }).then(res => {
+
+        return res.json();
+    })
+        .catch(error => {
+            console.log("This is an API error");
+            return error;
+        });
 
 
 export const bookFlight = (payload) =>

@@ -3,7 +3,7 @@ import {Link,withRouter} from 'react-router-dom';
 import PropTypes from 'prop-types';
 import * as API from '../api/API';
 import {connect} from 'react-redux';
-import userBookings from "../reducers/userBooking";
+import userBookings from "../reducers/userHistory";
 import * as Actions from '../actions/action';
 
 class UserTrip extends Component {
@@ -35,6 +35,25 @@ class UserTrip extends Component {
          // API.getbookings().then((data)=>{
          //     console.log("inside here");
          // })
+    }
+
+    componentWillMount(){
+
+        API.searchHistory()
+            .then((res) => {
+                console.log(res);
+
+                if (res.status == 201) {
+
+                    this.props.searchHistory(res.data);
+
+                    console.log("Success...")
+
+                }else if (res.status == 401) {
+
+                    //  this.props.history.push('/');
+                }
+            });
     }
 
     displaytrips(data,index){
@@ -158,17 +177,18 @@ class UserTrip extends Component {
 
 function mapStateToProps(reducerdata) {
     // console.log(reducerdata);
-    const bookings = reducerdata.userBooking;
+    const bookingHistoryList = reducerdata.userHistory;
 
-    console.log(bookings);  //all the data in the booking just waiting for aditya to give me boxes so i can fill that up
+    console.log(bookingHistoryList);
 
-    return {bookings};
+    return {bookingHistoryList};
 }
 
 function mapDispatchToProps(dispatch) {
     return {
         signIn : (data) => dispatch(Actions.signIn(data)),
-        bokingHistory : (data) => dispatch(Actions.bookingHistory(data))
+        bookingHistory : (data) => dispatch(Actions.bookingHistory(data)),
+        searchHistory : (data) => dispatch(Actions.searchHistory(data))
 
     };
 }

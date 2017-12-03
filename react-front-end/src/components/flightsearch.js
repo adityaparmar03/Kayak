@@ -63,9 +63,24 @@ class Flightsearch extends Component {
                   'flightclass':this.state.class,
                   'startdate' : startdate,
                   'enddate' : enddate,
-                  'passengers' : this.state.traveler
+                  'passengers' : this.state.traveler,
+                  'searchtype':'flight'
               }
 
+           API.addHistory(payload)
+               .then((res) => {
+
+
+                   if (res.status == 200) {
+
+
+                       console.log("Success...")
+
+                   }else if (res.status == 401) {
+
+                       //  this.props.history.push('/');
+                   }
+               });
 
               console.log('payload', payload);
 

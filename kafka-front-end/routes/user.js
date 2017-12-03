@@ -4,6 +4,7 @@ var passport = require('passport');
 var kafka = require('./kafka/client');
 var mail = require('./mail');
 var multer = require('multer');
+var fname = "";
 
 var storage = multer.diskStorage({
     destination: function (req, file, cb) {
@@ -14,7 +15,9 @@ var storage = multer.diskStorage({
     },
     filename: function (req, file, cb) {
 
-        cb(null, req.session.email+".jpg");
+        fname = req.session.email+file.originalname;
+
+        cb(null,fname);
     }
 });
 
@@ -28,8 +31,12 @@ router.post('/login', function (req, res) {
 
     // var reqEmail = req.body.email;
     //  var reqPassword = req.body.password;
-    console.log("inside the login path with the body"+req.body);
 
+
+    console.log("inside the login path with the body"+req.body);
+    var email = req.body.email;
+    console.log("------------");
+    console.log(email);
     passport.authenticate('login', function(err, user) {
 
         if (err) {
@@ -41,16 +48,22 @@ router.post('/login', function (req, res) {
         }
         else {
             if(user.code==201) {
-                req.session.email = user.email;
+                req.session.email = email;
                 req.session.isloggedin = true;
                 console.log(user.data);
                 res.send({status: 201, "value": user.data});
             }
             else{
 
-                res.send({status:401,"value": user.data})
+
+            req.session.email = user.email;
+            req.session.isloggedin = true;
+            console.log(user.data);
+            res.send({status:201,"value":"Success Login"});
+
             }
             }
+
 
 
     })(req,res);
@@ -108,12 +121,13 @@ router.get('/bookinghistory', function (req, res) {
         }
         else{
             console.log("i am here");
-            if(results.code==="200"){
+            if(results.code==200){
                 console.log("Everything successfull");
                 res.send({"status":201 , "data": results})
-            }
-            else{
-                res.send({"status":401,"data":results})
+
+            } else {
+                res.send({"status":401 , "data": results})
+
             }
         }
 
@@ -188,29 +202,17 @@ router.put('/update',function (req,res) {
 
 //************************************************************************************************************************
 
-router.post('/upload', upload.single('mypic'),function (req, res, next) {
+router.post('/upload', upload.single('mypic'),function (req, res) {
+    console.log("inside the upload folder");
 
-    var payload = {"email": req.session.email}
 
-    payload["imgpath"] = req.session.email+".jpg";
+        res.send({"status":201 , "data": "User file updated" ,"filename":fname});
+    //
+    // else{
+    //     res.send({"status":401,"data":"Error while uploading"})
+    // }
 
-    console.log(payload);
-
-    kafka.make_request('upload', payload ,function(err,results){
-
-        if(err){
-            console.log("After kafka response");
-
-            res.send({"status":401})
-        }
-        else
-        {
-            res.send({"status":201});
-        }
-    })
 })
-
-
 //************************************************************************************************************************
 
 
@@ -257,5 +259,57 @@ router.post('/logout', function (req, res) {
 });
 
 //************************************************************************************************************************
+
+
+
+router.post('/addhistory', function (req, res) {
+
+    var reqObject = {
+        email : req.session.email,
+        payload : req.body
+    }
+    kafka.make_request("addhistory", reqObject, function(err,results){
+
+        if(err){
+            console.log('Returning Error ----' + err);
+            res.send({'status': err.code, 'message' : err.message});
+        }
+        else
+        {
+            console.log('Returning results ----' + results);
+            if(results.code == "200"){
+                res.send({'status': results.code});
+            }
+            else {
+                res.send({'status': results.code});
+            }
+        }
+    })
+});
+
+
+
+router.get('/searchhistory', function (req, res) {
+
+    var email =  req.session.email;
+    kafka.make_request('searchhistory' ,email, function (err, results) {
+        if(err){
+
+            res.send({"status":401 })
+        }
+        else{
+
+            if(results.code==200){
+
+                res.send({"status":201 , "data": results})
+
+            } else {
+                res.send({"status":401 , "data": results})
+
+            }
+        }
+
+    })
+});
 
 module.exports = router;

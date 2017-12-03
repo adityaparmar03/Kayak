@@ -49,6 +49,16 @@ class Flightlist extends Component {
         }
         return hour+":"+minute
     }
+    getminutes(time){
+
+        var hour  = time.substring(0, 2);
+        var minute  = time.substring(3, 5);
+        var total = parseInt(hour)*60 + parseInt(minute);
+
+        return parseInt(total)
+
+
+    }
     componentWillMount(){
 
         console.log(this.props.location.flightsearchcriteria);
@@ -66,6 +76,51 @@ class Flightlist extends Component {
                     this.props.flightSearch(res.flights);
 
                     console.log("Success...")
+                    if(res.flights.length > 0){
+                        if(payload.triptype == 'One-Way'){
+                            var price = res.flights.map((item,i)=>parseInt(item.class[0].price));
+                            console.log(price)
+                            var  max = price.reduce(function(a, b) {
+                               return Math.max(a, b);
+                            });
+                            var   min = price.reduce(function(a, b) {
+                               return Math.min(a, b);
+                           });
+                           this.maxprice = max; //get from api
+                           this.minprice = min;
+                           var valuesPrice = [0,this.maxprice-this.minprice,0]
+
+                           this.setState({
+                               valuesPrice: valuesPrice,
+
+                               low:this.minprice,
+                               high:this.maxprice
+
+                             });
+                        }else{
+                            var price = res.flights.map((item,i)=>parseInt(item._id.class[0].price));
+                            console.log(price)
+                            var  max = price.reduce(function(a, b) {
+                               return Math.max(a, b);
+                            });
+                            var   min = price.reduce(function(a, b) {
+                               return Math.min(a, b);
+                           });
+                           this.maxprice = max; //get from api
+                           this.minprice = min;
+                           var valuesPrice = [0,this.maxprice-this.minprice,0]
+
+                           this.setState({
+                               valuesPrice: valuesPrice,
+
+                               low:this.minprice,
+                               high:this.maxprice
+
+                             });
+                        }
+                    }
+
+
 
                 }else if (res.status == 401) {
 
@@ -73,16 +128,12 @@ class Flightlist extends Component {
                 }
             });
 
-        this.maxprice = 234; //get from api
-        this.minprice = 67;
-        var valuesPrice = [0,this.maxprice-this.minprice,0]
         var valuesTime=[0,1439,0]
         this.setState({
-            valuesPrice: valuesPrice,
+
             valuesArrivalTime:valuesTime,
             valuesDepartureTime:valuesTime,
-            low:this.minprice,
-            high:this.maxprice
+
           });
     }
     onChangePrice = values =>
@@ -149,6 +200,7 @@ class Flightlist extends Component {
         localStorage.setItem("flightbooking", JSON.stringify(flightbooking));
         this.props.history.push('/flightbooking');
     }
+
 
 
     handleBookTwoWay(data,classtype,price, capacity){
@@ -254,33 +306,57 @@ class Flightlist extends Component {
                                 className="btn btn-deep-orange">Book</button>
                                 </div>
 
-                        </div>
-                    </div>
-                    </div>
-                    <div id={'details'+index} className="collapse">
-                        <div className="row">
+    displayflights(data,index){
+
+
+            if(this.state.triptype == 'One-Way'){
+                if(this.state.low <= data.class[0].price &&  data.class[0].price <=this.state.high
+                   && this.state.arrival_start_time <= this.getminutes(data.flights.arrivaltime)
+                   && this.state.arrival_end_time >= this.getminutes(data.flights.arrivaltime)
+                   && this.state.departure_start_time <= this.getminutes(data.flights.departuretime)
+                   && this.state.departure_end_time >= this.getminutes(data.flights.departuretime)
+
+                ){
+                    return(
+                        <div className="jumbotron">
+                            <div data-toggle="collapse" data-target={'#details'+index}>
+                            <div className="row">
                                 <div className="col-sm-9">
-                                    <div className="row">
-                                         <div className="col-sm-6">
-                                            <p><b>Origin</b></p>
-                                            <p>Day: {data.flights.arrivalday}</p>
-                                            <p>Time: {data.flights.arrivaltime}</p>
-                                            <p>Airport: {data.flights.origin.airport}</p>
-                                            <p>City: {data.flights.origin.city}</p>
-                                            <p>State: {data.flights.origin.state}</p>
+                                    <div className="row" style={{paddingTop:"4vh"}}>
+                                            <div className="col-sm-0" style={{textAlign:"center",fontSize:"12px",fontWeight:"bold"}}>
 
-                                         </div>
-                                         <div className="col-sm-6">
-                                            <p><b>Destination</b></p>
-                                            <p>Day: {data.flights.departureday}</p>
-                                            <p>Time: {data.flights.departuretime}</p>
-                                            <p>Airport: {data.flights.destination.airport}</p>
-                                            <p>City: {data.flights.destination.city}</p>
-                                            <p>State: {data.flights.destination.state}</p>
-                                         </div>
+                                            </div>
+                                            <div className="col-sm-4" style={{textAlign:"center",fontSize:"12px",fontWeight:""}}>
+                                            <div  style={{textAlign:"center"}}>
+                                                        <img src={'http://localhost:3001/images/'+data.imageurl} height="45vh" width="45vw" alt="logo"/>
+                                                        <br/>
+                                                        <p>{data.operator}</p>
+                                               </div>
+                                            </div>
+                                            <div className="col-sm-2" style={{textAlign:"center",fontSize:"12px"}}>
+                                               <div  style={{textAlign:"center"}}>
+                                                        <p style={{fontWeight:"bold"}}>{data.flights.departuretime}</p>
+                                                        <p>{data.flights.origin.city}</p>
+                                               </div>
+                                            </div>
+                                            <div className="col-sm-2" style={{textAlign:"center"}}>
+                                            <div  style={{textAlign:"center"}}>
+                                                 {this.displaystopline("nonstop")}
+                                                 <p style={{fontSize:"12px"}}>non stop</p>
+                                            </div>
+                                            </div>
+                                            <div className="col-sm-2" style={{textAlign:"center",fontSize:"12px"}}>
+                                            <div  style={{textAlign:"center"}}>
+                                                     <p style={{fontWeight:"bold"}}>{data.flights.arrivaltime}</p>
+                                                     <p>{data.flights.destination.city}</p>
+                                            </div>
+                                            </div>
+                                            <div className="col-sm-2" style={{textAlign:"center"}}>
+                                                <p style={{fontSize:"12px",fontWeight:"bold"}}>{data.flightId}</p>
+                                            </div>
+
                                     </div>
-
-                                </div>
+                                 </div>
                                 <div className="col-sm-3">
 
                                         <div style={{textAlign:"center"}}>
@@ -297,71 +373,49 @@ class Flightlist extends Component {
                                         </div>
 
                                 </div>
-                        </div>
-                    </div>
-
-                 </div>
-            )
-        }
-        else{
-            return(
-                <div className="jumbotron">
-                    <div data-toggle="collapse" data-target={'#details'+index}>
-                    <div className="row">
-                        <div className="col-sm-9">
-                            <div className="row" style={{paddingTop:"4vh"}}>
-                                    <div className="col-sm-0" style={{textAlign:"center",fontSize:"12px",fontWeight:"bold"}}>
-
-                                    </div>
-                                    <div className="col-sm-4" style={{textAlign:"center",fontSize:"12px",fontWeight:""}}>
-                                    <div  style={{textAlign:"center"}}>
-                                                <img src={'http://localhost:3001/images/'+data._id.imageurl} height="45vh" width="45vw" alt="logo"/>
-                                                <br/>
-                                                <p>{data._id.operator}</p>
-                                                <img src={'http://localhost:3001/images/'+data._id.imageurl} height="45vh" width="45vw" alt="logo"/>
-                                                <br/>
-                                                <p>{data._id.operator}</p>
-                                       </div>
-                                    </div>
-                                    <div className="col-sm-2" style={{textAlign:"center",fontSize:"12px"}}>
-                                       <div  style={{textAlign:"center"}}>
-                                                <p style={{fontWeight:"bold"}}>{data.flights.arrivaltime}</p>
-                                                <p>{data.flights[0].origin.city}</p>
-                                       </div>
-                                       <br/>
-                                       <div  style={{textAlign:"center"}}>
-                                                <p style={{fontWeight:"bold"}}>{data.flights.arrivaltime}</p>
-                                                <p>{data.flights[1].origin.city}</p>
-                                       </div>
-                                    </div>
-                                    <div className="col-sm-2" style={{textAlign:"center"}}>
-                                        <br/>
-                                        <div  style={{textAlign:"center"}}>
-                                            {this.displaystopline("nonstop")}
-                                            <p style={{fontSize:"12px"}}>non stop</p>
-                                        </div>
-                                        <br/>
-                                        <div  style={{textAlign:"center"}}>
-                                            {this.displaystopline("nonstop")}
-                                            <p style={{fontSize:"12px"}}>non stop</p>
-                                        </div>
-                                    </div>
-                                    <div className="col-sm-2" style={{textAlign:"center",fontSize:"12px"}}>
-                                    <div  style={{textAlign:"center"}}>
-                                             <p style={{fontWeight:"bold"}}>{data.flights.departuretime}</p>
-                                             <p>{data.flights[0].destination.city}</p>
-                                    </div>
-                                    <br/>
-                                    <div  style={{textAlign:"center"}}>
-                                             <p style={{fontWeight:"bold"}}>{data.flights.departuretime}</p>
-                                             <p>{data.flights[1].destination.city}</p>
-                                    </div>
-                                    </div>
-                                    <div className="col-sm-2" style={{textAlign:"center"}}>
-                                        <p style={{fontSize:"12px",fontWeight:"bold"}}>{data.flightId}</p>
-                                    </div>
-
                             </div>
+                            </div>
+                            <div id={'details'+index} className="collapse">
+                                <div className="row">
+                                        <div className="col-sm-9">
+                                            <div className="row">
+                                                 <div className="col-sm-6">
+                                                    <p><b>Origin</b></p>
+                                                    <p>Day: {data.flights.arrivalday}</p>
+                                                    <p>Time: {data.flights.arrivaltime}</p>
+                                                    <p>Airport: {data.flights.origin.airport}</p>
+                                                    <p>City: {data.flights.origin.city}</p>
+                                                    <p>State: {data.flights.origin.state}</p>
+
+                                                 </div>
+                                                 <div className="col-sm-6">
+                                                    <p><b>Destination</b></p>
+                                                    <p>Day: {data.flights.departureday}</p>
+                                                    <p>Time: {data.flights.departuretime}</p>
+                                                    <p>Airport: {data.flights.destination.airport}</p>
+                                                    <p>City: {data.flights.destination.city}</p>
+                                                    <p>State: {data.flights.destination.state}</p>
+                                                 </div>
+                                            </div>
+
+                                        </div>
+                                        <div className="col-sm-3">
+
+                                                <div style={{textAlign:"center"}}>
+                                                <b style={{fontSize:"20px",fontWeight:"bold"}}>${data.class[1].price}</b><br/>
+                                                <b style={{fontSize:"12px",fontWeight:"bold"}}>{data.class[1].type}</b><br/>
+                                                <button style={{width:"12vw"}}className="btn btn-deep-orange">Book</button>
+                                                </div>
+                                                <div style={{textAlign:"center"}}>
+                                                <b style={{fontSize:"20px",fontWeight:"bold"}}>${data.class[2].price}</b><br/>
+                                                <b style={{fontSize:"12px",fontWeight:"bold"}}>{data.class[2].type}</b><br/>
+                                                <button style={{width:"12vw"}}className="btn btn-deep-orange">Book</button>
+                                                </div>
+
+                                        </div>
+                                </div>
+                            </div>
+
                          </div>
                         <div className="col-sm-3">
                                 <br/>
@@ -380,44 +434,60 @@ class Flightlist extends Component {
                     <div id={'details'+index} className="collapse">
                         <div className="row">
                                 <div className="col-sm-9">
-                                    <div className="row">
-                                         <div className="col-sm-3">
-                                            <p><b>Origin</b></p>
-                                            <p>Day: {data.flights[0].arrivalday}</p>
-                                            <p>Time: {data.flights[0].arrivaltime}</p>
-                                            <p>Airport: {data.flights[0].origin.airport}</p>
-                                            <p>City: {data.flights[0].origin.city}</p>
-                                            <p>State: {data.flights[0].origin.state}</p>
+                                    <div className="row" style={{paddingTop:"4vh"}}>
+                                            <div className="col-sm-0" style={{textAlign:"center",fontSize:"12px",fontWeight:"bold"}}>
 
-                                         </div>
-                                         <div className="col-sm-3">
-                                            <p><b>Destination</b></p>
-                                            <p>Day: {data.flights[0].departureday}</p>
-                                            <p>Time: {data.flights[0].departuretime}</p>
-                                            <p>Airport: {data.flights[0].destination.airport}</p>
-                                            <p>City: {data.flights[0].destination.city}</p>
-                                            <p>State: {data.flights[0].destination.state}</p>
-                                         </div>
-                                         <div className="col-sm-3">
-                                            <p><b>Origin</b></p>
-                                            <p>Day: {data.flights[1].arrivalday}</p>
-                                            <p>Time: {data.flights[1].arrivaltime}</p>
-                                            <p>Airport: {data.flights[1].origin.airport}</p>
-                                            <p>City: {data.flights[1].origin.city}</p>
-                                            <p>State: {data.flights[1].origin.state}</p>
+                                            </div>
+                                            <div className="col-sm-4" style={{textAlign:"center",fontSize:"12px",fontWeight:""}}>
+                                            <div  style={{textAlign:"center"}}>
+                                                        <img src={'http://localhost:3001/images/'+data._id.imageurl} height="45vh" width="45vw" alt="logo"/>
+                                                        <br/>
+                                                        <p>{data._id.operator}</p>
+                                                        <img src={'http://localhost:3001/images/'+data._id.imageurl} height="45vh" width="45vw" alt="logo"/>
+                                                        <br/>
+                                                        <p>{data._id.operator}</p>
+                                               </div>
+                                            </div>
+                                            <div className="col-sm-2" style={{textAlign:"center",fontSize:"12px"}}>
+                                               <div  style={{textAlign:"center"}}>
+                                                        <p style={{fontWeight:"bold"}}>{data.flights[0].departuretime}</p>
+                                                        <p>{data.flights[0].origin.city}</p>
+                                               </div>
 
-                                         </div>
-                                         <div className="col-sm-3">
-                                            <p><b>Destination</b></p>
-                                            <p>Day: {data.flights[1].departureday}</p>
-                                            <p>Time: {data.flights[1].departuretime}</p>
-                                            <p>Airport: {data.flights[1].destination.airport}</p>
-                                            <p>City: {data.flights[1].destination.city}</p>
-                                            <p>State: {data.flights[1].destination.state}</p>
-                                         </div>
+                                               <div  style={{textAlign:"center"}}>
+                                                        <p style={{fontWeight:"bold"}}>{data.flights[1].departuretime}</p>
+                                                        <p>{data.flights[1].origin.city}</p>
+                                               </div>
+                                            </div>
+                                            <div className="col-sm-2" style={{textAlign:"center"}}>
+                                                <br/>
+                                                <div  style={{textAlign:"center"}}>
+                                                    {this.displaystopline("nonstop")}
+                                                    <p style={{fontSize:"12px"}}>non stop</p>
+                                                </div>
+
+                                                <div  style={{textAlign:"center"}}>
+                                                    {this.displaystopline("nonstop")}
+                                                    <p style={{fontSize:"12px"}}>non stop</p>
+                                                </div>
+                                            </div>
+                                            <div className="col-sm-2" style={{textAlign:"center",fontSize:"12px"}}>
+                                            <div  style={{textAlign:"center"}}>
+                                                     <p style={{fontWeight:"bold"}}>{data.flights[0].arrivaltime}</p>
+                                                     <p>{data.flights[0].destination.city}</p>
+                                            </div>
+
+                                            <div  style={{textAlign:"center"}}>
+                                                     <p style={{fontWeight:"bold"}}>{data.flights[0].arrivaltime}</p>
+                                                     <p>{data.flights[1].destination.city}</p>
+                                            </div>
+                                            </div>
+                                            <div className="col-sm-2" style={{textAlign:"center"}}>
+                                                <p style={{fontSize:"12px",fontWeight:"bold"}}>{data.flightId}</p>
+                                            </div>
+
                                     </div>
-
-                                </div>
+                                 </div>
                                 <div className="col-sm-3">
                                     <div style={{textAlign:"center"}}>
                                     <div style={{textAlign:"center"}}>

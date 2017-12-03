@@ -5,7 +5,7 @@ import {connect} from 'react-redux';
 import * as Actions from '../actions/action';
 import * as API from '../api/API';
 import UserTrip from './usertrips'
-
+import AlertContainer from 'react-alert'
 
 class Profile extends Component {
 
@@ -22,12 +22,45 @@ class Profile extends Component {
                 imgpath:"",
                 creditcard:"",
 
-
-                //dummy
-               
-
             }
     }
+
+
+    validateZipCode(elementValue){
+        var zipCodePattern;
+        if (elementValue.indexOf('-') > -1)
+        {
+            zipCodePattern = /^\d{5}$|^\d{5}-\d{4}$/;
+        } else {
+            zipCodePattern = /^\d{5}$/;
+        }
+
+        //console.log("Zip Validation : ",zipCodePattern.test(elementValue))
+        return zipCodePattern.test(elementValue);
+    }
+
+//****************************************
+
+    validateEmail(mail)
+    {
+        if (/^\w+([\.-]?\w+)@\w+([\.-]?\w+)(\.\w{2,3})+$/.test(mail))
+        {
+            console.log("true");
+            return (true)
+        }
+        console.log("false");
+        return (false)
+    }
+
+//****************************************
+
+    telephoneCheck(str) {
+        var isphone = /^(1\s|1|)?((\(\d{3}\))|\d{3})(\-|\s)?(\d{3})(\-|\s)?(\d{4})$/.test(str);
+        return isphone;
+    }
+
+    //********************
+
 
 
     componentWillMount(){
@@ -57,6 +90,7 @@ class Profile extends Component {
 
     }
 
+
     trip(){
         console.log("inside the trips click function");
         API.gethistory().then((data)=>{
@@ -70,39 +104,86 @@ class Profile extends Component {
         })
     }
 
-    updateUserData(){
+ //*****************************************
+
+    updateUserData() {
 
         //validation for the zip code will come here.
 
 
-
         console.log("***********");
-       var payload = this.state;
+        var payload = this.state;
+        var flag = 0;
 
-         console.log(this.state.email);
-         console.log("---------------");
+        console.log(this.state.email);
+        console.log("---------------");
         console.log(payload);
         console.log("---------------");
-        API.doUpdate(payload).then((data)=>{
-            if(data.status==201){
-                console.log("Succesfull push");
-                this.successshowAlert("User data succesfully updated");
 
+        if (this.state.email != "") {
+            if (!this.validateEmail(this.state.email)) {
+                flag = flag + 1;
+                this.errorshowAlert(" Email not valid ");
             }
-            else{
-                this.errorshowAlert("Error while updating the user info ");
+
+        }
+        if (this.state.zipcode != "") {
+            if (!this.validateZipCode(this.state.zipcode)) {
+                flag = flag + 3;
+                console.log("inside zip code validation");
+                this.errorshowAlert("zipcode not valid");
+            }
+        }
+        if (this.state.phonenumber != "") {
+            if (!this.telephoneCheck(this.state.phonenumber)) {
+                flag = flag + 5;
+                this.errorshowAlert("Phone number not valid");
+            }
+        }
+
+
+        if (flag == 0) {
+            API.doUpdate(payload).then((data) => {
+                if (data.status == 201) {
+                    console.log("Succesfull push");
+                    this.successshowAlert("User data succesfully updated");
+
+                }
+                else {
+                    this.errorshowAlert("Error while updating the user info ");
+                }
+            })
+        }
+    }
+
+
+    //*****************************************
+
+    handleFileUpload = (event) => {
+
+        const payload = new FormData();
+        payload.append('mypic', event.target.files[0]);
+         console.log("inside the upload call");
+            console.log(event.target.files[0]);
+        API.upload(payload).then((data)=>{
+            if(data.status==201){
+                this.setState({imgpath:data.filename})
             }
         })
+    };
 
 
-    }
-     errorshowAlert = (msg) => {
+    //*****************************************
+
+
+    errorshowAlert = (msg) => {
         this.msg.show(msg, {
             time: 5000,
             type: 'success',
             icon: <img src={require('../image/error.png')} />
         })
     }
+
     successshowAlert = (msg) => {
         this.msg.show(msg, {
             time: 5000,
@@ -111,11 +192,10 @@ class Profile extends Component {
         })
     }
 
-    
-
     render(){
         return(
             <div>
+                <AlertContainer ref={a => this.msg = a} {...this.alertOptions} />
                <div style={{backgroundColor:'black'}}>
                <Nav/>
                </div>
@@ -287,7 +367,8 @@ class Profile extends Component {
                                 
                                 <div className="md-form">
                                     <i className="fa fa-file prefix"></i>
-                                    <input type="file" id="uploadpic" /> 
+                                    <input type="file" id="uploadpic"  name="mypic"
+                                           onChange={this.handleFileUpload}/>
                                 </div>
 
                                 <button type="button" className="btn btn-light-blue btn-lg btn-block" onClick={()=>this.updateUserData()}>Save</button>
@@ -296,7 +377,7 @@ class Profile extends Component {
                     </div>
                 
                     <div className="tab-pane fade" id="panel6" role="tabpanel">
-                        
+
 
                         <UserTrip/>
 

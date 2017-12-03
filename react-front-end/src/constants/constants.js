@@ -10,11 +10,12 @@ export const VIEW_FLIGHT_DETAIL="VIEW_FLIGHT_DETAIL";
 export const BOOK_FLIGHT="BOOK_FLIGHT";
 export const BOOK_CAR="BOOK_CAR";
 export const BOOK_HOTEL="BOOK_HOTEL";
-export const USER_HISTORY="USER_HISTORY";
+export const BOOKING_HISTORY="BOOKING_HISTORY";
 export const GET_VENDORS="GET_VENDORS";
 export const ADD_VENDOR="ADD_VENDOR";
 export const DELETE_VENDOR="DELETE_VENDOR";
 export const ALL_USERS="ALL_USERS";
 export const DELETE_USER="DELETE_USER";
 export const GET_BILLS="GET_BILLS";
+export const SEARCH_HISTORY="SEARCH_HISTORY";
 

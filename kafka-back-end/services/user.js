@@ -60,24 +60,27 @@ function login(msg, callback){
         }
         else {
             //console.log("++++++++++++++++++++");
-            console.log(results[0].password);
-            console.log("1234");
-            console.log(reqPassword);
-            console.log("++++++++++++++++++++");
+            // console.log(results[0].password);
+            if (results.length > 0) {
+                if (results[0].password == reqPassword) {
 
-            if (results[0].password == reqPassword) {
+                    res.code = "200";
+                    res.value = "Login success";
+                    // res.data = results[0].user_role;
+                }
+                else {
+                    res.code = "402";
+                    res.value = "User password not valid";
+                    //  res.data = null;
+                }
 
-                res.code = "200";
-                res.value = "Login success";
-               // res.data = results[0].user_role;
             }
-            else{
-                res.code = "402";
-                res.value = "User password not valid";
-              //  res.data = null;
+            else {
+                res.code = "401",
+                    res.value = "User not found"
             }
+            callback(null, res);
         }
-        callback(null,res);
     } , selectQuery)
 
 }
@@ -279,7 +282,7 @@ function upload(msg,callback){
 function getuserdata(msg,callback){
     var res= {};
     console.log(msg);
-    var getQuery = "select first_name,last_name,user_role,city,state,zip_code,profile_image_path,email,phone,street_address,credit_card_number from user where email='"+msg.email+"';";
+    var getQuery = "select first_name,last_name,user_role,city,state,zip_code,profile_image_path,email,phone,street_address,credit_card_number,email from user where email='"+msg.email+"';";
     mysql.fetchData(function (err,results) {
         if(err){
             res.code = "401";
@@ -340,8 +343,113 @@ function deleteuser(msg,callback) {
 
 
 
+
+function addHistory(msg, callback) {
+
+    var startdate = new Date(msg.payload.startdate);
+    var enddate = new Date(msg.payload.enddate);
+
+    var res={};
+    if(msg.payload.searchtype=="flight") {
+        var historySql = "insert into searhistory(`user_email`,`search_type`,`source_city`,`source_state`,`destination_city`,`destination_state`,`flight_trip_type`,`start_date`,`end_date`) values('"
+            + msg.email + "','" + 'FLIGHT' + "','" + msg.payload.origincity + "','" + msg.payload.originstate + "','" + msg.payload.destinationcity + "','" + msg.payload.destinationstate + "','"
+            + msg.payload.triptype + "','" + startdate + "','" + enddate + "');";
+    }
+
+    else if(msg.payload.searchtype=="hotel") {
+        var historySql = "insert into searchhistory(`user_email`,`search_type`,`source_city`,`source_state`,`start_date`,`end_date`) values('"
+            + msg.email + "','" + 'HOTEL' + "','" + msg.payload.city + "','" + msg.payload.state + "','"
+             + startdate + "','" + enddate + "');";
+
+    }
+
+    else {
+        var historySql = "insert into searchhistory(`user_email`,`search_type`,`source_city`,`source_state`,`destination_city`,`destination_state`,`start_date`,`end_date`) values('"
+            + msg.email + "','" + 'CAR' + "','" + msg.payload.pickupcity + "','" + msg.payload.pickupstate + "','" + msg.payload.dropoffcity + "','" + msg.payload.dropoffstate
+            + "','" + startdate + "','" +enddate + "');";
+
+    }
+    mysql.executeQuery(function(err){
+        if(err){
+            //throw  err;
+            res.code = "401";
+
+        }
+        else{
+            res.code = "200";
+
+        }
+        callback(null,res);
+    },historySql);
+}
+
+
+
+function searchHistory(msg,callback){
+    var res={};
+    console.log(msg);
+    var car = [];
+    var flight = [];
+    var hotel = [];
+    var search = "select * from searchhistory where user_email='"+msg+"';" ;
+
+    mysql.fetchData(function (err,results) {
+        if(err){
+            throw err;
+            res.code = "401";
+            res.value = " error while fetching the data";
+        }
+        else{
+            if(results.length>0) {
+                res.code = "200";
+                res.value = "Data successfully fetched";
+                var i ;
+                for (i = 0 ; i < results.length ; i++ ){
+                    if(results[i].search_type == "CAR"){
+
+                        car.push(results[i]);
+                        console.log(car);
+
+                    }
+
+
+                    else if(results[i].search_type == "FLIGHT"){
+                        // es.flight = results[i];
+                        console.log("**********");
+                        console.log(results[i]);
+                        console.log("**********");
+                        flight.push(results[i]);
+
+                    }
+                    else if(results[i].search_type === "HOTEL"){
+                        hotel.push(results[i]);
+                    }
+                }
+                res.car = car;
+                res.flight = flight;
+                res.hotel =hotel;
+            }
+
+            else{
+                res.code = 401;
+                res.value = "No bookings found for the user";
+            }
+        }
+        callback(null,res);
+    },search)
+
+
+}
+
+
+
+
+
+
 //****************************************************************************************************************************
 exports.upload = upload;
+exports.searchHistory = searchHistory;
+exports.addHistory = addHistory;
 exports.getuserdata = getuserdata;
 exports.deleteuser = deleteuser;
 exports.bookinghistory = bookinghistory;
