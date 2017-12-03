@@ -11,7 +11,7 @@ DROP TABLE IF EXISTS `USER`;
 CREATE TABLE `USER` (
   `email` varchar(90) NOT NULL,
   `password` varchar(45) NOT NULL,
-  `first_name` varchar(45) NOT NULL,
+  `first_name` varchar(45) DEFAULT NULL,
   `last_name` varchar(45) DEFAULT NULL,
   `user_role` enum('USER','ADMIN', 'VENDOR') DEFAULT 'USER',
   `street_address` varchar(90) DEFAULT NULL,
