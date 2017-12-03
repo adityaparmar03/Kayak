@@ -46,6 +46,23 @@ class CarBooking extends Component {
 
       const payload = JSON.parse(localStorage.getItem("carbooking"));
       console.log('payload=>',payload);
+
+      var travellerinfo = {
+          "firstname":this.refs.firstname.value,
+          "lastname":this.refs.lastname.value,
+          "email":this.refs.email.value,
+          "phoneno":this.refs.phoneno.value,
+          "address":this.refs.address.value,
+          "zipcode":this.refs.zipcode.value
+      }
+      var credit_card = {
+            "card_number": this.refs.creditcardno.value,
+            "valid_till":this.refs.expirydate.value,
+            "cvv":this.refs.cvv.value
+      }
+
+      payload.credit_card = credit_card;
+      payload.travellerinfo = travellerinfo;
       API.bookCar(payload)
           .then((res) => {
               console.log(res);
@@ -117,7 +134,8 @@ class CarBooking extends Component {
                                             <div className="col-sm-6">
                                                 <div className="md-form">
                                                     <i className="fa fa-user prefix"></i>
-                                                    <input type="text" id="firstname" className="form-control"/>
+                                                    <input type="text" id="firstname"
+                                                    ref="firstname" className="form-control"/>
                                                     <label htmlFor="firstname">Firstname</label>
                                                 </div>
 
@@ -125,7 +143,8 @@ class CarBooking extends Component {
                                             <div className="col-sm-6">
                                                 <div className="md-form">
                                                     <i className="fa fa-user prefix"></i>
-                                                    <input type="text" id="lastname" className="form-control"/>
+                                                    <input type="text" id="lastname" ref="lastname"
+                                                    className="form-control"/>
                                                     <label htmlFor="lastname">Lastname</label>
                                                 </div>
 
@@ -135,7 +154,7 @@ class CarBooking extends Component {
                                         <div className="col-sm-6">
                                         <div className="md-form">
                                         <i className="fa fa-envelope prefix"></i>
-                                        <input type="text" id="email" className="form-control"/>
+                                        <input type="text" id="email" ref="email" className="form-control"/>
                                         <label htmlFor="email">Email</label>
                                         </div>
 
@@ -145,7 +164,7 @@ class CarBooking extends Component {
                                         <div className="md-form">
                                         <i className="fa fa-phone prefix"></i>
 
-                                        <input type="text" id="phone" className="form-control"/>
+                                        <input type="text" id="phone" ref="phoneno" className="form-control"/>
                                         <label htmlFor="phone">Phone Number</label>
 
                                         </div>
@@ -157,7 +176,7 @@ class CarBooking extends Component {
                                         <div className="md-form">
                                         <i className="fa fa-map-marker prefix"></i>
 
-                                        <input type="text" id="address" className="form-control"/>
+                                        <input type="text" id="address" ref="address" className="form-control"/>
                                         <label htmlFor="address">Address</label>
 
                                         </div>
@@ -167,7 +186,7 @@ class CarBooking extends Component {
                                         <div className="md-form">
                                         <i className="fa fa-location-arrow prefix"></i>
 
-                                        <input type="text" id="zipcode" className="form-control"/>
+                                        <input type="text" id="zipcode" ref="zipcode" className="form-control"/>
                                         <label htmlFor="form2">Zip Code</label>
 
                                         </div>
@@ -188,7 +207,7 @@ class CarBooking extends Component {
                                 <div className="col-sm-4">
                                     <div className="md-form form-group">
                                     <i className="fa fa-credit-card-alt prefix"></i>
-                                    <input type="text" id="creditcardno" className="form-control validate" maxLength='16'/>
+                                    <input type="text" id="creditcardno" ref="creditcardno" className="form-control validate" maxLength='16'/>
                                     <label htmlFor="creditcardno">Credit Card No</label>
                                     </div>
 
@@ -197,14 +216,14 @@ class CarBooking extends Component {
                                     <label>Expiry Date :  </label>
                                     <div className="md-form form-group">
 
-                                        <input type="month" id="form92" className="form-control validate"/>
+                                        <input type="month" id="form92" ref="expirydate" className="form-control validate"/>
 
                                     </div>
 
                                 </div>
                                 <div className="col-sm-4">
                                     <div className="md-form form-group">
-                                    <input type="text" id="cvv" className="form-control validate" maxLength='3'/>
+                                    <input type="text" id="cvv" ref="cvv" className="form-control validate" maxLength='3'/>
                                     <label htmlFor="cvv">CVV</label>
                                     </div>
 
