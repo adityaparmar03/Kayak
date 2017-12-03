@@ -60,20 +60,30 @@ class Carsearch extends Component {
                'dropoff' : this.state.returndateenable ? 'DIFFERENT-DROPOFF' : 'SAME-DROPOFF'
             }
 
-           API.addHistory(payload)
-               .then((res) => {
+           API.checkSession().then((data)=>{
+               console.log("inside the check session response");
+               console.log(data);
+
+               if(data.status===201){
+
+                   API.addHistory(payload)
+                       .then((res) => {
 
 
-                   if (res.status == 200) {
+                           if (res.status == 200) {
 
 
-                       console.log("Success...")
+                               console.log("Success...")
 
-                   }else if (res.status == 401) {
+                           }else if (res.status == 401) {
 
-                       //  this.props.history.push('/');
-                   }
-               });
+                               //  this.props.history.push('/');
+                           }
+                       });
+               }
+
+           })
+
 
 
            console.log('payload', payload);
