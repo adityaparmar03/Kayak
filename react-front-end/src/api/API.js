@@ -396,6 +396,24 @@ export const addHistory = (payload) =>
         });
 
 
+export const searchHistory = () =>
+    fetch(`${api}/user/searchhistory`, {
+        method: 'GET',
+        headers: {
+            ...headers,
+            'Content-Type': 'application/json'
+        },
+        credentials:'include'
+    }).then(res => {
+
+        return res.json();
+    })
+        .catch(error => {
+            console.log("This is an API error");
+            return error;
+        });
+
+
 export const bookFlight = (payload) =>
     fetch(`${api}/flight/book`, {
         method: 'POST',

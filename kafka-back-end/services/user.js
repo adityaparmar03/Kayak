@@ -351,7 +351,7 @@ function addHistory(msg, callback) {
 
     var res={};
     if(msg.payload.searchtype=="flight") {
-        var historySql = "insert into searchhistory(`user_email`,`search_type`,`source_city`,`source_state`,`destination_city`,`destination_state`,`flight_trip_type`,`start_date`,`end_date`) values('"
+        var historySql = "insert into searhistory(`user_email`,`search_type`,`source_city`,`source_state`,`destination_city`,`destination_state`,`flight_trip_type`,`start_date`,`end_date`) values('"
             + msg.email + "','" + 'FLIGHT' + "','" + msg.payload.origincity + "','" + msg.payload.originstate + "','" + msg.payload.destinationcity + "','" + msg.payload.destinationstate + "','"
             + msg.payload.triptype + "','" + startdate + "','" + enddate + "');";
     }
@@ -385,9 +385,70 @@ function addHistory(msg, callback) {
 
 
 
+function searchHistory(msg,callback){
+    var res={};
+    console.log(msg);
+    var car = [];
+    var flight = [];
+    var hotel = [];
+    var search = "select * from searchhistory where user_email='"+msg+"';" ;
+
+    mysql.fetchData(function (err,results) {
+        if(err){
+            throw err;
+            res.code = "401";
+            res.value = " error while fetching the data";
+        }
+        else{
+            if(results.length>0) {
+                res.code = "200";
+                res.value = "Data successfully fetched";
+                var i ;
+                for (i = 0 ; i < results.length ; i++ ){
+                    if(results[i].search_type == "CAR"){
+
+                        car.push(results[i]);
+                        console.log(car);
+
+                    }
+
+
+                    else if(results[i].search_type == "FLIGHT"){
+                        // es.flight = results[i];
+                        console.log("**********");
+                        console.log(results[i]);
+                        console.log("**********");
+                        flight.push(results[i]);
+
+                    }
+                    else if(results[i].search_type === "HOTEL"){
+                        hotel.push(results[i]);
+                    }
+                }
+                res.car = car;
+                res.flight = flight;
+                res.hotel =hotel;
+            }
+
+            else{
+                res.code = 401;
+                res.value = "No bookings found for the user";
+            }
+        }
+        callback(null,res);
+    },search)
+
+
+}
+
+
+
+
+
 
 //****************************************************************************************************************************
 exports.upload = upload;
+exports.searchHistory = searchHistory;
 exports.addHistory = addHistory;
 exports.getuserdata = getuserdata;
 exports.deleteuser = deleteuser;

@@ -289,4 +289,27 @@ router.post('/addhistory', function (req, res) {
 
 
 
+router.get('/searchhistory', function (req, res) {
+
+    var email =  req.session.email;
+    kafka.make_request('searchhistory' ,email, function (err, results) {
+        if(err){
+
+            res.send({"status":401 })
+        }
+        else{
+
+            if(results.code==="200"){
+
+                res.send({"status":201 , "data": results})
+
+            } else {
+                res.send({"status":401 , "data": results})
+
+            }
+        }
+
+    })
+});
+
 module.exports = router;
