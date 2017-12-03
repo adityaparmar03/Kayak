@@ -22,7 +22,7 @@ class Nav extends Component {
     if(data.status===201){
         console.log("user logged in ");
         console.log(data.data.value);
-        this.successshowAlert(data.data.value);
+        //this.successshowAlert(data.data.value);
         this.props.signIn(data);
     }
 
@@ -141,8 +141,9 @@ loginButton(){
             console.log("000000000000000000000");
             this.successshowAlert("you have succesfully registered");
             //this.props.history.push('/');
-            window.location.reload();
             this.props.userprofile.isLoggedIn = true;
+            window.location.reload();
+
           //  console.log("Before getting in the signin reducer  "+ this.props.userprofile.isLoggedIn)
        // this.props.signIn(data);
         }
@@ -207,6 +208,7 @@ loginButton(){
         time: 5000,
         transition: 'scale'
       }
+
      errorshowAlert = (msg) => {
         this.msg.show(msg, {
           time: 5000,
@@ -214,6 +216,7 @@ loginButton(){
           icon: <img src={require('../image/error.png')} />
         })
       }
+
      successshowAlert = (msg) => {
         this.msg.show(msg, {
           time: 5000,
@@ -221,6 +224,7 @@ loginButton(){
           icon: <img src={require('../image/success.png')} />
         })
       }
+
     render(){
         return(
             <div >
@@ -350,7 +354,7 @@ loginButton(){
                                         email: event.target.value
                                     });
                                 }}/>
-                                <label data-error="wrong" data-success="right" htmlFor="form24">Your email</label>
+                                <label htmlFor="form24">Your email</label>
                             </div>
 
                             <div className="md-form form-sm">

@@ -195,6 +195,20 @@ export const doUpdate = (payload) =>
     });
 
 //************************************************************************************************
+export const upload = (payload) =>
+    fetch(`${api}/user/upload`, {
+        method: 'POST',
+        body:payload,
+        credentials:'include'
+    }).then(res => {
+        return res.json();
+    })
+        .catch(error => {
+            console.log("This is error");
+            return error;
+        });
+
+//************************************************************************************************
 
 
 

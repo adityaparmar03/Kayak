@@ -4,6 +4,7 @@ var passport = require('passport');
 var kafka = require('./kafka/client');
 var mail = require('./mail');
 var multer = require('multer');
+var fname = "";
 
 var storage = multer.diskStorage({
     destination: function (req, file, cb) {
@@ -14,7 +15,9 @@ var storage = multer.diskStorage({
     },
     filename: function (req, file, cb) {
 
-        cb(null, req.session.email+".jpg");
+        fname = req.session.email+file.originalname;
+
+        cb(null,fname);
     }
 });
 
@@ -28,13 +31,12 @@ router.post('/login', function (req, res) {
 
     // var reqEmail = req.body.email;
     //  var reqPassword = req.body.password;
-<<<<<<< Updated upstream
-    console.log("inside the login path with the body"+req.body.email);
 
-=======
+
     console.log("inside the login path with the body"+req.body);
-var email= req.body.email;
->>>>>>> Stashed changes
+    var email = req.body.email;
+    console.log("------------");
+    console.log(email);
     passport.authenticate('login', function(err, user) {
 
         if (err) {
@@ -200,29 +202,17 @@ router.put('/update',function (req,res) {
 
 //************************************************************************************************************************
 
-router.post('/upload', upload.single('mypic'),function (req, res, next) {
+router.post('/upload', upload.single('mypic'),function (req, res) {
+    console.log("inside the upload folder");
 
-    var payload = {"email": req.session.email}
 
-    payload["imgpath"] = req.session.email+".jpg";
+        res.send({"status":201 , "data": "User file updated" ,"filename":fname});
+    //
+    // else{
+    //     res.send({"status":401,"data":"Error while uploading"})
+    // }
 
-    console.log(payload);
-
-    kafka.make_request('upload', payload ,function(err,results){
-
-        if(err){
-            console.log("After kafka response");
-
-            res.send({"status":401})
-        }
-        else
-        {
-            res.send({"status":201});
-        }
-    })
 })
-
-
 //************************************************************************************************************************
 
 

@@ -60,24 +60,27 @@ function login(msg, callback){
         }
         else {
             //console.log("++++++++++++++++++++");
-            console.log(results[0].password);
-            console.log("1234");
-            console.log(reqPassword);
-            console.log("++++++++++++++++++++");
+            // console.log(results[0].password);
+            if (results.length > 0) {
+                if (results[0].password == reqPassword) {
 
-            if (results[0].password == reqPassword) {
+                    res.code = "200";
+                    res.value = "Login success";
+                    // res.data = results[0].user_role;
+                }
+                else {
+                    res.code = "402";
+                    res.value = "User password not valid";
+                    //  res.data = null;
+                }
 
-                res.code = "200";
-                res.value = "Login success";
-               // res.data = results[0].user_role;
             }
-            else{
-                res.code = "402";
-                res.value = "User password not valid";
-              //  res.data = null;
+            else {
+                res.code = "401",
+                    res.value = "User not found"
             }
+            callback(null, res);
         }
-        callback(null,res);
     } , selectQuery)
 
 }
@@ -279,7 +282,7 @@ function upload(msg,callback){
 function getuserdata(msg,callback){
     var res= {};
     console.log(msg);
-    var getQuery = "select first_name,last_name,user_role,city,state,zip_code,profile_image_path,email,phone,street_address,credit_card_number from user where email='"+msg.email+"';";
+    var getQuery = "select first_name,last_name,user_role,city,state,zip_code,profile_image_path,email,phone,street_address,credit_card_number,email from user where email='"+msg.email+"';";
     mysql.fetchData(function (err,results) {
         if(err){
             res.code = "401";
