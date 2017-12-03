@@ -9,12 +9,35 @@ class HotelBooking extends Component {
     constructor(props){
         super(props);
         this.state = {
-            progress:'100%'
+           hotelname: "",
+           address:"",
+           roomtype:"",
+           noofrooms:"",
+           total:"",
+           stay:""
         }
      }
     componentWillMount(){
 
       const payload = JSON.parse(localStorage.getItem("hotelbooking"));
+      console.log("payload=>"+payload)
+      var address = payload.booking.address.street+", "+
+      payload.booking.address.city+", "+
+      payload.booking.address.state+" - "+
+      payload.booking.address.zip
+      var price = 
+
+      this.setState({
+
+            hotelname: payload.booking.name,
+            address:address,
+            roomtype:payload.booking.roomtype,
+            noofrooms:payload.booking.roomcount,
+            total:payload.booking.roomcount*payload.booking.price,
+            stay:payload.booking.bookingstartdate+" - "+payload.booking.bookingenddate
+
+      })
+
       console.log('payload',payload);
       API.bookHotel(payload)
           .then((res) => {
@@ -43,20 +66,44 @@ class HotelBooking extends Component {
                     <div style={{padding:'2%',paddingLeft:'10%',paddingRight:'10%'}}>
                         <div className="card">
 
-                        <div className="card-header mdb-color lighten-1 white-text">
+                        <div className="card-header deep-orange lighten-1 white-text">
                             Booking Details
                         </div>
                                 <div className="card-body">
-                                    <p>Type: Flight</p>
-                                    <p>Type: Flight</p>
-                                    <p>Type: Flight</p>
+                                    <div className="row">
+                                        <div className="col-sm-6">
+                                        Hotel Name: {this.state.hotelname}
+                                        </div> 
+                                        <div className="col-sm-6">
+                                        Address: {this.state.address}
+                                        </div>   
+                                    </div>
+                                    <br/>
+                                    <div className="row">
+                                        <div className="col-sm-6">
+                                          Room Type: {this.state.roomtype}
+                                        </div> 
+                                        <div className="col-sm-6">
+                                          No of Rooms: {this.state.noofrooms}
+                                        </div>
+                                        
+                                    </div> 
+                                    <br/>
+                                    <div className="row">
+                                        <div className="col-sm-6">
+                                          Stay: {this.state.stay}
+                                        </div> 
+                                        <div className="col-sm-6">
+                                          Total: ${this.state.total}
+                                      </div>   
+                                    </div>  
                                 </div>
                         </div>
 
 
                         <div className="card">
 
-                        <div className="card-header mdb-color lighten-1 white-text">
+                        <div className="card-header deep-orange lighten-1 white-text">
                             Personal Details
                         </div>
                                 <div className="card-body">
@@ -115,7 +162,7 @@ class HotelBooking extends Component {
                                         <i className="fa fa-location-arrow prefix"></i>
 
                                         <input type="text" id="zipcode" className="form-control"/>
-                                        <label htmlFor="form2">Zip Code</label>
+                                        <label htmlFor="zipcode">Zip Code</label>
 
                                         </div>
 
@@ -127,7 +174,7 @@ class HotelBooking extends Component {
 
                         <div className="card">
 
-                        <div className="card-header mdb-color lighten-1 white-text">
+                        <div className="card-header deep-orange lighten-1 white-text">
                             Payment
                         </div>
                         <div className="card-body">

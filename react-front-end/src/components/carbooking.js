@@ -9,13 +9,14 @@ class CarBooking extends Component {
     constructor(props){
         super(props);
         this.state = {
-            progress:'100%'
+            progress:'100%',
+        
         }
      }
     componentWillMount(){
 
       const payload = JSON.parse(localStorage.getItem("carbooking"));
-      console.log('payload',payload);
+      console.log('payload=>',payload);
       API.bookCar(payload)
           .then((res) => {
               console.log(res);
@@ -43,20 +44,44 @@ class CarBooking extends Component {
                     <div style={{padding:'2%',paddingLeft:'10%',paddingRight:'10%'}}>
                         <div className="card">
 
-                        <div className="card-header mdb-color lighten-1 white-text">
+                        <div className="card-header deep-orange lighten-1 white-text">
                             Booking Details
                         </div>
                                 <div className="card-body">
-                                    <p>Type: Flight</p>
-                                    <p>Type: Flight</p>
-                                    <p>Type: Flight</p>
+                                <div className="row">
+                                <div className="col-sm-6">
+                                Car: {this.state.hotelname}
+                                </div> 
+                                <div className="col-sm-6">
+                                Address: {this.state.address}
+                                </div>   
+                            </div>
+                            <br/>
+                            <div className="row">
+                                <div className="col-sm-6">
+                                  Room Type: {this.state.roomtype}
+                                </div> 
+                                <div className="col-sm-6">
+                                  No of Rooms: {this.state.noofrooms}
+                                </div>
+                                
+                            </div> 
+                            <br/>
+                            <div className="row">
+                                <div className="col-sm-6">
+                                  Stay: {this.state.stay}
+                                </div> 
+                                <div className="col-sm-6">
+                                  Total: ${this.state.total}
+                              </div>   
+                            </div> 
                                 </div>
                         </div>
 
 
                         <div className="card">
 
-                        <div className="card-header mdb-color lighten-1 white-text">
+                        <div className="card-header deep-orange lighten-1 white-text">
                             Personal Details
                         </div>
                                 <div className="card-body">
@@ -127,7 +152,7 @@ class CarBooking extends Component {
 
                         <div className="card">
 
-                        <div className="card-header mdb-color lighten-1 white-text">
+                        <div className="card-header deep-orange lighten-1 white-text">
                             Payment
                         </div>
                         <div className="card-body">
