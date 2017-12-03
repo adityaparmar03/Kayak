@@ -40,7 +40,6 @@ function searchFlights(msg, callback){
                 else {
 
                     console.log("Flight List:", flights)
-                    roundtripflights.sort(flights)
                     res.code = "200";
                     res.value = flights;
 
@@ -347,9 +346,3 @@ function getBookedCountHelper(dbBookings){
 
 exports.searchFlights=searchFlights;
 exports.bookFlight=bookFlight;
-
-
-
-
-
-

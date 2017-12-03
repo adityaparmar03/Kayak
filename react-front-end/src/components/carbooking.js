@@ -9,13 +9,36 @@ class CarBooking extends Component {
     constructor(props){
         super(props);
         this.state = {
-            progress:'100%',
-
+           carname: "",
+           pickupaddress:"",
+           dropoffaddress:"",
+           cartype:"",
+           total:"",
+           days:""
         }
      }
     componentWillMount(){
+      const payload = JSON.parse(localStorage.getItem("carbooking"));
+      console.log("payload=>"+payload)
 
+      var pickupaddress = payload.booking.pickupaddress.street+", "+
+      payload.booking.pickupaddress.city+", "+
+      payload.booking.pickupaddress.state+" - ";
 
+      var dropoffaddress = payload.booking.dropoffaddress.street+", "+
+      payload.booking.dropoffaddress.city+", "+
+      payload.booking.dropoffaddress.state+" - ";
+
+      this.setState({
+
+            carname: payload.booking.carmodel,
+            pickupaddress:pickupaddress,
+            dropoffaddress:dropoffaddress,
+            cartype:payload.booking.cartype,
+            total:payload.booking.price,
+            days:payload.booking.days+" days ("+payload.booking.pickupdate.substring(0, 10)+" - "+payload.booking.dropoffdate.substring(0, 10)+")"
+
+      });
 
     }
 
@@ -55,29 +78,29 @@ class CarBooking extends Component {
                                 <div className="card-body">
                                 <div className="row">
                                 <div className="col-sm-6">
-                                Car: {this.state.hotelname}
+                                Car: {this.state.carname}
                                 </div>
                                 <div className="col-sm-6">
-                                Address: {this.state.address}
+                                Address: {this.state.pickupaddress}
                                 </div>
                             </div>
                             <br/>
                             <div className="row">
                                 <div className="col-sm-6">
-                                  Room Type: {this.state.roomtype}
+                                  Car Type: {this.state.cartype}
                                 </div>
                                 <div className="col-sm-6">
-                                  No of Rooms: {this.state.noofrooms}
+                                  Drop Off Address: {this.state.dropoffaddress}
                                 </div>
 
                             </div>
                             <br/>
                             <div className="row">
                                 <div className="col-sm-6">
-                                  Stay: {this.state.stay}
+                                  Days Booked : {this.state.days}
                                 </div>
                                 <div className="col-sm-6">
-                                  Total: ${this.state.total}
+                                  Total Price : ${this.state.total}
                               </div>
                             </div>
                                 </div>

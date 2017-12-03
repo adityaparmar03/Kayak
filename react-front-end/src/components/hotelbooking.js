@@ -25,7 +25,7 @@ class HotelBooking extends Component {
       payload.booking.address.city+", "+
       payload.booking.address.state+" - "+
       payload.booking.address.zip
-    
+
       this.setState({
 
             hotelname: payload.booking.name,
@@ -37,13 +37,13 @@ class HotelBooking extends Component {
 
       })
 
-    
+
 
     }
 
     handlePay(){
       const payload = JSON.parse(localStorage.getItem("hotelbooking"));
-     
+
       var travellerinfo = {
           "firstname":this.refs.firstname.value,
           "lastname":this.refs.lastname.value,
@@ -57,6 +57,9 @@ class HotelBooking extends Component {
             "valid_till":this.refs.expirydate.value,
             "cvv":this.refs.cvv.value
       }
+
+      payload.credit_card = credit_card;
+      payload.travellerinfo = travellerinfo;
       API.bookHotel(payload)
           .then((res) => {
               console.log(res);
@@ -148,7 +151,7 @@ class HotelBooking extends Component {
                                         <div className="col-sm-6">
                                         <div className="md-form">
                                         <i className="fa fa-envelope prefix"></i>
-                                        <input type="text" id="email" 
+                                        <input type="text" id="email"
                                         ref="email" className="form-control"/>
                                         <label htmlFor="email">Email</label>
                                         </div>
@@ -159,7 +162,7 @@ class HotelBooking extends Component {
                                         <div className="md-form">
                                         <i className="fa fa-phone prefix"></i>
 
-                                        <input type="text" id="phone" 
+                                        <input type="text" id="phone"
                                         ref="phoneno" className="form-control"/>
                                         <label htmlFor="phone">Phone Number</label>
 
@@ -172,7 +175,7 @@ class HotelBooking extends Component {
                                         <div className="md-form">
                                         <i className="fa fa-map-marker prefix"></i>
 
-                                        <input type="text" id="address" 
+                                        <input type="text" id="address"
                                         ref="address" className="form-control"/>
                                         <label htmlFor="address">Address</label>
 
@@ -204,7 +207,7 @@ class HotelBooking extends Component {
                                 <div className="col-sm-4">
                                     <div className="md-form form-group">
                                     <i className="fa fa-credit-card-alt prefix"></i>
-                                    <input type="text" id="creditcardno" 
+                                    <input type="text" id="creditcardno"
                                     ref="creditcardno"
                                     className="form-control validate" maxLength='16'/>
                                     <label htmlFor="creditcardno">Credit Card No</label>
@@ -215,7 +218,7 @@ class HotelBooking extends Component {
                                     <label>Expiry Date :  </label>
                                     <div className="md-form form-group">
 
-                                        <input type="month" id="form92" 
+                                        <input type="month" id="form92"
                                         ref="expirydate" className="form-control validate"/>
 
                                     </div>
@@ -223,14 +226,14 @@ class HotelBooking extends Component {
                                 </div>
                                 <div className="col-sm-4">
                                     <div className="md-form form-group">
-                                    <input type="text" id="cvv" 
+                                    <input type="text" id="cvv"
                                     ref="cvv" className="form-control validate" maxLength='3'/>
                                     <label htmlFor="cvv">CVV</label>
                                     </div>
 
                                 </div>
                             </div>
-                            <button className="btn btn-default btn-lg btn-block" onClick={()=>this.handlePay()}></button>
+                            <button className="btn btn-default btn-lg btn-block" onClick={()=>this.handlePay()}>Pay</button>
                           </div>
                         </div>
 

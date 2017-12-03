@@ -121,7 +121,7 @@ class Hotellist extends Component {
         var enddate = new Date(hotelsearchcriteria.enddate);
         var oneDay = 24*60*60*1000;
         var diffDays = Math.round(Math.abs((startdate.getTime() - enddate.getTime())/(oneDay)));
-        var totalPrice = diffDays * price;
+        var totalPrice = diffDays * price * roomcount;
         var hotelbooking = {
 
           booking :{
@@ -156,10 +156,10 @@ class Hotellist extends Component {
           console.log(this.state.low)
             if(
                 ((this.state.star_low <= data.stars)&&(this.state.star_high >= data.stars))
-            
+
                  ){
                 return(
-                    
+
                                     <div className="card" >
                                         <div data-toggle="collapse" data-target={'#details'+index}>
                                         <div className="row">
@@ -171,7 +171,7 @@ class Hotellist extends Component {
                                                         <p className="white-text">{data.name}</p>
                                                     </div>
                                             </div>
-                    
+
                                              </div>
                                              <div className="col-sm-2">
                                                 <div  style={{marginTop:'3vh'}}>
@@ -181,9 +181,9 @@ class Hotellist extends Component {
                                                     <button type="button" className="btn btn-elegant">{data.rating}</button>
                                                     <br/><a>{data.reviews.length} Reviews</a>
                                                     </div>
-                    
+
                                                 </div>
-                    
+
                                              </div>
                                             <div className="col-sm-3">
                                                     <div style={{textAlign:"center",marginTop:'1vh'}}>
@@ -202,12 +202,12 @@ class Hotellist extends Component {
                                                     <button style={{minWidth:"10vw",maxHeight:'7.5vh'}}className="btn btn-deep-orange"
                                                     onClick={()=>this.handleBook(data, data.rooms[2].roomtype, data.rooms[2].price, data.rooms[2].rooomcount)}>Book</button>
                                          </div>
-                    
+
                                             </div>
                                         </div>
                                         </div>
                                         <div id={'details'+index} className="collapse">
-                    
+
                                         <ul className="nav md-pills nav-justified pills-secondary">
                                             <li className="nav-item">
                                                 <a className="nav-link active" data-toggle="tab" href={'#panel1'+index} role="tab">Details</a>
@@ -218,36 +218,36 @@ class Hotellist extends Component {
                                             <li className="nav-item">
                                                 <a className="nav-link" data-toggle="tab" href={'#panel3'+index} role="tab">Review</a>
                                             </li>
-                    
+
                                         </ul>
-                    
+
                                         <div className="tab-content">
-                    
+
                                             <div className="tab-pane fade in show active" id={'panel1'+index} role="tabpanel">
                                             <p>{data.description}</p>
                                                 <div className="row">
                                                     <div className="col-sm-4">
-                    
+
                                                         <h4><b>Address:</b></h4>
                                                         <h6>{data.address.street}</h6>
                                                         <h6>{data.address.city}, {data.address.state} - {data.address.zip}</h6>
                                                     </div>
-                                                 
+
                                                 </div>
                                             </div>
-                    
+
                                             <div className="tab-pane fade" id={'panel2'+index} role="tabpanel">
-                    
+
                                             <iframe
                                                     width="100%"
                                                     height="450"
                                                     frameBorder="0"
-                    
-                    
+
+
                                                     src={this.state.googlemap+data.address.street} >
                                              </iframe>
                                             </div>
-                    
+
                                             <div className="tab-pane fade" id={'panel3'+index} role="tabpanel">
                                             <h4><b>Overall {data.rating}</b></h4>
                                             <h6><b>Based on {data.reviews.length} reviews</b></h6>
@@ -271,19 +271,19 @@ class Hotellist extends Component {
                                             <p><b>Reviews</b></p>
                                             {data.reviews.map((item,i)=><p>"{item}"</p>)}
                                             </div>
-                    
+
                                             </div>
-                    
-                    
-                    
+
+
+
                                         </div>
-                    
+
                                         </div>
-                    
+
                                      </div>
                                 )
             }
-            
+
      }
     render(){
         var colors = ["#FCBD7E", "#EB9F71", "#E6817C"];
