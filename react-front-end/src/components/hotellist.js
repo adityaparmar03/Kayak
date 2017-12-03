@@ -49,7 +49,23 @@ class Hotellist extends Component {
                     this.props.hotelSearch(res.hotels);
 
                     console.log("Success...")
-                    
+                    var price = res.hotels.map((item,i)=>parseInt(item.rooms[0].price));
+                  var  max = price.reduce(function(a, b) {
+                       return Math.max(a, b);
+                   });
+                 var   min = price.reduce(function(a, b) {
+                       return Math.min(a, b);
+                   });
+                   this.maxprice = max; //get from api
+                   this.minprice = min;
+                   var valuesPrice = [0,this.maxprice-this.minprice,0]
+                   var valuesStar=[0,4,0]
+                   this.setState({
+                       valuesPrice: valuesPrice,
+           
+                       low:this.minprice,
+                       high:this.maxprice
+                     });
 
                 }else if (res.status == 401) {
 
@@ -58,15 +74,13 @@ class Hotellist extends Component {
             });
 
 
-        this.maxprice = 234; //get from api
-        this.minprice = 67;
-        var valuesPrice = [0,this.maxprice-this.minprice,0]
+      
+       
         var valuesStar=[0,4,0]
         this.setState({
-            valuesPrice: valuesPrice,
+          
             valuesStar:valuesStar,
-            low:this.minprice,
-            high:this.maxprice
+           
           });
     }
 
@@ -155,8 +169,9 @@ class Hotellist extends Component {
     displayhotels(data,index){
           console.log(this.state.low)
             if(
-                ((this.state.star_low <= data.stars)&&(this.state.star_high >= data.stars))
-
+                ((this.state.star_low <= data.stars)&&(this.state.star_high >= data.stars)
+                 && (this.state.low <= data.rooms[0].price)&&(this.state.high >= data.rooms[0].price))
+            
                  ){
                 return(
 
