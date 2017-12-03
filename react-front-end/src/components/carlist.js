@@ -18,6 +18,8 @@ class Carlist extends Component {
             carname:"Mercedes-Benz",
             // UI states
              test:[1,2,3,4,5,1,2,3,4,5],
+             checkeddata:[],
+             changed:false,
              low: 0,
              high:0,
              star_low: 1,
@@ -32,7 +34,7 @@ class Carlist extends Component {
      }
       maxprice = 0;
       minprice = 0;
-
+     
 
 
 
@@ -40,24 +42,34 @@ class Carlist extends Component {
 
         const payload = JSON.parse(localStorage.getItem("carsearchcriteria"));
         console.log('payload',payload);
-
+        var max=0;
+        var min =0;
         API.searchCars(payload)
             .then((res) => {
-                console.log(res);
+               
                 if (res.status == 201) {
 
                     this.props.carSearch(res.cars);
 
 
                     var price = res.cars.map((item,i)=>parseInt(item.dailyrent));
-                    var max = price.reduce(function(a, b) {
+                     max = price.reduce(function(a, b) {
                         return Math.max(a, b);
                     });
-                    var min = price.reduce(function(a, b) {
+                     min = price.reduce(function(a, b) {
                         return Math.min(a, b);
                     });
-
-
+                    this.maxprice = max; //get from api
+                    this.minprice = min;
+                    var valuesPrice = [0,this.maxprice-this.minprice,0]
+                    var valuesStar=[0,4,0]
+                    this.setState({
+                        valuesPrice: valuesPrice,
+            
+                        low:this.minprice,
+                        high:this.maxprice
+                      });
+                    
 
                 }else if (res.status == 401) {
 
@@ -65,16 +77,8 @@ class Carlist extends Component {
                 }
             });
 
-        this.maxprice = 234; //get from api
-        this.minprice = 67;
-        var valuesPrice = [0,this.maxprice-this.minprice,0]
-        var valuesStar=[0,4,0]
-        this.setState({
-            valuesPrice: valuesPrice,
-
-            low:this.minprice,
-            high:this.maxprice
-          });
+      
+        
     }
     onChangePrice = values =>
     this.setState({
@@ -133,64 +137,97 @@ class Carlist extends Component {
     }
 
     displayhotels(data,index){
-
-
-            return(
-
-                <div className="card" key={index}>
-                    <div data-toggle="collapse" data-target={'#details'+index}>
-                    <div className="row">
-                    <div className="col-sm-4">
-                            <div style={{padding:'1vw'}}>
-                                <h5 class="h5-responsive" ><b>{data.carmodel}</b></h5>
-                                <p>Pickup : {data.pickupaddress.street}, {data.pickupaddress.city}, {data.pickupaddress.state}</p>
-                                <p>Dropoff : {data.dropoffaddress.street}, {data.dropoffaddress.city}, {data.dropoffaddress.state}</p>
-
-                                <button type="button" className="btn btn-primary">Get Direction</button>
-
-
-                            </div>
-
-                         </div>
-                        <div className="col-sm-5">
-                        <div className="view overlay hm-zoom">
-                         <img src={'http://localhost:3001/images/'+data.imageurl}
-                            className="img-fluid " alt={data.carmodel}/>
-                                <div className="mask flex-center waves-effect waves-light">
-                                    <p className="white-text">{data.carmodel}</p>
-                                </div>
-                        </div>
-
-                         </div>
-
-                        <div className="col-sm-3">
-                                <div style={{textAlign:"center",marginTop:'5vh'}}>
-                                <b style={{fontSize:"20px",fontWeight:"bold"}}>${data.dailyrent}</b><br/>
-                                <b style={{fontSize:"15px",fontWeight:"bold"}}>{data.cartype}</b><br/>
-                                <button style={{minWidth:"10vw",maxHeight:'7.5vh'}}className="btn btn-deep-orange"
-                                onClick={()=>this.handleBook(data,data.dailyrent)}>Book</button>
-                                </div>
-
-                        </div>
-                    </div>
-                    </div>
-                    <div id={'details'+index} className="collapse">
-
-
-                         <iframe
-                                width="100%"
-                                height="450"
-                                frameBorder="0"
-                                src={this.state.googlemap+data.pickupaddress.street}
-                                >
-                         </iframe>
-
-                    </div>
-
-
-                 </div>
-            )
+            //var con = this.state.checkeddata.includes(data.cartype);
+        
+            var result = (this.state.checkeddata.indexOf(data.cartype) > -1);
+            console.log(result)
+            if(
+                ((this.state.low <= data.dailyrent) && (data.dailyrent <= this.state.high))
+                 &&
+                 (this.state.checkeddata.length == 0 || result)
+            ){
+                return(
+                    
+                                    <div className="card" key={index}>
+                                        <div data-toggle="collapse" data-target={'#details'+index}>
+                                        <div className="row">
+                                        <div className="col-sm-4">
+                                                <div style={{padding:'1vw'}}>
+                                                    <h5 class="h5-responsive" ><b>{data.carmodel}</b></h5>
+                                                    <p>Pickup : {data.pickupaddress.street}, {data.pickupaddress.city}, {data.pickupaddress.state}</p>
+                                                    <p>Dropoff : {data.dropoffaddress.street}, {data.dropoffaddress.city}, {data.dropoffaddress.state}</p>
+                    
+                                                    <button type="button" className="btn btn-primary">Get Direction</button>
+                    
+                    
+                                                </div>
+                    
+                                             </div>
+                                            <div className="col-sm-5">
+                                            <div className="view overlay hm-zoom">
+                                             <img src={'http://localhost:3001/images/'+data.imageurl}
+                                                className="img-fluid " alt={data.carmodel}/>
+                                                    <div className="mask flex-center waves-effect waves-light">
+                                                        <p className="white-text">{data.carmodel}</p>
+                                                    </div>
+                                            </div>
+                    
+                                             </div>
+                    
+                                            <div className="col-sm-3">
+                                                    <div style={{textAlign:"center",marginTop:'5vh'}}>
+                                                    <b style={{fontSize:"20px",fontWeight:"bold"}}>${data.dailyrent}</b><br/>
+                                                    <b style={{fontSize:"15px",fontWeight:"bold"}}>{data.cartype}</b><br/>
+                                                    <button style={{minWidth:"10vw",maxHeight:'7.5vh'}}className="btn btn-deep-orange"
+                                                    onClick={()=>this.handleBook(data,data.dailyrent, data)}>Book</button>
+                                                    </div>
+                    
+                                            </div>
+                                        </div>
+                                        </div>
+                                        <div id={'details'+index} className="collapse">
+                    
+                    
+                                             <iframe
+                                                    width="100%"
+                                                    height="450"
+                                                    frameBorder="0"
+                                                    src={this.state.googlemap+data.pickupaddress.street}
+                                                    >
+                                             </iframe>
+                    
+                                        </div>
+                    
+                    
+                                     </div>
+                                )
+            }
+           
      }
+    handleChecked(data){
+       if( this.state.checkeddata.includes(data)) {
+        var index = this.state.checkeddata.indexOf(data)
+        if (index > -1) {
+            console.log("unchecked")
+            var arrayvar = this.state.checkeddata.slice()
+            arrayvar.splice(index, 1)
+
+            this.setState({
+                checkeddata :  arrayvar
+            })
+            
+        }
+       }
+       else{
+        this.setState({
+            checkeddata : [...this.state.checkeddata, data]
+        })
+      
+       }
+       console.log(this.state.checkeddata)
+       //this.state.changed
+      
+    } 
     render(){
         var colors = ["#FCBD7E", "#EB9F71", "#E6817C"];
         return(
@@ -231,43 +268,51 @@ class Carlist extends Component {
 
                                         <div className="form-check form-check">
                                                 <label className="form-check-label">
-                                                <input type="checkbox" className="form-check-input" value=""/>Small
+                                                <input type="checkbox" className="form-check-input"
+                                                onChange={(e)=>this.handleChecked("Small")} value=""/>Small
                                                 </label>
                                         </div>
                                         <div className="form-check form-check">
                                                 <label className="form-check-label">
-                                                <input type="checkbox" className="form-check-input" value=""/>Medium
+                                                <input type="checkbox" className="form-check-input"
+                                                onChange={(e)=>this.handleChecked("Medium")} value=""/>Medium
                                                 </label>
                                         </div>
                                         <div className="form-check form-check">
                                                 <label className="form-check-label">
-                                                <input type="checkbox" className="form-check-input" value=""/>Large
+                                                <input type="checkbox" className="form-check-input"
+                                                onChange={(e)=>this.handleChecked("Large")} value=""/>Large
                                                 </label>
                                         </div>
                                         <div className="form-check form-check">
                                                 <label className="form-check-label">
-                                                <input type="checkbox" className="form-check-input" value=""/>Suv
+                                                <input type="checkbox" className="form-check-input" 
+                                                onChange={(e)=>this.handleChecked("SUV")} value=""/>SUV
                                                 </label>
                                         </div>
                                         <div className="form-check form-check">
                                                 <label className="form-check-label">
-                                                <input type="checkbox" className="form-check-input" value=""/>Luxury
+                                                <input type="checkbox" className="form-check-input" 
+                                                onChange={(e)=>this.handleChecked("Luxury")} value=""/>Luxury
                                                 </label>
                                         </div>
                                         <div className="form-check form-check">
                                                 <label className="form-check-label">
-                                                <input type="checkbox" className="form-check-input" value=""/>Van
+                                                <input type="checkbox" className="form-check-input" 
+                                                onChange={(e)=>this.handleChecked("Van")} value=""/>Van
                                                 </label>
                                         </div>
 
                                         <div className="form-check form-check">
                                                 <label className="form-check-label">
-                                                <input type="checkbox" className="form-check-input" value=""/>Pickup Truck
+                                                <input type="checkbox" className="form-check-input" 
+                                                onChange={(e)=>this.handleChecked("Pickup Truck")} value=""/>Pickup Truck
                                                </label>
                                         </div>
                                         <div className="form-check form-check">
                                                 <label className="form-check-label">
-                                                <input type="checkbox" className="form-check-input" value=""/>Convertible
+                                                <input type="checkbox" className="form-check-input" 
+                                                onChange={(e)=>this.handleChecked("Convertible")} value=""/>Convertible
                                              </label>
                                          </div>
 
@@ -294,7 +339,14 @@ class Carlist extends Component {
 function mapStateToProps(reducerdata) {
     console.log(reducerdata.userSearch.carSearch);
 
-    const cars=reducerdata.userSearch.carSearch;
+    const cars=reducerdata.userSearch.carSearch.sort(function(a, b){
+        var keyA = a.dailyrent
+        var keyB = b.dailyrent;
+        // Compare the 2 dates
+        if(keyA < keyB) return -1;
+        if(keyA > keyB) return 1;
+        return 0;
+    });;
     console.log(cars)
     return {cars};
 }

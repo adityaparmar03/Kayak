@@ -20,7 +20,22 @@ class Profile extends Component {
                 zipcode:"",
                 phonenumber:"",
                 imgpath:"",
-                creditcard:""
+                creditcard:"",
+
+
+                //dummy
+                data : [{
+                    type : "flight",
+                    name:"fff"
+                },
+                {
+                    type : "hotel",
+                    name:"fffhotel"
+                },
+                {
+                    type : "car",
+                    name:"fffcar"
+                }]
 
             }
     }
@@ -31,11 +46,11 @@ class Profile extends Component {
         API.checkSession().then((data)=>{
             console.log("inside the check session response");
                  console.log(data);
-                 console.log("aaaaaaaaaaaaaaaaa");
+               
             if(data.status===201){
                 console.log("user logged in ");
                 console.log(data);
-                console.log("*************");
+              
                 this.props.signIn(data);
                 this.setState({
                     email:this.props.userprofile.email,
@@ -93,6 +108,32 @@ class Profile extends Component {
 
     }
 
+    tripdisplay(data){
+        if(data.type == "flight"){
+
+        }
+    }    
+    hotetrip(){
+        return(
+            <div>
+                <p>Hotel</p>
+             </div>   
+        )
+    }
+    cartrip(){
+        return(
+            <div>
+                <p>car</p>
+             </div>   
+        )
+    }
+    flighttrip(){
+        return(
+            <div>
+                <p>flight</p>
+             </div>   
+        )
+    }
 
     render(){
         return(
@@ -279,7 +320,7 @@ class Profile extends Component {
                     <div className="tab-pane fade" id="panel6" role="tabpanel">
                         
 
-                        <UserTrip/>
+                        {this.state.data.map(this.tripdisplay)}
 
                     </div>
    
