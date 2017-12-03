@@ -5,7 +5,7 @@ import * as API from '../api/API';
 import * as Actions from '../actions/action';
 import {connect} from 'react-redux';
 import userProfile from "../reducers/userProfile";
-
+import AlertContainer from 'react-alert'
 
 var Regex= require('regex');
 var regex = new Regex(/\S+@\S+\.\S+/);
@@ -60,6 +60,7 @@ class Nav extends Component {
 
     }
     }
+
 
 //********************************************************
 loginButton(){
@@ -136,10 +137,31 @@ loginButton(){
     } 
 
  //********************************************************   
-
+    alertOptions = {
+        offset: 14,
+        position: 'top center',
+        theme: 'dark',
+        time: 5000,
+        transition: 'scale'
+      }
+     errorshowAlert = (msg) => {
+        this.msg.show(msg, {
+          time: 5000,
+          type: 'success',
+          icon: <img src={require('../image/error.png')} />
+        })
+      }
+     successshowAlert = (msg) => {
+        this.msg.show(msg, {
+          time: 5000,
+          type: 'success',
+          icon: <img src={require('../image/success.png')} />
+        })
+      }
     render(){
         return(
             <div >
+                 <AlertContainer ref={a => this.msg = a} {...this.alertOptions} />
                 <nav className="navbar navbar-expand-lg navbar-dark" >
 
  
