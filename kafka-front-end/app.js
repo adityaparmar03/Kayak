@@ -26,7 +26,7 @@ var app = express();
 app.use(expressSessions({
     cookieName: 'session',
     secret: 'cmpe273_kayak',
-    duration: 30 * 60 * 1000,    //setting the time for active session
+    duration: 3 * 60 * 1000,    //setting the time for active session
     activeDuration: 5 * 60 * 1000,
     resave : true,
     saveUninitialized : false,

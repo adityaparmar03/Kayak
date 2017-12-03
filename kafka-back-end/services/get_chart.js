@@ -32,6 +32,9 @@ function handle_request(msg, callback){
     case 'top5Chart':
         chartQuery=chart_queries.top5Chart;
         break;
+    case 'wordTree':
+         chartQuery=chart_queries.wordTree;
+        break;
     default:
         break;
 

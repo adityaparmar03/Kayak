@@ -32,7 +32,8 @@ function ConnectionProvider() {
                     {topic :'getuserdata',partition :0},
                     {topic :'getbills',partition :0},
                     {topic :'click_tracker_req',partition :0},
-                    {topic :'get_chart_req',partition :0}
+                    {topic :'get_chart_req',partition :0},
+                    {topic:'upload',partition:0}
                  ]);
 
             this.client.on('ready', function () { console.log('client ready!') })

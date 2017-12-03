@@ -43,24 +43,20 @@ class WordTree extends React.Component {
     }
 
     renderChart(){
-        var payload={name:"ClickThroughput",type:"BarChart",index:1,query:"barChartQuery"};
+        var payload={name:"PageNavigation",type:"WordTree",index:9,query:"wordTree"};
         this.handleRenderChart(payload);
     }
 
 
     createChartResponse(data){
 
-        var resData = [[Element, "Clicks", {
-            role: "style"
-        }]];
+        var resData = [["Phrases"]];
 
         var i, item;
         for (i=0; i< data.length; i++) {
 
                 var temp =[];
-                temp.push(data[i].PageName);
-                temp.push(data[i].NoClicks);
-                temp.push("red");
+                temp.push(data[i].PageNav);
 
            console.log("TempData : ",temp);
             resData.push(temp);
@@ -73,11 +69,11 @@ class WordTree extends React.Component {
         API.getChart(payload)
             .then((response) => {
                 if (response.status === 200) {
-                    // console.log(response.data);
-                    // var resData = this.createChartResponse(response.data);
-                    // this.setState({
-                    //     data : resData
-                    // });
+                    console.log(response.data);
+                    var resData = this.createChartResponse(response.data);
+                    this.setState({
+                        data : resData
+                    });
 
                 } else if (response.status === 400) {
                     console.log("Error fetching the date for chart...!!!");

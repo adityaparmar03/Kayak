@@ -60,7 +60,16 @@ insert into vendors (vendorname, servicetype, vendorapi) values ('Cleartrip', 'f
 insert into vendors (vendorname, servicetype, vendorapi) values ('Expedia', 'flight', 'http://localhost:3001/flight/getflights?vendor=ExpediaFlights');
 
 
-
+CREATE TABLE `click_tracker` (
+  `userId` varchar(255) DEFAULT NULL,
+  `sessionId` varchar(255) DEFAULT NULL,
+  `eventTime` datetime DEFAULT NULL,
+  `eventName` varchar(255) DEFAULT NULL,
+  `pageId` varchar(255) DEFAULT NULL,
+  `buttonId` varchar(255) DEFAULT NULL,
+  `objectId` varchar(255) DEFAULT NULL,
+  `pageNav` varchar(4000) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 
 

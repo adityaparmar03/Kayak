@@ -20,6 +20,8 @@ class Nav extends Component {
    
     if(data.status===201){
         console.log("user logged in ");
+        console.log(data.data.value);
+        this.successshowAlert(data.data.value);
         this.props.signIn(data);
     }
    
@@ -50,15 +52,39 @@ class Nav extends Component {
         "email" :this.state.email,
         "password": this.state.password
      }
-     this.setState({password:null,repeatpassword:null,email:null});
+     //this.setState({password:null,repeatpassword:null,email:null});
+         console.log("*******");
+         console.log(this.state);
+          console.log("*******");
+
      API.doRegister(payload).then((data)=>{
-        if(data.status==="201"){
-        console.log("after the registration is complete");}
+
+          if(data.status==201){
+        console.log("after the registration is complete");
+            this.successshowAlert("you have succesfully registered");
+        }
+        else{
+            this.errorshowAlert("Error while registering ");
+        }
+
+
      }).catch((error)=>{
         console.log("error");
      })
 
     }
+    }
+//********************************************************
+    logout(){
+        this.handlepopup();
+        API.doLogout().then((data)=>{
+            if(data.status==201){
+                console.log("User logged out");
+                this.successshowAlert(data.value);
+                this.props.userprofile.isLoggedIn=false;
+
+            }
+        })
     }
 
 
@@ -77,14 +103,15 @@ loginButton(){
         //console.log(data);
         if(data.status===201){
         console.log("after the login is complete");
-     //   this.setState({IsLogged:true})
-            console.log(this.props.userprofile);
-            this.setState({modalValue:"modal"});
-
-            console.log("Before getting in the signin reducer  "+ this.props.userprofile.isLoggedIn)
-
-
-        this.props.signIn(data);
+        console.log("000000000000000000000");
+        console.log(data)
+            console.log("000000000000000000000");
+            this.successshowAlert("you have succesfully registered");
+            //this.props.history.push('/');
+            window.location.reload();
+            this.props.userprofile.isLoggedIn = true;
+          //  console.log("Before getting in the signin reducer  "+ this.props.userprofile.isLoggedIn)
+       // this.props.signIn(data);
         }
      })
 
@@ -106,7 +133,7 @@ loginButton(){
                            this.props.history.push('/profile');
                            this.handlepopup()}} >Profile</button>
                        <button type="button" className="btn btn-outline-deep-orange waves-effect btn-block"
-                       onClick={()=>this.handlepopup()}>Sign Out</button>
+                       onClick={()=>this.logout()}>Sign Out</button>
                        
                    </div>
                 
@@ -230,7 +257,7 @@ loginButton(){
                             <div className="md-form form-sm">
                                 <i className="fa fa-envelope prefix"></i>
                                 <input type="email" id="form22" className="form-control validate"
-                                value = {this.state.email}
+                                       value = {this.state.email}
                                  onChange={(event) => {
                                     this.setState({
                                         email: event.target.value

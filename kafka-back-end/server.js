@@ -43,8 +43,11 @@ consumer.on('message', function (message) {
 
         case 'getuserdata':
             console.log("inside the switch case");
+
             console.log(body);
+
             console.log("********************");
+
             user.getuserdata(body,function (err,res) {
                 response(data,res);
                 return;
