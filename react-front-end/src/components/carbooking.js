@@ -3,6 +3,10 @@ import {Link,withRouter} from 'react-router-dom';
 import PropTypes from 'prop-types';
 import Nav from './nav';
 import * as API from '../api/API';
+import * as Actions from '../actions/action';
+import {connect} from 'react-redux';
+import AlertContainer from 'react-alert'
+
 
 class CarBooking extends Component {
 
@@ -14,7 +18,16 @@ class CarBooking extends Component {
            dropoffaddress:"",
            cartype:"",
            total:"",
-           days:""
+           days:"",
+           isLoggedin:false,
+           email:"",
+           firstname:"",
+           lastname:"",
+           address:"",
+           zipcode:"",
+           phonenumber:"",
+           imgpath:"",
+           creditcard:""
         }
      }
     componentWillMount(){
@@ -46,11 +59,45 @@ class CarBooking extends Component {
             days:payload.booking.days+" days ("+payload.booking.pickupdate.substring(0, 10)+" - "+payload.booking.dropoffdate.substring(0, 10)+")"
 
       });
+      API.checkSession().then((data)=>{
+        console.log("inside the check session response");
+             console.log(data);
+           
+        if(data.status===201){
+            console.log("user logged in ");
+            console.log(data);
+            this.props.signIn(data);
+            this.setState({
+                    email:this.props.userprofile.email,
+                    firstname:this.props.userprofile.firstname,
+                    lastname:this.props.userprofile.lastname,
+                    address:this.props.userprofile.address,
+                    zipcode:this.props.userprofile.zipcode,
+                    phonenumber:this.props.userprofile.phonenumber,
+                    imgpath:this.props.userprofile.imgpath,
+                    creditcard:this.props.userprofile.creditcard,
+                    isLoggedin:'true'
+            })
+        
+            console.log("***********************");
+            console.log("inside hotelbooking");
+            console.log(this.state);
+            console.log("***********************");
+        }
+        else{
+            this.errorshowAlert("Please Login to proceed with Payment");
+
+        }
+
+    })
+
 
     }
 
     handlePay(){
-
+        if(!this.state.isLoggedin){
+            this.errorshowAlert("Please Login to proceed with Payment");
+          }else{
       const payload = JSON.parse(localStorage.getItem("carbooking"));
       console.log('payload=>',payload);
 
@@ -75,6 +122,7 @@ class CarBooking extends Component {
               console.log(res);
               if (res.status == 200) {
                   console.log("Success booking the Car!");
+                  this.successshowAlert("Booking done successfully.");
                   console.log("Response is " + res);
               }else if (res.status == 402) {
                   console.log("Error booking the Car!");
@@ -84,11 +132,36 @@ class CarBooking extends Component {
                   console.log("Error is " + res);
               }
           });
+        }
     }
-
+    alertOptions = {
+        offset: 14,
+        position: 'top center',
+        theme: 'dark',
+        time: 5000,
+        transition: 'scale'
+      }
+    
+    errorshowAlert = (msg) => {
+        this.msg.show(msg, {
+            time: 5000,
+            type: 'success',
+            icon: <img src={require('../image/error.png')} />
+        })
+    }
+    
+    successshowAlert = (msg) => {
+        this.msg.show(msg, {
+            time: 5000,
+            type: 'success',
+            icon: <img src={require('../image/success.png')} />
+        })
+     }
+    
     render(){
         return(
             <div>
+                 <AlertContainer ref={a => this.msg = a} {...this.alertOptions} />
                 <div style={{backgroundColor:'black'}}>
                 <Nav/>
                 </div>
@@ -132,110 +205,124 @@ class CarBooking extends Component {
 
 
                         <div className="card">
-
-                        <div className="card-header deep-orange lighten-1 white-text">
-                            Personal Details
-                        </div>
-                                <div className="card-body">
-                                    <div className="row">
-                                            <div className="col-sm-6">
-                                                <div className="md-form">
-                                                    <i className="fa fa-user prefix"></i>
-                                                    <input type="text" id="firstname"
-                                                    ref="firstname" className="form-control"/>
-                                                    <label htmlFor="firstname">Firstname</label>
-                                                </div>
-
+                        
+                                                <div className="card-header deep-orange lighten-1 white-text">
+                                                Personal Details
                                             </div>
-                                            <div className="col-sm-6">
-                                                <div className="md-form">
-                                                    <i className="fa fa-user prefix"></i>
-                                                    <input type="text" id="lastname" ref="lastname"
-                                                    className="form-control"/>
-                                                    <label htmlFor="lastname">Lastname</label>
-                                                </div>
-
+                                                    <div className="card-body">
+                                                        <div className="row">
+                                                                <div className="col-sm-6">
+                                                                    <div className="md-form">
+                                                                        <i className="fa fa-user prefix"></i>
+                                                                        <input type="text" placeholder="First Name" value={this.state.firstname}
+                                                                        ref="firstname" className="form-control"/>
+                                                                     
+                                                                    </div>
+                        
+                                                                </div>
+                                                                <div className="col-sm-6">
+                                                                    <div className="md-form">
+                                                                        <i className="fa fa-user prefix"></i>
+                                                                       
+                                                                        <input type="text" placeholder="Lastname" value={this.state.lastname}
+                                                                         ref="lastname" className="form-control"/>
+                                                                        
+                                                                    </div>
+                        
+                                                                </div>
+                                                        </div>
+                                                        <div className="row">
+                                                            <div className="col-sm-6">
+                                                              
+                                                            <div className="md-form">
+                                                             
+                                                            <i className="fa fa-envelope prefix"></i>
+                                                           
+                                                            <input type="text"  value={this.state.email}
+                                                            ref="email" placeholder="Email" className="form-control"/>
+                                                            
+                                                            </div>
+                        
+                                                            </div>
+                        
+                                                            <div className="col-sm-6">
+                                                            <div className="md-form">
+                                                            <i className="fa fa-phone prefix"></i>
+                                                          
+                                                            <input type="text" placeholder="Phone Number" value={this.state.phonenumber}
+                                                            ref="phoneno" className="form-control"/>
+                                                           
+                        
+                                                            </div>
+                        
+                                                            </div>
+                                                    </div>
+                                                    <div className="row">
+                                                            <div className="col-sm-8">
+                                                            <div className="md-form">
+                                                            <i className="fa fa-map-marker prefix"></i>
+                                                            
+                                                           
+                                                            <input type="text"  value={this.state.address}
+                                                            ref="address" placeholder="Address" className="form-control"/>
+                                                           
+                        
+                                                            </div>
+                        
+                                                            </div>
+                                                            <div className="col-sm-4">
+                                                            <div className="md-form">
+                                                            <i className="fa fa-location-arrow prefix"></i>
+                                                           
+                                                            <input type="text" placeholder="Zip Code" value={this.state.zipcode}
+                                                            ref="zipcode" className="form-control"/>
+                                                            
+                        
+                                                            </div>
+                        
+                                                            </div>
+                                                    </div>
                                             </div>
-                                    </div>
-                                    <div className="row">
-                                        <div className="col-sm-6">
-                                        <div className="md-form">
-                                        <i className="fa fa-envelope prefix"></i>
-                                        <input type="text" id="email" ref="email" className="form-control"/>
-                                        <label htmlFor="email">Email</label>
-                                        </div>
-
-                                        </div>
-
-                                        <div className="col-sm-6">
-                                        <div className="md-form">
-                                        <i className="fa fa-phone prefix"></i>
-
-                                        <input type="text" id="phone" ref="phoneno" className="form-control"/>
-                                        <label htmlFor="phone">Phone Number</label>
-
-                                        </div>
-
-                                        </div>
-                                </div>
-                                <div className="row">
-                                        <div className="col-sm-8">
-                                        <div className="md-form">
-                                        <i className="fa fa-map-marker prefix"></i>
-
-                                        <input type="text" id="address" ref="address" className="form-control"/>
-                                        <label htmlFor="address">Address</label>
-
-                                        </div>
-
-                                        </div>
-                                        <div className="col-sm-4">
-                                        <div className="md-form">
-                                        <i className="fa fa-location-arrow prefix"></i>
-
-                                        <input type="text" id="zipcode" ref="zipcode" className="form-control"/>
-                                        <label htmlFor="form2">Zip Code</label>
-
-                                        </div>
-
-                                        </div>
-                                </div>
-                        </div>
-                        </div>
-
-
-                        <div className="card">
-
-                        <div className="card-header deep-orange lighten-1 white-text">
-                            Payment
-                        </div>
-                        <div className="card-body">
-                            <div className="row">
-                                <div className="col-sm-4">
-                                    <div className="md-form form-group">
-                                    <i className="fa fa-credit-card-alt prefix"></i>
-                                    <input type="text" id="creditcardno" ref="creditcardno" className="form-control validate" maxLength='16'/>
-                                    <label htmlFor="creditcardno">Credit Card No</label>
-                                    </div>
-
-                                </div>
-                                <div className="col-sm-4">
-                                    <label>Expiry Date :  </label>
-                                    <div className="md-form form-group">
-
-                                        <input type="month" id="form92" ref="expirydate" className="form-control validate"/>
-
-                                    </div>
-
-                                </div>
-                                <div className="col-sm-4">
-                                    <div className="md-form form-group">
-                                    <input type="text" id="cvv" ref="cvv" className="form-control validate" maxLength='3'/>
-                                    <label htmlFor="cvv">CVV</label>
-                                    </div>
-
-                                </div>
-                            </div>
+                                            </div>
+                        
+                        
+                                            <div className="card">
+                        
+                                            <div className="card-header deep-orange lighten-1 white-text">
+                                                Payment
+                                            </div>
+                                            <div className="card-body">
+                                                <div className="row">
+                                                    <div className="col-sm-4">
+                                                        <div className="md-form form-group">
+                                                        <i className="fa fa-credit-card-alt prefix"></i>
+                                                        
+                                                        <input type="text" value={this.state.creditcard}
+                                                        ref="creditcardno" placeholder="Credit Card"
+                                                        className="form-control validate" maxLength='16'/>
+                                                       
+                                                        </div>
+                        
+                                                    </div>
+                                                    <div className="col-sm-4">
+                                                        <label>Expiry Date :  </label>
+                                                        <div className="md-form form-group">
+                        
+                                                            <input type="month" id="form92"
+                                                            ref="expirydate" className="form-control validate"/>
+                        
+                                                        </div>
+                        
+                                                    </div>
+                                                    <div className="col-sm-4">
+                                                        <div className="md-form form-group">
+                                                        <input type="text" placeholder="CVV"
+                                                        ref="cvv" className="form-control validate" maxLength='3'/>
+                                                       
+                                                        </div>
+                        
+                                                    </div>
+                                                </div>
                             <button className="btn btn-default btn-lg btn-block" onClick={()=>this.handlePay()}>Pay</button>
                           </div>
                         </div>
@@ -247,5 +334,21 @@ class CarBooking extends Component {
         )
     }
 }
+function mapStateToProps(reducerdata) {
+    // console.log(reducerdata);
+    const userprofile = reducerdata.userProfile;
 
-export default CarBooking;
+    console.log(userprofile);
+
+    return {userprofile};
+}
+
+function mapDispatchToProps(dispatch) {
+    return {
+        signIn : (data) => dispatch(Actions.signIn(data)),
+        bokingHistory : (data) => dispatch(Actions.bookingHistory(data))
+
+    };
+}
+
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(CarBooking));

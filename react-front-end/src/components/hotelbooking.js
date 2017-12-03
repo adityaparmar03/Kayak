@@ -114,6 +114,7 @@ class HotelBooking extends Component {
                       if (res.status == 200) {
                           console.log("Success booking the Hotel!");
                           console.log("Response is " + res);
+                          this.successshowAlert("Booking done successfully.");
                       }else if (res.status == 402) {
                           console.log("Error booking the Hotel!");
                           console.log("Error is " + res);

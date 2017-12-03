@@ -142,6 +142,7 @@ class FlightBooking extends Component {
                         if (res.status == 200) {
                             console.log("Success booking the Flight!");
                             console.log("Response is " + res);
+                            this.successshowAlert("Booking done successfully.");
                         }else if (res.status == 402) {
                             console.log("Error booking the Flight!");
                             console.log("Error is " + res);
@@ -296,7 +297,7 @@ successshowAlert = (msg) => {
                     <div style={{padding:'2%',paddingLeft:'10%',paddingRight:'10%'}}>
                         <div className="card">
 
-                        <div className="card-header mdb-color lighten-1 white-text">
+                        <div className="card-header deep-orange lighten-1 white-text">
                             Booking Details
                         </div>
                             {this.displaydetails()}
