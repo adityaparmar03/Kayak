@@ -93,6 +93,15 @@ consumer.on('message', function (message) {
             })
             break;
 
+        case 'upload':
+            console.log("inside upload topic");
+            user.upload(body,function (err , res) {
+                response(data,res);
+                return;
+            })
+
+            break;
+
 
         case 'MmtCars':
         case 'AlamoCars':
@@ -163,16 +172,32 @@ consumer.on('message', function (message) {
             });
             break;
 
-        // case 'updatebilling':
-        //     console.log("inside the updatebilling queue");
-        //     admin.updatebilling(body,function (err,res) {
-        //         if(err)
-        //             console.log(err);
-        //         else
-        //             console.log(res);
-        //         response(data,res);
-        //
-        //     })
+        case 'getbills':
+
+            admin.getBills(body,function (err,res) {
+                if(err)
+                    console.log(err);
+                else
+                    console.log(res);
+                response(data,res);
+
+            })
+
+            break;
+/*
+
+        case 'updatebill':
+
+            admin.updateBill(body,function (err,res) {
+                if(err)
+                    console.log(err);
+                else
+                    console.log(res);
+                response(data,res);
+
+            })
+
+*/
 
         case 'BookFlight':
             console.log(message);

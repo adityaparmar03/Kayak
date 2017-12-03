@@ -6,8 +6,7 @@ export function signIn(action) {
         type: Constants.SIGN_IN,
         payload: action
     }
-}
-
+};
 
 export function flightSearch(flights) {
 
@@ -17,6 +16,14 @@ export function flightSearch(flights) {
     }
 };
 
+export function bookingHistory(data){
+    return {
+        type:Constants.USER_HISTORY,
+        payload:data
+
+    }
+
+}
 
 export function hotelSearch(hotels) {
 
@@ -43,6 +50,22 @@ export function getVendors(vendors) {
     }
 };
 
+export function getBills(bills) {
+
+    return {
+        type : Constants.GET_BILLS,
+        bills : bills
+    }
+};
+
+export function allUsers(data) {
+    return{
+        type: Constants.ALL_USERS,
+        payload : data
+    }
+
+}
+
 export function addVendor(vendor) {
 
     return {
@@ -50,6 +73,17 @@ export function addVendor(vendor) {
         vendor : vendor
     }
 };
+
+export function deleteUser(index) {
+
+    return {
+        type : Constants.DELETE_USER,
+        index : index
+    }
+};
+
+
+
 
 export function deleteVendor(index) {
 

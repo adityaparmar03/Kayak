@@ -1,42 +1,69 @@
 import React, {Component} from 'react';
 import {Link,withRouter} from 'react-router-dom';
-import PropTypes from 'prop-types';
 import Nav from './nav'
-import axios from 'axios'
 import {connect} from 'react-redux';
-import userProfile from "../reducers/userProfile";
 import * as Actions from '../actions/action';
 import * as API from '../api/API';
+import UserTrip from './usertrips'
+
 
 class Profile extends Component {
 
-    state={
-        phone:"",
-        firstname:"",
-        lastname:"",
-        address:"",
-        zip:"",
-        creditcard:"",
-        cvv:"",
-        imgpath:"",
-        emailid:"smcool100@gmail.com"
+    constructor(props){
+        super(props);
+        this.state =
+            {
+                email:"",
+                firstname:"",
+                lastname:"",
+                address:"",
+                zipcode:"",
+                phonenumber:"",
+                imgpath:"",
+                creditcard:""
 
+            }
     }
+
 
     componentWillMount(){
         console.log("willmountcalling");
         API.checkSession().then((data)=>{
             console.log("inside the check session response");
-
+                 console.log(data);
+                 console.log("aaaaaaaaaaaaaaaaa");
             if(data.status===201){
                 console.log("user logged in ");
                 console.log(data);
                 console.log("*************");
                 this.props.signIn(data);
+                this.setState({
+                    email:this.props.userprofile.email,
+                        firstname:this.props.userprofile.firstname,
+                        lastname:this.props.userprofile.lastname,
+                        address:this.props.userprofile.address,
+                        zipcode:this.props.userprofile.zipcode,
+                        phonenumber:this.props.userprofile.phonenumber,
+                        imgpath:this.props.userprofile.imgpath,
+                        creditcard:this.props.userprofile.creditcard
+                })
             }
 
         })
 
+    }
+
+    trip(){
+        console.log("inside the trips click function");
+        API.gethistory().then((data)=>{
+            console.log("inside here");
+            console.log(data);
+            if(data.status==201){
+                this.props.bokingHistory(data);
+
+            }
+
+        })
     }
 
     updateUserData(){
@@ -44,17 +71,18 @@ class Profile extends Component {
         //validation for the zip code will come here.
 
 
-        var payload = {};
+
         console.log("***********");
-        console.log(this.state.emailid);
-         payload = this.state;
+       var payload = this.state;
 
-
-        //console.log(payload);
+         console.log(this.state.email);
+         console.log("---------------");
+        console.log(payload);
+        console.log("---------------");
         API.doUpdate(payload).then((data)=>{
             if(data.status==201){
                 console.log("Succesfull push");
-                this.props.history.push('/profile');
+              //  this.props.history.push('/profile');
             }
         })
 
@@ -88,7 +116,7 @@ class Profile extends Component {
                         <a className="nav-link active" data-toggle="tab" href="#panel5" role="tab"><i class="fa fa-user"></i> Personal Details</a>
                     </li>
                     <li className="nav-item">
-                        <a className="nav-link" data-toggle="tab" href="#panel6" role="tab"><i class="fa fa-heart"></i> Trips</a>
+                        <a className="nav-link" data-toggle="tab" href="#panel6" role="tab" onClick={()=>{this.trip();}}><i class="fa fa-heart"></i> Trips</a>
                     </li>
                 </ul>
 
@@ -100,7 +128,7 @@ class Profile extends Component {
                                         <div className="col-sm-6">
                                         <div className="md-form">
                                             <i className="fa fa-user prefix"></i>
-                                            <input type="text" id="firstname" placeholder={this.props.userprofile.firstname} className="form-control"
+                                            <input type="text" id="firstname" value={this.state.firstname} className="form-control"
                                                    onChange={(event) => {
                                                        this.setState({
                                                            firstname: event.target.value
@@ -113,7 +141,7 @@ class Profile extends Component {
                                         <div className="col-sm-6">
                                         <div className="md-form">
                                             <i className="fa fa-user prefix"></i>
-                                            <input type="text" id="lastname" placeholder={this.props.userprofile.lastname} className="form-control"
+                                            <input type="text" id="lastname" value={this.state.lastname} className="form-control"
                                                    onChange={(event) => {
                                                        this.setState({
                                                            lastname: event.target.value
@@ -128,8 +156,13 @@ class Profile extends Component {
                                         <div className="col-sm-4">
                                         <div className="md-form">
                                         <i className="fa fa-envelope prefix"></i>
-                                        <input type="text" disabled placeholder={this.props.userprofile.email}  id="email" className="form-control"
-                                               />
+                                        <input type="text"  value={this.state.email}  id="email" className="form-control"
+                                               onChange={(event) => {
+                                                   this.setState({
+                                                       email: event.target.value
+                                                   });
+                                               }}/>
+
                                         <label htmlFor="email">Email</label>
                                         </div>
 
@@ -148,11 +181,11 @@ class Profile extends Component {
                                         <div className="md-form">
                                         <i className="fa fa-phone prefix"></i>
                                        
-                                        <input type="text" id="phone" placeholder={this.props.userprofile.phonenumber}
+                                        <input type="text" id="phone" value={this.state.phonenumber}
                                                className="form-control"
                                                onChange={(event) => {
                                                    this.setState({
-                                                       phone: event.target.value
+                                                       phonenumber: event.target.value
                                                    });
                                                }}
                                         />
@@ -167,7 +200,7 @@ class Profile extends Component {
                                         <div className="md-form">
                                         <i className="fa fa-map-marker prefix"></i>
                                        
-                                        <input type="text" id="address" placeholder={this.props.userprofile.address} className="form-control"
+                                        <input type="text" id="address" value={this.state.address} className="form-control"
                                                onChange={(event) => {
                                                    this.setState({
                                                        address: event.target.value
@@ -182,10 +215,10 @@ class Profile extends Component {
                                         <div className="md-form">
                                         <i className="fa fa-location-arrow prefix"></i>
                                        
-                                        <input type="text" id="zipcode" placeholder={this.props.userprofile.zipcode} className="form-control"
+                                        <input type="text" id="zipcode" value={this.state.zipcode} className="form-control"
                                                onChange={(event) => {
                                                    this.setState({
-                                                       zip: event.target.value
+                                                       zipcode: event.target.value
                                                    });
                                                }}/>
                                         <label htmlFor="form2">Zip Code</label>
@@ -198,7 +231,13 @@ class Profile extends Component {
                                         <div className="col-sm-4">
                                         <div className="md-form form-group">
                                         <i className="fa fa-credit-card-alt prefix"></i>
-                                        <input type="text" id="creditcardno" className="form-control validate" maxLength='16'/>
+                                        <input type="text" id="creditcardno" className="form-control validate" maxLength='16' value={this.state.creditcard}
+                                               onChange={(event) => {
+                                                   this.setState({
+                                                       creditcard: event.target.value
+                                                   });
+                                               }}
+                                        />
                                         <label htmlFor="creditcardno">Credit Card No</label>
                                         </div>
 
@@ -234,13 +273,14 @@ class Profile extends Component {
                     </div>
                 
                     <div className="tab-pane fade" id="panel6" role="tabpanel">
-                        <br/>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nihil odit magnam minima, soluta doloribus reiciendis molestiae placeat unde eos molestias. Quisquam aperiam, pariatur. Tempora, placeat ratione porro voluptate odit minima.</p>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nihil odit magnam minima, soluta doloribus reiciendis molestiae placeat unde eos molestias. Quisquam aperiam, pariatur. Tempora, placeat ratione porro voluptate odit minima.</p>
+                        
+
+                        <UserTrip/>
+
                     </div>
    
   
-</div>
+    </div>
                 </div>
 
             </div>
@@ -269,7 +309,8 @@ function mapStateToProps(reducerdata) {
 
 function mapDispatchToProps(dispatch) {
     return {
-        signIn : (data) => dispatch(Actions.signIn(data))
+        signIn : (data) => dispatch(Actions.signIn(data)),
+        bokingHistory : (data) => dispatch(Actions.bookingHistory(data))
 
     };
 }

@@ -1,6 +1,8 @@
+
 var _ = require("underscore");
 var mysql = require('../models/mysql');
 var searchHistory = require('../models/searchhistory');
+var asyncLoop = require('node-async-loop');
 
 // Search for all flightss on the basis of city, state and class
 function searchFlights(msg, callback){
@@ -13,8 +15,9 @@ function searchFlights(msg, callback){
     var destinationstate = msg.searchcriteria.destinationstate;
     var triptype = msg.searchcriteria.triptype;
     var flightclass = msg.searchcriteria.flightclass;
-   // var arrivalday = msg.searchcriteria.arrivalday;
+    var arrivalday = msg.searchcriteria.arrivalday;
     var departureday = msg.searchcriteria.departureday;
+
 
     if(triptype=='One-Way'){
 
@@ -30,61 +33,108 @@ function searchFlights(msg, callback){
             , function (err, flights) {
 
 
-            if (err) {
-                throw err;
-                console.log("Error in searching for flights" + err);
-                callback(err, null);
-            }
-            else {
+                if (err) {
+                    throw err;
+                    console.log("Error in searching for flights" + err);
+                    callback(err, null);
+                }
+                else {
 
-                console.log("Flight List:", flights)
-                res.code = "200";
-                res.value = flights;
+                    console.log("Flight List:", flights)
+                    res.code = "200";
+                    res.value = flights;
 
-                callback(null, res);
-            }
+                    callback(null, res);
+                }
 
-        });
+            });
     }
 
     else{
+console.log('checkkk',arrivalday);
+        flight.aggregate(
 
-        flight.find({'flights':{$elemMatch: {
-            'origin.city': origincity,
-                'origin.state': originstate,
-                'destination.city': destinationcity,
-                'destination.state': destinationstate,
-                'origin.city': destinationcity,
-                'origin.state': destinationstate,
-                'destination.city': origincity,
-                'destination.state': originstate
-        }}}, function (err, flights) {
-            if (err) {
-                throw err;
-                console.log("Error in searching for flights" + err);
-                callback(err, null);
-            }
-            else {
+            {$unwind: '$flights'},
 
-                console.log("Flight List:", flights)
-                res.code = "200";
-                res.value = flights;
-                callback(null, res);
-            }
+            {$match: {
+                $or: [{
+                    'flights.origin.city': origincity,
+                    'flights.origin.state': originstate,
+                    'flights.destination.city': destinationcity,
+                    'flights.destination.state': destinationstate,
+                    'flights.departureday': departureday
+                },
+                    {
+                        'flights.origin.city': destinationcity,
+                        'flights.origin.state': destinationstate,
+                        'flights.destination.city': origincity,
+                        'flights.destination.state': originstate,
+                        'flights.departureday': arrivalday
+                    }]
+            }},
+            { $group : { _id : {flightId:"$flightId", operator:"$operator", imageurl:"$imageurl"}, flights: { $push: "$flights" } } }, function (err, flights) {
 
-        });
+
+                if (err) {
+                    throw err;
+                    console.log("Error in searching for flights" + err);
+                    callback(err, null);
+                }
+                else {
+                    var roundtripflights=[];
+                    if(flights.length>0) {
+                        asyncLoop(flights, function (item, next) {
+                            console.log(item.flights.length)
+                            if (item.flights.length == 2){
+                                if(item.flights[0].origin.city==origincity) {
+                                    item.flights[0]["path"] = "to";
+                                    item.flights[1]["path"] = "from";
+                                }
+                                else {
+                                    item.flights[0]["path"] = "to";
+                                    item.flights[1]["path"] = "from";
+                                }
+
+                                roundtripflights.push(item);
+
+                            }
+
+                            next();
+                        }, function (err) {
+                            if (err) {
+                                throw err;
+
+                            }
+                            console.log("Flight List:", roundtripflights)
+                            res.code = "200";
+                            res.value = roundtripflights;
+                            callback(null, res);
+                        });
+                    }
+
+                    else{
+                        res.code = "200";
+                        res.value = flights;
+                        callback(null, res);
+                    }
+
+
+                }
+
+            });
+
+
     }
 
-  //  var searchhistory = new SearchHistory();
+    //  var searchhistory = new SearchHistory();
 
- }
-
+}
 
 
 // Book the flight
 function bookFlight(msg, callback){
       var booking = msg.booking;
-      var email =  "meenakshi.paryani@gmail.com"; //msg.email // TODO : uncomment later
+      var email =  msg.email    // TODO : uncomment later
       console.log("*****************");
       console.log(email);
       console.log("*****************");
@@ -165,7 +215,7 @@ function bookFlight(msg, callback){
                        callback(null, res);
                    }
              });
-        }
+         }
       }else{
               var res = {}
               res.code = "401";
@@ -300,3 +350,9 @@ function getBookedCountHelper(dbBookings){
 
 exports.searchFlights=searchFlights;
 exports.bookFlight=bookFlight;
+
+
+
+
+
+

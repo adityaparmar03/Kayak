@@ -134,9 +134,36 @@ function getVendors(msg, callback){
 
 //}
 
+function getBills(msg,callback) {
+    var res={};
+
+    var getBillsQuery = "select * from BILLING";
+
+    mysql.fetchData(function(err,results){
+        if(err){
+            throw err;
+        }
+        else
+        {
+            if(!err){
+
+                res.code = "200";
+                res.value = results;
+                callback(null, res);
+            }
+            else {
+                res.code = "401";
+                callback(null, res);
+            }
+        }
+    },getBillsQuery);
+
+}
+
+
 function getusers(msg,callback) {
     var res = {};
-    var getQuery = "select first_name,last_name,email from user ; ";
+    var getQuery = "select first_name,last_name,email,phone,street_address,zip_code from user ; ";
     mysql.fetchData(function (err,results) {
         if(err){
             res.code = 401;
@@ -156,6 +183,7 @@ function getusers(msg,callback) {
 
 //exports.updateBilling = updateBilling;
 exports.getusers = getusers;
+exports.getBills = getBills;
 exports.addVendor = addVendor;
 exports.getVendors = getVendors;
 exports.deleteVendor = deleteVendor;

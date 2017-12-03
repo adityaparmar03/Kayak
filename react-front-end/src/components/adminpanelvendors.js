@@ -10,30 +10,23 @@ class AdminPanelVendors extends Component {
 
     componentWillMount(){
         
-                API.getVendors()
-                    .then((res) => {
-                        console.log(res);
-        
-                        if (res.status == 200) {
-        
-                            this.props.getVendors(res.vendors);
-        
-                            console.log("Success...")
-        
-                        }else if (res.status == 401) {
-        
-                            //  this.props.history.push('/');
-                        }
-                    });
+
     }
-    addVendor(data){
-        
+
+    addVendor(){
+        console.log(this.refs)
+        const data= {
+                vendorname: this.refs.ref1.value,
+                servicetype:this.refs.ref2.value,
+                vendorapi:this.refs.ref3.value
+            }
+        console.log(data);
                 API.addVendorApi(data)
                     .then((status) => {
                         console.log(status);
         
                         if (status == 200) {
-        
+        console.log("In status..")
                             this.props.addVendor(data);
         
                             console.log("Success...")
@@ -43,7 +36,7 @@ class AdminPanelVendors extends Component {
                             //  this.props.history.push('/');
                         }
                     });
-            }
+    }
         
             deleteVendor(index, data){
         
@@ -83,18 +76,13 @@ class AdminPanelVendors extends Component {
                                                 {this.props.vendors.map((vendor, index)=>(<tr>
                                                     <td>{vendor.vendorname}</td>
                                                     <td>
-                                                    {/*<select className="form-control">
-                                                        <option value="volvo">Volvo</option>
-                                                        <option value="saab">Saab</option>
-                                                        <option value="mercedes">Mercedes</option>
-                
-                                                    </select>*/}
+
                                                         {vendor.servicetype}
                                                     </td>
-                                                    <td>{/*<input type="text" className="form-control"/>*/}
+                                                    <td>
                                                         {vendor.vendorapi}</td>
-                                                    {/*<td><i className="fa fa-edit"/></td>*/}
-                                                    <td><i className="fa fa-trash"/></td>
+
+                                                    <td><i className="fa fa-trash" onClick={()=>this.deleteVendor(index, vendor)}/></td>
                                                     </tr>))
 
                                                 }
@@ -118,17 +106,24 @@ class AdminPanelVendors extends Component {
                                                <tr>
                                                     <td>
                                                     Vendor Name:    
-                                                    <input type="text" className="form-control"/> 
-                                                    Vendor EndPoints:  
-                                                    <input type="text" className="form-control"/>
-                                                       
-                                                     Type: <select className="form-control">
+                                                    <input type="text" className="form-control"
+                                                    /*onchange={(event)=>{this.setState({
+
+                                                        firstname: event.target.value==""?this.props.userdata.firstName:event.target.value
+                                                    });*/
+                                                        ref="ref1" />
+                                                    Vendor EndPoint:
+                                                    <input type="text" className="form-control"
+                                                           ref="ref2" />
+
+                                                     Type: <select className="form-control" ref="ref3" >
                                                         <option value="flight">Flight</option>
                                                         <option value="hotel">Hotel</option>
                                                         <option value="car">Car</option>
                 
                                                     </select>
-                                                    <button className="btn btn-default btn-lg btn-block">ADD</button>
+                                                    <button className="btn btn-default btn-lg btn-block"
+                                                    onClick={()=>this.addVendor()}>ADD</button>
                        
                                                     </td>
                                                     
@@ -148,18 +143,18 @@ class AdminPanelVendors extends Component {
 }
 function mapStateToProps(reducerdata) {
     
-        const vendors = reducerdata.vendor;
-        console.log(reducerdata.vendor);
+        const vendors = reducerdata.adminTask.vendor;
+        console.log(reducerdata);
         return {vendors};
     }
     
     function mapDispatchToProps(dispatch) {
         return {
     
-            getVendors : (data) => dispatch(Actions.getVendors(data)),
+
             addVendor : (data) => dispatch(Actions.addVendor(data)),
             deleteVendor : (data) => dispatch(Actions.deleteVendor(data))
         };
     }
     
- export default withRouter(connect(mapStateToProps, mapDispatchToProps)(AdminPanelVendors));
+ export default connect(mapStateToProps, mapDispatchToProps)(AdminPanelVendors);

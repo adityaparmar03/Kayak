@@ -22,7 +22,7 @@ class Histogram extends React.Component {
                     position: "none"
                 }
             },
-            width: "40%",
+            //width: "40%",
             height: "500px",
             data : [
                 [Element, "Clicks", {

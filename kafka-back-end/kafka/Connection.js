@@ -28,9 +28,9 @@ function ConnectionProvider() {
                     {topic :'getvendors',partition :0},
                     {topic :'bookings',partition :0},
                     {topic :'deleteuser',partition :0},
-                    {topic :'updatebilling',partition :0},
                     {topic :'getallusers',partition :0},
                     {topic :'getuserdata',partition :0},
+                    {topic :'getbills',partition :0},
                     {topic :'click_tracker_req',partition :0},
                     {topic :'get_chart_req',partition :0}
                  ]);
