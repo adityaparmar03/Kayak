@@ -12,7 +12,9 @@ function searchHotels(msg, callback){
     var state = msg.searchcriteria.state;
   //  var occupancy = Number(msg.searchcriteria.occupancy);
 
-    hotel.find({'address.city': city, 'address.state': state }, function (err, hotels) {
+    var search = hotel.find({'address.city': city, 'address.state': state });
+    search.lean()
+    search.exec(function (err, hotels) {
 
         if (err) {
             throw err;
@@ -27,7 +29,7 @@ function searchHotels(msg, callback){
             callback(null, res);
         }
 
-    });
+    });    
 }
 
 // Book the Hotel

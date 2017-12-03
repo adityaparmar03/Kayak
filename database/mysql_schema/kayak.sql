@@ -11,7 +11,7 @@ DROP TABLE IF EXISTS `USER`;
 CREATE TABLE `USER` (
   `email` varchar(90) NOT NULL,
   `password` varchar(45) NOT NULL,
-  `first_name` varchar(45) DEFAULT NULL,
+  `first_name` varchar(45) NOT NULL,
   `last_name` varchar(45) DEFAULT NULL,
   `user_role` enum('USER','ADMIN') DEFAULT 'USER',
   `street_address` varchar(90) DEFAULT NULL,
@@ -21,7 +21,7 @@ CREATE TABLE `USER` (
   `phone` varchar(45) DEFAULT NULL,
   `profile_image_path` varchar(90) DEFAULT NULL,
   `credit_card_type` varchar(45) DEFAULT NULL,
-  `credit_card_number` varchar(45) DEFAULT NULL,
+  `credit_card_number` int(16) DEFAULT NULL,
   `credit_card_holder_name` varchar(45) DEFAULT NULL,
   `credit_card_valid_from` date DEFAULT NULL,
   `credit_card_valid_till` date DEFAULT NULL,
@@ -50,10 +50,10 @@ CREATE TABLE `BILLING` (
   `booking_type` enum('CAR','FLIGHT','HOTEL') NOT NULL,
   `flight_trip_type` enum('ONE-WAY','TWO-WAY') DEFAULT NULL,
   `car_trip_type` enum('SAME-DROPOFF','DIFFERENT-DROPOFF') DEFAULT NULL,
-  `room_type` enum('DELUX','PREMIUM','SUITE') DEFAULT NULL,
+  `room_type` enum('DELUX','PREMIUM','SUPER DELUX') DEFAULT NULL,
   `car_type` enum('SMALL','MEDIUM','LARGE','SUV') DEFAULT NULL,
   `billing_date` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  `billing_amount` int(11) NOT NULL COMMENT 'Billing Amount in US Dollars',
+  `billing_amount` int(20) NOT NULL COMMENT 'Billing Amount in US Dollars',
   `source_city` varchar(45) DEFAULT NULL COMMENT 'source of flight/car and address of hotel',
   `source_state` varchar(45) DEFAULT NULL,
   `source_street` varchar(45) DEFAULT NULL COMMENT 'Airport name for flight and address of hotel ',
@@ -75,14 +75,16 @@ CREATE TABLE `BILLING` (
   `target_count` int(11) DEFAULT NULL COMMENT 'Count of Passengers for flights Or\nCount of hotel rooms Or\nCount of Cars booked\n',
   `booking_class` enum('FIRST','ECONOMY','BUSINESS') DEFAULT NULL COMMENT 'Booking class of flight',
   `credit_card_type` varchar(45) DEFAULT NULL,
-  `credit_card_number` int(11) DEFAULT NULL,
+  `credit_card_number` int(16) DEFAULT NULL,
   `credit_card_holder_name` varchar(45) DEFAULT NULL,
   `credit_card_valid_from` date DEFAULT NULL,
   `credit_card_valid_till` date DEFAULT NULL,
   PRIMARY KEY (`billing_id`,`user_email`,`target_id`),
   KEY `user_id_idx` (`user_email`),
   CONSTRAINT `user_email` FOREIGN KEY (`user_email`) REFERENCES `USER` (`email`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=226 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=248 DEFAULT CHARSET=latin1;
+
+
 
 
 LOCK TABLES `BILLING` WRITE;
