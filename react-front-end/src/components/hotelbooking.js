@@ -118,9 +118,11 @@ class HotelBooking extends Component {
                       }else if (res.status == 402) {
                           console.log("Error booking the Hotel!");
                           console.log("Error is " + res);
+                          this.errorshowAlert("Sorry, The Booking for this Hotel is already full, Please book another one.");
                       }else {
                           console.log("Error booking the Hotel!");
                           console.log("Error is " + res);
+                          this.errorshowAlert("Sorry, Something went wrong.");
                       }
                   });
                   if(this.props.userprofile.isLoggedIn){

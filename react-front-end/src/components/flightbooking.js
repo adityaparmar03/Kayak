@@ -146,9 +146,11 @@ class FlightBooking extends Component {
                         }else if (res.status == 402) {
                             console.log("Error booking the Flight!");
                             console.log("Error is " + res);
+                            this.errorshowAlert("Sorry, The Booking for this Flight is already full, Please book another one.");
                         }else {
                             console.log("Error booking the Flight!");
                             console.log("Error is " + res);
+                            this.errorshowAlert("Sorry, Something went wrong.");
                         }
                     });
                     if(this.props.userprofile.isLoggedIn){

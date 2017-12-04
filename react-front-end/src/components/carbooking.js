@@ -127,9 +127,11 @@ class CarBooking extends Component {
               }else if (res.status == 402) {
                   console.log("Error booking the Car!");
                   console.log("Error is " + res);
+                  this.errorshowAlert("Sorry, The Booking for this car is already full, Please book another one.");
               }else {
                   console.log("Error booking the Car!");
                   console.log("Error is " + res);
+                  this.errorshowAlert("Sorry, Something went wrong.");
               }
           });
         }
