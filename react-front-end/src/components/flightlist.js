@@ -18,7 +18,7 @@ class Flightlist extends Component {
             triptype:"",
 
              //UI State
-
+             nolist:false,
              low: 0,
              high:0,
              departure_start_time:0,
@@ -78,46 +78,50 @@ class Flightlist extends Component {
                     console.log("Success...")
                     if(res.flights.length > 0){
                         if(payload.triptype == 'One-Way'){
+                           
                             var price = res.flights.map((item,i)=>parseInt(item.class[0].price));
-                            console.log(price)
-                            var  max = price.reduce(function(a, b) {
-                               return Math.max(a, b);
-                            });
-                            var   min = price.reduce(function(a, b) {
-                               return Math.min(a, b);
-                           });
-                           this.maxprice = max; //get from api
-                           this.minprice = min;
-                           var valuesPrice = [0,this.maxprice-this.minprice,0]
+                            if(price.length > 0){
+                                        var  max = price.reduce(function(a, b) {
+                                        return Math.max(a, b);
+                                        });
+                                        var   min = price.reduce(function(a, b) {
+                                        return Math.min(a, b);
+                                    });
+                                    this.maxprice = max; //get from api
+                                    this.minprice = min;
+                                    var valuesPrice = [0,this.maxprice-this.minprice,0]
 
-                           this.setState({
-                               valuesPrice: valuesPrice,
+                                    this.setState({
+                                        valuesPrice: valuesPrice,
 
-                               low:this.minprice,
-                               high:this.maxprice
-
-                             });
+                                        low:this.minprice,
+                                        high:this.maxprice,
+                                        nolist:true
+                                        });
+                                    }    
                         }else{
                             var price = res.flights.map((item,i)=>parseInt(item._id.class[0].price));
-                            console.log(price)
-                            var  max = price.reduce(function(a, b) {
-                               return Math.max(a, b);
-                            });
-                            var   min = price.reduce(function(a, b) {
-                               return Math.min(a, b);
-                           });
-                           this.maxprice = max; //get from api
-                           this.minprice = min;
-                           var valuesPrice = [0,this.maxprice-this.minprice,0]
+                            if(price.length > 0){
+                                        var  max = price.reduce(function(a, b) {
+                                        return Math.max(a, b);
+                                        });
+                                        var   min = price.reduce(function(a, b) {
+                                        return Math.min(a, b);
+                                    });
+                                    this.maxprice = max; //get from api
+                                    this.minprice = min;
+                                    var valuesPrice = [0,this.maxprice-this.minprice,0]
 
-                           this.setState({
-                               valuesPrice: valuesPrice,
+                                    this.setState({
+                                        valuesPrice: valuesPrice,
 
-                               low:this.minprice,
-                               high:this.maxprice
-
-                             });
+                                        low:this.minprice,
+                                        high:this.maxprice,
+                                        nolist:true
+                                        });
+                            }            
                         }
+                        
                     }
 
 
@@ -520,6 +524,16 @@ class Flightlist extends Component {
 
 
      }
+     displaynodatacard(){
+        if(!this.state.nolist){
+            return(
+                <div className="card" style={{padding:"5%",textAlign:'center'}} >
+                    <h4 className="btn btn-deep-orange"><b>We are aplogise !</b><br/><br/>
+                        <b> we don't have any Flight for this city at this time. Thank you for visiting Kayak.</b></h4>
+                </div>
+            )
+        }
+     }
     render(){
         var colors = ["#FCBD7E", "#EB9F71", "#E6817C"];
         return(
@@ -595,6 +609,7 @@ class Flightlist extends Component {
                     </div>
                     <div className="col-8" style={{ overflow: 'scroll', height: '90vh'}}>
                          { this.props.flightlist.map((this.displayflights),this)}
+                         { this.displaynodatacard()}
                     </div>
 
                 </div>

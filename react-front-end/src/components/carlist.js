@@ -17,6 +17,7 @@ class Carlist extends Component {
             //dummy
             carname:"Mercedes-Benz",
             // UI states
+             nolist:false,
              test:[1,2,3,4,5,1,2,3,4,5],
              checkeddata:[],
              changed:false,
@@ -51,8 +52,9 @@ class Carlist extends Component {
 
                     this.props.carSearch(res.cars);
 
-
+                   
                     var price = res.cars.map((item,i)=>parseInt(item.dailyrent));
+                    if(price.length > 0){
                      max = price.reduce(function(a, b) {
                         return Math.max(a, b);
                     });
@@ -67,9 +69,10 @@ class Carlist extends Component {
                         valuesPrice: valuesPrice,
 
                         low:this.minprice,
-                        high:this.maxprice
+                        high:this.maxprice,
+                        nolist:true
                       });
-
+                    }
 
                 }else if (res.status == 401) {
 
@@ -228,6 +231,16 @@ class Carlist extends Component {
        //this.state.changed
 
     }
+    displaynodatacard(){
+        if(!this.state.nolist){
+            return(
+                <div className="card" style={{padding:"5%",textAlign:'center'}} >
+                    <h4 className="btn btn-deep-orange"><b>We are aplogise !</b><br/><br/>
+                        <b> we don't have any car for this city at this time. Thank you for visiting Kayak.</b></h4>
+                </div>
+            )
+        }
+     }
     render(){
         var colors = ["#FCBD7E", "#EB9F71", "#E6817C"];
         return(
@@ -325,6 +338,7 @@ class Carlist extends Component {
                     </div>
                     <div className="col-8" style={{ overflow: 'scroll', height: '90vh'}}>
                          { this.props.cars.map((this.displayhotels),this)}
+                         { this.displaynodatacard()}
                     </div>
 
                 </div>
