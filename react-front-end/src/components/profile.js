@@ -5,6 +5,7 @@ import {connect} from 'react-redux';
 import * as Actions from '../actions/action';
 import * as API from '../api/API';
 import UserTrip from './usertrips'
+import SearchHistroy from './searchhistroy'
 import AlertContainer from 'react-alert'
 
 class Profile extends Component {
@@ -216,16 +217,20 @@ class Profile extends Component {
                   
                 <ul className="nav nav-tabs nav-justified deep-orange" role="tablist">
                     <li className="nav-item">
-                        <a className="nav-link active" data-toggle="tab" href="#panel5" role="tab"><i class="fa fa-user"></i> Personal Details</a>
+                        <a className="nav-link active" data-toggle="tab" href="#profile" role="tab"><i class="fa fa-user"></i> Personal Details</a>
                     </li>
                     <li className="nav-item">
-                        <a className="nav-link" data-toggle="tab" href="#panel6" role="tab" onClick={()=>{this.trip();}}><i class="fa fa-heart"></i> Trips</a>
+                        <a className="nav-link" data-toggle="tab" href="#trip" role="tab" onClick={()=>{this.trip();}}><i class="fa fa-heart"></i> Trips</a>
                     </li>
+                    <li className="nav-item">
+                        <a className="nav-link" data-toggle="tab" href="#searchhistroy" role="tab" onClick={()=>{this.trip();}}><i class="fa fa-heart"></i> Search Histroy</a>
+                    </li>
+                   
                 </ul>
 
                 <div className="tab-content">
                     
-                    <div className="tab-pane fade in show active" id="panel5" role="tabpanel">
+                    <div className="tab-pane fade in show active" id="profile" role="tabpanel">
                          
                                 <div className="row">
                                         <div className="col-sm-6">
@@ -376,10 +381,16 @@ class Profile extends Component {
                                 
                     </div>
                 
-                    <div className="tab-pane fade" id="panel6" role="tabpanel">
+                    <div className="tab-pane fade" id="trip" role="tabpanel">
 
 
                         <UserTrip/>
+
+                    </div>
+                    <div className="tab-pane fade" id="searchhistroy" role="tabpanel">
+
+
+                    <SearchHistroy/>
 
                     </div>
    
