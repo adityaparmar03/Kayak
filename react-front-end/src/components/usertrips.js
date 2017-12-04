@@ -68,7 +68,7 @@ class UserTrip extends Component {
             return(
                 <div>
                 <div className="card-header deep-orange lighten-1 white-text">
-                    Hotel Bookings
+                    Flight Bookings  {data.source_city +"-"+ data.destination_city}
                 </div>
                 <div className="card-body">
                     <div className="row">
@@ -114,7 +114,7 @@ class UserTrip extends Component {
             return(
                 <div>
                     <div className="card-header deep-orange lighten-1 white-text">
-                        Hotel Bookings
+                    Flight Bookings  {data.return_source_airport +"-"+ data.destination_city}
                     </div>
                 <div className="card-body">
                     <div className="row">
@@ -191,10 +191,10 @@ class UserTrip extends Component {
 
         return(
             <div>
-            <div style={{padding:'2%',paddingLeft:'10%',paddingRight:'10%'}}>
+            <div>
                 <div className="card">
                     <div className="card-header deep-orange lighten-1 white-text">
-                   Car Bookings
+                   Car Bookings - {data.target_name}
                 </div>
                 <div className="card-body">
                 <div className="row">
@@ -238,7 +238,7 @@ class UserTrip extends Component {
        return(
            <div>
            <div className="card-header deep-orange lighten-1 white-text">
-               Hotel Bookings
+               Hotel Bookings - {data.target_name}
            </div>
            <div className="card-body">
         <div className="row">

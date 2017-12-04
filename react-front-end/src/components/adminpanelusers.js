@@ -59,9 +59,6 @@ class AdminPanelUsers extends Component {
                                                     <td>{user.street_address}</td>
                                                     <td>{user.zip_code}</td>
                                                   
-                                                  
-                                                    <td><i className="fa fa-eye fa-2x" data-toggle="modal" data-target="#usermodel" /></td>
-                                                    <td><i className="fa fa-pencil fa-2x" data-toggle="modal" data-target="#usermodel"/></td>
                                                     <td><i className="fa fa-trash fa-2x" onClick={()=>{this.deleteUser(index,user.email)}}/></td>
                                                     </tr>))}
 

@@ -45,7 +45,7 @@ class AdminPanelBookings extends Component {
                                                         <th>Date</th>
                                                         <th></th>
                                                         <th></th>
-                                                        <th></th>
+                                                       
 
                                                     </tr>
                                                 </thead> 
@@ -59,9 +59,7 @@ class AdminPanelBookings extends Component {
                                                         <td>10/32/2018</td>
                                                     
                                                     
-                                                        <td><i className="fa fa-eye fa-2x" data-toggle="modal" data-target="#bookingmodel" /></td>
-                                                        <td><i className="fa fa-pencil fa-2x" data-toggle="modal" data-target="#bookingmodel"/></td>
-                                                        <td><i className="fa fa-trash fa-2x"/></td>
+                                                     
                                                         </tr>))
 
                                                     }

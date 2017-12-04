@@ -24,56 +24,85 @@ class AdminPanelDashboard extends Component {
     render(){
         return(
             <div>
-               <div className="container-fluid">
-                <h2>User Analytics</h2>
-                <div className="row" >
-                    <div className="col-sm-6">
-                         <PieChart/>
+                
+                 
+                <ul className="nav nav-tabs nav-justified indigo" role="tablist">
+                    <li className="nav-item">
+                         <a className="nav-link active" data-toggle="tab" href="#users" role="tab"><i></i> User Analytics</a>
+                    </li>
+                    <li className="nav-item">
+                        <a className="nav-link" data-toggle="tab" href="#sales" role="tab"><i></i> Sales Analytics</a>
+                    </li>
+                  
+                </ul>
+                <div className="container-fluid">
+                <div className="tab-content">
+                
+                <div className="tab-pane fade in show active" id="users" role="tabpanel">
+                   
+                    <div className="row" >
+                        <div className="col-sm-6" style={{backgroundColor:"white"}}>
+                            <PieChart/>
+                        </div>
+                        <div className="col-sm-6" style={{backgroundColor:"white"}}>
+                            <BarChart/>
+                        </div>
                     </div>
-                    <div className="col-sm-6">
-                         <BarChart/>
+                
+                    <div className="row" >
+                        <div className="col-sm-6" style={{backgroundColor:"white"}}>
+                            <DonutChart/>
+                        </div>
+                        <div className="col-sm-6" style={{backgroundColor:"white"}}>
+                        <CandlestickChart/>
+                        </div>
                     </div>
-                </div>
-                <br/>
-                <div className="row" >
-                    <div className="col-sm-6">
-                        <DonutChart/>
+                
+                    <div className="row" >
+                        <div className="col-sm-12" style={{backgroundColor:"white"}}>
+                            <WordTree/>
+                        </div>
                     </div>
-                    <div className="col-sm-6">
-                     <CandlestickChart/>
-                    </div>
-                </div>
-                <br/>
-                <div className="row" >
-                    <div className="col-sm-12">
-                        <WordTree/>
-                    </div>
-                </div>
-                        
-                       
-                       
-                       
-                        
-                        <h2>Sales Analytics</h2>
 
-                <div className="row" >
-                    <div className="col-sm-6">
-                        <Top5Chart/>
-                    </div>
-                    <div className="col-sm-6">
-                        <Top5CarChart/>
-                    </div>
                 </div>
-                <br/>
-                <br/>
-                <div className="row" >
-                    <div className="col-sm-6">
-                        <Top5FlightChart/>
-                    </div>
-                    <div className="col-sm-6">
-                        <Top5HotelChart/>
-                    </div>
-                </div>        
+                
+                <div className="tab-pane fade" id="sales" role="tabpanel">
+                            <div className="row" >
+                                <div className="col-sm-6" style={{backgroundColor:"white"}}>
+                                    <Top5Chart/>
+                                </div>
+                                <div className="col-sm-6" style={{backgroundColor:"white"}}>
+                                    <Top5CarChart/>
+                                </div>
+                            </div>
+                            <br/>
+                          
+                            <div className="row" >
+                                <div className="col-sm-6" style={{backgroundColor:"white"}}>
+                                    <Top5FlightChart/>
+                                </div>
+                                <div className="col-sm-6" style={{backgroundColor:"white"}}>
+                                    <Top5HotelChart/>
+                                </div>
+                            </div> 
+                 </div>
+                
+                    
+                   
+                
+                </div>
+                
+              
+          
+                
+                        
+                       
+                       
+                       
+                        
+                       
+
+                    
 
             </div>
                 
