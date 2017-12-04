@@ -600,4 +600,61 @@ export const getChart = (payload) =>
         console.log("This is an API error");
         return error;
     });
-    
+
+
+
+export const deleteHotel = (payload) =>
+    fetch(`${api}/hotel/deletehotel`, {
+        method: 'POST',
+        headers: {
+            ...headers,
+            'Content-Type': 'application/json'
+        },
+        credentials:'include',
+        body: JSON.stringify(payload)
+    }).then(res => {
+        console.log(res);
+        return res.json();
+    })
+        .catch(error => {
+            console.log("Error deleting hotel");
+            return error;
+        });
+
+
+export const deleteFlight = (payload) =>
+    fetch(`${api}/flight/deleteflight`, {
+        method: 'POST',
+        headers: {
+            ...headers,
+            'Content-Type': 'application/json'
+        },
+        credentials:'include',
+        body: JSON.stringify(payload)
+    }).then(res => {
+        console.log(res);
+        return res.json();
+    })
+        .catch(error => {
+            console.log("Error deleting flight");
+            return error;
+        });
+
+
+export const deleteCar = (payload) =>
+    fetch(`${api}/car/deletecar`, {
+        method: 'POST',
+        headers: {
+            ...headers,
+            'Content-Type': 'application/json'
+        },
+        credentials:'include',
+        body: JSON.stringify(payload)
+    }).then(res => {
+        console.log(res);
+        return res.json();
+    })
+        .catch(error => {
+            console.log("Error deleting car");
+            return error;
+        });
