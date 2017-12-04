@@ -62,7 +62,7 @@ class CarBooking extends Component {
       API.checkSession().then((data)=>{
         console.log("inside the check session response");
              console.log(data);
-           
+
         if(data.status===201){
             console.log("user logged in ");
             console.log(data);
@@ -78,7 +78,7 @@ class CarBooking extends Component {
                     creditcard:this.props.userprofile.creditcard,
                     isLoggedin:'true'
             })
-        
+
             console.log("***********************");
             console.log("inside hotelbooking");
             console.log(this.state);
@@ -141,7 +141,7 @@ class CarBooking extends Component {
         time: 5000,
         transition: 'scale'
       }
-    
+
     errorshowAlert = (msg) => {
         this.msg.show(msg, {
             time: 5000,
@@ -149,7 +149,7 @@ class CarBooking extends Component {
             icon: <img src={require('../image/error.png')} />
         })
     }
-    
+
     successshowAlert = (msg) => {
         this.msg.show(msg, {
             time: 5000,
@@ -157,7 +157,7 @@ class CarBooking extends Component {
             icon: <img src={require('../image/success.png')} />
         })
      }
-    
+
     render(){
         return(
             <div>
@@ -205,7 +205,7 @@ class CarBooking extends Component {
 
 
                         <div className="card">
-                        
+
                                                 <div className="card-header deep-orange lighten-1 white-text">
                                                 Personal Details
                                             </div>
@@ -216,78 +216,78 @@ class CarBooking extends Component {
                                                                         <i className="fa fa-user prefix"></i>
                                                                         <input type="text" placeholder="First Name" value={this.state.firstname}
                                                                         ref="firstname" className="form-control"/>
-                                                                     
+
                                                                     </div>
-                        
+
                                                                 </div>
                                                                 <div className="col-sm-6">
                                                                     <div className="md-form">
                                                                         <i className="fa fa-user prefix"></i>
-                                                                       
+
                                                                         <input type="text" placeholder="Lastname" value={this.state.lastname}
                                                                          ref="lastname" className="form-control"/>
-                                                                        
+
                                                                     </div>
-                        
+
                                                                 </div>
                                                         </div>
                                                         <div className="row">
                                                             <div className="col-sm-6">
-                                                              
+
                                                             <div className="md-form">
-                                                             
+
                                                             <i className="fa fa-envelope prefix"></i>
-                                                           
+
                                                             <input type="text"  value={this.state.email}
                                                             ref="email" placeholder="Email" className="form-control"/>
-                                                            
+
                                                             </div>
-                        
+
                                                             </div>
-                        
+
                                                             <div className="col-sm-6">
                                                             <div className="md-form">
                                                             <i className="fa fa-phone prefix"></i>
-                                                          
+
                                                             <input type="text" placeholder="Phone Number" value={this.state.phonenumber}
                                                             ref="phoneno" className="form-control"/>
-                                                           
-                        
+
+
                                                             </div>
-                        
+
                                                             </div>
                                                     </div>
                                                     <div className="row">
                                                             <div className="col-sm-8">
                                                             <div className="md-form">
                                                             <i className="fa fa-map-marker prefix"></i>
-                                                            
-                                                           
+
+
                                                             <input type="text"  value={this.state.address}
                                                             ref="address" placeholder="Address" className="form-control"/>
-                                                           
-                        
+
+
                                                             </div>
-                        
+
                                                             </div>
                                                             <div className="col-sm-4">
                                                             <div className="md-form">
                                                             <i className="fa fa-location-arrow prefix"></i>
-                                                           
+
                                                             <input type="text" placeholder="Zip Code" value={this.state.zipcode}
                                                             ref="zipcode" className="form-control"/>
-                                                            
-                        
+
+
                                                             </div>
-                        
+
                                                             </div>
                                                     </div>
                                             </div>
                                             </div>
-                        
-                        
+
+
                                             <div className="card">
-                        
+
                                             <div className="card-header deep-orange lighten-1 white-text">
                                                 Payment
                                             </div>
@@ -296,31 +296,31 @@ class CarBooking extends Component {
                                                     <div className="col-sm-4">
                                                         <div className="md-form form-group">
                                                         <i className="fa fa-credit-card-alt prefix"></i>
-                                                        
+
                                                         <input type="text" value={this.state.creditcard}
                                                         ref="creditcardno" placeholder="Credit Card"
                                                         className="form-control validate" maxLength='16'/>
-                                                       
+
                                                         </div>
-                        
+
                                                     </div>
                                                     <div className="col-sm-4">
                                                         <label>Expiry Date :  </label>
                                                         <div className="md-form form-group">
-                        
+
                                                             <input type="month" id="form92"
                                                             ref="expirydate" className="form-control validate"/>
-                        
+
                                                         </div>
-                        
+
                                                     </div>
                                                     <div className="col-sm-4">
                                                         <div className="md-form form-group">
                                                         <input type="text" placeholder="CVV"
                                                         ref="cvv" className="form-control validate" maxLength='3'/>
-                                                       
+
                                                         </div>
-                        
+
                                                     </div>
                                                 </div>
                             <button className="btn btn-default btn-lg btn-block" onClick={()=>this.handlePay()}>Pay</button>

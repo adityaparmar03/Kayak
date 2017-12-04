@@ -62,7 +62,7 @@ class FlightBooking extends Component {
         var destination = payload.booking.flight.destinationcity + ' ' + payload.booking.flight.destinationstate;
         var returnsource = payload.booking.returnflight.origincity + ' ' + payload.booking.returnflight.originstate;
         var returndestination = payload.booking.returnflight.destinationcity + ' ' + payload.booking.returnflight.destinationstate;
-        
+
         this.setState({
               operatorname: payload.booking.flight.operator,
               returnoperatorname: payload.booking.returnflight.operator,
@@ -79,7 +79,7 @@ class FlightBooking extends Component {
       API.checkSession().then((data)=>{
         console.log("inside the check session response");
              console.log(data);
-           
+
         if(data.status===201){
             console.log("user logged in ");
             console.log(data);
@@ -95,7 +95,7 @@ class FlightBooking extends Component {
                     creditcard:this.props.userprofile.creditcard,
                     isLoggedin:'true'
             })
-        
+
             console.log("***********************");
             console.log("inside hotelbooking");
             console.log(this.state);
@@ -114,7 +114,7 @@ class FlightBooking extends Component {
     handlePay(){
         if(!this.state.isLoggedin){
             this.errorshowAlert("Please Login to proceed with Payment");
-          }else{  
+          }else{
                 const payload = JSON.parse(localStorage.getItem("flightbooking"));
 
                 var travellerinfo = {
@@ -171,12 +171,12 @@ class FlightBooking extends Component {
                  Booking Class: {this.state.class}
                 </div>
                 <div className="col-sm-6">
-                  
+
                   Destination: {this.state.destination}
                 </div>
-    
+
             </div>
-            
+
             <br/>
             <div className="row">
                 <div className="col-sm-6">
@@ -192,7 +192,7 @@ class FlightBooking extends Component {
                   Passengers: {this.state.passengers}
                 </div>
                 <div className="col-sm-6">
-    
+
               </div>
             </div>
             </div>
@@ -214,10 +214,10 @@ class FlightBooking extends Component {
                   Booking Class: {this.state.class}
                 </div>
                 <div className="col-sm-6">
-                  
+
                   Destination: {this.state.destination}
                 </div>
-    
+
             </div>
             <br/>
             <div className="row">
@@ -234,10 +234,10 @@ class FlightBooking extends Component {
                 Return Flight Booking Class: {this.state.class}
                 </div>
                 <div className="col-sm-6">
-                  
+
                 Return Flight Destination: {this.state.returndestination}
                 </div>
-    
+
             </div>
             <br/>
             <div className="row">
@@ -254,13 +254,13 @@ class FlightBooking extends Component {
                   Passengers: {this.state.passengers}
                 </div>
                 <div className="col-sm-6">
-    
+
               </div>
             </div>
             </div>
           )
       }
-      
+
   }
   alertOptions = {
     offset: 14,
@@ -316,31 +316,31 @@ successshowAlert = (msg) => {
                                                 <i className="fa fa-user prefix"></i>
                                                 <input type="text" placeholder="First Name" value={this.state.firstname}
                                                 ref="firstname" className="form-control"/>
-                                             
+
                                             </div>
 
                                         </div>
                                         <div className="col-sm-6">
                                             <div className="md-form">
                                                 <i className="fa fa-user prefix"></i>
-                                               
+
                                                 <input type="text" placeholder="Lastname" value={this.state.lastname}
                                                  ref="lastname" className="form-control"/>
-                                                
+
                                             </div>
 
                                         </div>
                                 </div>
                                 <div className="row">
                                     <div className="col-sm-6">
-                                      
+
                                     <div className="md-form">
-                                     
+
                                     <i className="fa fa-envelope prefix"></i>
-                                   
+
                                     <input type="text"  value={this.state.email}
                                     ref="email" placeholder="Email" className="form-control"/>
-                                    
+
                                     </div>
 
                                     </div>
@@ -348,10 +348,10 @@ successshowAlert = (msg) => {
                                     <div className="col-sm-6">
                                     <div className="md-form">
                                     <i className="fa fa-phone prefix"></i>
-                                  
+
                                     <input type="text" placeholder="Phone Number" value={this.state.phonenumber}
                                     ref="phoneno" className="form-control"/>
-                                   
+
 
                                     </div>
 
@@ -361,11 +361,11 @@ successshowAlert = (msg) => {
                                     <div className="col-sm-8">
                                     <div className="md-form">
                                     <i className="fa fa-map-marker prefix"></i>
-                                    
-                                   
+
+
                                     <input type="text"  value={this.state.address}
                                     ref="address" placeholder="Address" className="form-control"/>
-                                   
+
 
                                     </div>
 
@@ -373,10 +373,10 @@ successshowAlert = (msg) => {
                                     <div className="col-sm-4">
                                     <div className="md-form">
                                     <i className="fa fa-location-arrow prefix"></i>
-                                   
+
                                     <input type="text" placeholder="Zip Code" value={this.state.zipcode}
                                     ref="zipcode" className="form-control"/>
-                                    
+
 
                                     </div>
 
@@ -396,11 +396,11 @@ successshowAlert = (msg) => {
                             <div className="col-sm-4">
                                 <div className="md-form form-group">
                                 <i className="fa fa-credit-card-alt prefix"></i>
-                                
+
                                 <input type="text" value={this.state.creditcard}
                                 ref="creditcardno" placeholder="Credit Card"
                                 className="form-control validate" maxLength='16'/>
-                               
+
                                 </div>
 
                             </div>
@@ -418,7 +418,7 @@ successshowAlert = (msg) => {
                                 <div className="md-form form-group">
                                 <input type="text" placeholder="CVV"
                                 ref="cvv" className="form-control validate" maxLength='3'/>
-                               
+
                                 </div>
 
                             </div>

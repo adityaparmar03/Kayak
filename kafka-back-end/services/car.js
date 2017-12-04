@@ -112,9 +112,9 @@ function bookCar(msg, callback){
                 +"','"+booking.dropoffaddress.state+"','"+booking.dropoffaddress.street+"','"+booking.dropoffaddress.country+"','"+booking.triptype + "','" + booking.pickupdate
                 +"','"+booking.dropoffdate+ "','"+creditCard.card_type+"',"+creditCard.card_number+",'"+creditCard.card_holder_name+"','"+creditCard.valid_from+"','"+creditCard.valid_till+"');";
 
-               // console.log("*************************************************");
-               // console.log(bookingSql);
-               // console.log("*************************************************");
+               console.log("*************************************************");
+               console.log(bookingSql);
+               console.log("*************************************************");
 
                 mysql.executeQuery(function(err){
                     if(err){

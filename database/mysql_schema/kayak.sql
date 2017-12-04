@@ -57,8 +57,8 @@ CREATE TABLE `BILLING` (
   `source_city` varchar(45) DEFAULT '' COMMENT 'source of flight/car and address of hotel',
   `source_state` varchar(45) DEFAULT '',
   `source_street` varchar(45) DEFAULT NULL COMMENT 'Airport name for flight and address of hotel ',
-  `source_country` varchar(45) DEFAULT ',
-  `source_zipcode` varchar(45) DEFAULT ',
+  `source_country` varchar(45) DEFAULT '',
+  `source_zipcode` varchar(45) DEFAULT '',
   `destination_city` varchar(45) DEFAULT '' COMMENT 'Destination of flight/car drop off , NA for hotel',
   `destination_state` varchar(45) DEFAULT '',
   `destination_street` varchar(45) DEFAULT '',
@@ -161,7 +161,7 @@ create table searchhistory (
   `end_date` varchar(90) ,
   `target_count` int(11) COMMENT 'Count of Passengers for flights Or\nCount of hotel rooms Or\nCount of Cars booked\n'
   );
-  
+
 LOCK TABLES `vendors` WRITE;
 
 INSERT INTO `vendors` VALUES (1,'MMT','car','http://localhost:3001/car/getcars?vendor=MmtCars'),(2,'Cleartrip','car','http://localhost:3001/car/getcars?vendor=CleartripCars'),(3,'Alamo','car','http://localhost:3001/car/getcars?vendor=AlamoCars'),(4,'MMT','hotel','http://localhost:3001/hotel/gethotels?vendor=MmtHotels'),(5,'Cleartrip','hotel','http://localhost:3001/hotel/gethotels?vendor=CleartripHotels'),(6,'TripAdvisor','hotel','http://localhost:3001/hotel/gethotels?vendor=TripAdvisorHotels'),(7,'MMT','flight','http://localhost:3001/flight/getflights?vendor=MmtFlights'),(8,'Cleartrip','flight','http://localhost:3001/flight/getflights?vendor=CleartripFlights'),(9,'Expedia','flight','http://localhost:3001/flight/getflights?vendor=ExpediaFlights');
