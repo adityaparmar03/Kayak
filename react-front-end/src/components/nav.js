@@ -14,19 +14,17 @@ class Nav extends Component {
 
 
     componentWillMount(){
-       API.doLogout().then((data)=>{
-           console.log("adf");
-       })
-   // API.checkSession().then((data)=>{
-   //  console.log("inside the check session response");
-   //  if(data.status===201){
-   //      console.log("user logged in ");
-   //      console.log(data.data.value);
-   //      //this.successshowAlert(data.data.value);
-   //      this.props.signIn(data);
-   //  }
+
+   API.checkSession().then((data)=>{
+    console.log("inside the check session response");
+    if(data.status===201){
+        console.log("user logged in ");
+        console.log(data.data.value);
+        //this.successshowAlert(data.data.value);
+        this.props.signIn(data);
+    }
    
-   //})
+   })
 
 
     }
