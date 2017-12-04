@@ -213,7 +213,7 @@ function addCar(msg, callback) {
 
                 var newcar = new car();
 
-                newcar.carId = msg.car.flightId;
+                newcar.carId = msg.car.carId;
                 newcar.cartype= msg.car.cartype;
                 newcar.carmodel= msg.car.carmodel;
                 newcar.specification= msg.car.specification;

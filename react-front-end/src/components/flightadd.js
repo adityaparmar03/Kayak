@@ -8,6 +8,7 @@ import * as Actions from '../actions/action';
 import {connect} from 'react-redux';
 import AutoComplete from 'material-ui/AutoComplete';
 import cities from '../constants/cities'
+import AlertContainer from 'react-alert'
 
 class Flightadd extends Component{
 
@@ -49,11 +50,11 @@ class Flightadd extends Component{
 
                 if (res.status == 200) {
 
-
+                    this.successshowAlert("Flight Added successfully.")
                     console.log("Success...")
 
                 }else if (res.status == 401) {
-
+                    this.errorshowAlert("Something went wrong, Try Again")
                     //  this.props.history.push('/');
                 }
             });
@@ -179,11 +180,35 @@ class Flightadd extends Component{
 
 
     }
+    alertOptions = {
+        offset: 14,
+        position: 'top center',
+        theme: 'dark',
+        time: 5000,
+        transition: 'scale'
+      }
+
+    errorshowAlert = (msg) => {
+        this.msg.show(msg, {
+            time: 5000,
+            type: 'success',
+            icon: <img src={require('../image/error.png')} />
+        })
+    }
+
+    successshowAlert = (msg) => {
+        this.msg.show(msg, {
+            time: 5000,
+            type: 'success',
+            icon: <img src={require('../image/success.png')} />
+        })
+     }
 
 
    render(){
     return(
        <div>
+            <AlertContainer ref={a => this.msg = a} {...this.alertOptions} />
            <div className="row">
                <div className="col-sm-6">
                    <div className="md-form">
@@ -436,10 +461,10 @@ class Flightadd extends Component{
                <div className="col-sm-3">
                    <div className="md-form form-group">
                            <AutoComplete
-                               hintText="From"
+                               hintText="To"
                                dataSource={this.state.fromsuggestion2}
                                onUpdateInput={this.handleUpdateFromInput2}
-                               floatingLabelText="From"
+                               floatingLabelText="To"
                                maxSearchResults={5}
                                underlineShow={false}
                                filter={AutoComplete.caseInsensitiveFilter}
@@ -463,10 +488,10 @@ class Flightadd extends Component{
                <div className="col-sm-3">
                    <div className="md-form form-group">
                        <AutoComplete
-                           hintText="From"
+                           hintText="To"
                            dataSource={this.state.fromsuggestion4}
                            onUpdateInput={this.handleUpdateFromInput4}
-                           floatingLabelText="From"
+                           floatingLabelText="To"
                            maxSearchResults={5}
                            underlineShow={false}
                            filter={AutoComplete.caseInsensitiveFilter}

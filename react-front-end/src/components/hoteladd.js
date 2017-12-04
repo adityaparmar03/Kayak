@@ -134,10 +134,10 @@ class Hoteladd extends Component {
                     <div className="col-sm-6">
                         <div className="md-form">
                             <input type="text" id="Hotel Name" placeholder="Hotel Name" className="form-control"
-                                   value={this.state.hotelname}
+                                   value={this.state.name}
                                    onChange={(event) => {
                                        this.setState({
-                                           hotelname: event.target.value
+                                           name: event.target.value
                                        });
                                    }}
                             />

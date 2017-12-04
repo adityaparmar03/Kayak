@@ -212,10 +212,10 @@ class Caradd extends Component {
                     <div className="col-sm-6">
                         <div className="md-form">
                             <AutoComplete
-                                hintText="From"
+                                hintText="To"
                                 dataSource={this.state.fromsuggestion2}
                                 onUpdateInput={this.handleUpdateFromInput2}
-                                floatingLabelText="From"
+                                floatingLabelText="To"
                                 maxSearchResults={5}
                                 underlineShow={false}
                                 filter={AutoComplete.caseInsensitiveFilter}

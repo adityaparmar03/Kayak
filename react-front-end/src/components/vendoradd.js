@@ -9,13 +9,17 @@ import * as Actions from '../actions/action';
 import {connect} from 'react-redux';
 import Caradd from "./caradd";
 import Hoteladd from "./hoteladd";
+import AlertContainer from 'react-alert'
 
 class Vendoradd extends Component {
 
     state={
         cars:[],
         hotels:[],
-        flights:[]
+        flights:[],
+        flightsearch:"",
+        hotelsearch:"",
+        carsearch:""
     }
 
     getlist(){
@@ -141,7 +145,7 @@ class Vendoradd extends Component {
 
                 if (res.status == 200) {
 
-
+                    this.getlist();
                     console.log("Success...")
 
                 }else if (res.status == 401) {
@@ -152,37 +156,108 @@ class Vendoradd extends Component {
     }
     displayFlight(data,index)
     {
-        return (
-            <tr>
-            <td>{index+1}</td>
-            <td>{data._id}</td>
-            <td>{data.operator}</td>
-            <td><i className="fa fa-trash fa-2x" onClick={()=>this.deleteFlight(data._id)}></i></td>
-            </tr>
-        )
+        if(this.state.flightsearch==""){
+            return (
+                <tr>
+                <td>{index+1}</td>
+                <td>{data.flightId}</td>
+                <td>{data.operator}</td>
+                <td><i className="fa fa-trash fa-2x" onClick={()=>this.deleteFlight(data._id)}></i></td>
+                </tr>
+            )
+        }
+       
+        else{
+            if(data.flightId == this.state.flightsearch || data.operator == this.state.flightsearch)
+            {
+                return (
+                    <tr>
+                    <td>{index+1}</td>
+                    <td>{data.flightId}</td>
+                    <td>{data.operator}</td>
+                    <td><i className="fa fa-trash fa-2x" onClick={()=>this.deleteFlight(data._id)}></i></td>
+                    </tr>
+                )
+            }
+        }
     }
     displayHotel(data,index)
     {
-        return (
-            <tr>
+        if(this.state.hotelsearch==""){
+            return (
+                <tr>
                 <td>{index+1}</td>
-                <td>{data._id}</td>
+                <td>{data.hotelId}</td>
                 <td>{data.name}</td>
                 <td><i className="fa fa-trash fa-2x" onClick={()=>this.deleteHotel(data._id)}></i></td>
-            </tr>
-        )
+                </tr>
+            )
+        }
+       
+        else{
+            if(data.hotelId == this.state.hotelsearch || data.name == this.state.hotelsearch)
+            {
+                return (
+                    <tr>
+                    <td>{index+1}</td>
+                    <td>{data.hotelId}</td>
+                    <td>{data.name}</td>
+                    <td><i className="fa fa-trash fa-2x" onClick={()=>this.deleteHotel(data._id)}></i></td>
+                    </tr>
+                )
+            }
+        }
     }
     displayCar(data,index)
     {
-        return (
-            <tr>
-            <td>{index+1}</td>
-            <td>{data._id}</td>
-            <td>{data.carmodel}</td>
-            <td><i className="fa fa-trash fa-2x" onClick={()=>this.deleteCar(data._id)}></i></td>
-            </tr>
-        )
+        if(this.state.carsearch==""){
+            return (
+                <tr>
+                <td>{index+1}</td>
+                <td>{data.carId}</td>
+                <td>{data.carmodel}</td>
+                <td><i className="fa fa-trash fa-2x" onClick={()=>this.deleteCar(data._id)}></i></td>
+                </tr>
+            )
+        }
+       
+        else{
+            if(data.carId == this.state.carsearch || data.carmodel == this.state.carsearch)
+            {
+                return (
+                    <tr>
+                    <td>{index+1}</td>
+                    <td>{data.carId}</td>
+                    <td>{data.carmodel}</td>
+                    <td><i className="fa fa-trash fa-2x" onClick={()=>this.deleteCar(data._id)}></i></td>
+                    </tr>
+                )
+            }
+        }
     }
+    alertOptions = {
+        offset: 14,
+        position: 'top center',
+        theme: 'dark',
+        time: 5000,
+        transition: 'scale'
+      }
+
+    errorshowAlert = (msg) => {
+        this.msg.show(msg, {
+            time: 5000,
+            type: 'success',
+            icon: <img src={require('../image/error.png')} />
+        })
+    }
+
+    successshowAlert = (msg) => {
+        this.msg.show(msg, {
+            time: 5000,
+            type: 'success',
+            icon: <img src={require('../image/success.png')} />
+        })
+     }
 
     render(){
    /*
@@ -223,12 +298,11 @@ class Vendoradd extends Component {
 
     return(
         <div>
-
+            <AlertContainer ref={a => this.msg = a} {...this.alertOptions} />
             <div className="card" style={{marginTop:'10vh',marginBottom:'10vh',marginLeft:'10vw',marginRight:'10vw'}}>
 
                 <div class="card-body">
-                    <br/>
-
+                   
 
                     <ul className="nav nav-tabs nav-justified deep-orange" role="tablist">
                         <li className="nav-item">
@@ -245,20 +319,20 @@ class Vendoradd extends Component {
 
                     <div className="tab-content">
 
-                        <div className="tab-pane fade in show active" id="profile" role="tabpanel">
+                        <div className="tab-pane fade in show active" id="flight" role="tabpanel">
 
                             <Flightadd/>
 
                         </div>
 
-                        <div className="tab-pane fade" id="trip" role="tabpanel">
+                        <div className="tab-pane fade" id="car" role="tabpanel">
 
                         <Caradd/>
 
 
 
                         </div>
-                        <div className="tab-pane fade" id="searchhistroy" role="tabpanel">
+                        <div className="tab-pane fade" id="hotel" role="tabpanel">
 
                         <Hoteladd/>
 
@@ -300,8 +374,9 @@ class Vendoradd extends Component {
 
                         <div className="tab-pane fade in show active" id="profile1" role="tabpanel">
                         <div className="md-form">
-                            <input type="text" placeholder="ID/Operator" className="form-control"/>
-                            <button className="btn btn-light-blue"><i className="fa fa-search"></i> Search</button>
+                            <input type="text" placeholder="ID/Operator" ref="flightsearch" className="form-control"/>
+                            <button className="btn btn-light-blue" onClick={()=>this.setState({flightsearch:this.refs.flightsearch.value})}
+                            ><i className="fa fa-search"></i> Search</button>
                         </div>    
                         <div className="table-responsive">
                             <table className="table">
@@ -325,8 +400,9 @@ class Vendoradd extends Component {
 
                         <div className="tab-pane fade" id="trip1" role="tabpanel">
                         <div className="md-form">
-                            <input type="text" placeholder="ID/Hotel Name" className="form-control"/>
-                            <button className="btn btn-light-blue"><i className="fa fa-search"></i> Search</button>
+                            <input type="text" placeholder="ID/Hotel Name" ref="hotelsearch"
+                            className="form-control"/>
+                            <button className="btn btn-light-blue" onClick={()=>this.setState({hotelsearch:this.refs.hotelsearch.value})} ><i className="fa fa-search"></i> Search</button>
                         </div>    
                         <div className="table-responsive">
                             <table className="table">
@@ -353,8 +429,8 @@ class Vendoradd extends Component {
                         <div className="tab-pane fade" id="searchhistroy1" role="tabpanel">
 
                         <div className="md-form">
-                            <input type="text" placeholder="ID/Car Name" className="form-control"/>
-                            <button className="btn btn-light-blue"><i className="fa fa-search"></i> Search</button>
+                            <input type="text" placeholder="ID/Car Name" ref="carsearch" className="form-control"/>
+                            <button className="btn btn-light-blue" onClick={()=>this.setState({carsearch:this.refs.carsearch.value})}  ><i className="fa fa-search"></i> Search</button>
                         </div>    
                         <div className="table-responsive">
                             <table className="table">
