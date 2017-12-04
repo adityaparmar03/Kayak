@@ -285,6 +285,7 @@ function upload(msg,callback){
 
 function getuserdata(msg,callback){
     var res= {};
+   
     console.log(msg);
     var getQuery = "select first_name,last_name,user_role,city,state,zip_code,profile_image_path,email,phone,street_address,credit_card_number,email from user where email='"+msg.email+"';";
     mysql.fetchData(function (err,results) {
@@ -308,39 +309,46 @@ function getuserdata(msg,callback){
 //****************************************************************************************************************************
 function deleteuser(msg,callback) {
     var res = {};
-    console.log(msg);
-
-    var delquery = "delete from billing where user_email='"+msg.email+"';";
-
-    mysql.executeQuery(function(err){
-        if(err){
-            throw err;
-            res.code = "401";
-            res.value=" Error Occured while deleting from the billing table ";
-            callback(null,res);
-        }
-        else{
-
-            console.log("User succesfully deleted from the user table");
-            var deluser = "delete from user where email='"+msg.email+"';";
-            mysql.executeQuery(function (err) {
+   
+    if(msg!=undefined){
+        var delquery = "delete from billing where user_email='"+msg+"';";
+        
+            mysql.executeQuery(function(err){
                 if(err){
-                    //throw  err;
+                    throw err;
                     res.code = "401";
-                    res.value = "error while deleting the user from the user table";
-
+                    res.value=" Error Occured while deleting from the billing table ";
+                    callback(null,res);
                 }
                 else{
-                    res.code = "200";
-                    res.value = 'user deleted from both the user table and the billing table';
+        
+                    console.log("User succesfully deleted from the user table");
+                    var deluser = "delete from user where email='"+msg+"';";
+                    mysql.executeQuery(function (err) {
+                        if(err){
+                            //throw  err;
+                            res.code = "401";
+                            res.value = "error while deleting the user from the user table";
+        
+                        }
+                        else{
+                            res.code = "200";
+                            res.value = 'user deleted from both the user table and the billing table';
+        
+                        }callback(null,res);
+        
+                    },deluser);
+        
+        
+                }
+            },delquery);
+    }else{
+        res.code = "401";
+        res.value = "error while deleting the user from the user table";
+        callback(null,res);
 
-                }callback(null,res);
-
-            },deluser);
-
-
-        }
-    },delquery);
+    }
+    
 
 }
 

@@ -12,7 +12,11 @@ router.get('/cars', function (req, res) {
         if(err || !results){
             res.send({'status': 401});
         }
-        res.send({'cars': results, 'status': 201});
+        else{
+
+            res.send({'cars': results, 'status': 201});
+
+        }
     });
 
 });

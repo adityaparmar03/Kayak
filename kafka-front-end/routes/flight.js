@@ -13,7 +13,10 @@ router.get('/flights', function (req, res) {
         if(err || !results){
             res.send({'status': 401});
         }
-        res.send({'flights': results, 'status': 201});
+        else{
+
+            res.send({'flights': results, 'status': 201});
+        }
     });
 
 });

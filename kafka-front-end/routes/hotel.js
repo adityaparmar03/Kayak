@@ -13,7 +13,10 @@ router.get('/hotels', function (req, res) {
         if(err || !results){
             res.send({'status': 401});
         }
-        res.send({'hotels': results, 'status': 201});
+        else{
+
+            res.send({'hotels': results, 'status': 201});
+        }
     });
 
 });

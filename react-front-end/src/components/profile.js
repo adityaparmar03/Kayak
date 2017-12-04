@@ -162,11 +162,11 @@ timeConverter(UNIX_timestamp){
 
     console.log("about to delete the user");
 
-    API.deleteUser().then((data)=>{
+    API.deleteUser({email:this.state.email}).then((data)=>{
 
         if(data.status==201){
 
-         this.props.history.push('/');
+         this.props.history.push('/flight');
 
         }
     })
