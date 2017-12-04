@@ -275,18 +275,20 @@ class Flightadd extends Component{
                </div>
                <div className="col-sm-3">
                    <div className="md-form">
-                       <i className="fa fa-calendar prefix"></i>
-
-                       <input type="date" id="address" placeholder="Arrival Day"  className="form-control"
-                              value = {this.state.arrivalday}
-                              onChange={(event) => {
-                                  this.setState({
-                                      arrivalday: event.target.value
-                                  });
-                              }}
-                       />
-
-
+                       Arrival Day:
+                       <select  className="form-control" onChange={(event) => {
+                           this.setState({
+                               arrivalday: event.target.value
+                           });
+                       }} >
+                           <option value="Mon">Mon</option>
+                           <option value="Tue">Tue</option>
+                           <option value="Wed">Wed</option>
+                           <option value="Thu">Thu</option>
+                           <option value="Fri">Fri</option>
+                           <option value="Sat">Sat</option>
+                           <option value="Sun">Sun</option>
+                       </select>
                    </div>
 
                </div>
@@ -309,18 +311,20 @@ class Flightadd extends Component{
                </div>
                <div className="col-sm-3">
                    <div className="md-form">
-                       <i className="fa fa-calendar prefix"></i>
-
-                       <input type="date" id="address" placeholder="Departure Day"  className="form-control"
-                              value = {this.state.departureday}
-                              onChange={(event) => {
-                                  this.setState({
-                                      departureday: event.target.value
-                                  });
-                              }}
-                       />
-
-
+                       Departure:
+                       <select  className="form-control" onChange={(event) => {
+                           this.setState({
+                               departureday: event.target.value
+                           });
+                       }} >
+                           <option value="Mon">Mon</option>
+                           <option value="Tue">Tue</option>
+                           <option value="Wed">Wed</option>
+                           <option value="Thu">Thu</option>
+                           <option value="Fri">Fri</option>
+                           <option value="Sat">Sat</option>
+                           <option value="Sun">Sun</option>
+                       </select>
                    </div>
 
                </div>
@@ -346,17 +350,20 @@ class Flightadd extends Component{
                </div>
                <div className="col-sm-3">
                    <div className="md-form">
-                       <i className="fa fa-calendar prefix"></i>
-
-                       <input type="date" id="address" placeholder="Arrival Day"  className="form-control"
-                              value = {this.state.arrivalday1}
-                              onChange={(event) => {
-                                  this.setState({
-                                      arrivalday1: event.target.value
-                                  });
-                              }}
-                       />
-
+                               Arrival :
+                               <select  className="form-control" onChange={(event) => {
+                                   this.setState({
+                                       departureday: event.target.value
+                                   });
+                               }} >
+                                   <option value="Mon">Mon</option>
+                                   <option value="Tue">Tue</option>
+                                   <option value="Wed">Wed</option>
+                                   <option value="Thu">Thu</option>
+                                   <option value="Fri">Fri</option>
+                                   <option value="Sat">Sat</option>
+                                   <option value="Sun">Sun</option>
+                               </select>
 
                    </div>
 
@@ -380,18 +387,20 @@ class Flightadd extends Component{
                </div>
                <div className="col-sm-3">
                    <div className="md-form">
-                       <i className="fa fa-calendar prefix"></i>
-
-                       <input type="date" id="address" placeholder="Departure Day"  className="form-control"
-                              value = {this.state.departureday1}
-                              onChange={(event) => {
-                                  this.setState({
-                                      departureday1: event.target.value
-                                  });
-                              }}
-                       />
-
-
+                               Departure:
+                               <select  className="form-control" onChange={(event) => {
+                                   this.setState({
+                                       departureday: event.target.value
+                                   });
+                               }} >
+                                   <option value="Mon">Mon</option>
+                                   <option value="Tue">Tue</option>
+                                   <option value="Wed">Wed</option>
+                                   <option value="Thu">Thu</option>
+                                   <option value="Fri">Fri</option>
+                                   <option value="Sat">Sat</option>
+                                   <option value="Sun">Sun</option>
+                               </select>
                    </div>
 
                </div>

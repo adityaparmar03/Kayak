@@ -51,7 +51,7 @@ class Vendoradd extends Component {
         <div>
 
             <div className="card" style={{marginTop:'10vh',marginBottom:'10vh',marginLeft:'10vw',marginRight:'10vw'}}>
-                
+
                 <div class="card-body">
                     <br/>
 
