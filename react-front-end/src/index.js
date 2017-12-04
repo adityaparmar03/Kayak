@@ -161,7 +161,7 @@ import CarBooking from "./components/carbooking";
 import UserAnalytics from "./components/UserAnalytics";
 import SalesAnalytics from "./components/SalesAnalytics";
 import ClickTracker from "./components/tracker";
-
+import Vendoradd from "./components/vendoradd";
 
 import { createStore } from 'redux';
 import reducer from './reducers/rootreducer';
@@ -196,6 +196,7 @@ ReactDOM.render(
                 <Route exact path="/useranalytics" component={UserAnalytics}/>
                 <Route exact path="/salesanalytics" component={SalesAnalytics}/>
                 <Route exact path="/clickltracker" component={ClickTracker}/>
+                <Route exact path="/vendoradd" component={Vendoradd}/>
 
 
             </div>
