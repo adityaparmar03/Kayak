@@ -156,19 +156,19 @@ function addHotel(msg, callback) {
 
                 var newhotel = new hotel();
 
-                    /*newhotel.hotelId = msg.hotelId;
-                    newhotel.name = msg.name;
-                    newhotel.description = msg.description;
-                    newhotel.address=msg.pickupaddress //{'street':'101 E San Fernando St.','city':'San Jose', 'state': 'CA', 'country':'USA', 'zip':'95112'}
-                    newhotel.stars = msg.stars;
-                    newhotel.reviews =msg.,
-                    newhotel.rating = msg.rating;
-                    newhotel.rooms : Array,
-                    newhotel.imageurl = msg.imageurl;
-*/
+                    newhotel.hotelId = msg.hotel.hotelId;
+                    newhotel.name = msg.hotel.name;
+                    newhotel.description = msg.hotel.description;
+                    newhotel.address=msg.hotel.address;
+                    newhotel.stars = msg.hotel.stars;
+                    newhotel.reviews =msg.hotel.reviews;
+                    newhotel.rating = msg.hotel.rating;
+                    newhotel.rooms =msg.hotel.rooms;
+                    newhotel.imageurl = msg.hotel.imageurl;
+
                 var res = {};
 
-                newcar.save(function (err) {
+                newhotel.save(function (err) {
 
                     if (err) {
                         console.log(err)
@@ -222,7 +222,7 @@ function getHotelList(msg, callback) {
 
                         console.log("Hotel List:", hotels)
                         res.code = "200";
-                        res.value = hotel;
+                        res.value = hotels;
                         callback(null, res);
 
                     }

@@ -85,7 +85,7 @@ router.post('/addhotel', function (req, res) {
     console.log(req.body);
 
     var reqObject = {
-        email : req.session.email,
+        email : "mmt@gmail.com",
         hotel : req.body
     }
     kafka.make_request("addhotel", reqObject, function(err,results){

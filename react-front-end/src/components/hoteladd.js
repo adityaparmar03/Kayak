@@ -34,6 +34,22 @@ import cities from '../constants/cities'
 
 class Hoteladd extends Component {
 
+    componentWillMount() {
+        API.getHotelList()
+            .then((res) => {
+
+                console.log(res);
+                if (res.status == 200) {
+
+                    console.log("Success...")
+
+                }else if (res.status == 401) {
+
+                    //  this.props.history.push('/');
+                }
+            });
+    }
+
     state = {
         hotelId: '',
         name: '',
@@ -93,6 +109,21 @@ class Hoteladd extends Component {
 
         console.log(payload);
 
+        API.addHotel(payload)
+            .then((res) => {
+
+
+                if (res.status == 200) {
+
+
+                    console.log("Success...")
+
+                }else if (res.status == 401) {
+
+                    //  this.props.history.push('/');
+                }
+            });
+
     }
 
 
@@ -103,7 +134,7 @@ class Hoteladd extends Component {
                 <div className="row">
                     <div className="col-sm-6">
                         <div className="md-form">
-                            <i className="fa fa-car prefix"></i>
+                            <i className="fa fa-bed prefix"></i>
                             <input type="text" id="Operator" placeholder="Hotel Id" className="form-control"
                                    value={this.state.hotelId}
                                    onChange={(event) => {
@@ -132,7 +163,7 @@ class Hoteladd extends Component {
                 <div className="row">
                     <div className="col-sm-4">
                         <div className="md-form">
-                            <i className="fa fa-car prefix"></i>
+                            <i className="fa fa-money prefix"></i>
                             <input type="text" placeholder="Premium" id="premium" className="form-control"
                                    value={this.state.price3}
                                    onChange={(event) => {
@@ -188,10 +219,10 @@ class Hoteladd extends Component {
                     <div className="col-sm-6">
                         <div className="md-form">
                             <AutoComplete
-                                hintText="From"
+                                hintText="Location"
                                 dataSource={this.state.fromsuggestion1}
                                 onUpdateInput={this.handleUpdateFromInput1}
-                                floatingLabelText="From"
+                                floatingLabelText="Location"
                                 maxSearchResults={5}
                                 underlineShow={false}
                                 filter={AutoComplete.caseInsensitiveFilter}
@@ -207,7 +238,7 @@ class Hoteladd extends Component {
                     <div className="col-sm-6">
                         <div className="md-textarea">
 
-                            <input type="text" id="Description" placeholder="Description" className="form-control"
+                            <input type="text" id="Description" placeholder="Description" className="md-textarea"
                                    value={this.state.description}
                                    onChange={(event) => {
                                        this.setState({
@@ -217,7 +248,8 @@ class Hoteladd extends Component {
                         </div>
                     </div>
                 </div>
-
+                        <br/>
+                        <br/>
                 <button type="button" className="btn btn-light-blue btn-lg btn-block" onClick={() => {
                     this.handleSubmit()
                 }}>Add Hotel
