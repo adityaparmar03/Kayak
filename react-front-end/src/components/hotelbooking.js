@@ -66,7 +66,7 @@ class HotelBooking extends Component {
                     phonenumber:this.props.userprofile.phonenumber,
                     imgpath:this.props.userprofile.imgpath,
                     creditcard:this.props.userprofile.creditcard,
-                    isLoggedin:this.state.userprofile.isLoggedIn
+                    isLoggedin:true
             })
         
             console.log("***********************");
@@ -108,8 +108,9 @@ class HotelBooking extends Component {
         
               payload.credit_card = credit_card;
               payload.travellerinfo = travellerinfo;
+              console.log("@@@@@@@@@@@@@@@@@@@@@@@");
                 console.log(payload);
-
+          console.log("@@@@@@@@@@@@@@@@@@@@@@@");
               API.bookHotel(payload)
                   .then((res) => {
                       console.log(res);
