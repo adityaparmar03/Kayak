@@ -65,6 +65,11 @@ class Profile extends Component {
 
 
     componentWillMount(){
+
+         // API.doLogout().then((data)=>{
+            //     console.log("adf");
+            // })
+
         console.log("willmountcalling");
         API.checkSession().then((data)=>{
             console.log("inside the check session response");

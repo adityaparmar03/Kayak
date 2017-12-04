@@ -24,7 +24,6 @@ var storage = multer.diskStorage({
 var upload = multer({storage:storage});
 
 
-
 //************************************************************************************************************************
 
 router.post('/login', function (req, res) {
@@ -55,17 +54,10 @@ router.post('/login', function (req, res) {
             }
             else{
 
-
-            req.session.email = user.email;
-            req.session.isloggedin = true;
-            console.log(user.data);
-            res.send({status:201,"value":"Success Login"});
+            res.send({status:401,"value":user.data});
 
             }
             }
-
-
-
     })(req,res);
 
 });
@@ -204,8 +196,6 @@ router.put('/update',function (req,res) {
 
 router.post('/upload', upload.single('mypic'),function (req, res) {
     console.log("inside the upload folder");
-
-
         res.send({"status":201 , "data": "User file updated" ,"filename":fname});
     //
     // else{

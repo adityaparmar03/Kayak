@@ -14,19 +14,19 @@ class Nav extends Component {
 
 
     componentWillMount(){
-       // API.doLogout().then((data)=>{
-       //     console.log("adf");
-       // })
-   API.checkSession().then((data)=>{
-    console.log("inside the check session response");
-    if(data.status===201){
-        console.log("user logged in ");
-        console.log(data.data.value);
-        //this.successshowAlert(data.data.value);
-        this.props.signIn(data);
-    }
+       API.doLogout().then((data)=>{
+           console.log("adf");
+       })
+   // API.checkSession().then((data)=>{
+   //  console.log("inside the check session response");
+   //  if(data.status===201){
+   //      console.log("user logged in ");
+   //      console.log(data.data.value);
+   //      //this.successshowAlert(data.data.value);
+   //      this.props.signIn(data);
+   //  }
    
-   })
+   //})
 
 
     }
@@ -41,124 +41,134 @@ class Nav extends Component {
 
     };
 //********************************************************
-    registerButton(){
-      console.log("I am inside the registerButton");
-      console.log(this.state.password);
-      console.log(this.state.repeatpassword);
-      if(this.state.password===this.state.repeatpassword && this.state.email!=null) {
+    registerButton() {
+        console.log("I am inside the registerButton");
+        console.log(this.state.password);
+        console.log(this.state.repeatpassword);
+        var flag = 0;
+        if (this.state.password === this.state.repeatpassword && this.state.email != null) {
+            console.log("-------"+flag+"------");
+            console.log("+++++++++");
+            var payload = {
+                "email": this.state.email,
+                "password": this.state.password
+            }
+            console.log("*******");
+            console.log(this.state);
+            console.log("*******");
 
-          console.log("+++++++++");
-      //console.log(regex.test("smcool100@gmail.com"));
-         var payload = {
-        "email" :this.state.email,
-        "password": this.state.password
-     }
-     //this.setState({password:null,repeatpassword:null,email:null});
-         console.log("*******");
-         console.log(this.state);
-          console.log("*******");
+            if (this.validateZipCode(this.state.email)) {
+                flag = flag + 3;
+                console.log("-------"+flag+"------");
+            }
 
-     API.doRegister(payload).then((data)=>{
 
-          if(data.status==201){
-        console.log("after the registration is complete");
-            this.successshowAlert("You have succesfully registered");
+                API.doRegister(payload).then((data) => {
+
+                    if (data.status == 201) {
+                        console.log("after the registration is complete");
+                        this.successshowAlert("You have succesfully registered");
+                    }
+                    else {
+                        console.log(data);
+                        this.errorshowAlert(data.value);
+                    }
+
+
+                }).catch((error) => {
+                    console.log("error");
+                })
+
         }
         else{
-              console.log(data);
-            this.errorshowAlert(data.value);
-
-
+            this.errorshowAlert("Passwords does not match");
         }
-
-
-     }).catch((error)=>{
-        console.log("error");
-     })
-
-    }
     }
 //********************************************************
-    logout(){
-        this.handlepopup();
-        API.doLogout().then((data)=>{
-            if(data.status==201){
-                console.log("User logged out");
-                this.successshowAlert(data.value);
-                this.props.userprofile.isLoggedIn=false;
-                this.props.history.push('/');
+        logout()
+        {
+            this.handlepopup();
+            API.doLogout().then((data) => {
+                if (data.status == 201) {
+                    console.log("User logged out");
+                    this.successshowAlert(data.value);
+                    this.props.userprofile.isLoggedIn = false;
+                    this.props.history.push('/');
 
+                }
+            })
+        }
+
+//********************************************************
+        validateZipCode(elementValue)
+        {
+            var zipCodePattern;
+            if (elementValue.indexOf('-') > -1) {
+                zipCodePattern = /^\d{5}$|^\d{5}-\d{4}$/;
+            } else {
+                zipCodePattern = /^\d{5}$/;
             }
-        })
-    }
 
+            //console.log("Zip Validation : ",zipCodePattern.test(elementValue))
+            return zipCodePattern.test(elementValue);
+        }
 //********************************************************
-    validateZipCode(elementValue){
-        var zipCodePattern;
-        if (elementValue.indexOf('-') > -1)
+        validateEmail(mail)
         {
-            zipCodePattern = /^\d{5}$|^\d{5}-\d{4}$/;
-        } else {
-            zipCodePattern = /^\d{5}$/;
+            if (/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(mail)) {
+                console.log("true");
+                return (true)
+            }
+            console.log("false");
+            return (false)
         }
 
-        //console.log("Zip Validation : ",zipCodePattern.test(elementValue))
-        return zipCodePattern.test(elementValue);
-    }
 //********************************************************
-    validateEmail(mail)
-    {
-        if (/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(mail))
+        telephoneCheck(str)
         {
-            console.log("true");
-            return (true)
+            var isphone = /^(1\s|1|)?((\(\d{3}\))|\d{3})(\-|\s)?(\d{3})(\-|\s)?(\d{4})$/.test(str);
+            return isphone;
         }
-        console.log("false");
-        return (false)
-    }
-
-//********************************************************
-    telephoneCheck(str) {
-        var isphone = /^(1\s|1|)?((\(\d{3}\))|\d{3})(\-|\s)?(\d{3})(\-|\s)?(\d{4})$/.test(str);
-        return isphone;
-    }
 //****************************************************
-loginButton(){
+        loginButton()
+        {
 
-      //console.log(regex.test("smcool100@gmail.com"));
-     var payload = {
-        "email" :this.state.email,
-        "password": this.state.password
-     }
-     //console.log(payload);
-     API.doLogin(payload).then((data)=>{
-        //console.log(data);
-        if(data.status===201){
-
-            this.successshowAlert("Login Success");
-            //this.props.history.push('/');
-
-            this.props.userprofile.isLoggedIn = true;
-
-            if(data.user_role=="USER") {
-                window.location.reload();
+            //console.log(regex.test("smcool100@gmail.com"));
+            var payload = {
+                "email": this.state.email,
+                "password": this.state.password
             }
-            else if(data.user_role=="ADMIN") {
-                window.location.reload();
-                this.props.history.push('/admin');
-            }
+            //console.log(payload);
+            API.doLogin(payload).then((data) => {
+                //console.log(data);
+                if (data.status === 201) {
 
-           // this.props.history.push(this.props.location.pathname); 
-          //  console.log("Before getting in the signin reducer  "+ this.props.userprofile.isLoggedIn)
-       // this.props.signIn(data);
+                    this.successshowAlert("Login Success");
+                    //this.props.history.push('/');
+
+                    this.props.userprofile.isLoggedIn = true;
+
+                    if (data.user_role == "USER") {
+                        window.location.reload();
+                    }
+
+                    else if (data.user_role == "ADMIN") {
+                        window.location.reload();
+                        this.props.history.push('/admin');
+                    }
+
+                    // this.props.history.push(this.props.location.pathname);
+                    //  console.log("Before getting in the signin reducer  "+ this.props.userprofile.isLoggedIn)
+                    // this.props.signIn(data);
+                }
+                else {
+                    this.errorshowAlert(data.value);
+                }
+            })
+
+
         }
-        else{
-            this.errorshowAlert(data.value);
-        }
-     })
 
-
-    }
 
 //********************************************************
 
@@ -352,31 +362,31 @@ loginButton(){
                         <div className="modal-body">
                             <div className="md-form form-sm">
                                 <i className="fa fa-envelope prefix"></i>
-                                <input type="email" id="form24" className="form-control validate"
+                                <input type="email" id="form24" placeholder="Email" className="form-control validate"
                                  value = {this.state.email}
                                  onChange={(event) => {
                                     this.setState({
                                         email: event.target.value
                                     });
                                 }}/>
-                                <label htmlFor="form24">Your email</label>
+
                             </div>
 
                             <div className="md-form form-sm">
                                 <i className="fa fa-lock prefix"></i>
-                                <input type="password" id="form25" className="form-control validate"
+                                <input type="password" id="form25" placeholder="Password" className="form-control validate"
                                  value = {this.state.password}
                                  onChange={(event) => {
                                     this.setState({
                                         password: event.target.value
                                     });
                                 }}/>
-                                <label  htmlFor="form25">Your password</label>
+
                             </div>
 
                             <div className="md-form form-sm">
                                 <i className="fa fa-lock prefix"></i>
-                                <input type="password" id="form26" className="form-control validate"
+                                <input type="password" id="form26" placeholder="Password" className="form-control validate"
                                 value = {this.state.repeatpassword}
                                  onChange={(event) => {
                                     this.setState({
@@ -384,8 +394,6 @@ loginButton(){
                                     });
                                 }}/>
 
-
-                                <label htmlFor="form26">Repeat password</label>
                             </div>
 
                             <div className="text-center form-sm mt-2">
