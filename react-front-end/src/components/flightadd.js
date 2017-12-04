@@ -27,13 +27,6 @@ class Flightadd extends Component{
         departuretime1:'',
         departureday1:'',
 
-
-
-
-
-
-
-
         //
         fromsuggestion1: [],
         from1:"",
@@ -105,6 +98,7 @@ class Flightadd extends Component{
 
 
     handleSubmit(){
+        //var from_1,from_2,from_3,from_4,from_5,from_6,from_7,from_8;
         var from_1 = this.state.from1.split(",")[0].trim();
         var from_2 = this.state.from1.split(",")[1].trim();
 
@@ -146,14 +140,14 @@ class Flightadd extends Component{
                     departuretime: this.state.departuretime1,
                     departureday : this.state.departureday1,
                     origin: {
-                        city:from_5, state:from_6, country:'USA'},
-                        destination: {city:from_7, state:from_8, country:'USA'}
+                        city:from_5, state:from_6, country:'USA',airport:"San Jose Airport"},
+                        destination: {city:from_7, state:from_8, country:'USA',airport:"San Jose Airport"}
 
                 }
             ]
         }
 
-        console.log(payload);
+        console.log(this.state.arrivaltime);
         console.log(this.state.from1.split(",")[0].trim());
 
 
@@ -247,7 +241,7 @@ class Flightadd extends Component{
                    <div className="md-form">
                        <i className="fa fa-clock-o prefix"></i>
 
-                       <input type="date" id="address" placeholder="Arrival Time"  className="form-control"
+                       <input type="time" id="address" placeholder="Arrival Time"  className="form-control"
                               value = {this.state.arrivaltime}
                               onChange={(event) => {
                                   this.setState({
@@ -281,7 +275,7 @@ class Flightadd extends Component{
                    <div className="md-form">
                        <i className="fa fa-clock-o prefix"></i>
 
-                       <input type="date" id="address" placeholder="Departure Time"  className="form-control"
+                       <input type="time" id="address" placeholder="Departure Time"  className="form-control"
                               value = {this.state.departuretime}
                               onChange={(event) => {
                                   this.setState({
@@ -318,7 +312,7 @@ class Flightadd extends Component{
                    <div className="md-form">
                        <i className="fa fa-clock-o prefix"></i>
 
-                       <input type="date" id="address" placeholder="Arrival Time"  className="form-control"
+                       <input type="time" id="address" placeholder="Arrival Time"  className="form-control"
                               value = {this.state.arrivaltime1}
                               onChange={(event) => {
                                   this.setState({
@@ -352,7 +346,7 @@ class Flightadd extends Component{
                    <div className="md-form">
                        <i className="fa fa-clock-o prefix"></i>
 
-                       <input type="date" id="address" placeholder="Departure Time"  className="form-control"
+                       <input type="time" id="address" placeholder="Departure Time"  className="form-control"
                               value = {this.state.departuretime1}
                               onChange={(event) => {
                                   this.setState({
