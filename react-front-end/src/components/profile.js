@@ -155,7 +155,22 @@ timeConverter(UNIX_timestamp){
     //var time = date + ' ' + month + ' ' + year + ' ' + hour + ':' + min + ':' + sec ;
     var time = year + '-' + month + '-' + date + ' ' + hour + ':' + min + ':' + sec ;
     return time;
-}   
+}
+    //*****************************************
+
+    deleteUser(){
+
+    console.log("about to delete the user");
+
+    API.deleteUser().then((data)=>{
+
+        if(data.status==201){
+
+         this.props.history.push('/');
+
+        }
+    })
+    }
 
  //*****************************************
 
@@ -415,6 +430,8 @@ timeConverter(UNIX_timestamp){
                                 </div>
 
                                 <button type="button" className="btn btn-light-blue btn-lg btn-block" onClick={()=>this.updateUserData()}>Save</button>
+                                <br/>
+                        <button type="button" className="btn btn-red btn-lg btn-block" onClick={()=>this.deleteUser()}>Delete Account</button>
 
                                 
                     </div>

@@ -226,6 +226,7 @@ router.delete('/delete',function (req,res) {
         {
             console.log(results);
             if(results.code === "200"){
+                req.session.destroy();
                 res.send({"status":201 ,"data":results.value})
             }
             else {
