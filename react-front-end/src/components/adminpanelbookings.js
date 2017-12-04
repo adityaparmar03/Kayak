@@ -50,13 +50,13 @@ class AdminPanelBookings extends Component {
                                                     </tr>
                                                 </thead> 
                                                 <tbody>
-                                                    {this.props.bills.map((bill, index)=>(<tr>
-                                                        <td>{bill.billing_id}</td>
-                                                        <td>{bill.booking_type} </td>
-                                                        <th>${bill.billing_amount}</th>
-                                                        <td>{bill.user_email}</td>
-                                                        <td>{bill.credit_card_number}</td>
-                                                        <td>{bill.billing_date}</td>
+                                                    {this.state.test.map((vendor, index)=>(<tr>
+                                                        <td>12321</td>
+                                                        <td>flight </td>
+                                                        <th>$424</th>
+                                                        <td>UserID(aditya@parmar.in)</td>
+                                                        <td>Creditcard No (543424424424442)</td>
+                                                        <td>10/32/2018</td>
                                                     
                                                     
                                                         <td><i className="fa fa-eye fa-2x" data-toggle="modal" data-target="#bookingmodel" /></td>
@@ -197,7 +197,7 @@ class AdminPanelBookings extends Component {
 
 function mapStateToProps(reducerdata) {
 
-    const bills = reducerdata.adminTask.bill;
+    const bills = reducerdata.admin;
     console.log(reducerdata);
     return {bills};
 }

@@ -23,7 +23,7 @@ function userProfile(state = initialstate, action) {
             console.log("Siddharth");
             console.log(action.payload.data);
             console.log("*****************");
-            if(action.payload.data.data[0]=="ADMIN"){
+            if(action.payload.data.data[0].user_role=="ADMIN"){
                 state= {
                     ...state,
                     isadmin:true
