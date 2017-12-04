@@ -12,6 +12,33 @@ import Hoteladd from "./hoteladd";
 
 class Vendoradd extends Component {
 
+    componentWillMount(){
+        
+        
+             // API.doLogout().then((data)=>{
+             //        console.log("adf");
+             //    })
+             //
+           API.checkSession().then((data)=>{
+           
+            if(data.status===201){
+               //this.successshowAlert(data.data.value);
+                //this.props.signIn(data);
+                console.log(data);
+                if(data.data.data[0].user_role!="VENDOR"){
+                    this.props.history.push('/')
+                }
+
+            }
+            else{
+                this.props.history.push('/')  
+            }
+        
+           })
+
+        }        
+
+
     render(){
    /*
     db.ExpediaFlights.insert({

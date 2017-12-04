@@ -133,7 +133,7 @@ class Flightadd extends Component{
         var payload = {
             flightId :this.state.flightId ,
             operator :this.state.operator,
-            imageurl:"",
+            imageurl:"airindia.jgp",
             class:[
                 {type:'Economy',price:this.state.economy, capacity:100},
                 {type:'First',price:this.state.firstclass, capacity:100},
