@@ -55,27 +55,33 @@ class Nav extends Component {
             }
            
 
-            if (this.validateZipCode(this.state.email)) {
+            if (!this.validateEmail(this.state.email)) {
                 flag = flag + 3;
                 
             }
 
 
-                API.doRegister(payload).then((data) => {
-
-                    if (data.status == 201) {
-                        console.log("after the registration is complete");
-                        this.successshowAlert("You have succesfully registered");
-                    }
-                    else {
-                        console.log(data);
-                        this.errorshowAlert(data.value);
-                    }
-
-
-                }).catch((error) => {
-                    console.log("error");
-                })
+                if(flag==0){
+                    API.doRegister(payload).then((data) => {
+                        
+                                            if (data.status == 201) {
+                                                console.log("after the registration is complete");
+                                                this.successshowAlert("You have succesfully registered");
+                                            }
+                                            else {
+                                                console.log(data);
+                                                this.errorshowAlert(data.value);
+                                            }
+                        
+                        
+                                        }).catch((error) => {
+                                            console.log("error");
+                                        })
+                }
+                else{
+                    this.errorshowAlert("Please Enter Valid Email.");
+                }
+               
 
         }
         else{

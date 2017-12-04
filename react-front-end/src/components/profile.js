@@ -165,7 +165,7 @@ timeConverter(UNIX_timestamp){
     API.deleteUser({email:this.state.email}).then((data)=>{
 
         if(data.status==201){
-
+          this.props.userprofile.isLoggedIn = false;
          this.props.history.push('/flight');
 
         }

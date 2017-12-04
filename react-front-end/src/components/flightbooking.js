@@ -196,7 +196,7 @@ class FlightBooking extends Component {
                 }
             }
           
-            if(firstname=="" || lastname=="" || email=="" || 
+            if(firstname=="" || lastname=="" ||  
             phonenumber=="" || address=="" || zipcode=="" || card_number==""
             || cvv =="" || valid_till==""){
                 flag = flag + 5;
