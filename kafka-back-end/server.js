@@ -203,6 +203,66 @@ consumer.on('message', function (message) {
             });
             break;
 
+        case 'addhotel':
+            hotel.addHotel(body, function(err,res){
+                //console.log('after handle',res);
+                if(err)
+                    console.log(err);
+                else
+                    console.log(res);
+                response(data,res);
+                return;
+            });
+            break;
+
+        case 'addflight':
+            flight.addFlight(body, function(err,res){
+
+                if(err)
+                    console.log(err);
+                else
+                    console.log(res);
+                response(data,res);
+                return;
+            });
+            break;
+
+        case 'addcar':
+            car.addCar(body, function(err,res){
+
+                if(err)
+                    console.log(err);
+                else
+                    console.log(res);
+                response(data,res);
+                return;
+            });
+            break;
+
+        case 'getflightlist':
+            flight.getFlightList(body, function(err,res){
+
+                if(err)
+                    console.log(err);
+                else
+                    console.log(res);
+                response(data,res);
+                return;
+            });
+            break;
+
+        case 'deleteflight':
+            flight.deleteFlight(body, function(err,res){
+
+                if(err)
+                    console.log(err);
+                else
+                    console.log(res);
+                response(data,res);
+                return;
+            });
+            break;
+
         case 'searchhistory':
             user.searchHistory(body, function(err,res){
 
@@ -215,21 +275,6 @@ consumer.on('message', function (message) {
             });
             break;
 
-        /*
-
-
-    case 'updatebill':
-
-        admin.updateBill(body,function (err,res) {
-            if(err)
-                console.log(err);
-            else
-                console.log(res);
-            response(data,res);
-
-        })
-
-*/
 
         case 'BookFlight':
             console.log(message);

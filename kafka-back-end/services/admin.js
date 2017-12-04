@@ -42,7 +42,7 @@ function addVendor(msg, callback){
     var servicetype = msg.servicetype;
     var vendorapi = msg.vendorapi;
     var email = msg.email;
-    var model= msg.model;
+    var model= msg.vendorapi.split("=")[1];
 
     var addApiSql="insert into vendors(`vendorname`,`servicetype`,`vendorapi`, `email`, `model`) values('"+
         vendorname+"','"+servicetype+"','"+ vendorapi+ "','"+ email+ "','"+ model+ "');";

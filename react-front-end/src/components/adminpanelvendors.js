@@ -19,8 +19,8 @@ class AdminPanelVendors extends Component {
                 vendorname: this.refs.ref1.value,
                 servicetype:this.refs.ref2.value,
                 vendorapi:this.refs.ref3.value,
-                email:this.refs.ref6.value,
-                model:this.refs.ref7.value
+                email:this.refs.ref6.value/*,
+                model:this.refs.ref7.value*/
             }
 
         console.log(data);
@@ -163,11 +163,11 @@ class AdminPanelVendors extends Component {
 
                                                                ref="ref6" />
 
-                                                        Vendor Schema:
+                                                       {/* Vendor Schema:
                                                         <input type="text" className="form-control"
 
                                                                ref="ref7" />
-
+*/}
                                                         Type: <select className="form-control" ref="ref3" >
                                                         <option value="flight">Flight</option>
                                                         <option value="hotel">Hotel</option>

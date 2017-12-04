@@ -194,5 +194,62 @@ function getBookedCountHelper(dbBookings){
 }
 
 
+
+function addCar(msg, callback) {
+
+    var getModel="select model from vendors where servicetype='car' and email="+msg.email;
+    mysql.fetchData(function(err,results){
+        if(err){
+            throw err;
+        }
+        else
+        {
+            console.log(results);
+            if(results.length > 0){
+
+
+                var car = require('../models/car/' + results[0].model);
+
+
+                var newcar = new car();
+
+               /* newcar.carId = msg.flightId;
+                newcar.cartype= msg.cartype;
+                newcar.carmodel= msg.carmodel;
+                newcar.specification= msg.specification;
+                newcar.pickupaddress: Object,  //{'street':'101 E San Fernando St.','city':'San Jose', 'state': 'CA', 'country':'USA'}
+                newcar.dropoffaddress: Object,
+                newcar.dailyrent= msg.dailyrent;
+                newcar.imageurl= msg.imageurl;
+*/
+                var res = {};
+
+                newcar.save(function (err) {
+
+                    if (err) {
+                        console.log(err)
+                        res.code = "401";
+
+                    }
+                    else {
+
+                        res.code = "200";
+
+                        callback(null, res);
+                    }
+                });
+            }
+            else {
+                res.code = "401";
+
+                callback(null, res);
+            }
+        }
+    },getModel);
+
+
+}
+
+exports.addCar=addCar;
 exports.bookCar=bookCar;
 exports.searchCars = searchCars;

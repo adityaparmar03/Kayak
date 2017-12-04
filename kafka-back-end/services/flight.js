@@ -3,6 +3,7 @@ var _ = require("underscore");
 var mysql = require('../models/mysql');
 var asyncLoop = require('node-async-loop');
 
+
 // Search for all flightss on the basis of city, state and class
 function searchFlights(msg, callback){
     var flight = require('../models/flight/'+msg.vendor);
@@ -348,14 +349,16 @@ function getBookedCountHelper(dbBookings){
 
 function addFlight(msg, callback) {
 
-    var getModel="select model from vendors where email="+msg.email;
+    var getModel="select model from vendors where servicetype='flight' and email="+"'"+msg.email+"'";
     mysql.fetchData(function(err,results){
         if(err){
             throw err;
         }
         else
         {
-            console.log(results);
+            console.log('resultssssss..',results[0].model);
+            console.log('payload.....',msg.flight);
+
             if(results.length > 0){
 
 
@@ -364,35 +367,12 @@ function addFlight(msg, callback) {
 
                 var newflight = new flight();
 
+               // newflight=msg.flight;
+                var newclass=msg.flight.class;
 
-                var newclass=[]
+                var routeArr=msg.flight.flights;
 
-                newclass.push({'type':'Economy','price':100, 'capacity':50});
-                newclass.push({'type':'First','price':200 , 'capacity':50});
-                newclass.push({'type':'Business','price':300 , 'capacity':10});
 
-                var routeArr=[]
-
-                routeArr.push({
-                        'arrivaltime': '16:00',
-                        'arrivalday' : 'Thu',
-                        'departuretime': '00:00',
-                        'departureday' : 'Mon',
-                        'origin': {'city':'San Francisco', 'state':'California', 'country':'USA', 'airport':'San Francisco International Airport'},
-                        'destination': {'city':'San Jose', 'state':'California', 'country':'USA', 'airport':'San Jose Airport'}
-
-                    });
-
-                routeArr.push(
-                    {
-                        'arrivaltime': '02:00',
-                        'arrivalday' : 'Tue',
-                        'departuretime': '18:00',
-                        'departureday' : 'Wed',
-                        'origin': {'city':'San Jose', 'state':'California', 'country':'USA', 'airport':'San Jose Airport'},
-                        'destination': {'city':'San Francisco', 'state':'California', 'country':'USA', 'airport':'San Francisco International Airport'}
-
-                    });
                 newflight.flightId=msg.flight.flightId,
                 newflight.operator=msg.flight.operator,
                 newflight.class=newclass,
@@ -411,7 +391,7 @@ function addFlight(msg, callback) {
                     else {
 
                         res.code = "200";
-                        res.value = {"filedata": filedata};
+
                         callback(null, res);
                     }
                 });
@@ -427,6 +407,101 @@ function addFlight(msg, callback) {
 
 }
 
+
+
+function getFlightList(msg, callback) {
+
+    var getModel="select model from vendors where servicetype='flight' and email="+msg.email;
+    mysql.fetchData(function(err,results){
+        if(err){
+            throw err;
+        }
+        else
+        {
+            console.log(results);
+            if(results.length > 0){
+
+
+                var flight = require('../models/flight/' + results[0].model);
+
+
+                var res = {};
+                flight.find(function (err, flights) {
+
+                    if(err){
+                        console.log("Error");
+                    }
+                    else{
+
+                        console.log("Flight List:", flights)
+                        res.code = "200";
+                        res.value = flights;
+                        callback(null, res);
+
+                    }
+                });
+
+            }
+            else {
+                res.code = "401";
+
+                callback(null, res);
+            }
+        }
+    },getModel);
+
+
+}
+
+
+
+function deleteFlight(msg, callback) {
+
+    var getModel="select model from vendors where servicetype='flight' and email="+msg.email;
+    mysql.fetchData(function(err,results){
+        if(err){
+            throw err;
+        }
+        else
+        {
+            console.log(results);
+            if(results.length > 0){
+
+
+                var flight = require('../models/flight/' + results[0].model);
+
+
+                var res = {};
+                flight.remove({'_id':msg.id},function (err, flights) {
+
+                    if(err){
+                        console.log("Error");
+                    }
+                    else{
+
+
+                        res.code = "200";
+                        res.value = flights;
+                        callback(null, res);
+
+                    }
+                });
+
+            }
+            else {
+                res.code = "401";
+
+                callback(null, res);
+            }
+        }
+    },getModel);
+
+
+}
+
+
+exports.getFlightList=getFlightList;
+exports.deleteFlight=deleteFlight;
 exports.searchFlights=searchFlights;
 exports.addFlight=addFlight;
 exports.bookFlight=bookFlight;

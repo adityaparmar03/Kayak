@@ -80,4 +80,33 @@ router.post('/book', function (req, res) {
 
 
 
+router.post('/addhotel', function (req, res) {
+    console.log('Request is ---------');
+    console.log(req.body);
+
+    var reqObject = {
+        email : req.session.email,
+        hotel : req.body
+    }
+    kafka.make_request("addhotel", reqObject, function(err,results){
+
+        if(err){
+            console.log('Returning Error ----' + err);
+            res.send({'status': err.code, 'message' : err.message});
+        }
+        else
+        {
+            console.log('Returning results ----' + results);
+            if(results.code == "200"){
+                res.send({'status': results.code });
+            }
+            else {
+                res.send({'status': results.code });
+            }
+        }
+    })
+});
+
+
+
 module.exports = router;

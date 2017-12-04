@@ -41,6 +41,23 @@ class Flightadd extends Component{
 
 
 
+    flightAdd = (payload) =>{
+        API.addFlight(payload)
+            .then((res) => {
+
+
+                if (res.status == 200) {
+
+
+                    console.log("Success...")
+
+                }else if (res.status == 401) {
+
+                    //  this.props.history.push('/');
+                }
+            });
+    }
+
     handleUpdateFromInput1 = (value,textbox) => {
 
         this.setState({"from1":value})
@@ -149,6 +166,8 @@ class Flightadd extends Component{
 
         console.log(this.state.arrivaltime);
         console.log(this.state.from1.split(",")[0].trim());
+
+        this.flightAdd(payload);
 
 
     }

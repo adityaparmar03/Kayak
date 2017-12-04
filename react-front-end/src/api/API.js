@@ -470,6 +470,26 @@ export const bookHotel = (payload) =>
     });
 
 
+
+export const addFlight = (payload) =>
+    fetch(`${api}/flight/addflight`, {
+        method: 'POST',
+        headers: {
+            ...headers,
+            'Content-Type': 'application/json'
+        },
+        credentials:'include',
+        body: JSON.stringify(payload)
+    }).then(res => {
+        console.log(res);
+        return res.json();
+    })
+        .catch(error => {
+            console.log("Error booking Hotel");
+            return error;
+        });
+
+
 export const getChart = (payload) =>
     fetch(`${api}/analytics/getchart`, {
         method: 'POST',

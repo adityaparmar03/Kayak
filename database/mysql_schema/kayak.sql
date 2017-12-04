@@ -154,15 +154,15 @@ CREATE TABLE `vendors` (
 
 
 
-  INSERT INTO `vendors` VALUES (1,'MMT','car','http://localhost:3001/car/getcars?vendor=MmtCars', 'mmt@gmail.com', 'MmtCars');
-  INSERT INTO `vendors` VALUES (2, 'Cleartrip','car','http://localhost:3001/car/getcars?vendor=CleartripCars', 'cct@gmail.com','CleartripCars');
-  INSERT INTO `vendors` VALUES (3,'Alamo','car','http://localhost:3001/car/getcars?vendor=AlamoCars', 'ac@gmail.com', 'AlamoCars');
-  INSERT INTO `vendors` VALUES (4,'MMT','hotel','http://localhost:3001/hotel/gethotels?vendor=MmtHotels', 'mmt@gmail.com',  'MmtHotels');
-  INSERT INTO `vendors` VALUES (5,'Cleartrip','hotel','http://localhost:3001/hotel/gethotels?vendor=CleartripHotels', 'cct@gmail.com', 'CleartripHotels' );
-  INSERT INTO `vendors` VALUES (6,'TripAdvisor','hotel','http://localhost:3001/hotel/gethotels?vendor=TripAdvisorHotels', 'triad@gmail.com', 'TripAdvisorHotels');
-  INSERT INTO `vendors` VALUES (7,'MMT','flight','http://localhost:3001/flight/getflights?vendor=MmtFlights', 'mmt@gmail.com', 'MmtFlights');
-  INSERT INTO `vendors` VALUES (8,'Cleartrip','flight','http://localhost:3001/flight/getflights?vendor=CleartripFlights', 'cct@gmail.com', 'CleartripFlights');
-  INSERT INTO `vendors` VALUES (9,'Expedia','flight','http://localhost:3001/flight/getflights?vendor=ExpediaFlights', 'expedia@gmail.com', 'ExpediaFlights');
+  INSERT INTO `vendors` VALUES (1,'MMT','car','http://localhost:3001/car/getcars?vendor=MmtCars', 'MmtCars', 'mmt@gmail.com');
+  INSERT INTO `vendors` VALUES (2, 'Cleartrip','car','http://localhost:3001/car/getcars?vendor=CleartripCars', 'CleartripCars', 'cct@gmail.com');
+  INSERT INTO `vendors` VALUES (3,'Alamo','car','http://localhost:3001/car/getcars?vendor=AlamoCars', 'AlamoCars', 'ac@gmail.com');
+  INSERT INTO `vendors` VALUES (4,'MMT','hotel','http://localhost:3001/hotel/gethotels?vendor=MmtHotels', 'MmtHotels', 'mmt@gmail.com');
+  INSERT INTO `vendors` VALUES (5,'Cleartrip','hotel','http://localhost:3001/hotel/gethotels?vendor=CleartripHotels', 'CleartripHotels', 'cct@gmail.com' );
+  INSERT INTO `vendors` VALUES (6,'TripAdvisor','hotel','http://localhost:3001/hotel/gethotels?vendor=TripAdvisorHotels', 'TripAdvisorHotels', 'triad@gmail.com');
+  INSERT INTO `vendors` VALUES (7,'MMT','flight','http://localhost:3001/flight/getflights?vendor=MmtFlights', 'MmtFlights', 'mmt@gmail.com');
+  INSERT INTO `vendors` VALUES (8,'Cleartrip','flight','http://localhost:3001/flight/getflights?vendor=CleartripFlights', 'CleartripFlights', 'cct@gmail.com');
+  INSERT INTO `vendors` VALUES (9,'Expedia','flight','http://localhost:3001/flight/getflights?vendor=ExpediaFlights', 'ExpediaFlights', 'expedia@gmail.com');
 
 
 

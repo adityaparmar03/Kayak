@@ -137,5 +137,63 @@ function getBookedCountHelper(dbBookings){
 }
 
 
+
+function addHotel(msg, callback) {
+
+    var getModel="select model from vendors where servicetype='hotel' and email="+msg.email;
+    mysql.fetchData(function(err,results){
+        if(err){
+            throw err;
+        }
+        else
+        {
+            console.log(results);
+            if(results.length > 0){
+
+
+                var hotel = require('../models/hotel/' + results[0].model);
+
+
+                var newhotel = new hotel();
+
+                   /* newhotel.hotelId = msg.hotelId;
+                    newhotel.name = msg.name;
+                    newhotel.description = msg.description;
+                    newhotel.address: Object, //{'street':'101 E San Fernando St.','city':'San Jose', 'state': 'CA', 'country':'USA', 'zip':'95112'}
+                    newhotel.stars = msg.stars;
+                    newhotel.reviews : Array,
+                    newhotel.rating = msg.rating;
+                    newhotel.rooms : Array,
+                    newhotel.imageurl = msg.imageurl;
+*/
+                var res = {};
+
+                newcar.save(function (err) {
+
+                    if (err) {
+                        console.log(err)
+                        res.code = "401";
+
+                    }
+                    else {
+
+                        res.code = "200";
+
+                        callback(null, res);
+                    }
+                });
+            }
+            else {
+                res.code = "401";
+
+                callback(null, res);
+            }
+        }
+    },getModel);
+
+
+}
+
+exports.addHotel=addHotel;
 exports.bookHotel=bookHotel;
 exports.searchHotels=searchHotels;

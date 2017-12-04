@@ -34,7 +34,13 @@ function ConnectionProvider() {
                     {topic :'addhistory',partition :0},
                     {topic :'searchhistory',partition :0},
                     {topic :'click_tracker_req',partition :0},
-                    {topic :'get_chart_req',partition :0},
+                    {topic :'addhotel',partition :0},
+                    {topic :'addcar',partition :0},
+                    {topic :'addflight',partition :0},
+                    {topic :'getflightlist',partition :0},
+                    {topic :'deleteflight',partition :0},
+
+                {topic :'get_chart_req',partition :0},
                     {topic:'upload',partition:0}
                  ]);
 
