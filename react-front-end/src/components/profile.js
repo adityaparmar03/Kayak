@@ -149,9 +149,12 @@ class Profile extends Component {
 
 
         if (flag == 0) {
+            console.log("About to push the data");
+            console.log(this.state.imgpath);
             API.doUpdate(payload).then((data) => {
                 if (data.status == 201) {
                     console.log("Succesfull push");
+
                     this.successshowAlert("User data succesfully updated");
 
                 }
@@ -212,7 +215,7 @@ class Profile extends Component {
 
                
                 <div className="avatar">
-                <img src="https://mdbootstrap.com/img/Photos/Avatars/img%20(27).jpg" 
+                <img src={'http://localhost:3001/profile/'+this.state.imgpath}
                 alt="avatar" className="mx-auto d-block rounded-circle img-responsive" width="200px"/>
                 </div>
 
@@ -241,26 +244,26 @@ class Profile extends Component {
                                         <div className="col-sm-6">
                                         <div className="md-form">
                                             <i className="fa fa-user prefix"></i>
-                                            <input type="text" id="firstname" value={this.state.firstname} className="form-control"
+                                            <input type="text" id="firstname" placeholder="Firstname" value={this.state.firstname} className="form-control"
                                                    onChange={(event) => {
                                                        this.setState({
                                                            firstname: event.target.value
                                                        });
                                                    }}/>
-                                            <label htmlFor="firstname">Firstname</label>
+
                                         </div>
 
                                         </div>
                                         <div className="col-sm-6">
                                         <div className="md-form">
                                             <i className="fa fa-user prefix"></i>
-                                            <input type="text" id="lastname" value={this.state.lastname} className="form-control"
+                                            <input type="text" id="lastname" placeholder="Lastname" value={this.state.lastname} className="form-control"
                                                    onChange={(event) => {
                                                        this.setState({
                                                            lastname: event.target.value
                                                        });
                                                    }}/>
-                                            <label htmlFor="lastname">Lastname</label>
+
                                         </div>
 
                                         </div>
@@ -269,14 +272,14 @@ class Profile extends Component {
                                         <div className="col-sm-4">
                                         <div className="md-form">
                                         <i className="fa fa-envelope prefix"></i>
-                                        <input type="text"  value={this.state.email}  id="email" className="form-control"
+                                        <input type="text"  value={this.state.email} placeholder="Email" disabled id="email" className="form-control"
                                                onChange={(event) => {
                                                    this.setState({
                                                        email: event.target.value
                                                    });
                                                }}/>
 
-                                        <label htmlFor="email">Email</label>
+
                                         </div>
 
                                         </div>
@@ -285,7 +288,7 @@ class Profile extends Component {
                                         <i className="fa fa-eye prefix"></i>
                                        
                                         <input type="text" id="password" value="********" disabled className="form-control"/>
-                                        <label htmlFor="password">Password</label>
+
                                         
                                         </div>
 
@@ -294,7 +297,7 @@ class Profile extends Component {
                                         <div className="md-form">
                                         <i className="fa fa-phone prefix"></i>
                                        
-                                        <input type="text" id="phone" value={this.state.phonenumber}
+                                        <input type="text" id="phone" placeholder="PhoneNumber" value={this.state.phonenumber}
                                                className="form-control"
                                                onChange={(event) => {
                                                    this.setState({
@@ -302,7 +305,7 @@ class Profile extends Component {
                                                    });
                                                }}
                                         />
-                                        <label htmlFor="phone">Phone Number</label>
+
                                       
                                         </div>
 
@@ -313,13 +316,13 @@ class Profile extends Component {
                                         <div className="md-form">
                                         <i className="fa fa-map-marker prefix"></i>
                                        
-                                        <input type="text" id="address" value={this.state.address} className="form-control"
+                                        <input type="text" id="address" placeholder="Address" value={this.state.address} className="form-control"
                                                onChange={(event) => {
                                                    this.setState({
                                                        address: event.target.value
                                                    });
                                                }}/>
-                                        <label htmlFor="address">Address</label>
+
                                       
                                         </div>
 
@@ -328,13 +331,13 @@ class Profile extends Component {
                                         <div className="md-form">
                                         <i className="fa fa-location-arrow prefix"></i>
                                        
-                                        <input type="text" id="zipcode" value={this.state.zipcode} className="form-control"
+                                        <input type="text" id="zipcode" value={this.state.zipcode} placeholder="zipcode" className="form-control"
                                                onChange={(event) => {
                                                    this.setState({
                                                        zipcode: event.target.value
                                                    });
                                                }}/>
-                                        <label htmlFor="form2">Zip Code</label>
+
                                       
                                         </div>
 
@@ -344,31 +347,23 @@ class Profile extends Component {
                                         <div className="col-sm-4">
                                         <div className="md-form form-group">
                                         <i className="fa fa-credit-card-alt prefix"></i>
-                                        <input type="text" id="creditcardno" className="form-control validate" maxLength='16' value={this.state.creditcard}
+                                        <input type="text" id="creditcardno" className="form-control validate" placeholder="CreditCard" maxLength='16' value={this.state.creditcard}
                                                onChange={(event) => {
                                                    this.setState({
                                                        creditcard: event.target.value
                                                    });
                                                }}
                                         />
-                                        <label htmlFor="creditcardno">Credit Card No</label>
+
                                         </div>
 
                                         </div>
                                         <div className="col-sm-4">
-                                        <label>Expiry Date :  </label>
-                                        <div className="md-form form-group">
-                                         
-                                            <input type="month" id="form92" className="form-control validate"/>
-                                           
-                                        </div>
+
 
                                         </div>
                                         <div className="col-sm-4">
-                                        <div className="md-form form-group">
-                                        <input type="text" id="cvv" className="form-control validate" maxLength='3'/>
-                                        <label htmlFor="cvv">CVV</label>
-                                        </div>
+
 
                                         </div>
                                 </div>
