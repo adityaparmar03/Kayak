@@ -165,7 +165,7 @@ function getBills(msg,callback) {
 
 function getusers(msg,callback) {
     var res = {};
-    var getQuery = "select first_name,last_name,email,phone,street_address,zip_code from user ; ";
+    var getQuery = "select first_name,last_name,email,phone,street_address,zip_code from user where user_role ='USER' ; ";
     mysql.fetchData(function (err,results) {
         if(err){
             res.code = 401;
