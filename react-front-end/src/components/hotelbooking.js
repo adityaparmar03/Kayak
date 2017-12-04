@@ -96,7 +96,7 @@ class HotelBooking extends Component {
                   "firstname":this.refs.firstname.value,
                   "lastname":this.refs.lastname.value,
                   "email":this.refs.email.value,
-                  "phoneno":this.refs.phoneno.value,
+                  "phonenumber":this.refs.phoneno.value,
                   "address":this.refs.address.value,
                   "zipcode":this.refs.zipcode.value
               }
@@ -190,6 +190,24 @@ class HotelBooking extends Component {
         var time = year + '-' + month + '-' + date + ' ' + hour + ':' + min + ':' + sec ;
         return time;
     }
+    updateState(name, value){
+        
+                        if(name==="firstname")
+                        this.setState({firstname : value});
+                        if(name==="lastname")
+                        this.setState({lastname : value});
+                        if(name==="phoneno")
+                        this.setState({phonenumber : value});
+                        if(name==="address")
+                        this.setState({address : value});
+                        if(name==="zipcode")
+                        this.setState({zipcode : value});
+                        if(name==="creditcard")
+                        this.setState({creditcard : value});
+                        
+                      
+                 
+    }
 
     render(){
         return(
@@ -248,6 +266,7 @@ class HotelBooking extends Component {
                                                 <div className="md-form">
                                                     <i className="fa fa-user prefix"></i>
                                                     <input type="text" placeholder="First Name" value={this.state.firstname}
+                                                    onChange={(e)=>this.updateState("firstname",e.target.value)}
                                                     ref="firstname" className="form-control"/>
                                                  
                                                 </div>
@@ -258,6 +277,7 @@ class HotelBooking extends Component {
                                                     <i className="fa fa-user prefix"></i>
                                                    
                                                     <input type="text" placeholder="Lastname" value={this.state.lastname}
+                                                    onChange={(e)=>this.updateState("lastname",e.target.value)}
                                                      ref="lastname" className="form-control"/>
                                                     
                                                 </div>
@@ -271,7 +291,8 @@ class HotelBooking extends Component {
                                          
                                         <i className="fa fa-envelope prefix"></i>
                                        
-                                        <input type="text"  value={this.state.email}
+                                        <input type="text"  value={this.state.email} disabled
+                                        onChange={(e)=>this.updateState("email",e.target.value)}
                                         ref="email" placeholder="Email" className="form-control"/>
                                         
                                         </div>
@@ -283,6 +304,7 @@ class HotelBooking extends Component {
                                         <i className="fa fa-phone prefix"></i>
                                       
                                         <input type="text" placeholder="Phone Number" value={this.state.phonenumber}
+                                        onChange={(e)=>this.updateState("phoneno",e.target.value)}
                                         ref="phoneno" className="form-control"/>
                                        
 
@@ -297,6 +319,7 @@ class HotelBooking extends Component {
                                         
                                        
                                         <input type="text"  value={this.state.address}
+                                        onChange={(e)=>this.updateState("address",e.target.value)}
                                         ref="address" placeholder="Address" className="form-control"/>
                                        
 
@@ -308,6 +331,7 @@ class HotelBooking extends Component {
                                         <i className="fa fa-location-arrow prefix"></i>
                                        
                                         <input type="text" placeholder="Zip Code" value={this.state.zipcode}
+                                        onChange={(e)=>this.updateState("zipcode",e.target.value)}
                                         ref="zipcode" className="form-control"/>
                                         
 
@@ -331,6 +355,7 @@ class HotelBooking extends Component {
                                     <i className="fa fa-credit-card-alt prefix"></i>
                                     
                                     <input type="text" value={this.state.creditcard}
+                                    onChange={(e)=>this.updateState("creditcard",e.target.value)}
                                     ref="creditcardno" placeholder="Credit Card"
                                     className="form-control validate" maxLength='16'/>
                                    

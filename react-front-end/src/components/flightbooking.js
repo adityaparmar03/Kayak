@@ -177,7 +177,24 @@ handleClick = (clickInfo) => {
         });
 };
 
-
+updateState(name, value){
+    
+                    if(name==="firstname")
+                    this.setState({firstname : value});
+                    if(name==="lastname")
+                    this.setState({lastname : value});
+                    if(name==="phoneno")
+                    this.setState({phonenumber : value});
+                    if(name==="address")
+                    this.setState({address : value});
+                    if(name==="zipcode")
+                    this.setState({zipcode : value});
+                    if(name==="creditcard")
+                    this.setState({creditcard : value});
+                    
+                  
+             
+}
 
 timeConverter(UNIX_timestamp){
     var a = new Date(UNIX_timestamp);
@@ -346,85 +363,91 @@ successshowAlert = (msg) => {
 
 
                         <div className="card">
-
-                        <div className="card-header deep-orange lighten-1 white-text">
-                        Personal Details
-                    </div>
-                            <div className="card-body">
-                                <div className="row">
-                                        <div className="col-sm-6">
-                                            <div className="md-form">
-                                                <i className="fa fa-user prefix"></i>
-                                                <input type="text" placeholder="First Name" value={this.state.firstname}
-                                                ref="firstname" className="form-control"/>
-
-                                            </div>
-
-                                        </div>
-                                        <div className="col-sm-6">
-                                            <div className="md-form">
-                                                <i className="fa fa-user prefix"></i>
-
-                                                <input type="text" placeholder="Lastname" value={this.state.lastname}
-                                                 ref="lastname" className="form-control"/>
-
-                                            </div>
-
-                                        </div>
-                                </div>
-                                <div className="row">
-                                    <div className="col-sm-6">
-
-                                    <div className="md-form">
-
-                                    <i className="fa fa-envelope prefix"></i>
-
-                                    <input type="text"  value={this.state.email}
-                                    ref="email" placeholder="Email" className="form-control"/>
-
-                                    </div>
-
-                                    </div>
-
-                                    <div className="col-sm-6">
-                                    <div className="md-form">
-                                    <i className="fa fa-phone prefix"></i>
-
-                                    <input type="text" placeholder="Phone Number" value={this.state.phonenumber}
-                                    ref="phoneno" className="form-control"/>
-
-
-                                    </div>
-
-                                    </div>
-                            </div>
-                            <div className="row">
-                                    <div className="col-sm-8">
-                                    <div className="md-form">
-                                    <i className="fa fa-map-marker prefix"></i>
-
-
-                                    <input type="text"  value={this.state.address}
-                                    ref="address" placeholder="Address" className="form-control"/>
-
-
-                                    </div>
-
-                                    </div>
-                                    <div className="col-sm-4">
-                                    <div className="md-form">
-                                    <i className="fa fa-location-arrow prefix"></i>
-
-                                    <input type="text" placeholder="Zip Code" value={this.state.zipcode}
-                                    ref="zipcode" className="form-control"/>
-
-
-                                    </div>
-
-                                    </div>
-                            </div>
-                    </div>
-                    </div>
+                        
+                                                <div className="card-header deep-orange lighten-1 white-text">
+                                                    Personal Details
+                                                </div>
+                                                        <div className="card-body">
+                                                            <div className="row">
+                                                                    <div className="col-sm-6">
+                                                                        <div className="md-form">
+                                                                            <i className="fa fa-user prefix"></i>
+                                                                            <input type="text" placeholder="First Name" value={this.state.firstname}
+                                                                            onChange={(e)=>this.updateState("firstname",e.target.value)}
+                                                                            ref="firstname" className="form-control"/>
+                                                                         
+                                                                        </div>
+                        
+                                                                    </div>
+                                                                    <div className="col-sm-6">
+                                                                        <div className="md-form">
+                                                                            <i className="fa fa-user prefix"></i>
+                                                                           
+                                                                            <input type="text" placeholder="Lastname" value={this.state.lastname}
+                                                                            onChange={(e)=>this.updateState("lastname",e.target.value)}
+                                                                             ref="lastname" className="form-control"/>
+                                                                            
+                                                                        </div>
+                        
+                                                                    </div>
+                                                            </div>
+                                                            <div className="row">
+                                                                <div className="col-sm-6">
+                                                                  
+                                                                <div className="md-form">
+                                                                 
+                                                                <i className="fa fa-envelope prefix"></i>
+                                                               
+                                                                <input type="text"  value={this.state.email} disabled
+                                                                onChange={(e)=>this.updateState("email",e.target.value)}
+                                                                ref="email" placeholder="Email" className="form-control"/>
+                                                                
+                                                                </div>
+                        
+                                                                </div>
+                        
+                                                                <div className="col-sm-6">
+                                                                <div className="md-form">
+                                                                <i className="fa fa-phone prefix"></i>
+                                                              
+                                                                <input type="text" placeholder="Phone Number" value={this.state.phonenumber}
+                                                                onChange={(e)=>this.updateState("phoneno",e.target.value)}
+                                                                ref="phoneno" className="form-control"/>
+                                                               
+                        
+                                                                </div>
+                        
+                                                                </div>
+                                                        </div>
+                                                        <div className="row">
+                                                                <div className="col-sm-8">
+                                                                <div className="md-form">
+                                                                <i className="fa fa-map-marker prefix"></i>
+                                                                
+                                                               
+                                                                <input type="text"  value={this.state.address}
+                                                                onChange={(e)=>this.updateState("address",e.target.value)}
+                                                                ref="address" placeholder="Address" className="form-control"/>
+                                                               
+                        
+                                                                </div>
+                        
+                                                                </div>
+                                                                <div className="col-sm-4">
+                                                                <div className="md-form">
+                                                                <i className="fa fa-location-arrow prefix"></i>
+                                                               
+                                                                <input type="text" placeholder="Zip Code" value={this.state.zipcode}
+                                                                onChange={(e)=>this.updateState("zipcode",e.target.value)}
+                                                                ref="zipcode" className="form-control"/>
+                                                                
+                        
+                                                                </div>
+                        
+                                                                </div>
+                                                        </div>
+                                                </div>
+                                                </div>
 
 
                     <div className="card">
@@ -437,11 +460,11 @@ successshowAlert = (msg) => {
                             <div className="col-sm-4">
                                 <div className="md-form form-group">
                                 <i className="fa fa-credit-card-alt prefix"></i>
-
                                 <input type="text" value={this.state.creditcard}
+                                onChange={(e)=>this.updateState("creditcard",e.target.value)}
                                 ref="creditcardno" placeholder="Credit Card"
                                 className="form-control validate" maxLength='16'/>
-
+                            
                                 </div>
 
                             </div>
