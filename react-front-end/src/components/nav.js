@@ -155,6 +155,11 @@ class Nav extends Component {
                         this.props.history.push('/admin');
                     }
 
+                    else if (data.user_role == "VENDOR") {
+                        window.location.reload();
+                        this.props.history.push('/vendor');
+                    }
+
                     // this.props.history.push(this.props.location.pathname);
                     //  console.log("Before getting in the signin reducer  "+ this.props.userprofile.isLoggedIn)
                     // this.props.signIn(data);

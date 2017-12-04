@@ -196,7 +196,7 @@ ReactDOM.render(
                 <Route exact path="/useranalytics" component={UserAnalytics}/>
                 <Route exact path="/salesanalytics" component={SalesAnalytics}/>
                 <Route exact path="/clickltracker" component={ClickTracker}/>
-                <Route exact path="/vendoradd" component={Vendoradd}/>
+                <Route exact path="/vendor" component={Vendoradd}/>
 
 
             </div>
