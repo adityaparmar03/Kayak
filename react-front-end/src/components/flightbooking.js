@@ -111,24 +111,113 @@ class FlightBooking extends Component {
 
     }
 
+      validateZipCode(elementValue){
+        var zipCodePattern;
+        if (elementValue.indexOf('-') > -1)
+        {
+            zipCodePattern = /^\d{5}$|^\d{5}-\d{4}$/;
+        } else {
+            zipCodePattern = /^\d{5}$/;
+        }
+
+        //console.log("Zip Validation : ",zipCodePattern.test(elementValue))
+        return zipCodePattern.test(elementValue);
+    }
+
+//****************************************
+
+    validateEmail(mail)
+    {
+        if (/^\w+([\.-]?\w+)@\w+([\.-]?\w+)(\.\w{2,3})+$/.test(mail))
+        {
+            console.log("true");
+            return (true)
+        }
+        console.log("false");
+        return (false)
+    }
+
+//****************************************
+
+    telephoneCheck(str) {
+        var isphone = /^(1\s|1|)?((\(\d{3}\))|\d{3})(\-|\s)?(\d{3})(\-|\s)?(\d{4})$/.test(str);
+        return isphone;
+    }
+
+    creditcardCheck(str) {
+        var cc = /^\d{16}$/.test(str);
+        return cc;
+    }
+    cvvCheck(str) {
+        var cvv = /^\d{3}$/.test(str);
+        return cvv;
+    }
+
+
     handlePay(){
         if(!this.state.isLoggedin){
             this.errorshowAlert("Please Login to proceed with Payment");
           }else{
+            var firstname = this.refs.firstname.value
+            var lastname = this.refs.lastname.value
+            var email= this.refs.email.value
+            var phonenumber=this.refs.phoneno.value
+            var address = this.refs.address.value
+            var zipcode = this.refs.zipcode.value
+            var card_number = this.refs.creditcardno.value
+            var valid_till = this.refs.expirydate.value
+            var cvv = this.refs.cvv.value
+    
+            var flag = 0
+            if (zipcode != "") {
+                if (!this.validateZipCode(zipcode)) {
+                    flag = flag + 3;
+                   
+                    this.errorshowAlert("zipcode not valid");
+                }
+            }
+            if (phonenumber != "") {
+                if (!this.telephoneCheck(phonenumber)) {
+                    flag = flag + 5;
+                    this.errorshowAlert("Phone number not valid");
+                }
+            }
+            if (card_number != "") {
+                if (!this.creditcardCheck(card_number)) {
+                    flag = flag + 5;
+                    this.errorshowAlert("Credit Card number not valid");
+                }
+            }
+            if (cvv != "") {
+                if (!this.cvvCheck(cvv)) {
+                    flag = flag + 5;
+                    this.errorshowAlert("CVV  number not valid");
+                }
+            }
+          
+            if(firstname=="" || lastname=="" || email=="" || 
+            phonenumber=="" || address=="" || zipcode=="" || card_number==""
+            || cvv =="" || valid_till==""){
+                flag = flag + 5;
+                this.errorshowAlert("Please insert All Data");
+            }   
+           
+            if(flag == 0){
+    
                 const payload = JSON.parse(localStorage.getItem("flightbooking"));
 
                 var travellerinfo = {
-                    "firstname":this.refs.firstname.value,
-                    "lastname":this.refs.lastname.value,
-                    "email":this.refs.email.value,
-                    "phoneno":this.refs.phoneno.value,
-                    "address":this.refs.address.value,
-                    "zipcode":this.refs.zipcode.value
+                    "firstname":firstname,
+                    "lastname":lastname,
+                    "email":email,
+                    "phonenumber":phonenumber,
+                    "address":address,
+                    "zipcode":zipcode
                 }
                 var credit_card = {
-                        "card_number": this.refs.creditcardno.value,
-                        "valid_till":this.refs.expirydate.value,
-                        "cvv":this.refs.cvv.value
+                    "card_number": card_number,
+                    "valid_till":valid_till,
+                    "cvv":cvv
                 }
 
                 payload.credit_card = credit_card;
@@ -157,6 +246,7 @@ class FlightBooking extends Component {
                         var date = new Date();
                         this.clickHandler({userId:this.props.userprofile.email,sessionId:"sessionId",eventTime:this.timeConverter(date.getTime()),eventName:"FlightBooking",pageId:"FlightBooking",buttonId:"FlightBookingPay",objectId:"FlightBooking",pageNav:"FlightSearch FlightBooking"})
                     }
+                }
   }
 }
 clickHandler(clickInfo){

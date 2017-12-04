@@ -164,14 +164,10 @@ timeConverter(UNIX_timestamp){
         //validation for the zip code will come here.
 
 
-        console.log("***********");
+      
         var payload = this.state;
         var flag = 0;
 
-        console.log(this.state.email);
-        console.log("---------------");
-        console.log(payload);
-        console.log("---------------");
 
         if (this.state.email != "") {
             if (!this.validateEmail(this.state.email)) {
