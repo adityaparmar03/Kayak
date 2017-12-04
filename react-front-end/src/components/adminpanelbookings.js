@@ -15,7 +15,9 @@ class AdminPanelBookings extends Component {
         this.state = {
             // Data
            
-             test:[1,2,3]
+             test:[1,2,3],
+             startdate:"",
+             enddate:""
         }
      }
     componentWillMount(){
@@ -25,13 +27,66 @@ class AdminPanelBookings extends Component {
     modalpopup(type){
         
     }
-
+    filter(){
+        console.log()
+    }
+    displaybills(data,index){
+     
+      
+      if(this.state.startdate!="" && this.state.enddate!=""){
+        var date = Date.parse(data.billing_date)
+        var startdate = Date.parse(this.state.startdate)
+        var enddate = Date.parse(this.state.enddate)
+        if(startdate <= date && date <= enddate ) {
+            return  ( <tr>
+                <td>{data.billing_id}</td>
+                <td>{data.booking_type} </td>
+                <th>${data.billing_amount}</th>
+                <td>{data.user_email}</td>
+                <td>{data.credit_card_number}</td>
+                <td>{data.billing_date.substring(0,10)}</td>
+            
+            
+             
+                </tr>)
+        }   
+     
+      }else{
+        return  ( <tr>
+            <td>{data.billing_id}</td>
+            <td>{data.booking_type} </td>
+            <th>${data.billing_amount}</th>
+            <td>{data.user_email}</td>
+            <td>{data.credit_card_number}</td>
+            <td>{data.billing_date.substring(0,10)}</td>
+        
+        
+         
+            </tr>)
+      }
+    }
+    handlesubmit(){
+       
+            this.setState({
+                startdate:this.refs.startdate.value,
+                enddate:this.refs.enddate.value
+    
+            })
+        
+       
+    }
     render(){
         return(
             <div>
                <div>
 
-                Filters are remaing....
+                <div>
+                <b>Start Date: </b><input ref="startdate" type="date" style={{width:"40vh"}}/>
+                <b>End Date: </b><input ref="enddate" type="date" style={{width:"40vh"}}/>
+                <button className="btn btn-info" onClick={()=>this.handlesubmit()}
+                
+                ><i className="fa fa-search fa-2x"/>  Search</button>
+                </div>    
                 </div>    
                 <div className="card" > 
                                         <table className="table table-responsive-sm">
@@ -50,17 +105,7 @@ class AdminPanelBookings extends Component {
                                                     </tr>
                                                 </thead> 
                                                 <tbody>
-                                                    {this.state.test.map((vendor, index)=>(<tr>
-                                                        <td>12321</td>
-                                                        <td>flight </td>
-                                                        <th>$424</th>
-                                                        <td>UserID(aditya@parmar.in)</td>
-                                                        <td>Creditcard No (543424424424442)</td>
-                                                        <td>10/32/2018</td>
-                                                    
-                                                    
-                                                     
-                                                        </tr>))
+                                                    {this.props.bills.map((this.displaybills),this)
 
                                                     }
 
@@ -195,8 +240,8 @@ class AdminPanelBookings extends Component {
 
 function mapStateToProps(reducerdata) {
 
-    const bills = reducerdata.admin;
-    console.log(reducerdata);
+    const bills = reducerdata.adminTask.bill;
+   
     return {bills};
 }
 

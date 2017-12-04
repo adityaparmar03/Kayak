@@ -97,6 +97,130 @@ class Vendoradd extends Component {
                 </div>
 
                 </div>
+
+                <div className="card" style={{marginTop:'10vh',marginBottom:'10vh',marginLeft:'10vw',marginRight:'10vw'}}>
+
+
+               
+
+                <div class="card-body">
+                    <br/>
+
+                    <div style={{textAlign:'center'}}>
+                            <b>Vendor Details</b>
+                     </div>       
+                     <br/>
+                    <ul className="nav nav-tabs nav-justified deep-orange" role="tablist">
+                        <li className="nav-item">
+                            <a className="nav-link active" data-toggle="tab" href="#profile1" role="tab"><i class="fa fa-user"></i>Flight</a>
+                        </li>
+                        <li className="nav-item">
+                            <a className="nav-link" data-toggle="tab" href="#trip1" role="tab"><i class="fa fa-heart"></i>Hotel</a>
+                        </li>
+                        <li className="nav-item">
+                            <a className="nav-link" data-toggle="tab" href="#searchhistroy1" role="tab" ><i class="fa fa-heart"></i>Car</a>
+                        </li>
+
+                    </ul>
+
+                    <div className="tab-content">
+
+                        <div className="tab-pane fade in show active" id="profile1" role="tabpanel">
+                        <div className="md-form">
+                            <input type="text" placeholder="ID/Operator" className="form-control"/>
+                            <button className="btn btn-light-blue"><i className="fa fa-search"></i> Search</button>
+                        </div>    
+                        <div className="table-responsive">
+                            <table className="table">
+                                <thead>
+                                    <tr>
+                                    <th><b>Flight ID</b></th>
+                                    <th><b>Operator</b></th>
+                                    <th></th>
+                                    </tr>
+                                
+                                </thead>
+                                <thead>
+                                    <tr>
+                                        <th>FlightID</th>
+                                        <th>operator</th>
+                                        <th><i className="fa fa-trash fa-2x"></i></th>
+                                    </tr>
+
+                                
+                                </thead>
+                            </table>
+                        </div>
+                        </div>
+
+                        <div className="tab-pane fade" id="trip1" role="tabpanel">
+                        <div className="md-form">
+                            <input type="text" placeholder="ID/Hotel Name" className="form-control"/>
+                            <button className="btn btn-light-blue"><i className="fa fa-search"></i> Search</button>
+                        </div>    
+                        <div className="table-responsive">
+                            <table className="table">
+                                <thead>
+                                    <tr>
+                                    <th><b>Hotel ID</b></th>
+                                    <th><b>Hotel Name</b></th>
+                                    <th></th>
+                                    </tr>
+                                
+                                </thead>
+                                <thead>
+                                    <tr>
+                                        <th>FlightID</th>
+                                        <th>operator</th>
+                                        <th><i className="fa fa-trash fa-2x"></i></th>
+                                    </tr>
+
+                                
+                                </thead>
+                            </table>
+                        </div>
+
+
+
+
+                        </div>
+                        <div className="tab-pane fade" id="searchhistroy1" role="tabpanel">
+
+                        <div className="md-form">
+                            <input type="text" placeholder="ID/Car Name" className="form-control"/>
+                            <button className="btn btn-light-blue"><i className="fa fa-search"></i> Search</button>
+                        </div>    
+                        <div className="table-responsive">
+                            <table className="table">
+                                <thead>
+                                    <tr>
+                                    <th><b>Car ID</b></th>
+                                    <th><b>Car Name</b></th>
+                                    <th></th>
+                                    </tr>
+                                
+                                </thead>
+                                <thead>
+                                    <tr>
+                                        <th>Car ID</th>
+                                        <th>Car Name</th>
+                                        <th><i className="fa fa-trash fa-2x"></i></th>
+                                    </tr>
+
+                                
+                                </thead>
+                            </table>
+                        </div>
+
+
+                        </div>
+
+
+                    </div>
+                </div>
+
+                </div>
+
             </div>
 
     )
