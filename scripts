@@ -39,37 +39,10 @@ bin/kafka-topics.sh --create --zookeeper localhost:2181 --replication-factor 1 -
 bin/kafka-topics.sh --create --zookeeper localhost:2181 --replication-factor 1 --partitions 1 --topic get_chart_req
 bin/kafka-topics.sh --create --zookeeper localhost:2181 --replication-factor 1 --partitions 1 --topic getapi
 bin/kafka-topics.sh --create --zookeeper localhost:2181 --replication-factor 1 --partitions 1 --topic getuserdata
-
-
-------------------------------------------------------------MySQL------------------------------------------------------------------------------
-
-create table vendors (vendorId int AUTO_INCREMENT primary key, vendorname varchar(50), servicetype varchar(50), vendorapi varchar(255));
-
-insert into vendors (vendorname, servicetype, vendorapi)  values ('MMT', 'car', 'http://localhost:3001/car/getcars?vendor=MmtCars');
-insert into vendors (vendorname, servicetype, vendorapi) values ('Cleartrip', 'car', 'http://localhost:3001/car/getcars?vendor=CleartripCars');
-insert into vendors (vendorname, servicetype, vendorapi) values ('Alamo', 'car', 'http://localhost:3001/car/getcars?vendor=AlamoCars');
-
-
-insert into vendors (vendorname, servicetype, vendorapi)  values ('MMT', 'hotel', 'http://localhost:3001/hotel/gethotels?vendor=MmtHotels');
-insert into vendors (vendorname, servicetype, vendorapi) values ('Cleartrip', 'hotel', 'http://localhost:3001/hotel/gethotels?vendor=CleartripHotels');
-insert into vendors (vendorname, servicetype, vendorapi) values ('TripAdvisor', 'hotel', 'http://localhost:3001/hotel/gethotels?vendor=TripAdvisorHotels');
-
-
-insert into vendors (vendorname, servicetype, vendorapi)  values ('MMT', 'flight', 'http://localhost:3001/flight/getflights?vendor=MmtFlights');
-insert into vendors (vendorname, servicetype, vendorapi) values ('Cleartrip', 'flight', 'http://localhost:3001/flight/getflights?vendor=CleartripFlights');
-insert into vendors (vendorname, servicetype, vendorapi) values ('Expedia', 'flight', 'http://localhost:3001/flight/getflights?vendor=ExpediaFlights');
-
-
-CREATE TABLE `click_tracker` (
-  `userId` varchar(255) DEFAULT NULL,
-  `sessionId` varchar(255) DEFAULT NULL,
-  `eventTime` datetime DEFAULT NULL,
-  `eventName` varchar(255) DEFAULT NULL,
-  `pageId` varchar(255) DEFAULT NULL,
-  `buttonId` varchar(255) DEFAULT NULL,
-  `objectId` varchar(255) DEFAULT NULL,
-  `pageNav` varchar(4000) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+bin/kafka-topics.sh --create --zookeeper localhost:2181 --replication-factor 1 --partitions 1 --topic getbills
+bin/kafka-topics.sh --create --zookeeper localhost:2181 --replication-factor 1 --partitions 1 --topic addhistory
+bin/kafka-topics.sh --create --zookeeper localhost:2181 --replication-factor 1 --partitions 1 --topic searchhistory
+bin/kafka-topics.sh --create --zookeeper localhost:2181 --replication-factor 1 --partitions 1 --topic upload
 
 
 

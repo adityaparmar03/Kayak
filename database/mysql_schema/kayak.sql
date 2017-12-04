@@ -7,6 +7,7 @@ DROP TABLE IF EXISTS `USER_ACTIVITY`;
 DROP TABLE IF EXISTS `vendors`;
 DROP TABLE IF EXISTS `USER`;
 DROP TABLE IF EXISTS `searchhistory`;
+DROP TABLE IF EXISTS `click_tracker`;
 
 
 
@@ -179,6 +180,22 @@ create table searchhistory (
   `end_date` varchar(90) ,
   `target_count` int(11) COMMENT 'Count of Passengers for flights Or\nCount of hotel rooms Or\nCount of Cars booked\n'
   );
+
+
+CREATE TABLE `click_tracker` (
+  `userId` varchar(255) DEFAULT NULL,
+  `sessionId` varchar(255) DEFAULT NULL,
+  `eventTime` datetime DEFAULT NULL,
+  `eventName` varchar(255) DEFAULT NULL,
+  `pageId` varchar(255) DEFAULT NULL,
+  `buttonId` varchar(255) DEFAULT NULL,
+  `objectId` varchar(255) DEFAULT NULL,
+  `pageNav` varchar(4000) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+
+
+
 
 LOCK TABLES `vendors` WRITE;
 
