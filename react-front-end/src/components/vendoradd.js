@@ -8,6 +8,7 @@ import * as API from '../api/API';
 import * as Actions from '../actions/action';
 import {connect} from 'react-redux';
 import Caradd from "./caradd";
+import Hoteladd from "./hoteladd";
 
 class Vendoradd extends Component {
 
@@ -86,7 +87,7 @@ class Vendoradd extends Component {
                         </div>
                         <div className="tab-pane fade" id="searchhistroy" role="tabpanel">
 
-
+                        <Hoteladd/>
 
 
                         </div>

@@ -5,7 +5,7 @@
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../kafka-back-end/.idea/workspace.xml" afterPath="$PROJECT_DIR$/../kafka-back-end/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../kafka-front-end/.idea/workspace.xml" afterPath="$PROJECT_DIR$/../kafka-front-end/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/flightadd.js" afterPath="$PROJECT_DIR$/src/components/flightadd.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/hoteladd.js" afterPath="$PROJECT_DIR$/src/components/hoteladd.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/vendoradd.js" afterPath="$PROJECT_DIR$/src/components/vendoradd.js" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
@@ -197,8 +197,8 @@
       <file leaf-file-name="vendoradd.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/components/vendoradd.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="548">
-              <caret line="53" column="0" lean-forward="false" selection-start-line="53" selection-start-column="0" selection-end-line="53" selection-end-column="0" />
+            <state relative-caret-position="329">
+              <caret line="91" column="0" lean-forward="true" selection-start-line="91" selection-start-column="0" selection-end-line="91" selection-end-column="0" />
               <folding>
                 <element signature="e#0#39#0" expanded="true" />
               </folding>
@@ -206,11 +206,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="flightadd.js" pinned="false" current-in-tab="true">
+      <file leaf-file-name="flightadd.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/components/flightadd.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="194">
-              <caret line="278" column="46" lean-forward="false" selection-start-line="278" selection-start-column="46" selection-end-line="278" selection-end-column="46" />
+            <state relative-caret-position="2535">
+              <caret line="169" column="7" lean-forward="false" selection-start-line="169" selection-start-column="7" selection-end-line="169" selection-end-column="7" />
               <folding>
                 <element signature="e#0#39#0" expanded="true" />
               </folding>
@@ -230,12 +230,15 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="hoteladd.js" pinned="false" current-in-tab="false">
+      <file leaf-file-name="hoteladd.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/components/hoteladd.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="0">
-              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-              <folding />
+            <state relative-caret-position="3300">
+              <caret line="220" column="27" lean-forward="true" selection-start-line="220" selection-start-column="27" selection-end-line="220" selection-end-column="27" />
+              <folding>
+                <element signature="n#!!doc" expanded="true" />
+                <element signature="e#719#758#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -243,11 +246,48 @@
       <file leaf-file-name="caradd.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/components/caradd.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="341">
-              <caret line="186" column="0" lean-forward="false" selection-start-line="186" selection-start-column="0" selection-end-line="186" selection-end-column="0" />
+            <state relative-caret-position="166">
+              <caret line="82" column="71" lean-forward="false" selection-start-line="82" selection-start-column="71" selection-end-line="82" selection-end-column="71" />
               <folding>
                 <element signature="n#!!doc" expanded="true" />
                 <element signature="e#436#475#0" expanded="true" />
+                <marker date="1512399590620" expanded="true" signature="2745:2752" ph="{...}" />
+                <marker date="1512399590620" expanded="true" signature="2822:4143" ph="&lt;div/&gt;" />
+                <marker date="1512399590620" expanded="true" signature="2864:3502" ph="&lt;div/&gt;" />
+                <marker date="1512399590620" expanded="true" signature="2915:3474" ph="&lt;div/&gt;" />
+                <marker date="1512399590620" expanded="true" signature="3034:3443" ph="&lt;input/&gt;" />
+                <marker date="1512399590620" expanded="true" signature="3233:3440" ph="{...}" />
+                <marker date="1512399590620" expanded="true" signature="3288:3401" ph="{&quot;cartype&quot;: event.target.value...}" />
+                <marker date="1512399590620" expanded="true" signature="3523:4120" ph="&lt;div/&gt;" />
+                <marker date="1512399590620" expanded="true" signature="3574:4092" ph="&lt;div/&gt;" />
+                <marker date="1512399590620" expanded="true" signature="3628:4060" ph="&lt;input/&gt;" />
+                <marker date="1512399590620" expanded="true" signature="3823:4028" ph="{...}" />
+                <marker date="1512399590620" expanded="true" signature="3878:3989" ph="{&quot;carid&quot;: event.target.value...}" />
+                <marker date="1512399590620" expanded="true" signature="4160:6312" ph="&lt;div/&gt;" />
+                <marker date="1512399590620" expanded="true" signature="4202:4871" ph="&lt;div/&gt;" />
+                <marker date="1512399590620" expanded="true" signature="4253:4843" ph="&lt;div/&gt;" />
+                <marker date="1512399590620" expanded="true" signature="4372:4812" ph="&lt;input/&gt;" />
+                <marker date="1512399590620" expanded="true" signature="4572:4780" ph="{...}" />
+                <marker date="1512399590620" expanded="true" signature="4627:4741" ph="{&quot;carmodel&quot;: event.target.value...}" />
+                <marker date="1512399590620" expanded="true" signature="4892:5589" ph="&lt;div/&gt;" />
+                <marker date="1512399590620" expanded="true" signature="4943:5561" ph="&lt;div/&gt;" />
+                <marker date="1512399590620" expanded="true" signature="5071:5528" ph="&lt;input/&gt;" />
+                <marker date="1512399590620" expanded="true" signature="5283:5496" ph="{...}" />
+                <marker date="1512399590620" expanded="true" signature="5338:5457" ph="{&quot;specification&quot;: event.target.value...}" />
+                <marker date="1512399590620" expanded="true" signature="5610:6288" ph="&lt;div/&gt;" />
+                <marker date="1512399590620" expanded="true" signature="5661:6260" ph="&lt;div/&gt;" />
+                <marker date="1512399590620" expanded="true" signature="5783:6227" ph="&lt;input/&gt;" />
+                <marker date="1512399590620" expanded="true" signature="5986:6195" ph="{...}" />
+                <marker date="1512399590620" expanded="true" signature="6041:6156" ph="{&quot;dailyrent&quot;: event.target.value...}" />
+                <marker date="1512399590620" expanded="true" signature="6330:7708" ph="&lt;div/&gt;" />
+                <marker date="1512399590620" expanded="true" signature="6372:7017" ph="&lt;div/&gt;" />
+                <marker date="1512399590620" expanded="true" signature="6423:6989" ph="&lt;div/&gt;" />
+                <marker date="1512399590620" expanded="true" signature="6477:6957" ph="&lt;AutoComplete/&gt;" />
+                <marker date="1512399590620" expanded="true" signature="7039:7685" ph="&lt;div/&gt;" />
+                <marker date="1512399590620" expanded="true" signature="7090:7656" ph="&lt;div/&gt;" />
+                <marker date="1512399590620" expanded="true" signature="7144:7624" ph="&lt;AutoComplete/&gt;" />
+                <marker date="1512399590620" expanded="true" signature="7767:7821" ph="&lt;div/&gt;" />
+                <marker date="1512399590620" expanded="true" signature="7844:7899" ph="&lt;div/&gt;" />
               </folding>
             </state>
           </provider>
@@ -307,8 +347,9 @@
         <option value="$PROJECT_DIR$/src/index.js" />
         <option value="$PROJECT_DIR$/src/components/flightsearch.js" />
         <option value="$PROJECT_DIR$/src/components/caradd.js" />
-        <option value="$PROJECT_DIR$/src/components/vendoradd.js" />
         <option value="$PROJECT_DIR$/src/components/flightadd.js" />
+        <option value="$PROJECT_DIR$/src/components/hoteladd.js" />
+        <option value="$PROJECT_DIR$/src/components/vendoradd.js" />
       </list>
     </option>
   </component>
@@ -455,7 +496,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="107954000" />
+    <option name="totallyTimeSpent" value="108039000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1280" height="800" extended-state="6" />
@@ -491,7 +532,14 @@
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <option name="time" value="2" />
+      <breakpoints>
+        <line-breakpoint enabled="true" type="javascript">
+          <url>file://$PROJECT_DIR$/src/components/vendoradd.js</url>
+          <properties />
+          <option name="timeStamp" value="2" />
+        </line-breakpoint>
+      </breakpoints>
+      <option name="time" value="3" />
     </breakpoint-manager>
     <watches-manager />
   </component>
@@ -601,7 +649,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="345">
           <caret line="23" column="21" lean-forward="false" selection-start-line="23" selection-start-column="21" selection-end-line="23" selection-end-column="21" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -609,7 +656,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="392">
           <caret line="166" column="0" lean-forward="false" selection-start-line="166" selection-start-column="0" selection-end-line="166" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -617,7 +663,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="422">
           <caret line="279" column="61" lean-forward="false" selection-start-line="279" selection-start-column="61" selection-end-line="279" selection-end-column="61" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -625,7 +670,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="900">
           <caret line="65" column="0" lean-forward="false" selection-start-line="65" selection-start-column="0" selection-end-line="65" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -633,7 +677,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1155">
           <caret line="77" column="26" lean-forward="false" selection-start-line="77" selection-start-column="16" selection-end-line="77" selection-end-column="26" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -641,9 +684,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding>
-            <element signature="e#0#51#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -651,7 +691,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -659,9 +698,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="159">
           <caret line="216" column="38" lean-forward="true" selection-start-line="216" selection-start-column="38" selection-end-line="216" selection-end-column="38" />
-          <folding>
-            <element signature="e#0#39#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -669,9 +705,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1200">
           <caret line="86" column="9" lean-forward="false" selection-start-line="86" selection-start-column="9" selection-end-line="86" selection-end-column="9" />
-          <folding>
-            <element signature="e#0#39#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -679,7 +712,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="3135">
           <caret line="216" column="25" lean-forward="false" selection-start-line="216" selection-start-column="25" selection-end-line="216" selection-end-column="25" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -687,7 +719,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="2625">
           <caret line="183" column="0" lean-forward="false" selection-start-line="183" selection-start-column="0" selection-end-line="183" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -695,7 +726,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="425">
           <caret line="47" column="0" lean-forward="false" selection-start-line="47" selection-start-column="0" selection-end-line="47" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -703,7 +733,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="142">
           <caret line="287" column="40" lean-forward="false" selection-start-line="287" selection-start-column="40" selection-end-line="287" selection-end-column="40" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -711,7 +740,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="338">
           <caret line="60" column="19" lean-forward="false" selection-start-line="60" selection-start-column="19" selection-end-line="60" selection-end-column="19" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -719,9 +747,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="253">
           <caret line="61" column="63" lean-forward="false" selection-start-line="61" selection-start-column="63" selection-end-line="61" selection-end-column="63" />
-          <folding>
-            <element signature="e#0#39#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -729,9 +754,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1821">
           <caret line="375" column="0" lean-forward="true" selection-start-line="374" selection-start-column="0" selection-end-line="375" selection-end-column="0" />
-          <folding>
-            <element signature="e#0#39#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -750,7 +772,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="38" lean-forward="false" selection-start-line="0" selection-start-column="38" selection-end-line="0" selection-end-column="38" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -917,14 +938,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/hoteladd.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/components/flightsearch.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="195">
@@ -937,31 +950,79 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/components/caradd.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="341">
-          <caret line="186" column="0" lean-forward="false" selection-start-line="186" selection-start-column="0" selection-end-line="186" selection-end-column="0" />
+        <state relative-caret-position="166">
+          <caret line="82" column="71" lean-forward="false" selection-start-line="82" selection-start-column="71" selection-end-line="82" selection-end-column="71" />
           <folding>
             <element signature="n#!!doc" expanded="true" />
             <element signature="e#436#475#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/vendoradd.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="548">
-          <caret line="53" column="0" lean-forward="false" selection-start-line="53" selection-start-column="0" selection-end-line="53" selection-end-column="0" />
-          <folding>
-            <element signature="e#0#39#0" expanded="true" />
+            <marker date="1512399590620" expanded="true" signature="2745:2752" ph="{...}" />
+            <marker date="1512399590620" expanded="true" signature="2822:4143" ph="&lt;div/&gt;" />
+            <marker date="1512399590620" expanded="true" signature="2864:3502" ph="&lt;div/&gt;" />
+            <marker date="1512399590620" expanded="true" signature="2915:3474" ph="&lt;div/&gt;" />
+            <marker date="1512399590620" expanded="true" signature="3034:3443" ph="&lt;input/&gt;" />
+            <marker date="1512399590620" expanded="true" signature="3233:3440" ph="{...}" />
+            <marker date="1512399590620" expanded="true" signature="3288:3401" ph="{&quot;cartype&quot;: event.target.value...}" />
+            <marker date="1512399590620" expanded="true" signature="3523:4120" ph="&lt;div/&gt;" />
+            <marker date="1512399590620" expanded="true" signature="3574:4092" ph="&lt;div/&gt;" />
+            <marker date="1512399590620" expanded="true" signature="3628:4060" ph="&lt;input/&gt;" />
+            <marker date="1512399590620" expanded="true" signature="3823:4028" ph="{...}" />
+            <marker date="1512399590620" expanded="true" signature="3878:3989" ph="{&quot;carid&quot;: event.target.value...}" />
+            <marker date="1512399590620" expanded="true" signature="4160:6312" ph="&lt;div/&gt;" />
+            <marker date="1512399590620" expanded="true" signature="4202:4871" ph="&lt;div/&gt;" />
+            <marker date="1512399590620" expanded="true" signature="4253:4843" ph="&lt;div/&gt;" />
+            <marker date="1512399590620" expanded="true" signature="4372:4812" ph="&lt;input/&gt;" />
+            <marker date="1512399590620" expanded="true" signature="4572:4780" ph="{...}" />
+            <marker date="1512399590620" expanded="true" signature="4627:4741" ph="{&quot;carmodel&quot;: event.target.value...}" />
+            <marker date="1512399590620" expanded="true" signature="4892:5589" ph="&lt;div/&gt;" />
+            <marker date="1512399590620" expanded="true" signature="4943:5561" ph="&lt;div/&gt;" />
+            <marker date="1512399590620" expanded="true" signature="5071:5528" ph="&lt;input/&gt;" />
+            <marker date="1512399590620" expanded="true" signature="5283:5496" ph="{...}" />
+            <marker date="1512399590620" expanded="true" signature="5338:5457" ph="{&quot;specification&quot;: event.target.value...}" />
+            <marker date="1512399590620" expanded="true" signature="5610:6288" ph="&lt;div/&gt;" />
+            <marker date="1512399590620" expanded="true" signature="5661:6260" ph="&lt;div/&gt;" />
+            <marker date="1512399590620" expanded="true" signature="5783:6227" ph="&lt;input/&gt;" />
+            <marker date="1512399590620" expanded="true" signature="5986:6195" ph="{...}" />
+            <marker date="1512399590620" expanded="true" signature="6041:6156" ph="{&quot;dailyrent&quot;: event.target.value...}" />
+            <marker date="1512399590620" expanded="true" signature="6330:7708" ph="&lt;div/&gt;" />
+            <marker date="1512399590620" expanded="true" signature="6372:7017" ph="&lt;div/&gt;" />
+            <marker date="1512399590620" expanded="true" signature="6423:6989" ph="&lt;div/&gt;" />
+            <marker date="1512399590620" expanded="true" signature="6477:6957" ph="&lt;AutoComplete/&gt;" />
+            <marker date="1512399590620" expanded="true" signature="7039:7685" ph="&lt;div/&gt;" />
+            <marker date="1512399590620" expanded="true" signature="7090:7656" ph="&lt;div/&gt;" />
+            <marker date="1512399590620" expanded="true" signature="7144:7624" ph="&lt;AutoComplete/&gt;" />
+            <marker date="1512399590620" expanded="true" signature="7767:7821" ph="&lt;div/&gt;" />
+            <marker date="1512399590620" expanded="true" signature="7844:7899" ph="&lt;div/&gt;" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/components/flightadd.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="194">
-          <caret line="278" column="46" lean-forward="false" selection-start-line="278" selection-start-column="46" selection-end-line="278" selection-end-column="46" />
+        <state relative-caret-position="2535">
+          <caret line="169" column="7" lean-forward="false" selection-start-line="169" selection-start-column="7" selection-end-line="169" selection-end-column="7" />
           <folding>
             <element signature="e#0#39#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/vendoradd.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="329">
+          <caret line="91" column="0" lean-forward="true" selection-start-line="91" selection-start-column="0" selection-end-line="91" selection-end-column="0" />
+          <folding>
+            <element signature="e#0#39#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/hoteladd.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="3300">
+          <caret line="220" column="27" lean-forward="true" selection-start-line="220" selection-start-column="27" selection-end-line="220" selection-end-column="27" />
+          <folding>
+            <element signature="n#!!doc" expanded="true" />
+            <element signature="e#719#758#0" expanded="true" />
           </folding>
         </state>
       </provider>
