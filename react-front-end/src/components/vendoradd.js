@@ -12,13 +12,72 @@ import Hoteladd from "./hoteladd";
 
 class Vendoradd extends Component {
 
-    componentWillMount(){
-        
+    state={
+        cars:[],
+        hotels:[],
+        flights:[]
+    }
+
+    componentDidMount() {
+
+
+        API.getHotelList()
+            .then((res) => {
+
+                console.log(res);
+                if (res.status == 200) {
+
+                    this.setState({
+                        hotels: res.api_results
+                    })
+                    console.log("Success...")
+
+                } else if (res.status == 401) {
+
+                    //  this.props.history.push('/');
+                }
+            });
+
+        API.getCarList()
+            .then((res) => {
+
+                console.log(res);
+                if (res.status == 200) {
+
+                    this.setState({
+                        cars: res.api_results
+                    })
+                    console.log("Success...")
+
+                } else if (res.status == 401) {
+
+                    //  this.props.history.push('/');
+                }
+            });
+
+        API.getFlightList()
+            .then((res) => {
+
+                console.log(res);
+                if (res.status == 200) {
+
+                    this.setState({
+                        flights: res.api_results
+                    })
+                    console.log("Success...")
+
+                } else if (res.status == 401) {
+
+                    //  this.props.history.push('/');
+                }
+            });
+    }
         
              // API.doLogout().then((data)=>{
              //        console.log("adf");
              //    })
              //
+        componentWillMount(){
            API.checkSession().then((data)=>{
            
             if(data.status===201){
@@ -36,8 +95,7 @@ class Vendoradd extends Component {
         
            })
 
-        }        
-
+        }
 
     render(){
    /*
@@ -86,13 +144,13 @@ class Vendoradd extends Component {
 
                     <ul className="nav nav-tabs nav-justified deep-orange" role="tablist">
                         <li className="nav-item">
-                            <a className="nav-link active" data-toggle="tab" href="#profile" role="tab"><i class="fa fa-user"></i>Flight</a>
+                            <a className="nav-link active" data-toggle="tab" href="#flight" role="tab" ><i class="fa fa-user"></i>Flight</a>
                         </li>
                         <li className="nav-item">
-                            <a className="nav-link" data-toggle="tab" href="#trip" role="tab"><i class="fa fa-heart"></i>Car</a>
+                            <a className="nav-link" data-toggle="tab" href="#car" role="tab"><i class="fa fa-heart" ></i>Car</a>
                         </li>
                         <li className="nav-item">
-                            <a className="nav-link" data-toggle="tab" href="#searchhistroy" role="tab" ><i class="fa fa-heart"></i>Hotel</a>
+                            <a className="nav-link" data-toggle="tab" href="#hotel" role="tab" ><i class="fa fa-heart" ></i>Hotel</a>
                         </li>
 
                     </ul>

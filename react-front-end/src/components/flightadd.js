@@ -11,6 +11,7 @@ import cities from '../constants/cities'
 
 class Flightadd extends Component{
 
+
     state = {
 
         flightId:'',
@@ -129,11 +130,17 @@ class Flightadd extends Component{
         var from_8 = this.state.from4.split(",")[1].trim();
 
 
+        var airport1 = from_1+" Airport";
+        var airport2 = from_3+" Airport";
+        var airport3 = from_5+" Airport";
+        var airport4 = from_7+" Airport";
+
+
 
         var payload = {
             flightId :this.state.flightId ,
             operator :this.state.operator,
-            imageurl:"airindia.jgp",
+            imageurl:"airindia.jpg",
             class:[
                 {type:'Economy',price:this.state.economy, capacity:100},
                 {type:'First',price:this.state.firstclass, capacity:100},
@@ -146,9 +153,9 @@ class Flightadd extends Component{
                     departuretime:this.state.departuretime,
                     departureday :this.state.departureday,
                     origin: {city:from_1 ,
-                             state:from_2 ,
-                             country:"USA", airport:"san jose airport"},
-                            destination: {city:from_3, state:from_4, country:'USA', airport:"San Jose Airport"}
+                        state:from_2 ,
+                        country:"USA", airport:airport1},
+                    destination: {city:from_3, state:from_4, country:'USA', airport:airport2}
 
                 },
                 {
@@ -157,12 +164,13 @@ class Flightadd extends Component{
                     departuretime: this.state.departuretime1,
                     departureday : this.state.departureday1,
                     origin: {
-                        city:from_5, state:from_6, country:'USA',airport:"San Jose Airport"},
-                        destination: {city:from_7, state:from_8, country:'USA',airport:"San Jose Airport"}
+                        city:from_5, state:from_6, country:'USA',airport:airport3},
+                    destination: {city:from_7, state:from_8, country:'USA',airport:airport4}
 
                 }
             ]
         }
+
 
         console.log(this.state.arrivaltime);
         console.log(this.state.from1.split(",")[0].trim());

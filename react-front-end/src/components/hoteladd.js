@@ -34,21 +34,7 @@ import cities from '../constants/cities'
 
 class Hoteladd extends Component {
 
-    // componentWillMount() {
-    //     API.getHotelList()
-    //         .then((res) => {
 
-    //             console.log(res);
-    //             if (res.status == 200) {
-
-    //                 console.log("Success...")
-
-    //             }else if (res.status == 401) {
-
-    //                 //  this.props.history.push('/');
-    //             }
-    //         });
-    // }
 
     state = {
         hotelId: '',

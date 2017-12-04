@@ -204,7 +204,7 @@ function addCar(msg, callback) {
         }
         else
         {
-            console.log(results,results[0]);
+
             if(results.length > 0){
 
 
