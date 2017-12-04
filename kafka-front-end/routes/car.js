@@ -105,4 +105,51 @@ router.post('/addcar', function (req, res) {
 
 
 
+router.get('/getcarlist', function (req, res) {
+
+    kafka.make_request("getcarlist",{'email': "mmt@gmail.com"}, function(err,results){
+
+        if(err){
+            res.send({'status': 401});
+        }
+        else
+        {
+            if(results.code == "200"){
+                res.send({'status': 200 , 'api_results' : results.value});
+            }
+            else {
+                res.send({'status': 401});
+            }
+        }
+    })
+});
+
+router.post('/deletecar', function (req, res) {
+    console.log('Request is ---------');
+    console.log(req.body);
+
+    var reqObject = {
+        email : req.session.email,
+        id : req.body.id
+    }
+    kafka.make_request("deletecar", reqObject, function(err,results){
+
+        if(err){
+            console.log('Returning Error ----' + err);
+            res.send({'status': err.code, 'message' : err.message});
+        }
+        else
+        {
+            console.log('Returning results ----' + results);
+            if(results.code == "200"){
+                res.send({'status': results.code });
+            }
+            else {
+                res.send({'status': results.code });
+            }
+        }
+    })
+});
+
+
 module.exports = router;

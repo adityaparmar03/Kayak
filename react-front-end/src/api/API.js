@@ -485,9 +485,65 @@ export const addFlight = (payload) =>
         return res.json();
     })
         .catch(error => {
-            console.log("Error booking Hotel");
+            console.log("Error booking flight");
             return error;
         });
+
+export const getFlightList = () =>
+    fetch(`${api}/flight/getflightlist`, {
+        method: 'GET',
+        headers: {
+            ...headers,
+            'Content-Type': 'application/json'
+        },
+        credentials:'include'
+    }).then(res => {
+
+        return res.json();
+    })
+        .catch(error => {
+            console.log("This is an API error");
+            return error;
+        });
+
+
+
+
+export const addCar = (payload) =>
+    fetch(`${api}/car/addcar`, {
+        method: 'POST',
+        headers: {
+            ...headers,
+            'Content-Type': 'application/json'
+        },
+        credentials:'include',
+        body: JSON.stringify(payload)
+    }).then(res => {
+        console.log(res);
+        return res.json();
+    })
+        .catch(error => {
+            console.log("Error booking car");
+            return error;
+        });
+
+export const getCarList = () =>
+    fetch(`${api}/car/getcarlist`, {
+        method: 'GET',
+        headers: {
+            ...headers,
+            'Content-Type': 'application/json'
+        },
+        credentials:'include'
+    }).then(res => {
+
+        return res.json();
+    })
+        .catch(error => {
+            console.log("This is an API error");
+            return error;
+        });
+
 
 
 export const getChart = (payload) =>

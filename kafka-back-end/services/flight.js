@@ -411,7 +411,7 @@ function addFlight(msg, callback) {
 
 function getFlightList(msg, callback) {
 
-    var getModel="select model from vendors where servicetype='flight' and email="+msg.email;
+    var getModel="select model from vendors where servicetype='flight' and email="+"'"+msg.email+"'";
     mysql.fetchData(function(err,results){
         if(err){
             throw err;
@@ -457,7 +457,7 @@ function getFlightList(msg, callback) {
 
 function deleteFlight(msg, callback) {
 
-    var getModel="select model from vendors where servicetype='flight' and email="+msg.email;
+    var getModel="select model from vendors where servicetype='flight' and email="+"'"+msg.email+"'";
     mysql.fetchData(function(err,results){
         if(err){
             throw err;

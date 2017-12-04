@@ -197,7 +197,7 @@ function getBookedCountHelper(dbBookings){
 
 function addCar(msg, callback) {
 
-    var getModel="select model from vendors where servicetype='car' and email="+msg.email;
+    var getModel="select model from vendors where servicetype='car' and email="+"'"+msg.email+"'";
     mysql.fetchData(function(err,results){
         if(err){
             throw err;
@@ -213,15 +213,15 @@ function addCar(msg, callback) {
 
                 var newcar = new car();
 
-               /* newcar.carId = msg.flightId;
-                newcar.cartype= msg.cartype;
-                newcar.carmodel= msg.carmodel;
-                newcar.specification= msg.specification;
-                newcar.pickupaddress: Object,  //{'street':'101 E San Fernando St.','city':'San Jose', 'state': 'CA', 'country':'USA'}
-                newcar.dropoffaddress: Object,
-                newcar.dailyrent= msg.dailyrent;
-                newcar.imageurl= msg.imageurl;
-*/
+                newcar.carId = msg.car.flightId;
+                newcar.cartype= msg.car.cartype;
+                newcar.carmodel= msg.car.carmodel;
+                newcar.specification= msg.car.specification;
+                newcar.pickupaddress=msg.car.pickupaddress;
+                newcar.dropoffaddress=msg.car.dropoffaddress;
+                newcar.dailyrent= msg.car.dailyrent;
+                newcar.imageurl= msg.car.imageurl;
+
                 var res = {};
 
                 newcar.save(function (err) {
@@ -250,6 +250,102 @@ function addCar(msg, callback) {
 
 }
 
+
+
+
+function getCarList(msg, callback) {
+
+    var getModel="select model from vendors where servicetype='car' and email="+"'"+msg.email+"'";
+    mysql.fetchData(function(err,results){
+        if(err){
+            throw err;
+        }
+        else
+        {
+            console.log(results);
+            if(results.length > 0){
+
+
+                var flight = require('../models/car/' + results[0].model);
+
+
+                var res = {};
+                flight.find(function (err, car) {
+
+                    if(err){
+                        console.log("Error");
+                    }
+                    else{
+
+                        console.log("Car List:", car)
+                        res.code = "200";
+                        res.value = car;
+                        callback(null, res);
+
+                    }
+                });
+
+            }
+            else {
+                res.code = "401";
+
+                callback(null, res);
+            }
+        }
+    },getModel);
+
+
+}
+
+
+
+function deleteCar(msg, callback) {
+
+    var getModel="select model from vendors where servicetype='car' and email="+"'"+msg.email+"'";
+    mysql.fetchData(function(err,results){
+        if(err){
+            throw err;
+        }
+        else
+        {
+            console.log(results);
+            if(results.length > 0){
+
+
+                var flight = require('../models/car/' + results[0].model);
+
+
+                var res = {};
+                flight.remove({'_id':msg.id},function (err, cars) {
+
+                    if(err){
+                        console.log("Error");
+                    }
+                    else{
+
+
+                        res.code = "200";
+                        res.value = cars;
+                        callback(null, res);
+
+                    }
+                });
+
+            }
+            else {
+                res.code = "401";
+
+                callback(null, res);
+            }
+        }
+    },getModel);
+
+
+}
+
+
+exports.getCarList=getCarList;
+exports.deleteCar=deleteCar;
 exports.addCar=addCar;
 exports.bookCar=bookCar;
 exports.searchCars = searchCars;

@@ -47,7 +47,7 @@ router.get('/getflights', function (req, res) {
 
 router.get('/getflightlist', function (req, res) {
 
-    kafka.make_request("getflightlist",{'email': req.session.email}, function(err,results){
+    kafka.make_request("getflightlist",{'email': "mmt@gmail.com"}, function(err,results){
 
         if(err){
             res.send({'status': 401});

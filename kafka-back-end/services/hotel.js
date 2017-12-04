@@ -140,7 +140,7 @@ function getBookedCountHelper(dbBookings){
 
 function addHotel(msg, callback) {
 
-    var getModel="select model from vendors where servicetype='hotel' and email="+msg.email;
+    var getModel="select model from vendors where servicetype='hotel' and email="+"'"+msg.email+"'";
     mysql.fetchData(function(err,results){
         if(err){
             throw err;
@@ -156,12 +156,12 @@ function addHotel(msg, callback) {
 
                 var newhotel = new hotel();
 
-                   /* newhotel.hotelId = msg.hotelId;
+                    /*newhotel.hotelId = msg.hotelId;
                     newhotel.name = msg.name;
                     newhotel.description = msg.description;
-                    newhotel.address: Object, //{'street':'101 E San Fernando St.','city':'San Jose', 'state': 'CA', 'country':'USA', 'zip':'95112'}
+                    newhotel.address=msg.pickupaddress //{'street':'101 E San Fernando St.','city':'San Jose', 'state': 'CA', 'country':'USA', 'zip':'95112'}
                     newhotel.stars = msg.stars;
-                    newhotel.reviews : Array,
+                    newhotel.reviews =msg.,
                     newhotel.rating = msg.rating;
                     newhotel.rooms : Array,
                     newhotel.imageurl = msg.imageurl;
