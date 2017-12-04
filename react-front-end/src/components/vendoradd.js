@@ -150,6 +150,39 @@ class Vendoradd extends Component {
                 }
             });
     }
+    displayFlight(data,index)
+    {
+        return (
+            <tr>
+            <td>{index+1}</td>
+            <td>{data._id}</td>
+            <td>{data.operator}</td>
+            <td><i className="fa fa-trash fa-2x" onClick={(data)=>this.deleteFlight(data._id)}></i></td>
+            </tr>
+        )
+    }
+    displayHotel(data,index)
+    {
+        return (
+            <tr>
+                <td>{index+1}</td>
+                <td>{data._id}</td>
+                <td>{data.name}</td>
+                <td><i className="fa fa-trash fa-2x" onClick={(data)=>this.deleteHotel(data._id)}></i></td>
+            </tr>
+        )
+    }
+    displayCar(data,index)
+    {
+        return (
+            <tr>
+            <td>{index+1}</td>
+            <td>{data._id}</td>
+            <td>{data.carmodel}</td>
+            <td><i className="fa fa-trash fa-2x" onClick={(data)=>this.deleteCar(data._id)}></i></td>
+            </tr>
+        )
+    }
 
     render(){
    /*
@@ -186,6 +219,7 @@ class Vendoradd extends Component {
     })
 */
 
+   
 
     return(
         <div>
@@ -273,6 +307,7 @@ class Vendoradd extends Component {
                             <table className="table">
                                 <thead>
                                     <tr>
+                                    <th><b>No.</b></th>   
                                     <th><b>Flight ID</b></th>
                                     <th><b>Operator</b></th>
                                     <th></th>
@@ -280,11 +315,7 @@ class Vendoradd extends Component {
                                 
                                 </thead>
                                 <thead>
-                                    <tr>
-                                        <th>FlightID</th>
-                                        <th>operator</th>
-                                        <th><i className="fa fa-trash fa-2x" {/*onClick={()=>this.deleteFlight(flight._id)}*/}></i></th>
-                                    </tr>
+                                   {this.state.flights.map((this.displayFlight),this)}
 
                                 
                                 </thead>
@@ -301,6 +332,7 @@ class Vendoradd extends Component {
                             <table className="table">
                                 <thead>
                                     <tr>
+                                    <th><b>No.</b></th>
                                     <th><b>Hotel ID</b></th>
                                     <th><b>Hotel Name</b></th>
                                     <th></th>
@@ -308,12 +340,7 @@ class Vendoradd extends Component {
                                 
                                 </thead>
                                 <thead>
-                                    <tr>
-                                        <th>FlightID</th>
-                                        <th>operator</th>
-                                        <th><i className="fa fa-trash fa-2x" {/*onClick={()=>this.deleteHotel(hotel._id)}*/}></i></th>
-                                    </tr>
-
+                                    {this.state.hotels.map(this.displayHotel,this)}
                                 
                                 </thead>
                             </table>
@@ -333,6 +360,7 @@ class Vendoradd extends Component {
                             <table className="table">
                                 <thead>
                                     <tr>
+                                    <th><b>No.</b></th> 
                                     <th><b>Car ID</b></th>
                                     <th><b>Car Name</b></th>
                                     <th></th>
@@ -340,11 +368,11 @@ class Vendoradd extends Component {
                                 
                                 </thead>
                                 <thead>
-                                    <tr>
-                                        <th>Car ID</th>
-                                        <th>Car Name</th>
-                                        <th><i className="fa fa-trash fa-2x" {/*onClick={()=>this.deleteCar(car._id)*/}}></i></th>
-                                    </tr>
+                                    
+                                   {this.state.cars.map(this.displayCar,this)}
+
+                                          
+                                  
 
                                 
                                 </thead>
