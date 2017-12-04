@@ -7,6 +7,11 @@ import TextField from 'material-ui/TextField';
 import moment from 'moment';
 import cities from '../constants/cities';
 import * as API from '../api/API';
+import * as Actions from '../actions/action';
+import {connect} from 'react-redux';
+import userProfile from "../reducers/userProfile";
+import AlertContainer from 'react-alert'
+
 
 class Hotelsearch extends Component {
 
@@ -87,9 +92,48 @@ class Hotelsearch extends Component {
 
            localStorage.setItem("hotelsearchcriteria", JSON.stringify(payload));
            this.props.history.push('/hotellist');
-
+        
+           if(this.props.userprofile.isLoggedIn){
+               var date = new Date();
+               this.clickHandler({userId:this.props.userprofile.email,sessionId:"sessionId",eventTime:this.timeConverter(date.getTime()),eventName:"HotelSearchButton",pageId:"HotelSearch",buttonId:"HotelSearchButtonPay",objectId:"HotelSearchButton",pageNav:"HotelSearch"})
+            }
+            
 
        }
+    clickHandler(clickInfo){
+        console.log("Button Clicked","$");
+        this.handleClick(clickInfo);
+
+    }
+
+    handleClick = (clickInfo) => {
+        console.log('handleSubmit');
+        API.clickTracker(clickInfo)
+            .then((response) => {
+                if (response.status === 200) {
+                    console.log(response.result);
+                } else if (response.status === 400) {
+                    console.log(response.result);
+                }
+            });
+    };
+
+
+
+    timeConverter(UNIX_timestamp){
+        var a = new Date(UNIX_timestamp);
+        var months = ['01','02','03','04','05','06','07','08','09','10','11','12'];
+        var year = a.getFullYear();
+        var month = months[a.getMonth()];
+        var date = a.getDate();
+        var hour = a.getHours();
+        var min = a.getMinutes();
+        var sec = a.getSeconds();
+        //YYYY-MM-DD HH:MM:SS
+        //var time = date + ' ' + month + ' ' + year + ' ' + hour + ':' + min + ':' + sec ;
+        var time = year + '-' + month + '-' + date + ' ' + hour + ':' + min + ':' + sec ;
+        return time;
+    }
 
 
       handleUpdateCityInput = (value,textbox) => {
@@ -273,6 +317,26 @@ class Hotelsearch extends Component {
     }
 }
 
+function mapStateToProps(reducerdata) {
+    // console.log(reducerdata);
+   const userprofile = reducerdata.userProfile;
+ 
+   console.log(userprofile);
+ 
+     return {userprofile};
+ }
+ 
+ function mapDispatchToProps(dispatch) {
+     return {
+         signIn : (data) => dispatch(Actions.signIn(data))
+ 
+     };
+ }
+ 
+ 
+ 
+ export default withRouter(connect(mapStateToProps, mapDispatchToProps)(Hotelsearch));
+ 
 
 
-export default withRouter(Hotelsearch);
+//export default withRouter(Hotelsearch);

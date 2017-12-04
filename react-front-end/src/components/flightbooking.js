@@ -151,8 +151,47 @@ class FlightBooking extends Component {
                             console.log("Error is " + res);
                         }
                     });
+                    if(this.props.userprofile.isLoggedIn){
+                        var date = new Date();
+                        this.clickHandler({userId:this.props.userprofile.email,sessionId:"sessionId",eventTime:this.timeConverter(date.getTime()),eventName:"FlightBooking",pageId:"FlightBooking",buttonId:"FlightBookingPay",objectId:"FlightBooking",pageNav:"FlightSearch FlightBooking"})
+                    }
   }
 }
+clickHandler(clickInfo){
+    console.log("Button Clicked","$");
+    this.handleClick(clickInfo);
+
+}
+
+handleClick = (clickInfo) => {
+    console.log('handleSubmit');
+    API.clickTracker(clickInfo)
+        .then((response) => {
+            if (response.status === 200) {
+                console.log(response.result);
+            } else if (response.status === 400) {
+                console.log(response.result);
+            }
+        });
+};
+
+
+
+timeConverter(UNIX_timestamp){
+    var a = new Date(UNIX_timestamp);
+    var months = ['01','02','03','04','05','06','07','08','09','10','11','12'];
+    var year = a.getFullYear();
+    var month = months[a.getMonth()];
+    var date = a.getDate();
+    var hour = a.getHours();
+    var min = a.getMinutes();
+    var sec = a.getSeconds();
+    //YYYY-MM-DD HH:MM:SS
+    //var time = date + ' ' + month + ' ' + year + ' ' + hour + ':' + min + ':' + sec ;
+    var time = year + '-' + month + '-' + date + ' ' + hour + ':' + min + ':' + sec ;
+    return time;
+}
+
   displaydetails(){
       if(this.state.type == 'One-Way'){
         return(
