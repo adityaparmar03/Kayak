@@ -25,7 +25,7 @@ module.exports = function(passport) {
                 {
                     if(results.code == 200){
                         console.log("After kafka response no error and everything fine")
-                        done(null,{"code":201,"data":results.value});
+                        done(null,{"code":201,"data":results.value,"user_role":results.data});
                     }
                     else {
                         console.log("After kafka response no error username not successfull")

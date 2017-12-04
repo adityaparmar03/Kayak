@@ -51,7 +51,7 @@ router.post('/login', function (req, res) {
                 req.session.email = email;
                 req.session.isloggedin = true;
                 console.log(user.data);
-                res.send({status: 201, "value": user.data});
+                res.send({status: 201, "value": user.data, "user_role":user.user_role});
             }
             else{
 

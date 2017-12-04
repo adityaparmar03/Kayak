@@ -49,7 +49,7 @@ function login(msg, callback){
     console.log("++++++++++++++++++++");
     console.log(msg);
     console.log("++++++++++++++++++++");
-    var selectQuery = "select password from USER where email = '"+msg.email+"';" ;
+    var selectQuery = "select password, user_role from USER where email = '"+msg.email+"';" ;
     console.log(selectQuery);
 
     mysql.fetchData(function (err,results) {
@@ -66,7 +66,7 @@ function login(msg, callback){
 
                     res.code = "200";
                     res.value = "Login success";
-                    // res.data = results[0].user_role;
+                    res.data = results[0].user_role;
                 }
                 else {
                     res.code = "402";

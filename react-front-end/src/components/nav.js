@@ -62,7 +62,7 @@ class Nav extends Component {
 
           if(data.status==201){
         console.log("after the registration is complete");
-            this.successshowAlert("you have succesfully registered");
+            this.successshowAlert("You have succesfully registered");
         }
         else{
               console.log(data);
@@ -86,6 +86,7 @@ class Nav extends Component {
                 console.log("User logged out");
                 this.successshowAlert(data.value);
                 this.props.userprofile.isLoggedIn=false;
+                this.props.history.push('/');
 
             }
         })
@@ -123,9 +124,7 @@ class Nav extends Component {
     }
 //****************************************************
 loginButton(){
-      console.log("I am inside the loginButton");
-      console.log(this.state.password);
-    console.log("+++++++++");
+
       //console.log(regex.test("smcool100@gmail.com"));
      var payload = {
         "email" :this.state.email,
@@ -135,11 +134,18 @@ loginButton(){
      API.doLogin(payload).then((data)=>{
         //console.log(data);
         if(data.status===201){
-      
-            this.successshowAlert("you have succesfully registered");
+
+            this.successshowAlert("Login Success");
             //this.props.history.push('/');
+
             this.props.userprofile.isLoggedIn = true;
-            window.location.reload();
+
+            if(data.user_role=="USER")
+                window.location.reload();
+            else if(data.user_role=="ADMIN")
+                window.location.reload();
+                this.props.history.push('/admin');
+
            // this.props.history.push(this.props.location.pathname); 
           //  console.log("Before getting in the signin reducer  "+ this.props.userprofile.isLoggedIn)
        // this.props.signIn(data);
