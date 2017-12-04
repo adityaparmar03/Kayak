@@ -27,7 +27,8 @@ class CarBooking extends Component {
            zipcode:"",
            phonenumber:"",
            imgpath:"",
-           creditcard:""
+           creditcard:"",
+           visible:'visible'
         }
      }
     componentWillMount(){
@@ -213,6 +214,9 @@ class CarBooking extends Component {
               if (res.status == 200) {
                   console.log("Success booking the Car!");
                   this.successshowAlert("Booking done successfully.");
+                  this.setState({
+                      visible:'hidden'
+                  })
                   console.log("Response is " + res);
               }else if (res.status == 402) {
                   console.log("Error booking the Car!");
@@ -481,7 +485,8 @@ class CarBooking extends Component {
 
                                                     </div>
                                                 </div>
-                            <button className="btn btn-default btn-lg btn-block" onClick={()=>this.handlePay()}>Pay</button>
+                            <button className="btn btn-default btn-lg btn-block" style={{visibility:this.state.visible}}
+                             onClick={()=>this.handlePay()}>Pay</button>
                           </div>
                         </div>
 
