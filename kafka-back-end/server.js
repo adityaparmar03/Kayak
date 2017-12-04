@@ -287,6 +287,30 @@ consumer.on('message', function (message) {
             });
             break;
 
+        case 'gethotellist':
+            hotel.getHotelList(body, function(err,res){
+
+                if(err)
+                    console.log(err);
+                else
+                    console.log(res);
+                response(data,res);
+                return;
+            });
+            break;
+
+        case 'deletehotel':
+            hotel.deleteHotel(body, function(err,res){
+
+                if(err)
+                    console.log(err);
+                else
+                    console.log(res);
+                response(data,res);
+                return;
+            });
+            break;
+
         case 'searchhistory':
             user.searchHistory(body, function(err,res){
 

@@ -22,7 +22,8 @@ import cities from '../constants/cities'
 
 class Caradd extends Component {
 
-    state = {
+
+        state = {
         carid: '',
         cartype: '',
         carmodel: '',

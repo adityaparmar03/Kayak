@@ -194,6 +194,101 @@ function addHotel(msg, callback) {
 
 }
 
+
+
+function getHotelList(msg, callback) {
+
+    var getModel="select model from vendors where servicetype='hotel' and email="+"'"+msg.email+"'";
+    mysql.fetchData(function(err,results){
+        if(err){
+            throw err;
+        }
+        else
+        {
+            console.log(results);
+            if(results.length > 0){
+
+
+                var hotel = require('../models/hotel/' + results[0].model);
+
+
+                var res = {};
+                hotel.find(function (err, hotels) {
+
+                    if(err){
+                        console.log("Error");
+                    }
+                    else{
+
+                        console.log("Hotel List:", hotels)
+                        res.code = "200";
+                        res.value = hotel;
+                        callback(null, res);
+
+                    }
+                });
+
+            }
+            else {
+                res.code = "401";
+
+                callback(null, res);
+            }
+        }
+    },getModel);
+
+
+}
+
+
+
+function deleteHotel(msg, callback) {
+
+    var getModel="select model from vendors where servicetype='hotel' and email="+"'"+msg.email+"'";
+    mysql.fetchData(function(err,results){
+        if(err){
+            throw err;
+        }
+        else
+        {
+            console.log(results);
+            if(results.length > 0){
+
+
+                var flight = require('../models/hotel/' + results[0].model);
+
+
+                var res = {};
+                flight.remove({'_id':msg.id},function (err, hotels) {
+
+                    if(err){
+                        console.log("Error");
+                    }
+                    else{
+
+
+                        res.code = "200";
+                        res.value = hotels;
+                        callback(null, res);
+
+                    }
+                });
+
+            }
+            else {
+                res.code = "401";
+
+                callback(null, res);
+            }
+        }
+    },getModel);
+
+
+}
+
+
+exports.getHotelList=getHotelList;
+exports.deleteHotel=deleteHotel;
 exports.addHotel=addHotel;
 exports.bookHotel=bookHotel;
 exports.searchHotels=searchHotels;

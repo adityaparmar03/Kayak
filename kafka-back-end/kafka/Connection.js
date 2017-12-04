@@ -39,9 +39,10 @@ function ConnectionProvider() {
                     {topic :'addflight',partition :0},
                     {topic :'getflightlist',partition :0},
                     {topic :'deleteflight',partition :0},
+                    {topic :'gethotellist',partition :0},
+                    {topic :'deletehotel',partition :0},
                     {topic :'getcarlist',partition :0},
                     {topic :'deletecar',partition :0},
-
                 {topic :'get_chart_req',partition :0},
                     {topic:'upload',partition:0}
                  ]);
