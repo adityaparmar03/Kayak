@@ -283,7 +283,7 @@ class Vendoradd extends Component {
                                     <tr>
                                         <th>FlightID</th>
                                         <th>operator</th>
-                                        <th><i className="fa fa-trash fa-2x" onClick={()=>this.deleteFlight(flight._id)}></i></th>
+                                        <th><i className="fa fa-trash fa-2x" {/*onClick={()=>this.deleteFlight(flight._id)}*/}></i></th>
                                     </tr>
 
                                 
@@ -311,7 +311,7 @@ class Vendoradd extends Component {
                                     <tr>
                                         <th>FlightID</th>
                                         <th>operator</th>
-                                        <th><i className="fa fa-trash fa-2x" onClick={()=>this.deleteHotel(hotel._id)}></i></th>
+                                        <th><i className="fa fa-trash fa-2x" {/*onClick={()=>this.deleteHotel(hotel._id)}*/}></i></th>
                                     </tr>
 
                                 
@@ -343,7 +343,7 @@ class Vendoradd extends Component {
                                     <tr>
                                         <th>Car ID</th>
                                         <th>Car Name</th>
-                                        <th><i className="fa fa-trash fa-2x" onClick={()=>this.deleteCar(car._id)}></i></th>
+                                        <th><i className="fa fa-trash fa-2x" {/*onClick={()=>this.deleteCar(car._id)*/}}></i></th>
                                     </tr>
 
                                 
