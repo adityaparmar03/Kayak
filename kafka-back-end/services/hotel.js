@@ -1,5 +1,6 @@
 
 var mysql = require('../models/mysql');
+var ObjectId = require('mongodb').ObjectId;
 
 
 // Search for all hotels on the basis of city, state and room type
@@ -251,15 +252,16 @@ function deleteHotel(msg, callback) {
         }
         else
         {
+            var res = {};
             console.log(results);
             if(results.length > 0){
 
 
-                var flight = require('../models/hotel/' + results[0].model);
+                var hotel = require('../models/hotel/' + results[0].model);
 
 
-                var res = {};
-                flight.remove({'_id':msg.id},function (err, hotels) {
+
+                hotel.remove({'_id':new ObjectId(msg.id)},function (err, hotels) {
 
                     if(err){
                         console.log("Error");

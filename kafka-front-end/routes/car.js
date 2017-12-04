@@ -129,7 +129,7 @@ router.post('/deletecar', function (req, res) {
     console.log(req.body);
 
     var reqObject = {
-        email : req.session.email,
+        email : "mmt@gmail.com",
         id : req.body.id
     }
     kafka.make_request("deletecar", reqObject, function(err,results){

@@ -1,5 +1,5 @@
 var mysql = require('../models/mysql');
-
+var ObjectId = require('mongodb').ObjectId;
 // Search for all car on the basis of city, state and trip type
 function searchCars(msg, callback){
 
@@ -308,15 +308,16 @@ function deleteCar(msg, callback) {
         }
         else
         {
+            var res = {};
             console.log(results);
             if(results.length > 0){
 
 
-                var flight = require('../models/car/' + results[0].model);
+                var car = require('../models/car/' + results[0].model);
 
 
-                var res = {};
-                flight.remove({'_id':msg.id},function (err, cars) {
+
+                car.remove({'_id':new ObjectId(msg.id)},function (err, cars) {
 
                     if(err){
                         console.log("Error");

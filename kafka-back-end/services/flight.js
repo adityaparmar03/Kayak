@@ -2,6 +2,7 @@
 var _ = require("underscore");
 var mysql = require('../models/mysql');
 var asyncLoop = require('node-async-loop');
+var ObjectId = require('mongodb').ObjectId;
 
 
 // Search for all flightss on the basis of city, state and class
@@ -356,6 +357,7 @@ function addFlight(msg, callback) {
         }
         else
         {
+            var res = {};
             console.log('resultssssss..',results[0].model);
             console.log('payload.....',msg.flight);
 
@@ -379,7 +381,7 @@ function addFlight(msg, callback) {
                 newflight.flights= routeArr,
                 newflight.imageurl=msg.flight.imageurl
 
-                var res = {};
+
 
                 newflight.save(function (err) {
 
@@ -418,6 +420,7 @@ function getFlightList(msg, callback) {
         }
         else
         {
+            var res = {};
             console.log(results);
             if(results.length > 0){
 
@@ -425,7 +428,7 @@ function getFlightList(msg, callback) {
                 var flight = require('../models/flight/' + results[0].model);
 
 
-                var res = {};
+
                 flight.find(function (err, flights) {
 
                     if(err){
@@ -464,15 +467,16 @@ function deleteFlight(msg, callback) {
         }
         else
         {
-            console.log(results);
+
+            var res = {};
+           // console.log(results);
             if(results.length > 0){
 
 
                 var flight = require('../models/flight/' + results[0].model);
 
 
-                var res = {};
-                flight.remove({'_id':msg.id},function (err, flights) {
+                flight.remove({'_id':new ObjectId(msg.id)},function (err, flights) {
 
                     if(err){
                         console.log("Error");

@@ -18,9 +18,7 @@ class Vendoradd extends Component {
         flights:[]
     }
 
-    componentDidMount() {
-
-
+    getlist(){
         API.getHotelList()
             .then((res) => {
 
@@ -72,11 +70,12 @@ class Vendoradd extends Component {
                 }
             });
     }
-        
-             // API.doLogout().then((data)=>{
-             //        console.log("adf");
-             //    })
-             //
+    componentDidMount() {
+
+        this.getlist();
+
+    }
+
         componentWillMount(){
            API.checkSession().then((data)=>{
            
@@ -98,14 +97,14 @@ class Vendoradd extends Component {
         }
 
     deleteCar(id){
-
-        API.deleteCar(id)
+        var data={'id':id};
+        API.deleteCar(data)
             .then((res) => {
 
 
                 if (res.status == 200) {
 
-
+                    this.getlist();
                     console.log("Success...")
 
                 }else if (res.status == 401) {
@@ -116,14 +115,14 @@ class Vendoradd extends Component {
     }
 
     deleteHotel(id){
-
-        API.deleteHotel(id)
+        var data={'id':id};
+        API.deleteHotel(data)
             .then((res) => {
 
 
                 if (res.status == 200) {
 
-
+                    this.getlist();
                     console.log("Success...")
 
                 }else if (res.status == 401) {
@@ -135,7 +134,8 @@ class Vendoradd extends Component {
 
     deleteFlight(id){
 
-        API.deleteFlight(id)
+        var data={'id':id};
+        API.deleteFlight(data)
             .then((res) => {
 
 
@@ -157,7 +157,7 @@ class Vendoradd extends Component {
             <td>{index+1}</td>
             <td>{data._id}</td>
             <td>{data.operator}</td>
-            <td><i className="fa fa-trash fa-2x" onClick={(data)=>this.deleteFlight(data._id)}></i></td>
+            <td><i className="fa fa-trash fa-2x" onClick={()=>this.deleteFlight(data._id)}></i></td>
             </tr>
         )
     }
@@ -168,7 +168,7 @@ class Vendoradd extends Component {
                 <td>{index+1}</td>
                 <td>{data._id}</td>
                 <td>{data.name}</td>
-                <td><i className="fa fa-trash fa-2x" onClick={(data)=>this.deleteHotel(data._id)}></i></td>
+                <td><i className="fa fa-trash fa-2x" onClick={()=>this.deleteHotel(data._id)}></i></td>
             </tr>
         )
     }
@@ -179,7 +179,7 @@ class Vendoradd extends Component {
             <td>{index+1}</td>
             <td>{data._id}</td>
             <td>{data.carmodel}</td>
-            <td><i className="fa fa-trash fa-2x" onClick={(data)=>this.deleteCar(data._id)}></i></td>
+            <td><i className="fa fa-trash fa-2x" onClick={()=>this.deleteCar(data._id)}></i></td>
             </tr>
         )
     }
