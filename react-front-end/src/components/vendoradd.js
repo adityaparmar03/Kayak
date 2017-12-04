@@ -7,6 +7,7 @@ import Flightadd from "./flightadd"
 import * as API from '../api/API';
 import * as Actions from '../actions/action';
 import {connect} from 'react-redux';
+import Caradd from "./caradd";
 
 class Vendoradd extends Component {
 
@@ -50,13 +51,7 @@ class Vendoradd extends Component {
         <div>
 
             <div className="card" style={{marginTop:'10vh',marginBottom:'10vh',marginLeft:'10vw',marginRight:'10vw'}}>
-
-
-                <div className="avatar">
-                    <img src=""
-                         alt="avatar" className="mx-auto d-block rounded-circle img-responsive" width="200px"/>
-                </div>
-
+                
                 <div class="card-body">
                     <br/>
 
@@ -84,7 +79,7 @@ class Vendoradd extends Component {
 
                         <div className="tab-pane fade" id="trip" role="tabpanel">
 
-
+                        <Caradd/>
 
 
 
