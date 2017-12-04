@@ -194,7 +194,7 @@ timeConverter(UNIX_timestamp){
             }
         }
         if (this.state.creditcard != "") {
-            if (!this.creditcardCheck(this.state.phonenumber)) {
+            if (!this.creditcardCheck(this.state.creditcard)) {
                 flag = flag + 5;
                 this.errorshowAlert("Credit Card number not valid");
             }

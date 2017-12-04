@@ -21,17 +21,24 @@ class Carsearch extends Component {
 
         //textbox values
         city:"",
+        returncity:"",
         startdate:"",
         enddate:"",
 
         // UI State
 
         citysuggestion: [],
+        returncitysuggestion: [],
         travelerpopup:false,
         returndateenable:false
 
       };
        handleSubmit(){
+
+        if( this.state.startdate!="" && this.state.enddate!="" 
+        && this.state.city!="" &&(this.state.returncity!=""|| !this.state.returndateenable)){
+
+        
 
         var startdate =moment(this.state.startdate).month()+"/"+
         moment(this.state.startdate).date()+"/"+
@@ -47,18 +54,31 @@ class Carsearch extends Component {
 
         // call Api for search here......
         //API CALL
+        var returncity=""
+        var returnstate=""
+        
+        if(!this.state.returndateenable){
 
+            returncity=this.state.city.split(",")[0].trim()
+            returnstate=this.state.city.split(",")[1].trim()
+
+        }else{
+           
+            returncity=this.state.returncity.split(",")[0].trim()
+            returnstate=this.state.returncity.split(",")[1].trim()
+        }
 
            const payload = {
-               'pickupcity':this.state.city.split(",")[0].trim(),
-               'pickupstate':this.state.city.split(",")[1].trim(),
-               'dropoffcity':this.state.city.split(",")[0].trim(),
-               'dropoffstate':this.state.city.split(",")[1].trim(),
-               'startdate' : startdate,
-               'enddate' : enddate,
-               'searchtype': "car",
-               'dropoff' : this.state.returndateenable ? 'DIFFERENT-DROPOFF' : 'SAME-DROPOFF'
-            }
+            'pickupcity':this.state.city.split(",")[0].trim(),
+            'pickupstate':this.state.city.split(",")[1].trim(),
+            'dropoffcity': returncity,
+            'dropoffstate': returnstate,
+            'startdate' : startdate,
+            'enddate' : enddate,
+            'searchtype': "car",
+            'dropoff' : this.state.returndateenable ? 'DIFFERENT-DROPOFF' : 'SAME-DROPOFF'
+         }
+          
 
            API.checkSession().then((data)=>{
                console.log("inside the check session response");
@@ -94,6 +114,8 @@ class Carsearch extends Component {
            var date = new Date();
            this.clickHandler({userId:this.props.userprofile.email,sessionId:"sessionId",eventTime:this.timeConverter(date.getTime()),eventName:"CarSearchButton",pageId:"CarSearch",buttonId:"CarSearchButton",objectId:"CarSearchButton",pageNav:"CarSearch"})
            }
+
+        }
       }
 
       clickHandler(clickInfo){
@@ -141,6 +163,17 @@ class Carsearch extends Component {
         });
 
       };
+      handleUpdateReturnCityInput = (value,textbox) => {
+        
+                this.setState({"returncity":value})
+        
+                var citysuggestion = cities().map((item,i)=>item.city+", "+item.state)
+        
+                this.setState({
+                    returncitysuggestion: citysuggestion
+                });
+        
+              };
 
 
 
@@ -218,8 +251,8 @@ class Carsearch extends Component {
             />
             <AutoComplete
                     hintText="City"
-                    dataSource={this.state.citysuggestion}
-                    onUpdateInput={this.handleUpdateCityInput}
+                    dataSource={this.state.returncitysuggestion}
+                    onUpdateInput={this.handleUpdateReturnCityInput}
                     floatingLabelText="To"
                     maxSearchResults={5}
                     underlineShow={false}

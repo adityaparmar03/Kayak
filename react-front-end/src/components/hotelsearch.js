@@ -36,6 +36,11 @@ class Hotelsearch extends Component {
       };
        handleSubmit(){
 
+
+
+        if(this.state.city != "" && this.state.startdate!="" && this.state.enddate!=""){
+
+        
         var startdate =moment(this.state.startdate).month()+"/"+
         moment(this.state.startdate).date()+"/"+
         moment(this.state.startdate).year()
@@ -97,6 +102,10 @@ class Hotelsearch extends Component {
                var date = new Date();
                this.clickHandler({userId:this.props.userprofile.email,sessionId:"sessionId",eventTime:this.timeConverter(date.getTime()),eventName:"HotelSearchButton",pageId:"HotelSearch",buttonId:"HotelSearchButtonPay",objectId:"HotelSearchButton",pageNav:"HotelSearch"})
             }
+        }
+        else{
+            
+        }
             
 
        }

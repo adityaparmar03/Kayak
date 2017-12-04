@@ -34,6 +34,12 @@ class Flightsearch extends Component {
         returndateenable:true
       };
        handleSubmit(){
+           if(this.state.from!="" && this.state.to!="" && 
+             this.state.startdate!="" && (!this.state.returndateenable || this.state.enddate!="") &&
+             this.state.traveler!=""  &&  this.state.class!=""
+            ){
+
+            
 
               var startdate =moment(this.state.startdate).month()+"/"+
               moment(this.state.startdate).date()+"/"+
@@ -107,6 +113,10 @@ class Flightsearch extends Component {
          var date = new Date();
          this.clickHandler({userId:this.props.userprofile.email,sessionId:"sessionId",eventTime:this.timeConverter(date.getTime()),eventName:"FlightSearchButton",pageId:"FlightSearch",buttonId:"FlightSearchButton",objectId:"FlightSearchButton",pageNav:"FlightSearch"})
          }
+        }
+        else{
+        
+        }
        }
     
     clickHandler(clickInfo){
