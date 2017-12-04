@@ -6,6 +6,9 @@ DROP TABLE IF EXISTS `CART`;
 DROP TABLE IF EXISTS `USER_ACTIVITY`;
 DROP TABLE IF EXISTS `vendors`;
 DROP TABLE IF EXISTS `USER`;
+DROP TABLE IF EXISTS `searchhistory`;
+
+
 
 
 CREATE TABLE `USER` (
@@ -13,7 +16,7 @@ CREATE TABLE `USER` (
   `password` varchar(45) NOT NULL,
   `first_name` varchar(45) DEFAULT '',
   `last_name` varchar(45) DEFAULT '',
-  `user_role` enum('USER','ADMIN') DEFAULT 'USER',
+  `user_role` enum('USER','ADMIN', 'VENDOR') DEFAULT 'USER',
   `street_address` varchar(90) DEFAULT '',
   `city` varchar(45) default '',
   `state` varchar(45)default '',
@@ -143,8 +146,23 @@ CREATE TABLE `vendors` (
   `vendorname` varchar(50) DEFAULT NULL,
   `servicetype` varchar(50) DEFAULT NULL,
   `vendorapi` varchar(255) DEFAULT NULL,
+  `model` varchar(255) ,
+  `email` varchar(255) ,
   PRIMARY KEY (`vendorId`)
 ) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=latin1;
+
+
+
+  INSERT INTO `vendors` VALUES (1,'MMT','car','http://localhost:3001/car/getcars?vendor=MmtCars', 'mmt@gmail.com', 'MmtCars');
+  INSERT INTO `vendors` VALUES (2, 'Cleartrip','car','http://localhost:3001/car/getcars?vendor=CleartripCars', 'cct@gmail.com','CleartripCars');
+  INSERT INTO `vendors` VALUES (3,'Alamo','car','http://localhost:3001/car/getcars?vendor=AlamoCars', 'ac@gmail.com', 'AlamoCars');
+  INSERT INTO `vendors` VALUES (4,'MMT','hotel','http://localhost:3001/hotel/gethotels?vendor=MmtHotels', 'mmt@gmail.com',  'MmtHotels');
+  INSERT INTO `vendors` VALUES (5,'Cleartrip','hotel','http://localhost:3001/hotel/gethotels?vendor=CleartripHotels', 'cct@gmail.com', 'CleartripHotels' );
+  INSERT INTO `vendors` VALUES (6,'TripAdvisor','hotel','http://localhost:3001/hotel/gethotels?vendor=TripAdvisorHotels', 'triad@gmail.com', 'TripAdvisorHotels');
+  INSERT INTO `vendors` VALUES (7,'MMT','flight','http://localhost:3001/flight/getflights?vendor=MmtFlights', 'mmt@gmail.com', 'MmtFlights');
+  INSERT INTO `vendors` VALUES (8,'Cleartrip','flight','http://localhost:3001/flight/getflights?vendor=CleartripFlights', 'cct@gmail.com', 'CleartripFlights');
+  INSERT INTO `vendors` VALUES (9,'Expedia','flight','http://localhost:3001/flight/getflights?vendor=ExpediaFlights', 'expedia@gmail.com', 'ExpediaFlights');
+
 
 
 
@@ -163,7 +181,5 @@ create table searchhistory (
   );
 
 LOCK TABLES `vendors` WRITE;
-
-INSERT INTO `vendors` VALUES (1,'MMT','car','http://localhost:3001/car/getcars?vendor=MmtCars'),(2,'Cleartrip','car','http://localhost:3001/car/getcars?vendor=CleartripCars'),(3,'Alamo','car','http://localhost:3001/car/getcars?vendor=AlamoCars'),(4,'MMT','hotel','http://localhost:3001/hotel/gethotels?vendor=MmtHotels'),(5,'Cleartrip','hotel','http://localhost:3001/hotel/gethotels?vendor=CleartripHotels'),(6,'TripAdvisor','hotel','http://localhost:3001/hotel/gethotels?vendor=TripAdvisorHotels'),(7,'MMT','flight','http://localhost:3001/flight/getflights?vendor=MmtFlights'),(8,'Cleartrip','flight','http://localhost:3001/flight/getflights?vendor=CleartripFlights'),(9,'Expedia','flight','http://localhost:3001/flight/getflights?vendor=ExpediaFlights');
 
 UNLOCK TABLES;
