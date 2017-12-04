@@ -140,11 +140,13 @@ loginButton(){
 
             this.props.userprofile.isLoggedIn = true;
 
-            if(data.user_role=="USER")
+            if(data.user_role=="USER") {
                 window.location.reload();
-            else if(data.user_role=="ADMIN")
+            }
+            else if(data.user_role=="ADMIN") {
                 window.location.reload();
                 this.props.history.push('/admin');
+            }
 
            // this.props.history.push(this.props.location.pathname); 
           //  console.log("Before getting in the signin reducer  "+ this.props.userprofile.isLoggedIn)
