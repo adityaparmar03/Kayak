@@ -51,13 +51,13 @@ class AdminPanelUsers extends Component {
                                             </thead> 
                                             <tbody>
                                             {this.props.users.map((user, index)=>( <tr>
-                                                    <td>1</td>
-
-                                                    <td>{user.firstname}</td>
+                                                    <td>{index+1}</td>
+                                                {console.log(user)}
+                                                    <td>{user.first_name}</td>
                                                     <th>{user.email}</th>
                                                     <td>{user.phone}</td>
                                                     <td>{user.street_address}</td>
-                                                    <td>{user.zipcode}</td>
+                                                    <td>{user.zip_code}</td>
                                                   
                                                   
                                                     <td><i className="fa fa-eye fa-2x" data-toggle="modal" data-target="#usermodel" /></td>

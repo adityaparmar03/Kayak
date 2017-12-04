@@ -15,6 +15,11 @@ class Nav extends Component {
 
     componentWillMount(){
 
+
+     // API.doLogout().then((data)=>{
+     //        console.log("adf");
+     //    })
+     //
    API.checkSession().then((data)=>{
     console.log("inside the check session response");
     if(data.status===201){
@@ -23,7 +28,7 @@ class Nav extends Component {
         //this.successshowAlert(data.data.value);
         this.props.signIn(data);
     }
-   
+
    })
 
 

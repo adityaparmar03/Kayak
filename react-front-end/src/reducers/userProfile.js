@@ -23,12 +23,12 @@ function userProfile(state = initialstate, action) {
             console.log("Siddharth");
             console.log(action.payload.data);
             console.log("*****************");
-            // if(action.payload.data==="ADMIN"){
-            //     state= {
-            //         ...state,
-            //         isadmin:true
-            //     }
-            // }
+            if(action.payload.data.data[0]=="ADMIN"){
+                state= {
+                    ...state,
+                    isadmin:true
+                }
+            }
 
             // // if(action.payload.data[0].first_name=='null'){
             // //     action.payload.data[0].first_name="";

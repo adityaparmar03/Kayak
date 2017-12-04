@@ -110,7 +110,6 @@ class Profile extends Component {
             console.log(data);
             if(data.status==201){
                 this.props.bokingHistory(data);
-
             }
 
         })

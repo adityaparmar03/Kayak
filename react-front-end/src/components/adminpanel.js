@@ -23,6 +23,36 @@ class AdminPanel extends Component {
         }
      }
 
+
+    componentWillMount(){
+
+
+        // API.doLogout().then((data)=>{
+        //        console.log("adf");
+        //    })
+        //
+        API.checkSession().then((data)=>{
+            console.log("inside the check session response");
+            if(data.status===201){
+                console.log("user logged in ");
+                console.log(data.data.value);
+                //this.successshowAlert(data.data.value);
+                this.props.signIn(data);
+              if(!this.props.userprofile.isadmin){
+                  this.props.history.push('/')
+              }
+            }
+            else{
+                this.props.history.push('/')
+            }
+
+        })
+
+
+    }
+
+
+
      userdetails(){
 
         console.log("user info");
@@ -129,16 +159,28 @@ class AdminPanel extends Component {
     }
 }
 
+function mapStateToProps(reducerdata) {
+    // console.log(reducerdata);
+    const userprofile = reducerdata.userProfile;
+
+    console.log(userprofile);
+
+    return {userprofile};
+}
+
+
+
 
 function mapDispatchToProps(dispatch) {
     return {
 
         getBills : (data) => dispatch(Actions.getBills(data)),
         getVendors : (data) => dispatch(Actions.getVendors(data)),
-        allUsers : (data) => dispatch(Actions.allUsers(data))
+        allUsers : (data) => dispatch(Actions.allUsers(data)),
+        signIn : (data) => dispatch(Actions.signIn(data))
     };
 }
 
-export default  connect(null,mapDispatchToProps)(AdminPanel)
+export default  connect(mapStateToProps,mapDispatchToProps)(AdminPanel)
 
 

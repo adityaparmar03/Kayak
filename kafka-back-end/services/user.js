@@ -203,7 +203,7 @@ function bookinghistory(msg,callback){
     var car = [];
     var flight = [];
     var hotel = [];
-    var search = "select billing_id,booking_type,billing_amount,flight_trip_type,car_trip_type,room_type,billing_amount,billing_date,source_city,destination_city,booking_class from billing where user_email='"+msg.email+"';" ;
+    var search = "select * from billing where user_email='"+msg.email+"';" ;
 
     mysql.fetchData(function (err,results) {
         if(err){

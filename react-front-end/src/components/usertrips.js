@@ -5,6 +5,8 @@ import * as API from '../api/API';
 import {connect} from 'react-redux';
 import userBookings from "../reducers/userHistory";
 import * as Actions from '../actions/action';
+import index from "../reducers/index";
+import {flight, hotel} from "../constant_UI";
 
 class UserTrip extends Component {
 
@@ -56,118 +58,230 @@ class UserTrip extends Component {
             });
     }
 
-    displaytrips(data,index){
-      
-        if(data.type=="flight"){
+    displaysearchflight(data,index)
+    {
+        console.log("-----------");
+        console.log(data)
+        console.log("-----------");
+        //return(<div>flight</div>)
+        if(data.flight_trip_type == 'One-Way'){
             return(
-                <div className="card" style={{padding:"2%"}}>
-                     <div className="row">
-                     <div className="col-sm-6">
-                     Hotel Name: 
-                     </div>
-                     <div className="col-sm-6">
-                     Address: 
-                     </div>
-                 </div>
-                 <br/>
-                 <div className="row">
-                     <div className="col-sm-6">
-                       Room Type:
-                     </div>
-                     <div className="col-sm-6">
-                       No of Rooms:
-                     </div>
+                <div>
+                <div className="card-header deep-orange lighten-1 white-text">
+                    Hotel Bookings
+                </div>
+                <div className="card-body">
+                    <div className="row">
+                        <div className="col-sm-6">
+                            Flight Operator: {data.target_name}
+                        </div>
+                        <div className="col-sm-6">
+                            Source: {data.source_city}
+                        </div>
+                    </div>
+                    <br/>
+                    <div className="row">
+                        <div className="col-sm-6">
+                            Booking Class: {data.booking_class}
+                        </div>
+                        <div className="col-sm-6">
 
-                 </div>
-                 <br/>
-                 <div className="row">
-                     <div className="col-sm-6">
-                       Stay: 
-                     </div>
-                     <div className="col-sm-6">
-                       Total: $
-                   </div>
-                 </div> 
-                </div> 
+                            Destination: {data.destination_city}
+                        </div>
+
+                    </div>
+
+                    <br/>
+                    <div className="row">
+                        <div className="col-sm-6">
+                            Total Price: ${data.billing_amount}
+                        </div>
+                        <div className="col-sm-6">
+                            Trip Type: {data.flight_trip_type}
+                        </div>
+                    </div>
+                    <br/>
+                    <div className="row">
+
+                        <div className="col-sm-6">
+
+                        </div>
+                    </div>
+                </div>
+                </div>
             )
-                
-        }
-        else if(data.type=="hotel"){
+        }else{
             return(
-                <div className="card" style={{padding:"2%"}}>
-                     <div className="row">
-                     <div className="col-sm-6">
-                      : 
-                     </div>
-                     <div className="col-sm-6">
-                     Address: 
-                     </div>
-                 </div>
-                 <br/>
-                 <div className="row">
-                     <div className="col-sm-6">
-                       From :
-                     </div>
-                     <div className="col-sm-6">
-                       No of Rooms:
-                     </div>
+                <div>
+                    <div className="card-header deep-orange lighten-1 white-text">
+                        Hotel Bookings
+                    </div>
+                <div className="card-body">
+                    <div className="row">
+                        <div className="col-sm-6">
+                            Flight Operator: {data.target_name}
+                        </div>
+                        <div className="col-sm-6">
+                            Source: {data.return_source_airport}
+                        </div>
+                    </div>
+                    <br/>
+                    <div className="row">
+                        <div className="col-sm-6">
+                            Booking Class: {data.booking_class}
+                        </div>
+                        <div className="col-sm-6">
 
-                 </div>
-                 <br/>
-                 <div className="row">
-                     <div className="col-sm-6">
-                       Stay: 
-                     </div>
-                     <div className="col-sm-6">
-                       Total: $
-                   </div>
-                 </div> 
-                </div> 
+                            Destination: {data.destination_city}
+                        </div>
+
+                    </div>
+                    <br/>
+                    <div className="row">
+                        <div className="col-sm-6">
+                            Return Flight Operator: {data.target_name}
+                        </div>
+                        <div className="col-sm-6">
+                            Return Flight Source: {data.return_source_airport}
+                        </div>
+                    </div>
+                    <br/>
+                    <div className="row">
+                        <div className="col-sm-6">
+                            Return Flight Booking Class: {data.booking_class}
+                        </div>
+                        <div className="col-sm-6">
+
+                            Return Flight Destination: {data.destination_city}
+                        </div>
+
+                    </div>
+                    <br/>
+                    <div className="row">
+                        <div className="col-sm-6">
+                            Total Price: {data.billing_amount}
+                        </div>
+                        <div className="col-sm-6">
+                            Trip Type: {data.flight_trip_type}
+                        </div>
+                    </div>
+                    <br/>
+                    <div className="row">
+                        <div className="col-sm-6">
+
+                        </div>
+                        <div className="col-sm-6">
+
+                        </div>
+                    </div>
+                </div>
+                </div>
+
             )
         }
-        else{
-            return(
-                <div className="card" style={{padding:"2%"}}>
-                     <div className="row">
-                     <div className="col-sm-6">
-                      Car 
-                     </div>
-                     <div className="col-sm-6">
-                      Pick up: 
-                     </div>
-                 </div>
-                 <br/>
-                 <div className="row">
-                     <div className="col-sm-6">
-                        Pick-up:
-                     </div>
-                     <div className="col-sm-6">
-                        Drop-off:
-                     </div>
 
-                 </div>
-                 <br/>
-                 <div className="row">
-                     <div className="col-sm-6">
-                       Date: 
-                     </div>
-                     <div className="col-sm-6">
-                       Total: $
-                   </div>
-                 </div> 
-                </div> 
-            )
-        }
     }
+
+
+    displaysearchcar(data,index)
+    {
+        console.log("-----------");
+        console.log(data)
+        console.log("-----------");
+
+        return(
+            <div>
+            <div style={{padding:'2%',paddingLeft:'10%',paddingRight:'10%'}}>
+                <div className="card">
+                    <div className="card-header deep-orange lighten-1 white-text">
+                   Car Bookings
+                </div>
+                <div className="card-body">
+                <div className="row">
+                <div className="col-sm-6">
+                    Car: {data.target_name}
+                </div>
+                <div className="col-sm-6">
+                    Address: {data.destination_city}
+                </div>
+            </div>
+            <br/>
+            <div className="row">
+                <div className="col-sm-6">
+                    Car Type: {data.car_type}
+                </div>
+                <div className="col-sm-6">
+                    Drop Off Address: {data.destination_street}
+                </div>
+
+            </div>
+            <br/>
+            <div className="row">
+
+                <div className="col-sm-6">
+                    Total Price : ${data.billing_amount}
+                </div>
+            </div>
+                </div>
+        </div>
+
+            </div>
+            </div>
+        )
+    }
+
+    displaysearchhotel(data,index)
+    {
+
+        console.log(data);
+       // return(<div>hello</div>);
+       return(
+           <div>
+           <div className="card-header deep-orange lighten-1 white-text">
+               Hotel Bookings
+           </div>
+           <div className="card-body">
+        <div className="row">
+        <div className="col-sm-6">
+        Hotel Name: {data.target_name}
+    </div>
+        <div className="col-sm-6">
+            Address: {data.source_street}
+        </div>
+    </div>
+        <br/>
+        <div className="row">
+            <div className="col-sm-6">
+                Room Type: {data.room_type}
+            </div>
+            <div className="col-sm-6">
+                No of Rooms: {data.target_count}
+            </div>
+
+        </div>
+        <br/>
+        <div className="row">
+            <div className="col-sm-6">
+                Total: $ {data.billing_amount}
+            </div>
+        </div>
+    </div>
+    </div>
+          )
+
+
+    }
+
+
+
 
     render(){
         return(
             <div>
 
-
-                   {this.state.data.map(this.displaytrips)}
-
-                    
+                {this.props.bookingHistoryList.carbooking.map(this.displaysearchcar)}
+                {this.props.bookingHistoryList.flightbooking.map(this.displaysearchflight)}
+                {this.props.bookingHistoryList.hotelbooking.map(this.displaysearchhotel)}
 
 
             </div>
@@ -178,9 +292,7 @@ class UserTrip extends Component {
 function mapStateToProps(reducerdata) {
     // console.log(reducerdata);
     const bookingHistoryList = reducerdata.userHistory;
-
-    console.log(bookingHistoryList);
-
+   // console.log("----",bookingHistoryList.carbooking)
     return {bookingHistoryList};
 }
 
