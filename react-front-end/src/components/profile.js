@@ -60,6 +60,11 @@ class Profile extends Component {
         return isphone;
     }
 
+    creditcardCheck(str) {
+        var cc = /^\d{16}$/.test(str);
+        return cc;
+    }
+
     //********************
 
 
@@ -69,6 +74,7 @@ class Profile extends Component {
          // API.doLogout().then((data)=>{
             //     console.log("adf");
             // })
+      
 
         console.log("willmountcalling");
         API.checkSession().then((data)=>{
@@ -185,6 +191,12 @@ timeConverter(UNIX_timestamp){
             if (!this.telephoneCheck(this.state.phonenumber)) {
                 flag = flag + 5;
                 this.errorshowAlert("Phone number not valid");
+            }
+        }
+        if (this.state.creditcard != "") {
+            if (!this.creditcardCheck(this.state.phonenumber)) {
+                flag = flag + 5;
+                this.errorshowAlert("Credit Card number not valid");
             }
         }
 
@@ -353,7 +365,7 @@ timeConverter(UNIX_timestamp){
                                         </div>
                                 </div>
                                 <div className="row">
-                                        <div className="col-sm-8">
+                                        <div className="col-sm-4">
                                         <div className="md-form">
                                         <i className="fa fa-map-marker prefix"></i>
                                        
@@ -383,8 +395,6 @@ timeConverter(UNIX_timestamp){
                                         </div>
 
                                         </div>
-                                </div>
-                                <div className="row">
                                         <div className="col-sm-4">
                                         <div className="md-form form-group">
                                         <i className="fa fa-credit-card-alt prefix"></i>
@@ -399,17 +409,8 @@ timeConverter(UNIX_timestamp){
                                         </div>
 
                                         </div>
-                                        <div className="col-sm-4">
-
-
-                                        </div>
-                                        <div className="col-sm-4">
-
-
-                                        </div>
                                 </div>
-                              
-                                
+                           
                                 
                                 <div className="md-form">
                                     <i className="fa fa-file prefix"></i>

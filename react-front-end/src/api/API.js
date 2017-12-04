@@ -487,3 +487,4 @@ export const getChart = (payload) =>
         console.log("This is an API error");
         return error;
     });
+    

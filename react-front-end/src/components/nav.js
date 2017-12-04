@@ -21,10 +21,10 @@ class Nav extends Component {
      //    })
      //
    API.checkSession().then((data)=>{
-    console.log("inside the check session response");
+   
     if(data.status===201){
-        console.log("user logged in ");
-        console.log(data.data.value);
+        
+    
         //this.successshowAlert(data.data.value);
         this.props.signIn(data);
     }
@@ -45,24 +45,19 @@ class Nav extends Component {
     };
 //********************************************************
     registerButton() {
-        console.log("I am inside the registerButton");
-        console.log(this.state.password);
-        console.log(this.state.repeatpassword);
+       
         var flag = 0;
         if (this.state.password === this.state.repeatpassword && this.state.email != null) {
-            console.log("-------"+flag+"------");
-            console.log("+++++++++");
+            
             var payload = {
                 "email": this.state.email,
                 "password": this.state.password
             }
-            console.log("*******");
-            console.log(this.state);
-            console.log("*******");
+           
 
             if (this.validateZipCode(this.state.email)) {
                 flag = flag + 3;
-                console.log("-------"+flag+"------");
+                
             }
 
 
