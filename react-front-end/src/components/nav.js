@@ -314,7 +314,7 @@ class Nav extends Component {
                         <div className="modal-body mb-1">
                             <div className="md-form form-sm">
                                 <i className="fa fa-envelope prefix"></i>
-                                <input type="email" id="form22" className="form-control validate"
+                                <input type="email" id="form22" placeholder="Email" className="form-control validate"
                                        value = {this.state.email}
                                  onChange={(event) => {
                                     this.setState({
@@ -322,12 +322,12 @@ class Nav extends Component {
                                     });
                                 }}/>
 
-                                <label htmlFor="form22">Your email</label>
+
                             </div>
 
                             <div className="md-form form-sm">
                                 <i className="fa fa-lock prefix"></i>
-                                <input type="password" id="form23" className="form-control validate"
+                                <input type="password" id="form23" placeholder="password" className="form-control validate"
                                 value = {this.state.password}
                                  onChange={(event) => {
                                     this.setState({
@@ -335,7 +335,7 @@ class Nav extends Component {
                                     });
                                 }}/>
 
-                                <label htmlFor="form23">Your password</label>
+
                             </div>
                             <div className="text-center mt-2">
                                 <button className="btn btn-info"  data-dismiss={this.state.modalValue}

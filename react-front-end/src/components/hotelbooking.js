@@ -66,7 +66,7 @@ class HotelBooking extends Component {
                     phonenumber:this.props.userprofile.phonenumber,
                     imgpath:this.props.userprofile.imgpath,
                     creditcard:this.props.userprofile.creditcard,
-                    isLoggedin:'true'
+                    isLoggedin:this.state.userprofile.isLoggedIn
             })
         
             console.log("***********************");
@@ -108,6 +108,8 @@ class HotelBooking extends Component {
         
               payload.credit_card = credit_card;
               payload.travellerinfo = travellerinfo;
+                console.log(payload);
+
               API.bookHotel(payload)
                   .then((res) => {
                       console.log(res);
@@ -125,6 +127,8 @@ class HotelBooking extends Component {
                           this.errorshowAlert("Sorry, Something went wrong.");
                       }
                   });
+
+
                   if(this.props.userprofile.isLoggedIn){
                     var date = new Date();
                     this.clickHandler({userId:this.props.userprofile.email,sessionId:"sessionId",eventTime:this.timeConverter(date.getTime()),eventName:"HotelBooking",pageId:"HotelBooking",buttonId:"HotelBooking",objectId:"HotelBooking",pageNav:"HotelSearch HotelBooking"})
@@ -204,9 +208,6 @@ class HotelBooking extends Component {
                         this.setState({zipcode : value});
                         if(name==="creditcard")
                         this.setState({creditcard : value});
-                        
-                      
-                 
     }
 
     render(){

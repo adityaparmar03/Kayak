@@ -278,14 +278,14 @@ class Hotelsearch extends Component {
 
             </div>
             <div className="col-sm-2" style={{backgroundColor:'white',paddingLeft:"2%",paddingRight:"5%"}}>
-            <DatePicker hintText="Start Date" mode="landscape"
+            <DatePicker hintText="Check-In" mode="landscape"
             onChange={this.handleStartDate.bind(this)}
-            floatingLabelText="Start Date"/>
+            floatingLabelText="Check-In"/>
             </div>
             <div className="col-sm-2" style={{backgroundColor:'white',paddingLeft:"0%",paddingRight:"5%"}}>
-            <DatePicker hintText="Return Date" mode="landscape"
+            <DatePicker hintText="Check-Out" mode="landscape"
             onChange={this.handleEndDate.bind(this)}
-            floatingLabelText="Return Date"/>
+            floatingLabelText="Check-Out"/>
             </div>
             <div className="col-sm-3">
             <div style={{backgroundColor:'white',paddingLeft:"5%",paddingRight:"5%"}} onClick={()=>this.handlepopup()}>
