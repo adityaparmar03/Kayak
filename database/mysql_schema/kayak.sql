@@ -6,6 +6,9 @@ DROP TABLE IF EXISTS `CART`;
 DROP TABLE IF EXISTS `USER_ACTIVITY`;
 DROP TABLE IF EXISTS `vendors`;
 DROP TABLE IF EXISTS `USER`;
+DROP TABLE IF EXISTS `searchhistory`;
+
+
 
 
 CREATE TABLE `USER` (
@@ -158,7 +161,7 @@ CREATE TABLE `vendors` (
   INSERT INTO `vendors` VALUES (4,'MMT','hotel','http://localhost:3001/hotel/gethotels?vendor=MmtHotels', 'mmt@gmail.com',  'MmtHotels');
   INSERT INTO `vendors` VALUES (5,'Cleartrip','hotel','http://localhost:3001/hotel/gethotels?vendor=CleartripHotels', 'cct@gmail.com', 'CleartripHotels' );
   INSERT INTO `vendors` VALUES (6,'TripAdvisor','hotel','http://localhost:3001/hotel/gethotels?vendor=TripAdvisorHotels', 'triad@gmail.com', 'TripAdvisorHotels');
-  INSERT INTO `vendors` VALUES (7,'MMT','flight','http://localhost:3001/flight/getflights?vendor=MmtFlights', 'mmt@gmail.com', MmtFlights);
+  INSERT INTO `vendors` VALUES (7,'MMT','flight','http://localhost:3001/flight/getflights?vendor=MmtFlights', 'mmt@gmail.com', 'MmtFlights');
   INSERT INTO `vendors` VALUES (8,'Cleartrip','flight','http://localhost:3001/flight/getflights?vendor=CleartripFlights', 'cct@gmail.com', 'CleartripFlights');
   INSERT INTO `vendors` VALUES (9,'Expedia','flight','http://localhost:3001/flight/getflights?vendor=ExpediaFlights', 'expedia@gmail.com', 'ExpediaFlights');
 
