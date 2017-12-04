@@ -153,7 +153,7 @@ class Flightadd extends Component{
                 },
                 {
                     arrivaltime: this.state.arrivaltime1,
-                    arrivalday : this.state.departureday1,
+                    arrivalday : this.state.arrivalday1,
                     departuretime: this.state.departuretime1,
                     departureday : this.state.departureday1,
                     origin: {
@@ -353,7 +353,7 @@ class Flightadd extends Component{
                                Arrival :
                                <select  className="form-control" onChange={(event) => {
                                    this.setState({
-                                       departureday: event.target.value
+                                       arrivalday1: event.target.value
                                    });
                                }} >
                                    <option value="Mon">Mon</option>
@@ -390,7 +390,7 @@ class Flightadd extends Component{
                                Departure:
                                <select  className="form-control" onChange={(event) => {
                                    this.setState({
-                                       departureday: event.target.value
+                                       departureday1: event.target.value
                                    });
                                }} >
                                    <option value="Mon">Mon</option>

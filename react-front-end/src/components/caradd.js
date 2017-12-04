@@ -83,7 +83,27 @@ class Caradd extends Component {
             'dropoffaddress': {'street':'101 E San Fernando St.','city':this.state.from2.split(",")[0].trim(), 'state':this.state.from2.split(",")[1].trim(), 'country':'USA'}
         }
 
+
+
         console.log(payload);
+
+
+            API.addCar(payload)
+                .then((res) => {
+
+
+                    if (res.status == 200) {
+
+
+                        console.log("Success...")
+
+                    }else if (res.status == 401) {
+
+                        //  this.props.history.push('/');
+                    }
+                });
+
+
 
     }
 

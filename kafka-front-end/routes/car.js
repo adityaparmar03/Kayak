@@ -81,7 +81,7 @@ router.post('/addcar', function (req, res) {
     console.log(req.body);
 
     var reqObject = {
-        email : req.session.email,
+        email : "mmt@gmail.com",
         car : req.body
     }
     kafka.make_request("addcar", reqObject, function(err,results){
