@@ -1,0 +1,713 @@
+
+
+db.CleartripFlights.insert({
+  'flightId': 'CT201',
+  'operator': 'Jet Airways',
+  'imageurl': 'jetairways.jpg',
+  'class':[
+
+                {'type':'Economy','price':500, 'capacity':100},
+                 {'type':'First','price':700 , 'capacity':100},
+                  {'type':'Business','price':8000 , 'capacity':100}
+             ] ,
+     'flights':[
+                  {
+                     'arrivaltime': '16:00',
+                       'arrivalday' : 'Tue',
+                       'departuretime': '00:00',
+                       'departureday' : 'Mon',
+                     'origin': {'city':'San Francisco', 'state':'California', 'country':'USA', 'airport':'San Francisco International Airport'},
+                     'destination': {'city':'San Jose', 'state':'California', 'country':'USA', 'airport':'San Jose Airport'}
+
+                 },
+                 {
+                      'arrivaltime': '02:00',
+                     'arrivalday' : 'Wed',
+                     'departuretime': '18:00',
+                     'departureday' : 'Tue',
+                      'origin': {'city':'San Jose', 'state':'California', 'country':'USA', 'airport':'San Jose Airport'},
+                      'destination': {'city':'San Francisco', 'state':'California', 'country':'USA', 'airport':'San Francisco International Airport'}
+
+                  }
+           ]
+})
+
+
+
+
+db.CleartripFlights.insert({
+  'flightId': 'CT202',
+  'operator': 'Jet Airways',
+  'imageurl': 'jetairways.jpg',
+  'class':[
+
+                {'type':'Economy','price':100, 'capacity':100},
+                 {'type':'First','price':200 , 'capacity':100},
+                  {'type':'Business','price':3000 , 'capacity':100}
+             ] ,
+     'flights':[
+                  {
+                     'arrivaltime': '16:00',
+                       'arrivalday' : 'Wed',
+                       'departuretime': '00:00',
+                       'departureday' : 'Mon',
+                     'origin': {'city':'San Francisco', 'state':'California', 'country':'USA', 'airport':'San Francisco International Airport'},
+                     'destination': {'city':'San Jose', 'state':'California', 'country':'USA', 'airport':'San Jose Airport'}
+
+                 },
+                 {
+                      'arrivaltime': '02:00',
+                     'arrivalday' : 'Thu',
+                     'departuretime': '18:00',
+                     'departureday' : 'Wed',
+                      'origin': {'city':'San Jose', 'state':'California', 'country':'USA', 'airport':'San Jose Airport'},
+                      'destination': {'city':'San Francisco', 'state':'California', 'country':'USA', 'airport':'San Francisco International Airport'}
+
+                  }
+           ]
+})
+
+
+
+
+
+db.CleartripFlights.insert({
+  'flightId': 'CT203',
+  'operator': 'Jet Airways',
+  'imageurl': 'jetairways.jpg',
+  'class':[
+
+                {'type':'Economy','price':900, 'capacity':100},
+                 {'type':'First','price':3000 , 'capacity':100},
+                  {'type':'Business','price':10000 , 'capacity':100}
+             ] ,
+     'flights':[
+                  {
+                     'arrivaltime': '16:00',
+                       'arrivalday' : 'Thu',
+                       'departuretime': '00:00',
+                       'departureday' : 'Mon',
+                     'origin': {'city':'San Francisco', 'state':'California', 'country':'USA', 'airport':'San Francisco International Airport'},
+                     'destination': {'city':'San Jose', 'state':'California', 'country':'USA', 'airport':'San Jose Airport'}
+
+                 },
+                 {
+                      'arrivaltime': '02:00',
+                     'arrivalday' : 'Fri',
+                     'departuretime': '18:00',
+                     'departureday' : 'Thu',
+                      'origin': {'city':'San Jose', 'state':'California', 'country':'USA', 'airport':'San Jose Airport'},
+                      'destination': {'city':'San Francisco', 'state':'California', 'country':'USA', 'airport':'San Francisco International Airport'}
+
+                  }
+           ]
+})
+
+
+
+
+db.CleartripFlights.insert({
+  'flightId': 'CT204',
+  'operator': 'Jet Airways',
+  'imageurl': 'jetairways.jpg',
+  'class':[
+
+                {'type':'Economy','price':300, 'capacity':100},
+                 {'type':'First','price':600 , 'capacity':100},
+                  {'type':'Business','price':2000 , 'capacity':100}
+             ] ,
+     'flights':[
+                  {
+                     'arrivaltime': '16:00',
+                       'arrivalday' : 'Fri',
+                       'departuretime': '00:00',
+                       'departureday' : 'Mon',
+                     'origin': {'city':'San Francisco', 'state':'California', 'country':'USA', 'airport':'San Francisco International Airport'},
+                     'destination': {'city':'San Jose', 'state':'California', 'country':'USA', 'airport':'San Jose Airport'}
+
+                 },
+                 {
+                      'arrivaltime': '02:00',
+                     'arrivalday' : 'Sat',
+                     'departuretime': '18:00',
+                     'departureday' : 'Fri',
+                      'origin': {'city':'San Jose', 'state':'California', 'country':'USA', 'airport':'San Jose Airport'},
+                      'destination': {'city':'San Francisco', 'state':'California', 'country':'USA', 'airport':'San Francisco International Airport'}
+
+                  }
+           ]
+})
+
+
+
+
+db.CleartripFlights.insert({
+  'flightId': 'CT205',
+  'operator': 'Jet Airways',
+  'imageurl': 'jetairways.jpg',
+  'class':[
+
+                {'type':'Economy','price':400, 'capacity':100},
+                 {'type':'First','price':600 , 'capacity':100},
+                  {'type':'Business','price':1500 , 'capacity':100}
+             ] ,
+     'flights':[
+                  {
+                     'arrivaltime': '16:00',
+                       'arrivalday' : 'Sat',
+                       'departuretime': '00:00',
+                       'departureday' : 'Mon',
+                     'origin': {'city':'San Francisco', 'state':'California', 'country':'USA', 'airport':'San Francisco International Airport'},
+                     'destination': {'city':'San Jose', 'state':'California', 'country':'USA', 'airport':'San Jose Airport'}
+
+                 },
+                 {
+                      'arrivaltime': '02:00',
+                     'arrivalday' : 'Sun',
+                     'departuretime': '18:00',
+                     'departureday' : 'Sat',
+                      'origin': {'city':'San Jose', 'state':'California', 'country':'USA', 'airport':'San Jose Airport'},
+                      'destination': {'city':'San Francisco', 'state':'California', 'country':'USA', 'airport':'San Francisco International Airport'}
+
+                  }
+           ]
+})
+
+
+
+
+
+db.CleartripFlights.insert({
+  'flightId': 'CT206',
+  'operator': 'Jet Airways',
+  'imageurl': 'jetairways.jpg',
+  'class':[
+
+                {'type':'Economy','price':500, 'capacity':100},
+                 {'type':'First','price':800 , 'capacity':100},
+                  {'type':'Business','price':1200 , 'capacity':100}
+             ] ,
+     'flights':[
+                  {
+                     'arrivaltime': '16:00',
+                       'arrivalday' : 'Wed',
+                       'departuretime': '00:00',
+                       'departureday' : 'Tue',
+                     'origin': {'city':'San Francisco', 'state':'California', 'country':'USA', 'airport':'San Francisco International Airport'},
+                     'destination': {'city':'San Jose', 'state':'California', 'country':'USA', 'airport':'San Jose Airport'}
+
+                 },
+                 {
+                      'arrivaltime': '02:00',
+                     'arrivalday' : 'Thu',
+                     'departuretime': '18:00',
+                     'departureday' : 'Wed',
+                      'origin': {'city':'San Jose', 'state':'California', 'country':'USA', 'airport':'San Jose Airport'},
+                      'destination': {'city':'San Francisco', 'state':'California', 'country':'USA', 'airport':'San Francisco International Airport'}
+
+                  }
+           ]
+})
+
+
+
+
+db.CleartripFlights.insert({
+  'flightId': 'CT207',
+  'operator': 'Jet Airways',
+  'imageurl': 'jetairways.jpg',
+  'class':[
+
+                {'type':'Economy','price':600, 'capacity':100},
+                 {'type':'First','price':900 , 'capacity':100},
+                  {'type':'Business','price':1300 , 'capacity':100}
+             ] ,
+     'flights':[
+                  {
+                     'arrivaltime': '16:00',
+                       'arrivalday' : 'Thu',
+                       'departuretime': '00:00',
+                       'departureday' : 'Tue',
+                     'origin': {'city':'San Francisco', 'state':'California', 'country':'USA', 'airport':'San Francisco International Airport'},
+                     'destination': {'city':'San Jose', 'state':'California', 'country':'USA', 'airport':'San Jose Airport'}
+
+                 },
+                 {
+                      'arrivaltime': '02:00',
+                     'arrivalday' : 'Fri',
+                     'departuretime': '18:00',
+                     'departureday' : 'Thu',
+                      'origin': {'city':'San Jose', 'state':'California', 'country':'USA', 'airport':'San Jose Airport'},
+                      'destination': {'city':'San Francisco', 'state':'California', 'country':'USA', 'airport':'San Francisco International Airport'}
+
+                  }
+           ]
+})
+
+
+
+
+
+db.CleartripFlights.insert({
+  'flightId': 'CT208',
+  'operator': 'Jet Airways',
+  'imageurl': 'jetairways.jpg',
+  'class':[
+
+                {'type':'Economy','price':700, 'capacity':100},
+                 {'type':'First','price':1000 , 'capacity':100},
+                  {'type':'Business','price':1400 , 'capacity':100}
+             ] ,
+     'flights':[
+                  {
+                     'arrivaltime': '16:00',
+                       'arrivalday' : 'Fri',
+                       'departuretime': '00:00',
+                       'departureday' : 'Tue',
+                     'origin': {'city':'San Francisco', 'state':'California', 'country':'USA', 'airport':'San Francisco International Airport'},
+                     'destination': {'city':'San Jose', 'state':'California', 'country':'USA', 'airport':'San Jose Airport'}
+
+                 },
+                 {
+                      'arrivaltime': '02:00',
+                     'arrivalday' : 'Sat',
+                     'departuretime': '18:00',
+                     'departureday' : 'Fri',
+                      'origin': {'city':'San Jose', 'state':'California', 'country':'USA', 'airport':'San Jose Airport'},
+                      'destination': {'city':'San Francisco', 'state':'California', 'country':'USA', 'airport':'San Francisco International Airport'}
+
+                  }
+           ]
+})
+
+
+
+
+
+
+db.CleartripFlights.insert({
+  'flightId': 'CT209',
+  'operator': 'Jet Airways',
+  'imageurl': 'jetairways.jpg',
+  'class':[
+
+                {'type':'Economy','price':800, 'capacity':100},
+                 {'type':'First','price':1100 , 'capacity':100},
+                  {'type':'Business','price':1500 , 'capacity':100}
+             ] ,
+     'flights':[
+                  {
+                     'arrivaltime': '16:00',
+                       'arrivalday' : 'Sat',
+                       'departuretime': '00:00',
+                       'departureday' : 'Tue',
+                     'origin': {'city':'San Francisco', 'state':'California', 'country':'USA', 'airport':'San Francisco International Airport'},
+                     'destination': {'city':'San Jose', 'state':'California', 'country':'USA', 'airport':'San Jose Airport'}
+
+                 },
+                 {
+                      'arrivaltime': '02:00',
+                     'arrivalday' : 'Sun',
+                     'departuretime': '18:00',
+                     'departureday' : 'Sat',
+                      'origin': {'city':'San Jose', 'state':'California', 'country':'USA', 'airport':'San Jose Airport'},
+                      'destination': {'city':'San Francisco', 'state':'California', 'country':'USA', 'airport':'San Francisco International Airport'}
+
+                  }
+           ]
+})
+
+
+
+
+
+db.CleartripFlights.insert({
+  'flightId': 'CT210',
+  'operator': 'Jet Airways',
+  'imageurl': 'jetairways.jpg',
+  'class':[
+
+                {'type':'Economy','price':900, 'capacity':100},
+                 {'type':'First','price':1200 , 'capacity':100},
+                  {'type':'Business','price':1600 , 'capacity':100}
+             ] ,
+     'flights':[
+                  {
+                     'arrivaltime': '16:00',
+                       'arrivalday' : 'Sun',
+                       'departuretime': '00:00',
+                       'departureday' : 'Tue',
+                     'origin': {'city':'San Francisco', 'state':'California', 'country':'USA', 'airport':'San Francisco International Airport'},
+                     'destination': {'city':'San Jose', 'state':'California', 'country':'USA', 'airport':'San Jose Airport'}
+
+                 },
+                 {
+                      'arrivaltime': '02:00',
+                     'arrivalday' : 'Mon',
+                     'departuretime': '18:00',
+                     'departureday' : 'Sun',
+                      'origin': {'city':'San Jose', 'state':'California', 'country':'USA', 'airport':'San Jose Airport'},
+                      'destination': {'city':'San Francisco', 'state':'California', 'country':'USA', 'airport':'San Francisco International Airport'}
+
+                  }
+           ]
+})
+
+
+
+
+
+
+db.CleartripFlights.insert({
+  'flightId': 'CT211',
+  'operator': 'Jet Airways',
+  'imageurl': 'jetairways.jpg',
+  'class':[
+
+                {'type':'Economy','price':1000, 'capacity':100},
+                 {'type':'First','price':1300 , 'capacity':100},
+                  {'type':'Business','price':1700 , 'capacity':100}
+             ] ,
+     'flights':[
+                  {
+                     'arrivaltime': '16:00',
+                       'arrivalday' : 'Thu',
+                       'departuretime': '00:00',
+                       'departureday' : 'Wed',
+                     'origin': {'city':'San Francisco', 'state':'California', 'country':'USA', 'airport':'San Francisco International Airport'},
+                     'destination': {'city':'San Jose', 'state':'California', 'country':'USA', 'airport':'San Jose Airport'}
+
+                 },
+                 {
+                      'arrivaltime': '02:00',
+                     'arrivalday' : 'Fri',
+                     'departuretime': '18:00',
+                     'departureday' : 'Thu',
+                      'origin': {'city':'San Jose', 'state':'California', 'country':'USA', 'airport':'San Jose Airport'},
+                      'destination': {'city':'San Francisco', 'state':'California', 'country':'USA', 'airport':'San Francisco International Airport'}
+
+                  }
+           ]
+})
+
+
+
+
+
+db.CleartripFlights.insert({
+  'flightId': 'CT212',
+  'operator': 'Jet Airways',
+  'imageurl': 'jetairways.jpg',
+  'class':[
+
+                {'type':'Economy','price':1100, 'capacity':100},
+                 {'type':'First','price':1400 , 'capacity':100},
+                  {'type':'Business','price':1800 , 'capacity':100}
+             ] ,
+     'flights':[
+                  {
+                     'arrivaltime': '16:00',
+                       'arrivalday' : 'Fri',
+                       'departuretime': '00:00',
+                       'departureday' : 'Wed',
+                     'origin': {'city':'San Francisco', 'state':'California', 'country':'USA', 'airport':'San Francisco International Airport'},
+                     'destination': {'city':'San Jose', 'state':'California', 'country':'USA', 'airport':'San Jose Airport'}
+
+                 },
+                 {
+                      'arrivaltime': '02:00',
+                     'arrivalday' : 'Sat',
+                     'departuretime': '18:00',
+                     'departureday' : 'Fri',
+                      'origin': {'city':'San Jose', 'state':'California', 'country':'USA', 'airport':'San Jose Airport'},
+                      'destination': {'city':'San Francisco', 'state':'California', 'country':'USA', 'airport':'San Francisco International Airport'}
+
+                  }
+           ]
+})
+
+
+
+
+
+
+db.CleartripFlights.insert({
+  'flightId': 'CT213',
+  'operator': 'Jet Airways',
+  'imageurl': 'jetairways.jpg',
+  'class':[
+
+                {'type':'Economy','price':1200, 'capacity':100},
+                 {'type':'First','price':1500 , 'capacity':100},
+                  {'type':'Business','price':1900 , 'capacity':100}
+             ] ,
+     'flights':[
+                  {
+                     'arrivaltime': '16:00',
+                       'arrivalday' : 'Sat',
+                       'departuretime': '00:00',
+                       'departureday' : 'Wed',
+                     'origin': {'city':'San Francisco', 'state':'California', 'country':'USA', 'airport':'San Francisco International Airport'},
+                     'destination': {'city':'San Jose', 'state':'California', 'country':'USA', 'airport':'San Jose Airport'}
+
+                 },
+                 {
+                      'arrivaltime': '02:00',
+                     'arrivalday' : 'Sun',
+                     'departuretime': '18:00',
+                     'departureday' : 'Sat',
+                      'origin': {'city':'San Jose', 'state':'California', 'country':'USA', 'airport':'San Jose Airport'},
+                      'destination': {'city':'San Francisco', 'state':'California', 'country':'USA', 'airport':'San Francisco International Airport'}
+
+                  }
+           ]
+})
+
+
+
+
+
+
+db.CleartripFlights.insert({
+  'flightId': 'CT214',
+  'operator': 'Jet Airways',
+  'imageurl': 'jetairways.jpg',
+  'class':[
+
+                {'type':'Economy','price':1300, 'capacity':100},
+                 {'type':'First','price':1600 , 'capacity':100},
+                  {'type':'Business','price':1800 , 'capacity':100}
+             ] ,
+     'flights':[
+                  {
+                     'arrivaltime': '16:00',
+                       'arrivalday' : 'Sun',
+                       'departuretime': '00:00',
+                       'departureday' : 'Wed',
+                     'origin': {'city':'San Francisco', 'state':'California', 'country':'USA', 'airport':'San Francisco International Airport'},
+                     'destination': {'city':'San Jose', 'state':'California', 'country':'USA', 'airport':'San Jose Airport'}
+
+                 },
+                 {
+                      'arrivaltime': '02:00',
+                     'arrivalday' : 'Mon',
+                     'departuretime': '18:00',
+                     'departureday' : 'Sun',
+                      'origin': {'city':'San Jose', 'state':'California', 'country':'USA', 'airport':'San Jose Airport'},
+                      'destination': {'city':'San Francisco', 'state':'California', 'country':'USA', 'airport':'San Francisco International Airport'}
+
+                  }
+           ]
+})
+
+
+
+
+db.CleartripFlights.insert({
+  'flightId': 'CT215',
+  'operator': 'Jet Airways',
+  'imageurl': 'jetairways.jpg',
+  'class':[
+
+                {'type':'Economy','price':1400, 'capacity':100},
+                 {'type':'First','price':1700 , 'capacity':100},
+                  {'type':'Business','price':1900 , 'capacity':100}
+             ] ,
+     'flights':[
+                  {
+                     'arrivaltime': '16:00',
+                       'arrivalday' : 'Fri',
+                       'departuretime': '00:00',
+                       'departureday' : 'Thu',
+                     'origin': {'city':'San Francisco', 'state':'California', 'country':'USA', 'airport':'San Francisco International Airport'},
+                     'destination': {'city':'San Jose', 'state':'California', 'country':'USA', 'airport':'San Jose Airport'}
+
+                 },
+                 {
+                      'arrivaltime': '02:00',
+                     'arrivalday' : 'Sat',
+                     'departuretime': '18:00',
+                     'departureday' : 'Fri',
+                      'origin': {'city':'San Jose', 'state':'California', 'country':'USA', 'airport':'San Jose Airport'},
+                      'destination': {'city':'San Francisco', 'state':'California', 'country':'USA', 'airport':'San Francisco International Airport'}
+
+                  }
+           ]
+})
+
+
+db.CleartripFlights.insert({
+  'flightId': 'CT216',
+  'operator': 'Jet Airways',
+  'imageurl': 'jetairways.jpg',
+  'class':[
+
+                {'type':'Economy','price':1500, 'capacity':100},
+                 {'type':'First','price':1800 , 'capacity':100},
+                  {'type':'Business','price':2000 , 'capacity':100}
+             ] ,
+     'flights':[
+                  {
+                     'arrivaltime': '16:00',
+                       'arrivalday' : 'Sat',
+                       'departuretime': '00:00',
+                       'departureday' : 'Thu',
+                     'origin': {'city':'San Francisco', 'state':'California', 'country':'USA', 'airport':'San Francisco International Airport'},
+                     'destination': {'city':'San Jose', 'state':'California', 'country':'USA', 'airport':'San Jose Airport'}
+
+                 },
+                 {
+                      'arrivaltime': '02:00',
+                     'arrivalday' : 'Sun',
+                     'departuretime': '18:00',
+                     'departureday' : 'Sat',
+                      'origin': {'city':'San Jose', 'state':'California', 'country':'USA', 'airport':'San Jose Airport'},
+                      'destination': {'city':'San Francisco', 'state':'California', 'country':'USA', 'airport':'San Francisco International Airport'}
+
+                  }
+           ]
+})
+
+
+
+
+
+db.CleartripFlights.insert({
+  'flightId': 'CT217',
+  'operator': 'Jet Airways',
+  'imageurl': 'jetairways.jpg',
+  'class':[
+
+                {'type':'Economy','price':1600, 'capacity':100},
+                 {'type':'First','price':1900 , 'capacity':100},
+                  {'type':'Business','price':2100 , 'capacity':100}
+             ] ,
+     'flights':[
+                  {
+                     'arrivaltime': '16:00',
+                       'arrivalday' : 'Sun',
+                       'departuretime': '00:00',
+                       'departureday' : 'Thu',
+                     'origin': {'city':'San Francisco', 'state':'California', 'country':'USA', 'airport':'San Francisco International Airport'},
+                     'destination': {'city':'San Jose', 'state':'California', 'country':'USA', 'airport':'San Jose Airport'}
+
+                 },
+                 {
+                      'arrivaltime': '02:00',
+                     'arrivalday' : 'Mon',
+                     'departuretime': '18:00',
+                     'departureday' : 'Sun',
+                      'origin': {'city':'San Jose', 'state':'California', 'country':'USA', 'airport':'San Jose Airport'},
+                      'destination': {'city':'San Francisco', 'state':'California', 'country':'USA', 'airport':'San Francisco International Airport'}
+
+                  }
+           ]
+})
+
+
+
+
+
+db.CleartripFlights.insert({
+  'flightId': 'CT218',
+  'operator': 'Jet Airways',
+  'imageurl': 'jetairways.jpg',
+  'class':[
+
+                {'type':'Economy','price':1700, 'capacity':100},
+                 {'type':'First','price':2000 , 'capacity':100},
+                  {'type':'Business','price':2200 , 'capacity':100}
+             ] ,
+     'flights':[
+                  {
+                     'arrivaltime': '16:00',
+                       'arrivalday' : 'Sat',
+                       'departuretime': '00:00',
+                       'departureday' : 'Fri',
+                     'origin': {'city':'San Francisco', 'state':'California', 'country':'USA', 'airport':'San Francisco International Airport'},
+                     'destination': {'city':'San Jose', 'state':'California', 'country':'USA', 'airport':'San Jose Airport'}
+
+                 },
+                 {
+                      'arrivaltime': '02:00',
+                     'arrivalday' : 'Sun',
+                     'departuretime': '18:00',
+                     'departureday' : 'Sat',
+                      'origin': {'city':'San Jose', 'state':'California', 'country':'USA', 'airport':'San Jose Airport'},
+                      'destination': {'city':'San Francisco', 'state':'California', 'country':'USA', 'airport':'San Francisco International Airport'}
+
+                  }
+           ]
+})
+
+
+
+
+
+db.CleartripFlights.insert({
+  'flightId': 'CT219',
+  'operator': 'Jet Airways',
+  'imageurl': 'jetairways.jpg',
+  'class':[
+
+                {'type':'Economy','price':1800, 'capacity':100},
+                 {'type':'First','price':2100 , 'capacity':100},
+                  {'type':'Business','price':3200 , 'capacity':100}
+             ] ,
+     'flights':[
+                  {
+                     'arrivaltime': '16:00',
+                       'arrivalday' : 'Sun',
+                       'departuretime': '00:00',
+                       'departureday' : 'Fri',
+                     'origin': {'city':'San Francisco', 'state':'California', 'country':'USA', 'airport':'San Francisco International Airport'},
+                     'destination': {'city':'San Jose', 'state':'California', 'country':'USA', 'airport':'San Jose Airport'}
+
+                 },
+                 {
+                      'arrivaltime': '02:00',
+                     'arrivalday' : 'Mon',
+                     'departuretime': '18:00',
+                     'departureday' : 'Sun',
+                      'origin': {'city':'San Jose', 'state':'California', 'country':'USA', 'airport':'San Jose Airport'},
+                      'destination': {'city':'San Francisco', 'state':'California', 'country':'USA', 'airport':'San Francisco International Airport'}
+
+                  }
+           ]
+})
+
+
+
+
+
+db.CleartripFlights.insert({
+  'flightId': 'CT220',
+  'operator': 'Jet Airways',
+  'imageurl': 'jetairways.jpg',
+  'class':[
+
+                {'type':'Economy','price':1900, 'capacity':100},
+                 {'type':'First','price':2200 , 'capacity':100},
+                  {'type':'Business','price':2400 , 'capacity':100}
+             ] ,
+     'flights':[
+                  {
+                     'arrivaltime': '16:00',
+                       'arrivalday' : 'Sun',
+                       'departuretime': '00:00',
+                       'departureday' : 'Sat',
+                     'origin': {'city':'San Francisco', 'state':'California', 'country':'USA', 'airport':'San Francisco International Airport'},
+                     'destination': {'city':'San Jose', 'state':'California', 'country':'USA', 'airport':'San Jose Airport'}
+
+                 },
+                 {
+                      'arrivaltime': '02:00',
+                     'arrivalday' : 'Mon',
+                     'departuretime': '18:00',
+                     'departureday' : 'Sun',
+                      'origin': {'city':'San Jose', 'state':'California', 'country':'USA', 'airport':'San Jose Airport'},
+                      'destination': {'city':'San Francisco', 'state':'California', 'country':'USA', 'airport':'San Francisco International Airport'}
+
+                  }
+           ]
+})

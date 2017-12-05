@@ -1,0 +1,190 @@
+
+db.MmtCars.insert({
+'carId':'MMT201',
+'cartype':'Small',
+'carmodel':'BMW',
+'imageurl': 'BMW.png',
+'specification':'automatic',
+'pickupaddress': {'street':'1659 Airport Boulevard','city':'San Jose', 'state': 'California', 'country':'USA'},
+'dropoffaddress': {'street':'875 N 13th St','city':'San Francisco', 'state': 'California', 'country':'USA'},
+'dailyrent':100})
+
+db.MmtCars.insert({
+'carId':'MMT202',
+'cartype':'SUV',
+'carmodel':'BMW',
+'specification':'automatic',
+'imageurl': 'BMW.png',
+'pickupaddress': {'street':'875 N 13th St','city':'San Jose', 'state': 'California', 'country':'USA'},
+'dropoffaddress': {'street':'1659 Airport Boulevard','city':'San Francisco', 'state': 'California', 'country':'USA'},
+'dailyrent':150})
+
+db.MmtCars.insert({
+'carId':'MMT203',
+'cartype':'Small',
+'carmodel':'BMW',
+'imageurl': 'BMW.png',
+'specification':'automatic',
+'pickupaddress': {'street':'754 The Alameda','city':'San Jose', 'state': 'California', 'country':'USA'},
+'dropoffaddress': {'street':'2202 Olivegate Ln','city':'San Francisco', 'state': 'California', 'country':'USA'},
+'dailyrent':100})
+
+db.MmtCars.insert({
+'carId':'MMT204',
+'cartype':'SUV',
+'carmodel':'BMW',
+'specification':'automatic',
+'imageurl': 'BMW.png',
+'pickupaddress': {'street':'2202 Olivegate Ln','city':'San Jose', 'state': 'California', 'country':'USA'},
+'dropoffaddress': {'street':'754 The Alameda','city':'San Francisco', 'state': 'California', 'country':'USA'},
+'dailyrent':155})
+
+db.MmtCars.insert({
+'carId':'MMT205',
+'cartype':'Small',
+'carmodel':'BMW',
+'imageurl': 'BMW.png',
+'specification':'automatic',
+'pickupaddress': {'street':'567 Steven Creek Blvd','city':'San Jose', 'state': 'California', 'country':'USA'},
+'dropoffaddress': {'street':'7767 Coleman Drive','city':'San Francisco', 'state': 'California', 'country':'USA'},
+'dailyrent':105})
+
+
+db.MmtCars.insert({
+'carId':'MMT206',
+'cartype':'SUV',
+'carmodel':'BMW',
+'specification':'automatic',
+'imageurl': 'BMW.png',
+'pickupaddress': {'street':'567 Steven Creek Blvd','city':'San Jose', 'state': 'California', 'country':'USA'},
+'dropoffaddress': {'street':'7767 Coleman Drive','city':'San Francisco', 'state': 'California', 'country':'USA'},
+'dailyrent':105})
+
+
+db.CleartripCars.insert({
+'carId': 'CT201',
+'cartype':'Medium',
+'carmodel':'Audi',
+'imageurl': 'audi.png',
+'specification':'manual',
+'pickupaddress': {'street':'10 Skyport Dr','city':'San Jose', 'state': 'California', 'country':'USA'},
+'dropoffaddress': {'street':'3427 El Camino Real','city':'San Francisco', 'state': 'California', 'country':'USA'},
+'dailyrent':200})
+
+
+db.CleartripCars.insert({
+'carId': 'CT202',
+'cartype':'Luxury',
+'carmodel':'Audi',
+'imageurl': 'audi.png',
+'specification':'manual',
+'pickupaddress': {'street':'10 Skyport Dr','city':'San Jose', 'state': 'California', 'country':'USA'},
+'dropoffaddress': {'street':'3427 El Camino Real','city':'San Francisco', 'state': 'California', 'country':'USA'},
+'dailyrent':90})
+
+db.CleartripCars.insert({
+'carId': 'CT203',
+'cartype':'Medium',
+'carmodel':'Audi',
+'imageurl': 'audi.png',
+'specification':'manual',
+'pickupaddress': {'street':'282 Almaden Blvd','city':'San Jose', 'state': 'California', 'country':'USA'},
+'dropoffaddress': {'street':'754 The Alameda','city':'San Francisco', 'state': 'California', 'country':'USA'},
+'dailyrent':2000})
+
+db.CleartripCars.insert({
+'carId': 'CT204',
+'cartype':'Luxury',
+'carmodel':'Audi',
+'imageurl': 'audi.png',
+'specification':'manual',
+'pickupaddress': {'street':'282 Almaden Blvd','city':'San Jose', 'state': 'California', 'country':'USA'},
+'dropoffaddress': {'street':'754 The Alameda','city':'San Francisco', 'state': 'California', 'country':'USA'},
+'dailyrent':150})
+
+db.CleartripCars.insert({
+'carId': 'CT205',
+'cartype':'Medium',
+'carmodel':'Audi',
+'imageurl': 'audi.png',
+'specification':'manual',
+'pickupaddress': {'street':'456 American Drive','city':'San Jose', 'state': 'California', 'country':'USA'},
+'dropoffaddress': {'street':'345 Hacker Way','city':'San Francisco', 'state': 'California', 'country':'USA'},
+'dailyrent':250})
+
+
+db.CleartripCars.insert({
+'carId': 'CT206',
+'cartype':'Luxury',
+'carmodel':'Audi',
+'imageurl': 'audi.png',
+'specification':'manual',
+'pickupaddress': {'street':'456 American Drive','city':'San Jose', 'state': 'California', 'country':'USA'},
+'dropoffaddress': {'street':'345 Hacker Way','city':'San Francisco', 'state': 'California', 'country':'USA'},
+'dailyrent':195})
+
+
+db.AlamoCars.insert({
+'carId': 'AL201',
+'cartype':'Large',
+'carmodel':'Lexus',
+'imageurl': 'lexus.png',
+'specification':'manual',
+'pickupaddress': {'street':'2390 Harris Way','city':'San Jose', 'state': 'California', 'country':'USA'},
+'dropoffaddress': {'street':'5 Embarcadero Center','city':'San Francisco', 'state': 'California', 'country':'USA'},
+'dailyrent':200})
+
+
+db.AlamoCars.insert({
+'carId': 'AL202',
+'cartype':'Van',
+'carmodel':'Lexus',
+'imageurl': 'lexus.png',
+'specification':'manual',
+'pickupaddress': {'street':'5 Embarcadero Center','city':'San Jose', 'state': 'California', 'country':'USA'},
+'dropoffaddress': {'street':'2390 Harris Way','city':'San Francisco', 'state': 'California', 'country':'USA'},
+'dailyrent':230})
+
+
+db.AlamoCars.insert({
+'carId': 'AL203',
+'cartype':'Large',
+'carmodel':'Lexus',
+'imageurl': 'lexus.png',
+'specification':'manual',
+'pickupaddress': {'street':'1350 N 1st St','city':'San Jose', 'state': 'California', 'country':'USA'},
+'dropoffaddress': {'street':'678 Taco Drive','city':'San Francisco', 'state': 'California', 'country':'USA'},
+'dailyrent':205})
+
+
+db.AlamoCars.insert({
+'carId': 'AL204',
+'cartype':'Van',
+'carmodel':'Lexus',
+'imageurl': 'lexus.png',
+'specification':'manual',
+'pickupaddress': {'street':'678 Taco Drive','city':'San Jose', 'state': 'California', 'country':'USA'},
+'dropoffaddress': {'street':'1350 N 1st St','city':'San Francisco', 'state': 'California', 'country':'USA'},
+'dailyrent':130})
+
+
+db.AlamoCars.insert({
+'carId': 'AL205',
+'cartype':'Large',
+'carmodel':'Lexus',
+'imageurl': 'lexus.png',
+'specification':'manual',
+'pickupaddress': {'street':'777 XYZ Blvd','city':'San Jose', 'state': 'California', 'country':'USA'},
+'dropoffaddress': {'street':'2345 Google Drive','city':'San Francisco', 'state': 'California', 'country':'USA'},
+'dailyrent':250})
+
+
+db.AlamoCars.insert({
+'carId': 'AL206',
+'cartype':'Van',
+'carmodel':'Lexus',
+'imageurl': 'lexus.png',
+'specification':'manual',
+'pickupaddress': {'street':'2345 Google Drive','city':'San Jose', 'state': 'California', 'country':'USA'},
+'dropoffaddress': {'street':'777 XYZ Blvd','city':'San Francisco', 'state': 'California', 'country':'USA'},
+'dailyrent':139})
