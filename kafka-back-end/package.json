@@ -9,14 +9,16 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "assert": "^1.4.1",
     "bcrypt": "^1.0.3",
     "crypto": "^1.0.1",
+    "ioredis": "^3.2.2",
     "kafka-node": "^2.2.3",
+    "mongodb": "^2.2.33",
     "mongoose": "4.10.8",
+    "mongoose-with-redis": "^0.1.1",
     "mysql": "^2.15.0",
-    "underscore": "^1.8.3",
     "node-async-loop": "^1.2.2",
-    "assert": "^1.4.1",
-    "mongodb": "^2.2.33"
+    "underscore": "^1.8.3"
   }
 }

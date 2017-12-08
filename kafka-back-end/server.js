@@ -396,17 +396,17 @@ consumer.on('message', function (message) {
 
 // Redis Config
 
-// var redis = require('ioredis');
-// var MongooseRedis = require('mongoose-with-redis');
-// var redisClient = redis.createClient();
-//
-// var cacheOptions = {
-//     cache: true,
-//     expires: 60, // keeping it low for now , will extend in future
-//     prefix: 'RedisCache'
-// };
-//
-// MongooseRedis(mongoose, redisClient, cacheOptions);
+var redis = require('ioredis');
+var MongooseRedis = require('mongoose-with-redis');
+var redisClient = redis.createClient();
+
+var cacheOptions = {
+    cache: true,
+    expires: 60, // keeping it low for now , will extend in future
+    prefix: 'RedisCache'
+};
+
+MongooseRedis(mongoose, redisClient, cacheOptions);
 
 // End of Redis Config
 

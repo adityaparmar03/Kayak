@@ -158,7 +158,7 @@ db.CleartripFlights.insert({
 
 
 db.CleartripFlights.insert({
-  'flightId': 'CT100',
+  'flightId': 'CT101',
   'operator': 'Jet Airways',
   'imageurl': 'jetairways.jpg',
   'class':[
@@ -342,4 +342,3 @@ db.TripAdvisorHotels.insert({
           {'roomtype':'Premium','price':1000, 'rooomcount':100}
     ]
     })
-
