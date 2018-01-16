@@ -1,4 +1,8 @@
 # Kayak
+Project Report:
+https://github.com/adityaparmar03/Kayak/blob/master/Kayak_Project_Report.pdf
+
+
 
 #### Steps for installing the project
 Checkout this repo, install dependencies, then start the gulp process with the following:
