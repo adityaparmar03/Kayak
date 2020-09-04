@@ -14,7 +14,7 @@
     "crypto": "^1.0.1",
     "ioredis": "^3.2.2",
     "kafka-node": "^2.2.3",
-    "mongodb": "^2.2.33",
+    "mongodb": "^3.1.13",
     "mongoose": "4.10.8",
     "mongoose-with-redis": "^0.1.1",
     "mysql": "^2.15.0",
